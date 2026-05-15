@@ -33,11 +33,18 @@ import java.lang.reflect.Field;
 @Suite.SuiteClasses({
     JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest.class,
     JetBrainsMPSJavaMcpToolsetIntegrationTest.class,
+    JetBrainsMPSLanguageMcpToolsetIntegrationTest.class,
+    JetBrainsMPSModelMcpToolsetIntegrationTest.class,
     JetBrainsMPSModuleMcpToolsetIntegrationTest.class,
+    JetBrainsMPSEditorMcpToolsetIntegrationTest.class,
     JetBrainsMPSNodeMcpToolsetIntegrationTest.class,
+    JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest.class,
+    JetBrainsMPSRootNodeMcpToolsetIntegrationTest.class,
+    JetBrainsMPSProjectMcpToolsetIntegrationTest.class,
     JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest.class,
     AbstractOpsPropertyProblemsTest.class,
     AssignableReferenceServiceTest.class,
+    JetBrainsMPSSkillsMcpToolsetTest.class,
     McpToolInputSchemasTest.class,
 })
 public class McpToolsIntegrationTestSuite extends BaseMpsSuite {

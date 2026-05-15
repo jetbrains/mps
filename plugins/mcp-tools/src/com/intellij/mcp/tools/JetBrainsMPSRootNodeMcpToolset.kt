@@ -1,5 +1,6 @@
 package com.intellij.mcp.tools
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.intellij.mcpserver.annotations.McpDescription
@@ -11,6 +12,7 @@ import com.intellij.openapi.fileEditor.FileEditorManager
 import jetbrains.mps.ide.editor.MPSEditorUtil
 import jetbrains.mps.ide.editor.MPSFileNodeEditor
 import jetbrains.mps.ide.project.ProjectHelper
+import jetbrains.mps.nodefs.MPSNodeVirtualFile
 import jetbrains.mps.openapi.navigation.EditorNavigator
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
@@ -61,7 +63,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     return@withContext
                 }
 
-                val nvf = mpsEditor.file
+                val nvf = mpsEditor.file as? MPSNodeVirtualFile
                 if (nvf == null) {
                     reply = errJson("Could not detect the current root node")
                     return@withContext
@@ -210,12 +212,10 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
 
-                val nodeInfos = mutableListOf<String>()
+                // Two-pass: validate-then-attach, so a late failure can't leave earlier roots committed.
+                val preparedNodes = mutableListOf<org.jetbrains.mps.openapi.model.SNode>()
                 for ((index, jsonObject) in jsonObjects.withIndex()) {
                     val indexLabel = if (jsonObjects.size > 1) " [$index]" else ""
-                    // The concept is only validated here; the actual construction
-                    // is done by instantiateNode(), which reads concept info from
-                    // the blueprint JSON itself.
                     when (val r = resolveRootableConcept(
                         mpsProject.repository,
                         conceptName = jsonObject.get("concept")?.asString,
@@ -234,23 +234,40 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     if (newNode == null) {
                         return@executeShortCommandOnEdt errJson("Failed to instantiate node$indexLabel from JSON", McpErrorCode.INVALID_REQUEST)
                     }
+                    preparedNodes.add(newNode)
+                }
 
-                    if (!dryRun) {
+                val nodeInfos = mutableListOf<JsonObject>()
+                if (!dryRun) {
+                    // Two-pass for batched inserts: attach every root first, then run
+                    // performFixReferences. The fix-references step uses ScopeResolver, which
+                    // only sees roots already present in the model. Running it per root inside
+                    // the attach loop reports "stillBroken" for forward references between
+                    // siblings in the same batch, even though the references themselves resolve
+                    // lazily once the target root lands. The two-pass ordering makes the counts
+                    // match the observable post-batch state.
+                    for (newNode in preparedNodes) {
                         model.addRootNode(newNode)
-                        performFixReferences(mpsProject, newNode)
-                        nodeInfos.add(nodeInfoJson(newNode))
+                    }
+                    for (newNode in preparedNodes) {
+                        val fixResult = performFixReferences(mpsProject, newNode)
+                        nodeInfos.add(withFixReferencesInfo(nodeInfoJsonObject(newNode), fixResult))
                     }
                 }
 
-                val result = if (dryRun) {
-                    "{\"dryRun\":true,\"message\":\"Dry run successful for root node insertion\"}"
-                } else if (jsonObjects.size == 1) {
-                    nodeInfos.first()
+                if (dryRun) {
+                    okJson(jsonObject {
+                        addProperty("dryRun", true)
+                        addProperty("message", "Dry run successful for root node insertion")
+                    })
                 } else {
-                    "[${nodeInfos.joinToString(",")}]"
+                    model.save()
+                    if (jsonObjects.size == 1) {
+                        okJson(nodeInfos.first())
+                    } else {
+                        okJson(JsonArray().apply { nodeInfos.forEach { add(it) } })
+                    }
                 }
-                if (!dryRun) model.save()
-                okJson(result)
             }
         }
     }
@@ -376,9 +393,9 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 updateNodeFromBlueprint(node, jsonObject, dryRun)
 
                 if (!dryRun) {
-                    performFixReferences(mpsProject, node)
+                    val fixResult = performFixReferences(mpsProject, node)
                     model.save()
-                    okJson(nodeInfoJson(node))
+                    okJson(withFixReferencesInfo(nodeInfoJsonObject(node), fixResult))
                 } else {
                     okJson(jsonObject {
                         addProperty("dryRun", true)

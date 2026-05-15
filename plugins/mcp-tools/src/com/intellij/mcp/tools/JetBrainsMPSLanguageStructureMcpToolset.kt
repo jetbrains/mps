@@ -12,15 +12,13 @@ import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.MPSProject
-import jetbrains.mps.scope.ErrorScope
-import jetbrains.mps.scope.FilteringByConceptScope
 import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
-import jetbrains.mps.smodel.constraints.ModelConstraints
 import jetbrains.mps.smodel.language.LanguageRegistry
 import org.jetbrains.mps.openapi.language.*
+import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SModelReference
 import org.jetbrains.mps.openapi.model.SNode
@@ -54,6 +52,7 @@ enum class MPSStructureOperation {
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
 class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
+
     @McpTool
     @McpDescription(
         """
@@ -72,6 +71,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         }
         val dryRun = params.get("dryRun")?.asBoolean ?: false
 
+
         when (operation) {
             MPSStructureOperation.CREATE_CONCEPTS -> {
                 val structureModelRef = params.get("structureModelRef")?.asString ?: return@withMpsProject errJson("Parameter 'structureModelRef' is missing")
@@ -82,7 +82,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     createConceptsFull(conceptsJsonPath, interfaceConceptsJsonPath, structureModelRef, make, dryRun)
                 } else {
                     val conceptNamesElement =
-                        params.get("conceptNames") ?: return@withMpsProject errJson("Parameter 'conceptsJson', 'interfaceConceptsJson' or 'conceptNames' is missing")
+                        params.get("conceptNames")
+                            ?: return@withMpsProject errJson("Parameter 'conceptsJson', 'interfaceConceptsJson' or 'conceptNames' is missing")
                     val conceptNames: Collection<String> = gson.fromJson(conceptNamesElement, object : TypeToken<Collection<String>>() {}.type)
                     if (dryRun) return@withMpsProject okJson("{}")
                     createConcepts(conceptNames, structureModelRef)
@@ -129,7 +130,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     var count = 0
                     val random = Random()
                     FindUsagesFacade.getInstance().findInstances(searchScope, setOf(concept), exact, { node ->
-                        val inScope = !monitor.isCanceled && (rootNodeRefs == null || rootNodeRefs.contains(node.containingRoot?.reference))
+                        val inScope = !monitor.isCanceled && (rootNodeRefs == null || rootNodeRefs.contains(node.containingRoot.reference))
                         if (inScope) {
                             if (sampleOnly) {
                                 count++
@@ -228,18 +229,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     val concept = resolveConcept(mpsProject.repository, conceptRef)
                         ?: return@executeShortReadOnEdt errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
                     val allSuperConcepts = mutableSetOf<SAbstractConcept>()
-                    val queue = mutableListOf<SAbstractConcept>()
-
-                    concept.superConcept?.let { queue.add(it) }
-                    queue.addAll(concept.superInterfaces)
-
-                    while (queue.isNotEmpty()) {
-                        val current = queue.removeAt(0)
-                        if (allSuperConcepts.add(current)) {
-                            current.superConcept?.let { queue.add(it) }
-                            queue.addAll(current.superInterfaces)
-                        }
-                    }
+                    populateSuperConceptsAndInterfaces(concept, allSuperConcepts)
                     val jsonResults = allSuperConcepts.map { conceptInfoJson(it, mpsProject.repository) }
                     finalizeResult("[" + jsonResults.joinToString(",") + "]")
                 }
@@ -305,7 +295,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     val result = JsonObject()
                     result.addProperty("isSmartReference", smartRefLink != null)
                     if (smartRefLink != null) {
-                        result.addProperty("characteristicReferenceName", smartRefLink.name ?: "")
+                        result.addProperty("characteristicReferenceName", smartRefLink.name)
                     }
                     okJson(gson.toJson(result))
                 }
@@ -345,234 +335,245 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             return@withMpsProject errJson(e.message, McpErrorCode.INVALID_REQUEST)
         }
         if (dryRun) return@withMpsProject okJson("{}")
-        var error: String? = null
+        // `failure` always holds a pre-formatted errJson string (or null on success). Plain
+        // messages are wrapped at the assignment site via `errJson(...)`. The earlier shape used
+        // two parallel vars and a "errorResponse takes precedence" comment, which only worked as
+        // long as future contributors remembered the rule — a single var removes that hazard.
+        var failure: String? = null
         val createdReferences = mutableMapOf<String, String>() // Track node references to return
 
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, structureModelRef)
-            if (model == null) {
-                error = "Model '$structureModelRef' not found"
-                return@executeShortCommandOnEdt
+            // Require an editable model up-front via the shared helper, which returns structured
+            // NOT_FOUND / NOT_EDITABLE error codes. A silent fall-through here would let creation
+            // appear to succeed in memory while save() is skipped — exactly the hollow-descriptor
+            // failure mode the rest of this flow is meant to prevent.
+            val model = when (val r = resolveEditableModel(mpsProject.repository, structureModelRef)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> {
+                    failure = r.errJson
+                    return@executeShortCommandOnEdt
+                }
             }
 
-            // Validation phase: check for conflicts and invalid names
+            // Validation phase: check for conflicts and invalid names.
             val validationErrors = mutableListOf<String>()
-            val existingConceptNames = model.rootNodes
-                .filter { it.concept.isSubConceptOf(CONCEPT_AbstractConceptDeclaration) }
-                .mapNotNull { it.getProperty(PROP_Name) }
-                .toSet()
+            val existingRootNames = collectExistingRootNames(model)
 
+            // Shared "already seen in THIS request" set across the concept and interface loops:
+            // a request that asks for both `concept Foo` and `interface Foo` is a duplicate even
+            // though each loop alone would consider its own entry unique.
             val allNamesToCreate = mutableSetOf<String>()
 
             for (concept in concepts) {
-                val name = concept.name
-                if (!name[0].isUpperCase()) {
-                    validationErrors.add("Concept name '$name' must start with an uppercase letter")
-                }
-                if (!name.matches(Regex("^[A-Za-z][A-Za-z0-9_]*$"))) {
-                    validationErrors.add("Concept name '$name' contains invalid characters (only letters, digits, and underscores allowed)")
-                }
-                if (existingConceptNames.contains(name)) {
-                    validationErrors.add("Concept '$name' already exists in model")
-                }
-                if (!allNamesToCreate.add(name)) {
-                    validationErrors.add("Duplicate concept name '$name' in creation request")
-                }
+                validationErrors += validateRootNodeName(concept.name, "Concept", existingRootNames, allNamesToCreate)
             }
 
             for (interfaceConcept in interfaceConcepts) {
-                val name = interfaceConcept.name
-                if (!name[0].isUpperCase()) {
-                    validationErrors.add("Interface name '$name' must start with an uppercase letter")
-                }
-                if (!name.matches(Regex("^[A-Za-z][A-Za-z0-9_]*$"))) {
-                    validationErrors.add("Interface name '$name' contains invalid characters (only letters, digits, and underscores allowed)")
-                }
-                if (existingConceptNames.contains(name)) {
-                    validationErrors.add("Interface '$name' already exists in model")
-                }
-                if (!allNamesToCreate.add(name)) {
-                    validationErrors.add("Duplicate interface name '$name' in creation request")
-                }
+                validationErrors += validateRootNodeName(interfaceConcept.name, "Interface", existingRootNames, allNamesToCreate)
             }
 
             if (validationErrors.isNotEmpty()) {
-                error = "Validation errors:\n" + validationErrors.joinToString("\n")
+                failure = errJson("Validation errors:\n" + validationErrors.joinToString("\n"))
                 return@executeShortCommandOnEdt
             }
 
-            // Create a registry of concepts/interfaces being created in this operation
-            val conceptRegistry = mutableMapOf<String, SNode>()
-            val createdNodes = mutableListOf<SNode>() // Track all created nodes for potential rollback
+            // Hoisted outside the try so the outer catch can roll back whatever was created
+            // before the throw. The two passes below mutate this list as they create nodes.
+            val createdNodes = mutableListOf<SNode>()
+            try {
+                // Create a registry of concepts/interfaces being created in this operation
+                val conceptRegistry = mutableMapOf<String, SNode>()
 
-            // First pass: create all concept nodes
-            for (concept in concepts) {
-                val name = concept.name
-                val isAbstract = concept.isAbstract
+                // First pass: create all concept nodes
+                for (concept in concepts) {
+                    val name = concept.name
+                    val isAbstract = concept.isAbstract
 
-                val newConcept = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_ConceptDeclaration, null)
-                newConcept.setProperty(PROP_Name, name)
-                conceptRegistry[name] = newConcept
-                createdNodes.add(newConcept)
-                createdReferences[name] = PersistenceFacade.getInstance().asString(newConcept.reference)
+                    val newConcept = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_ConceptDeclaration, null)
+                    newConcept.setProperty(PROP_Name, name)
+                    conceptRegistry[name] = newConcept
+                    createdNodes.add(newConcept)
+                    createdReferences[name] = PersistenceFacade.getInstance().asString(newConcept.reference)
 
-                val conceptAlias = concept.conceptAlias
-                if (conceptAlias != null) {
-                    newConcept.setProperty(PROP_ConceptAlias, conceptAlias)
-                }
+                    val conceptAlias = concept.conceptAlias
+                    if (conceptAlias != null) {
+                        newConcept.setProperty(PROP_ConceptAlias, conceptAlias)
+                    }
 
-                val shortDescription = concept.shortDescription
-                if (shortDescription != null) {
-                    newConcept.setProperty(PROP_ConceptShortDescription, shortDescription)
-                }
+                    val shortDescription = concept.shortDescription
+                    if (shortDescription != null) {
+                        newConcept.setProperty(PROP_ConceptShortDescription, shortDescription)
+                    }
 
-                if (isAbstract) {
-                    newConcept.setProperty(PROP_Abstract, "true")
-                }
+                    if (isAbstract) {
+                        newConcept.setProperty(PROP_Abstract, "true")
+                    }
 
-                val rootable = concept.rootable
-                if (rootable) {
-                    newConcept.setProperty(PROP_Rootable, "true")
-                }
+                    val rootable = concept.rootable
+                    if (rootable) {
+                        newConcept.setProperty(PROP_Rootable, "true")
+                    }
 
-                val virtualPackage = concept.virtualPackage
-                if (virtualPackage != null) {
-                    newConcept.setProperty(PROP_VirtualPackage, virtualPackage)
-                }
+                    val virtualPackage = concept.virtualPackage
+                    if (virtualPackage != null) {
+                        newConcept.setProperty(PROP_VirtualPackage, virtualPackage)
+                    }
 
-                // Add DocumentedNodeAnnotation if documentation is provided
-                val documentation = concept.documentation
-                if (documentation != null) {
-                    addDocumentationAnnotation(newConcept, documentation)
-                }
-            }
-
-            for (interfaceConcept in interfaceConcepts) {
-                val name = interfaceConcept.name
-                val newInterface = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_InterfaceConceptDeclaration, null)
-                newInterface.setProperty(PROP_Name, name)
-                conceptRegistry[name] = newInterface
-                createdNodes.add(newInterface)
-                createdReferences[name] = PersistenceFacade.getInstance().asString(newInterface.reference)
-
-                val shortDescription = interfaceConcept.shortDescription
-                if (shortDescription != null) {
-                    newInterface.setProperty(PROP_ConceptShortDescription, shortDescription)
-                }
-
-                val virtualPackage = interfaceConcept.virtualPackage
-                if (virtualPackage != null) {
-                    newInterface.setProperty(PROP_VirtualPackage, virtualPackage)
-                }
-
-                // Add DocumentedNodeAnnotation if documentation is provided
-                val documentation = interfaceConcept.documentation
-                if (documentation != null) {
-                    addDocumentationAnnotation(newInterface, documentation)
-                }
-            }
-
-            // Second pass: add all details including properties, children, references, extends, implements
-            val errors = mutableListOf<String>()
-
-            fun processAbstractConcept(newConcept: SNode, concept: StructureMemberOwnerSpec) {
-                val conceptName = concept.name
-
-                // Properties
-                for (property in concept.properties) {
-                    val propNode = SNodeFactoryOperations.addNewChild(newConcept, LINK_PropertyDeclaration, CONCEPT_PropertyDeclaration)
-                    propNode.setProperty(PROP_Name, property.name)
-                    val dataTypeNode = resolveDataType(property.type, mpsProject, model)
-                    if (dataTypeNode != null) {
-                        propNode.setReferenceTarget(LINK_PropertyDeclaration_DataType, dataTypeNode)
+                    // Add DocumentedNodeAnnotation if documentation is provided
+                    val documentation = concept.documentation
+                    if (documentation != null) {
+                        addDocumentationAnnotation(newConcept, documentation)
                     }
                 }
 
-                // Children and References
-                for (child in concept.children) {
-                    val err = addLink(newConcept, child, true, mpsProject, model, conceptRegistry)
-                    if (err != null) {
-                        errors.add("In concept '$conceptName': $err")
+                for (interfaceConcept in interfaceConcepts) {
+                    val name = interfaceConcept.name
+                    val newInterface = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_InterfaceConceptDeclaration, null)
+                    newInterface.setProperty(PROP_Name, name)
+                    conceptRegistry[name] = newInterface
+                    createdNodes.add(newInterface)
+                    createdReferences[name] = PersistenceFacade.getInstance().asString(newInterface.reference)
+
+                    val shortDescription = interfaceConcept.shortDescription
+                    if (shortDescription != null) {
+                        newInterface.setProperty(PROP_ConceptShortDescription, shortDescription)
+                    }
+
+                    val virtualPackage = interfaceConcept.virtualPackage
+                    if (virtualPackage != null) {
+                        newInterface.setProperty(PROP_VirtualPackage, virtualPackage)
+                    }
+
+                    // Add DocumentedNodeAnnotation if documentation is provided
+                    val documentation = interfaceConcept.documentation
+                    if (documentation != null) {
+                        addDocumentationAnnotation(newInterface, documentation)
                     }
                 }
 
-                for (reference in concept.references) {
-                    val err = addLink(newConcept, reference, false, mpsProject, model, conceptRegistry)
-                    if (err != null) {
-                        errors.add("In concept '$conceptName': $err")
-                    }
-                }
-            }
+                // Second pass: add all details including properties, children, references, extends, implements
+                val errors = mutableListOf<String>()
 
-            for (concept in concepts) {
-                val name = concept.name
-                val newConcept = conceptRegistry[name] ?: continue
+                fun processAbstractConcept(newConcept: SNode, concept: StructureMemberOwnerSpec) {
+                    val conceptName = concept.name
 
-                processAbstractConcept(newConcept, concept)
-
-                // Extends
-                val extendsRef = concept.extendsRef
-                if (extendsRef != null) {
-                    val extendsConcept = resolveConceptOrNode(extendsRef, mpsProject, model, conceptRegistry)
-                    if (extendsConcept != null) {
-                        newConcept.setReferenceTarget(LINK_Extends, extendsConcept)
-                    } else {
-                        errors.add("In concept '$name': Failed to resolve extends '$extendsRef'")
-                    }
-                }
-
-                // Implements
-                for (intfcRef in concept.implementsRefs) {
-                    val intfcNode = resolveConceptOrNode(intfcRef, mpsProject, model, conceptRegistry)
-                    if (intfcNode != null) {
-                        // Find the correct 'implements' link on ConceptDeclaration
-                        val implementsLink = newConcept.concept.containmentLinks.find { it.name == "implements" }
-                        if (implementsLink != null) {
-                            val intfcRefNode = SNodeFactoryOperations.addNewChild(newConcept, implementsLink, CONCEPT_InterfaceConceptReference)
-                            intfcRefNode.setReferenceTarget(LINK_InterfaceConceptReference_Intfc, intfcNode)
-                        } else {
-                            errors.add("In concept '$name': Could not find 'implements' link on ConceptDeclaration")
+                    // Properties
+                    for (property in concept.properties) {
+                        val propNode = SNodeFactoryOperations.addNewChild(newConcept, LINK_PropertyDeclaration, CONCEPT_PropertyDeclaration)
+                        propNode.setProperty(PROP_Name, property.name)
+                        val dataTypeNode = resolveDataType(property.type, mpsProject, model)
+                        if (dataTypeNode != null) {
+                            propNode.setReferenceTarget(LINK_PropertyDeclaration_DataType, dataTypeNode)
                         }
-                    } else {
-                        errors.add("In concept '$name': Failed to resolve implements '$intfcRef'")
                     }
-                }
-            }
 
-            for (interfaceConcept in interfaceConcepts) {
-                val name = interfaceConcept.name
-                val newInterface = conceptRegistry[name] ?: continue
-
-                processAbstractConcept(newInterface, interfaceConcept)
-
-                // Extended Interfaces
-                for (intfcRef in interfaceConcept.extendedInterfaces) {
-                    val intfcNode = resolveConceptOrNode(intfcRef, mpsProject, model, conceptRegistry)
-                    if (intfcNode != null) {
-                        // Find the correct 'extends' link on InterfaceConceptDeclaration
-                        val extendsLink = newInterface.concept.containmentLinks.find { it.name == "extends" }
-                        if (extendsLink != null) {
-                            val intfcRefNode = SNodeFactoryOperations.addNewChild(newInterface, extendsLink, CONCEPT_InterfaceConceptReference)
-                            intfcRefNode.setReferenceTarget(LINK_InterfaceConceptReference_Intfc, intfcNode)
-                        } else {
-                            errors.add("In interface '$name': Could not find 'extends' link on InterfaceConceptDeclaration")
+                    // Children and References
+                    for (child in concept.children) {
+                        val err = addLink(newConcept, child, true, mpsProject, model, conceptRegistry)
+                        if (err != null) {
+                            errors.add("In concept '$conceptName': $err")
                         }
-                    } else {
-                        errors.add("In interface '$name': Failed to resolve extends '$intfcRef'")
+                    }
+
+                    for (reference in concept.references) {
+                        val err = addLink(newConcept, reference, false, mpsProject, model, conceptRegistry)
+                        if (err != null) {
+                            errors.add("In concept '$conceptName': $err")
+                        }
                     }
                 }
-            }
 
-            if (errors.isNotEmpty()) {
-                // Rollback: delete all created nodes
-                for (node in createdNodes) {
-                    node.delete()
+                for (concept in concepts) {
+                    val name = concept.name
+                    val newConcept = conceptRegistry[name] ?: continue
+
+                    processAbstractConcept(newConcept, concept)
+
+                    // Extends
+                    val extendsRef = concept.extendsRef
+                    if (extendsRef != null) {
+                        val extendsConcept = resolveConceptOrNode(extendsRef, mpsProject, model, conceptRegistry)
+                        if (extendsConcept != null) {
+                            newConcept.setReferenceTarget(LINK_Extends, extendsConcept)
+                        } else {
+                            errors.add("In concept '$name': Failed to resolve extends '$extendsRef'")
+                        }
+                    }
+
+                    // Implements
+                    for (intfcRef in concept.implementsRefs) {
+                        val intfcNode = resolveConceptOrNode(intfcRef, mpsProject, model, conceptRegistry)
+                        if (intfcNode != null) {
+                            // Find the correct 'implements' link on ConceptDeclaration
+                            val implementsLink = newConcept.concept.containmentLinks.find { it.name == "implements" }
+                            if (implementsLink != null) {
+                                val intfcRefNode = SNodeFactoryOperations.addNewChild(newConcept, implementsLink, CONCEPT_InterfaceConceptReference)
+                                intfcRefNode.setReferenceTarget(LINK_InterfaceConceptReference_Intfc, intfcNode)
+                            } else {
+                                errors.add("In concept '$name': Could not find 'implements' link on ConceptDeclaration")
+                            }
+                        } else {
+                            errors.add("In concept '$name': Failed to resolve implements '$intfcRef'")
+                        }
+                    }
                 }
-                error = "Errors during concept creation:\n" + errors.joinToString("\n")
+
+                for (interfaceConcept in interfaceConcepts) {
+                    val name = interfaceConcept.name
+                    val newInterface = conceptRegistry[name] ?: continue
+
+                    processAbstractConcept(newInterface, interfaceConcept)
+
+                    // Extended Interfaces
+                    for (intfcRef in interfaceConcept.extendedInterfaces) {
+                        val intfcNode = resolveConceptOrNode(intfcRef, mpsProject, model, conceptRegistry)
+                        if (intfcNode != null) {
+                            // Find the correct 'extends' link on InterfaceConceptDeclaration
+                            val extendsLink = newInterface.concept.containmentLinks.find { it.name == "extends" }
+                            if (extendsLink != null) {
+                                val intfcRefNode = SNodeFactoryOperations.addNewChild(newInterface, extendsLink, CONCEPT_InterfaceConceptReference)
+                                intfcRefNode.setReferenceTarget(LINK_InterfaceConceptReference_Intfc, intfcNode)
+                            } else {
+                                errors.add("In interface '$name': Could not find 'extends' link on InterfaceConceptDeclaration")
+                            }
+                        } else {
+                            errors.add("In interface '$name': Failed to resolve extends '$intfcRef'")
+                        }
+                    }
+                }
+
+                if (errors.isNotEmpty()) {
+                    // Rollback: delete all created nodes. Intentionally NOT calling save() here —
+                    // the on-disk file still matches its pre-call state because the success path
+                    // below is the only writer. Re-saving the post-rollback state would be a no-op
+                    // semantically but would touch the file's mtime; more importantly, a future
+                    // defensive save() added here would break the invariant that a failed
+                    // CREATE_CONCEPTS leaves the file byte-identical to its pre-call contents.
+                    safelyRollbackNodes(createdNodes)
+                    failure = errJson("Errors during concept creation:\n" + errors.joinToString("\n"))
+                } else {
+                    // saveOrRollback persists, runs safelyRollbackNodes on failure, and returns a
+                    // pre-formatted INTERNAL_ERROR errJson (or null on success). See its KDoc for
+                    // why every successful structure-model write in this file goes through it.
+                    failure = saveOrRollback(model, createdNodes, structureModelRef)
+                }
+            } catch (e: Throwable) {
+                // Mirrors createConcepts / mps_mcp_create_enum: a throw out of the two creation
+                // passes (e.g. from SNodeFactoryOperations, addLink, resolveDataType, listener
+                // exceptions) would otherwise leave partially-built roots in the model with no
+                // save() and no signal to the caller — to be picked up by the next unrelated save.
+                rethrowIfCancellation(e)
+                if (e is Error) throw e
+                safelyRollbackNodes(createdNodes)
+                failure = errJson(
+                    "Failed to build concepts in structure model '$structureModelRef': ${e.message ?: e.javaClass.name}",
+                    McpErrorCode.INTERNAL_ERROR,
+                )
             }
         }
-        if (error != null) {
-            errJson(error)
+        val finalFailure = failure
+        if (finalFailure != null) {
+            finalFailure
         } else {
             // Return created concept references
             val gson = Gson()
@@ -591,7 +592,13 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     result["makeMessage"] = "Model not found for make operation"
                 } else {
                     val makeResult = performMake(mpsProject, listOf(model), emptyList(), false)
-                    result["makeStatus"] = if (makeResult.success) "success" else "failed"
+                    // `makeStatus` is the sole signal here; no companion `runtimeReady` boolean
+                    // (it would duplicate "runtime_stale" and risk drifting out of sync).
+                    result["makeStatus"] = when {
+                        !makeResult.success -> "failed"
+                        !makeResult.runtimeReady -> "runtime_stale"
+                        else -> "success"
+                    }
                     result["makeMessage"] = makeResult.message
                     if (makeResult.details.isNotEmpty()) {
                         result["makeDetails"] = makeResult.details
@@ -604,6 +611,56 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         }
     }
 
+
+    /**
+     * Collects names of all root nodes in [model] sharing the structure-model root-name space:
+     * both `AbstractConceptDeclaration` (concepts, interfaces) and `DataTypeDeclaration` (enums,
+     * primitive types). MPS forbids duplicates in this combined space, so a concept "Foo"
+     * blocks creating an enum "Foo" and vice versa.
+     */
+    private fun collectExistingRootNames(model: SModel): Set<String> = model.rootNodes
+        .filter {
+            it.concept.isSubConceptOf(CONCEPT_AbstractConceptDeclaration) ||
+                it.concept.isSubConceptOf(CONCEPT_DataTypeDeclaration)
+        }
+        .mapNotNull { it.getProperty(PROP_Name) }
+        .toSet()
+
+    /**
+     * Validates a single concept/interface/enum root-node name against the same rules
+     * `createConceptsFull` enforces. Returns the list of error messages (empty when the name
+     * is fully valid). `kind` is the noun used in error messages ("Concept", "Interface",
+     * "Enumeration", …); `existingNames` is the set of root-node names already in the model;
+     * `seenInRequest` is mutated to detect duplicates within a single request.
+     */
+    private fun validateRootNodeName(
+        name: String,
+        kind: String,
+        existingNames: Set<String>,
+        seenInRequest: MutableSet<String>,
+    ): List<String> {
+        val errors = mutableListOf<String>()
+        if (name.isEmpty()) {
+            errors += "$kind name must not be empty"
+            return errors
+        }
+        if (!name[0].isUpperCase()) {
+            // Skip the regex check on the same name. Names like "1abc" fail both checks
+            // and we don't want to surface two redundant errors for one bad name.
+            errors += "$kind name '$name' must start with an uppercase letter"
+            return errors
+        }
+        if (!name.matches(NAME_PATTERN)) {
+            errors += "$kind name '$name' contains invalid characters (only letters, digits, and underscores allowed)"
+        }
+        if (existingNames.contains(name)) {
+            errors += "$kind '$name' already exists in model"
+        }
+        if (!seenInRequest.add(name)) {
+            errors += "Duplicate $kind name '$name' in creation request"
+        }
+        return errors
+    }
 
     private fun resolveDataType(type: String, mpsProject: MPSProject, model: SModel?): SNode? {
         val coreModel = resolveModel(mpsProject.repository, "r:00000000-0000-4000-0000-011c89590288(jetbrains.mps.lang.core.structure)")
@@ -767,31 +824,59 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         conceptNames: Collection<String>,
         structureModelRef: String
     ): String = withMpsProject("Creating concepts") { mpsProject ->
-        var error: String? = null
+        // `failure` is always a pre-formatted errJson (or null on success). See
+        // createConceptsFull for the rationale of the single-var pattern.
+        var failure: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, structureModelRef)
-            if (model == null) {
-                error = "Model '$structureModelRef' not found"
-                return@executeShortCommandOnEdt
+            val model = when (val r = resolveEditableModel(mpsProject.repository, structureModelRef)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> {
+                    failure = r.errJson
+                    return@executeShortCommandOnEdt
+                }
             }
 
-            val existingNames = model.rootNodes
-                .filter { it.concept.isSubConceptOf(CONCEPT_ConceptDeclaration) }
-                .mapNotNull { it.getProperty(PROP_Name) }
-                .toSet()
+            val existingRootNames = collectExistingRootNames(model)
 
-            val collisions = conceptNames.filter { it in existingNames }
-            if (collisions.isNotEmpty()) {
-                error = "Concept(s) already exist: ${collisions.joinToString(", ")}"
-                return@executeShortCommandOnEdt
-            }
-
+            // Up-front validation mirroring createConceptsFull. Without this, malformed or
+            // duplicate names would reach save() below and require manual cleanup.
+            val validationErrors = mutableListOf<String>()
+            val seenInRequest = mutableSetOf<String>()
             for (name in conceptNames) {
-                val newConcept = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_ConceptDeclaration, null)
-                newConcept.setProperty(PROP_Name, name)
+                validationErrors += validateRootNodeName(name, "Concept", existingRootNames, seenInRequest)
             }
+            if (validationErrors.isNotEmpty()) {
+                failure = errJson("Validation errors:\n" + validationErrors.joinToString("\n"))
+                return@executeShortCommandOnEdt
+            }
+
+            // Track created roots so a creation-loop or save failure can roll them back.
+            val createdNodes = mutableListOf<SNode>()
+            try {
+                // Wrap the loop because SNodeFactoryOperations.createNewRootNode and
+                // SNode.setProperty can throw (e.g. listener exceptions, model in unexpected
+                // state). Without this, a failure on the N-th iteration would leave 1..N-1
+                // in the in-memory model with no save() and no signal to the caller — and
+                // those orphans would be persisted by the next unrelated save.
+                for (name in conceptNames) {
+                    val newConcept = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_ConceptDeclaration, null)
+                    newConcept.setProperty(PROP_Name, name)
+                    createdNodes.add(newConcept)
+                }
+            } catch (e: Throwable) {
+                rethrowIfCancellation(e)
+                if (e is Error) throw e
+                safelyRollbackNodes(createdNodes)
+                failure = errJson(
+                    "Failed to create concepts in structure model '$structureModelRef': ${e.message ?: e.javaClass.name}",
+                    McpErrorCode.INTERNAL_ERROR,
+                )
+                return@executeShortCommandOnEdt
+            }
+
+            failure = saveOrRollback(model, createdNodes, structureModelRef)
         }
-        error?.let { errJson(it) } ?: okJson("true")
+        failure ?: okJson("true")
     }
 
     private suspend fun mps_mcp_create_enum(
@@ -811,49 +896,79 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         }
         if (dryRun) return@withMpsProject okJson("{}")
 
-        var error: String? = null
+        // `failure` is always a pre-formatted errJson (or null on success). See
+        // createConceptsFull for the single-var pattern.
+        var failure: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, structureModelRef)
-            if (model == null) {
-                error = "Model '$structureModelRef' not found"
-                return@executeShortCommandOnEdt
-            }
-
-            val existingEnums = model.rootNodes.filter { it.concept.isSubConceptOf(CONCEPT_EnumerationDeclaration) }
-            if (existingEnums.any { it.getProperty(PROP_Name) == enumName }) {
-                error = "Enumeration '$enumName' already exists in model '$structureModelRef'"
-                return@executeShortCommandOnEdt
-            }
-
-            val newEnum = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_EnumerationDeclaration, null)
-            newEnum.setProperty(PROP_Name, enumName)
-
-            // Remove any automatically created members (artifacts of the node factory)
-            newEnum.getChildren(LINK_Members).forEach { it.delete() }
-
-            val memberNodes = mutableMapOf<String, SNode>()
-            val random = Random()
-
-            for (value in values) {
-                val name = value.enumName
-                val presentation = value.enumPresentation ?: name
-
-                val member = SNodeFactoryOperations.addNewChild(newEnum, LINK_Members, CONCEPT_EnumerationMemberDeclaration)
-                member.setProperty(PROP_Name, name)
-                member.setProperty(PROP_Presentation, presentation)
-                // Generate a random long for memberId as it's required by constraints
-                member.setProperty(PROP_MemberId, (random.nextLong() and Long.MAX_VALUE).toString())
-                memberNodes[name] = member
-            }
-
-            if (!defaultEnumName.isNullOrEmpty()) {
-                val defaultMember = memberNodes[defaultEnumName]
-                if (defaultMember != null) {
-                    newEnum.setReferenceTarget(LINK_DefaultMember, defaultMember)
+            val model = when (val r = resolveEditableModel(mpsProject.repository, structureModelRef)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> {
+                    failure = r.errJson
+                    return@executeShortCommandOnEdt
                 }
             }
+
+            // Same name-validation pipeline as the concept-creation paths.
+            val validationErrors = validateRootNodeName(
+                enumName,
+                "Enumeration",
+                collectExistingRootNames(model),
+                mutableSetOf(),
+            )
+            if (validationErrors.isNotEmpty()) {
+                failure = errJson("Validation errors:\n" + validationErrors.joinToString("\n"))
+                return@executeShortCommandOnEdt
+            }
+
+            // Track the new root for creation-loop and save-failure rollback.
+            val createdNodes = mutableListOf<SNode>()
+            try {
+                // Wrap the entire node-creation phase: SNodeFactoryOperations and setProperty
+                // can throw mid-way through the values loop, leaving a partially-populated
+                // EnumerationDeclaration that would be picked up by the next unrelated save.
+                val newEnum = SNodeFactoryOperations.createNewRootNode(model, CONCEPT_EnumerationDeclaration, null)
+                newEnum.setProperty(PROP_Name, enumName)
+                createdNodes.add(newEnum)
+
+                // Remove any automatically created members (artifacts of the node factory)
+                newEnum.getChildren(LINK_Members).forEach { it.delete() }
+
+                val memberNodes = mutableMapOf<String, SNode>()
+                val random = Random()
+
+                for (value in values) {
+                    val name = value.enumName
+                    val presentation = value.enumPresentation ?: name
+
+                    val member = SNodeFactoryOperations.addNewChild(newEnum, LINK_Members, CONCEPT_EnumerationMemberDeclaration)
+                    member.setProperty(PROP_Name, name)
+                    member.setProperty(PROP_Presentation, presentation)
+                    // Generate a random long for memberId as it's required by constraints
+                    member.setProperty(PROP_MemberId, (random.nextLong() and Long.MAX_VALUE).toString())
+                    memberNodes[name] = member
+                }
+
+                if (!defaultEnumName.isNullOrEmpty()) {
+                    val defaultMember = memberNodes[defaultEnumName]
+                    if (defaultMember != null) {
+                        newEnum.setReferenceTarget(LINK_DefaultMember, defaultMember)
+                    }
+                }
+            } catch (e: Throwable) {
+                rethrowIfCancellation(e)
+                if (e is Error) throw e
+                safelyRollbackNodes(createdNodes)
+                failure = errJson(
+                    "Failed to build enumeration '$enumName' in structure model '$structureModelRef': " +
+                            "${e.message ?: e.javaClass.name}",
+                    McpErrorCode.INTERNAL_ERROR,
+                )
+                return@executeShortCommandOnEdt
+            }
+
+            failure = saveOrRollback(model, createdNodes, structureModelRef)
         }
-        error?.let { errJson(it) } ?: okJson("true")
+        failure ?: okJson("true")
     }
 
     private suspend fun mps_mcp_get_enumeration_literals(
@@ -1045,78 +1160,75 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 ?: return@executeShortReadOnEdt errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
 
             val hierarchy = mutableSetOf<SAbstractConcept>()
+            if (includeInherited) {
+                populateSuperConceptsAndInterfaces(startConcept, hierarchy)
+            } else {
                 hierarchy.add(startConcept)
-                if (includeInherited) {
-                    val queue = mutableListOf<SAbstractConcept>()
-                    startConcept.superConcept?.let { queue.add(it) }
-                    queue.addAll(startConcept.superInterfaces)
-                    while (queue.isNotEmpty()) {
-                        val current = queue.removeAt(0)
-                        if (hierarchy.add(current)) {
-                            current.superConcept?.let { queue.add(it) }
-                            queue.addAll(current.superInterfaces)
+            }
+
+            val resultsByModel = mutableMapOf<SModel, MutableMap<SNode, SAbstractConcept>>()
+
+            for (concept in hierarchy) {
+                val conceptNode = concept.sourceNode?.resolve(mpsProject.repository) ?: continue
+                val language = concept.language
+                val languageModule = language.sourceModuleReference.resolve(mpsProject.repository) ?: continue
+
+                val aspectModels = languageModule.models.filter { !it.name.hasStereotype() && it.name.simpleName != "structure" }
+
+                val scope = object : BaseScope() {
+                    override fun getModules(): Iterable<SModule> = listOf(languageModule)
+                    override fun getModels(): Iterable<SModel> = aspectModels
+                }
+
+                FindUsagesFacade.getInstance().findUsages(scope, setOf(conceptNode), { reference ->
+                    val root = reference.sourceNode.containingRoot
+                    if (root.model != null && aspectModels.contains(root.model)) {
+                        val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
+                        if (!rootsInModel.containsKey(root)) {
+                            rootsInModel[root] = concept
                         }
                     }
+                }, EmptyProgressMonitor())
+            }
+
+            val dataArray = JsonArray()
+            for ((model, rootsInModel) in resultsByModel) {
+                val aspectModelObj = JsonObject()
+                aspectModelObj.addProperty("fullyQualifiedName", model.name.longName)
+                aspectModelObj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
+
+                val moduleObj = JsonObject()
+                moduleObj.addProperty("fullyQualifiedName", model.module.moduleName)
+                moduleObj.addProperty("reference", PersistenceFacade.getInstance().asString(model.module.moduleReference))
+                aspectModelObj.add("module", moduleObj)
+
+                val rootsArray = JsonArray()
+                for ((root, targetedConcept) in rootsInModel) {
+                    val rootObj = JsonObject()
+                    rootObj.addProperty("name", root.name ?: root.presentation)
+                    // h: do not fall back to root.presentation for the FQN. presentation is a
+                    // human-readable label (e.g. "<no name>") that produces a non-resolvable
+                    // qualified name. Emit the FQN only when the node has a real INamedConcept
+                    // name; otherwise leave it absent so the caller can detect the unnamed
+                    // node and use the persistent `reference` field instead.
+                    root.name?.let { rootObj.addProperty("fullyQualifiedName", "${model.name.longName}.$it") }
+                    rootObj.addProperty("reference", PersistenceFacade.getInstance().asString(root.reference))
+                    rootObj.addProperty("concept", root.concept.name)
+
+                    val targetsObj = JsonObject()
+                    targetsObj.addProperty("name", targetedConcept.name)
+                    targetsObj.addProperty("fullyQualifiedName", targetedConcept.name)
+                    targetsObj.addProperty("reference", PersistenceFacade.getInstance().asString(targetedConcept))
+                    rootObj.add("targetsConcept", targetsObj)
+
+                    rootsArray.add(rootObj)
                 }
 
-                val resultsByModel = mutableMapOf<SModel, MutableMap<SNode, SAbstractConcept>>()
-
-                for (concept in hierarchy) {
-                    val conceptNode = concept.sourceNode?.resolve(mpsProject.repository) ?: continue
-                    val language = concept.language
-                    val languageModule = language.sourceModuleReference?.resolve(mpsProject.repository) ?: continue
-
-                    val aspectModels = languageModule.models.filter { it.name.hasStereotype() == false && it.name.simpleName != "structure" }
-
-                    val scope = object : BaseScope() {
-                        override fun getModules(): Iterable<SModule> = listOf(languageModule)
-                        override fun getModels(): Iterable<SModel> = aspectModels
-                    }
-
-                    FindUsagesFacade.getInstance().findUsages(scope, setOf(conceptNode), { reference ->
-                        val root = reference.sourceNode.containingRoot
-                        if (root.model != null && aspectModels.contains(root.model)) {
-                            val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
-                            if (!rootsInModel.containsKey(root)) {
-                                rootsInModel[root] = concept
-                            }
-                        }
-                    }, EmptyProgressMonitor())
-                }
-
-                val dataArray = JsonArray()
-                for ((model, rootsInModel) in resultsByModel) {
-                    val aspectModelObj = JsonObject()
-                    aspectModelObj.addProperty("fullyQualifiedName", model.name.longName)
-                    aspectModelObj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
-
-                    val moduleObj = JsonObject()
-                    moduleObj.addProperty("fullyQualifiedName", model.module.moduleName)
-                    moduleObj.addProperty("reference", PersistenceFacade.getInstance().asString(model.module.moduleReference))
-                    aspectModelObj.add("module", moduleObj)
-
-                    val rootsArray = JsonArray()
-                    for ((root, targetedConcept) in rootsInModel) {
-                        val rootObj = JsonObject()
-                        rootObj.addProperty("name", root.name ?: root.presentation)
-                        rootObj.addProperty("fullyQualifiedName", "${model.name.longName}.${root.name ?: root.presentation}")
-                        rootObj.addProperty("reference", PersistenceFacade.getInstance().asString(root.reference))
-                        rootObj.addProperty("concept", root.concept.name)
-
-                        val targetsObj = JsonObject()
-                        targetsObj.addProperty("name", targetedConcept.name)
-                        targetsObj.addProperty("fullyQualifiedName", targetedConcept.name)
-                        targetsObj.addProperty("reference", PersistenceFacade.getInstance().asString(targetedConcept))
-                        rootObj.add("targetsConcept", targetsObj)
-
-                        rootsArray.add(rootObj)
-                    }
-
-                    val modelResult = JsonObject()
-                    modelResult.add("aspectModel", aspectModelObj)
-                    modelResult.add("rootNodes", rootsArray)
-                    dataArray.add(modelResult)
-                }
+                val modelResult = JsonObject()
+                modelResult.add("aspectModel", aspectModelObj)
+                modelResult.add("rootNodes", rootsArray)
+                dataArray.add(modelResult)
+            }
 
             finalizeResult(dataArray.toString())
         }
@@ -1129,6 +1241,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         repository: SRepository,
         onError: (String) -> Unit
     ): SearchScope? {
+
         return when (scopeParam) {
             "all" -> GlobalScope(repository)
             "editable" -> EditableFilteringScope(GlobalScope(repository))
@@ -1139,11 +1252,16 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     return null
                 }
                 val modelRefs = modelsArray.mapNotNull { resolveModel(repository, it.asString)?.reference }.toSet()
+                // j: restrict resolve(SModuleReference) to the set of modules that actually
+                // own one of the listed models. The prior implementation resolved any module
+                // reference through the repository, which leaked containment scope: a model
+                // filter would accept references targeting modules outside the filter set.
+                val moduleRefs = modelRefs.mapNotNull { it.resolve(repository)?.module?.moduleReference }.toSet()
                 object : BaseScope() {
                     override fun getModules(): Iterable<SModule> = modelRefs.mapNotNull { it.resolve(repository)?.module }.distinct()
                     override fun getModels(): Iterable<SModel> = modelRefs.mapNotNull { it.resolve(repository) }
                     override fun resolve(reference: SModelReference): SModel? = if (modelRefs.contains(reference)) reference.resolve(repository) else null
-                    override fun resolve(reference: SModuleReference): SModule? = reference.resolve(repository)
+                    override fun resolve(reference: SModuleReference): SModule? = if (moduleRefs.contains(reference)) reference.resolve(repository) else null
                 }
             }
 
@@ -1181,6 +1299,24 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             else -> {
                 onError("Unsupported scope: $scopeParam")
                 null
+            }
+        }
+    }
+
+    fun populateSuperConceptsAndInterfaces(
+        concept: SAbstractConcept,
+        allSuperConcepts: MutableSet<SAbstractConcept>
+    ) {
+        val queue = mutableListOf<SAbstractConcept>()
+
+        concept.superConcept?.let { queue.add(it) }
+        queue.addAll(concept.superInterfaces)
+
+        while (queue.isNotEmpty()) {
+            val current = queue.removeAt(0)
+            if (allSuperConcepts.add(current)) {
+                current.superConcept?.let { queue.add(it) }
+                queue.addAll(current.superInterfaces)
             }
         }
     }
@@ -1344,5 +1480,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         private const val ENUM_MEMBER_CARDINALITY_0_N_ID = 0xfc6f3944c5L
         private const val ENUM_MEMBER_CARDINALITY_1_N_ID = 0xfc6f3944c6L
 
+        // Java-identifier-shaped names: letters, digits, underscore; first char must be a letter.
+        // Hoisted to a singleton because validateRootNodeName runs once per submitted name and a
+        // single CREATE_CONCEPTS call can include many of them.
+        private val NAME_PATTERN = Regex("^[A-Za-z][A-Za-z0-9_]*$")
     }
 }

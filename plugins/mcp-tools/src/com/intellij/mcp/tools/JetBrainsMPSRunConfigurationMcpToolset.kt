@@ -63,8 +63,11 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
             with the in-process flag cleared, mirroring the standard JUnit producer.
 
         If `configurationName` is omitted, a name is derived from the node ("Node <name>" or
-        the test case's name). If a run configuration with the chosen name already exists in
-        the project, the new one is added alongside it (the platform disambiguates by id).
+        the test case's name). The new configuration is registered via
+        `RunManager.addConfiguration`, whose uniqueID is `<typeId>.<name>`; calling this tool
+        twice with the same effective name therefore replaces the previously registered
+        configuration of the same type rather than creating a duplicate. Pass a distinct
+        `configurationName` to keep both.
 
         Returns `{"ok":true,"data":{"name":"...","type":"Java Application"|"JUnit Tests","uniqueId":"..."}}`
         on success.
@@ -145,7 +148,11 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
         // Java_Configuration#getNode() returns NodeBySeveralConcepts_Configuration; that class
         // exposes setNode(SNode). Both classes are generated MPS plugin code; access them via
         // reflection so mcp-tools does not need a hard dependency on execution-configurations.
+        // If a future Java_Configuration variant lazily allocates the holder and returns null,
+        // throw NoSuchMethodException so the caller's ReflectiveOperationException catch path
+        // converts it into a structured INTERNAL_ERROR envelope.
         val nodeHolder = cfg.javaClass.getMethod("getNode").invoke(cfg)
+            ?: throw NoSuchMethodException("Java_Configuration#getNode() returned null")
         val setNode = nodeHolder.javaClass.getMethod("setNode", SNode::class.java)
         setNode.invoke(nodeHolder, node)
     }
@@ -156,6 +163,7 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
         // settings.setTestCases(PointerUtils.nodeToCloneableList(node))
         // if (!ITestCase#canRunInProcess(node)) settings.setInProcessFlag(false)
         val settings = cfg.javaClass.getMethod("getJUnitSettings").invoke(cfg)
+            ?: throw NoSuchMethodException("JUnitTests_Configuration#getJUnitSettings() returned null")
         val cl = cfg.javaClass.classLoader
 
         // JUnitRunTypes is the enum that holds NODE, but setJUnitRunType declares its parameter
@@ -169,10 +177,12 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
             "jetbrains.mps.baseLanguage.unitTest.execution.settings.JUnitRunTypes",
             true, cl
         )
-        val nodeRunType = java.lang.Enum.valueOf(
-            @Suppress("UNCHECKED_CAST") (runTypesEnum as Class<out Enum<*>>),
-            "NODE"
-        )
+        // Look the constant up by iterating enumConstants instead of java.lang.Enum.valueOf,
+        // which throws IllegalArgumentException (a RuntimeException) when the constant is
+        // missing. Surfacing a NoSuchMethodException keeps the failure inside the
+        // ReflectiveOperationException catch path in mps_mcp_create_run_configuration.
+        val nodeRunType = runTypesEnum.enumConstants.firstOrNull { (it as Enum<*>).name == "NODE" }
+            ?: throw NoSuchMethodException("JUnitRunTypes.NODE constant not found")
         settings.javaClass.getMethod("setJUnitRunType", runTypeInterface).invoke(settings, nodeRunType)
 
         val pointerUtilsClass = Class.forName("jetbrains.mps.execution.lib.PointerUtils", true, cl)
@@ -181,11 +191,18 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
             .invoke(null, node)
 
         // setTestCases declares its parameter as java.util.List (the runtime list is a
-        // cloneable list of SNodeReference). Pick the setter by name to stay tolerant of
-        // overload variations across MPS versions.
+        // cloneable list of SNodeReference). Pick the setter by name + a List-assignable
+        // parameter type to stay tolerant of overload variations across MPS versions while
+        // also rejecting unrelated single-arg overloads that might appear in the future.
+        // The setter's declared parameter type is java.util.List at the JVM level; use
+        // MutableList::class.java because kotlin.collections.List maps to the read-only
+        // interface in Kotlin's type system but still resolves to java.util.List at runtime
+        // via MutableList — this keeps Kotlin's reflection lint clean.
+        val listClass: Class<*> = MutableList::class.java
         val setTestCases = settings.javaClass.methods.firstOrNull {
-            it.name == "setTestCases" && it.parameterCount == 1
-        } ?: throw NoSuchMethodException("JUnitSettings_Configuration#setTestCases not found")
+            it.name == "setTestCases" && it.parameterCount == 1 &&
+                    listClass.isAssignableFrom(it.parameterTypes[0])
+        } ?: throw NoSuchMethodException("JUnitSettings_Configuration#setTestCases(List) not found")
         setTestCases.invoke(settings, cloneableList)
 
         // Mirror JUnitTests_Producer.ProducerPart_NlistITestCase: when the test case's
@@ -193,9 +210,13 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
         // the standard producer clears the in-process flag. Do the same here so the
         // configuration we register behaves identically to one created via the gutter.
         if (!invokeCanRunInProcess(cl, node)) {
+            // Require a primitive-boolean parameter so a future tri-state overload (e.g. an
+            // enum-valued setInProcessFlag) does not get selected and then ArgumentMismatch
+            // when invoked with a Boolean.
             val setInProcessFlag = settings.javaClass.methods.firstOrNull {
-                it.name == "setInProcessFlag" && it.parameterCount == 1
-            } ?: throw NoSuchMethodException("JUnitSettings_Configuration#setInProcessFlag not found")
+                it.name == "setInProcessFlag" && it.parameterCount == 1 &&
+                        it.parameterTypes[0] == java.lang.Boolean.TYPE
+            } ?: throw NoSuchMethodException("JUnitSettings_Configuration#setInProcessFlag(boolean) not found")
             setInProcessFlag.invoke(settings, false)
         }
     }

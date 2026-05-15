@@ -13,6 +13,9 @@ import org.jetbrains.mps.openapi.language.SLanguage
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import jetbrains.mps.smodel.ModelDependencyResolver
+import org.jetbrains.mps.openapi.language.SAbstractLink
+import org.jetbrains.mps.openapi.language.SContainmentLink
+import org.jetbrains.mps.openapi.language.SReferenceLink
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
 // surface, and they are invoked via reflection by the MCP server framework, so static
@@ -172,13 +175,16 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         return result
     }
 
-    private fun conceptReferencesJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
+    private fun conceptLinkJsonArray(
+        repository: SRepository,
+        links: Collection<SAbstractLink>
+    ): JsonArray {
         val result = JsonArray()
-        for (ref in concept.referenceLinks) {
+        for (ref in links) {
             val obj = JsonObject()
             obj.addProperty("name", ref.name)
             obj.addProperty("targetConcept", structureQualifiedName(ref.targetConcept))
-            obj.addProperty("cardinality", getCardinality(ref))
+            obj.addProperty("cardinality", if (ref is SContainmentLink) getCardinality(ref) else getCardinality(ref as SReferenceLink))
             val declarationNode = ref.sourceNode?.resolve(repository)
             addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
             result.add(obj)
@@ -186,18 +192,12 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         return result
     }
 
+    private fun conceptReferencesJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
+        return conceptLinkJsonArray(repository, concept.referenceLinks)
+    }
+
     private fun conceptChildrenJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
-        val result = JsonArray()
-        for (link in concept.containmentLinks) {
-            val obj = JsonObject()
-            obj.addProperty("name", link.name)
-            obj.addProperty("targetConcept", structureQualifiedName(link.targetConcept))
-            obj.addProperty("cardinality", getCardinality(link))
-            val declarationNode = link.sourceNode?.resolve(repository)
-            addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
-            result.add(obj)
-        }
-        return result
+        return conceptLinkJsonArray(repository, concept.containmentLinks)
     }
 
     private fun conceptSampleJsonObject(concept: SAbstractConcept): JsonObject {

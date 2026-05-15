@@ -333,9 +333,13 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         val clm = mpsProject.getComponent(jetbrains.mps.classloading.ClassLoaderManager::class.java)
             ?: return@withMpsProject errJson("ClassLoaderManager not found", McpErrorCode.NOT_FOUND)
 
-        executeShortCommandOnEdt(mpsProject) {
-            clm.reloadAll(jetbrains.mps.progress.EmptyProgressMonitor())
+        try {
+            executeShortCommandOnEdt(mpsProject) {
+                clm.reloadAll(jetbrains.mps.progress.EmptyProgressMonitor())
+            }
+            okJsonString("All modules reloaded successfully")
+        } catch (e: Exception) {
+            errJson("Failed to reload modules: ${e.message ?: e.javaClass.simpleName}", McpErrorCode.INTERNAL_ERROR)
         }
-        okJson("All modules reloaded successfully")
     }
 }

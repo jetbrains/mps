@@ -515,7 +515,17 @@ class AbstractOpsPropertyProblemsTest {
 
         when (result) {
             is JetBrainsMPSNodeMcpToolset.MakeTargetResolution.Invalid -> {
-                assertEquals("No model or module references were provided", result.message)
+                assertTrue(
+                    "Message should explain the expected parameters, was: '${result.message}'",
+                    result.message.startsWith("No model or module references were provided") &&
+                        result.message.contains("'models'") &&
+                        result.message.contains("'modules'") &&
+                        result.message.contains("'wholeProject'"),
+                )
+                assertTrue(
+                    "Details should carry the parameter schema, was: ${result.details}",
+                    result.details["expectedParameters"] is Map<*, *>,
+                )
             }
 
             else -> fail("Expected invalid result for empty scoped request")

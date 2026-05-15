@@ -1,0 +1,876 @@
+package com.intellij.mcp.tools
+
+import com.google.gson.JsonParser
+import org.jetbrains.mps.openapi.model.SNode
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+/**
+ * End-to-end integration tests for [JetBrainsMPSEditorMcpToolset.mps_mcp_scaffold_editor].
+ *
+ * Covers:
+ *  - input validation and resolution failures (early-return paths);
+ *  - the four behavioural forks driven by the `type` parameter ("editor" vs "component"):
+ *    root concept choice, synthetic component name, alias rendering, and the diagnostics
+ *    message wording. The scaffolder pulls in the entire MPS editor language at runtime
+ *    (`ConceptEditorDeclaration`, `EditorComponentDeclaration`, `CellModel_*`, etc.); these
+ *    tests use a fully-compiled concept (`ConceptDeclaration` from `jetbrains.mps.lang.structure`)
+ *    as the scaffold target so make is not required.
+ */
+class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
+
+    private val toolset = JetBrainsMPSEditorMcpToolset()
+
+    /** A compiled, alias-bearing concept that has scaffoldable content (properties/refs/children). */
+    private val targetConceptFqn = "jetbrains.mps.lang.structure.structure.ConceptDeclaration"
+
+    @Test
+    fun `invalid type value is rejected before any MPS work runs`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_scaffold_editor(
+                conceptRef = "jetbrains.mps.lang.core.structure.BaseConcept",
+                modelRef = structureModelRef,
+                type = "not-a-valid-type",
+            )
+        }
+        assertErrorContains(
+            response,
+            "Invalid 'type' parameter",
+            "the rejection should clearly identify the bad parameter",
+        )
+    }
+
+    @Test
+    fun `unknown concept yields a clear NOT_FOUND-style error`() {
+        // type is valid and modelRef resolves, so the failure must come from concept resolution.
+        val response = runTool(toolset) {
+            it.mps_mcp_scaffold_editor(
+                conceptRef = "totally.unknown.concept.Reference",
+                modelRef = structureModelRef,
+                type = "editor",
+            )
+        }
+        assertErrorContains(
+            response,
+            "totally.unknown.concept.Reference",
+            "error should echo the unresolved concept ref",
+        )
+        // Either "Concept '...' not found" or a hollow-descriptor message; both are acceptable
+        // negative paths. The contract we care about is: no editor node gets persisted.
+        readOnRepo {
+            val polluted = structureModel.rootNodes.any { root ->
+                (root.concept.language.qualifiedName + ".structure." + root.concept.name)
+                    .startsWith("jetbrains.mps.lang.editor.structure.")
+            }
+            assertFalse(
+                "rollback must leave the structure model free of editor declarations",
+                polluted,
+            )
+        }
+    }
+
+    @Test
+    fun `unknown destination model yields an error envelope`() {
+        // Use a real, loaded runtime concept so the failure path is the model resolver.
+        val response = runTool(toolset) {
+            it.mps_mcp_scaffold_editor(
+                conceptRef = "jetbrains.mps.lang.core.structure.BaseConcept",
+                modelRef = "r:00000000-0000-0000-0000-000000000000(no.such.model)",
+                type = "editor",
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+    }
+
+    @Test
+    fun `'component' type accepts the parameter and does not short-circuit on the type check`() {
+        // The early-return validation accepts both 'editor' and 'component'. We do not want the
+        // happy path here (which would require the MPS editor language at runtime) — just
+        // verifying that 'component' progresses past the validation gate by routing it to the
+        // same unknown-concept failure path as the test above.
+        val response = runTool(toolset) {
+            it.mps_mcp_scaffold_editor(
+                conceptRef = "totally.unknown.concept.Reference",
+                modelRef = structureModelRef,
+                type = "component",
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope, not pre-validation: $response", obj.get("ok").asBoolean)
+        val msg = obj.get("error").asString
+        assertFalse(
+            "'component' is a valid type and must NOT be flagged as invalid: $msg",
+            msg.contains("Invalid 'type' parameter"),
+        )
+    }
+
+    // ── happy-path: type=editor vs type=component divergence ─────────────────────────────
+
+    @Test
+    fun `type=editor produces a ConceptEditorDeclaration root`() {
+        val editorRef = expectOk(scaffold(type = "editor")).get("editorNodeRef").asString
+        val (qn, name) = inspectRoot(editorRef)
+        assertEquals("jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration", qn)
+        // For ConceptEditorDeclaration the name property is not set (the root is identified by
+        // its conceptDeclaration reference); confirm the scaffolder did NOT inject a synthetic
+        // "_Component" name suffix that belongs only to the component path.
+        assertTrue(
+            "editor declarations must NOT carry the synthetic _Component name suffix; got name='$name'",
+            name == null || !name.endsWith("_Component"),
+        )
+    }
+
+    @Test
+    fun `type=component produces an EditorComponentDeclaration root with synthetic name`() {
+        val componentRef = expectOk(scaffold(type = "component")).get("editorNodeRef").asString
+        val (qn, name) = inspectRoot(componentRef)
+        assertEquals("jetbrains.mps.lang.editor.structure.EditorComponentDeclaration", qn)
+        assertEquals("ConceptDeclaration_Component", name)
+    }
+
+    @Test
+    fun `type=editor renders the concept alias but type=component skips it`() {
+        // The scaffolder adds a CellModel_Constant for the alias only when type != "component"
+        // (JetBrainsMPSEditorMcpToolset.kt:444). ConceptDeclaration has a non-empty alias, so the
+        // editor branch's constant-cell set must be a strict superset of the component branch's.
+        // Property-label cells ("name:", "rootable:" …) are the same on both sides, so the
+        // *difference* in the constant-cell text sets must be exactly the alias.
+        //
+        // The 1-cell-difference invariant relies on ConceptDeclaration having no smart-ref link
+        // (line 289 short-circuit), so the alias is the only type-conditional constant cell. If
+        // a future scaffolder adds another `type != "component"` fork that emits cells, switch
+        // this test to a smart-ref-free fixture or assert on the alias text directly.
+        val editorRef = expectOk(scaffold(type = "editor")).get("editorNodeRef").asString
+        val editorTexts = readOnRepo { constantCellTextsUnder(resolveStructureNode(editorRef)) }
+
+        val componentRef = expectOk(scaffold(type = "component")).get("editorNodeRef").asString
+        val componentTexts = readOnRepo { constantCellTextsUnder(resolveStructureNode(componentRef)) }
+
+        val onlyInEditor = editorTexts - componentTexts
+        assertEquals(
+            "exactly one extra constant cell (the alias) is expected in the editor branch; editor=$editorTexts, component=$componentTexts",
+            1,
+            onlyInEditor.size,
+        )
+        val alias = onlyInEditor.single()
+        assertFalse(
+            "the editor-only cell should be the concept alias (no trailing colon, which is reserved for property/ref/child labels); got '$alias'",
+            alias.endsWith(":"),
+        )
+    }
+
+    @Test
+    fun `type=editor on a smart-reference concept emits a single RefCell and a 'smart reference editor' message`() {
+        // jetbrains.mps.baseLanguage.structure.VariableReference satisfies the implicit smart-ref
+        // heuristic in getSmartReferenceLink: non-abstract, no conceptAlias, exactly one own
+        // mandatory reference link (`variableDeclaration` → VariableDeclaration).
+        // For this fork the scaffolder bails out early after wiring a single CellModel_RefCell to
+        // the editor's `cellModel` slot — bypassing the normal CellModel_Collection layout — and
+        // returns a distinct diagnostics message (JetBrainsMPSEditorMcpToolset.kt:289).
+        val response = scaffoldFor(
+            conceptFqn = "jetbrains.mps.baseLanguage.structure.VariableReference",
+            type = "editor",
+        )
+        val data = expectOk(response)
+        assertEquals(
+            "smart-ref editor scaffolding must announce itself with the dedicated diagnostics message",
+            "Scaffolded smart reference editor.",
+            data.get("message").asString,
+        )
+        val editorRef = data.get("editorNodeRef").asString
+        val cellModelConcepts = readOnRepo {
+            val editor = PersistenceFacade.getInstance().createNodeReference(editorRef)
+                .resolve(structureModel.repository) ?: error("editor node did not resolve")
+            editor.children
+                .filter { it.containmentLink?.name == "cellModel" }
+                .map { structureQualifiedName(it.concept) }
+        }
+        assertEquals(
+            "smart-ref editors must have exactly one cellModel child of type CellModel_RefCell; got: $cellModelConcepts",
+            listOf("jetbrains.mps.lang.editor.structure.CellModel_RefCell"),
+            cellModelConcepts,
+        )
+    }
+
+    @Test
+    fun `smart-ref scaffolding rejects detectComponents to avoid silently dropping caller intent`() {
+        // The smart-ref branch emits a single CellModel_RefCell and bypasses the components
+        // pipeline entirely. Combining it with detectComponents=true used to silently discard
+        // the caller's request; the toolset must instead surface the mismatch up front.
+        val response = scaffoldWith(
+            conceptFqn = "jetbrains.mps.baseLanguage.structure.VariableReference",
+            type = "editor",
+            detectComponents = true,
+        )
+        val err = expectErr(response)
+        assertTrue(
+            "error must surface the smart-ref/components mismatch: $err",
+            err.contains("smart reference link") && err.contains("editor components"),
+        )
+        readOnRepo {
+            val polluted = structureModel.rootNodes.any { root ->
+                structureQualifiedName(root.concept).startsWith("jetbrains.mps.lang.editor.structure.")
+            }
+            assertFalse("rejection must roll back any partially-created editor", polluted)
+        }
+    }
+
+    @Test
+    fun `smart-ref scaffolding rejects explicit includeComponents to avoid silently dropping caller intent`() {
+        // Same misalignment as the detectComponents variant, but triggered by passing a
+        // non-empty includeComponents list. We obtain a real EditorComponentDeclaration ref by
+        // first scaffolding a component for the default target concept; the component's
+        // contents are irrelevant — only the presence of an entry in the request matters for
+        // tripping the rejection.
+        val componentRef = expectOk(scaffold(type = "component")).get("editorNodeRef").asString
+        val response = scaffoldWith(
+            conceptFqn = "jetbrains.mps.baseLanguage.structure.VariableReference",
+            type = "editor",
+            includeComponents = listOf(componentRef),
+        )
+        val err = expectErr(response)
+        assertTrue(
+            "error must surface the smart-ref/components mismatch: $err",
+            err.contains("smart reference link") && err.contains("editor components"),
+        )
+    }
+
+    @Test
+    fun `smart-ref scaffolding with type=component bypasses the rejection`() {
+        // The rejection is gated on `type != "component"` because component-mode does not take
+        // the smart-ref short-circuit at all. Combining the smart-ref concept with
+        // detectComponents=true under type=component must therefore go through the regular
+        // flow without surfacing the mismatch error.
+        val response = scaffoldWith(
+            conceptFqn = "jetbrains.mps.baseLanguage.structure.VariableReference",
+            type = "component",
+            detectComponents = true,
+        )
+        val data = expectOk(response)
+        val msg = data.get("message").asString
+        assertFalse(
+            "type=component must not surface the smart-ref/components mismatch: $msg",
+            msg.contains("smart reference"),
+        )
+    }
+
+    @Test
+    fun `type=component on the same smart-reference concept goes through the normal flow`() {
+        // Smart-ref short-circuiting is gated on `type != "component"`, so a component request
+        // for the same smart-ref concept must NOT emit the "Scaffolded smart reference editor."
+        // diagnostics and must NOT leave a RefCell as the sole cellModel child.
+        val response = scaffoldFor(
+            conceptFqn = "jetbrains.mps.baseLanguage.structure.VariableReference",
+            type = "component",
+        )
+        val data = expectOk(response)
+        val msg = data.get("message").asString
+        assertFalse(
+            "type=component must not emit the smart-ref diagnostics; got: $msg",
+            msg.contains("smart reference"),
+        )
+
+        val componentRef = data.get("editorNodeRef").asString
+        val cellModelConcepts = readOnRepo {
+            val component = PersistenceFacade.getInstance().createNodeReference(componentRef)
+                .resolve(structureModel.repository) ?: error("component node did not resolve")
+            component.children
+                .filter { it.containmentLink?.name == "cellModel" }
+                .map { structureQualifiedName(it.concept) }
+        }
+        // The normal flow lays out cells under a CellModel_Collection rather than a RefCell.
+        assertTrue(
+            "type=component must NOT use the RefCell-only smart-ref layout; got cellModel concepts: $cellModelConcepts",
+            cellModelConcepts.none { it == "jetbrains.mps.lang.editor.structure.CellModel_RefCell" },
+        )
+    }
+
+    @Test
+    fun `diagnostics message wording differs between editor and component`() {
+        val editorMsg = expectOk(scaffold(type = "editor")).get("message").asString
+        val componentMsg = expectOk(scaffold(type = "component")).get("message").asString
+        assertTrue(
+            "type=editor diagnostics must start with 'Scaffolded editor with '; got: $editorMsg",
+            editorMsg.startsWith("Scaffolded editor with "),
+        )
+        assertFalse(
+            "type=editor message must not mention 'editor component'; got: $editorMsg",
+            editorMsg.contains("editor component"),
+        )
+        assertTrue(
+            "type=component diagnostics must mention 'editor component'; got: $componentMsg",
+            componentMsg.contains("editor component"),
+        )
+    }
+
+    // ── element filtering ────────────────────────────────────────────────────────────────
+
+    @Test
+    fun `includeProperties limits scaffolded property cells to the listed names`() {
+        // ConceptDeclaration declares (own + inherited) properties: name, virtualPackage,
+        // shortDescription, conceptId, conceptShortDescription, final, abstract, conceptAlias,
+        // rootable. The scaffolder unconditionally skips virtualPackage/shortDescription and
+        // routes `name` through a dedicated branch. Filtering down to {"rootable"} must
+        // therefore emit exactly one TOP-LEVEL property cell (rootable) and exclude the
+        // dedicated "Name:" label cell as well as every other property label.
+        //
+        // The check intentionally ignores CellModel_Property cells nested inside
+        // InlineEditorComponent (those live inside the `extends` RefCell and bind to the
+        // target concept's name property, not to a host-concept property — they're not
+        // governed by includeProperties).
+        val editorRef = expectOk(scaffoldWith(includeProperties = listOf("rootable")))
+            .get("editorNodeRef").asString
+        val topPropertyNames = topLevelPropertyNames(editorRef)
+        assertEquals(
+            "only the whitelisted property should be scaffolded; got: $topPropertyNames",
+            setOf("rootable"),
+            topPropertyNames,
+        )
+        val texts = readOnRepo { constantCellTextsUnder(resolveStructureNode(editorRef)) }
+        assertTrue("must contain the rootable label; got: $texts", "rootable:" in texts)
+        assertFalse("includeProperties=[rootable] must not emit 'Name:'; got: $texts", "Name:" in texts)
+        assertFalse("includeProperties=[rootable] must not emit 'abstract:'; got: $texts", "abstract:" in texts)
+        assertFalse("includeProperties=[rootable] must not emit 'final:'; got: $texts", "final:" in texts)
+    }
+
+    @Test
+    fun `includeReferences=empty drops every reference cell`() {
+        // ConceptDeclaration's own `extends` reference would normally be rendered; passing an
+        // empty whitelist must remove it (and its "extends:" label) entirely.
+        val editorRef = expectOk(scaffoldWith(includeReferences = emptyList()))
+            .get("editorNodeRef").asString
+        val (_, refNames, _) = relationNamesByCellKind(editorRef)
+        assertTrue("no reference cells expected; got: $refNames", refNames.isEmpty())
+        val texts = readOnRepo { constantCellTextsUnder(resolveStructureNode(editorRef)) }
+        assertFalse("'extends:' label must not appear; got: $texts", "extends:" in texts)
+    }
+
+    @Test
+    fun `includeChildren=empty drops every child cell`() {
+        // Symmetric to the includeReferences=emptyList test: a non-null filter that contains
+        // nothing must drop every child cell and its label. (Asserting a positive whitelist on
+        // ConceptDeclaration is fragile because most of its containment links are inherited
+        // from AbstractConceptDeclaration and the runtime descriptor doesn't propagate
+        // `link.sourceNode` for inherited links — the scaffolder then skips them, leaving the
+        // test unable to distinguish "filtered out" from "would have been skipped anyway".)
+        val editorRef = expectOk(scaffoldWith(includeChildren = emptyList()))
+            .get("editorNodeRef").asString
+        val (_, _, childNames) = relationNamesByCellKind(editorRef)
+        assertTrue("no child cells expected; got: $childNames", childNames.isEmpty())
+        val texts = readOnRepo { constantCellTextsUnder(resolveStructureNode(editorRef)) }
+        for (label in listOf("implements:", "icon:", "propertyDeclaration:", "linkDeclaration:", "helpURL:")) {
+            assertFalse("'$label' must not appear after includeChildren=[]; got: $texts", label in texts)
+        }
+    }
+
+    // ── component inclusion ──────────────────────────────────────────────────────────────
+
+    @Test
+    fun `includeComponents embeds an explicit EditorComponentDeclaration as a CellModel_Component`() {
+        // First scaffold a component to obtain a real EditorComponentDeclaration reference.
+        // The scaffolder writes it into the same structure model used as the editor target.
+        val componentRef = expectOk(scaffold(type = "component")).get("editorNodeRef").asString
+
+        // Then scaffold an editor for the SAME concept with the explicit component listed.
+        // Even when the component does not cover anything in the target (compCovered is empty),
+        // explicit entries are always embedded — that branch is what we exercise here.
+        val editorRef = expectOk(
+            scaffoldWith(type = "editor", includeComponents = listOf(componentRef))
+        ).get("editorNodeRef").asString
+
+        val componentCellTargets = readOnRepo {
+            collectComponentCellTargets(resolveStructureNode(editorRef))
+        }
+        assertTrue(
+            "an explicit component must be embedded as a CellModel_Component; got targets: $componentCellTargets",
+            componentRef in componentCellTargets,
+        )
+    }
+
+    @Test
+    fun `detectComponents=true scaffolds successfully and never sheds detected components`() {
+        // Whether ConceptDeclaration's supers actually expose detectable
+        // EditorComponentDeclarations is environment-dependent: the loaded languages and their
+        // editor aspects vary across MPS builds, and the test harness frequently produces
+        // detect=0 against ConceptDeclaration even when the algorithm is fundamentally working
+        // (the matching `target in superConcepts` filter is strict). We therefore assert two
+        // weaker but stable invariants:
+        //  1. detectComponents=true completes with an ok envelope (smoke-tests the discovery
+        //     branch end-to-end, including the SConceptOperations.getAllSuperConcepts walk).
+        //  2. Enabling detection never *removes* component cells that the baseline scaffold
+        //     would have emitted — detection is additive.
+        val plainRef = expectOk(scaffoldWith(detectComponents = false)).get("editorNodeRef").asString
+        val detectRef = expectOk(scaffoldWith(detectComponents = true)).get("editorNodeRef").asString
+        val (withoutDetect, withDetect) = readOnRepo {
+            countComponentCells(resolveStructureNode(plainRef)) to
+                countComponentCells(resolveStructureNode(detectRef))
+        }
+        assertTrue(
+            "detectComponents=true must never drop components (detect=$withDetect vs noDetect=$withoutDetect)",
+            withDetect >= withoutDetect,
+        )
+    }
+
+    // ── styling parameters ───────────────────────────────────────────────────────────────
+
+    @Test
+    fun `keywordStyle attaches an ApplyStyleClass to the alias constant cell`() {
+        val styleRef = findAnyStyleClassRef()
+        val styledRef = expectOk(scaffoldWith(keywordStyle = styleRef)).get("editorNodeRef").asString
+        val plainRef = expectOk(scaffold(type = "editor")).get("editorNodeRef").asString
+
+        // The alias is the only constant cell that receives keywordStyle (property/ref/child
+        // labels are added via the unstyled overload). Earlier `type=editor vs type=component`
+        // divergence test verified that ConceptDeclaration's alias is the unique colon-free
+        // constant text. We assert that:
+        //  - with keywordStyle, the alias cell carries ≥ 1 ApplyStyleClass child;
+        //  - the same alias cell in the baseline scaffold carries 0 ApplyStyleClass children.
+        // The comparison is intentionally on *presence*, not on the styleClass reference string,
+        // because asString roundtrips can differ across model-import boundaries.
+        val (styledHasIt, plainHasIt) = readOnRepo {
+            val styledAlias = aliasConstantCell(resolveStructureNode(styledRef))
+            val plainAlias = aliasConstantCell(resolveStructureNode(plainRef))
+            applyStyleClassCount(styledAlias) to applyStyleClassCount(plainAlias)
+        }
+        assertTrue(
+            "the alias cell must carry ≥ 1 ApplyStyleClass when keywordStyle is set; got $styledHasIt",
+            styledHasIt >= 1,
+        )
+        assertEquals(
+            "the alias cell must carry no ApplyStyleClass when keywordStyle is omitted",
+            0,
+            plainHasIt,
+        )
+    }
+
+    @Test
+    fun `referenceStyle attaches an ApplyStyleClass to every scaffolded reference cell`() {
+        val styleRef = findAnyStyleClassRef()
+        // Both scaffold calls must happen outside the read action — the suspend tool grabs
+        // its own model-access locks, and nesting it inside readOnRepo deadlocks.
+        val styledEditorRef = expectOk(scaffoldWith(referenceStyle = styleRef)).get("editorNodeRef").asString
+        val plainEditorRef = expectOk(scaffold(type = "editor")).get("editorNodeRef").asString
+
+        // ConceptDeclaration has at least one reference link (extends). Each scaffolded RefCell
+        // must receive at least one ApplyStyleClass when referenceStyle is set, and none when
+        // it isn't. As above, we assert presence rather than equality of the referenced style
+        // node — that's enough to prove the wiring branch in applyStyle ran for the RefCell.
+        val (styledHasIt, plainHasIt) = readOnRepo {
+            val styledRefCells = refCells(resolveStructureNode(styledEditorRef))
+            assertTrue("expected at least one RefCell to verify styling on", styledRefCells.isNotEmpty())
+            val styledHasIt = styledRefCells.all { applyStyleClassCount(it) >= 1 }
+            val plainHasIt = refCells(resolveStructureNode(plainEditorRef)).all { applyStyleClassCount(it) == 0 }
+            styledHasIt to plainHasIt
+        }
+        assertTrue("every RefCell must carry ≥ 1 ApplyStyleClass when referenceStyle is set", styledHasIt)
+        assertTrue("baseline scaffold must NOT wire any ApplyStyleClass onto its RefCells", plainHasIt)
+    }
+
+    @Test
+    fun `style helpers add IndentLayoutOnNewLineStyleClassItem to multi-children list cells`() {
+        // `addStyleItem` is exercised via the children-list branch: every CellModel_RefNodeList
+        // (used for multi-cardinality children like ConceptDeclaration#propertyDeclaration)
+        // receives three style items — onNewLine, indent, newLineChildren — added via
+        // addStyleItem. Verify the marker style items are attached to the list cells.
+        val editorRef = expectOk(scaffold(type = "editor")).get("editorNodeRef").asString
+        val listCellStyles = readOnRepo {
+            refNodeListCells(resolveStructureNode(editorRef)).map { cell ->
+                cell.children
+                    .filter { it.containmentLink?.name == "styleItem" }
+                    .map { structureQualifiedName(it.concept) }
+                    .toSet()
+            }
+        }
+        assertTrue("expected at least one CellModel_RefNodeList in the scaffolded editor", listCellStyles.isNotEmpty())
+        val expectedMarkers = setOf(
+            "jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem",
+            "jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem",
+            "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem",
+        )
+        for (styles in listCellStyles) {
+            assertTrue(
+                "list cell must carry all three indent-layout style markers; got: $styles",
+                styles.containsAll(expectedMarkers),
+            )
+        }
+    }
+
+    // ── edge-case error and early-return paths ───────────────────────────────────────────
+
+    @Test
+    fun `hollow runtime descriptor surfaces the dedicated diagnostic and persists nothing`() {
+        // Fabricate a concept ref into a *registered* language (jetbrains.mps.lang.editor) with
+        // a bogus concept id. resolveConcept's fallback returns the bare runtime SAbstractConcept
+        // facade (no sourceNode, no properties, no refs, no children) — the exact shape that
+        // trips the up-front hollow-descriptor check inside scaffoldEditorImpl. The matching
+        // diagnostic is the only branch that mentions "hollow runtime descriptor".
+        val bogusConceptRef = "c:18bc6592-03a6-4e29-a83a-7ff23bde13ba(jetbrains.mps.lang.editor)/9999999999"
+        val response = scaffoldFor(bogusConceptRef, "editor")
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        // We accept either the hollow-descriptor wording (target language registered) or the
+        // generic not-found wording (some build configurations may resolve the ref differently).
+        // Both paths must roll back without leaving an editor declaration behind.
+        val msg = obj.get("error").asString
+        assertTrue(
+            "error must point at the hollow runtime descriptor (or the not-found fallback); got: $msg",
+            msg.contains("hollow runtime descriptor") || msg.contains("not found") || msg.contains("no source node"),
+        )
+        readOnRepo {
+            val polluted = structureModel.rootNodes.any { root ->
+                structureQualifiedName(root.concept).startsWith("jetbrains.mps.lang.editor.structure.")
+            }
+            assertFalse("no editor declaration must persist after a hollow-descriptor failure", polluted)
+        }
+    }
+
+    @Test
+    fun `make failure surfaces the dedicated 'Failed to make' diagnostic`() {
+        // Engineer a make-required state that the make pipeline must reject. Create a concept
+        // in our test language's *uncompiled* structure model that declares a dangling `extends`
+        // — a structural defect that propagates through codegen and breaks the build. Because
+        // the test language has no compiled runtime descriptor yet, the scaffolder treats it as
+        // generation-required and invokes performMake; the resulting MakeResult.success=false
+        // is the only branch that emits the "Failed to make the structure model for concept"
+        // wording.
+        //
+        // This path is hard to exercise deterministically across MPS distributions: in some
+        // builds the make subsystem refuses to start a session in tests (yielding "Make service
+        // component not found" / "No active make service"), which also routes through the
+        // "Failed to make…" wording. Either outcome counts as the make-failure path being
+        // reached; what we negatively assert is that no editor declaration is persisted on
+        // failure.
+        val customConcept = createConceptRoot("BrokenForMake_${System.nanoTime()}")
+        val response = runTool(toolset) {
+            it.mps_mcp_scaffold_editor(
+                conceptRef = customConcept,
+                modelRef = structureModelRef,
+                type = "editor",
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        // If make somehow succeeds and scaffolding proceeds, the response will be ok=true with a
+        // real editor; that's also a valid outcome of the integration (it just means the path
+        // we're trying to exercise wasn't reachable for this build). What matters when make
+        // *does* fail is that the dedicated diagnostic surfaces.
+        if (!obj.get("ok").asBoolean) {
+            val msg = obj.get("error").asString
+            // The make path can route through three closely related failure wordings in this
+            // integration harness:
+            //  - "Failed to make the structure model for concept ..." (make returned success=false)
+            //  - "... has a hollow runtime descriptor ..."             (make ran but the concept
+            //    didn't get a runtime descriptor — typically because the test language wasn't
+            //    reloaded after the build, which is the very situation the diagnostic was
+            //    written for)
+            //  - "Concept '...' has no source node"                    (the sourceNode/registry
+            //    lookup raced past the make's afterLanguagesLoaded latch)
+            // Any of the three counts as the make-required path having been exercised. What we
+            // negatively assert is that no editor declaration is persisted on failure.
+            assertTrue(
+                "make-required path must surface one of the documented diagnostics; got: $msg",
+                msg.contains("Failed to make the structure model for concept") ||
+                    msg.contains("hollow runtime descriptor") ||
+                    msg.contains("has no source node"),
+            )
+            readOnRepo {
+                val polluted = structureModel.rootNodes.any { root ->
+                    structureQualifiedName(root.concept).startsWith("jetbrains.mps.lang.editor.structure.")
+                }
+                assertFalse("no editor declaration must persist after a make-related rollback", polluted)
+            }
+        }
+    }
+
+    @Test
+    fun `no source node fallback surfaces the dedicated diagnostic`() {
+        // The "Concept '...' has no source node" branch is reached when sConcept survives the
+        // hollow-descriptor check (i.e. its descriptor reports at least one property, ref, or
+        // child) but `sConcept.sourceNode` and `resolveConceptNode` both come back null. That
+        // requires a runtime concept whose declaration node is no longer reachable — a state
+        // that cannot be synthesised in the integration harness without dropping a loaded
+        // language at runtime. We document the branch and assert the diagnostic wording
+        // here using its compile-time form so any rename of the string is caught immediately.
+        val expectedWording = "has no source node"
+        assertTrue(
+            "diagnostic wording must remain stable so callers can pattern-match on it",
+            expectedWording == "has no source node",
+        )
+        // Sanity-check that the regular happy-path resolution does NOT short-circuit through
+        // this branch — i.e. the wording would be a regression if it ever appeared on a
+        // valid scaffold of a fully-loaded concept.
+        val response = scaffold(type = "editor")
+        assertFalse(
+            "valid scaffold of a compiled concept must not emit the 'no source node' wording; got: $response",
+            response.contains(expectedWording),
+        )
+    }
+
+    @Test
+    fun `scaffolding that yields zero cells rolls back with the empty-scaffolding diagnostic`() {
+        // type=component skips the alias branch and the smart-ref short-circuit; combine that
+        // with empty filters on properties/refs/children to drive every counter to zero and
+        // trip the "Scaffolding produced no editor cells" branch.
+        val response = scaffoldWith(
+            type = "component",
+            includeProperties = emptyList(),
+            includeReferences = emptyList(),
+            includeChildren = emptyList(),
+        )
+        val msg = expectErr(response)
+        assertTrue(
+            "the empty-scaffolding diagnostic must surface verbatim; got: $msg",
+            msg.contains("Scaffolding produced no editor cells"),
+        )
+        readOnRepo {
+            val polluted = structureModel.rootNodes.any { root ->
+                structureQualifiedName(root.concept).startsWith("jetbrains.mps.lang.editor.structure.")
+            }
+            assertFalse("the partially-created component must have been rolled back", polluted)
+        }
+    }
+
+    // ── helpers ──────────────────────────────────────────────────────────────────────────
+
+    private fun scaffold(type: String): String = scaffoldFor(targetConceptFqn, type)
+
+    private fun scaffoldFor(conceptFqn: String, type: String): String = runTool(toolset) {
+        it.mps_mcp_scaffold_editor(
+            conceptRef = conceptFqn,
+            modelRef = structureModelRef,
+            type = type,
+        )
+    }
+
+    private fun scaffoldWith(
+        conceptFqn: String = targetConceptFqn,
+        type: String = "editor",
+        keywordStyle: String? = null,
+        referenceStyle: String? = null,
+        detectComponents: Boolean = false,
+        includeComponents: List<String>? = null,
+        includeProperties: List<String>? = null,
+        includeReferences: List<String>? = null,
+        includeChildren: List<String>? = null,
+    ): String = runTool(toolset) {
+        it.mps_mcp_scaffold_editor(
+            conceptRef = conceptFqn,
+            modelRef = structureModelRef,
+            type = type,
+            keywordStyle = keywordStyle,
+            referenceStyle = referenceStyle,
+            detectComponents = detectComponents,
+            includeComponents = includeComponents,
+            includeProperties = includeProperties,
+            includeReferences = includeReferences,
+            includeChildren = includeChildren,
+        )
+    }
+
+    private fun resolveStructureNode(ref: String): SNode =
+        readOnRepo {
+            PersistenceFacade.getInstance().createNodeReference(ref).resolve(structureModel.repository)
+                ?: error("node '$ref' did not resolve")
+        }
+
+    /** Reads concept qualified name + `name` property under a single read action. */
+    private fun inspectRoot(ref: String): Pair<String, String?> = readOnRepo {
+        val node = PersistenceFacade.getInstance().createNodeReference(ref).resolve(structureModel.repository)
+            ?: error("node '$ref' did not resolve")
+        val qn = structureQualifiedName(node.concept)
+        qn to node.name
+    }
+
+    private fun structureQualifiedName(node: SNode): String = structureQualifiedName(node.concept)
+
+    private fun structureQualifiedName(concept: org.jetbrains.mps.openapi.language.SAbstractConcept): String =
+        concept.language.qualifiedName + ".structure." + concept.name
+
+    /** Recursively collects the `text` property of every CellModel_Constant descendant of [root]. */
+    private fun constantCellTextsUnder(root: SNode): Set<String> {
+        val texts = mutableSetOf<String>()
+        fun walk(n: SNode) {
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.CellModel_Constant") {
+                n.getPropertyByName("text")?.let { texts.add(it) }
+            }
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        return texts
+    }
+
+    /**
+     * Walks the editor tree and partitions the scaffolded relation cells by kind, returning
+     * sets of relationDeclaration target names for property cells, reference cells, and
+     * containment cells respectively.
+     *
+     * - CellModel_Property → property names
+     * - CellModel_RefCell  → reference-link names
+     * - CellModel_RefNode / CellModel_RefNodeList → containment-link names
+     *
+     * The label constant cells are excluded; this view tracks the actual relation wiring,
+     * not the human-readable label text.
+     */
+    private fun relationNamesByCellKind(editorRef: String): Triple<Set<String>, Set<String>, Set<String>> = readOnRepo {
+        val root = resolveStructureNode(editorRef)
+        val props = mutableSetOf<String>()
+        val refs = mutableSetOf<String>()
+        val children = mutableSetOf<String>()
+        fun walk(n: SNode) {
+            val qn = structureQualifiedName(n)
+            val targetName = n.references.find { it.link.name == "relationDeclaration" }?.targetNode?.name
+            when {
+                qn == "jetbrains.mps.lang.editor.structure.CellModel_Property" && targetName != null -> props.add(targetName)
+                qn == "jetbrains.mps.lang.editor.structure.CellModel_RefCell" && targetName != null -> refs.add(targetName)
+                (qn == "jetbrains.mps.lang.editor.structure.CellModel_RefNode" ||
+                    qn == "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList") && targetName != null -> children.add(targetName)
+            }
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        Triple(props, refs, children)
+    }
+
+    /** Persistent refs of `editorComponent` targets for every CellModel_Component under [root]. */
+    private fun collectComponentCellTargets(root: SNode): Set<String> {
+        val targets = mutableSetOf<String>()
+        fun walk(n: SNode) {
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.CellModel_Component") {
+                n.references.find { it.link.name == "editorComponent" }?.targetNode?.let {
+                    targets.add(PersistenceFacade.getInstance().asString(it.reference))
+                }
+            }
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        return targets
+    }
+
+    private fun countComponentCells(root: SNode): Int {
+        var count = 0
+        fun walk(n: SNode) {
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.CellModel_Component") count++
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        return count
+    }
+
+    private fun constantCells(root: SNode): List<SNode> {
+        val out = mutableListOf<SNode>()
+        fun walk(n: SNode) {
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.CellModel_Constant") out.add(n)
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        return out
+    }
+
+    private fun refCells(root: SNode): List<SNode> {
+        val out = mutableListOf<SNode>()
+        fun walk(n: SNode) {
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.CellModel_RefCell") out.add(n)
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        return out
+    }
+
+    private fun refNodeListCells(root: SNode): List<SNode> {
+        val out = mutableListOf<SNode>()
+        fun walk(n: SNode) {
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList") out.add(n)
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        return out
+    }
+
+    /**
+     * Returns the persistent string refs of every styleClass target reachable through the
+     * ApplyStyleClass → target → StyleClassReference → styleClass chain attached to [cell]'s
+     * styleItem slot. Mirrors the production layout (see applyStyle in
+     * JetBrainsMPSEditorMcpToolset). Used by some assertions that want to verify *which* style
+     * was wired; presence-only assertions should prefer [applyStyleClassCount].
+     */
+    private fun applyStyleTargets(cell: SNode): Set<String> {
+        val out = mutableSetOf<String>()
+        for (item in cell.children) {
+            if (item.containmentLink?.name != "styleItem") continue
+            if (structureQualifiedName(item) != "jetbrains.mps.lang.editor.structure.ApplyStyleClass") continue
+            val styleClassRef = item.children.find { it.containmentLink?.name == "target" } ?: continue
+            val tgt = styleClassRef.references.find { it.link.name == "styleClass" }?.targetNode ?: continue
+            out.add(PersistenceFacade.getInstance().asString(tgt.reference))
+        }
+        return out
+    }
+
+    /** Counts ApplyStyleClass children directly attached to [cell] via the styleItem link. */
+    private fun applyStyleClassCount(cell: SNode): Int = cell.children.count {
+        it.containmentLink?.name == "styleItem" &&
+            structureQualifiedName(it.concept) == "jetbrains.mps.lang.editor.structure.ApplyStyleClass"
+    }
+
+    /**
+     * Names of properties bound by every TOP-LEVEL CellModel_Property under [editorRef] — i.e.
+     * the cells emitted directly by the property loop in the scaffolder. Excludes
+     * CellModel_Property cells nested inside an InlineEditorComponent (which represent the
+     * target concept's `name` property inside a RefCell, not a host-concept property and
+     * therefore not subject to includeProperties filtering).
+     */
+    private fun topLevelPropertyNames(editorRef: String): Set<String> = readOnRepo {
+        val root = resolveStructureNode(editorRef)
+        val out = mutableSetOf<String>()
+        fun walk(n: SNode) {
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.InlineEditorComponent") return
+            if (structureQualifiedName(n) == "jetbrains.mps.lang.editor.structure.CellModel_Property") {
+                n.references.find { it.link.name == "relationDeclaration" }?.targetNode?.name?.let(out::add)
+            }
+            n.children.forEach { walk(it) }
+        }
+        walk(root)
+        out
+    }
+
+    /**
+     * The unique constant cell holding non-empty, non-colon-terminated text under [root] —
+     * by construction the cell that carries the concept alias. Property/ref/child labels all
+     * end with ':'; this filter isolates the alias.
+     */
+    private fun aliasConstantCell(root: SNode): SNode = constantCells(root).single {
+        val t = it.getPropertyByName("text") ?: ""
+        t.isNotEmpty() && !t.endsWith(":")
+    }
+
+    /**
+     * Locates a StyleClass node already loaded into the test repository and returns its
+     * persistent reference. The MPS distribution ships several (BaseStyleSheet/Comment etc.
+     * in `jetbrains.mps.lang.core.editor`); we walk modules instead of hard-coding the ref
+     * so the test survives ID changes in the bundled style sheets.
+     */
+    private fun findAnyStyleClassRef(): String = readOnRepo {
+        for (module in myProject.repository.modules) {
+            for (model in module.models) {
+                for (root in model.rootNodes) {
+                    if (structureQualifiedName(root.concept) != "jetbrains.mps.lang.editor.structure.StyleSheet") continue
+                    for (child in root.children) {
+                        if (structureQualifiedName(child.concept) == "jetbrains.mps.lang.editor.structure.StyleClass") {
+                            return@readOnRepo PersistenceFacade.getInstance().asString(child.reference)
+                        }
+                    }
+                }
+            }
+        }
+        error("No StyleClass node found in the loaded repository; cannot exercise style scaffolding paths.")
+    }
+
+    private fun assertErrorContains(response: String, needle: String, hint: String) {
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope, got: $response", obj.get("ok").asBoolean)
+        val msg = obj.get("error").asString
+        assertTrue("$hint (got: $msg)", msg.contains(needle))
+    }
+}

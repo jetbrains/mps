@@ -8,13 +8,14 @@ import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import jetbrains.mps.smodel.constraints.ModelConstraints
 import jetbrains.mps.typechecking.TypecheckingFacade
+import kotlinx.coroutines.CancellationException
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.SRepository
 
 class AssignableReferenceService(private val mpsProject: MPSProject) {
 
-    private val LOG = Logger.getInstance(AssignableReferenceService::class.java)
+    private val logger = Logger.getInstance(AssignableReferenceService::class.java)
 
     internal val helpers = AssignableReferenceHelpers()
 
@@ -23,10 +24,21 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         mpsProject.repository.modelAccess.runReadAction {
             response = try {
                 doGetAssignableReferences(request)
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
+                // Rethrow cancellation and Errors so they propagate to the caller; only ordinary
+                // failures are converted into a structured error response. Matches the pattern
+                // used in AbstractOps.toolFailure for tool entry points.
+                if (e is CancellationException) throw e
+                if (e is Error) throw e
                 helpers.errorResponse(e.message)
             }
         }
+        // The try/catch inside the read action assigns `response` on every path that returns
+        // normally from the lambda, and `runReadAction` invokes its lambda synchronously on
+        // the calling thread, so `response` is always non-null after a normal completion.
+        // The `?:` guard exists only as a safety net for a future-API or platform change that
+        // could short-circuit lambda invocation — at which point returning a structured error
+        // is preferable to a NullPointerException leaking out of an MCP tool entry point.
         return response ?: helpers.errorResponse("Unknown error")
     }
 
@@ -38,7 +50,12 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
 
         val contextNode = try {
             helpers.facade.createNodeReference(contextNodeRef).resolve(repository)
-        } catch (_: Exception) {
+        } catch (e: Throwable) {
+            // Same pattern as line 27: rethrow cancellation and Errors; only ordinary
+            // failures degrade to "node not found". A blanket catch (_: Exception) would
+            // swallow CancellationException (which extends IllegalStateException on JVM).
+            if (e is CancellationException) throw e
+            if (e is Error) throw e
             null
         } ?: return helpers.errorResponse("Context node '${request.contextNode}' not found")
 
@@ -76,55 +93,77 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         // FIX #9: Collect to list once to avoid double-enumerating the scope
         val allAvailable = scope.getAvailableElements(null).toList()
 
-        if (request.mode == ReferenceSearchMode.EXHAUSTIVE) {
-            val data = allAvailable.map { node -> helpers.baseCandidate(node) }
-            return GetAssignableReferencesResponse(ok = true, data = data)
-        }
+        val isExhaustive = request.mode == ReferenceSearchMode.EXHAUSTIVE
 
-        // Completion mode: infer context, then optionally enrich from scope for ClassCreator
+        // Both modes share the same context-inference and filter pipeline. Previously,
+        // EXHAUSTIVE mode returned every scope element verbatim, silently dropping
+        // kindFilter / includeModules / excludeModules / scopeMode / includeInaccessible
+        // and the pagination/meta fields. Filtering and pagination now run in both modes;
+        // scoring + relevance sorting remain completion-only.
         val rawContext = helpers.inferContext(request, contextNode, refLink, referenceRole)
         // FIX #4: If declaring type couldn't be inferred from the node (e.g., ClassCreator with no
         // existing target), peek at the first scope element to get the declaring type.
         val context = helpers.enrichContextFromScope(rawContext, allAvailable)
 
-        val filteredAndScored = allAvailable.map { node ->
+        val filteredCandidates = allAvailable.map { node ->
             ScoredCandidate(node, helpers.createCandidate(node, context))
         }.filter { sc ->
             filterCandidate(sc, context, request)
-        }.map { sc ->
-            sc.copy(candidate = scoreCandidate(sc.node, sc.candidate, context, request))
         }
 
         // FIX #7: Deterministic sort with stable tiebreakers
-        val sortedCandidates = when (request.sortBy) {
-            SortMode.RELEVANCE -> filteredAndScored.sortedWith(
-                compareByDescending<ScoredCandidate> { it.candidate.score }
-                    .thenBy { it.candidate.signature ?: it.candidate.name }
-                    .thenBy { it.candidate.reference }
-            )
-            SortMode.NAME -> filteredAndScored.sortedWith(
+        val sortedCandidates = if (isExhaustive) {
+            // Exhaustive mode skips relevance scoring; sort by name for a stable order
+            // and to keep callers' results deterministic across runs.
+            filteredCandidates.sortedWith(
                 compareBy<ScoredCandidate> { it.candidate.name }
                     .thenBy { it.candidate.reference }
             )
-            SortMode.MODULE -> filteredAndScored.sortedWith(
-                compareBy<ScoredCandidate> { it.candidate.moduleReference }
-                    .thenBy { it.candidate.name }
-                    .thenBy { it.candidate.reference }
-            )
-            SortMode.DISTANCE -> filteredAndScored.sortedWith(
-                compareBy<ScoredCandidate> { it.candidate.typeDistance ?: Int.MAX_VALUE }
-                    .thenBy { it.candidate.name }
-                    .thenBy { it.candidate.reference }
-            )
+        } else {
+            val scored = filteredCandidates.map { sc ->
+                sc.copy(candidate = scoreCandidate(sc.node, sc.candidate, context, request))
+            }
+            when (request.sortBy) {
+                SortMode.RELEVANCE -> scored.sortedWith(
+                    compareByDescending<ScoredCandidate> { it.candidate.score }
+                        .thenBy { it.candidate.signature ?: it.candidate.name }
+                        .thenBy { it.candidate.reference }
+                )
+                SortMode.NAME -> scored.sortedWith(
+                    compareBy<ScoredCandidate> { it.candidate.name }
+                        .thenBy { it.candidate.reference }
+                )
+                SortMode.MODULE -> scored.sortedWith(
+                    compareBy<ScoredCandidate> { it.candidate.moduleReference }
+                        .thenBy { it.candidate.name }
+                        .thenBy { it.candidate.reference }
+                )
+                SortMode.DISTANCE -> scored.sortedWith(
+                    compareBy<ScoredCandidate> { it.candidate.typeDistance ?: Int.MAX_VALUE }
+                        .thenBy { it.candidate.name }
+                        .thenBy { it.candidate.reference }
+                )
+            }
         }
 
         val totalMatches = sortedCandidates.size
         val offset = request.offset ?: 0
-        val limit = request.limit ?: 25
-        val pagedCandidates = sortedCandidates.drop(offset).take(limit).map { it.candidate }
+        // Exhaustive callers want "give me everything" by default, so the limit is unbounded
+        // unless they explicitly request a page; completion callers default to a reasonable
+        // page size of 25.
+        val limit = request.limit ?: if (isExhaustive) Int.MAX_VALUE else 25
+        // Fast path for the common "return everything" case: skip drop()/take() so we don't
+        // allocate two intermediate List copies before the final map.
+        val pagedCandidates = if (offset == 0 && limit >= totalMatches) {
+            sortedCandidates.map { it.candidate }
+        } else {
+            sortedCandidates.drop(offset).take(limit).map { it.candidate }
+        }
 
-        // FIX #3: Set truncated based on whether there are more results beyond the page
-        val truncated = totalMatches > offset + limit
+        // FIX #3: Set truncated based on whether there are more results beyond the page.
+        // Use Long arithmetic — when callers pass limit=Int.MAX_VALUE to mean "no limit",
+        // Int addition would silently overflow to a negative number and flip `truncated` to true.
+        val truncated = totalMatches.toLong() > offset.toLong() + limit.toLong()
 
         val meta = AssignableReferencesMeta(
             mode = request.mode,
@@ -167,7 +206,27 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
                     if (!isProjectNode(scored.node)) return false
                 }
                 ScopeMode.JDK -> {
-                    if (candidate.moduleReference?.contains("JDK") != true) return false
+                    // candidate.moduleReference is a String (not an SModuleReference), so we match
+                    // on the module's display/identity name. A blanket substring "JDK" check let
+                    // through false positives like "MyJDKTools" and missed lowercase variants
+                    // ("jdk", "jdk.compiler"). We accept the canonical platform name "JDK" plus the
+                    // common "JDK-<version>" / "JDK.<subsystem>" naming families, case-insensitive.
+                    //
+                    // Persistent module references use the form "<uuid>(<name>)" — e.g.
+                    // "6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)" for the canonical JDK module.
+                    // The string-name forms above never match that shape, so we also recognise
+                    // any "...(JDK)" suffix in case the candidate carries the persistent form.
+                    //
+                    // TODO: longer-term the right answer is module-facet detection (walk to the
+                    // actual SModule and check kind / isPackaged). That requires threading the
+                    // module through the candidate or doing per-filter repo resolution, which is a
+                    // bigger refactor than this filter alone justifies.
+                    val ref = candidate.moduleReference ?: return false
+                    val isJdk = ref.equals("JDK", ignoreCase = true)
+                        || ref.startsWith("JDK-", ignoreCase = true)
+                        || ref.startsWith("JDK.", ignoreCase = true)
+                        || ref.endsWith("(JDK)")
+                    if (!isJdk) return false
                 }
                 ScopeMode.IMPORTS -> { /* not yet implemented; accept all */ }
             }
@@ -233,7 +292,12 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
 
                     val argTypeNode = try {
                         helpers.facade.createNodeReference(argTypeRefStr).resolve(repository)
-                    } catch (_: Exception) {
+                    } catch (e: Throwable) {
+                        // Mirror the cancellation-safe pattern from getAssignableReferences:
+                        // a typo or unresolvable argTypeRef should silently skip this argument,
+                        // but cancellation / Errors must propagate.
+                        if (e is CancellationException) throw e
+                        if (e is Error) throw e
                         null
                     } ?: continue
 
@@ -304,7 +368,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         try {
             return helpers.facade.createConcept(conceptRef)
         } catch (e: Exception) {
-            LOG.debug("createConcept failed for '$conceptRef'; falling back to structure-model search", e)
+            logger.debug("createConcept failed for '$conceptRef'; falling back to structure-model search", e)
         }
 
         // Fallback: search by name across language structure models

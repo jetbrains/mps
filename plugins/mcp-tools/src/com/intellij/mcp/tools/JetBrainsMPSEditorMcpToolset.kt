@@ -2,6 +2,7 @@ package com.intellij.mcp.tools
 
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import com.intellij.openapi.diagnostic.Logger
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
 import jetbrains.mps.smodel.Language
@@ -24,6 +25,8 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
 class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
+
+    private val logger = Logger.getInstance(JetBrainsMPSEditorMcpToolset::class.java)
 
     private data class RefCellWiring(
         val refCellConcept: SConcept,
@@ -154,7 +157,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                 }
             }
 
-            // If concept is not valid (not properly loaded in runtime) or generation is required for its model, we must perform a make.
+            // If a concept is not valid (not properly loaded in runtime) or generation is required for its model, we must perform a make.
             // A null sourceNode also signals a stale/hollow runtime descriptor: c.isValid only checks
             // that *some* descriptor is present, but a hollow descriptor (no origin, empty
             // properties/references/children) leaves nothing to scaffold from.
@@ -171,10 +174,17 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
         var result: String? = null
         var error: String? = null
         executeShortCommandOnEdt(mpsProject) {
-                // Hoisted so the finally block can roll back a partially-created editor on any
+                // Hoisted so the finally block can roll back a partially created editor on any
                 // error path — required-resource lookups that set `error` and return early, an
                 // exception during cell construction, or the empty-cells branch below.
                 var editorDeclaration: SNode? = null
+                // Rollback trigger. Previous shape used `error != null`, which forced the catch
+                // block to assign `error` BEFORE every rethrow path (cancellation, Error). That
+                // ordering was load-bearing and easy to break in a future edit. With a dedicated
+                // `succeeded` flag set only on the happy path, rollback fires on every non-success
+                // exit (early return, ordinary exception, cancellation, Error) without needing
+                // any particular statement order in the catch.
+                var succeeded = false
                 try {
                     val repo = mpsProject.repository
                     fun requiredConcept(name: String): SConcept? = (resolveConcept(repo, name) as? SConcept) ?: run {
@@ -271,7 +281,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     // Main Collection (indent layout)
                     val collectionConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_Collection") ?: return@executeShortCommandOnEdt
                     val cellModelLink = requiredContainmentLink(editorConcept, "cellModel", editorConceptName) ?: return@executeShortCommandOnEdt
-                    // Clear existing cellModel (e.g. from node factory) to avoid "transfer" behavior
+                    // Clear an existing cellModel (e.g. from node factory) to avoid "transfer" behavior
                     editor.getChildren(cellModelLink).toList().forEach { it.delete() }
 
                     // Pre-resolve cell concepts and links used by both the smart-ref branch and the
@@ -287,6 +297,20 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
                     val smartRefLink = getSmartReferenceLink(sConcept, repo)
                     if (smartRefLink != null && type != "component") {
+                        // Smart-reference scaffolding produces a single ref cell and bypasses
+                        // the components/properties/references/children pipeline below. Combining
+                        // it with explicit `includeComponents`/`detectComponents` would silently
+                        // drop the caller's input — reject the combination so the misalignment
+                        // surfaces here rather than as an unexpected-empty-editor downstream.
+                        val explicitNonEmpty = !includeComponents.isNullOrEmpty()
+                        if (explicitNonEmpty || detectComponents) {
+                            error = "Concept '${structureQualifiedName(sConcept)}' has a smart reference link; " +
+                                    "scaffolding emits a single reference cell and cannot also include " +
+                                    "editor components. Either drop `includeComponents`/`detectComponents`, " +
+                                    "or scaffold with `type = \"component\"` to bypass the smart-ref shortcut."
+                            return@executeShortCommandOnEdt
+                        }
+
                         addReferenceCellWithNameEditor(
                             parent = editor,
                             parentLink = cellModelLink,
@@ -304,6 +328,10 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             addProperty("editorNodeRef", refStr)
                             addProperty("message", "Scaffolded smart reference editor.")
                         }.toString()
+                        // Mark success BEFORE the early return: the finally block keys rollback
+                        // off `!succeeded`, so an early return on the happy path that forgets
+                        // this flag would otherwise delete the just-saved editor node.
+                        succeeded = true
                         return@executeShortCommandOnEdt
                     }
 
@@ -440,7 +468,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     }
 
                     // Constant for alias
-                    val alias = sConcept.conceptAlias ?: ""
+                    val alias = sConcept.conceptAlias
                     if (alias.isNotEmpty() && type != "component") {
                         // If components were emitted above (each carrying onNewLine), the alias
                         // would otherwise glue to the trailing edge of the last component cell
@@ -534,14 +562,15 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     // and surface a clear error rather than persisting a useless artifact.
                     val totalCells = (if (aliasAdded) 1 else 0) + propertyCount + referenceCount + childCount + includedComponents.size
                     if (totalCells == 0) {
-                        // The finally block below rolls back `editorDeclaration` whenever `error`
-                        // is set, so no explicit delete is needed here.
+                        // The finally block below rolls back `editorDeclaration` whenever the
+                        // try block doesn't complete with `succeeded = true`, so no explicit
+                        // delete is needed here — the early return skips that flag.
                         error = "Scaffolding produced no editor cells for '${structureQualifiedName(sConcept)}'. " +
                                 "The runtime concept descriptor reports no scaffoldable content " +
                                 "(properties=${sConcept.properties.size}, " +
                                 "references=${sConcept.referenceLinks.size}, " +
                                 "children=${sConcept.containmentLinks.size}, " +
-                                "alias='${sConcept.conceptAlias ?: ""}'). " +
+                                "alias='${sConcept.conceptAlias}'). " +
                                 "If the structure model has properties/children that should appear, " +
                                 "the MPS language runtime is likely stale — try `mps_mcp_reload_all` " +
                                 "or restart MPS, then retry."
@@ -557,19 +586,32 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         addProperty("editorNodeRef", refStr)
                         addProperty("message", msg)
                     }.toString()
-                } catch (e: Exception) {
-                    error = e.message
+                    succeeded = true
+                } catch (e: Throwable) {
+                    // Rethrow cancellation and Errors before recording a user-visible message:
+                    // those paths propagate out before this method returns, so the caller never
+                    // sees `error`. Rollback is keyed off `succeeded` in `finally`, not off
+                    // `error`, so the ordering here is no longer load-bearing.
+                    rethrowIfCancellation(e)
+                    if (e is Error) throw e
+                    error = e.message ?: e::class.simpleName ?: "unknown error"
                 } finally {
-                    // Roll back the partially-created editor on any failure path: required-resource
-                    // lookups that set `error` and return early, the empty-cells branch, or any
-                    // exception thrown during cell construction. `model.save()` only runs on the
-                    // success paths, so the on-disk file is untouched until rollback is no longer
-                    // possible.
-                    if (error != null) {
+                    // Roll back the partially created editor on any non-success exit: required-
+                    // resource lookups that set `error` and return early, the empty-cells branch,
+                    // an ordinary exception during cell construction, a cancellation, or an
+                    // Error. `model.save()` only runs on the success path, so the on-disk file
+                    // is untouched until rollback is no longer possible.
+                    if (!succeeded) {
                         editorDeclaration?.let {
                             try {
                                 it.delete()
-                            } catch (_: Exception) {
+                            } catch (rollbackEx: Exception) {
+                                // Best-effort rollback: never escalate to the caller. We still
+                                // log so that an editor leak (orphan editorDeclaration left in
+                                // the model after a failed scaffold) is diagnosable. The original
+                                // `error` set above is what the user sees; this is supplemental
+                                // diagnostics only.
+                                logger.warn("Rollback of partially-built editor failed; original error: $error", rollbackEx)
                             }
                         }
                     }
@@ -583,10 +625,17 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
         val styleNode = sStyleRef.resolve(repo) ?: return
 
         val styleItemLink = node.concept.containmentLinks.find { it.name == "styleItem" } ?: return
+        // ApplyStyleClass holds a `target` containment of type StyleReference; the actual
+        // styleClass reference lives on the StyleClassReference subtype. Wiring it directly on
+        // ApplyStyleClass would silently no-op because that concept has no `styleClass` ref
+        // link of its own.
         val applyStyleConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.ApplyStyleClass") as? SConcept ?: return
-        val styleClassLink = applyStyleConcept.referenceLinks.find { it.name == "styleClass" } ?: return
+        val targetLink = applyStyleConcept.containmentLinks.find { it.name == "target" } ?: return
+        val styleClassReferenceConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.StyleClassReference") as? SConcept ?: return
+        val styleClassLink = styleClassReferenceConcept.referenceLinks.find { it.name == "styleClass" } ?: return
 
         val applyStyle = SNodeFactoryOperations.addNewChild(node, styleItemLink, applyStyleConcept)
-        applyStyle.setReference(styleClassLink, styleNode.reference)
+        val styleClassRef = SNodeFactoryOperations.setNewChild(applyStyle, targetLink, styleClassReferenceConcept)
+        styleClassRef.setReference(styleClassLink, styleNode.reference)
     }
 }

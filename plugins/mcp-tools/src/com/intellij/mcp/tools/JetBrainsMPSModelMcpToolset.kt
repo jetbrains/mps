@@ -1,15 +1,18 @@
 package com.intellij.mcp.tools
 
 // MPS APIs used for CRUD
+import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import jetbrains.mps.model.ModelDeleteHelper
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
 import jetbrains.mps.smodel.SModelInternal
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SModelName
+import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
@@ -52,10 +55,14 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 return@executeShortCommandOnEdt errJson("Model is not editable or doesn't support imports: ${model.name}")
             }
 
-            var added = 0
-            var alreadyPresent = 0
             val module = model.module
 
+            // Two-pass: resolve and validate ALL targets before mutating anything. A failure
+            // mid-batch used to leave already-applied imports/module-dependency changes in
+            // memory while reporting an error to the caller — half-applied state that wasn't
+            // ever saved to disk but was visible to subsequent operations within the same
+            // session. Resolving up front converts the operation into an all-or-nothing batch.
+            val resolvedTargets = mutableListOf<SModel>()
             for (targetModel in targetList) {
                 // Resolve the input (which may be a persistent r:UUID(name) reference OR a bare
                 // qualified name) to an actual SModel and use that model's reference. This is
@@ -65,25 +72,58 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 // would also fail to match existing UUID-bearing imports in the duplicate check.
                 val targetModelResolved = resolveModel(mpsProject.repository, targetModel)
                     ?: return@executeShortCommandOnEdt errJson("Target model not found: $targetModel")
+                resolvedTargets += targetModelResolved
+            }
+
+            var added = 0
+            var alreadyPresent = 0
+            var moduleDirty = false
+
+            for (targetModelResolved in resolvedTargets) {
                 val targetRef = targetModelResolved.reference
 
                 if (model.modelImports.contains(targetRef)) {
                     alreadyPresent++
-                    continue
+                } else {
+                    model.addModelImport(targetRef)
+                    added++
                 }
 
-                model.addModelImport(targetRef)
-                added++
-
-                // Add module dependency
+                // Add module dependency. We do this even when the model import is already present,
+                // because the module-level dependency may still be missing (e.g. a user previously
+                // imported the model manually without registering the module dependency).
                 val targetModule = targetModelResolved.module
-                if (targetModule != null && targetModule != module && module != null) {
-                    (module as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
+                if (targetModule != null && targetModule != module && module is AbstractModule) {
+                    val targetModuleRef = targetModule.moduleReference
+                    // Find the existing dependency on the underlying ModuleDescriptor (the mutable
+                    // jetbrains.mps.project.structure.modules.Dependency, not the OpenAPI SDependency
+                    // view exposed via declaredDependencies).
+                    val existingDep = module.moduleDescriptor
+                        ?.dependencies
+                        ?.firstOrNull { it.moduleRef.moduleId == targetModuleRef.moduleId }
+                    if (existingDep == null) {
+                        // No prior dependency — addDependency creates one with DEFAULT scope.
+                        module.addDependency(targetModuleRef, false)
+                        moduleDirty = true
+                    } else if (existingDep.scope != SDependencyScope.DEFAULT) {
+                        // A non-Default scope (e.g. Generation Target, Runtime) would not satisfy
+                        // the model-import contract from this tool, which advertises that it adds
+                        // a "Default" dependency. Promote the existing dep to Default so the
+                        // imported model is reachable through normal module classpath resolution.
+                        existingDep.scope = SDependencyScope.DEFAULT
+                        module.setChanged()
+                        moduleDirty = true
+                    }
                 }
             }
 
             if (added > 0) {
                 model.save()
+            }
+            // Only save the module descriptor when a module-level change actually happened
+            // (new module dependency added, or an existing one promoted to DEFAULT scope).
+            // A pure model-import-only update doesn't touch the module descriptor.
+            if (moduleDirty) {
                 (module as? AbstractModule)?.save()
             }
 
@@ -99,7 +139,9 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         """
         Removes a dependency (import) from an MPS model.
 
-        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{"removed": true} when the import was present
+        and removed, or 'data':{"removed": false} when the target wasn't imported (idempotent).
+        On invalid input, returns 'ok':false and 'error':"...".
     """
     )
     suspend fun mps_mcp_remove_model_dependency(
@@ -121,9 +163,17 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 null
             } ?: return@executeShortCommandOnEdt errJson("Invalid target model reference: $targetModelRef")
 
-            model.deleteModelImport(targetRef)
-            model.save()
-            okJson("true")
+            // Precheck so the response can tell the caller whether anything actually changed.
+            // deleteModelImport() itself is silently idempotent — without this check, a typo in
+            // the targetRef would look indistinguishable from a successful removal.
+            val wasPresent = model.modelImports.contains(targetRef)
+            if (wasPresent) {
+                model.deleteModelImport(targetRef)
+                model.save()
+            }
+            okJson(jsonObject {
+                addProperty("removed", wasPresent)
+            })
         }
     }
 
@@ -160,18 +210,29 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                             .find { it.qualifiedName == usedLanguage }
                     } ?: return@executeShortCommandOnEdt errJson("Language not found: $usedLanguage")
 
-                    // Check if already provided by DevKit
+                    // k: when the language is already supplied by an imported DevKit, addLanguage
+                    // would be a no-op (DevKit-exported languages are already in scope), so we
+                    // skip both the addLanguage call and the model.save() that follows. The
+                    // structured response lets the caller distinguish "added now" from "already
+                    // available via DevKit", which matters for tooling that reports the diff.
                     for (dkRef in model.importedDevkits()) {
                         val dk = dkRef.resolve(mpsProject.repository) as? DevKit ?: continue
                         if (dk.allExportedLanguageIds.contains(lang)) {
-                            // Already provided
-                            model.save()
-                            return@executeShortCommandOnEdt okJson("true")
+                            val payload = JsonObject().apply {
+                                addProperty("added", false)
+                                addProperty("providedByDevKit", true)
+                                addProperty("devKit", dk.moduleName)
+                            }
+                            return@executeShortCommandOnEdt okJson(payload.toString())
                         }
                     }
                     model.addLanguage(lang)
                     model.save()
-                    okJson("true")
+                    val payload = JsonObject().apply {
+                        addProperty("added", true)
+                        addProperty("providedByDevKit", false)
+                    }
+                    okJson(payload.toString())
                 }
 
                 "devkit" -> {
@@ -319,10 +380,29 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 ?: return@executeShortCommandOnEdt errJson("Model not found: $modelRef", McpErrorCode.NOT_FOUND)
             val modelName = model.name.value
             val module = model.module
-            // The openapi SModule does not expose model deletion. AbstractModule does
-            // (via unregisterModel); fall back to that and reject other implementations.
             if (module is AbstractModule) {
-                module.unregisterModel(model as jetbrains.mps.extapi.model.SModelBase)
+                // ModelDeleteHelper performs the canonical model deletion: it removes any
+                // generated artifacts, unregisters the model from its module, and deletes
+                // the underlying data source (e.g. the .mps file on disk). Calling only
+                // unregisterModel leaves the model file behind, which the project would
+                // then re-import on the next refresh.
+                ModelDeleteHelper(model).delete()
+                // ModelDeleteHelper.delete() walks unregisterModel -> changeModelSet; neither
+                // path calls setChanged() on the owning module. For a plain Solution that's
+                // usually fine because the model registry rebuilds from the on-disk model roots
+                // on the next refresh and the descriptor doesn't enumerate models.
+                //
+                // We still call setChanged()+save() defensively for two reasons:
+                //   1. DevKit-like modules can enumerate models or model-derived metadata in
+                //      their descriptor; without a descriptor rewrite the stale entry can
+                //      come back on the next project load.
+                //   2. Some module subclasses cache derived state (model lists, generation
+                //      outputs) that only gets persisted via the descriptor save path.
+                //
+                // The cost is one descriptor write per delete, which is negligible compared
+                // to the file system I/O that ModelDeleteHelper already performs.
+                module.setChanged()
+                module.save()
                 okJson(jsonObject {
                     addProperty("name", modelName)
                     addProperty("deleted", true)

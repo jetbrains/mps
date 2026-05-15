@@ -46,7 +46,7 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             val roots = javaModel.rootNodes.toList()
             assertEquals(1, roots.size)
-            assertEquals("Foo", roots.single().getProperty("name"))
+            assertEquals("Foo", roots.single().name)
             assertEquals(
                 "default postProcess should auto-import exactly baseLanguage and nothing else",
                 setOf("jetbrains.mps.baseLanguage"),
@@ -96,10 +96,10 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertEquals("greet", inserted.first().asJsonObject.get("name").asString)
 
         readOnRepo {
-            val classRoot = javaModel.rootNodes.single { it.getProperty("name") == "Bar" }
+            val classRoot = javaModel.rootNodes.single { it.name == "Bar" }
             val methods = classRoot.children.filter { it.containmentLink?.name == "member" }
             assertEquals(1, methods.size)
-            assertEquals("greet", methods.single().getProperty("name"))
+            assertEquals("greet", methods.single().name)
             assertEquals(classRoot, methods.single().parent)
         }
     }
@@ -166,12 +166,12 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         )
 
         readOnRepo {
-            val classRoot = javaModel.rootNodes.single { it.getProperty("name") == "Baz" }
+            val classRoot = javaModel.rootNodes.single { it.name == "Baz" }
             val methods = classRoot.children.filter { it.containmentLink?.name == "member" }
             assertEquals(
                 "the original greet() must be gone and only farewell() remain",
                 listOf("farewell"),
-                methods.mapNotNull { it.getProperty("name") }
+                methods.mapNotNull { it.name }
             )
             // The replacement must inherit the original parent + role; nextSibling unchanged
             // (there is no following sibling, so just confirm the parent linkage).
@@ -198,11 +198,69 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertOkData(response)
 
         readOnRepo {
-            val rootNames = javaModel.rootNodes.mapNotNull { it.getProperty("name") }.toList()
+            val rootNames = javaModel.rootNodes.mapNotNull { it.name }.toList()
             assertEquals("expected the class to land as a root regardless: $rootNames", listOf("Quiet"), rootNames)
             assertFalse(
                 "with importUsedLanguages=false the toolset must not auto-import baseLanguage",
                 usedLanguageNames(javaModel).contains("jetbrains.mps.baseLanguage")
+            )
+        }
+    }
+
+    @Test
+    fun `replace mode rejects code that parses to multiple top-level nodes`() {
+        // Replace mode substitutes the target node with a single replacement; multiple parsed
+        // nodes cannot fill a single containment slot. Previously the toolset silently consumed
+        // `parsedNodes.first()` and dropped the rest, hiding caller misuse. The toolset must
+        // surface the mismatch up front and leave the existing node intact.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        // Seed: a class with a single method we will attempt to replace.
+        val seedClass = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"class Holder {}","featureKind":"CLASS",
+                    "insert":{"mode":"root","modelRef":"$javaModelRef"}}"""
+            )
+        }
+        val classRef = assertOkData(seedClass).getAsJsonArray("inserted")
+            .first().asJsonObject.get("reference").asString
+
+        val seedMethod = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"void only() {}","featureKind":"METHOD","contextNodeRef":"$classRef",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member"}}"""
+            )
+        }
+        val methodRef = assertOkData(seedMethod).getAsJsonArray("inserted")
+            .first().asJsonObject.get("reference").asString
+
+        // Attempt to replace with CLASS_CONTENT code that parses to two methods.
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"void m1() {} void m2() {}","featureKind":"CLASS_CONTENT",
+                    "contextNodeRef":"$classRef",
+                    "insert":{"mode":"replace","targetRef":"$methodRef"}}"""
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        val err = obj.get("error").asString
+        assertTrue(
+            "error must call out the replace-mode multi-node mismatch: $err",
+            err.contains("Replace mode requires exactly one top-level parsed node"),
+        )
+
+        readOnRepo {
+            val classRoot = javaModel.rootNodes.single { it.name == "Holder" }
+            val methodNames = classRoot.children
+                .filter { it.containmentLink?.name == "member" }
+                .mapNotNull { it.name }
+            assertEquals(
+                "replace rejection must not partially mutate the model; got members: $methodNames",
+                listOf("only"),
+                methodNames,
             )
         }
     }

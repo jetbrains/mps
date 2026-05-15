@@ -4,6 +4,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
 import com.intellij.mcpserver.reportToolActivity
+import com.intellij.openapi.diagnostic.Logger
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.resolve.ResolverComponent
@@ -13,6 +14,7 @@ import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import kotlinx.coroutines.currentCoroutineContext
 import org.jetbrains.mps.openapi.language.SConcept
+import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.language.SEnumeration
 import org.jetbrains.mps.openapi.language.SProperty
 import org.jetbrains.mps.openapi.language.SReferenceLink
@@ -26,6 +28,19 @@ import org.jetbrains.mps.openapi.model.SNodeReference
 import org.jetbrains.mps.openapi.module.SRepository
 
 abstract class AbstractNodeOps : AbstractOps() {
+
+    private val nodeOpsLogger = Logger.getInstance(AbstractNodeOps::class.java)
+
+    // Snapshot of a single reference pending application during the stage-then-apply phase of
+    // updateNodeFromBlueprint. Lifted to a class-level type so the data-class machinery is
+    // generated once at load time rather than per invocation.
+    private data class StagedReference(
+        val link: SReferenceLink,
+        val targetRefStr: String,
+        val errorPath: String,
+        val xmlReferencePath: String,
+        val xmlReferenceIndex: Int
+    )
 
     protected fun readNodeJsonOrFile(jsonOrPath: String?, dryRun: Boolean = false): String? {
         return readJsonOrFile(jsonOrPath, dryRun)?.let { unwrapNodeJsonEnvelope(it) }
@@ -86,7 +101,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         val newNode = SNodeFactoryOperations.createNewNode(sConcept, null)
-        newNode.children.forEach { it.delete() }
+        newNode.children.toList().forEach { it.delete() }
 
         // Set name if present and supported
         val name = jsonObject.get("name")?.asString
@@ -100,14 +115,16 @@ abstract class AbstractNodeOps : AbstractOps() {
         // Properties
         val properties = jsonObject.getAsJsonArray("properties")
         if (properties != null) {
-            for (propElement in properties) {
+            properties.forEachIndexed { propIndex, propElement ->
                 val propObject = propElement.asJsonObject
-                val propName = propObject.get("name")?.asString ?: continue
+                val propName = propObject.get("name")?.asString ?: return@forEachIndexed
                 val propValue = propObject.get("value")?.asString
                 val sProperty = sConcept.properties.find { it.name == propName }
-                if (sProperty != null) {
-                    setProperty(newNode, sProperty, propValue)
-                }
+                    ?: throw McpInvalidRequestException(
+                        "Unknown property '$propName' at $jsonPath.properties[$propIndex]: " +
+                                "concept '${sConcept.name}' has no such property"
+                    )
+                setProperty(newNode, sProperty, propValue)
             }
         }
 
@@ -117,26 +134,26 @@ abstract class AbstractNodeOps : AbstractOps() {
             children.forEachIndexed { roleIndex, childRoleElement ->
                 val childRoleObject = childRoleElement.asJsonObject
                 val roleName = childRoleObject.get("role")?.asString ?: return@forEachIndexed
-                val childNodes = childRoleObject.getAsJsonArray("nodes")
-                if (childNodes != null) {
-                    val link = sConcept.containmentLinks.find { it.name == roleName }
-                    if (link != null) {
-                        childNodes.forEachIndexed { nodeIndex, nodeElement ->
-                            val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
-                            val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath)
-                            if (childNode != null) {
-                                if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
-                                    throw AssignabilityException(
-                                        jsonPath = childPath,
-                                        actualConcept = childNode.concept.name,
-                                        expectedConcepts = listOf(link.targetConcept.name),
-                                        parentConcept = sConcept.name,
-                                        role = link.name
-                                    )
-                                }
-                                newNode.addChild(link, childNode)
-                            }
+                val childNodes = childRoleObject.getAsJsonArray("nodes") ?: return@forEachIndexed
+                val link = sConcept.containmentLinks.find { it.name == roleName }
+                    ?: throw McpInvalidRequestException(
+                        "Unknown child role '$roleName' at $jsonPath.children[$roleIndex]: " +
+                                "concept '${sConcept.name}' has no such containment link"
+                    )
+                childNodes.forEachIndexed { nodeIndex, nodeElement ->
+                    val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
+                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath)
+                    if (childNode != null) {
+                        if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
+                            throw AssignabilityException(
+                                jsonPath = childPath,
+                                actualConcept = childNode.concept.name,
+                                expectedConcepts = listOf(link.targetConcept.name),
+                                parentConcept = sConcept.name,
+                                role = link.name
+                            )
                         }
+                        newNode.addChild(link, childNode)
                     }
                 }
             }
@@ -147,10 +164,14 @@ abstract class AbstractNodeOps : AbstractOps() {
         if (references != null) {
             references.forEachIndexed { index, refElement ->
                 val refObject = refElement.asJsonObject
-                val roleName = refObject.get("role")?.asString
+                val roleName = refObject.get("role")?.asString ?: return@forEachIndexed
                 val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
                 val link = sConcept.referenceLinks.find { it.name == roleName }
-                if (link != null && !targetRefStr.isNullOrEmpty()) {
+                    ?: throw McpInvalidRequestException(
+                        "Unknown reference role '$roleName' at $jsonPath.references[$index]: " +
+                                "concept '${sConcept.name}' has no such reference link"
+                    )
+                if (!targetRefStr.isNullOrEmpty()) {
                     applyReferenceUpdate(
                         ownerNode = newNode,
                         link = link,
@@ -158,7 +179,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                         model = model,
                         repository = model.repository,
                         parentConceptName = sConcept.name,
-                        roleName = roleName ?: "unknown",
+                        roleName = roleName,
                         errorPath = "$jsonPath.references[$index]",
                         xmlReferencePath = jsonPath,
                         xmlReferenceIndex = index,
@@ -190,7 +211,11 @@ abstract class AbstractNodeOps : AbstractOps() {
                         "These cannot be used as target references — they are an internal encoding " +
                         "that differs from the persistent references used by the MCP API. " +
                         "Use the persistent reference from mps_mcp_print_node_json output instead " +
-                        "(e.g. 'r:<modelId>/<nodeId>')."
+                        "(e.g. 'r:<modelId>/<nodeId>'). " +
+                        "If the input is actually a legitimate name that happens to match this " +
+                        "heuristic (8–20 chars containing '${'$'}' or leading digit, e.g. '_my_var${'$'}'), " +
+                        "qualify it with a model prefix (e.g. 'my.model.NodeName') — names " +
+                        "containing '.' bypass the check."
             )
         }
     }
@@ -247,6 +272,14 @@ abstract class AbstractNodeOps : AbstractOps() {
             }
         } else if (!dryRun && allowDynamicReference) {
             ownerNode.setReference(link, ResolveInfo.of(targetRefStr))
+        } else if (dryRun && allowDynamicReference) {
+            // Production run would create a dynamic reference here; dry-run reports success
+            // without doing so, leaving a divergence between dry-run validation and the
+            // eventual write. Surface via the log so the discrepancy is at least diagnosable.
+            nodeOpsLogger.warn(
+                "Dry run at $errorPath: target '$targetRefStr' did not resolve; production run " +
+                        "would create a dynamic reference, but dry-run skips this step."
+            )
         }
     }
 
@@ -290,96 +323,151 @@ abstract class AbstractNodeOps : AbstractOps() {
         val model = node.model ?: throw IllegalArgumentException("Node must be in a model")
         val sConcept = node.concept
 
-        if (!dryRun) {
-            // 1. Properties
-            // Clear all properties first to "re-set" (except name)
-            sConcept.properties.forEach {
-                if (it != SNodeUtil.property_INamedConcept_name) {
-                    node.setProperty(it, null)
-                }
-            }
-        }
+        // Stage-then-apply: validate everything (instantiate new children, resolve references)
+        // BEFORE deleting the existing children/references. If any step throws, the original
+        // node is left intact instead of being emptied with no rollback.
 
+        // Stage properties: name is intentionally skipped (kept stable; renames go through a
+        // dedicated tool). Warn loudly so a caller that supplied a different name is not
+        // misled into thinking their rename request was applied.
+        val stagedProperties = mutableListOf<Pair<SProperty, String?>>()
         val properties = jsonObject.getAsJsonArray("properties")
         if (properties != null) {
             for (propElement in properties) {
                 val propObject = propElement.asJsonObject
                 val propName = propObject.get("name")?.asString ?: continue
                 val propValue = propObject.get("value")?.asString
-                val sProperty = sConcept.properties.find { it.name == propName }
-                if (sProperty != null) {
-                    if (sProperty == SNodeUtil.property_INamedConcept_name) continue
-                    if (!dryRun) {
-                        setProperty(node, sProperty, propValue)
+                val sProperty = sConcept.properties.find { it.name == propName } ?: continue
+                if (sProperty == SNodeUtil.property_INamedConcept_name) {
+                    val currentName = node.getProperty(sProperty)
+                    if (propValue != currentName) {
+                        nodeOpsLogger.warn(
+                            "updateNodeFromBlueprint at $jsonPath: blueprint requested rename from " +
+                                    "'$currentName' to '$propValue', but the 'name' property is " +
+                                    "intentionally skipped here. Use the dedicated rename tool " +
+                                    "(e.g. mps_mcp_set_node_properties or a rename refactoring)."
+                        )
                     }
+                    continue
                 }
+                stagedProperties += sProperty to propValue
             }
         }
 
-        if (!dryRun) {
-            // 2. Children
-            node.children.toList().forEach { it.delete() }
-        }
+        // Stage children: instantiate detached SNodes and run assignability checks. Anything
+        // that throws here (unknown concept, malformed nested blueprint, assignability mismatch)
+        // surfaces before any destructive op.
+        val stagedChildren = mutableListOf<Pair<SContainmentLink, SNode>>()
         val children = jsonObject.getAsJsonArray("children")
         if (children != null) {
             children.forEachIndexed { roleIndex, childRoleElement ->
                 val childRoleObject = childRoleElement.asJsonObject
                 val roleName = childRoleObject.get("role")?.asString ?: return@forEachIndexed
-                val childNodes = childRoleObject.getAsJsonArray("nodes")
-                if (childNodes != null) {
-                    val link = sConcept.containmentLinks.find { it.name == roleName }
-                    if (link != null) {
-                        childNodes.forEachIndexed { nodeIndex, nodeElement ->
-                            val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
-                            val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath)
-                            if (childNode != null) {
-                                if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
-                                    throw AssignabilityException(
-                                        jsonPath = childPath,
-                                        actualConcept = childNode.concept.name,
-                                        expectedConcepts = listOf(link.targetConcept.name),
-                                        parentConcept = sConcept.name,
-                                        role = link.name
-                                    )
-                                }
-                                if (!dryRun) {
-                                    node.addChild(link, childNode)
-                                }
-                            }
-                        }
+                val childNodes = childRoleObject.getAsJsonArray("nodes") ?: return@forEachIndexed
+                val link = sConcept.containmentLinks.find { it.name == roleName } ?: return@forEachIndexed
+                childNodes.forEachIndexed { nodeIndex, nodeElement ->
+                    val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
+                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath)
+                        ?: return@forEachIndexed
+                    if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
+                        throw AssignabilityException(
+                            jsonPath = childPath,
+                            actualConcept = childNode.concept.name,
+                            expectedConcepts = listOf(link.targetConcept.name),
+                            parentConcept = sConcept.name,
+                            role = link.name
+                        )
                     }
+                    stagedChildren += link to childNode
                 }
             }
         }
 
-        if (!dryRun) {
-            // 3. References
-            node.references.toList().forEach { node.dropReference(it.link) }
-        }
+        // Stage references: pre-validate (XML-short-id rejection, target resolution,
+        // assignability) without writing. Application uses applyReferenceUpdate in Phase 2.
+        val stagedReferences = mutableListOf<StagedReference>()
         val references = jsonObject.getAsJsonArray("references")
         if (references != null) {
             references.forEachIndexed { index, refElement ->
                 val refObject = refElement.asJsonObject
                 val roleName = refObject.get("role")?.asString ?: return@forEachIndexed
                 val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
-                val link = sConcept.referenceLinks.find { it.name == roleName }
-                if (link != null && !targetRefStr.isNullOrEmpty()) {
-                    applyReferenceUpdate(
-                        ownerNode = node,
-                        link = link,
-                        targetRefStr = targetRefStr,
-                        model = model,
-                        repository = model.repository,
-                        parentConceptName = sConcept.name,
-                        roleName = roleName,
-                        errorPath = "$jsonPath.references[$index]",
-                        xmlReferencePath = jsonPath,
-                        xmlReferenceIndex = index,
-                        dryRun = dryRun,
-                        allowDynamicReference = !dryRun
-                    )
+                val link = sConcept.referenceLinks.find { it.name == roleName } ?: return@forEachIndexed
+                if (targetRefStr.isNullOrEmpty()) return@forEachIndexed
+
+                failIfXMLReferenceIsUsed(targetRefStr, jsonPath, index)
+                val targetRef = resolveReferenceTarget(model.repository, targetRefStr)
+                val targetNode = targetRef?.resolve(model.repository)
+                if (targetNode != null) {
+                    validateReferenceTarget(targetNode, link, sConcept.name, roleName, "$jsonPath.references[$index]")
                 }
+
+                stagedReferences += StagedReference(
+                    link = link,
+                    targetRefStr = targetRefStr,
+                    errorPath = "$jsonPath.references[$index]",
+                    xmlReferencePath = jsonPath,
+                    xmlReferenceIndex = index
+                )
             }
+        }
+
+        if (dryRun) return
+
+        // All staging succeeded; apply destructively.
+        //
+        // NOTE: The apply phase itself is not transactional within itself — the three
+        // steps below (properties, children, references) are sequenced operations on
+        // the live node. If a step throws after a prior step has mutated the node,
+        // the node is left in a partially-updated state with no rollback.
+        //
+        // The validate/stage phase above significantly reduces this risk by catching
+        // most semantic errors (concept assignability, reference resolution, role
+        // cardinality, XML schema, etc.) before any mutation begins. Apply-phase
+        // failures are therefore expected only for low-level platform errors
+        // (storage I/O, SModel listener exceptions, concurrent modification, etc.).
+        //
+        // Callers that need stronger guarantees should wrap this in an outer
+        // transactional unit (e.g. a command + manual snapshot/restore).
+
+        // 1. Properties: clear (except name) and re-apply staged values.
+        sConcept.properties.forEach {
+            if (it != SNodeUtil.property_INamedConcept_name) {
+                node.setProperty(it, null)
+            }
+        }
+        stagedProperties.forEach { (property, value) -> setProperty(node, property, value) }
+
+        // 2. Children: delete originals, attach staged.
+        node.children.toList().forEach { it.delete() }
+        stagedChildren.forEach { (link, childNode) -> node.addChild(link, childNode) }
+
+        // 3. References: drop originals, apply staged.
+        //
+        // SNode.dropReference(SReferenceLink) removes by link, not by SReference identity.
+        // For multi-cardinality roles (0..n / 1..n), a single role can hold several references
+        // sharing the same link; the platform's dropReference call removes one matching
+        // reference per invocation. Iterating `node.references.toList()` produces one entry per
+        // existing reference, so calling dropReference(it.link) once per entry empties the
+        // role one-at-a-time. The end state is no references on the node, which is what the
+        // apply phase needs before re-staging.
+        node.references.toList().forEach { node.dropReference(it.link) }
+        stagedReferences.forEach { staged ->
+            applyReferenceUpdate(
+                ownerNode = node,
+                link = staged.link,
+                targetRefStr = staged.targetRefStr,
+                model = model,
+                repository = model.repository,
+                parentConceptName = sConcept.name,
+                roleName = staged.link.name,
+                errorPath = staged.errorPath,
+                xmlReferencePath = staged.xmlReferencePath,
+                xmlReferenceIndex = staged.xmlReferenceIndex,
+                dryRun = false,
+                allowDynamicReference = true,
+                validateXmlReference = false
+            )
         }
     }
 
@@ -427,9 +515,9 @@ abstract class AbstractNodeOps : AbstractOps() {
                     if (!dryRun) {
                         parent.insertChildBefore(role, newChild, childNode)
                         childNode.delete()
-                        performFixReferences(mpsProject, newChild)
+                        val fixResult = performFixReferences(mpsProject, newChild)
                         model.save()
-                        okJson(nodeInfoJson(parent))
+                        okJson(withFixReferencesInfo(nodeInfoJsonObject(parent), fixResult))
                     } else {
                         okJson(jsonObject {
                             addProperty("dryRun", true)
@@ -437,7 +525,8 @@ abstract class AbstractNodeOps : AbstractOps() {
                         })
                     }
                 } else {
-                    // Deletion
+                    // Deletion: no fix-references step — removing a child doesn't relocate
+                    // any references, so the response intentionally omits `data.fixReferences`.
                     if (!dryRun) {
                         childNode.delete()
                         model.save()
@@ -519,9 +608,9 @@ abstract class AbstractNodeOps : AbstractOps() {
                         val anchor = existingChildrenInRole[position]
                         parent.insertChildBefore(role, newChild, anchor)
                     }
-                    performFixReferences(mpsProject, newChild)
+                    val fixResult = performFixReferences(mpsProject, newChild)
                     model.save()
-                    okJson(nodeInfoJson(newChild))
+                    okJson(withFixReferencesInfo(nodeInfoJsonObject(newChild), fixResult))
                 } else {
                     okJson(jsonObject {
                         addProperty("dryRun", true)
@@ -572,7 +661,19 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
     }
 
-    protected fun performFixReferences(mpsProject: MPSProject, node: SNode): Map<String, Any> {
+    /**
+     * Outcome of [performFixReferences]. `fixed` counts references that were null before and now
+     * resolve to a target; `repointed` counts references that were resolved before and now point
+     * elsewhere; `stillBroken` counts references that were null before and remain unresolved.
+     */
+    protected data class FixReferencesResult(
+        val fixed: Int,
+        val repointed: Int,
+        val stillBroken: Int,
+        val message: String,
+    )
+
+    protected fun performFixReferences(mpsProject: MPSProject, node: SNode): FixReferencesResult {
         val repo = mpsProject.repository
         val allRefs = mutableListOf<SReference>()
         val srcNodes = mutableListOf<SNode>()
@@ -592,19 +693,20 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         if (allRefs.isEmpty()) {
-            return mapOf("fixed" to 0, "repointed" to 0, "stillBroken" to 0, "message" to "No references found")
+            return FixReferencesResult(fixed = 0, repointed = 0, stillBroken = 0, message = "No references found")
         }
 
         // Ensure every reference has resolveInfo so ScopeResolver can work on it
         for (ref in allRefs) {
-            val smodelRef = ref as? SRefImpl
-            if (smodelRef != null && (smodelRef.resolveInfo == null || smodelRef.resolveInfo.isEmpty())) {
-                val target = ref.targetNode
-                if (target != null) {
-                    val name = target.name
-                    if (name != null) {
-                        smodelRef.resolveInfo = name
-                    }
+            val smodelRef = ref as? SRefImpl ?: continue
+            // Read resolveInfo once: the property is a getter and a second read could in
+            // principle return a different value (TOCTOU), making the guard inconsistent with
+            // the subsequent assignment.
+            val info = smodelRef.resolveInfo
+            if (info.isNullOrEmpty()) {
+                val name = ref.targetNode?.name
+                if (name != null) {
+                    smodelRef.resolveInfo = name
                 }
             }
         }
@@ -654,7 +756,22 @@ abstract class AbstractNodeOps : AbstractOps() {
             }
         }
 
-        return mapOf("fixed" to fixed, "repointed" to repointed, "stillBroken" to stillBroken, "message" to message)
+        return FixReferencesResult(fixed = fixed, repointed = repointed, stillBroken = stillBroken, message = message)
+    }
+
+    /**
+     * Returns the given node-info object enriched with a `fixReferences` sub-object describing
+     * the outcome of [performFixReferences]. Callers receive the counts (fixed / repointed /
+     * stillBroken) and the human-readable message instead of the result being silently dropped.
+     */
+    protected fun withFixReferencesInfo(nodeInfo: JsonObject, fixResult: FixReferencesResult): JsonObject {
+        val fixInfo = JsonObject()
+        fixInfo.addProperty("fixed", fixResult.fixed)
+        fixInfo.addProperty("repointed", fixResult.repointed)
+        fixInfo.addProperty("stillBroken", fixResult.stillBroken)
+        fixInfo.addProperty("message", fixResult.message)
+        nodeInfo.add("fixReferences", fixInfo)
+        return nodeInfo
     }
 
     protected fun setProperty(node: SNode, sProperty: SProperty, propertyValue: String?) {

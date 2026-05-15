@@ -4,6 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import com.intellij.openapi.diagnostic.Logger
 import jetbrains.mps.classloading.ClassLoaderManager
 import jetbrains.mps.java.core.newparser.*
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations
@@ -39,6 +40,8 @@ import java.lang.reflect.Field
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
 class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
+    private val javaToolsetLogger = Logger.getInstance(JetBrainsMPSJavaMcpToolset::class.java)
+
     companion object {
         data class EffectiveJavaParseSource(val code: String, val featureKind: FeatureKind)
 
@@ -219,7 +222,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                     // Try the solution where it is defined
                     val module = repo.modules.find { it.moduleName == "jetbrains.mps.baseLanguage.scopes" }
                     if (module != null) {
-                        clazz = ClassLoaderManager.getInstance().getClassLoader(module)?.loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
+                        clazz = ClassLoaderManager.getInstance().getClassLoader(module).loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
                     }
 
                     if (clazz == null) {
@@ -228,7 +231,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                         val runtimeModule = if (runtimeModuleRef != null) repo.getModule(runtimeModuleRef.moduleId) else null
                         if (runtimeModule != null) {
                             clazz =
-                                ClassLoaderManager.getInstance().getClassLoader(runtimeModule)?.loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
+                                ClassLoaderManager.getInstance().getClassLoader(runtimeModule).loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
                         }
                     }
                 }
@@ -312,30 +315,34 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             // If current target has wrong parameter count, try to find a better one in the scope
             if (target == null || SLinkOperations.getChildren(target, PARAMETER_LINK).size != actualArgsCount) {
                 val scope = ModelConstraints.getScope(ref)
-                if (scope != null) {
-                    var refText = (ref as? SReference)?.resolveInfo
-                        ?: SPropertyOperations.getString(target, NAME_PROPERTY)
+                // `target` may be null here (anonymous class with no resolved method, fresh
+                // parser output, etc.); only fall back to its name property when it exists.
+                var refText = (ref as? SReference)?.resolveInfo
+                    ?: target?.let { SPropertyOperations.getString(it, NAME_PROPERTY) }
 
-                    if ((refText == null || refText.isEmpty()) && SNodeOperations.isInstanceOf(node, ANONYMOUS_CLASS)) {
-                        val classifier = SLinkOperations.getTarget(node, CLASSIFIER_LINK)
+                if ((refText == null || refText.isEmpty()) && SNodeOperations.isInstanceOf(node, ANONYMOUS_CLASS)) {
+                    // CLASSIFIER_LINK can be unresolved on a newly parsed anonymous class — guard
+                    // against null before reading the name property.
+                    val classifier = SLinkOperations.getTarget(node, CLASSIFIER_LINK)
+                    if (classifier != null) {
                         refText = SPropertyOperations.getString(classifier, NAME_PROPERTY)
                     }
+                }
 
-                    if (refText == null || refText.isEmpty()) {
-                        continue
-                    }
+                if (refText == null || refText.isEmpty()) {
+                    continue
+                }
 
-                    val candidates = scope.getAvailableElements(refText).toList()
-                    val methodCandidates = candidates.filter { SNodeOperations.isInstanceOf(it, BASE_METHOD_DECL) }
+                val candidates = scope.getAvailableElements(refText).toList()
+                val methodCandidates = candidates.filter { SNodeOperations.isInstanceOf(it, BASE_METHOD_DECL) }
 
-                    val bestMatch = methodCandidates.find { cand ->
-                        SLinkOperations.getChildren(cand, PARAMETER_LINK).size == actualArgsCount
-                    }
+                val bestMatch = methodCandidates.find { cand ->
+                    SLinkOperations.getChildren(cand, PARAMETER_LINK).size == actualArgsCount
+                }
 
-                    if (bestMatch != null) {
-                        if (bestMatch !== target) {
-                            node.setReferenceTarget(ref.link, bestMatch)
-                        }
+                if (bestMatch != null) {
+                    if (bestMatch !== target) {
+                        node.setReferenceTarget(ref.link, bestMatch)
                     }
                 }
             }
@@ -480,8 +487,8 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     }
 
     // Best-effort: only the inserted nodes are undone. Side effects of resolveIteratively
-    // (JDK dep added+saved by ensureJDKDependency, ModelImports updates) are not reverted —
-    // they remain in memory but are not persisted, since model.save() runs only on success.
+    // (JDK dep, ModelImports updates) are not reverted — they remain in memory but are not
+    // persisted, since model.save() and the module-side save() run only on success.
     private fun finalizeInsertedNodes(
         model: EditableSModel,
         repo: SRepository,
@@ -495,6 +502,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         try {
             resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
             model.save()
+            // d1: persist the module-level JDK dependency exactly once on the success path,
+            // mirroring the model.save() above. ensureJDKDependency only mutates the in-memory
+            // descriptor and calls setChanged(); the actual disk write happens here.
+            (model.module as? AbstractModule)?.save()
         } catch (e: Exception) {
             rollbackInsertedNodes()
             throw e
@@ -517,6 +528,29 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         toRemove.forEach { SNodeOperations.deleteNode(it) }
     }
 
+    // c2: Deferred dependency finalization. Runs after the resolution loop on the success path,
+    // and also on the early-return path when doResolveRefs is false. ensureJDKDependency and the
+    // parser-declared language imports used to run BEFORE the loop, but moving them after the
+    // loop means a mid-loop exception leaves the model and module unchanged in memory.
+    private fun finalizeResolutionDependencies(
+        model: SModel,
+        repo: SRepository,
+        doImportLang: Boolean,
+        parseResult: JavaParser.JavaParseResult
+    ) {
+        ensureJDKDependency(model)
+        if (doImportLang) {
+            val imports = ModelImports(model)
+            val mdr = ModelDependencyResolver(LanguageRegistry.getInstance(repo), repo)
+            val alreadyUsed = mdr.usedLanguages(model)
+            for (lang in parseResult.getLanguages() ?: emptyList()) {
+                if (!alreadyUsed.contains(lang) && !isLanguageProvidedByDevKit(model, repo, lang)) {
+                    imports.addUsedLanguage(lang)
+                }
+            }
+        }
+    }
+
     private fun ensureJDKDependency(model: SModel) {
         val module = model.module as? AbstractModule ?: return
         val jdkRef = PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)")
@@ -524,8 +558,11 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
         val descriptor = module.moduleDescriptor ?: return
         descriptor.dependencies.add(Dependency(jdkRef, SDependencyScope.DEFAULT, false))
+        // d1: eager module.save() removed. Persistence of the in-memory JDK dependency happens
+        // on the success path in finalizeInsertedNodes, alongside model.save(). On failure paths,
+        // the module mutation is left in memory but never persisted to disk, preserving the
+        // "rollback the inserted nodes" guarantee for the caller.
         module.setChanged()
-        module.save()
     }
 
     private fun isLanguageProvidedByDevKit(model: SModel, repo: SRepository, lang: org.jetbrains.mps.openapi.language.SLanguage): Boolean {
@@ -573,31 +610,42 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         doResolveRefs: Boolean,
         parseResult: JavaParser.JavaParseResult
     ) {
-        ensureJDKDependency(model)
-        if (doImportLang && parseResult.getLanguages() != null) {
-            val imports = ModelImports(model)
-            val langRegistry = LanguageRegistry.getInstance(repo)
-            val mdr = ModelDependencyResolver(langRegistry, repo)
-            val alreadyImported = mdr.usedLanguages(model)
-            for (lang in parseResult.getLanguages()) {
-                if (!alreadyImported.contains(lang) && !isLanguageProvidedByDevKit(model, repo, lang)) {
-                    imports.addUsedLanguage(lang)
-                }
-            }
-        }
+        // c2: ensureJDKDependency and the initial parser-declared-language imports used to run
+        // here, before the resolution loop. That made them load-bearing for resolution (the
+        // tryResolveRefs pass needs JDK in scope to resolve java.lang.* references and the
+        // parser-declared languages to find concept-level refs), but it also meant that if the
+        // loop threw mid-way the model retained those imports and the module retained the JDK
+        // dependency in memory. Now they run AFTER the loop, in finalizeResolutionDependencies.
+        //
+        // Trade-off: in modules that do not already have JDK in scope, the loop's tryResolveRefs
+        // pass will not be able to resolve JDK references — they remain Unknown until the
+        // post-loop pass adds JDK and the user re-runs resolution. The in-loop
+        // updateModelDependencies still expands scope iteratively for cross-model refs found in
+        // the inserted nodes, so resolution quality is unaffected for modules that already have
+        // JDK and for non-JDK cross-model refs.
 
-        if (!doResolveRefs) return
+        if (!doResolveRefs) {
+            finalizeResolutionDependencies(model, repo, doImportLang, parseResult)
+            return
+        }
 
         val handler = jetbrains.mps.messages.IMessageHandler { _: jetbrains.mps.messages.IMessage -> }
         val conv = JavaToMpsConverter(model, repo, handler)
 
-        // Try to set myAttachedRoots via reflection to help internal resolution passes
+        // Try to set myAttachedRoots via reflection to help internal resolution passes.
+        // e1: log at WARN level when the reflection fails so future API renames don't go
+        // unnoticed. The field is a private implementation detail of JavaToMpsConverter, so
+        // we can't depend on its existence — but if it disappears, resolution quality drops
+        // silently, which is exactly the kind of regression we want to surface.
         try {
             val field: Field = JavaToMpsConverter::class.java.getDeclaredField("myAttachedRoots")
             field.isAccessible = true
             field.set(conv, inserted)
         } catch (e: Exception) {
-            // ignore if failed
+            javaToolsetLogger.warn(
+                "Failed to set JavaToMpsConverter.myAttachedRoots via reflection; resolution may be degraded",
+                e
+            )
         }
 
         // Wrap the resolution loop in an isolated typechecking session so that
@@ -651,6 +699,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             fixDynamicReferences(model, inserted)
         }
         removeJavaImports(inserted)
+        finalizeResolutionDependencies(model, repo, doImportLang, parseResult)
     }
 
     @McpTool
@@ -777,6 +826,16 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                                 val children = parent.getChildren(link).toList()
                                 if (index < 0 || index > children.size) {
                                     error = "Target index $index is out of bounds (count: ${children.size})"
+                                    // Roll back the children already inserted in prior loop
+                                    // iterations: finalizeInsertedNodes's rollback only fires
+                                    // when finalize itself throws, so an early return here would
+                                    // otherwise leak the partially attached batch.
+                                    inserted.asReversed().forEach { insertedNode ->
+                                        if (insertedNode.parent != null) {
+                                            SNodeOperations.deleteNode(insertedNode)
+                                        }
+                                    }
+                                    inserted.clear()
                                     return@executeShortCommandOnEdt
                                 }
                                 val anchor = if (index < children.size) children[index] else null
@@ -811,15 +870,37 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                         val targetNode = replaceContext.targetNode
                         val model = replaceContext.model
 
+                        // Replace expects exactly one top-level node; multiple parsed nodes
+                        // cannot be substituted into a single containment slot, so reject up
+                        // front instead of silently dropping the trailing nodes.
+                        if (parsedNodes.size > 1) {
+                            error = "Replace mode requires exactly one top-level parsed node, " +
+                                    "but the input parsed into ${parsedNodes.size}. Use 'child' or " +
+                                    "'root' mode for multi-node insertions, or supply a single " +
+                                    "feature/expression here."
+                            return@executeShortCommandOnEdt
+                        }
+
                         val newNode = parsedNodes.first()
                         val parent = targetNode.parent
                         if (parent == null) {
                             error = "Target node '$targetRefStr' is a root; root replacement not supported via 'replace' mode"
                             return@executeShortCommandOnEdt
                         }
-                        // getContainmentLink() is documented to return null only for nodes without a parent.
-                        val link = targetNode.containmentLink!!
-                        val nextSibling = targetNode.nextSibling
+                        // f: getContainmentLink() should be non-null for any non-root node, but
+                        // surfacing it as a structured error is safer than crashing on `!!` if the
+                        // platform invariant ever changes (e.g. transient detachment during a
+                        // concurrent edit).
+                        val link = targetNode.containmentLink ?: run {
+                            error = "Target node '$targetRefStr' has no containment link"
+                            return@executeShortCommandOnEdt
+                        }
+                        // g1: Capture the exact index of targetNode in its parent's role list
+                        // BEFORE the replace. On rollback we put targetNode back at that index,
+                        // which preserves order even if siblings were moved or removed between
+                        // the failed mutation and the rollback. nextSibling-based recovery (the
+                        // prior approach) misbehaves if the sibling itself was relocated.
+                        val originalIndex = parent.getChildren(link).toList().indexOf(targetNode)
                         SNodeOperations.replaceWithAnother(targetNode, newNode)
                         inserted.add(newNode)
 
@@ -836,8 +917,9 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                                 SNodeOperations.deleteNode(newNode)
                             }
                             if (targetNode.parent == null) {
-                                if (nextSibling != null && nextSibling.parent == parent && nextSibling.containmentLink == link) {
-                                    parent.insertChildBefore(link, targetNode, nextSibling)
+                                val currentChildren = parent.getChildren(link).toList()
+                                if (originalIndex in 0..currentChildren.lastIndex) {
+                                    parent.insertChildBefore(link, targetNode, currentChildren[originalIndex])
                                 } else {
                                     parent.addChild(link, targetNode)
                                 }
@@ -862,7 +944,9 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                     addProperty("errorMsg", parseResult.getErrorMsg())
                 }
                 resultJson = okJson(data.toString())
-            } catch (e: Exception) {
+            } catch (e: Throwable) {
+                rethrowIfCancellation(e)
+                if (e is Error) throw e
                 error = e.message
             }
         }

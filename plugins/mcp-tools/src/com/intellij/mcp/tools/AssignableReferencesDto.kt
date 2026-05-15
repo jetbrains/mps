@@ -77,11 +77,8 @@ data class GetAssignableReferencesRequest(
     val preferProjectCode: Boolean = true,
 
     val includeReason: Boolean = true,
-    val includeSignature: Boolean = true,
     val includeTypeDistance: Boolean = true,
-    val includeVisibility: Boolean = true,
-    val includeInaccessible: Boolean = false,
-    val suppressExhaustiveCount: Boolean = false
+    val includeInaccessible: Boolean = false
 )
 
 data class AssignableReferenceCandidate(

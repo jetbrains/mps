@@ -47,7 +47,13 @@ Parameters are passed as a JSON object string.
 #### `CREATE_CONCEPTS`
 Creates concepts with the given names and full specification in the specified structure model.
 Returns a JSON object mapping concept names to their persistent node references on success.
-If the `make` flag is true, also returns make warnings and errors.
+
+When the `make` flag is true, the response also reports:
+- `makeStatus`: one of `"success"`, `"runtime_stale"`, `"failed"`, or `"skipped"`. **`"runtime_stale"` means the build succeeded but the MPS language runtime did not reload within the post-make safety-net window** (currently 10 s; see `AbstractOps.LANGUAGE_RELOAD_TIMEOUT_SECONDS`), so concept descriptors are likely hollow downstream. The agent should call `mps_mcp_reload_all` and retry the build with `rebuild = true` before invoking any tool that consumes the freshly-built concepts (e.g., `mps_mcp_scaffold_editor`, `mps_mcp_get_concept_details`).
+- `makeMessage`: human-readable summary of the make outcome.
+- `makeDetails`: list of warnings/errors emitted during the build.
+
+Note: the structure response intentionally does **not** include a separate `runtimeReady` boolean — `makeStatus` already encodes the same signal as a single source of truth. The boolean form is reserved for `mps_mcp_perform_operation MAKE`, whose response uses `success` + `runtimeReady` because the make IS the response there rather than a sub-operation.
 
 Parameters:
 ```
@@ -317,11 +323,8 @@ Parameters:
   "preferSameModule": "Optional: Boolean, boost candidates from the same module (default: true).",
   "preferProjectCode": "Optional: Boolean, boost editable project code over stubs (default: true).",
   "includeReason": "Optional: Boolean, include ranking reason strings per candidate (default: true).",
-  "includeSignature": "Optional: Boolean, include method/constructor signature string (default: true).",
   "includeTypeDistance": "Optional: Boolean, include type distance integer per candidate (default: true).",
-  "includeVisibility": "Optional: Boolean, include visibility and accessibility fields (default: true).",
-  "includeInaccessible": "Optional: Boolean, include inaccessible candidates (default: false).",
-  "suppressExhaustiveCount": "Optional: Boolean, skip counting total matches for performance (default: false)."
+  "includeInaccessible": "Optional: Boolean, include inaccessible candidates (default: false)."
 }
 ```
 

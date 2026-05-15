@@ -4,6 +4,7 @@ package com.intellij.mcp.tools
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import com.intellij.openapi.application.EDT
@@ -17,10 +18,10 @@ import jetbrains.mps.project.modules.LanguageProducer
 import jetbrains.mps.project.modules.SolutionProducer
 import jetbrains.mps.project.structure.modules.Dependency
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor
+import jetbrains.mps.refactoring.Renamer
 import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.ModuleDependencyVersions
-import jetbrains.mps.smodel.ModuleRepositoryFacade
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import jetbrains.mps.smodel.language.LanguageRegistry
 import jetbrains.mps.vfs.IFile
@@ -30,8 +31,11 @@ import org.jetbrains.annotations.Nullable
 import org.jetbrains.mps.openapi.module.FacetsFacade
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SModule
+import org.jetbrains.mps.openapi.module.SModuleId
 import org.jetbrains.mps.openapi.persistence.Memento
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import java.util.function.Consumer
+import javax.lang.model.SourceVersion
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
 // surface, and they are invoked via reflection by the MCP server framework, so static
@@ -159,8 +163,13 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             if (exactMatch != null) {
                 okJson(moduleInfoJson(mpsProject, exactMatch))
             } else {
+                // l: case-insensitive partial match. Module names follow Java-package style
+                // and are conventionally lowercase, but the user-typed query often differs
+                // (e.g. "FinCalculator" against "fincalculator"). Matching case-sensitively
+                // there used to surface a misleading "module not found" for a query that
+                // unambiguously identified one module.
                 val partialMatches = mpsProject.projectModulesWithGenerators
-                    .filter { it.moduleName?.contains(moduleName) == true }
+                    .filter { it.moduleName?.contains(moduleName, ignoreCase = true) == true }
                 when (partialMatches.size) {
                     0 -> errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
                     1 -> okJson(moduleInfoJson(mpsProject, partialMatches[0]))
@@ -210,13 +219,22 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
                     val fs: jetbrains.mps.vfs.openapi.FileSystem = mpsProject.fileSystem
-                    val dirFile: IFile? = if (type.lowercase() == "generator" && directory.isEmpty()) {
+                    val normalizedType = type.lowercase()
+                    // m: only 'generator' may default directory from its parent language; for
+                    // every other module kind an empty directory is a programming error that
+                    // used to surface as `fs.getFile("").mkdirs()` producing a non-recoverable
+                    // file system state. Reject it early with a structured error.
+                    if (normalizedType != "generator" && directory.isEmpty()) {
+                        error = "Parameter 'directory' must be non-empty for module type '$type'"
+                        return@executeCommand
+                    }
+                    val dirFile: IFile? = if (normalizedType == "generator" && directory.isEmpty()) {
                         null // resolved per-branch
                     } else {
                         fs.findExistingFile(directory) ?: fs.getFile(directory).also { it.mkdirs() }
                     }
 
-                    when (type.lowercase()) {
+                    when (normalizedType) {
                         "solution" -> {
                             val sol = SolutionProducer(mpsProject).create(name, dirFile!!)
                             applyVirtualFolder(mpsProject, sol, virtualFolder)
@@ -248,7 +266,11 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                                 error = "Generator creation requires 'parentLanguage'"
                                 return@executeCommand
                             }
-                            val parentLang = resolveLanguage(mpsProject.repository, parentLangName) as? Language
+                            // Look up the Language *module* (not the runtime SLanguage). resolveLanguage
+                            // returns SLanguage which cannot be cast to jetbrains.mps.smodel.Language —
+                            // they are unrelated types — so route the lookup through the module resolver
+                            // and reject anything that isn't an actual Language module.
+                            val parentLang = resolveModule(mpsProject, parentLangName, projectOnly = false) as? Language
                             if (parentLang == null) {
                                 error = "Parent language not found or is not a Language module: $parentLangName"
                                 return@executeCommand
@@ -278,11 +300,20 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                             val generatorDescriptor = LanguageProducer.createGeneratorDescriptor(parentLang.moduleName + ".generator", generatorLocation, null)
                             generatorDescriptor.sourceLanguage = languageDescriptor.moduleReference
                             languageDescriptor.generators.add(generatorDescriptor)
+                            // setModuleDescriptor → Language.revalidateGenerators already instantiates the
+                            // new Generator with its model roots and registers it with the project's
+                            // repository. Calling ModuleRepositoryFacade.instantiate(...) and addModule
+                            // afterwards used to produce a duplicate, half-built Generator with empty
+                            // model roots, which then crashed LanguageProducer.createTemplateModelIfNoneYet.
+                            // Look up the registered generator instead.
                             parentLang.setModuleDescriptor(languageDescriptor)
 
-                            val projectRepoFacade = ModuleRepositoryFacade(mpsProject)
-                            val generator = projectRepoFacade.instantiate(generatorDescriptor, parentDescriptorFile) as Generator
-                            mpsProject.addModule(generator)
+                            val generator = parentLang.generators
+                                .singleOrNull { it.moduleReference == generatorDescriptor.moduleReference }
+                                ?: run {
+                                    error = "Generator was not registered with parent language after descriptor update: ${generatorDescriptor.moduleReference}"
+                                    return@executeCommand
+                                }
 
                             LanguageProducer.createTemplateModelIfNoneYet(mpsProject, generator)
 
@@ -308,7 +339,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 }
             }
         when {
-            created != null -> okJson(moduleInfoJson(mpsProject, created!!))
+            created != null -> okJson(moduleInfoJson(mpsProject, created))
             error != null -> errJson(error)
             else -> errJson("Module creation failed for unknown reason")
         }
@@ -317,62 +348,184 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Updates an MPS module.
-        Supports: changing the Project View virtual folder.
-        Renaming is NOT supported by this tool.
+        Supports: renaming the module (Solution / Language / DevKit) and/or changing the
+        Project View virtual folder. When both are supplied, the rename runs first and the
+        virtual folder is then applied to the renamed module.
+
+        Generator modules cannot be renamed through this tool — rename the parent Language
+        instead, which cascade-renames its owned generators.
+
+        The rename delegates to the same `Renamer` refactoring the IDE's Rename Module
+        action uses, so it also: renames the module's descriptor file, renames the module
+        directory when it matches the module name, renames models whose qualified name is
+        prefixed by the module name, cascades into nested submodules (e.g. a Language's
+        generator), and updates references inside other modules of the current project.
+        References from modules outside the open project are NOT rewritten — there is no
+        practical way to reach them. Any such cases are reported as `renameWarnings`.
 
         Params:
           - moduleName: existing module name or reference
-          - newName: optional new name (rename) - if a non-blank value is supplied, the call
-            is rejected up-front with an error and NO other updates (including virtualFolder)
-            are applied. Pass null or blank when you only want to change the virtual folder.
-          - virtualFolder: optional new virtual folder
+          - newName: optional new name (must be a valid Java-package-style qualified name).
+            Pass null or blank to skip the rename. The trimmed name must not already be in
+            use by another module in the repository.
+          - virtualFolder: optional new virtual folder. Applied to the (possibly renamed)
+            module.
 
-        Returns a JSON object with 'ok':true and 'data':{ name, moduleRef, virtualFolder?, readOnly, present:true } on success, or 'ok':false and 'error':"..." on failure.
+        Returns `{"ok":true,"data":{ name, reference, virtualFolder?, readOnly, present:true,
+        renameWarnings?, renameCriticalProblems? }}` on success, or `{"ok":false,"error":"..."}`
+        on failure. `renameWarnings` (and the rarer `renameCriticalProblems`) carry messages
+        emitted by the underlying refactoring; their absence means the rename ran cleanly.
     """
     )
     suspend fun mps_mcp_update_module(
         @McpDescription("Existing module name or reference") moduleName: String,
-        @McpDescription("New name (rename) - NOT supported. Supplying a non-blank value aborts the entire call before any other update is applied; pass null or blank to update only the virtual folder.") @Nullable newName: String?,
-        @McpDescription("New virtual folder") @Nullable virtualFolder: String?
+        @McpDescription("New module name (valid Java-package qualified name). Null or blank skips the rename. Generator modules are not renameable through this tool.") @Nullable newName: String?,
+        @McpDescription("New virtual folder. Applied to the renamed module when both rename and virtualFolder are supplied.") @Nullable virtualFolder: String?
     ): String = withMpsProject("Update MPS module") { mpsProject ->
-        // Reject unsupported rename up-front, before mutating anything, so we never
-        // commit a partial change (e.g. virtualFolder applied) and then still return an
-        // error to the caller. This is an intentional, documented contract tightening
-        // compared to the previous behavior, which would silently apply virtualFolder
-        // before reporting the rename-not-supported error.
-        if (!newName.isNullOrBlank()) {
-            return@withMpsProject errJson("Module rename is not supported by this tool", McpErrorCode.INVALID_REQUEST)
+        val trimmedNewName = newName?.trim()?.takeIf { it.isNotEmpty() }
+        val rename = trimmedNewName != null
+        val setFolder = !virtualFolder.isNullOrBlank()
+        if (!rename && !setFolder) {
+            return@withMpsProject errJson(
+                "Nothing to update: provide newName, virtualFolder, or both",
+                McpErrorCode.INVALID_REQUEST,
+            )
         }
+
+        // ── Phase 1: rename (if requested) ──────────────────────────────────────────────
+        val renameProblems = mutableListOf<Renamer.RenameProblem>()
+        var moduleIdAfterRename: SModuleId? = null
+        if (rename) {
+            validateModuleName(trimmedNewName)?.let {
+                return@withMpsProject errJson(it, McpErrorCode.INVALID_REQUEST)
+            }
+            // The Renamer follows the same 3-phase shape the IDE dialog uses:
+            //   1. collectRenames()   — requires a read action
+            //   2. prepareRename()    — no model access needed
+            //   3. runRenameCommand() — opens its own write command internally
+            // The phases share state on the Renamer instance and must run in order on the
+            // same instance, so we cannot fold them into a single executeCommand block.
+            withContext(Dispatchers.EDT) {
+                var renamer: Renamer? = null
+                var preparedOldId: SModuleId? = null
+                mpsProject.repository.modelAccess.runReadAction {
+                    val m = resolveModule(mpsProject, moduleName)
+                        ?: throw McpNotFoundException("Module '$moduleName' not found")
+                    if (m !is AbstractModule) {
+                        throw McpInvalidRequestException("Module '$moduleName' is not renameable (not an AbstractModule)")
+                    }
+                    if (m.isReadOnly) {
+                        throw McpNotEditableException("Module '$moduleName' is read-only")
+                    }
+                    if (m is Generator) {
+                        throw McpInvalidRequestException(
+                            "Generator modules cannot be renamed through this tool — rename the parent Language instead, which cascade-renames its owned generators."
+                        )
+                    }
+                    if (m.descriptorFile == null) {
+                        throw McpInvalidRequestException("Module '$moduleName' has no descriptor file and cannot be renamed")
+                    }
+                    if (trimmedNewName != m.moduleName) {
+                        val clash = mpsProject.repository.modules.firstOrNull {
+                            it != m && trimmedNewName == it.moduleName
+                        }
+                        if (clash != null) {
+                            throw McpInvalidRequestException("Module name '$trimmedNewName' is already in use in the repository")
+                        }
+                    }
+                    preparedOldId = m.moduleReference.moduleId
+                    renamer = Renamer(mpsProject, m, Consumer { renameProblems.add(it) }).also { it.collectRenames() }
+                }
+                renamer!!.prepareRename(trimmedNewName)
+                if (renamer.hasPrimaryRename() || renamer.hasDependantRenames()) {
+                    renamer.runRenameCommand()
+                }
+                moduleIdAfterRename = preparedOldId
+            }
+        }
+
+        // ── Phase 2: virtual folder + result lookup ─────────────────────────────────────
         var updated: SModule? = null
-        var folderChanged = false
+        var virtualFolderFailure: String? = null
         withContext(Dispatchers.EDT) {
             mpsProject.repository.modelAccess.executeCommand {
-                val m = resolveModule(mpsProject, moduleName)
-                    ?: throw McpNotFoundException("Module '$moduleName' not found")
-                if (!virtualFolder.isNullOrBlank()) {
+                val m = if (rename) {
+                    mpsProject.repository.getModule(moduleIdAfterRename!!)
+                        ?: throw McpUserException(
+                            McpErrorCode.INTERNAL_ERROR,
+                            "Rename completed but the renamed module could not be located by id $moduleIdAfterRename",
+                        )
+                } else {
+                    resolveModule(mpsProject, moduleName)
+                        ?: throw McpNotFoundException("Module '$moduleName' not found")
+                }
+                if (setFolder) {
+                    // n1: virtual folder is metadata layered on top of the (already-committed)
+                    // rename. If setVirtualFolder fails, the rename has still succeeded and is
+                    // visible to the user, so throwing here would force them to chase a
+                    // misleading "rename failed" error. Surface the failure as a structured
+                    // renameWarnings entry instead and continue with the post-rename payload.
                     try {
                         mpsProject.setVirtualFolder(m, virtualFolder)
+                        (m as? AbstractModule)?.setChanged()
                     } catch (e: Throwable) {
                         rethrowIfCancellation(e)
                         if (e is Error) throw e
-                        // Treat folder-validation problems as a user input failure rather than an
-                        // INTERNAL_ERROR with a stack trace — the caller passed a bad value.
-                        throw McpInvalidRequestException(
-                            "Failed to set virtual folder: ${e.message ?: e.toString()}"
-                        )
+                        virtualFolderFailure = e.message ?: e.toString()
                     }
-                    folderChanged = true
-                }
-                if (folderChanged) {
-                    (m as? AbstractModule)?.setChanged()
                 }
                 updated = m
             }
-            if (folderChanged) {
+            if (setFolder && virtualFolderFailure == null) {
                 mpsProject.save()
             }
         }
-        okJson(moduleInfoJson(mpsProject, updated!!))
+
+        val info = moduleInfoJsonObject(mpsProject, updated!!)
+        if (rename) {
+            val warnings = JsonArray()
+            val critical = JsonArray()
+            for (p in renameProblems) {
+                when (p.severity) {
+                    Renamer.RenameProblem.Severity.CRITICAL -> critical.add(JsonPrimitive(p.presentation))
+                    Renamer.RenameProblem.Severity.NON_CRITICAL -> warnings.add(JsonPrimitive(p.presentation))
+                    Renamer.RenameProblem.Severity.NO_PROBLEM -> {}
+                }
+            }
+            virtualFolderFailure?.let {
+                warnings.add(JsonPrimitive("Rename succeeded; failed to set virtual folder: $it"))
+            }
+            if (warnings.size() > 0) info.add("renameWarnings", warnings)
+            if (critical.size() > 0) info.add("renameCriticalProblems", critical)
+        } else {
+            virtualFolderFailure?.let {
+                val warnings = JsonArray()
+                warnings.add(JsonPrimitive("Failed to set virtual folder: $it"))
+                info.add("warnings", warnings)
+            }
+        }
+        okJson(info)
+    }
+
+    /**
+     * Mirrors [jetbrains.mps.ide.refactoring.RenameModuleDialog.checkValue]: the new module
+     * name must be a valid Java-package-style qualified name. Returns a user-facing error
+     * message when invalid, or null when the name passes validation.
+     */
+    private fun validateModuleName(name: String): String? {
+        if (name.isEmpty()) {
+            return "Module name must not be empty"
+        }
+        if (!Character.isJavaIdentifierStart(name[0])) {
+            return "Module name can't start with '${name[0]}'"
+        }
+        if (!Character.isJavaIdentifierPart(name[name.length - 1])) {
+            return "Module name can't end with '${name[name.length - 1]}'"
+        }
+        if (!SourceVersion.isName(name)) {
+            return "Module name should be a valid Java package qualified name"
+        }
+        return null
     }
 
     @McpTool
@@ -395,16 +548,24 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         var moduleDir: IFile? = null
         withContext(Dispatchers.EDT) {
             mpsProject.repository.modelAccess.executeCommand {
-                val m = resolveModule(mpsProject, moduleName)
-                if (m != null) {
-                    if (deleteFiles) {
-                        moduleDir = (m as? AbstractModule)?.descriptorFile?.parent
-                    }
-                    mpsProject.removeModule(m)
-                    removed = m
-                    (removed as? AbstractModule)?.setChanged()
+                val m = resolveModule(mpsProject, moduleName) ?: return@executeCommand
+                // Record the target up front; the rest of the block is the actual removal
+                // sequence and shouldn't be interrupted by bookkeeping assignments.
+                removed = m
+                if (deleteFiles) {
+                    moduleDir = (m as? AbstractModule)?.descriptorFile?.parent
                 }
+                // Mark the module as changed BEFORE removing it from the project so any
+                // pending in-memory state is persisted by the subsequent project save.
+                (m as? AbstractModule)?.setChanged()
+                mpsProject.removeModule(m)
             }
+            // o1: save outside the executeCommand block. Project save performs
+            // descriptor file I/O which doesn't need the model-access write lock,
+            // and holding the lock across that I/O would block concurrent model
+            // operations. The in-memory removal inside the command is the part
+            // that must be atomic; the subsequent persistence does not. Matches
+            // the post-rename save pattern in mps_mcp_update_module above.
             if (removed != null) {
                 mpsProject.save()
             }

@@ -44,6 +44,47 @@ enum class MPSNodeOperation {
     FIX_REFERENCES
 }
 
+private val MAKE_PARAMETER_SCHEMA: Map<String, String> = linkedMapOf(
+    "models" to "Optional: array of persistent model references",
+    "modules" to "Optional: array of persistent module references",
+    "rebuild" to "Optional: boolean, default false",
+    "wholeProject" to "Optional: boolean, default false. If true, 'models' and 'modules' must be absent.",
+)
+
+private val MAKE_PARAMETER_KEYS: Set<String> = MAKE_PARAMETER_SCHEMA.keys
+
+/**
+ * Returns the closest match from [candidates] for [input] if one is reasonably similar,
+ * or null otherwise. "Reasonably similar" means edit distance ≤ max(2, length/3) — large
+ * enough to catch typos like 'target' → 'modules', strict enough that random keys do not
+ * get a misleading suggestion.
+ */
+internal fun suggestParameterName(input: String, candidates: Iterable<String>): String? {
+    val threshold = maxOf(2, input.length / 3)
+    return candidates
+        .map { it to editDistance(input.lowercase(), it.lowercase()) }
+        .filter { it.second <= threshold }
+        .minByOrNull { it.second }
+        ?.first
+}
+
+private fun editDistance(a: String, b: String): Int {
+    if (a == b) return 0
+    if (a.isEmpty()) return b.length
+    if (b.isEmpty()) return a.length
+    var prev = IntArray(b.length + 1) { it }
+    var curr = IntArray(b.length + 1)
+    for (i in 1..a.length) {
+        curr[0] = i
+        for (j in 1..b.length) {
+            val cost = if (a[i - 1] == b[j - 1]) 0 else 1
+            curr[j] = minOf(curr[j - 1] + 1, prev[j] + 1, prev[j - 1] + cost)
+        }
+        val tmp = prev; prev = curr; curr = tmp
+    }
+    return prev[b.length]
+}
+
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
 // surface, and they are invoked via reflection by the MCP server framework, so static
 // analysis flags them as "never used".
@@ -272,7 +313,12 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         modelsOfModule: (U) -> Iterable<M>,
     ): MakeTargetResolution<M, U> {
         if (!wholeProject && requestedModels.isEmpty() && requestedModules.isEmpty()) {
-            return MakeTargetResolution.Invalid("No model or module references were provided")
+            return MakeTargetResolution.Invalid(
+                "No model or module references were provided. " +
+                    "Expected one of: 'models' (array of persistent model references), " +
+                    "'modules' (array of persistent module references), or 'wholeProject': true.",
+                mapOf("expectedParameters" to MAKE_PARAMETER_SCHEMA),
+            )
         }
 
         val modelsToMake = linkedSetOf<M>()
@@ -326,6 +372,24 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     }
 
     private suspend fun opMake(mpsProject: MPSProject, params: JsonObject): String {
+        val unknownKeys = params.keySet().filter { it !in MAKE_PARAMETER_KEYS }
+        if (unknownKeys.isNotEmpty()) {
+            val suggestions = unknownKeys.associateWith { suggestParameterName(it, MAKE_PARAMETER_KEYS) }
+            val parts = unknownKeys.map { key ->
+                val suggestion = suggestions[key]
+                if (suggestion != null) "'$key' (did you mean '$suggestion'?)" else "'$key'"
+            }
+            return makeInputInvalid(
+                "Unknown parameter${if (unknownKeys.size > 1) "s" else ""}: ${parts.joinToString(", ")}. " +
+                    "Expected keys: ${MAKE_PARAMETER_KEYS.joinToString(", ") { "'$it'" }}.",
+                mapOf(
+                    "unknownParameters" to unknownKeys,
+                    "suggestions" to suggestions.filterValues { it != null },
+                    "expectedParameters" to MAKE_PARAMETER_SCHEMA,
+                ),
+            )
+        }
+
         val modelsArray = params.getAsJsonArray("models")
         val modulesArray = params.getAsJsonArray("modules")
         val rebuild = params.get("rebuild")?.asBoolean ?: false
@@ -378,6 +442,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         val result = mutableMapOf<String, Any>()
         result["success"] = makeResult.success
         result["message"] = makeResult.message
+        // Distinguishes "build succeeded but language runtime is still stale" from full success
+        // so chained calls (scaffold_editor, get_concept_details) can decide to call
+        // `mps_mcp_reload_all` or rebuild instead of hitting a hollow descriptor downstream.
+        result["runtimeReady"] = makeResult.runtimeReady
         if (makeResult.details.isNotEmpty()) {
             result["details"] = makeResult.details
         }
@@ -398,10 +466,15 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
             }
             val result = performFixReferences(mpsProject, node)
-            if ((result["fixed"] as Int) > 0 || (result["repointed"] as Int) > 0) {
+            if (result.fixed > 0 || result.repointed > 0) {
                 model.save()
             }
-            okJson(Gson().toJson(result))
+            okJson(jsonObject {
+                addProperty("fixed", result.fixed)
+                addProperty("repointed", result.repointed)
+                addProperty("stillBroken", result.stillBroken)
+                addProperty("message", result.message)
+            })
         }
     }
 

@@ -42,7 +42,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertOk(createResponse)
 
         val baseRef = readOnRepo {
-            val base = structureModel.rootNodes.single { it.getProperty("name") == "Base" }
+            val base = structureModel.rootNodes.single { it.name == "Base" }
             PersistenceFacade.getInstance().asString(base.reference)
         }
 
@@ -82,14 +82,14 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             assertEquals(
                 listOf("RED", "GREEN", "BLUE", "YELLOW"),
-                membersOf(enumRef).mapNotNull { it.getProperty("name") }
+                membersOf(enumRef).mapNotNull { it.name }
             )
             // Acceptance criterion 5: the returned reference resolves to the new child.
             val resolvedChild = PersistenceFacade.getInstance()
                 .createNodeReference(childRef)
                 .resolve(structureModel.repository)
             assertNotNull("data.reference should resolve to the inserted child", resolvedChild)
-            assertEquals("YELLOW", resolvedChild!!.getProperty("name"))
+            assertEquals("YELLOW", resolvedChild!!.name)
             assertEquals("members", resolvedChild.containmentLink?.name)
         }
     }
@@ -103,7 +103,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             assertEquals(
                 listOf("ALPHA", "RED", "GREEN", "BLUE"),
-                membersOf(enumRef).mapNotNull { it.getProperty("name") }
+                membersOf(enumRef).mapNotNull { it.name }
             )
             assertEquals("ALPHA", resolveChildName(newRef))
         }
@@ -119,7 +119,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             assertEquals(
                 listOf("RED", "BETA", "GREEN", "BLUE"),
-                membersOf(enumRef).mapNotNull { it.getProperty("name") }
+                membersOf(enumRef).mapNotNull { it.name }
             )
             assertEquals("BETA", resolveChildName(newRef))
         }
@@ -134,7 +134,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             assertEquals(
                 listOf("RED", "GREEN", "BLUE", "GAMMA"),
-                membersOf(enumRef).mapNotNull { it.getProperty("name") }
+                membersOf(enumRef).mapNotNull { it.name }
             )
             assertEquals("GAMMA", resolveChildName(newRef))
         }
@@ -150,7 +150,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             assertEquals(
                 listOf("RED", "GREEN", "BLUE", "DELTA"),
-                membersOf(enumRef).mapNotNull { it.getProperty("name") }
+                membersOf(enumRef).mapNotNull { it.name }
             )
             assertEquals("DELTA", resolveChildName(newRef))
         }
@@ -160,7 +160,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `add-node-child rejects position past current count and leaves model unchanged`() {
         val enumRef = createColorEnum()
 
-        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.getProperty("name") } }
+        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
             // 3 existing children; 4 is past the end.
             it.mps_mcp_add_node_child(enumRef, "members", memberJson("ZETA"), position = 4)
@@ -174,7 +174,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         readOnRepo {
             assertEquals("model must be unchanged after rejected insertion", before,
-                membersOf(enumRef).mapNotNull { it.getProperty("name") })
+                membersOf(enumRef).mapNotNull { it.name })
         }
     }
 
@@ -182,7 +182,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `add-node-child rejects position less than -1 and leaves model unchanged`() {
         val enumRef = createColorEnum()
 
-        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.getProperty("name") } }
+        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
             it.mps_mcp_add_node_child(enumRef, "members", memberJson("EPSILON"), position = -2)
         }
@@ -196,7 +196,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         readOnRepo {
             assertEquals("model must be unchanged after rejected insertion", before,
-                membersOf(enumRef).mapNotNull { it.getProperty("name") })
+                membersOf(enumRef).mapNotNull { it.name })
         }
     }
 
@@ -255,7 +255,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
                 .resolve(structureModel.repository)!!
             val helpKids = foo.children.filter { it.containmentLink?.name == "helpURL" }
             assertEquals(1, helpKids.size)
-            assertEquals(firstUrl, helpKids.single().getProperty("url"))
+            assertEquals(firstUrl, helpKids.single().getPropertyByName("url"))
         }
 
         // Replace with position=0 — must succeed and swap the child cleanly.
@@ -274,7 +274,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
                 .resolve(structureModel.repository)!!
             val helpKids = foo.children.filter { it.containmentLink?.name == "helpURL" }
             assertEquals("0..1 replacement must leave exactly one child", 1, helpKids.size)
-            assertEquals(secondUrl, helpKids.single().getProperty("url"))
+            assertEquals(secondUrl, helpKids.single().getPropertyByName("url"))
             // The first child should be gone from the model.
             assertNull(
                 "first helpURL should be detached after replacement",
@@ -285,10 +285,126 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     }
 
     @Test
+    fun `add-node-child response carries data fixReferences with zero counts for a leaf insert`() {
+        // EnumerationMemberDeclaration has no references, so performFixReferences finds nothing
+        // and returns the "No references found" message. The response should now expose those
+        // counters under data.fixReferences instead of dropping them.
+        val enumRef = createColorEnum()
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_add_node_child(enumRef, "members", memberJson("MAGENTA"))
+        }
+        val data = expectOk(response)
+        val fix = data.get("fixReferences")
+        assertNotNull("response must expose data.fixReferences: $response", fix)
+        val fixObj = fix.asJsonObject
+        assertEquals(0, fixObj.get("fixed").asInt)
+        assertEquals(0, fixObj.get("repointed").asInt)
+        assertEquals(0, fixObj.get("stillBroken").asInt)
+        assertTrue(
+            "fixReferences.message should describe the no-references case: $fixObj",
+            fixObj.get("message").asString.contains("No references found"),
+        )
+    }
+
+    @Test
+    fun `add-node-child rejects unknown property name on target concept`() {
+        val enumRef = createColorEnum()
+        val badJson = """
+            {
+              "concept": "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration",
+              "properties": [
+                { "name": "name", "value": "BOGUS" },
+                { "name": "totallyMadeUpProperty", "value": "X" }
+              ]
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_add_node_child(enumRef, "members", badJson)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        val msg = obj.get("error").asString
+        assertTrue("error must name the bogus property: $msg", msg.contains("totallyMadeUpProperty"))
+        assertTrue("error must name the target concept: $msg", msg.contains("EnumerationMemberDeclaration"))
+
+        readOnRepo {
+            assertEquals(
+                "rejected insertion must not add a child",
+                listOf("RED", "GREEN", "BLUE"),
+                membersOf(enumRef).mapNotNull { it.name },
+            )
+        }
+    }
+
+    @Test
+    fun `add-node-child rejects unknown child role on target concept`() {
+        val enumRef = createColorEnum()
+        // EnumerationMemberDeclaration has no containment links, so any `children` entry is invalid.
+        val badJson = """
+            {
+              "concept": "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration",
+              "properties": [ { "name": "name", "value": "STRAY" } ],
+              "children": [
+                { "role": "definitelyNotARealRole", "nodes": [
+                  { "concept": "jetbrains.mps.lang.structure.structure.PropertyDeclaration" }
+                ] }
+              ]
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_add_node_child(enumRef, "members", badJson)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        val msg = obj.get("error").asString
+        assertTrue("error must name the bogus role: $msg", msg.contains("definitelyNotARealRole"))
+        assertTrue("error must mention 'child role': $msg", msg.contains("child role"))
+
+        readOnRepo {
+            assertEquals(
+                listOf("RED", "GREEN", "BLUE"),
+                membersOf(enumRef).mapNotNull { it.name },
+            )
+        }
+    }
+
+    @Test
+    fun `add-node-child rejects unknown reference role on target concept`() {
+        val enumRef = createColorEnum()
+        val badJson = """
+            {
+              "concept": "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration",
+              "properties": [ { "name": "name", "value": "GHOST" } ],
+              "references": [
+                { "role": "ghostRefRole", "target": "anything" }
+              ]
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_add_node_child(enumRef, "members", badJson)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        val msg = obj.get("error").asString
+        assertTrue("error must name the bogus reference role: $msg", msg.contains("ghostRefRole"))
+        assertTrue("error must mention 'reference role': $msg", msg.contains("reference role"))
+
+        readOnRepo {
+            assertEquals(
+                listOf("RED", "GREEN", "BLUE"),
+                membersOf(enumRef).mapNotNull { it.name },
+            )
+        }
+    }
+
+    @Test
     fun `add-node-child dryRun with valid position does not mutate the model`() {
         val enumRef = createColorEnum()
 
-        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.getProperty("name") } }
+        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
             it.mps_mcp_add_node_child(enumRef, "members", memberJson("DRY"), position = 0, dryRun = true)
         }
@@ -301,10 +417,17 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val payload = JsonParser.parseString(raw).asJsonObject
         assertTrue("dryRun payload should be flagged: $payload",
             payload.get("dryRun")?.asBoolean == true)
+        // dryRun never calls performFixReferences, so the marker payload must not carry
+        // fixReferences. Locks in the contract so a future refactor doesn't quietly run
+        // ScopeResolver under a dryRun flag.
+        assertFalse(
+            "dryRun payload must not expose fixReferences: $payload",
+            payload.has("fixReferences"),
+        )
 
         readOnRepo {
             assertEquals("dryRun must not mutate the model", before,
-                membersOf(enumRef).mapNotNull { it.getProperty("name") })
+                membersOf(enumRef).mapNotNull { it.name })
         }
     }
 
@@ -312,7 +435,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `add-node-child dryRun with invalid position returns error and does not mutate the model`() {
         val enumRef = createColorEnum()
 
-        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.getProperty("name") } }
+        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
             it.mps_mcp_add_node_child(enumRef, "members", memberJson("DRY"), position = 99, dryRun = true)
         }
@@ -323,7 +446,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         readOnRepo {
             assertEquals("model must be unchanged after rejected dryRun", before,
-                membersOf(enumRef).mapNotNull { it.getProperty("name") })
+                membersOf(enumRef).mapNotNull { it.name })
         }
     }
 
@@ -346,7 +469,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, params)
         })
         return readOnRepo {
-            val enumNode = structureModel.rootNodes.single { it.getProperty("name") == "Color" }
+            val enumNode = structureModel.rootNodes.single { it.name == "Color" }
             PersistenceFacade.getInstance().asString(enumNode.reference)
         }
     }
@@ -363,7 +486,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         """.trimIndent()
         assertOk(runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, params) })
         return readOnRepo {
-            val foo = structureModel.rootNodes.single { it.getProperty("name") == "Foo" }
+            val foo = structureModel.rootNodes.single { it.name == "Foo" }
             PersistenceFacade.getInstance().asString(foo.reference)
         }
     }
@@ -421,7 +544,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     private fun resolveChildName(ref: String): String? {
         val node = PersistenceFacade.getInstance().createNodeReference(ref)
             .resolve(structureModel.repository)
-        return node?.getProperty("name")
+        return node?.name
     }
 
     /** node-info responses arrive as a JSON-string inside the `data` field; normalise either form. */

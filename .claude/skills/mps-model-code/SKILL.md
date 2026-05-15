@@ -14,6 +14,7 @@ behavior methods, typesystem rule bodies, etc. — where the code is written in
 ## 0 — Golden Rules / Common Gotchas
 
 - **Node Equality**: When comparing nodes for equality, ALWAYS use the `:eq:` and `:ne:` operators (`NPEEqualsExpression` / `NPENotEqualsExpression`). Never use `==` or `equals()`, as they can cause `NullPointerException`s or compare incorrectly in MPS.
+- **Closure parameter needs a `type` child**: every `InferredClosureParameterDeclaration` (the `it` parameter inside `.where { it => … }`, `.translate { … }`, etc.) requires a `type` child, even though the type is intended to be inferred. Use `jetbrains.mps.baseLanguage.structure.UndefinedType` as the placeholder. Omitting it triggers a cascade of misleading errors (`"different parameter numbers"`, `"out of search scope"`, `"operation is not applicable to null"`); see §11.1 closure-literal blueprint and §7 pitfalls.
 
 ---
 
@@ -414,6 +415,7 @@ Language/module prefix for all BaseLanguage structure IDs:
 | Smodel expression (e.g. `:CatchClause` cast) cannot be passed as argument | Java parser has no syntax for smodel casts | Change method signature to accept wider node and compute cast inside the method |
 | `access to link 'X' is not expected here` / `out of search scope` despite correct cardinality | Operand typed as `node<>` rather than `node<X>` (e.g. `ForEachVariable` over `sequence<node<>>`, loosely-typed parameter) | Wrap operand in `SNodeTypeCastExpression` to typed `node<X>` (see §11.1 cast subsection) |
 | Warning: "Prefer explicit node presentation" | `+` string concatenation with an SNode argument | Pre-existing warning in `RulesFunctions_BaseLanguage`; not introduced by your changes |
+| `"different parameter numbers"` on a `ClosureLiteral` + `"out of search scope"` / `"operation is not applicable to null"` inside the closure body | The `InferredClosureParameterDeclaration` was inserted without its required `type` child, so closure-signature inference fails and the parameter's type stays null | Add `{ "role": "type", "nodes": [{ "concept": "jetbrains.mps.baseLanguage.structure.UndefinedType" }] }` to every `InferredClosureParameterDeclaration` (see §11.1 closure-literal blueprint) |
 
 ---
 
@@ -423,9 +425,9 @@ Generated files in `source_gen/` (e.g. `checkThrowedByThrowIsCaught_NonTypesyste
 `RulesFunctions_BaseLanguage.java`) are **read-only** artifacts.
 
 - Use them to discover:
-  - Exact `MetaAdapterFactory` hex IDs for links and concepts
-  - How existing LINKS/CONCEPTS constants are named
-  - What the runtime shape of your code will look like
+    - Exact `MetaAdapterFactory` hex IDs for links and concepts
+    - How existing LINKS/CONCEPTS constants are named
+    - What the runtime shape of your code will look like
 - Do **not** edit them directly unless the user explicitly requests a temporary diagnostic patch.
 - After model changes, re-read the generated file to confirm the code looks as intended.
 
@@ -718,7 +720,7 @@ All five statements share the same shape: a mandatory `commandClosureLiteral` ch
 | Concept | Full `conceptReference` | MPS notation |
 |---|---|---|
 | `ClosureLiteral` | `c:fd392034-7849-419d-9071-12563d152375/1199569711397` | `{ param => body }` |
-| `InferredClosureParameterDeclaration` | `c:fd392034-7849-419d-9071-12563d152375/2524418899405758586` | `it` / named inferred param |
+| `InferredClosureParameterDeclaration` | `c:fd392034-7849-419d-9071-12563d152375/2524418899405758586` | `it` / named inferred param. Inherits a **required** `type` child — fill it with `UndefinedType` (see §11.1 closure-literal blueprint and §10.4). |
 | `YieldStatement` | `c:fd392034-7849-419d-9071-12563d152375/1200830824066` | `yield expr;` — emit one element from a generator-style closure (typically used inside `.translate { ... }`) |
 
 ### 10.4 key BaseLanguage concepts (context)
@@ -731,6 +733,7 @@ All five statements share the same shape: a mandatory `commandClosureLiteral` ch
 | `NPEEqualsExpression` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1225271283259` | `:eq:` null-safe equality |
 | `NPENotEqualsExpression` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1225271221393` | `:ne:` null-safe inequality |
 | `BreakStatement` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081855346303` | `break;` |
+| `UndefinedType` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/4836112446988635817` | Placeholder type used wherever a `Type` slot is structurally required but the actual type should be inferred. Canonical use: the `type` child of `InferredClosureParameterDeclaration` (see §11.1). |
 
 ---
 
@@ -757,7 +760,11 @@ DotExpression
   "children": [
     { "role": "parameter", "nodes": [{
       "concept": "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration",
-      "properties": [{ "name": "name", "value": "it" }, { "name": "resolveInfo", "value": "it" }]
+      "properties": [{ "name": "name", "value": "it" }, { "name": "resolveInfo", "value": "it" }],
+      "children": [{
+        "role": "type",
+        "nodes": [{ "concept": "jetbrains.mps.baseLanguage.structure.UndefinedType" }]
+      }]
     }]},
     { "role": "body", "nodes": [{
       "concept": "jetbrains.mps.baseLanguage.structure.StatementList",
@@ -769,6 +776,11 @@ DotExpression
 
 Notes:
 - `InferredClosureParameterDeclaration` lets the type be inferred from context — almost always what you want inside collection operations. Always set both `name` and `resolveInfo` to the same value so other code can resolve `VariableReference`s back to the parameter.
+- **`type` child is structurally required.** `InferredClosureParameterDeclaration` inherits a required `type` child (cardinality `1`) from `ParameterDeclaration` → `LocalVariableDeclaration`. Even though the value is intended to be inferred from context at type-check time, the AST slot itself must be filled. Use `jetbrains.mps.baseLanguage.structure.UndefinedType` as the placeholder — this is the canonical shape produced by hand-written MPS code (e.g. instances inside `jetbrains.mps.lang.core.util`). Omitting the `type` child triggers a cascade of misleading errors:
+    - `"No child in the obligatory role 'type'"` on the parameter (the direct cause).
+    - `"Error: different parameter numbers"` on the enclosing `ClosureLiteral` — closure-signature inference fails because the lone parameter is untypable.
+    - `"operation is not applicable to null"` / `"out of search scope"` on any `SPropertyAccess` / `SLinkAccess` that uses the parameter — the operand's type is null, so member lookup fails.
+      These all clear with a single `type: UndefinedType` child on the parameter.
 - For multi-parameter closures (`{a, b => ...}`), repeat `parameter` children — the role has cardinality `0..n`.
 - To reference the parameter from inside the body, use `jetbrains.mps.baseLanguage.structure.VariableReference` with a `variableDeclaration` reference targeting the `InferredClosureParameterDeclaration`. Do not insert a fresh declaration each time you reference it.
 - **Forward references by plain name within the same blueprint**: when authoring a JSON blueprint that both *declares* a parameter (e.g. `ParameterDeclaration` / `InferredClosureParameterDeclaration` with `name: "it"`) and *references* it elsewhere in the same tree, you may set the `VariableReference`'s `variableDeclaration` `target` to the plain string `"it"` — the unified-JSON-format auto-resolver matches it to the parameter declared elsewhere in the same `add_node_child` / `insert_root_node_from_json` call. Confirmed working for closure parameters used inside `where`/`select` predicates. No need to perform the insert in two stages just to capture a persistent ref for the parameter.
@@ -1291,7 +1303,11 @@ For the negated check use `Node_IsNullOperation` in the `operation` slot. Common
               "role": "parameter",
               "nodes": [{
                 "concept": "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration",
-                "properties": [{ "name": "name", "value": "it" }, { "name": "resolveInfo", "value": "it" }]
+                "properties": [{ "name": "name", "value": "it" }, { "name": "resolveInfo", "value": "it" }],
+                "children": [{
+                  "role": "type",
+                  "nodes": [{ "concept": "jetbrains.mps.baseLanguage.structure.UndefinedType" }]
+                }]
               }]
             },
             {
@@ -1332,7 +1348,11 @@ produce a flat sequence of nodes (replacement for imperative `collect`-into-list
           "children": [
             { "role": "parameter", "nodes": [{
               "concept": "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration",
-              "properties": [{ "name": "name", "value": "it" }, { "name": "resolveInfo", "value": "it" }]
+              "properties": [{ "name": "name", "value": "it" }, { "name": "resolveInfo", "value": "it" }],
+              "children": [{
+                "role": "type",
+                "nodes": [{ "concept": "jetbrains.mps.baseLanguage.structure.UndefinedType" }]
+              }]
             }]},
             { "role": "body", "nodes": [{
               "concept": "jetbrains.mps.baseLanguage.structure.StatementList",
@@ -2434,13 +2454,13 @@ class "is missing" from your context.
 - Control which **models** (and therefore which concepts, root nodes, and references) are
   visible inside this model's nodes.
 - Two sub-kinds:
-  - **Imported models** — needed whenever you reference a node (including a concept
-    declaration) from another model. Add with
-    `mps_mcp_add_model_dependency(modelRefStr, targetModels)`. The tool also adds a
-    `Default` module dependency on each target model's owning module — you do **not** need
-    to add that manually.
-  - **Used languages** — every concept used in the model must come from a language
-    imported here. Add with `mps_mcp_add_model_used_language(modelRef, usedLanguage,
+    - **Imported models** — needed whenever you reference a node (including a concept
+      declaration) from another model. Add with
+      `mps_mcp_add_model_dependency(modelRefStr, targetModels)`. The tool also adds a
+      `Default` module dependency on each target model's owning module — you do **not** need
+      to add that manually.
+    - **Used languages** — every concept used in the model must come from a language
+      imported here. Add with `mps_mcp_add_model_used_language(modelRef, usedLanguage,
     kind)` where `kind` is `language` or `devkit`.
 
 ### 20.3 Typical failure modes

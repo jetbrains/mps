@@ -1,14 +1,6 @@
 package com.intellij.mcp.tools
 
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
-import com.google.gson.JsonElement
-import com.google.gson.JsonNull
-import com.google.gson.JsonObject
-import com.google.gson.JsonParser
-import com.google.gson.JsonPrimitive
-import com.google.gson.JsonSyntaxException
+import com.google.gson.*
 import com.intellij.mcpserver.McpToolset
 import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
@@ -23,12 +15,13 @@ import jetbrains.mps.errors.messageTargets.PropertyMessageTarget
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
 import jetbrains.mps.ide.MPSCoreComponents
 import jetbrains.mps.ide.project.ProjectHelper
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor
 import jetbrains.mps.make.MakeServiceComponent
 import jetbrains.mps.make.MakeSession
-import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.messages.IMessage
 import jetbrains.mps.messages.IMessageHandler
 import jetbrains.mps.messages.MessageKind
+import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
 import jetbrains.mps.project.MPSProject
@@ -36,24 +29,17 @@ import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.project.structure.modules.ModuleDescriptor
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SNodeUtil
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration
 import jetbrains.mps.smodel.adapter.ids.SLanguageId
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.smodel.language.LanguageRegistry
 import jetbrains.mps.smodel.language.LanguageRegistryListener
 import jetbrains.mps.smodel.language.LanguageRuntime
-import java.util.concurrent.CountDownLatch
-import java.util.concurrent.TimeUnit
 import jetbrains.mps.smodel.resources.MResource
 import jetbrains.mps.smodel.resources.MakeKeys
 import jetbrains.mps.smodel.resources.ModelsToResources
-import kotlinx.coroutines.CancellationException
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.jetbrains.mps.openapi.language.*
 import org.jetbrains.mps.openapi.model.*
 import org.jetbrains.mps.openapi.module.SModule
@@ -62,10 +48,12 @@ import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class AbstractOps : McpToolset {
-    private val LOG = Logger.getInstance(AbstractOps::class.java)
+    private val logger = Logger.getInstance(AbstractOps::class.java)
 
     enum class McpErrorCode {
         INVALID_JSON,
@@ -104,11 +92,41 @@ abstract class AbstractOps : McpToolset {
     companion object {
         private const val TEMP_JSON_PREFIX = "mps-node-"
         private const val TEMP_JSON_SUFFIX = ".json"
+        private const val MAX_INPUT_FILE_SIZE_BYTES = 10L * 1024 * 1024
+
+        /**
+         * Maximum time `performMake` waits, after the build completes, for the
+         * `afterLanguagesLoaded` listener to fire for one of the target languages. On timeout
+         * the runtime is declared stale (`MakeResult.runtimeReady = false`) and the warning
+         * appended to `MakeResult.details` quotes the same number.
+         *
+         * IMPORTANT: when changing this value, also update the documented number in
+         * `implement-mps-language-structure-concepts.md` so the skill doc stays in sync.
+         */
+        internal const val LANGUAGE_RELOAD_TIMEOUT_SECONDS: Long = 10L
         private val GSON = Gson()
         private val PRETTY_GSON = GsonBuilder().setPrettyPrinting().create()
 
         // Shared by all MCP toolset instances: a file created by one toolset may be consumed by another.
         private val createdTempJsonFiles = ConcurrentHashMap.newKeySet<String>()
+
+        // Structure-language meta descriptors used by smart-reference detection. Hoisted from per-call
+        // MetaAdapterFactory lookups so the IDs are grep-able from a single location and the lookups
+        // are not repeated on every getSmartReferenceLink invocation.
+        private val STRUCTURE_LANG_HI = 0xc72da2b97cce4447uL.toLong()
+        private val STRUCTURE_LANG_LO = 0x8389f407dc1158b7uL.toLong()
+        private val SMART_REFERENCE_ATTRIBUTE_CONCEPT = MetaAdapterFactory.getConcept(
+            STRUCTURE_LANG_HI, STRUCTURE_LANG_LO, 0x7ab7b29c4d6297e8L,
+            "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"
+        )
+        private val SMART_REFERENCE_ATTRIBUTE_CHARACTERISTIC_REF = MetaAdapterFactory.getReferenceLink(
+            STRUCTURE_LANG_HI, STRUCTURE_LANG_LO, 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL,
+            "charactersticReference"
+        )
+        private val LINK_DECLARATION_SPECIALIZED_LINK_REF = MetaAdapterFactory.getReferenceLink(
+            STRUCTURE_LANG_HI, STRUCTURE_LANG_LO, 0xf979bd086aL, 0xf98051c244L,
+            "specializedLink"
+        )
     }
 
     // ---- helpers ----
@@ -176,18 +194,77 @@ abstract class AbstractOps : McpToolset {
             is JsonSyntaxException -> invalidJson(e.message)
             is AssignabilityException -> errJson(e.message, McpErrorCode.INVALID_REFERENCE)
             else -> {
-                LOG.warn("Unexpected failure in MCP tool: $activity", e)
+                logger.warn("Unexpected failure in MCP tool: $activity", e)
                 errJson("Internal error while $activity", McpErrorCode.INTERNAL_ERROR)
             }
         }
     }
 
     protected fun rethrowIfCancellation(e: Throwable) {
-        if (e is CancellationException) {
+        if (e is CancellationException || e is ProcessCanceledException) {
             throw e
         }
-        if (e is ProcessCanceledException) {
-            throw e
+    }
+
+    /**
+     * Deletes the given nodes, swallowing non-cancellation throwables. Intended for the rollback
+     * arm of a save-failure branch: a delete that throws would propagate past
+     * `executeShortCommandOnEdt` and bypass the structured `errJson` the caller is building.
+     * Cancellation/Error propagate; ordinary throwables are logged.
+     */
+    protected fun safelyRollbackNodes(nodes: List<SNode>) {
+        for (node in nodes) {
+            // Capture the reference BEFORE delete(): a partial delete may detach the node, and
+            // reading `.reference` on a detached SNode is not uniformly safe across SModel
+            // implementations — it can itself throw and mask the original exception.
+            val refForLog = try {
+                node.reference.toString()
+            } catch (_: Throwable) {
+                "<unknown>"
+            }
+            try {
+                node.delete()
+            } catch (e: Throwable) {
+                rethrowIfCancellation(e)
+                if (e is Error) throw e
+                logger.warn("Rollback delete failed for node '$refForLog'", e)
+            }
+        }
+    }
+
+    /**
+     * Persists [model] under the write command that created [createdNodes], rolling back the
+     * in-memory state via [safelyRollbackNodes] if `save()` throws. Returns a pre-formatted
+     * [errJson] on failure, or `null` on success.
+     *
+     * Save must stay inside the command boundary so the on-disk file matches the write lock
+     * that created the nodes; a background save would race against further mutations.
+     *
+     * `EditableSModel.save()` is not guaranteed atomic across persistence implementations: a
+     * mid-write I/O failure may leave the on-disk file partially written. The in-memory
+     * rollback is best-effort and the returned error message tells the caller that on-disk
+     * state may need a manual VCS reset.
+     */
+    protected fun saveOrRollback(
+        model: EditableSModel,
+        createdNodes: List<SNode>,
+        modelRef: String,
+    ): String? {
+        return try {
+            model.save()
+            null
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            if (e is Error) throw e
+            // Log before rollback: the stack trace is the only diagnostic surface for a real
+            // I/O failure (the returned errJson only carries the message).
+            logger.warn("save() failed for model '$modelRef'", e)
+            safelyRollbackNodes(createdNodes)
+            errJson(
+                "Failed to save model '$modelRef': ${e.message ?: e.javaClass.name}. " +
+                        "On-disk state may be partially written; check VCS to restore a known-good baseline.",
+                McpErrorCode.INTERNAL_ERROR,
+            )
         }
     }
 
@@ -388,7 +465,7 @@ abstract class AbstractOps : McpToolset {
             val tempFile = saveToTempFile(json)
             okJsonString(tempFile.absolutePath)
         } catch (e: Exception) {
-            LOG.warn("Failed to save MCP tool result to a temporary file", e)
+            logger.warn("Failed to save MCP tool result to a temporary file", e)
             errJson("Failed to save result to a temporary file: ${e.message}")
         }
     }
@@ -444,7 +521,7 @@ abstract class AbstractOps : McpToolset {
             val prefix = if (lineNumber == line) "-> " else "   "
             result.append(String.format("%s%4d | %s\n", prefix, lineNumber, currentLine))
             if (lineNumber == line) {
-                result.append("           ") // match "   XXXX | "
+                result.append("          ") // 10 spaces to match "   XXXX | " (3 + 4 + 3)
                 for (j in 0 until (column - 1)) {
                     if (j < currentLine.length && currentLine[j] == '\t') {
                         result.append("\t")
@@ -456,14 +533,6 @@ abstract class AbstractOps : McpToolset {
             }
         }
         return result.toString()
-    }
-
-    protected fun namedReferenceJson(name: String, reference: String): String {
-        return namedReferenceJsonObject(name, reference).toString()
-    }
-
-    protected fun moduleReferenceJson(ref: SModuleReference): String {
-        return moduleReferenceJsonObject(ref).toString()
     }
 
     protected fun namedReferenceJsonObject(name: String, reference: String): JsonObject {
@@ -771,7 +840,10 @@ abstract class AbstractOps : McpToolset {
         val referencesByRole = node.references.associateBy { it.link }
         for (link in node.concept.referenceLinks) {
             val ref = referencesByRole[link]
-            val refProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
+            // ReferenceMessageTarget wraps an SAbstractLink, so use sameAs to compare by the underlying
+            // link rather than by name — a containment link and a reference link can share a name.
+            val refTarget = ReferenceMessageTarget(link)
+            val refProblems = problemsByTarget.filter { it.key.sameAs(refTarget) }.values.flatten()
             if (ref == null && link.isOptional && refProblems.isEmpty()) continue
 
             val refObj = referenceLinkJsonObject(link, repository, includeDeprecated = false)
@@ -799,7 +871,10 @@ abstract class AbstractOps : McpToolset {
         val childrenByRole = node.children.groupBy { it.containmentLink }
         for (link in node.concept.containmentLinks) {
             val childrenInRole = childrenByRole[link] ?: emptyList()
-            val roleProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
+            // ReferenceMessageTarget wraps an SAbstractLink, so use sameAs to compare by the underlying
+            // link rather than by name — a containment link and a reference link can share a name.
+            val roleTarget = ReferenceMessageTarget(link)
+            val roleProblems = problemsByTarget.filter { it.key.sameAs(roleTarget) }.values.flatten()
             if (childrenInRole.isEmpty() && link.isOptional && roleProblems.isEmpty()) continue
 
             val roleObj = containmentLinkInfoJsonObject(link, repository, includeDeprecated = false)
@@ -965,7 +1040,9 @@ abstract class AbstractOps : McpToolset {
         val reference = PersistenceFacade.getInstance().asString(m.moduleReference)
         val vf = try {
             project.getVirtualFolder(m)
-        } catch (_: Throwable) {
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            logger.warn("Failed to get virtual folder for module '$name'", e)
             null
         }
 
@@ -1011,8 +1088,13 @@ abstract class AbstractOps : McpToolset {
     protected suspend fun <T> executeShortCommandOnEdt(mpsProject: MPSProject, action: () -> T): T {
         return withContext(Dispatchers.EDT) {
             var result: T? = null
+            var ran = false
             mpsProject.modelAccess.executeCommand {
                 result = action()
+                ran = true
+            }
+            check(ran) {
+                "modelAccess.executeCommand did not invoke the action; another write may be in progress"
             }
             @Suppress("UNCHECKED_CAST")
             result as T
@@ -1036,34 +1118,48 @@ abstract class AbstractOps : McpToolset {
 
     /**
      * Returns the characteristic SReferenceLink if the concept is a smart reference, or null otherwise.
-     * Checks for explicit SmartReferenceAttribute annotation first, then falls back to the implicit
-     * heuristic: non-abstract, no alias, exactly one mandatory own reference link.
+     * Checks for explicit SmartReferenceAttribute annotation first, then falls back to an implicit
+     * heuristic.
+     *
+     * The implicit heuristic adds two project-specific guards that MPS itself does not apply:
+     * the concept must not be abstract and must not carry an explicit conceptAlias (an alias
+     * usually signals that the concept renders itself, not a bare reference).
+     *
+     * The remaining structural checks are aligned with jetbrains.mps.lang.editor's
+     * DefaultEditorBuilder.isSmartReference: no non-BaseConcept properties, no non-BaseConcept
+     * containment links, and exactly one mandatory non-BaseConcept reference link that does
+     * not specialize an inherited reference.
      */
     protected fun getSmartReferenceLink(sConcept: SAbstractConcept, repo: SRepository): SReferenceLink? {
         val conceptNode = sConcept.sourceNode?.resolve(repo)
         if (conceptNode != null) {
-            val smartRefAttrConcept = MetaAdapterFactory.getConcept(
-                0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x7ab7b29c4d6297e8L,
-                "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"
-            )
-            val charRefLink = MetaAdapterFactory.getReferenceLink(
-                0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL,
-                "charactersticReference"
-            )
-            val smartRefAttr = IAttributeDescriptor.NodeAttribute(smartRefAttrConcept).get(conceptNode)
+            val smartRefAttr = IAttributeDescriptor.NodeAttribute(SMART_REFERENCE_ATTRIBUTE_CONCEPT).get(conceptNode)
             if (smartRefAttr != null) {
-                val linkDeclarationNode = smartRefAttr.getReferenceTarget(charRefLink) ?: return null
+                val linkDeclarationNode = smartRefAttr.getReferenceTarget(SMART_REFERENCE_ATTRIBUTE_CHARACTERISTIC_REF) ?: return null
                 return MetaAdapterByDeclaration.getReferenceLink(linkDeclarationNode)
             }
         }
+        // Project-specific guards (not in DefaultEditorBuilder.isSmartReference).
         if (sConcept.isAbstract) return null
-        if (!sConcept.conceptAlias.isNullOrEmpty()) return null
-        val ownReferences = sConcept.referenceLinks.filter {
-            structureQualifiedName(it.owner) != "jetbrains.mps.lang.core.structure.BaseConcept"
-        }
+        if (sConcept.conceptAlias.isNotEmpty()) return null
+        // Structural checks aligned with DefaultEditorBuilder.isSmartReference.
+        fun nonBaseConceptMember(ownerConcept: SAbstractConcept): Boolean =
+            structureQualifiedName(ownerConcept) != "jetbrains.mps.lang.core.structure.BaseConcept"
+        if (sConcept.properties.any { nonBaseConceptMember(it.owner) }) return null
+        if (sConcept.containmentLinks.any { nonBaseConceptMember(it.owner) }) return null
+        val ownReferences = sConcept.referenceLinks.filter { nonBaseConceptMember(it.owner) }
         if (ownReferences.size != 1) return null
         val ref = ownReferences[0]
         if (ref.isOptional) return null
+        // Reject references that specialize an inherited link — DefaultEditorBuilder only treats
+        // a link as smart when specializedLink is null. This check is best-effort: for compiled
+        // or stub languages the link declaration has no resolvable source node, so we cannot
+        // verify specialization. In that case we preserve the prior behavior of this heuristic
+        // (treat as smart) — both the explicit SmartReferenceAttribute branch above and the
+        // structural checks already degrade gracefully for stub languages, and failing closed
+        // here would silently strip smart-reference support from every compiled language.
+        val refDeclarationNode = ref.sourceNode?.resolve(repo) ?: return ref
+        if (refDeclarationNode.getReferenceTarget(LINK_DECLARATION_SPECIALIZED_LINK_REF) != null) return null
         return ref
     }
 
@@ -1086,7 +1182,8 @@ abstract class AbstractOps : McpToolset {
                 // Language is registered but sourceNode is missing; save as last-resort fallback.
                 registeredConcept = concept
             }
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
+            //The attempt failed, fall back to the other options
         }
 
         // 2. Try as a node reference or by searching in structure models
@@ -1117,7 +1214,8 @@ abstract class AbstractOps : McpToolset {
         try {
             val nodeRef = PersistenceFacade.getInstance().createNodeReference(conceptRef)
             nodeRef.resolve(repository)?.let { return it }
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
+            // Fall back to other options
         }
 
         // 2. Try as a concept reference (runtime ID string languageId/conceptId) or languageName/conceptName
@@ -1131,9 +1229,9 @@ abstract class AbstractOps : McpToolset {
                 val langId = langRef.removePrefix("c:").removePrefix("l:")
                 val conceptId = conceptRefOrName.substringBefore(":")
                 for (module in repository.modules) {
-                    if (module !is jetbrains.mps.smodel.Language) continue
+                    if (module !is Language) continue
                     val moduleId = module.moduleReference.moduleId.toString().removePrefix("l:")
-                    if (moduleId == langId || module.moduleName == langRef) {
+                    if (moduleId == langId || module.moduleName == langId) {
                         for (model in module.models) {
                             if (model.name.longName.endsWith(".structure")) {
                                 for (root in model.rootNodes) {
@@ -1159,8 +1257,7 @@ abstract class AbstractOps : McpToolset {
             for (module in repository.modules) {
                 for (model in module.models) {
                     if (model.name.longName == possibleModelName ||
-                        model.name.longName == "$possibleModelName.structure" ||
-                        (module.moduleName == possibleModelName && model.name.longName == "$possibleModelName.structure")
+                        model.name.longName == "$possibleModelName.structure"
                     ) {
                         for (root in model.rootNodes) {
                             if (root.name == conceptName && root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) {
@@ -1175,7 +1272,7 @@ abstract class AbstractOps : McpToolset {
         // 4. Try as a concept ID string (without language ID) if it's a long number
         if (conceptRef.toLongOrNull() != null) {
             for (module in repository.modules) {
-                if (module !is jetbrains.mps.smodel.Language) continue
+                if (module !is Language) continue
                 for (model in module.models) {
                     if (model.name.longName.endsWith(".structure")) {
                         for (root in model.rootNodes) {
@@ -1188,7 +1285,7 @@ abstract class AbstractOps : McpToolset {
 
         // 5. Try searching by name in all structure models
         for (module in repository.modules) {
-            if (module !is jetbrains.mps.smodel.Language) continue
+            if (module !is Language) continue
             for (model in module.models) {
                 if (model.name.longName.endsWith(".structure")) {
                     for (root in model.rootNodes) {
@@ -1208,7 +1305,8 @@ abstract class AbstractOps : McpToolset {
         try {
             val ref = PersistenceFacade.getInstance().createModelReference(modelRef)
             ref.resolve(repository)?.let { return it }
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
+            // Fall back to the other options
         }
 
         // 2. Try searching by long name
@@ -1227,7 +1325,8 @@ abstract class AbstractOps : McpToolset {
         try {
             val ref = PersistenceFacade.getInstance().createModuleReference(moduleRef)
             ref.resolve(repository)?.let { return it }
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
+            // Fall back to the other options
         }
 
         // 2. Try searching by name
@@ -1249,7 +1348,8 @@ abstract class AbstractOps : McpToolset {
                     return resolved
                 }
             }
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
+            // Fall back to the other options
         }
 
         // 2. Try searching by name
@@ -1292,7 +1392,7 @@ abstract class AbstractOps : McpToolset {
         if (languageRef.startsWith("l:")) {
             return try {
                 facade.createLanguage(languageRef)
-            } catch (e: Exception) {
+            } catch (ignore: Exception) {
                 null
             }
         }
@@ -1307,7 +1407,7 @@ abstract class AbstractOps : McpToolset {
         val facade = PersistenceFacade.getInstance()
         try {
             return facade.createNodeReference(nodeRefStr)
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
             // Try searching by name (root nodes)
             // Support "ModelName.RootName" format
             if (nodeRefStr.contains(".")) {
@@ -1406,11 +1506,21 @@ abstract class AbstractOps : McpToolset {
         val prettyResponse = try {
             val jsonElement = JsonParser.parseString(response)
             PRETTY_GSON.toJson(jsonElement)
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
             response
         }
         val tempFile = File.createTempFile(TEMP_JSON_PREFIX, TEMP_JSON_SUFFIX)
-        tempFile.writeText(prettyResponse)
+        tempFile.deleteOnExit()
+        try {
+            tempFile.writeText(prettyResponse, Charsets.UTF_8)
+        } catch (e: Throwable) {
+            try {
+                tempFile.delete()
+            } catch (suppressed: Throwable) {
+                e.addSuppressed(suppressed)
+            }
+            throw e
+        }
         createdTempJsonFiles.add(tempFile.canonicalPath)
         return tempFile
     }
@@ -1457,7 +1567,13 @@ abstract class AbstractOps : McpToolset {
         if (!file.isFile) {
             throw McpInvalidRequestException("Input path is not a regular file: '$jsonOrPath'")
         }
-        val content = file.readText()
+        val sizeBytes = file.length()
+        if (sizeBytes > MAX_INPUT_FILE_SIZE_BYTES) {
+            throw McpInvalidRequestException(
+                "Input file is too large ($sizeBytes bytes); the limit is $MAX_INPUT_FILE_SIZE_BYTES bytes (10 MB)."
+            )
+        }
+        val content = file.readText(Charsets.UTF_8)
         if (!dryRun) {
             deleteCreatedTempFile(file)
         }
@@ -1468,7 +1584,7 @@ abstract class AbstractOps : McpToolset {
         val canonicalFile = try {
             file.canonicalFile
         } catch (e: Exception) {
-            LOG.warn("Failed to resolve JSON input file path for cleanup", e)
+            logger.warn("Failed to resolve JSON input file path for cleanup", e)
             return
         }
         val canonicalPath = canonicalFile.path
@@ -1477,10 +1593,10 @@ abstract class AbstractOps : McpToolset {
 
         try {
             if (!canonicalFile.delete() && canonicalFile.exists()) {
-                LOG.warn("Failed to delete temporary JSON file: $canonicalPath")
+                logger.warn("Failed to delete temporary JSON file: $canonicalPath")
             }
         } catch (e: Exception) {
-            LOG.warn("Failed to delete temporary JSON file: $canonicalPath", e)
+            logger.warn("Failed to delete temporary JSON file: $canonicalPath", e)
         } finally {
             createdTempJsonFiles.remove(canonicalPath)
         }
@@ -1490,11 +1606,11 @@ abstract class AbstractOps : McpToolset {
         val tempDir = try {
             File(System.getProperty("java.io.tmpdir")).canonicalFile
         } catch (e: Exception) {
-            LOG.warn("Failed to resolve default temporary directory", e)
+            logger.warn("Failed to resolve default temporary directory", e)
             return false
         }
         // canonicalFile.parentFile is canonical too, so this comparison does not depend on path spelling.
-        return file.parentFile == tempDir &&
+        return com.intellij.openapi.util.io.FileUtil.filesEqual(file.parentFile, tempDir) &&
                 file.name.startsWith(TEMP_JSON_PREFIX) &&
                 file.name.endsWith(TEMP_JSON_SUFFIX)
     }
@@ -1503,7 +1619,7 @@ abstract class AbstractOps : McpToolset {
         try {
             createdTempJsonFiles.remove(file.canonicalPath)
         } catch (e: Exception) {
-            LOG.warn("Failed to resolve JSON input file path for cleanup", e)
+            logger.warn("Failed to resolve JSON input file path for cleanup", e)
         }
     }
 
@@ -1514,8 +1630,36 @@ abstract class AbstractOps : McpToolset {
 
     /**
      * Result of a make operation.
+     *
+     * `runtimeReady` answers: "can the caller trust the language runtime descriptors for the
+     * targets it asked us to build?". True only when the post-make `ClassLoaderManager.reload`
+     * was confirmed (listener latch fired, or no language modules to track). False on every
+     * path where that confirmation did not happen — build failures, unhandled exceptions, and
+     * latch timeout. Callers consuming freshly built concepts should branch on `runtimeReady`.
+     *
+     * Exception: the "Nothing to make" path returns `success=true, runtimeReady=true` — nothing
+     * changed, so the runtime is unchanged-therefore-ready. Callers distinguishing no-op from
+     * successful build should also inspect [message].
      */
-    data class MakeResult(val success: Boolean, val message: String, val details: List<MakeMessage> = emptyList())
+    data class MakeResult(
+        val success: Boolean,
+        val message: String,
+        val details: List<MakeMessage> = emptyList(),
+        val runtimeReady: Boolean = true,
+    )
+
+    /**
+     * Snapshot of state collected inside the model read action and consumed by [performMake] after
+     * the suspending call returns. Bundling all values in a `val` payload avoids `var` capture
+     * across coroutine context boundaries.
+     */
+    private data class MakePreparation(
+        val resourcesList: List<jetbrains.mps.make.resources.IResource>,
+        val session: MakeSession,
+        val openNewSessionFlag: Boolean,
+        val targetLanguageIds: Set<SLanguageId>,
+        val targetLanguageModuleRefs: Set<SModuleReference>,
+    )
 
     /**
      * Performs a make operation on the given models.
@@ -1523,14 +1667,15 @@ abstract class AbstractOps : McpToolset {
      */
     protected suspend fun performMake(mpsProject: MPSProject, models: List<SModel>, modules: List<SModule> = emptyList(), rebuild: Boolean): MakeResult {
         return try {
+            // Every `success = false` branch reports `runtimeReady = false`; see MakeResult KDoc.
             val makeServiceComponent = mpsProject.getComponent(MakeServiceComponent::class.java)
-                ?: return MakeResult(false, "Make service component not found")
+                ?: return MakeResult(false, "Make service component not found", runtimeReady = false)
 
             val makeService = makeServiceComponent.get()
-                ?: return MakeResult(false, "No active make service")
+                ?: return MakeResult(false, "No active make service", runtimeReady = false)
 
             if (makeService.isSessionActive) {
-                return MakeResult(false, "Another make session is already active")
+                return MakeResult(false, "Another make session is already active", runtimeReady = false)
             }
 
             val messages = mutableListOf<MakeMessage>()
@@ -1546,9 +1691,7 @@ abstract class AbstractOps : McpToolset {
             // triggered prematurely by an unrelated background language reload.
             // Also collect the corresponding module references so we can drive
             // ClassLoaderManager.reload synchronously after the make completes.
-            var targetLanguageIds = emptySet<SLanguageId>()
-            var targetLanguageModuleRefs = emptySet<SModuleReference>()
-            val (resourcesList, session, openNewSessionFlag) = executeBackgroundRead(mpsProject) {
+            val preparation = executeBackgroundRead(mpsProject) {
                 // Expand modules to include generators for languages
                 val expandedModules = expandModules(modules)
 
@@ -1569,8 +1712,6 @@ abstract class AbstractOps : McpToolset {
                         refs.add(m.moduleReference)
                     }
                 }
-                targetLanguageIds = ids
-                targetLanguageModuleRefs = refs
 
                 // Compose resources from provided models and explicit modules
                 val list = mutableListOf<jetbrains.mps.make.resources.IResource>()
@@ -1599,13 +1740,19 @@ abstract class AbstractOps : McpToolset {
                 }
 
                 val s = MakeSession(mpsProject, handler, rebuild)
-                Triple(list, s, makeService.openNewSession(s))
+                MakePreparation(list, s, makeService.openNewSession(s), ids, refs)
             }
+            val resourcesList = preparation.resourcesList
+            val session = preparation.session
+            val openNewSessionFlag = preparation.openNewSessionFlag
+            val targetLanguageIds = preparation.targetLanguageIds
+            val targetLanguageModuleRefs = preparation.targetLanguageModuleRefs
 
             if (!openNewSessionFlag) {
-                return MakeResult(false, "Opening the make session failed")
+                return MakeResult(false, "Opening the make session failed", runtimeReady = false)
             }
 
+            // Default runtimeReady=true: nothing mutated, so the runtime is unchanged-ready.
             if (resourcesList.isEmpty()) {
                 return MakeResult(true, "Nothing to make (no inputs resolved)")
             }
@@ -1628,10 +1775,18 @@ abstract class AbstractOps : McpToolset {
             val languageRegistry = LanguageRegistry.getInstance(mpsProject.repository)
             languageRegistry.addRegistryListener(reloadListener)
 
+            // Captured inside the `withContext` block below and read after the make finishes.
+            // Starts true so the "no language modules to track" path (targetLanguageIds empty)
+            // returns the N/A default; flipped to false only when the build succeeded but the
+            // 10 s reload-latch timed out for a language we were actually building.
+            var runtimeReady = true
             val result = try {
                 val future = makeService.make(session, resourcesList, null, null, makeMonitor)
                 val r = try {
-                    withContext(Dispatchers.IO) {
+                    // runInterruptible bridges Thread.interrupt() to coroutine cancellation so a
+                    // structured-cancel actually unblocks future.get() instead of waiting for the
+                    // build to finish.
+                    runInterruptible(Dispatchers.IO) {
                         future.get()
                     }
                 } catch (e: CancellationException) {
@@ -1679,12 +1834,16 @@ abstract class AbstractOps : McpToolset {
                         // synchronously inside CLM.reload above. We still wait briefly to
                         // cover natural reloads (e.g. languages outside targetLanguageModuleRefs)
                         // and to absorb any tail latency of LanguageRegistry notifications.
-                        val latchFired = languageReloadLatch.await(10, TimeUnit.SECONDS)
+                        // runInterruptible makes the blocking await honor coroutine cancellation.
+                        val latchFired = runInterruptible {
+                            languageReloadLatch.await(LANGUAGE_RELOAD_TIMEOUT_SECONDS, TimeUnit.SECONDS)
+                        }
                         if (!latchFired && targetLanguageIds.isNotEmpty()) {
+                            runtimeReady = false
                             messages.add(
                                 MakeMessage(
                                     "WARNING",
-                                    "Language runtime did not reload within 10 s after the build " +
+                                    "Language runtime did not reload within $LANGUAGE_RELOAD_TIMEOUT_SECONDS s after the build " +
                                             "(languages: ${targetLanguageIds.joinToString()}). " +
                                             "Concept descriptors (properties, references, children) may " +
                                             "be stale. Try `mps_mcp_reload_all` or restart MPS, then retry."
@@ -1699,16 +1858,16 @@ abstract class AbstractOps : McpToolset {
             }
 
             if (result.isSucessful) {
-                MakeResult(true, "Make successful", messages)
+                MakeResult(true, "Make successful", messages, runtimeReady = runtimeReady)
             } else {
-                MakeResult(false, "Make failed: ${result.message()}", messages)
+                MakeResult(false, "Make failed: ${result.message()}", messages, runtimeReady = false)
             }
         } catch (e: CancellationException) {
             throw e
         } catch (e: ProcessCanceledException) {
             throw e
         } catch (e: Exception) {
-            MakeResult(false, "Make error: ${e.message?.takeIf { it.isNotBlank() } ?: e.toString()}")
+            MakeResult(false, "Make error: ${e.message?.takeIf { it.isNotBlank() } ?: e.toString()}", runtimeReady = false)
         }
     }
 }
