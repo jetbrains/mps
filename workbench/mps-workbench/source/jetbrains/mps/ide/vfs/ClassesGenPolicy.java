@@ -40,7 +40,7 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
   @Override
   @NotNull
   protected Set<VirtualFile> getAllExcludeRoots() {
-    final MPSProject mpsProject = ProjectHelper.fromIdeaProject(getProject());
+    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectIfCreated(getProject());
     if (mpsProject == null) {
       return Collections.emptySet();
     }

@@ -63,6 +63,16 @@ public class ProjectHelper {
   }
 
   /**
+   * Returns an instance of {@link MPSProject} if it's been created, null otherwise.
+   */
+  public static MPSProject fromIdeaProjectIfCreated(@Nullable com.intellij.openapi.project.Project p) {
+    if (p != null) {
+      return p.getServiceIfCreated(MPSProject.class);
+    }
+    return null;
+  }
+
+  /**
    * Use in scenarios, where no doubt about MPSProject presence is tolerated.
    * E.g. to address IDEA's crusade to get rid of dependency injection in components and
    * extensions, we can no longer pass MPSProject instead of IDEA's Project into our own
