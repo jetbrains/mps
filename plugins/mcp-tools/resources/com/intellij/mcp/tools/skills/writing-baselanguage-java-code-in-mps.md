@@ -1,13 +1,12 @@
 ---
-name: Writing BaseLanguage/Java code in MPS
-shortDescription: Tips for editing jetbrains.mps.baseLanguage nodes and setting references.
-whenToUseHints: Use when creating Java code in MPS.
+name: writing-baselanguage-java-code-in-mps
+description: Tips for editing jetbrains.mps.baseLanguage nodes and setting references. Use when creating Java code in MPS.
 ---
 
 ### Editing Strategy
 1. **New Class/Method**: Use `mps_mcp_parse_java_and_insert`.
 2. **Targeted Change**: Use node-by-node AST editing.
-3. **Fresh Root with Issues**: Consider delete-and-recreate.
+3. **Fresh Root with Issues**: Consider delete-and-recreate only if the root was just created in the current session, has no incoming references, and the user has not asked to preserve node IDs. This destroys the node's persistent ID.
 
 ### BaseLanguage Editing Strategy
 - Use `mps_mcp_parse_java_and_insert` when creating a new BaseLanguage class or method from scratch and the code is easy to express as ordinary Java.
@@ -34,13 +33,19 @@ whenToUseHints: Use when creating Java code in MPS.
 - Use `mps_mcp_parse_java_and_insert` with constant value placeholders to insert a skeleton of a desired expression and then replace the placeholders with concrete nodes individually.
 #### 2. Setting References for Java Stubs
 - WHEN setting BaseLanguage references to JDK stubs THEN use persistent nodeRefs, URL-encode signatures, then run root error check
-- **URL Encoding**: Ensure parentheses `(` and `)` in method signatures are URL-encoded as `%28` and `%29`.
+- **Derive, don't look up**: Once you have a class ref (from `search_root_node_by_name`), construct the member ref directly — do not call `mps_mcp_print_node_json` on a stub just to harvest a ref you can derive.
+  - Constructor `JButton(String)`: `<jbuttonClassRef>.<init>%28java.lang.String%29`
+  - No-arg constructor: `<jbuttonClassRef>.<init>%28%29`
+  - Method `doClick()` (declared on `JButton`): `<jbuttonClassRef>.doClick%28%29`
+  - **Inherited methods use the declaring class ref.** `addActionListener(ActionListener)` is declared on `AbstractButton`, so use `<abstractButtonClassRef>.addActionListener%28java.awt.event.ActionListener%29`. Using the subclass ref will not resolve correctly.
+- **URL Encoding**: Encode `(` → `%28`, `)` → `%29`. Use fully-qualified parameter types (e.g., `java.lang.String`, not `String`).
 - **Method Signatures**: Do not include the return type suffix (e.g., `:void`) unless explicitly confirmed by a `mps_mcp_print_node_json` output from a known-good reference.
 - **Example**: Use `...println%28java.lang.Object%29` instead of `...println(java.lang.Object):void`.
+- **Ambiguous overloads**: If you can't determine the right overload by inspection (e.g., `Container.add(Component)` vs `Container.add(Component, Object)`), use `GET_ASSIGNABLE_REFERENCES` with `mode=completion`, `kindFilter=instanceMethods`, and `argumentTypes` set. See `the-baselanguage-technical-reference` for the full decision tree.
 #### 3. String and string
 - The string (StringType) and String (ClassifierType that has the 'classifier' reference point to the String root node of JDK module's 'lang' model) can be used interchangeably. Prefer 'string'.
 #### 4. Java compatibility
 - BaseLanguage supports full Java 7 specification, including generics.
 - Avoid lambdas, records and other new Java features.
 
-### IMPORTANT - A technical reference is available as the "The BaseLanguage Technical Reference" skill. Use the BaseLanguage technical reference to read, write, or modify Java-like code in JetBrains MPS using the `jetbrains.mps.baseLanguage` language or its extensions. It bridges the gap between Java programming proficiency and the MPS projectional AST, providing the essential mapping from standard Java syntax to its corresponding MPS concepts, roles, and properties to ensure that generated JSON blueprints are structurally valid.
+### IMPORTANT - A technical reference is available as the `the-baselanguage-technical-reference` skill. Use this technical reference to read, write, or modify Java-like code in JetBrains MPS using the `jetbrains.mps.baseLanguage` language or its extensions. It bridges the gap between Java programming proficiency and the MPS projectional AST, providing the essential mapping from standard Java syntax to its corresponding MPS concepts, roles, and properties to ensure that generated JSON blueprints are structurally valid.

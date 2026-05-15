@@ -20,15 +20,15 @@ The MPS skills available in this environment are surfaced by `mps_mcp_get_contex
 
 | `mps_mcp_get_skill` name                      | What it does                                                                                                                                 |
 |-----------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| `Implement MPS language structure (concepts)` | Steps to fill an MPS language with concepts, interface concepts, enums, and related structure definitions                                    |
-| `Master MPS Editor Implementation (Workflow)` | Define or modify editors for concepts in a JetBrains MPS language                                                                            |
-| `MPS Editor Technical Reference`              | Comprehensive technical deep-dive into cell models, layout styles, and inheritance rules for MPS editors.                                    |
-| `Writing BaseLanguage/Java code in MPS`       | Tips to edit nodes from the jetbrains.mps.baseLanguage and especially to set references correctly                                            |
-| `MPS BaseLanguage JSON AST`                   | Workflow for creating or updating non-trivial JetBrains MPS BaseLanguage/Java code through JSON AST and MPS node tools instead of the parser |
-| `The BaseLanguage Technical Reference`        | Detailed information about the internals of BaseLanguage                                                                                     |
-| `Understand an MPS languages`                 | Steps to analyze MPS language definitions                                                                                                    |
-| `Language and concept inheritance`            | Steps to understand the inheritance hierarchy between MPS languages and concepts                                                             |
-| `Add or update MPS code (nodes)`              | Rules to create or modify MPS nodes using the MPS tools and JSON blueprints                                                                  |
+| `implement-mps-language-structure-concepts`   | Steps to define concepts, interface concepts, and enums in an MPS language. Use when creating or designing concepts in an MPS language.      |
+| `master-mps-editor-implementation-workflow`   | Workflow for designing, scaffolding, and refining MPS concept editors. Use when creating or modifying MPS editors.                           |
+| `mps-editor-technical-reference`              | Technical details on cell models, layout styles, and inheritance for MPS editors. Use for technical details, concept IDs, or JSON templates. |
+| `writing-baselanguage-java-code-in-mps`       | Tips for editing jetbrains.mps.baseLanguage nodes and setting references. Use when creating Java code in MPS.                                |
+| `mps-baselanguage-json-ast`                   | Workflow for creating or updating non-trivial JetBrains MPS BaseLanguage/Java code through JSON AST and MPS node tools instead of the parser. |
+| `the-baselanguage-technical-reference`        | Mapping Java syntax to MPS baseLanguage concepts and roles. Use to map Java syntax to MPS concepts and roles for JSON blueprints.            |
+| `understand-mps-languages`                    | Analyze MPS language definitions. Use when analyzing or inspecting MPS languages.                                                            |
+| `language-and-concept-inheritance`            | Investigate inheritance between MPS languages and concepts. Use when investigating a language or using an unfamiliar one.                    |
+| `add-or-update-mps-code-nodes`                | Modify MPS nodes using tools and JSON blueprints. Use when adding or updating MPS nodes.                                                     |
 
 If a prompt mentions a skill that is matched both by a file skill and an mcp skill, you typically need to read both.
 
@@ -87,6 +87,7 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 - WHEN selecting a concept for node creation THEN verify it is concrete; avoid interface/abstract
 - User expected the entire JSON file representing MPS nodes to be read and presented without truncation.
 - WHEN large file output is truncated THEN read and return the file in sequential chunks
+- Preserve node IDs: prefer `mps_mcp_update_root_node_from_json` or surgical edits (`mps_mcp_add_node_child`, `mps_mcp_set_node_properties`, etc.) over delete-and-reinsert. Deleting a root node destroys its persistent ID and breaks any incoming references. Only delete-and-reinsert when the node is brand new, has no incoming references, and the user has not requested ID preservation.
 
 
 #### JSON format for nodes
@@ -145,8 +146,8 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 ### 6. Additional skills - Handling unknown MPS languages
 - Use `mps_mcp_get_context` to discover the MPS skills available in the current environment.
 - Use `mps_mcp_get_skill` to acquire a particular skill and use it to write MPS code.
-- Acquire the 'Writing BaseLanguage/Java code in MPS' skill as soon as you need to write any code in BaseLanguage or Java.
-- Acquire the 'Implement MPS language structure (concepts)' skill as soon as you need to define or change a language or its concepts.
+- Acquire the `writing-baselanguage-java-code-in-mps` skill as soon as you need to write any code in BaseLanguage or Java.
+- Acquire the `implement-mps-language-structure-concepts` skill as soon as you need to define or change a language or its concepts.
 
 ## Available MCP Tools
 

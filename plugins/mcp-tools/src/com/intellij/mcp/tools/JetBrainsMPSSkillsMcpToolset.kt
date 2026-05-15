@@ -5,8 +5,8 @@ import com.intellij.mcpserver.annotations.McpTool
 
 class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
-    // Each entry holds four strings:
-    // [ name, shortDescription, whenToUseHints, fullFileContent ]
+    // Each entry holds three strings:
+    // [ name, description, fullFileContent ]
     private val availableSkills: List<List<String>> by lazy { loadSkillsFromResources() }
 
     private fun loadSkillsFromResources(): List<List<String>> {
@@ -27,7 +27,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             }
     }
 
-    // Parses YAML frontmatter (--- ... ---) and returns [name, shortDescription, whenToUseHints, fullText]
+    // Parses YAML frontmatter (--- ... ---) and returns [name, description, fullText]
     private fun parseSkillFile(text: String): List<String>? {
         if (!text.startsWith("---")) return null
         val endFrontmatter = text.indexOf("\n---", 3).takeIf { it >= 0 } ?: return null
@@ -38,7 +38,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             val colon = line.indexOf(':')
             if (colon >= 0) {
                 val key = line.substring(0, colon).trim()
-                val value = line.substring(colon + 1)
+                val value = line.substring(colon + 1).trim()
                 fields[key] = value
                 currentKey = key
             } else if (currentKey != null) {
@@ -46,9 +46,8 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             }
         }
         val name = fields["name"]?.trim() ?: return null
-        val short = fields["shortDescription"] ?: return null
-        val hints = fields["whenToUseHints"] ?: return null
-        return listOf(name, short, hints, text) // entry[3] = full file text
+        val description = fields["description"] ?: return null
+        return listOf(name, description, text) // entry[2] = full file text
     }
 
     private fun mps_mcp_list_skills(): String {
@@ -60,8 +59,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
                 if (!firstEntry) append(',') else firstEntry = false
                 append('{')
                 append("\"name\":\"").append(escapeJson(entry[0])).append("\",")
-                append("\"shortDescription\":\"").append(escapeJson(entry[1])).append("\",")
-                append("\"whenToUseHints\":\"").append(escapeJson(entry[2])).append("\",")
+                append("\"description\":\"").append(escapeJson(entry[1])).append("\"")
                 append('}')
             }
             append(']')
@@ -81,7 +79,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
         skillName: String
     ): String {
         val match = availableSkills.firstOrNull { it.isNotEmpty() && it[0] == skillName }
-        val skillDetails = match?.getOrNull(3) ?: return errJson("No details are available for this skill")
+        val skillDetails = match?.getOrNull(2) ?: return errJson("No details are available for this skill")
         return okJson("\"" + escapeJson(skillDetails) + "\"")
     }
 

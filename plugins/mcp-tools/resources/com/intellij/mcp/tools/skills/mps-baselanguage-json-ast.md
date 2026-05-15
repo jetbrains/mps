@@ -1,7 +1,6 @@
 ---
-name: MPS BaseLanguage JSON AST
-shortDescription: Workflow for creating or updating non-trivial JetBrains MPS BaseLanguage/Java code through JSON AST and MPS node tools instead of the parser. Use when implementing classes, interfaces, methods, or larger behaviors in MPS models and constructor/method references must remain stable across staged root updates and make.
-whenToUseHints: Use this skill when:
+name: mps-baselanguage-json-ast
+description: Workflow for creating or updating non-trivial JetBrains MPS BaseLanguage/Java code through JSON AST and MPS node tools instead of the parser. Use when implementing classes, interfaces, methods, or larger behaviors in MPS models and constructor/method references must remain stable across staged root updates and make. Use this skill when:
 - BaseLanguage or Java-like code must be created in JetBrains MPS through JSON AST.
 - The parsing tool is unavailable, undesirable, or intentionally avoided.
 - The task involves non-trivial roots with several methods, constructors, loops, or object creation expressions.
@@ -23,7 +22,7 @@ Do not use this skill for:
 ## Recommended workflow
 
 1. Load context and prerequisite MPS skills.
-   Acquire `Writing BaseLanguage/Java code in MPS`, `The BaseLanguage Technical Reference`, and `Add or update MPS code (nodes)`.
+   Acquire `writing-baselanguage-java-code-in-mps`, `the-baselanguage-technical-reference`, and `add-or-update-mps-code-nodes`.
 
 2. Resolve the target module and model.
    Create the model if needed. Confirm required used languages and dependencies before inserting substantial code.
@@ -35,14 +34,20 @@ Do not use this skill for:
    Insert signatures, fields, and minimal empty method or constructor bodies first.
    Use `mps_mcp_update_root_node_from_json` with `dryRun: true` before applying the skeleton for real.
 
-5. Harvest live member references from the skeleton.
-   Use `mps_mcp_print_node_json` on each root and extract the actual references for:
+5. Collect own-class member references from the skeleton.
+   For constructors and methods declared in your own roots, use `mps_mcp_print_node_json` on the skeleton and extract the actual persistent refs for:
    - constructors
    - instance methods
    - static methods
 
-6. Resolve external constructor and method references explicitly.
-   For library or JDK-backed code, inspect the stub roots and harvest the exact persistent refs instead of guessing signatures.
+6. Resolve external constructor and method references.
+   For library or JDK-backed code, derive persistent refs directly from the class ref — do not print stub roots to harvest signatures you can compute.
+   - Constructor: `<classRef>.<init>%28<url-encoded-param-types>%29`
+   - Method: `<classRef>.<methodName>%28<url-encoded-param-types>%29`
+   - Inherited method: use the **declaring class** ref, not the subclass ref (e.g., `addActionListener` is on `AbstractButton`, not `JButton`)
+   - If the method name is unambiguous or has a single overload, passing the plain name as `target` is enough — the tool resolves it in scope. Reserve the derivation formula for overloaded or inherited methods where the name alone is ambiguous.
+   - Use `GET_ASSIGNABLE_REFERENCES` with `mode=completion` only when overloads are ambiguous and you cannot determine the right one by inspection.
+   - Only call `mps_mcp_print_node_json` on a stub when the declaring class in the hierarchy is genuinely unclear and none of the above strategies resolve it.
 
 7. Patch the final JSON AST with real refs.
    In particular, replace placeholder targets for:
@@ -69,7 +74,8 @@ Do not use this skill for:
 - `InstanceMethodCallOperation.baseMethodDeclaration` must point to the actual target method declaration.
 - Placeholder names are acceptable for an early pass, but do not rely on them for final constructor or method references in complex roots.
 - After a full root update, old member refs may become stale even if the names still look right.
-- When a method call or constructor use is critical, always prefer a harvested persistent ref over a name placeholder.
+- For own-class members, always prefer a harvested persistent ref over a name placeholder after the skeleton is in place.
+- For JDK/library stubs, derive the ref from the class ref; only fall back to printing the stub for genuinely ambiguous overloads.
 
 ## Validation ladder
 
@@ -94,15 +100,15 @@ All three are necessary for non-trivial BaseLanguage AST work.
 - Keep helper JSON-generation scripts outside the model and treat them as disposable tooling.
 - Prefer staged root updates over one huge insertion payload.
 - If only one subtree changes, prefer `mps_mcp_add_node_child` or `mps_mcp_replace_node_child` over a full root rewrite to reduce reference churn.
-- Harvest refs from live AST with `mps_mcp_print_node_json`; do not assume constructor or method identities are stable across rewrites.
-- For library stubs, use exact persistent refs from printed stub nodes whenever constructor overloads or encoded signatures matter.
+- Harvest refs from live AST with `mps_mcp_print_node_json` for own-class members; do not assume constructor or method identities are stable across rewrites.
+- For library stubs, derive persistent refs from the class ref using the URL-encoded signature formula; do not print stubs to harvest refs that can be computed.
 
 ## Minimal checklist
 
 - Target model exists
 - Placeholder roots exist
 - Skeleton roots validate and apply
-- Live member refs are harvested
+- Own-class member refs are harvested; JDK/library refs are derived
 - Full JSON is patched with real refs
 - Root problem check is clean
 - `MAKE` succeeds

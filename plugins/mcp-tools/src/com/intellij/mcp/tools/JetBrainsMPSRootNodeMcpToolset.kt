@@ -158,7 +158,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription("""
         Bulk creation of one or more MPS root nodes from a JSON description.
-        The 'json' parameter is an absolute path to a local temporary file containing the actual JSON description.
+        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local temporary file containing it.
+        If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).
 
         ### Unified JSON Format — single node
         {
@@ -174,7 +175,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         All nodes are inserted inside one command; if any node fails the entire batch is rolled back.
 
         - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference or a placeholder name for auto-resolution.
+        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
         - Properties, children, and references are optional.
         - Very large JSON inputs may be truncated before the tool reads them. If that happens, insert a smaller root first and then add children in follow-up calls with 'mps_mcp_add_node_child' or 'mps_mcp_replace_node_child' instead of sending the whole subtree at once.
 
@@ -183,7 +184,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Persistent form of SModelReference") modelRef: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. Use the unified JSON format. 'target' can be empty or a placeholder name for auto-resolution.") json: String,
+        @McpDescription("The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Use the unified JSON format.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the model. Default: false.") dryRun: Boolean = false
     ): String {
         currentCoroutineContext().reportToolActivity("Inserting MPS root node from JSON")
@@ -191,7 +192,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
 
         return try {
-            val actualJson = readFromFile(json)
+            val actualJson = readJsonOrFile(json, dryRun)!!
             var result: String? = null
             var error: String? = null
 
@@ -369,7 +370,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     @McpDescription("""
         Updates an MPS root node from a JSON description.
         The root node itself is preserved, but its properties, references and children are re-set according to the provided JSON blueprint.
-        The 'json' parameter is an absolute path to a local temporary file containing the actual JSON description.
+        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local temporary file containing it.
+        If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).
         
         ### Unified JSON Format
         {
@@ -379,7 +381,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
           "references": [{ "role": "refRole", "target": "targetRefOrName" }]
         }
         - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference or a placeholder name for auto-resolution.
+        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
         - Properties, children, and references are optional.
         - Very large JSON inputs may be truncated before the tool reads them. This tool is intended for full-root blueprints: it resets the root's properties, children, and references to match the provided JSON. For partial updates of an existing root, prefer 'mps_mcp_add_node_child' or 'mps_mcp_replace_node_child' instead of sending an incomplete root JSON.
 
@@ -387,7 +389,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. Use the unified JSON format. 'target' can be empty or a placeholder name for auto-resolution.") json: String,
+        @McpDescription("The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Use the unified JSON format.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
         currentCoroutineContext().reportToolActivity("Updating MPS root node from JSON")
@@ -395,7 +397,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
 
         return try {
-            val actualJson = readFromFile(json)
+            val actualJson = readJsonOrFile(json, dryRun)!!
             var result: String? = null
             var error: String? = null
             withContext(Dispatchers.EDT) {

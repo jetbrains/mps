@@ -1,7 +1,6 @@
 ---
-name: MPS Editor Technical Reference
-shortDescription: Technical details on cell models, layout styles, and inheritance for MPS editors.
-whenToUseHints: Use for technical details, concept IDs, or JSON templates. Drop once complete.
+name: mps-editor-technical-reference
+description: Technical details on cell models, layout styles, and inheritance for MPS editors. Use for technical details, concept IDs, or JSON templates. Drop once complete.
 ---
 
 # MPS Editor Technical Reference

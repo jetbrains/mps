@@ -23,7 +23,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         Concepts can be specified either individually or by providing entire languages.
 
         Returns a JSON object with 'ok':true and 'data':"/path/to/local/file.json" on success, or 'ok':false and 'error':"..." on failure.
-        Format of data in the file: [{ name, qualifiedName, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", "ref2", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true, properties: [...], references: [...], children: [...] }, ...]
+        Format of data in the file: [{ name, qualifiedName, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", "ref2", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true, properties: [...], references: [...], children: [...], sampleNode: { concept, properties: [...], references: [...], children: [...] } }, ...]
         Use the 'qualifiedName' field (e.g. "jetbrains.mps.baseLanguage.structure.ClassConcept") as the 'concept' field in JSON node blueprints. It is unambiguous and does not require a conceptReference.
     """)
     suspend fun mps_mcp_get_concept_details(
@@ -70,6 +70,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                             ",\"properties\":" + conceptPropertiesJson(concept, mpsProject.repository) +
                             ",\"references\":" + conceptReferencesJson(concept, mpsProject.repository) +
                             ",\"children\":" + conceptChildrenJson(concept, mpsProject.repository) +
+                            ",\"sampleNode\":" + conceptSampleJson(concept) +
                             "}"
                     results.add(detailedInfo)
                 }
@@ -189,7 +190,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                 if (!first) append(',') else first = false
                 append('{')
                 append("\"name\":\"").append(escapeJson(ref.name)).append("\",")
-                append("\"targetConcept\":\"").append(escapeJson(ref.targetConcept.name)).append("\",")
+                append("\"targetConcept\":\"").append(escapeJson(getQualifiedName(ref.targetConcept))).append("\",")
                 val cardinality = if (ref.isOptional) "0..1" else "1"
                 append("\"cardinality\":\"").append(cardinality).append("\",")
                 val declarationNode = ref.sourceNode?.resolve(repository)
@@ -212,7 +213,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                 if (!first) append(',') else first = false
                 append('{')
                 append("\"name\":\"").append(escapeJson(link.name)).append("\",")
-                append("\"targetConcept\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
+                append("\"targetConcept\":\"").append(escapeJson(getQualifiedName(link.targetConcept))).append("\",")
                 val cardinality = when {
                     link.isOptional && link.isMultiple -> "0..n"
                     link.isOptional && !link.isMultiple -> "0..1"
@@ -229,5 +230,63 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             }
             append(']')
         }
+    }
+
+    private fun conceptSampleJson(concept: SAbstractConcept): String {
+        val qualifiedName = getQualifiedName(concept)
+
+        return buildString {
+            append('{')
+            append("\"concept\":\"").append(escapeJson(qualifiedName)).append("\",")
+
+            // Properties
+            append("\"properties\":[")
+            var firstProp = true
+            for (prop in concept.properties) {
+                if (!firstProp) append(',') else firstProp = false
+                append('{')
+                append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
+                val type = prop.type
+                val value = when {
+                    prop.name == "name" -> concept.name
+                    type is SEnumeration -> type.literals.firstOrNull()?.let { it.name ?: it.presentation } ?: "value"
+                    type.toString() == "integer" -> "1"
+                    type.toString() == "boolean" -> "true"
+                    else -> "example"
+                }
+                append("\"value\":\"").append(escapeJson(value)).append("\"")
+                append('}')
+            }
+            append("],")
+
+            // References
+            append("\"references\":[")
+            var firstRef = true
+            for (ref in concept.referenceLinks) {
+                if (!firstRef) append(',') else firstRef = false
+                append('{')
+                append("\"role\":\"").append(escapeJson(ref.name)).append("\",")
+                append("\"target\":\"/* Reference to ").append(escapeJson(getQualifiedName(ref.targetConcept))).append(" */\"")
+                append('}')
+            }
+            append("],")
+
+            // Children
+            append("\"children\":[")
+            var firstChild = true
+            for (child in concept.containmentLinks) {
+                if (!firstChild) append(',') else firstChild = false
+                append('{')
+                append("\"role\":\"").append(escapeJson(child.name)).append("\",")
+                append("\"nodes\":[\"/* Instances of ").append(escapeJson(getQualifiedName(child.targetConcept))).append(" or its sub-concepts are expected here */\"]")
+                append('}')
+            }
+            append(']')
+            append('}')
+        }
+    }
+
+    private fun getQualifiedName(concept: SAbstractConcept): String {
+        return concept.language.qualifiedName + ".structure." + concept.name
     }
 }

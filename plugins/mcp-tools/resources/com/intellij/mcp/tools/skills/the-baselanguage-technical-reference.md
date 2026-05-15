@@ -1,7 +1,6 @@
 ---
-name: The BaseLanguage Technical Reference
-shortDescription: Mapping Java syntax to MPS `baseLanguage` concepts and roles.
-whenToUseHints: Use to map Java syntax to MPS concepts and roles for JSON blueprints.
+name: the-baselanguage-technical-reference
+description: Mapping Java syntax to MPS `baseLanguage` concepts and roles. Use to map Java syntax to MPS concepts and roles for JSON blueprints.
 ---
 
 ## Procedure
@@ -212,6 +211,30 @@ whenToUseHints: Use to map Java syntax to MPS concepts and roles for JSON bluepr
   ] }]
 }
 ```
+
+### JDK Stub Reference Lookup
+
+**Decision tree — choose the first strategy that applies:**
+
+1. **Derive directly** (zero extra tool calls): once you have the class ref from `search_root_node_by_name`, construct the member ref by appending:
+   - Constructor: `.<init>%28<url-encoded-param-types>%29`
+   - Method: `.<methodName>%28<url-encoded-param-types>%29`
+   - No-arg: `.<init>%28%29`
+
+   Example — class ref `6354ebe7-.../java:javax.swing(JDK/)/~JButton`:
+   - `JButton()` → append `.<init>%28%29`
+   - `JButton(String)` → append `.<init>%28java.lang.String%29`
+   - `doClick()` (declared on `JButton`) → append `.doClick%28%29`
+
+   **Inherited methods use the declaring class ref, not the subclass ref.** For example, `addActionListener(ActionListener)` is declared on `AbstractButton`, so use `<AbstractButtonClassRef>.addActionListener%28java.awt.event.ActionListener%29`, not the `JButton` ref.
+
+2. **Auto-resolve by name** when the method or class is unambiguous in scope (single overload, or you know the name but not the exact declaring class). Pass the plain name as `target` in the JSON reference — the tool resolves it in scope after insertion. Best for inherited methods and `ClassifierType` references where derivation is uncertain. Skip this for overloaded methods with multiple signatures.
+
+3. **Use `GET_ASSIGNABLE_REFERENCES` completion mode** when overloads are ambiguous and you cannot tell from the signature alone which one to pick (e.g., `Container.add(Component)` vs `Container.add(Component, Object)`), or when the declaring class in the hierarchy is unclear. Pass `contextNode`, `referenceRole`, `argumentTypes`, and `kindFilter` to get a ranked short list.
+
+4. **`FIX_REFERENCES` after insertion** — if a few refs remain broken after inserting your JSON, run `mps_mcp_perform_operation(FIX_REFERENCES)` as a surgical repair rather than pre-harvesting every ref.
+
+5. **`mps_mcp_print_node_json` on the stub** — justified only for truly ambiguous cases not resolved by strategy 2. Do not print entire stub classes just to scan for a signature you can derive.
 
 ### Preflight For Large JSON ASTs
 - Validate the JSON syntax before calling the insert tool.

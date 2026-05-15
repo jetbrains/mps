@@ -2,6 +2,7 @@ package com.intellij.mcp.tools
 
 import com.google.gson.Gson
 import com.google.gson.JsonObject
+import com.intellij.codeInspection.incorrectFormatting.detectFormattingChanges
 import com.intellij.mcpserver.reportToolActivity
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
@@ -115,6 +116,10 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
                 val link = sConcept.referenceLinks.find { it.name == roleName }
                 if (link != null && !targetRefStr.isNullOrEmpty()) {
+                    // Detect MPS XML short IDs (e.g. "23xMseU$JuM") — these are the compact encoded
+                    // form used inside .mps XML files and are NOT valid MCP node references.
+                    // Using them silently produces a null/dangling reference; fail loudly instead.
+                    failIfXMLReferenceIsUsed(targetRefStr, jsonPath, index)
                     val isPersistentRef = targetRefStr.startsWith("r:") || targetRefStr.startsWith("i:") || targetRefStr.contains(".")
                     val targetRef = if (isPersistentRef) resolveNodeReference(model.repository, targetRefStr) else null
                     val targetNode = targetRef?.resolve(model.repository)
@@ -157,6 +162,26 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         return newNode
+    }
+
+    private fun failIfXMLReferenceIsUsed(targetRefStr: String, jsonPath: String, index: Int) {
+        // Detect MPS XML short IDs (e.g. "23xMseU$JuM") — these are the compact encoded
+        // form used inside .mps XML files and are NOT valid MCP node references.
+        // Using them silently produces a null/dangling reference; fail loudly instead.
+        if (targetRefStr.matches(Regex("[0-9A-Za-z\$_]{8,20}")) &&
+            !targetRefStr.contains(".") &&
+            !targetRefStr.startsWith("r:") &&
+            !targetRefStr.startsWith("i:")
+        ) {
+            throw IllegalArgumentException(
+                "Invalid node reference at $jsonPath.references[$index]: " +
+                        "'$targetRefStr' looks like an MPS XML short ID (from a .mps file). " +
+                        "These cannot be used as target references — they are an internal encoding " +
+                        "that differs from the persistent references used by the MCP API. " +
+                        "Use the persistent reference from mps_mcp_print_node_json output instead " +
+                        "(e.g. 'r:<modelId>/<nodeId>'), or use a plain name for auto-resolution."
+            )
+        }
     }
 
     fun updateNodeFromBlueprint(node: SNode, jsonObject: JsonObject, dryRun: Boolean = false, jsonPath: String = "$") {
@@ -237,6 +262,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
                 val link = sConcept.referenceLinks.find { it.name == roleName }
                 if (link != null && !targetRefStr.isNullOrEmpty()) {
+                    failIfXMLReferenceIsUsed(targetRefStr, jsonPath, index)
                     val isPersistentRef = targetRefStr.startsWith("r:") || targetRefStr.startsWith("i:") || targetRefStr.contains(".")
                     val targetRef = if (isPersistentRef) resolveNodeReference(model.repository, targetRefStr) else null
                     val targetNode = targetRef?.resolve(model.repository)

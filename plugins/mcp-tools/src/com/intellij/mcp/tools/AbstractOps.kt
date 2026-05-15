@@ -1079,12 +1079,30 @@ abstract class AbstractOps : McpToolset {
         return tempFile
     }
 
-    protected fun readFromFile(filePath: String): String {
-        val file = File(filePath)
-        if (!file.exists()) {
-            throw IllegalArgumentException("File '$filePath' not found")
+    protected fun readJsonOrFile(jsonOrPath: String?, dryRun: Boolean = false): String? {
+        if (jsonOrPath == null) return null
+        val trimmed = jsonOrPath.trim()
+        if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
+            if (jsonOrPath.length > 4096) {
+                throw IllegalArgumentException("Direct JSON input is too large (${jsonOrPath.length} chars). " +
+                        "To prevent MCP truncation errors, please save the JSON to a temporary file and pass the absolute path instead. " +
+                        "The limit for direct JSON is 4096 characters.")
+            }
+            return jsonOrPath
         }
-        return file.readText()
+        val file = File(jsonOrPath)
+        if (!file.exists()) {
+            throw IllegalArgumentException("Input is neither a valid JSON object/array nor an existing file path: '$jsonOrPath'")
+        }
+        val content = file.readText()
+        if (!dryRun) {
+            try {
+                file.delete()
+            } catch (e: Exception) {
+                // ignore
+            }
+        }
+        return content
     }
 
     /**

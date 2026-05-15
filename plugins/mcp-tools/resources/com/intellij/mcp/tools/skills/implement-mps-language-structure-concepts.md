@@ -1,7 +1,6 @@
 ---
-name: Implement MPS language structure (concepts)
-shortDescription: Steps to define concepts, interface concepts, and enums in an MPS language.
-whenToUseHints: Use when creating or designing concepts in an MPS language.
+name: implement-mps-language-structure-concepts
+description: Steps to define concepts, interface concepts, and enums in an MPS language. Use when creating or designing concepts in an MPS language.
 ---
 
 Preconditions: Requires the target language name.

@@ -1,7 +1,6 @@
 ---
-name: Understand MPS languages
-shortDescription: Analyze MPS language definitions.
-whenToUseHints: Use when analyzing or inspecting MPS languages.
+name: understand-mps-languages
+description: Analyze MPS language definitions. Use when analyzing or inspecting MPS languages.
 ---
 
 Workflow: Obtaining Concepts, Descriptions, and IDs from a Language Name. If you only have a language name (e.g., jetbrains.mps.lang.core), follow this workflow:
@@ -24,7 +23,7 @@ Workflow: Obtaining Concepts, Descriptions, and IDs from a Language Name. If you
     Description: Found in the shortDescription field.
     ID: Found in the conceptReference field (typically in the c:language-uuid/concept-id format).
     Important details: rootable and abstract concepts.
-    Read the `PROJECT_HOME/.agents/skills/mps-language-concept-inheritance/SKILL.md` (PROJECT_HOME stands for the directory of the current project) file to get a skill on how to investigate the inheritance hierarchy of languages or concepts.
+    Acquire the `language-and-concept-inheritance` skill to get a skill on how to investigate the inheritance hierarchy of languages or concepts.
     
 4. (Optional) Drill Down:
     - If specific details about properties or children are needed, they are already included in the mps_mcp_get_concept_details response.

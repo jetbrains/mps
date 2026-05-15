@@ -1,10 +1,9 @@
 ---
-name: Add or update MPS code (nodes)
-shortDescription: Modify MPS nodes using tools and JSON blueprints.
-whenToUseHints: Use when adding or updating MPS nodes.
+name: add-or-update-mps-code-nodes
+description: Modify MPS nodes using tools and JSON blueprints. Use when adding or updating MPS nodes.
 ---
 
-First, make sure you have acquired the 'Understand an MPS languages' skill.
+First, make sure you have acquired the 'understand-mps-languages' skill.
 Unless you are creating new root nodes, first resolve the node that is to be edited. It could be the current root node open in the editor ('mps_mcp_open_root_node').
 To start writing code, resolve the languages and concepts that will be used:
 - start with the list of used languages of the current model ('mps_mcp_get_project_structure') as these are most likely to be needed.
@@ -48,12 +47,13 @@ Use the following structure for all node insertions and updates:
 
 ### Workflow for large node hierarchies
 If the JSON for a whole root node or a large subtree may be too large:
-1. For initial creation, insert the parent/root node first with only its properties, references, and a minimal set of children.
-2. Add remaining child subtrees in follow-up calls with `mps_mcp_add_node_child`.
-3. If a specific child subtree already exists and must be rewritten, use `mps_mcp_replace_node_child`.
-4. For an existing root node, use `mps_mcp_update_root_node_from_json` only with a complete root blueprint, because omitted children and references are removed.
-5. For incremental edits of an existing root, prefer `mps_mcp_add_node_child` / `mps_mcp_replace_node_child` instead of a partial root JSON.
-6. Run `mps_mcp_check_root_node_problems` afterwards and use `mps_mcp_perform_operation` with `FIX_REFERENCES` if references could not be resolved during staged insertion.
+1. For initial creation, insert the parent/root node first with only its properties, references, and a minimal set of children (skeleton only — no method bodies yet).
+2. **Checkpoint**: run `mps_mcp_check_root_node_problems` on the skeleton before proceeding. Fix structural errors early rather than after the full body is inserted.
+3. Add remaining child subtrees in follow-up calls with `mps_mcp_add_node_child`.
+4. If a specific child subtree already exists and must be rewritten, use `mps_mcp_replace_node_child`.
+5. For an existing root node, use `mps_mcp_update_root_node_from_json` only with a complete root blueprint, because omitted children and references are removed.
+6. For incremental edits of an existing root, prefer `mps_mcp_add_node_child` / `mps_mcp_replace_node_child` instead of a partial root JSON.
+7. Run `mps_mcp_check_root_node_problems` after full insertion and use `mps_mcp_perform_operation` with `FIX_REFERENCES` if references could not be resolved during staged insertion.
 
 The user may use textual (visual) notation when representing code. This may differ from the JSON structure. The JSON structure is the canonical representation of the code.
 

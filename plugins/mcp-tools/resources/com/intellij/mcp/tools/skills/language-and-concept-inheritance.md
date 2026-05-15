@@ -1,7 +1,6 @@
 ---
-name: Language and concept inheritance
-shortDescription: Investigate inheritance between MPS languages and concepts.
-whenToUseHints:  Use when investigating a language or using an unfamiliar one.
+name: language-and-concept-inheritance
+description: Investigate inheritance between MPS languages and concepts. Use when investigating a language or using an unfamiliar one.
 ---
 
 To understand the language "extends" hierarchy in JetBrains MPS using the existing MCP tools, agents can follow several complementary approaches at both the language and concept levels.

@@ -106,7 +106,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           Returns JSON: { ok, data: { success: boolean, message: string, details: [ { kind, text }, ... ] } } or a path to a temporary JSON file if the data is large.
           Parameters: { "models": "Optional: list of persistent model references", "modules": "Optional: list of persistent module references", "rebuild": "Optional: boolean, default false", "wholeProject": "Optional: boolean, default false. If true, 'models' and 'modules' must be absent." }
         - FIX_REFERENCES: Attempts to re-resolve all references in a node and all its descendants using scope-based resolution.
-          This handles both broken references (target node is null) and wrong references (target is resolved but points to an incorrect node, e.g. "Reference to wrong overridden method").
+          This handles both broken references (target node is null) and wrong references (target is resolved but points to an incorrect node, e.g. "Reference to wrong overridden method" or "Error: Dynamic reference").
           Each reference is re-resolved using its resolveInfo string against the current scope; if the scope finds a better or correct target it is applied.
           Returns JSON: { ok, data: { fixed: number, repointed: number, stillBroken: number, message: string } }
             fixed: references that were broken (null target) and are now resolved
@@ -639,7 +639,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpDescription("""
         Sets multiple target nodes to specified reference roles of the given MPS nodes.
         Receives a collection of triplets (nodeRef, referenceRole, targetNodeRefOrName) and sets the specified reference individually for each triplet. Each triplet is represented as a list of three strings.
-        The 'targetNodeRefOrName' can be either a persistent node reference or a name of a node for auto-resolution.
+        The 'targetNodeRefOrName' can be either a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs copied from .mps files — they are an internal encoding and will fail with an error.
         Returns JSON format of the results for all triplets.
     """)
     suspend fun mps_mcp_set_node_references(
@@ -699,7 +699,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         If the role permits only one child, the new child replaces the previous child.
         The concept of the child node must be assignable to the role's concept.
         Updates the dependencies and used languages of the containing model.
-        The 'childJson' parameter is an absolute path to a local temporary file containing the actual JSON description.
+        The 'childJson' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).
         
         ### Unified JSON Format
         {
@@ -709,7 +709,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           "references": [{ "role": "refRole", "target": "targetRefOrName" }]
         }
         - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference or a placeholder name for auto-resolution.
+        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
         - Properties, children, and references are optional.
         - Prefer this tool for staged construction when a large root-node JSON would be too big or gets truncated. Insert the parent first, then add child subtrees over multiple calls.
 
@@ -718,7 +718,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_add_node_child(
         @McpDescription("Persistent form of the parent SNodeReference") nodeRef: String,
         @McpDescription("The role name of the child") childRole: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of the child node's deep printout. Use the unified JSON format. 'target' can be empty or a placeholder name for auto-resolution.") childJson: String,
+        @McpDescription("The JSON description of the child node's deep printout (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Use the unified JSON format.") childJson: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
         return update_node_child(nodeRef, childRole, childJson, null, dryRun)
@@ -730,7 +730,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         The position of the original child node in a child collection is preserved.
         The concept of the child node must be assignable to the role's concept.
         Updates the dependencies and used languages of the containing model.
-        The 'childJson' parameter is an absolute path to a local temporary file containing the actual JSON description.
+        The 'childJson' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).
         
         ### Unified JSON Format
         {
@@ -740,7 +740,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           "references": [{ "role": "refRole", "target": "targetRefOrName" }]
         }
         - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference or a placeholder name for auto-resolution.
+        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
         - Properties, children, and references are optional.
         - Prefer this tool for staged construction when a large root-node JSON would be too big or gets truncated. Insert or keep the parent first, then replace one child subtree at a time over multiple calls.
 
@@ -748,7 +748,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_replace_node_child(
         @McpDescription("Persistent form of the SNodeReference of the child to replace") childNodeRef: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of the new child node's deep printout. Use the unified JSON format. 'target' can be empty or a placeholder name for auto-resolution.") childJson: String,
+        @McpDescription("The JSON description of the new child node's deep printout (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Use the unified JSON format.") childJson: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
         return update_node_child(null, null, childJson, childNodeRef, dryRun)
@@ -770,7 +770,11 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     private suspend fun update_node_child(nodeRef: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?, dryRun: Boolean = false): String {
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-        val actualJson = childJson?.let { try { readFromFile(it) } catch (e: Exception) { return errJson(e.message) } }
+        val actualJson = try {
+            readJsonOrFile(childJson, dryRun)
+        } catch (e: Exception) {
+            return errJson(e.message)
+        }
         return update_node_child(mpsProject, nodeRef, childRole, actualJson, childToReplaceOrDeleteRef, dryRun)
     }
 
