@@ -85,16 +85,19 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Searches for concepts and interface concepts whose name, alias or short description contains any of the specified search strings.
+        Searches for concepts and interface concepts whose name, alias, short description or documentation matches the specified search strings.
+        The search is case-insensitive and supports multiple terms in a single search string (e.g. "boolean constant true"). 
+        If a search string contains multiple words, it matches if ALL words are found in the combined concept information (name, alias, short description, or documentation).
+        
         If modelReference is provided, only searches in languages used by that model. This is faster than searching all languages. Concepts in already used languages are more likely to be suitable than concepts from other languages.
 
         Try with a model first, if no concept is found, try a general search without a model.
 
-        Returns a JSON object with 'ok':true and 'data':[{ name, qualifiedName, conceptAlias, shortDescription, conceptReference, languageReference, isAbstract, isInterfaceConcept, isRootable, present:true }, ...] on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':[{ name, qualifiedName, conceptAlias, shortDescription, doc, conceptReference, languageReference, isAbstract, isInterfaceConcept, isRootable, present:true }, ...] on success, or a path to a temporary JSON file if the data is large, or 'ok':false and 'error':"..." on failure.
         Use the 'qualifiedName' field (e.g. "jetbrains.mps.baseLanguage.structure.ClassConcept") as the 'concept' field in JSON node blueprints. It is unambiguous and does not require a conceptReference.
     """)
     suspend fun mps_mcp_search_concepts(
-        @McpDescription("The list of strings to search for in concept names, aliases and short descriptions") searchTexts: List<String>,
+        @McpDescription("The list of strings to search for. Multiple words in a string are treated as multiple required terms.") searchTexts: List<String>,
         @McpDescription("Optional persistent model reference to limit search to languages used by this model") modelReference: String? = null
     ): String {
         currentCoroutineContext().reportToolActivity("Searching for MPS concepts")
@@ -126,7 +129,16 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             for (lang in languages) {
                 val runtime = LanguageRegistry.getInstance(mpsProject.repository).getLanguage(lang) ?: continue
                 for (concept in runtime.concepts) {
-                    if (searchTexts.any { text -> concept.name.contains(text, ignoreCase = true) || concept.conceptAlias.contains(text, ignoreCase = true) || concept.shortDescription.contains(text, ignoreCase = true) }) {
+                    val doc = getDoc(concept.sourceNode?.resolve(mpsProject.repository))
+                    val combinedInfo = "${concept.name} ${concept.conceptAlias} ${concept.shortDescription} $doc"
+
+                    val matches = searchTexts.any { text ->
+                        val terms = text.split(Regex("\\s+")).filter { it.isNotBlank() }
+                        if (terms.isEmpty()) return@any false
+                        terms.all { term -> combinedInfo.contains(term, ignoreCase = true) }
+                    }
+
+                    if (matches) {
                         results.add(conceptInfoJson(concept, mpsProject.repository))
                     }
                 }
@@ -136,7 +148,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         if (errorReply != null) return errorReply!!
 
         val items = "[" + results.joinToString(",") + "]"
-        return okJson(items)
+        return finalizeResult(items)
     }
 
 
@@ -152,8 +164,11 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                 val type = prop.type
                 val typeName = (type as? SNamedElement)?.name ?: "unknown"
                 append("\"type\":\"").append(escapeJson(typeName)).append("\",")
-                val doc = getDoc(prop.sourceNode?.resolve(repository))
-                append("\"doc\":\"").append(escapeJson(doc)).append("\"")
+                val declarationNode = prop.sourceNode?.resolve(repository)
+                val doc = getDoc(declarationNode)
+                val deprecated = getDeprecationInfo(declarationNode)
+                append("\"doc\":\"").append(escapeJson(doc)).append("\",")
+                append("\"deprecated\":\"").append(escapeJson(deprecated)).append("\"")
                 if (type is SEnumeration) {
                     append(",\"enumerationValues\":[")
                     append(type.literals.joinToString(",") { "\"${escapeJson(it.name ?: it.presentation)}\"" })
@@ -177,8 +192,11 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                 append("\"targetConcept\":\"").append(escapeJson(ref.targetConcept.name)).append("\",")
                 val cardinality = if (ref.isOptional) "0..1" else "1"
                 append("\"cardinality\":\"").append(cardinality).append("\",")
-                val doc = getDoc(ref.sourceNode?.resolve(repository))
-                append("\"doc\":\"").append(escapeJson(doc)).append("\"")
+                val declarationNode = ref.sourceNode?.resolve(repository)
+                val doc = getDoc(declarationNode)
+                val deprecated = getDeprecationInfo(declarationNode)
+                append("\"doc\":\"").append(escapeJson(doc)).append("\",")
+                append("\"deprecated\":\"").append(escapeJson(deprecated)).append("\"")
                 append('}')
             }
             append(']')
@@ -202,8 +220,11 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                     else -> "1"
                 }
                 append("\"cardinality\":\"").append(cardinality).append("\",")
-                val doc = getDoc(link.sourceNode?.resolve(repository))
-                append("\"doc\":\"").append(escapeJson(doc)).append("\"")
+                val declarationNode = link.sourceNode?.resolve(repository)
+                val doc = getDoc(declarationNode)
+                val deprecated = getDeprecationInfo(declarationNode)
+                append("\"doc\":\"").append(escapeJson(doc)).append("\",")
+                append("\"deprecated\":\"").append(escapeJson(deprecated)).append("\"")
                 append('}')
             }
             append(']')

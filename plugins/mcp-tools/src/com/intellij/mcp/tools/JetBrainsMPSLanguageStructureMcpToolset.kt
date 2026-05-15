@@ -1,6 +1,7 @@
 package com.intellij.mcp.tools
 
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.reflect.TypeToken
 import com.intellij.mcpserver.annotations.McpDescription
@@ -9,6 +10,7 @@ import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import jetbrains.mps.ide.project.ProjectHelper
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
@@ -49,7 +51,9 @@ enum class MPSStructureOperation {
     UPDATE_CONCEPT_REFERENCE,
     RENAME_CONCEPT_PROPERTY,
     RENAME_CONCEPT_CHILD,
-    RENAME_CONCEPT_REFERENCE
+    RENAME_CONCEPT_REFERENCE,
+    LIST_CONCEPT_ASPECTS,
+    GET_ASSIGNABLE_REFERENCES
 }
 
 class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
@@ -146,14 +150,15 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             "nodeRef": "Persistent reference of the node (SNodeReference)",
             "propertyName": "The name of the enumeration property"
           }
-        - FIND_INSTANCES: Returns all nodes that are instances of the specified concept.
-          Returns a JSON array of node info objects.
+        - FIND_INSTANCES: Returns all nodes that are instances of the specified concept, or a single sample instance (randomly selected) if requested.
+          Returns a JSON array of node info objects, or a path to a temporary JSON file if the data is large.
           Parameters: {
             "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
             "scope": "Optional: 'all', 'editable' (default), 'models', 'modules'",
             "models": "Optional: list of persistent model references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'models')",
             "modules": "Optional: list of persistent module references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'models')",
-            "exact": "Boolean (optional, default: false). Whether to exclude instances of subconcepts."
+            "exact": "Boolean (optional, default: false). Whether to exclude instances of subconcepts.",
+            "sampleOnly": "Boolean (optional, default: false). If true, only a single sample instance (randomly selected) will be returned to illustrate usage and JSON structure."
           }
         - IS_SUBCONCEPT_OF: (aka is_assignable_to) Indicates whether a concept is a direct or indirect subconcept of another concept or a concept interface. A subconcept is assignable where superconcept is expected.
           Returns a boolean value (true/false).
@@ -162,18 +167,18 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             "superConceptRef": "Persistent reference of the super-concept or interface (SAbstractConcept) or fully qualified concept name"
           }
         - GET_SUB_CONCEPTS: Returns all subconcepts of the specified concept in the specified languages or in all available languages.
-          Returns a JSON array of concept info objects: { name, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true }
+          Returns a JSON array of concept info objects, or a path to a temporary JSON file if the data is large.
           Parameters: {
             "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
             "languageRefs": "Optional list of persistent references (SLanguage) or qualified names of the languages to search in."
           }
         - GET_ASSIGNABLE_CONCEPTS: Returns all non-abstract concepts that can be assigned to a particular concept. Returns all non-abstract sub-concepts of the given concept. If the provided concept is non-abstract, it will be included too.
-          Returns a JSON array of concept info objects (same format as GET_SUB_CONCEPTS).
+          Returns a JSON array of concept info objects, or a path to a temporary JSON file if the data is large.
           Parameters: {
             "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
             "languageRefs": "Optional list of persistent references (SLanguage) or qualified names of the languages to search in."
           }
-        - GET_ALL_SUPERCONCEPTS: Returns a transitive closure of super concepts and interface concepts for a given concept. Returns a collection of concept info objects.
+        - GET_ALL_SUPERCONCEPTS: Returns a transitive closure of super concepts and interface concepts for a given concept. Returns a collection of concept info objects, or a path to a temporary JSON file if the data is large.
           Parameters: {
             "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name"
           }
@@ -215,9 +220,24 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "oldRole": "Current name of the reference role",
             "newRole": "New name for the reference role"            
+          }
+        - GET_ASSIGNABLE_REFERENCES: Returns all valid target nodes that are assignable and visible for a reference in a node (or a node of a certain concept) within the chosen scope.
+          Parameters: {
+            "nodeRef": "Optional: Persistent reference of the node (SNodeReference). Either nodeRef or conceptRef must be provided.",
+            "conceptRef": "Optional: Persistent reference of the concept (SAbstractConcept) or fully qualified concept name. Use this for non-existent nodes.",
+            "role": "The name of the reference role",
+            "scope": "Optional: 'all', 'editable' (default), 'models', or 'modules'",
+            "models": "Optional: array of SModelReference, required if scope is 'models'",
+            "modules": "Optional: array of SModuleReference, required if scope is 'modules'"
+          }
+        - LIST_CONCEPT_ASPECTS: Finds and groups all aspect root nodes (Editor, Constraints, etc.) for a concept and optionally its superconcepts across languages.
+          Parameters: {
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
+            "includeInherited": "Optional: boolean, whether to include aspects from superconcepts and interfaces (default: false)"
+          }
     """)
     suspend fun mps_mcp_perform_structure_operation(
-        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE)") operation: MPSStructureOperation,
+        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES)") operation: MPSStructureOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
         currentCoroutineContext().reportToolActivity("Performing MPS structure operation: $operation")
@@ -262,54 +282,33 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     val conceptRef = params.get("conceptRef")?.asString ?: return errJson("Parameter 'conceptRef' is missing")
                     val scopeParam = params.get("scope")?.asString ?: "editable"
                     val exact = params.get("exact")?.asBoolean ?: false
+                    val sampleOnly = params.get("sampleOnly")?.asBoolean ?: false
                     var reply: String? = null
                     mpsProject.repository.modelAccess.runReadAction {
                         try {
                             val concept = resolveConcept(mpsProject.repository, conceptRef) ?: return@runReadAction
-                            val searchScope: SearchScope = when (scopeParam) {
-                                "all" -> GlobalScope(mpsProject.repository)
-                                "editable" -> EditableFilteringScope(GlobalScope(mpsProject.repository))
-                                "models" -> {
-                                    val modelsArray = params.getAsJsonArray("models")
-                                    if (modelsArray == null) {
-                                        reply = errJson("Parameter 'models' is missing for scope 'models'")
-                                        return@runReadAction
-                                    }
-                                    val modelRefs = modelsArray.mapNotNull { resolveModel(mpsProject.repository, it.asString)?.reference }.toSet()
-                                    object : BaseScope() {
-                                        override fun getModules(): Iterable<SModule> = modelRefs.mapNotNull { it.resolve(mpsProject.repository)?.module }.distinct()
-                                        override fun getModels(): Iterable<SModel> = modelRefs.mapNotNull { it.resolve(mpsProject.repository) }
-                                        override fun resolve(reference: SModelReference): SModel? = if (modelRefs.contains(reference)) reference.resolve(mpsProject.repository) else null
-                                        override fun resolve(reference: SModuleReference): SModule? = reference.resolve(mpsProject.repository)
-                                    }
-                                }
-                                "modules" -> {
-                                    val modulesArray = params.getAsJsonArray("modules")
-                                    if (modulesArray == null) {
-                                        reply = errJson("Parameter 'modules' is missing for scope 'modules'")
-                                        return@runReadAction
-                                    }
-                                    val moduleRefs = modulesArray.mapNotNull { resolveModule(mpsProject.repository, it.asString)?.moduleReference }.toSet()
-                                    object : BaseScope() {
-                                        override fun getModules(): Iterable<SModule> = moduleRefs.mapNotNull { it.resolve(mpsProject.repository) }
-                                        override fun getModels(): Iterable<SModel> = getModules().flatMap { it.models }
-                                        override fun resolve(reference: SModuleReference): SModule? = if (moduleRefs.contains(reference)) reference.resolve(mpsProject.repository) else null
-                                        override fun resolve(reference: SModelReference): SModel? = reference.resolve(mpsProject.repository)
-                                    }
-                                }
-                                else -> {
-                                    reply = errJson("Unsupported scope: $scopeParam")
-                                    return@runReadAction
-                                }
-                            }
+                            val searchScope: SearchScope = resolveSearchScope(mpsProject, params, scopeParam, mpsProject.repository) { reply = errJson(it) } ?: return@runReadAction
 
                             val results = mutableSetOf<SNode>()
+                            var sample: SNode? = null
+                            var count = 0
+                            val random = Random()
                             FindUsagesFacade.getInstance().findInstances(searchScope, setOf(concept), exact, { node ->
-                                results.add(node)
+                                if (sampleOnly) {
+                                    count++
+                                    if (count == 1 || random.nextInt(count) == 0) {
+                                        sample = node
+                                    }
+                                } else {
+                                    results.add(node)
+                                }
+                                true
                             }, EmptyProgressMonitor())
-
+                            if (sampleOnly && sample != null) {
+                                results.add(sample!!)
+                            }
                             val jsonResults = results.map { nodeInfoJson(it) }
-                            reply = okJson("[" + jsonResults.joinToString(",") + "]")
+                            reply = finalizeResult("[" + jsonResults.joinToString(",") + "]")
                         } catch (e: Exception) {
                             reply = errJson(e.message)
                         }
@@ -368,9 +367,50 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                                     }
                                 }
                             }
-
                             val jsonResults = allConcepts.map { conceptInfoJson(it, mpsProject.repository) }
-                            reply = okJson("[" + jsonResults.joinToString(",") + "]")
+                            reply = finalizeResult("[" + jsonResults.joinToString(",") + "]")
+                        } catch (e: Exception) {
+                            reply = errJson(e.message)
+                        }
+                    }
+                    reply!!
+                }
+                MPSStructureOperation.GET_ASSIGNABLE_REFERENCES -> {
+                    val nodeRef = params.get("nodeRef")?.asString
+                    val conceptRef = params.get("conceptRef")?.asString
+                    if (nodeRef == null && conceptRef == null) return errJson("Either 'nodeRef' or 'conceptRef' must be provided")
+                    val role = params.get("role")?.asString ?: return errJson("Parameter 'role' is missing")
+                    val scopeParam = params.get("scope")?.asString ?: "editable"
+                    var reply: String? = null
+                    mpsProject.repository.modelAccess.runReadAction {
+                        try {
+                            val concept = if (nodeRef != null) {
+                                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+                                sNodeRef.resolve(mpsProject.repository)?.concept ?: run {
+                                    reply = errJson("Node '$nodeRef' not found")
+                                    return@runReadAction
+                                }
+                            } else {
+                                resolveConcept(mpsProject.repository, conceptRef!!) ?: run {
+                                    reply = errJson("Concept '$conceptRef' not found")
+                                    return@runReadAction
+                                }
+                            }
+                            val refLink = concept.referenceLinks.find { it.name == role } ?: run {
+                                reply = errJson("Reference role '$role' not found in concept '${concept.name}'")
+                                return@runReadAction
+                            }
+                            val targetConcept = refLink.targetConcept
+
+                            val searchScope: SearchScope = resolveSearchScope(mpsProject, params, scopeParam, mpsProject.repository) { reply = errJson(it) } ?: return@runReadAction
+
+                            val results = mutableSetOf<SNode>()
+                            FindUsagesFacade.getInstance().findInstances(searchScope, setOf(targetConcept), false, { targetNode ->
+                                results.add(targetNode)
+                                true
+                            }, EmptyProgressMonitor())
+                            val jsonResults = results.map { nodeInfoJson(it) }
+                            reply = finalizeResult("[" + jsonResults.joinToString(",") + "]")
                         } catch (e: Exception) {
                             reply = errJson(e.message)
                         }
@@ -396,9 +436,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                                     queue.addAll(current.superInterfaces)
                                 }
                             }
-
                             val jsonResults = allSuperConcepts.map { conceptInfoJson(it, mpsProject.repository) }
-                            reply = okJson("[" + jsonResults.joinToString(",") + "]")
+                            reply = finalizeResult("[" + jsonResults.joinToString(",") + "]")
                         } catch (e: Exception) {
                             reply = errJson(e.message)
                         }
@@ -444,6 +483,11 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     val newRole = params.get("newRole")?.asString ?: return errJson("Parameter 'newRole' is missing")
                     mps_mcp_rename_concept_link(conceptRef, oldRole, newRole, false)
                 }
+                MPSStructureOperation.LIST_CONCEPT_ASPECTS -> {
+                    val conceptRef = params.get("conceptRef")?.asString ?: return errJson("Parameter 'conceptRef' is missing")
+                    val includeInherited = params.get("includeInherited")?.asBoolean ?: false
+                    mps_mcp_list_concept_aspects(conceptRef, includeInherited)
+                }
             }
         } catch (e: Exception) {
             errJson(e.message)
@@ -464,7 +508,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         val concepts: List<Map<String, Any>> = try {
             if (conceptsJsonPath != null) {
                 val json = readFromFile(conceptsJsonPath)
-                Gson().fromJson(json, conceptsListType)
+                parseJson<List<Map<String, Any>>>(json, conceptsListType)
             } else {
                 emptyList()
             }
@@ -474,7 +518,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         val interfaceConcepts: List<Map<String, Any>> = try {
             if (interfaceConceptsJsonPath != null) {
                 val json = readFromFile(interfaceConceptsJsonPath)
-                Gson().fromJson(json, conceptsListType)
+                parseJson<List<Map<String, Any>>>(json, conceptsListType)
             } else {
                 emptyList()
             }
@@ -859,11 +903,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         linkNode.setReferenceTarget(LINK_LinkDeclaration_Target, targetNode)
 
         if (isChild) {
-            val metaClassLiteral = ENUM_LinkMetaclass.getLiteral("aggregation")
-            if (metaClassLiteral == null) {
-                return "Failed to find 'aggregation' literal in LinkMetaclass enum"
-            }
-            SNodeAccessUtil.setPropertyValue(linkNode, PROP_LinkDeclaration_MetaClass, metaClassLiteral)
+            setLinkMetaClass(linkNode, true)
 
             val multiple = linkMap["multiple"] as? Boolean ?: false
             val optional = linkMap["optional"] as? Boolean ?: true
@@ -873,28 +913,52 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 !multiple && optional -> "_0__1"
                 else -> "_1"
             }
-            val cardinalityLiteral = ENUM_Cardinality.getLiteral(cardinalityName)
-            if (cardinalityLiteral == null) {
-                return "Failed to find '$cardinalityName' literal in Cardinality enum"
+            val cardinalityError = setLinkSourceCardinality(linkNode, cardinalityName)
+            if (cardinalityError != null) {
+                return cardinalityError
             }
-            SNodeAccessUtil.setPropertyValue(linkNode, PROP_LinkDeclaration_SourceCardinality, cardinalityLiteral)
         } else {
-            val metaClassLiteral = ENUM_LinkMetaclass.getLiteral("reference")
-            if (metaClassLiteral == null) {
-                return "Failed to find 'reference' literal in LinkMetaclass enum"
-            }
-            SNodeAccessUtil.setPropertyValue(linkNode, PROP_LinkDeclaration_MetaClass, metaClassLiteral)
+            setLinkMetaClass(linkNode, false)
 
             val optional = linkMap["optional"] as? Boolean ?: true
             val cardinalityName = if (optional) "_0__1" else "_1"
-            val cardinalityLiteral = ENUM_Cardinality.getLiteral(cardinalityName)
-            if (cardinalityLiteral == null) {
-                return "Failed to find '$cardinalityName' literal in Cardinality enum"
+            val cardinalityError = setLinkSourceCardinality(linkNode, cardinalityName)
+            if (cardinalityError != null) {
+                return cardinalityError
             }
-            SNodeAccessUtil.setPropertyValue(linkNode, PROP_LinkDeclaration_SourceCardinality, cardinalityLiteral)
         }
 
         return null // success
+    }
+
+    private fun setLinkMetaClass(linkNode: SNode, isChild: Boolean) {
+        if (isChild) {
+            SPropertyOperations.setEnum(
+                linkNode,
+                PROP_LinkDeclaration_MetaClass,
+                ENUM_MEMBER_LINK_METACLASS_AGGREGATION_ID,
+                "aggregation"
+            )
+        } else {
+            SPropertyOperations.setEnum(
+                linkNode,
+                PROP_LinkDeclaration_MetaClass,
+                ENUM_MEMBER_LINK_METACLASS_REFERENCE_ID,
+                "reference"
+            )
+        }
+    }
+
+    private fun setLinkSourceCardinality(linkNode: SNode, cardinalityName: String): String? {
+        val cardinalityId = when (cardinalityName) {
+            "_0__1" -> ENUM_MEMBER_CARDINALITY_0_1_ID
+            "_1" -> ENUM_MEMBER_CARDINALITY_1_ID
+            "_0__n" -> ENUM_MEMBER_CARDINALITY_0_N_ID
+            "_1__n" -> ENUM_MEMBER_CARDINALITY_1_N_ID
+            else -> return "Unsupported cardinality '$cardinalityName'"
+        }
+        SPropertyOperations.setEnum(linkNode, PROP_LinkDeclaration_SourceCardinality, cardinalityId, cardinalityName)
+        return null
     }
 
     /**
@@ -967,7 +1031,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
 
         val valuesListType = object : TypeToken<List<Map<String, String>>>() {}.type
         val values: List<Map<String, String>> = try {
-            Gson().fromJson(valuesJson, valuesListType)
+            parseJson<List<Map<String, String>>>(valuesJson, valuesListType)
         } catch (e: Exception) {
             return errJson("Invalid JSON for values: ${e.message}")
         }
@@ -1121,7 +1185,6 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     return@executeCommand
                 }
 
-                val expectedMetaClass = if (isChild) "aggregation" else "reference"
                 val existingLink = conceptNode.getChildren(LINK_LinkDeclaration).find {
                     it.getProperty(PROP_LinkDeclaration_Role) == role
                 }
@@ -1144,10 +1207,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     }
                     linkNode.setReferenceTarget(LINK_LinkDeclaration_Target, targetNode)
 
-                    val metaClassLiteral = ENUM_LinkMetaclass.getLiteral(expectedMetaClass)
-                    if (metaClassLiteral != null) {
-                        SNodeAccessUtil.setPropertyValue(linkNode, PROP_LinkDeclaration_MetaClass, metaClassLiteral)
-                    }
+                    setLinkMetaClass(linkNode, isChild)
 
                     val cardinalityName = if (isChild) {
                         when {
@@ -1160,9 +1220,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                         if (optional) "_0__1" else "_1"
                     }
 
-                    val cardinalityLiteral = ENUM_Cardinality.getLiteral(cardinalityName)
-                    if (cardinalityLiteral != null) {
-                        SNodeAccessUtil.setPropertyValue(linkNode, PROP_LinkDeclaration_SourceCardinality, cardinalityLiteral)
+                    val cardinalityError = setLinkSourceCardinality(linkNode, cardinalityName)
+                    if (cardinalityError != null) {
+                        error = cardinalityError
                     }
                 }
             }
@@ -1243,6 +1303,143 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         docAnnotation.setProperty(PROP_DocumentedNodeAnnotation_Text, text)
     }
 
+    private suspend fun mps_mcp_list_concept_aspects(conceptRef: String, includeInherited: Boolean = false): String {
+        currentCoroutineContext().reportToolActivity("Listing concept aspects for '$conceptRef'${if (includeInherited) " with inherited" else ""}")
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+
+        var reply: String? = null
+        mpsProject.repository.modelAccess.runReadAction {
+            try {
+                val startConcept = resolveConcept(mpsProject.repository, conceptRef) ?: throw Exception("Concept '$conceptRef' not found")
+
+                val hierarchy = mutableSetOf<SAbstractConcept>()
+                hierarchy.add(startConcept)
+                if (includeInherited) {
+                    val queue = mutableListOf<SAbstractConcept>()
+                    startConcept.superConcept?.let { queue.add(it) }
+                    queue.addAll(startConcept.superInterfaces)
+                    while (queue.isNotEmpty()) {
+                        val current = queue.removeAt(0)
+                        if (hierarchy.add(current)) {
+                            current.superConcept?.let { queue.add(it) }
+                            queue.addAll(current.superInterfaces)
+                        }
+                    }
+                }
+
+                val resultsByModel = mutableMapOf<SModel, MutableMap<SNode, SAbstractConcept>>()
+
+                for (concept in hierarchy) {
+                    val conceptNode = concept.sourceNode?.resolve(mpsProject.repository) ?: continue
+                    val language = concept.language
+                    val languageModule = language.sourceModuleReference?.resolve(mpsProject.repository) ?: continue
+
+                    val aspectModels = languageModule.models.filter { it.name.hasStereotype() == false && it.name.simpleName != "structure" }
+
+                    val scope = object : BaseScope() {
+                        override fun getModules(): Iterable<SModule> = listOf(languageModule)
+                        override fun getModels(): Iterable<SModel> = aspectModels
+                    }
+
+                    FindUsagesFacade.getInstance().findUsages(scope, setOf(conceptNode), { reference ->
+                        val root = reference.sourceNode.containingRoot
+                        if (root.model != null && aspectModels.contains(root.model)) {
+                            val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
+                            if (!rootsInModel.containsKey(root)) {
+                                rootsInModel[root] = concept
+                            }
+                        }
+                    }, EmptyProgressMonitor())
+                }
+
+                val dataArray = JsonArray()
+                for ((model, rootsInModel) in resultsByModel) {
+                    val aspectModelObj = JsonObject()
+                    aspectModelObj.addProperty("fullyQualifiedName", model.name.longName)
+                    aspectModelObj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
+
+                    val moduleObj = JsonObject()
+                    moduleObj.addProperty("fullyQualifiedName", model.module.moduleName)
+                    moduleObj.addProperty("reference", PersistenceFacade.getInstance().asString(model.module.moduleReference))
+                    aspectModelObj.add("module", moduleObj)
+
+                    val rootsArray = JsonArray()
+                    for ((root, targetedConcept) in rootsInModel) {
+                        val rootObj = JsonObject()
+                        rootObj.addProperty("name", root.name ?: root.presentation)
+                        rootObj.addProperty("fullyQualifiedName", "${model.name.longName}.${root.name ?: root.presentation}")
+                        rootObj.addProperty("reference", PersistenceFacade.getInstance().asString(root.reference))
+                        rootObj.addProperty("concept", root.concept.name)
+
+                        val targetsObj = JsonObject()
+                        targetsObj.addProperty("name", targetedConcept.name)
+                        targetsObj.addProperty("fullyQualifiedName", targetedConcept.name)
+                        targetsObj.addProperty("reference", PersistenceFacade.getInstance().asString(targetedConcept))
+                        rootObj.add("targetsConcept", targetsObj)
+
+                        rootsArray.add(rootObj)
+                    }
+
+                    val modelResult = JsonObject()
+                    modelResult.add("aspectModel", aspectModelObj)
+                    modelResult.add("rootNodes", rootsArray)
+                    dataArray.add(modelResult)
+                }
+
+                reply = finalizeResult(dataArray.toString())
+            } catch (e: Exception) {
+                reply = errJson(e.message)
+            }
+        }
+        return reply!!
+    }
+
+    private fun resolveSearchScope(
+        mpsProject: MPSProject,
+        params: JsonObject,
+        scopeParam: String,
+        repository: SRepository,
+        onError: (String) -> Unit
+    ): SearchScope? {
+        return when (scopeParam) {
+            "all" -> GlobalScope(repository)
+            "editable" -> EditableFilteringScope(GlobalScope(repository))
+            "models" -> {
+                val modelsArray = params.getAsJsonArray("models")
+                if (modelsArray == null) {
+                    onError("Parameter 'models' is missing for scope 'models'")
+                    return null
+                }
+                val modelRefs = modelsArray.mapNotNull { resolveModel(repository, it.asString)?.reference }.toSet()
+                object : BaseScope() {
+                    override fun getModules(): Iterable<SModule> = modelRefs.mapNotNull { it.resolve(repository)?.module }.distinct()
+                    override fun getModels(): Iterable<SModel> = modelRefs.mapNotNull { it.resolve(repository) }
+                    override fun resolve(reference: SModelReference): SModel? = if (modelRefs.contains(reference)) reference.resolve(repository) else null
+                    override fun resolve(reference: SModuleReference): SModule? = reference.resolve(repository)
+                }
+            }
+            "modules" -> {
+                val modulesArray = params.getAsJsonArray("modules")
+                if (modulesArray == null) {
+                    onError("Parameter 'modules' is missing for scope 'modules'")
+                    return null
+                }
+                val moduleRefs = modulesArray.mapNotNull { resolveModule(repository, it.asString)?.moduleReference }.toSet()
+                object : BaseScope() {
+                    override fun getModules(): Iterable<SModule> = moduleRefs.mapNotNull { it.resolve(repository) }
+                    override fun getModels(): Iterable<SModel> = getModules().flatMap { it.models }
+                    override fun resolve(reference: SModuleReference): SModule? = if (moduleRefs.contains(reference)) reference.resolve(repository) else null
+                    override fun resolve(reference: SModelReference): SModel? = reference.resolve(repository)
+                }
+            }
+            else -> {
+                onError("Unsupported scope: $scopeParam")
+                null
+            }
+        }
+    }
+
     private val CONCEPT_AbstractConceptDeclaration: SConcept = SNodeUtil.concept_AbstractConceptDeclaration
     private val CONCEPT_ConceptDeclaration: SConcept = SNodeUtil.concept_ConceptDeclaration
     private val CONCEPT_InterfaceConceptDeclaration: SConcept = SNodeUtil.concept_InterfaceConceptDeclaration
@@ -1305,7 +1502,6 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         CONCEPT_AbstractConceptDeclaration.properties.find { it.name == "conceptShortDescription" }
             ?: MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0x403a32c5772bbe20L, "conceptShortDescription")
     }
-
     private val LINK_Members: SContainmentLink by lazy {
         CONCEPT_EnumerationDeclaration.containmentLinks.find { it.name == "members" }
             ?: MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c5fuL.toLong(), 0x2e770ca32c607cc1uL.toLong(), "members")
@@ -1339,14 +1535,12 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             ?: MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf98055fef0L, "target")
     }
 
-    private val ENUM_LinkMetaclass: SEnumeration by lazy {
-        val registry = MPSCoreComponents.getInstance()?.platform?.findComponent(LanguageRegistry::class.java)
-        registry?.getLanguage(LANG_STRUCTURE)?.datatypes?.filterIsInstance<SEnumeration>()?.find { it.name == "LinkMetaclass" }
-            ?: MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass")
-    }
-    private val ENUM_Cardinality: SEnumeration by lazy {
-        val registry = MPSCoreComponents.getInstance()?.platform?.findComponent(LanguageRegistry::class.java)
-        registry?.getLanguage(LANG_STRUCTURE)?.datatypes?.filterIsInstance<SEnumeration>()?.find { it.name == "Cardinality" }
-            ?: MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality")
+    private companion object {
+        const val ENUM_MEMBER_LINK_METACLASS_REFERENCE_ID = 0xfc6f4e95b8L
+        const val ENUM_MEMBER_LINK_METACLASS_AGGREGATION_ID = 0xfc6f4e95b9L
+        const val ENUM_MEMBER_CARDINALITY_0_1_ID = 0xfc6f3944c3L
+        const val ENUM_MEMBER_CARDINALITY_1_ID = 0xfc6f3944c4L
+        const val ENUM_MEMBER_CARDINALITY_0_N_ID = 0xfc6f3944c5L
+        const val ENUM_MEMBER_CARDINALITY_1_N_ID = 0xfc6f3944c6L
     }
 }

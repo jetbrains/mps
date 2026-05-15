@@ -1,11 +1,14 @@
 package com.intellij.mcp.tools
 
+import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.google.gson.JsonSyntaxException
 import com.intellij.mcpserver.McpToolset
 import com.intellij.openapi.application.EDT
 import jetbrains.mps.errors.MessageStatus
+import jetbrains.mps.errors.item.ModelReportItem
 import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
@@ -39,6 +42,81 @@ abstract class AbstractOps : McpToolset {
     // ---- helpers ----
     fun okJson(payload: String): String = "{" + "\"ok\":true,\"data\":" + payload + "}"
     fun errJson(message: String?): String = "{" + "\"ok\":false,\"error\":\"" + escapeJson(message?:"null") + "\"}"
+
+    protected fun finalizeResult(json: String): String {
+        return if (json.length > 20_000) {
+            val tempFile = saveToTempFile(json)
+            okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
+        } else {
+            okJson(json)
+        }
+    }
+    
+    class AssignabilityException(
+        val jsonPath: String,
+        val actualConcept: String,
+        val expectedConcepts: List<String>,
+        val parentConcept: String,
+        val role: String
+    ) : IllegalArgumentException(
+        "Concept assignability error at JSON path '$jsonPath':\n" +
+                " - Actual concept: '$actualConcept'\n" +
+                " - Expected concept(s): ${expectedConcepts.joinToString(", ") { "'$it'" }}\n" +
+                " - Parent concept: '$parentConcept'\n" +
+                " - Role: '$role'"
+    )
+
+    fun parseJson(jsonString: String): JsonObject {
+        return parseJson(jsonString, JsonObject::class.java)
+    }
+
+    fun <T> parseJson(jsonString: String, type: java.lang.reflect.Type): T {
+        if (jsonString.isBlank()) {
+            throw IllegalArgumentException("JSON string is empty or blank")
+        }
+        try {
+            return Gson().fromJson(jsonString, type) 
+                ?: throw IllegalArgumentException("Failed to parse JSON")
+        } catch (e: JsonSyntaxException) {
+            val message = e.message ?: "Invalid JSON syntax"
+            val regex = "at line (\\d+) column (\\d+)".toRegex()
+            val matchResult = regex.find(message)
+            if (matchResult != null) {
+                val line = matchResult.groupValues[1].toInt()
+                val column = matchResult.groupValues[2].toInt()
+                val excerpt = getJsonExcerpt(jsonString, line, column)
+                throw IllegalArgumentException("$message\n\n$excerpt")
+            }
+            throw IllegalArgumentException(message)
+        }
+    }
+
+    private fun getJsonExcerpt(json: String, line: Int, column: Int): String {
+        val lines = json.lines()
+        val result = StringBuilder()
+        val startLine = (line - 3).coerceAtLeast(0)
+        val endLine = (line + 2).coerceAtMost(lines.size - 1)
+
+        for (i in startLine..endLine) {
+            val currentLine = lines[i]
+            val lineNumber = i + 1
+            val prefix = if (lineNumber == line) "-> " else "   "
+            result.append(String.format("%s%4d | %s\n", prefix, lineNumber, currentLine))
+            if (lineNumber == line) {
+                result.append("           ") // match "   XXXX | "
+                for (j in 0 until (column - 1)) {
+                    if (j < currentLine.length && currentLine[j] == '\t') {
+                        result.append("\t")
+                    } else {
+                        result.append(" ")
+                    }
+                }
+                result.append("^\n")
+            }
+        }
+        return result.toString()
+    }
+
     fun escapeJson(s: String): String = buildString {
         for (ch in s) when (ch) {
             '"' -> append("\\\"")
@@ -54,7 +132,9 @@ abstract class AbstractOps : McpToolset {
         val name = n.name ?: n.presentation
         val concept = n.concept.name
         val conceptReference = PersistenceFacade.getInstance().asString(n.concept)
-        val conceptDoc = getDoc(n.concept.sourceNode?.resolve(n.model?.repository))
+        val declarationNode = n.concept.sourceNode?.resolve(n.model?.repository)
+        val conceptDoc = getDoc(declarationNode)
+        val conceptDeprecated = getDeprecationInfo(declarationNode)
         val reference = PersistenceFacade.getInstance().asString(n.reference)
         val modelReference = n.model?.let { PersistenceFacade.getInstance().asString(it.reference) } ?: ""
         val moduleReference = n.model?.module?.let { PersistenceFacade.getInstance().asString(it.moduleReference) } ?: ""
@@ -67,6 +147,7 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("name", name)
         obj.addProperty("concept", concept)
         obj.addProperty("conceptDoc", conceptDoc)
+        obj.addProperty("conceptDeprecated", conceptDeprecated)
         obj.addProperty("conceptReference", conceptReference)
         obj.addProperty("reference", reference)
         obj.addProperty("parentReference", parentReference)
@@ -87,10 +168,13 @@ abstract class AbstractOps : McpToolset {
         val repository = node.model?.repository
         return buildString {
             append("{")
-            val doc = getDoc(node.concept.sourceNode?.resolve(repository))
+            val declarationNode = node.concept.sourceNode?.resolve(repository)
+            val doc = getDoc(declarationNode)
+            val deprecated = getDeprecationInfo(declarationNode)
             append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
             append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
             append("\"doc\":\"").append(escapeJson(doc)).append("\",")
+            append("\"deprecated\":\"").append(escapeJson(deprecated)).append("\",")
             append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
             append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
 
@@ -104,8 +188,11 @@ abstract class AbstractOps : McpToolset {
                 append("{")
                 append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-                val pdoc = getDoc(prop.sourceNode?.resolve(repository))
+                val propDeclarationNode = prop.sourceNode?.resolve(repository)
+                val pdoc = getDoc(propDeclarationNode)
+                val pdeprecated = getDeprecationInfo(propDeclarationNode)
                 append("\"doc\":\"").append(escapeJson(pdoc)).append("\",")
+                append("\"deprecated\":\"").append(escapeJson(pdeprecated)).append("\",")
                 append("\"value\":\"").append(escapeJson(value)).append("\"")
                 append("}")
             }
@@ -122,8 +209,11 @@ abstract class AbstractOps : McpToolset {
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
                 append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-                val rdoc = getDoc(link.sourceNode?.resolve(repository))
+                val linkDeclarationNode = link.sourceNode?.resolve(repository)
+                val rdoc = getDoc(linkDeclarationNode)
+                val rdeprecated = getDeprecationInfo(linkDeclarationNode)
                 append("\"doc\":\"").append(escapeJson(rdoc)).append("\",")
+                append("\"deprecated\":\"").append(escapeJson(rdeprecated)).append("\",")
                 val targetNode = ref.targetNode
                 if (targetNode != null) {
                     append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
@@ -150,10 +240,13 @@ abstract class AbstractOps : McpToolset {
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
                 append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-                val ldoc = getDoc(link.sourceNode?.resolve(repository))
+                val linkDeclarationNode = link.sourceNode?.resolve(repository)
+                val ldoc = getDoc(linkDeclarationNode)
+                val ldeprecated = getDeprecationInfo(linkDeclarationNode)
                 append("\"doc\":\"").append(escapeJson(ldoc)).append("\",")
+                append("\"deprecated\":\"").append(escapeJson(ldeprecated)).append("\"")
                 if (deep) {
-                    append("\"nodes\":[")
+                    append(",\"nodes\":[")
                     var firstChild = true
                     for (child in childrenInRole) {
                         if (!firstChild) append(",") else firstChild = false
@@ -161,7 +254,7 @@ abstract class AbstractOps : McpToolset {
                     }
                     append("]")
                 } else {
-                    append("\"children\":[")
+                    append(",\"children\":[")
                     var firstChild = true
                     for (child in childrenInRole) {
                         if (!firstChild) append(",") else firstChild = false
@@ -314,12 +407,17 @@ abstract class AbstractOps : McpToolset {
             append("\"properties\":[")
             var firstProp = true
             for (prop in node.concept.properties) {
-                val value = SNodeAccessUtil.getPropertyValue(node, prop)?.let { prop.type.toString(it) }
-                val propProblems = problemsByTarget.filter { (it.key as? PropertyMessageTarget)?.role == prop.name }.values.flatten()
-                
+                val rawValue = SNodeAccessUtil.getPropertyValue(node, prop)
                 val isEnum = prop.type is SEnumeration
+                // For enum properties, SEnumerationAdapter.toString() returns null for the default value
+                // (it is stored implicitly as absent). Use the literal's name directly instead.
+                val value = if (isEnum && rawValue is SEnumerationLiteral) rawValue.getName()
+                            else rawValue?.let { prop.type.toString(it) }
+                val propProblems = problemsByTarget.filter { (it.key as? PropertyMessageTarget)?.role == prop.name }.values.flatten()
+
                 val hasValue = value != null && value.isNotEmpty()
-                val isEmptyEnum = isEnum && !hasValue
+                // An enum is truly empty only when no literal could be resolved (not even the default).
+                val isEmptyEnum = isEnum && rawValue !is SEnumerationLiteral
                 val isInvalid = hasValue && !prop.isValid(value)
 
                 if (!hasValue && propProblems.isEmpty() && !isEmptyEnum) continue
@@ -498,11 +596,55 @@ abstract class AbstractOps : McpToolset {
         return "[" + resultList.joinToString(",") + "]"
     }
 
+    protected fun modelWithProblemsToJson(model: SModel, problems: List<ModelReportItem>): String {
+        return buildString {
+            append("{")
+            append("\"name\":\"").append(escapeJson(model.name.value)).append("\",")
+            append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(model.reference))).append("\",")
+            append("\"module\":\"").append(escapeJson(model.module?.moduleName ?: "")).append("\",")
+            append("\"problems\":[")
+            var firstProb = true
+            for (prob in problems) {
+                if (!firstProb) append(",") else firstProb = false
+                append("{")
+                val severity = when (prob.severity) {
+                    MessageStatus.ERROR -> "error"
+                    MessageStatus.WARNING -> "warning"
+                    else -> "info"
+                }
+                append("\"severity\":\"").append(severity).append("\",")
+                append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
+                if (prob is NodeReportItem) {
+                    val nodeRef = prob.node
+                    if (nodeRef != null) {
+                        append(",\"node\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(nodeRef))).append("\"")
+                    }
+                }
+                append("}")
+            }
+            append("]")
+            append("}")
+        }
+    }
+
     protected val LANG_STRUCTURE: SLanguage by lazy { SNodeUtil.concept_AbstractConceptDeclaration.language }
     protected val CONCEPT_DocumentedNodeAnnotation: SConcept by lazy {
         val registry = MPSCoreComponents.getInstance()?.platform?.findComponent(LanguageRegistry::class.java)
         registry?.getLanguage(LANG_STRUCTURE)?.concepts?.filterIsInstance<SConcept>()?.find { it.name == "DocumentedNodeAnnotation" }
             ?: MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x6d1df6c2700b0ea9L, "jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation")
+    }
+    protected val CONCEPT_DeprecatedNodeAnnotation: SConcept by lazy {
+        val registry = MPSCoreComponents.getInstance()?.platform?.findComponent(LanguageRegistry::class.java)
+        registry?.getLanguage(LANG_STRUCTURE)?.concepts?.filterIsInstance<SConcept>()?.find { it.name == "DeprecatedNodeAnnotation" }
+            ?: MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x11d0a70ae54L, "jetbrains.mps.lang.structure.structure.DeprecatedNodeAnnotation")
+    }
+    protected val PROP_DeprecatedNodeAnnotation_Comment: SProperty by lazy {
+        CONCEPT_DeprecatedNodeAnnotation.properties.find { it.name == "comment" }
+            ?: MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x11d0a70ae54L, 0x11d3ec760e8L, "comment")
+    }
+    protected val PROP_DeprecatedNodeAnnotation_Build: SProperty by lazy {
+        CONCEPT_DeprecatedNodeAnnotation.properties.find { it.name == "build" }
+            ?: MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x11d0a70ae54L, 0x11d3ec15123L, "build")
     }
     protected val PROP_DocumentedNodeAnnotation_Text: SProperty by lazy {
         CONCEPT_DocumentedNodeAnnotation.properties.find { it.name == "text" }
@@ -513,6 +655,16 @@ abstract class AbstractOps : McpToolset {
         if (n == null) return ""
         val docAnnotation = n.getChildren(SNodeUtil.link_BaseConcept_smodelAttribute).find { it.concept == CONCEPT_DocumentedNodeAnnotation }
         return docAnnotation?.getProperty(PROP_DocumentedNodeAnnotation_Text) ?: ""
+    }
+
+    protected fun getDeprecationInfo(n: SNode?): String {
+        if (n == null) return "false"
+        val depAnnotation = n.getChildren(SNodeUtil.link_BaseConcept_smodelAttribute).find { it.concept == CONCEPT_DeprecatedNodeAnnotation }
+            ?: return "false"
+        val comment = depAnnotation.getProperty(PROP_DeprecatedNodeAnnotation_Comment) ?: ""
+        val build = depAnnotation.getProperty(PROP_DeprecatedNodeAnnotation_Build) ?: ""
+        val msg = if (build.isNotEmpty() && comment.isNotEmpty()) "since $build: $comment" else if (build.isNotEmpty()) "since $build" else comment
+        return if (msg.isNotEmpty()) "true: $msg" else "true"
     }
 
     protected fun modelReferenceJson(ref: SModelReference): String {
@@ -862,13 +1014,16 @@ abstract class AbstractOps : McpToolset {
     }
 
     protected fun containmentLinkInfoJson(link: SContainmentLink, repository: SRepository?): String {
-        val doc = if (repository != null) getDoc(link.sourceNode?.resolve(repository)) else ""
+        val declarationNode = if (repository != null) link.sourceNode?.resolve(repository) else null
+        val doc = getDoc(declarationNode)
+        val deprecated = getDeprecationInfo(declarationNode)
         return "{" +
                 "\"role\":\"" + escapeJson(link.name) + "\"," +
                 "\"type\":\"" + escapeJson(link.targetConcept.name) + "\"," +
                 "\"typeReference\":\"" + escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept)) + "\"," +
                 "\"cardinality\":\"" + escapeJson(getCardinality(link)) + "\"," +
-                "\"doc\":\"" + escapeJson(doc) + "\"" +
+                "\"doc\":\"" + escapeJson(doc) + "\"," +
+                "\"deprecated\":\"" + escapeJson(deprecated) + "\"" +
                 "}"
     }
 
@@ -891,12 +1046,14 @@ abstract class AbstractOps : McpToolset {
         val virtualFolder = declarationNode?.getProperty(SNodeUtil.property_BaseConcept_virtualPackage) ?: ""
         val shortDescription = concept.shortDescription
         val doc = getDoc(declarationNode)
+        val deprecated = getDeprecationInfo(declarationNode)
         return "{" +
                 "\"name\":\"" + escapeJson(name) + "\"," +
                 "\"qualifiedName\":\"" + escapeJson(qualifiedName) + "\"," +
                 "\"conceptAlias\":\"" + escapeJson(conceptAlias) + "\"," +
                 "\"shortDescription\":\"" + escapeJson(shortDescription) + "\"," +
                 "\"doc\":\"" + escapeJson(doc) + "\"," +
+                "\"deprecated\":\"" + escapeJson(deprecated) + "\"," +
                 "\"conceptReference\":\"" + escapeJson(conceptReference) + "\"," +
                 "\"languageReference\":\"" + escapeJson(languageReference) + "\"," +
                 "\"superConcept\":\"" + escapeJson(superConcept) + "\"," +

@@ -1,6 +1,7 @@
 package com.intellij.mcp.tools
 
 // MPS APIs used for CRUD
+import com.google.gson.JsonParser
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import com.intellij.mcpserver.project
@@ -23,20 +24,32 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Adds a dependency (import) to an MPS model. 
-        Also adds a "Default" dependency of the containing module on the target model's module.
+        Adds one or more dependencies (imports) to an MPS model.
+        Also adds a "Default" dependency of the containing module on each target model's module.
+        Skips targets that are already imported (no duplicates).
 
-        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
+        The 'targetModels' parameter can be a single model name/reference string, or a JSON array:
+        ["javax.swing@java_stub", "java.awt@java_stub"]
+
+        Returns a JSON object with 'ok':true and 'data':{"added":N,"alreadyPresent":M} on success,
+        or 'ok':false and 'error':"..." on failure.
     """)
     suspend fun mps_mcp_add_model_dependency(
         @McpDescription("Source persistent model reference")
         modelRefStr: String,
-        @McpDescription("Target model name or reference")
-        targetModel: String
+        @McpDescription("Target model name(s) or reference(s). Single string or JSON array: [\"model1\", \"model2\"]")
+        targetModels: String
     ): String {
         currentCoroutineContext().reportToolActivity("Adding MPS model dependency")
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+
+        val targetList: List<String> = try {
+            val elem = JsonParser.parseString(targetModels)
+            if (elem.isJsonArray) elem.asJsonArray.map { it.asString } else listOf(targetModels)
+        } catch (e: Exception) {
+            listOf(targetModels)
+        }
 
         return withContext(Dispatchers.EDT) {
             var result: String? = null
@@ -51,35 +64,46 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                     return@executeCommand
                 }
 
-                val targetRef = try {
-                    PersistenceFacade.getInstance().createModelReference(targetModel)
-                } catch (e: Exception) {
-                    // Try to find by name
-                    mpsProject.repository.modules.flatMap { it.models }
-                        .find { it.name.value == targetModel || it.name.toString() == targetModel }?.reference
-                }
-
-                if (targetRef == null) {
-                    result = errJson("Target model not found: $targetModel")
-                    return@executeCommand
-                }
-
-                model.addModelImport(targetRef)
-                
-                // Add module dependency
+                var added = 0
+                var alreadyPresent = 0
                 val module = model.module
-                val targetModelResolved = targetRef.resolve(mpsProject.repository)
-                val targetModule = targetModelResolved?.module
-                if (targetModule != null && targetModule != module && module != null) {
-                    (module as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
+
+                for (targetModel in targetList) {
+                    val targetRef = try {
+                        PersistenceFacade.getInstance().createModelReference(targetModel)
+                    } catch (e: Exception) {
+                        // Try to find by name
+                        mpsProject.repository.modules.flatMap { it.models }
+                            .find { it.name.value == targetModel || it.name.toString() == targetModel }?.reference
+                    }
+
+                    if (targetRef == null) {
+                        result = errJson("Target model not found: $targetModel")
+                        return@executeCommand
+                    }
+
+                    if (model.modelImports.contains(targetRef)) {
+                        alreadyPresent++
+                        continue
+                    }
+
+                    model.addModelImport(targetRef)
+                    added++
+
+                    // Add module dependency
+                    val targetModelResolved = targetRef.resolve(mpsProject.repository)
+                    val targetModule = targetModelResolved?.module
+                    if (targetModule != null && targetModule != module && module != null) {
+                        (module as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
+                    }
+                }
+
+                if (added > 0) {
+                    model.save()
                     (module as? AbstractModule)?.save()
                 }
-                
-                if (model is EditableSModel) {
-                    model.save()
-                }
-                
-                result = okJson("true")
+
+                result = okJson("{\"added\":$added,\"alreadyPresent\":$alreadyPresent}")
             }
             result ?: errJson("Unknown error")
         }

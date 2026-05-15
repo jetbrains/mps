@@ -6,161 +6,50 @@ import com.intellij.mcpserver.annotations.McpTool
 class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
     // Each entry holds four strings:
-    // [ name, shortDescription, whenToUseHints, detailedDescription ]
-    private val availableSkills: List<List<String>> = listOf(
-        listOf(
-            "Implement MPS language structure (concepts)",
-            "Steps to fill an MPS language (either a new or an existing one) with concepts, interface concepts, enums, etc.",
-            "Use this skill when asked to create a language, design a language or create concepts in a language",
-            """
-                Preconditions: You must know the name of the language to create or enhance.
-            - Use the 'jetbrains.mps.lang.structure' language.
-            - An MPS 'Concept' is a root node in the 'structure' model of an MPS language (MPS module). So is 'InterfaceConcept', 'EnumerationDeclaration' and 'ConstrainedDataTypeDeclaration'.
-            - After changing a concept definition make/rebuild is necessary for the language's structure model to get (re)loaded and for the changes to be visible in concepts.
-            - A less desired approach is inspecting the root nodes of the 'structure' model of the language's module. Although, it works even for not loaded languages.
-            1. Check if the language already exists using `mps_mcp_get_project_structure`. 
-            2. Create the language module using `mps_mcp_create_module` (pass the absolute path as a parameter, it will create the directory, do not create a directory by direct file access).
-            3. Plan the structure:
-                - **Concepts** (ConceptDeclaration) for core entities.
-                - **Interface Concepts** (InterfaceConceptDeclaration) for orthogonal functionality that is applicable across unrelated concepts.
-                - **Enumerations** (EnumerationDeclaration) for fixed sets of values.
-                - **Constraint Data Types** (ConstrainedDataTypeDeclaration) to restrict property values with regex.
-            4. Pay attention to proper concept inheritance and interface implementations. Do not hesitate to use abstract concepts to capture logic shared by multiple subconcepts of it.
-            5. You must use the `INamedConcept` interface concept from `jetbrains.mps.lang.core` for concepts that need a `name` property.
-            5. Create concepts in the `structure` model using `mps_mcp_create_root_node` (individually) or `mps_mcp_perform_structure_operation` (multiple concepts at once).
-            6. Define properties, children, and references. Create empty references first, then fill in concrete references to target nodes to avoid missing reference targets.
-            7. Prefer the 'smart reference' style for transparent references when you need a concept that only refers to another node (e.g. VariableReference in BaseLanguage). Rules: Only one child - a reference of cardinality '1', no 'conceptAlias'.
-            8. Rebuild the language when done adding concepts. Otherwise the language and its concepts will not be discoverable.
-                """.trimIndent()
-        ),
-        listOf(
-            "Implement MPS language editors",
-            "Steps to define concept editors in MPS",
-            "Use this skill when asked to create a language or concept editors in a language",
-            """
-            - Read the `PROJECT_HOME/.agents/skills/mps-editor/SKILL.md` (PROJECT_HOME stands for the directory of the current project) file to get a skill on how to create MPS editors.                
-            - Use the 'jetbrains.mps.lang.editor' language.
-            - An MPS 'ConceptEditor' (sometimes called 'editor definition') is a root node in the 'editor' model of an MPS language (MPS module).
-            - When defining a style for editor cells, use stylesheets effectively so the styles can be reused.
-            - Before creating a new style, first check if a suitable style is not available in a stylesheet defined in the current language or any of the languages it extendeds.
-            - When creating editors, always use the same virtual packages that are used for their respective concepts.            
-            - Use `CellModel_RefCell` for references to show properties of the target node. 'relationDeclaration' must point to the 'LinkDeclaration' to be represented by this cell.the 'editorComponent' LinkDeclaration contains an instance of 'InlineEditorComponent'. Its 'cellModel' LinkDeclaration is set to 'CellModel_Property' with relationDeclaration set to 'name' (for INamedConcept targets) or 'CellModel_ReferencePresentation' for targets without a name. Be sure to set the CellModel_Property's "readOnly" property to "true" to prevent changes to the name property through the reference cell.
-            - An editor can also be inherited from extended concepts or implemented interface concepts.
-            - For editor definitions to be complete, ensure all non-abstract concepts have an editor (either defined directly or inherited from a super-concept).
-            - Control layout with layout managers, When using "indent layout", collection cells are typically put on a new line and indented. The "indent-layout-indent" style attribute controls indentation. The "indent-layout-new-line" must be applied to a cell preceding the cell that should be put on a new line. Alternatively use "indent-layout-on-new-line", which should be applied to the cell that must be placed on a new line.
-            - Extract reusable parts of editor definitions into "editor components" (jetbrains.mps.lang.editor.structure.EditorComponentDeclaration) to avoid code duplication. Then use jetbrains.mps.lang.editor.structure.CellModel_Component to insert EditorComponentDeclarations into editor definitions. 
-            - Do read the .agents/skills/mps-editor/SKILL.md file in the project directory.            
-                """.trimIndent()
-        ),
-        listOf(
-            "Writing BaseLanguage/Java code in MPS",
-            "Tips to edit nodes from the jetbrains.mps.baseLanguage and especially to set references correctly",
-            "You must use this skill when creating Java code using the jetbrains.mps.baseLanguage language",
-            """
-            There are two options, which can well be combined:
-            1. Use the `mps_mcp_parse_java_and_insert` tool to parse Java code and insert it into BaseLanguage nodes.
-            2. Use the standard MPS mcp tools that manipulate nodes.
-            
-            ### BaseLanguage Editing Strategy
-            - Use `mps_mcp_parse_java_and_insert` when creating a new BaseLanguage class or method from scratch and the code is easy to express as ordinary Java.
-            - Use node-by-node AST editing when you need a precise local change inside an existing node and must preserve the surrounding structure exactly.
-            - Use delete-and-recreate only for a root node you just created yourself, when replacing the whole node is simpler and there are no user edits, incoming references, or other dependencies on its identity.
-            - Prefer this rule of thumb:
-              - New BaseLanguage class or method: `mps_mcp_parse_java_and_insert`
-              - Small targeted change in existing structure: node-by-node editing
-              - Fresh throwaway root with a minor issue: maybe delete-and-recreate
-            - Treat validation results with judgment:
-              - Errors should be fixed
-              - Warnings should usually be reviewed before changing structure
-              - Info-level suggestions should usually be left alone unless cleanup was requested
+    // [ name, shortDescription, whenToUseHints, fullFileContent ]
+    private val availableSkills: List<List<String>> by lazy { loadSkillsFromResources() }
 
-            ### Using `mps_mcp_parse_java_and_insert`:
-            - Resolve all references - in the json printout of the parsed and inserted code make sure all references are set to proper target nodes.
-            - Make sure that all nodes referred to from the parsed code have their containing models imported into the current model.
-            - Make sure the imported models have their containing modules imported into the current module.
-            
-            ### Tips on editing BaseLanguage nodes directly:
-            #### 1. Binary expression priorities                
-            - When building binary expressions (BinaryOperation), the operation priorities are only ensured by the structure on the nodes (children are calculated before the parent).
-            - Either use parentheses (ParenthesizedExpression) extensively or ensure that hierarchy is correct (e.g. multiplication must be a child of addition).
-            - Use `mps_mcp_parse_java_and_insert` with constant value placeholders to insert a skeleton of a desired expression and then replace the placeholders with concrete nodes individually.
-            #### 2. Setting References for Java Stubs
-            - WHEN setting BaseLanguage references to JDK stubs THEN use persistent nodeRefs, URL-encode signatures, then run root error check
-            - **URL Encoding**: Ensure parentheses `(` and `)` in method signatures are URL-encoded as `%28` and `%29`.
-            - **Method Signatures**: Do not include the return type suffix (e.g., `:void`) unless explicitly confirmed by a `mps_mcp_print_node_json` output from a known-good reference.
-            - **Example**: Use `...println%28java.lang.Object%29` instead of `...println(java.lang.Object):void`.
-            #### 3. String and string
-            - The string (StringType) and String (ClassifierType that has the 'classifier' reference point to the String root node of JDK module's 'lang' model) can be used interchangeably. Prefer 'string'.
-            #### 4. Java compatibility
-            - BaseLanguage supports full Java 7 specification, including generics.
-            - Avoid lambdas, records and other new Java features.
+    private fun loadSkillsFromResources(): List<List<String>> {
+        val basePath = "com/intellij/mcp/tools/skills"
+        val index = javaClass.classLoader
+            .getResourceAsStream("$basePath/index.txt")
+            ?.bufferedReader()?.readText()
+            ?: return emptyList()
+        return index.lines()
+            .map { it.trim() }
+            .filter { it.isNotEmpty() }
+            .mapNotNull { filename ->
+                val text = javaClass.classLoader
+                    .getResourceAsStream("$basePath/$filename")
+                    ?.bufferedReader()?.readText()
+                    ?: return@mapNotNull null
+                parseSkillFile(text)
+            }
+    }
 
-                """.trimIndent()
-        ),
-        listOf(
-            "Understand an MPS languages",
-            "Steps to analyze MPS language definitions",
-            "Use this skill when asked to use, analyze, verify or inspect MPS languages or concepts",
-            """
-                Workflow: Obtaining Concepts, Descriptions, and IDs from a Language Name. If you only have a language name (e.g., jetbrains.mps.lang.core), follow this workflow:
-                1. Verify and Resolve the Language:
-                    Call `mps_mcp_get_project_structure` with the language name as a filter:
-                    {
-                      "startingPoint": "PROJECT",
-                      "filter": "languageName"
-                    }
-                    This confirms the language exists and provides its fully qualified name or module UUID.
-                2. Retrieve All Concept Details:
-                    Use `mps_mcp_get_concept_details` by passing the language name in the languageRefs parameter. This tool is designed to return all concepts and interface concepts for the given languages:
-                    {
-                      "conceptRefs": [],
-                      "languageRefs": ["languageName"]
-                    }
-                3. Extract the Required Data:
-                    The tool returns a JSON array of concept objects. For each object in the array, you can extract:
-                    Name: Found in the name field.
-                    Description: Found in the shortDescription field.
-                    ID: Found in the conceptReference field (typically in the c:language-uuid/concept-id format).
-                    Important details: rootable and abstract concepts.
-                    Read the `PROJECT_HOME/.agents/skills/mps-language-concept-inheritance/SKILL.md` (PROJECT_HOME stands for the directory of the current project) file to get a skill on how to investigate the inheritance hierarchy of languages or concepts.
-                    
-                4. (Optional) Drill Down:
-                    - If specific details about properties or children are needed, they are already included in the mps_mcp_get_concept_details response.
-                    - If you need to find the actual declaration node in the MPS editor, use the sourceNode reference returned in the details with mps_mcp_open_root_node.
-                    - Use 'mps_mcp_perform_structure_operation' to find instances of concepts and then use either 'mps_mcp_show_node_representation' or mps_mcp_print_node_json to explore examples of their use. This is typically most fruitful to do on rootable concepts.
-                """.trimIndent()
-        ),
-        listOf(
-            "Add or update MPS code (nodes)",
-            "Rules to make changes to MPS nodes using the MPS tools and the expected json format",
-            "Use this skill when asked to write or change MPS code, add or update MPS nodes",
-            """
-                First, make sure you have acquired the 'Understand an MPS languages' skill.
-                Unless you are creating new root nodes, first resolve the node that is to be edited. It could be the current root node open in the editor ('mps_mcp_open_root_node').
-                To start writing code, resolve the languages and concepts that will be used:
-                - start with the list of used languages of the current model ('mps_mcp_get_project_structure') as these are most likely to be needed.
-                - when having a language reference use 'mps_mcp_get_concept_details' to get its concepts.
-                - use 'mps_mcp_search_concepts' to find concepts if not found in used languages or a language that was mentioned in the request.
-
-                MPS code is written by tools that accept json description of the hierarchy of nodes.
-                Either a deep json description can be provided for a substantial part of the code,
-                  or smaller chunks of code or only individual child nodes can be provided to the available mcp tools.
-                
-                MPS uses structured editing. The JSON structure used to represent MPS nodes is a tree structure with nodes and roles. Each node has a concept and a set of roles. Each role has a type and a value. The value of a role is either a node or a list of nodes. The type of a role is either a concept or a list of concepts.
-                The user may use textual (visual) notation when representing code. This may differ from the JSON structure. The JSON structure is the canonical representation of the code.
-                
-                When adding child nodes to a node:
-                    1. The expected JSON structure as advertised by the methods must be followed to the letter.
-                    2. The JSON must have either 'concept' or 'conceptReference' (preferably 'conceptReference') for every node.
-                    3. Properties are optional but must be an array of objects with 'name' and 'value'.
-                    4. Children are optional but must be an array of objects for each child role.
-                    5. References are optional but must be an array of objects for each role.
-                
-                An error message "Cannot invoke \"com.google.gson.JsonElement.getAsString()\" because the return value of \"com.google.gson.JsonObject.get(String)\" is null" means that a required field is missing.
-                
-                """.trimIndent()
-        )
-    )
+    // Parses YAML frontmatter (--- ... ---) and returns [name, shortDescription, whenToUseHints, fullText]
+    private fun parseSkillFile(text: String): List<String>? {
+        if (!text.startsWith("---")) return null
+        val endFrontmatter = text.indexOf("\n---", 3).takeIf { it >= 0 } ?: return null
+        val frontmatter = text.substring(3, endFrontmatter).trim()
+        val fields = mutableMapOf<String, String>()
+        var currentKey: String? = null
+        for (line in frontmatter.lines()) {
+            val colon = line.indexOf(':')
+            if (colon >= 0) {
+                val key = line.substring(0, colon).trim()
+                val value = line.substring(colon + 1)
+                fields[key] = value
+                currentKey = key
+            } else if (currentKey != null) {
+                fields[currentKey] = fields[currentKey] + "\n" + line
+            }
+        }
+        val name = fields["name"]?.trim() ?: return null
+        val short = fields["shortDescription"] ?: return null
+        val hints = fields["whenToUseHints"] ?: return null
+        return listOf(name, short, hints, text) // entry[3] = full file text
+    }
 
     private fun mps_mcp_list_skills(): String {
         // Return a JSON array of objects from availableSkills
@@ -206,7 +95,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_get_context(
-        @McpDescription("The absolute path to the project (optional)")
+        @McpDescription("The absolute path to the project")
         projectPath: String
     ): String {
         val context = """           
@@ -214,7 +103,6 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             
             Any time in the future use the 'mps_mcp_get_skill' tools to include the task-specific procedural knowledge in the context, may such a need arise.            
             Now giving you the list of MPS skills available through 'mps_mcp_get_skill': ${mps_mcp_list_skills()}
-            Other, no less important, skills are located in hierarchically organized SKILL.md files in the PROJECT_HOME/.agents/skills directory (PROJECT_HOME stands for the directory of the current project)
         """.trimIndent()
         return okJson("\"" + escapeJson(context) + "\"")
     }
