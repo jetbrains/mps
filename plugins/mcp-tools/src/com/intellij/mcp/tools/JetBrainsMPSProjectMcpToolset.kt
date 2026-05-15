@@ -1,5 +1,7 @@
 package com.intellij.mcp.tools
 
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.project.AbstractModule
@@ -16,6 +18,10 @@ import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
+// MCP tool methods use snake_case names because they are part of the public MCP protocol
+// surface, and they are invoked via reflection by the MCP server framework, so static
+// analysis flags them as "never used".
+@Suppress("FunctionName", "unused")
 class JetBrainsMPSProjectMcpToolset : AbstractOps() {
 
     @McpTool
@@ -48,55 +54,50 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
             return errJson("Parameters 'startingPoint' and 'moduleKind' cannot be used together.")
         }
         return withMpsProject("Getting MPS project structure") { mpsProject ->
-            executeRead(mpsProject) {
-                try {
-                    if (!startingPoint.isNullOrBlank()) {
-                        // Try to resolve as node, then model, then module
+            executeShortReadOnEdt(mpsProject) {
+                if (!startingPoint.isNullOrBlank()) {
+                    // Try to resolve as node, then model, then module
 
-                        // 1. Try Node
-                        val node = resolveNodeReference(mpsProject.repository, startingPoint)?.resolve(mpsProject.repository)
-                        if (node != null) {
-                            return@executeRead saveToTempFileResult(nodeHierarchyToJson(node, includeNodes))
-                        }
-
-                        // 2. Try Model
-                        val model = resolveModel(mpsProject.repository, startingPoint)
-                        if (model != null) {
-                            return@executeRead saveToTempFileResult(modelToJson(model, includeRootNodes, includeNodes, includeDependencies))
-                        }
-
-                        // 3. Try Module
-                        val module = resolveModule(mpsProject.repository, startingPoint)
-                        if (module != null) {
-                            // Check if we should filter out stub modules if they are not included
-                            val isProjectModule = mpsProject.projectModulesWithGenerators.contains(module)
-                            if (includeStubModules || isProjectModule) {
-                                return@executeRead saveToTempFileResult(
-                                    moduleToJson(mpsProject, module, includeModels, includeRootNodes, includeNodes, includeDependencies)
-                                )
-                            }
-                        }
-
-                        errJson("Starting point '$startingPoint' not found")
-                    } else {
-                        val modules = if (includeStubModules) mpsProject.repository.modules else mpsProject.projectModulesWithGenerators
-                        val filteredModules = if (!moduleKind.isNullOrBlank()) {
-                            modules.filter { getModuleKind(it).equals(moduleKind, ignoreCase = true) }
-                        } else {
-                            modules
-                        }
-
-                        val json = buildString {
-                            append("{")
-                            appendJsonArray("modules", filteredModules) { projectModule ->
-                                append(moduleToJson(mpsProject, projectModule, includeModels, includeRootNodes, includeNodes, includeDependencies))
-                            }
-                            append("}")
-                        }
-                        saveToTempFileResult(json)
+                    // 1. Try Node
+                    val node = resolveNodeReference(mpsProject.repository, startingPoint)?.resolve(mpsProject.repository)
+                    if (node != null) {
+                        return@executeShortReadOnEdt saveToTempFileResult(nodeHierarchyToJson(node, includeNodes))
                     }
-                } catch (e: Exception) {
-                    errJson(e.message)
+
+                    // 2. Try Model
+                    val model = resolveModel(mpsProject.repository, startingPoint)
+                    if (model != null) {
+                        return@executeShortReadOnEdt saveToTempFileResult(modelToJson(model, includeRootNodes, includeNodes, includeDependencies))
+                    }
+
+                    // 3. Try Module
+                    val module = resolveModule(mpsProject.repository, startingPoint)
+                    if (module != null) {
+                        // Check if we should filter out stub modules if they are not included
+                        val isProjectModule = mpsProject.projectModulesWithGenerators.contains(module)
+                        if (includeStubModules || isProjectModule) {
+                            return@executeShortReadOnEdt saveToTempFileResult(
+                                moduleToJson(mpsProject, module, includeModels, includeRootNodes, includeNodes, includeDependencies)
+                            )
+                        }
+                    }
+
+                    errJson("Starting point '$startingPoint' not found", McpErrorCode.NOT_FOUND)
+                } else {
+                    val modules = if (includeStubModules) mpsProject.repository.modules else mpsProject.projectModulesWithGenerators
+                    val filteredModules = if (!moduleKind.isNullOrBlank()) {
+                        modules.filter { getModuleKind(it).equals(moduleKind, ignoreCase = true) }
+                    } else {
+                        modules
+                    }
+
+                    val json = JsonObject()
+                    val moduleArray = JsonArray()
+                    for (projectModule in filteredModules) {
+                        moduleArray.add(moduleJsonObject(mpsProject, projectModule, includeModels, includeRootNodes, includeNodes, includeDependencies))
+                    }
+                    json.add("modules", moduleArray)
+                    saveToTempFileResult(json.toString())
                 }
             }
         }
@@ -110,114 +111,147 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         includeNodes: Boolean,
         includeDependencies: Boolean
     ): String {
+        return moduleJsonObject(project, m, includeModels, includeRootNodes, includeNodes, includeDependencies).toString()
+    }
+
+    private fun moduleJsonObject(
+        project: MPSProject,
+        m: SModule,
+        includeModels: Boolean,
+        includeRootNodes: Boolean,
+        includeNodes: Boolean,
+        includeDependencies: Boolean
+    ): JsonObject {
         val vf = try {
             project.getVirtualFolder(m)
         } catch (_: Throwable) {
             null
         }
 
-        return buildString {
-            append("{")
-            append("\"name\":\"").append(escapeJson(m.moduleName ?: "")).append("\",")
-            append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(m.moduleReference))).append("\",")
-            if (vf != null) {
-                append("\"virtualFolder\":\"").append(escapeJson(vf)).append("\",")
-            }
-            append("\"readOnly\":").append(m.isReadOnly).append(",")
-            append("\"kind\":\"").append(getModuleKind(m)).append("\",")
+        val obj = JsonObject()
+        obj.addProperty("name", m.moduleName ?: "")
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(m.moduleReference))
+        if (vf != null) {
+            obj.addProperty("virtualFolder", vf)
+        }
+        obj.addProperty("readOnly", m.isReadOnly)
+        obj.addProperty("kind", getModuleKind(m))
 
-            if (includeDependencies) {
-                val descriptor = (m as? AbstractModule)?.moduleDescriptor
+        if (includeDependencies) {
+            val descriptor = (m as? AbstractModule)?.moduleDescriptor
 
-                appendNamedReferenceArray(
-                    name = "dependencies",
+            obj.add(
+                "dependencies",
+                namedReferenceJsonArray(
                     items = descriptor?.dependencies ?: emptyList(),
                     itemName = { it.moduleRef.moduleName ?: "" },
                     itemReference = { PersistenceFacade.getInstance().asString(it.moduleRef) }
                 ) {
-                    append("\"scope\":\"").append(escapeJson(it.scope.toString())).append("\",")
-                    append("\"reexport\":").append(it.isReexport)
+                    addProperty("scope", it.scope.toString())
+                    addProperty("reexport", it.isReexport)
                 }
-                append(",")
+            )
 
-                appendNamedReferenceArray(
-                    name = "usedLanguages",
+            obj.add(
+                "usedLanguages",
+                namedReferenceJsonArray(
                     items = descriptor?.languageVersions?.entries ?: emptySet(),
                     itemName = { it.key.qualifiedName },
                     itemReference = { PersistenceFacade.getInstance().asString(it.key) }
                 ) {
-                    append("\"version\":").append(it.value)
+                    addProperty("version", it.value)
                 }
-                append(",")
+            )
 
-                appendNamedReferenceArray(
-                    name = "usedDevkits",
+            obj.add(
+                "usedDevkits",
+                namedReferenceJsonArray(
                     items = descriptor?.usedDevkits ?: emptyList(),
                     itemName = { it.moduleName ?: "" },
                     itemReference = { PersistenceFacade.getInstance().asString(it) }
                 )
-                append(",")
+            )
 
-                if (descriptor is LanguageDescriptor) {
-                    appendNamedReferenceArray(
-                        name = "extendedLanguages",
+            if (descriptor is LanguageDescriptor) {
+                obj.add(
+                    "extendedLanguages",
+                    namedReferenceJsonArray(
                         items = descriptor.extendedLanguages,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
                     )
-                    append(",")
+                )
 
-                    appendNamedReferenceArray(
-                        name = "runtimeModules",
+                obj.add(
+                    "runtimeModules",
+                    namedReferenceJsonArray(
                         items = descriptor.runtimeModules,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
                     )
-                    append(",")
+                )
 
-                    appendJsonArray("accessoryModels", descriptor.accessoryModels) { accessoryModel ->
-                        append(modelReferenceJson(accessoryModel))
-                    }
-                    append(",")
+                val accessoryModels = JsonArray()
+                for (accessoryModel in descriptor.accessoryModels) {
+                    accessoryModels.add(modelReferenceJsonObject(accessoryModel))
                 }
+                obj.add("accessoryModels", accessoryModels)
+            }
 
-                if (descriptor is GeneratorDescriptor) {
-                    appendNamedReferenceArray(
-                        name = "depGenerators",
+            if (descriptor is GeneratorDescriptor) {
+                obj.add(
+                    "depGenerators",
+                    namedReferenceJsonArray(
                         items = descriptor.depGenerators,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
                     )
-                    append(",")
-
-                    append("\"sourceLanguage\":")
-                    append(moduleReferenceJson(descriptor.sourceLanguage))
-                    append(",")
-                }
-
-                if (descriptor is DevkitDescriptor) {
-                    appendDevkitExportedLanguages(descriptor)
-                    append(",")
-                    appendDevkitExportedSolutions(descriptor)
-                    append(",")
-                    appendDevkitExtendedDevkits(descriptor)
-                    descriptor.associatedGenPlan?.let {
-                        append(",")
-                        appendAssociatedGenPlan(it)
-                    }
-                    append(",")
-                }
+                )
+                obj.add("sourceLanguage", moduleReferenceJsonObject(descriptor.sourceLanguage))
             }
 
-            if (includeModels) {
-                appendJsonArray("models", m.models) { model ->
-                    append(modelToJson(model, includeRootNodes, includeNodes, includeDependencies))
+            if (descriptor is DevkitDescriptor) {
+                obj.add(
+                    "exportedLanguages",
+                    namedReferenceJsonArray(
+                        items = descriptor.exportedLanguages,
+                        itemName = { it.moduleName ?: "" },
+                        itemReference = { PersistenceFacade.getInstance().asString(it) }
+                    )
+                )
+                obj.add(
+                    "exportedSolutions",
+                    namedReferenceJsonArray(
+                        items = descriptor.exportedSolutions,
+                        itemName = { it.moduleName ?: "" },
+                        itemReference = { PersistenceFacade.getInstance().asString(it) }
+                    )
+                )
+                obj.add(
+                    "extendedDevkits",
+                    namedReferenceJsonArray(
+                        items = descriptor.extendedDevkits,
+                        itemName = { it.moduleName ?: "" },
+                        itemReference = { PersistenceFacade.getInstance().asString(it) }
+                    )
+                )
+                descriptor.associatedGenPlan?.let {
+                    obj.add("associatedGenPlan", modelReferenceJsonObject(it))
                 }
-            } else {
-                append("\"modelsCount\":").append(m.models.toList().size)
             }
-            append("}")
         }
+
+        if (includeModels) {
+            val models = JsonArray()
+            for (model in m.models) {
+                models.add(modelJsonObject(model, includeRootNodes, includeNodes, includeDependencies))
+            }
+            obj.add("models", models)
+        }
+        else {
+            obj.addProperty("modelsCount", m.models.toList().size)
+        }
+        return obj
     }
 
     private fun getModuleKind(m: SModule): String {
@@ -231,53 +265,59 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
     }
 
     private fun modelToJson(model: SModel, includeRootNodes: Boolean, includeNodes: Boolean, includeDependencies: Boolean): String {
-        return buildString {
-            append("{")
-            append("\"name\":\"").append(escapeJson(model.name.longName)).append("\",")
-            append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(model.reference))).append("\",")
-            append("\"readOnly\":").append(model.isReadOnly).append(",")
+        return modelJsonObject(model, includeRootNodes, includeNodes, includeDependencies).toString()
+    }
 
-            if (includeDependencies) {
-                appendJsonArray("dependencies", if (model is SModelInternal) model.modelImports else emptyList()) { modelImport ->
-                    append(modelReferenceJson(modelImport))
+    private fun modelJsonObject(model: SModel, includeRootNodes: Boolean, includeNodes: Boolean, includeDependencies: Boolean): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", model.name.longName)
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
+        obj.addProperty("readOnly", model.isReadOnly)
+
+        if (includeDependencies) {
+            val dependencies = JsonArray()
+            if (model is SModelInternal) {
+                for (modelImport in model.modelImports) {
+                    dependencies.add(modelReferenceJsonObject(modelImport))
                 }
-                append(",")
+            }
+            obj.add("dependencies", dependencies)
 
-                append("\"usedLanguages\":[")
-                var firstUsedLanguage = true
-                if (model is SModelInternal) {
-                    for (language in model.importedLanguageIds()) {
-                        if (!firstUsedLanguage) append(",") else firstUsedLanguage = false
-                        appendNamedReferenceObject(language.qualifiedName, PersistenceFacade.getInstance().asString(language))
-                    }
-                    for (devkit in model.importedDevkits()) {
-                        if (!firstUsedLanguage) append(",") else firstUsedLanguage = false
-                        appendNamedReferenceObject(devkit.moduleName ?: "", PersistenceFacade.getInstance().asString(devkit)) {
-                            append("\"kind\":\"devkit\"")
-                        }
-                    }
+            val usedLanguages = JsonArray()
+            if (model is SModelInternal) {
+                for (language in model.importedLanguageIds()) {
+                    usedLanguages.add(namedReferenceJsonObject(language.qualifiedName, PersistenceFacade.getInstance().asString(language)))
                 }
-                append("],")
+                for (devkit in model.importedDevkits()) {
+                    val devkitObj = namedReferenceJsonObject(devkit.moduleName ?: "", PersistenceFacade.getInstance().asString(devkit))
+                    devkitObj.addProperty("kind", "devkit")
+                    usedLanguages.add(devkitObj)
+                }
+            }
+            obj.add("usedLanguages", usedLanguages)
 
-                appendNamedReferenceArray(
-                    name = "engagedOnGenerationLanguages",
+            obj.add(
+                "engagedOnGenerationLanguages",
+                namedReferenceJsonArray(
                     items = if (model is SModelInternal) model.languagesEngagedOnGeneration else emptyList(),
                     itemName = { it.qualifiedName },
                     itemReference = { PersistenceFacade.getInstance().asString(it) }
                 )
-                append(",")
-            }
-
-            if (includeRootNodes) {
-                appendJsonArray("rootNodes", model.rootNodes) { root ->
-                    append(nodeHierarchyToJson(root, includeNodes))
-                }
-            } else {
-                append("\"rootNodesCount\":").append(model.rootNodes.toList().size)
-            }
-
-            append("}")
+            )
         }
+
+        if (includeRootNodes) {
+            val rootNodes = JsonArray()
+            for (root in model.rootNodes) {
+                rootNodes.add(nodeHierarchyJsonObject(root, includeNodes))
+            }
+            obj.add("rootNodes", rootNodes)
+        }
+        else {
+            obj.addProperty("rootNodesCount", model.rootNodes.toList().size)
+        }
+
+        return obj
     }
 
     @McpTool
@@ -290,16 +330,12 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_reload_all(): String = withMpsProject("Reloading all MPS modules") { mpsProject ->
-        try {
-            val clm = mpsProject.getComponent(jetbrains.mps.classloading.ClassLoaderManager::class.java)
-                ?: return@withMpsProject errJson("ClassLoaderManager not found")
+        val clm = mpsProject.getComponent(jetbrains.mps.classloading.ClassLoaderManager::class.java)
+            ?: return@withMpsProject errJson("ClassLoaderManager not found", McpErrorCode.NOT_FOUND)
 
-            executeCommand(mpsProject) {
-                clm.reloadAll(jetbrains.mps.progress.EmptyProgressMonitor())
-            }
-            okJson("All modules reloaded successfully")
-        } catch (e: Exception) {
-            errJson("Failed to reload modules: ${e.message}")
+        executeShortCommandOnEdt(mpsProject) {
+            clm.reloadAll(jetbrains.mps.progress.EmptyProgressMonitor())
         }
+        okJson("All modules reloaded successfully")
     }
 }

@@ -1,5 +1,8 @@
 package com.intellij.mcp.tools
 
+import com.google.gson.JsonParser
+import com.google.gson.JsonPrimitive
+import com.google.gson.JsonSyntaxException
 import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.java.core.newparser.FeatureKind
 import jetbrains.mps.persistence.PersistenceRegistry
@@ -13,6 +16,7 @@ import jetbrains.mps.smodel.runtime.ConceptDescriptor
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
+import org.junit.Assert.fail
 import org.junit.BeforeClass
 import org.junit.Test
 import org.jetbrains.mps.openapi.language.SAbstractConcept
@@ -32,12 +36,15 @@ import org.jetbrains.mps.openapi.model.SReference
 import org.jetbrains.mps.openapi.model.SNodeReference
 import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import java.io.File
+import java.lang.reflect.InvocationTargetException
+import java.lang.reflect.Proxy
 import java.nio.file.Files
 import java.util.UUID
 import java.util.WeakHashMap
@@ -71,10 +78,40 @@ class AbstractOpsPropertyProblemsTest {
 
         fun readJsonOrFileForTest(jsonOrPath: String?, dryRun: Boolean = false) = readJsonOrFile(jsonOrPath, dryRun)
 
+        fun resolveNodeReferenceForTest(repository: org.jetbrains.mps.openapi.module.SRepository, nodeRefStr: String) =
+            resolveNodeReference(repository, nodeRefStr)
+
         fun saveToTempFileForTest(json: String) = saveToTempFile(json)
+
+        fun errJsonForTest(
+            message: String?,
+            code: AbstractOps.McpErrorCode? = null,
+            details: Map<String, Any?> = emptyMap(),
+            warnings: List<String> = emptyList()
+        ) = errJson(message, code, details, warnings)
+
+        fun okJsonRawForTest(payload: String) = okJson(payload)
+
+        fun okJsonStringForTest(payload: String) = okJsonString(payload)
+
+        fun okJsonElementForTest(payload: com.google.gson.JsonElement) = okJson(payload)
+
+        fun toolFailureForTest(activity: String, e: Throwable) = toolFailure(activity, e)
 
         suspend fun coroutineProgressMonitorForTest() = coroutineProgressMonitor()
     }
+
+    private val nodeOps = object : AbstractNodeOps() {
+        fun readNodeJsonOrFileForTest(jsonOrPath: String?, dryRun: Boolean = false) = readNodeJsonOrFile(jsonOrPath, dryRun)
+
+        fun instantiateNodeForTest(jsonObject: com.google.gson.JsonObject, model: SModel, jsonPath: String = "$") =
+            instantiateNode(jsonObject, model, dryRun = true, jsonPath = jsonPath)
+
+        fun setPropertyForTest(node: SNode, sProperty: SProperty, propertyValue: String?) =
+            setProperty(node, sProperty, propertyValue)
+    }
+
+    private val nodeToolset = JetBrainsMPSNodeMcpToolset()
 
     @Test
     fun enumDefaultLiteralIsNotReportedAsProblem() {
@@ -153,12 +190,77 @@ class AbstractOpsPropertyProblemsTest {
     }
 
     @Test
+    fun nodeJsonFileProducedByToolResultUnwrapsEnvelopeData() {
+        val file = ops.saveToTempFileForTest("""{"concept":"test.lang.structure.TestConcept"}""")
+
+        val json = nodeOps.readNodeJsonOrFileForTest(file.absolutePath)
+
+        assertEquals("""{"concept":"test.lang.structure.TestConcept"}""", json)
+        assertFalse(file.exists())
+    }
+
+    @Test
+    fun nodeJsonFileProducedByToolResultCanUnwrapArrayEnvelopeData() {
+        val file = ops.saveToTempFileForTest("""[{"concept":"test.lang.structure.TestConcept"}]""")
+
+        val json = nodeOps.readNodeJsonOrFileForTest(file.absolutePath)
+
+        assertEquals("""[{"concept":"test.lang.structure.TestConcept"}]""", json)
+        assertFalse(file.exists())
+    }
+
+    @Test
+    fun nodeJsonEnvelopeWithPrimitiveDataIsRejected() {
+        try {
+            nodeOps.readNodeJsonOrFileForTest("""{"ok":true,"data":"/tmp/node.json"}""")
+            fail("Expected primitive envelope data to fail")
+        } catch (e: AbstractOps.McpInvalidRequestException) {
+            assertEquals("MCP response envelope data is not a node JSON blueprint object or array", e.message)
+        }
+    }
+
+    @Test
+    fun nodeJsonEnvelopeWithErrorIsRejected() {
+        try {
+            nodeOps.readNodeJsonOrFileForTest("""{"ok":false,"error":"print failed"}""")
+            fail("Expected error envelope to fail")
+        } catch (e: AbstractOps.McpInvalidRequestException) {
+            assertEquals("MCP response envelope contains an error instead of node JSON data: print failed", e.message)
+        }
+    }
+
+    @Test
     fun dryRunKeepsToolCreatedTempFileAfterRead() {
         val file = ops.saveToTempFileForTest("""{"concept":"test.lang.structure.TestConcept"}""")
         try {
             val json = ops.readJsonOrFileForTest(file.absolutePath, dryRun = true)
 
             assertTrue(json.orEmpty().contains("\"ok\""))
+            assertTrue(file.exists())
+
+            ops.readJsonOrFileForTest(file.absolutePath)
+            assertFalse(file.exists())
+        } finally {
+            file.delete()
+        }
+    }
+
+    @Test
+    fun missingTrackedTempFileIsForgotten() {
+        val file = ops.saveToTempFileForTest("""{"concept":"test.lang.structure.TestConcept"}""")
+        assertTrue(file.delete())
+        try {
+            ops.readJsonOrFileForTest(file.absolutePath)
+            fail("Expected missing temp file read to fail")
+        } catch (e: AbstractOps.McpInvalidRequestException) {
+            assertTrue(e.message.orEmpty().contains("neither a valid JSON object/array nor an existing file path"))
+        }
+
+        try {
+            val json = """{"concept":"test.lang.structure.TestConcept"}"""
+            file.writeText(json)
+
+            assertEquals(json, ops.readJsonOrFileForTest(file.absolutePath))
             assertTrue(file.exists())
         } finally {
             file.delete()
@@ -182,6 +284,98 @@ class AbstractOpsPropertyProblemsTest {
     }
 
     @Test
+    fun conceptSchemaRejectsWrongPropertiesType() {
+        assertSchemaFailure("'conceptsJson[0].properties' must be an array") {
+            parseStructureConceptSpecsForTest("""[{"name":"Foo","properties":{}}]""", "conceptsJson")
+        }
+    }
+
+    @Test
+    fun conceptSchemaRejectsChildMissingRole() {
+        assertSchemaFailure("Missing 'conceptsJson[0].children[0].role'") {
+            parseStructureConceptSpecsForTest("""[{"name":"Foo","children":[{"target":"Bar"}]}]""", "conceptsJson")
+        }
+    }
+
+    @Test
+    fun conceptSchemaRejectsChildMissingTarget() {
+        assertSchemaFailure("Missing 'conceptsJson[0].children[0].target'") {
+            parseStructureConceptSpecsForTest("""[{"name":"Foo","children":[{"role":"bar"}]}]""", "conceptsJson")
+        }
+    }
+
+    @Test
+    fun conceptSchemaRejectsReferenceMissingTarget() {
+        assertSchemaFailure("Missing 'conceptsJson[0].references[0].target'") {
+            parseStructureConceptSpecsForTest("""[{"name":"Foo","references":[{"role":"bar"}]}]""", "conceptsJson")
+        }
+    }
+
+    @Test
+    fun enumSchemaRejectsValuesThatAreNotAnArray() {
+        assertSchemaFailure("valuesJson must be a JSON array") {
+            parseEnumValueSpecsForTest("""{"enumName":"red"}""")
+        }
+    }
+
+    @Test
+    fun enumSchemaRejectsValueEntryMissingEnumName() {
+        assertSchemaFailure("Missing 'valuesJson[0].enumName'") {
+            parseEnumValueSpecsForTest("""[{"enumPresentation":"Red"}]""")
+        }
+    }
+
+    @Test
+    fun javaInsertSchemaRejectsUnknownMode() {
+        assertSchemaFailure("Unknown insert.mode 'sideways'") {
+            parseJavaParseInsertRequestForTest(
+                """
+                {
+                  "code": "class Foo {}",
+                  "featureKind": "CLASS",
+                  "insert": {"mode": "sideways"}
+                }
+                """.trimIndent()
+            )
+        }
+    }
+
+    @Test
+    fun javaInsertSchemaRejectsWrongPositionType() {
+        assertSchemaFailure("'parameters.insert.position' must be an integer") {
+            parseJavaParseInsertRequestForTest(
+                """
+                {
+                  "code": "int x = 1;",
+                  "featureKind": "STATEMENTS",
+                  "insert": {
+                    "mode": "child",
+                    "parentRef": "r:model#parent",
+                    "role": "statement",
+                    "position": "first"
+                  }
+                }
+                """.trimIndent()
+            )
+        }
+    }
+
+    @Test
+    fun javaInsertSchemaRejectsMalformedInsertObject() {
+        assertSchemaFailure("'parameters.insert' must be a JSON object") {
+            parseJavaParseInsertRequestForTest(
+                """
+                {
+                  "code": "class Foo {}",
+                  "featureKind": "CLASS",
+                  "insert": []
+                }
+                """.trimIndent()
+            )
+        }
+    }
+
+    @Test
     fun coroutineProgressMonitorReflectsCoroutineCancellation() = runBlocking {
         var monitor: jetbrains.mps.progress.EmptyProgressMonitor? = null
         val job = launch(start = CoroutineStart.UNDISPATCHED) {
@@ -196,6 +390,417 @@ class AbstractOpsPropertyProblemsTest {
 
         assertTrue(createdMonitor.isCanceled)
         job.cancelAndJoin()
+    }
+
+    @Test
+    fun errorJsonUsesMeaningfulFallbackForNullMessage() {
+        val obj = JsonParser.parseString(ops.errJsonForTest(null)).asJsonObject
+
+        assertFalse(obj.get("ok").asBoolean)
+        assertEquals("Unknown error", obj.get("error").asString)
+        assertFalse(obj.has("code"))
+    }
+
+    @Test
+    fun errorJsonCanIncludeStableMetadata() {
+        val obj = JsonParser.parseString(
+            ops.errJsonForTest(
+                "Invalid JSON parameters",
+                AbstractOps.McpErrorCode.INVALID_JSON,
+                mapOf("field" to "parameters"),
+                listOf("Ignored trailing input")
+            )
+        ).asJsonObject
+
+        assertFalse(obj.get("ok").asBoolean)
+        assertEquals("Invalid JSON parameters", obj.get("error").asString)
+        assertEquals("INVALID_JSON", obj.get("code").asString)
+        assertEquals("parameters", obj.getAsJsonObject("details").get("field").asString)
+        assertEquals("Ignored trailing input", obj.getAsJsonArray("warnings")[0].asString)
+    }
+
+    @Test
+    fun rawSuccessJsonKeepsCompatibilityPayload() {
+        val obj = JsonParser.parseString(ops.okJsonRawForTest("""{"answer":42}""")).asJsonObject
+
+        assertTrue(obj.get("ok").asBoolean)
+        assertEquals(42, obj.getAsJsonObject("data").get("answer").asInt)
+    }
+
+    @Test
+    fun structuredSuccessJsonWrapsJsonElementPayload() {
+        val obj = JsonParser.parseString(ops.okJsonElementForTest(JsonPrimitive(42))).asJsonObject
+
+        assertTrue(obj.get("ok").asBoolean)
+        assertEquals(42, obj.get("data").asInt)
+    }
+
+    @Test
+    fun structuredStringSuccessJsonEscapesThroughGson() {
+        val value = "quoted \"text\" with \\ backslash\nand newline"
+        val obj = JsonParser.parseString(ops.okJsonStringForTest(value)).asJsonObject
+
+        assertTrue(obj.get("ok").asBoolean)
+        assertEquals(value, obj.get("data").asString)
+    }
+
+    @Test
+    fun typedNotFoundExceptionIsClassifiedWithoutInternalErrorCode() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest(
+                "running test tool",
+                AbstractOps.McpNotFoundException("Model 'missing' not found")
+            )
+        ).asJsonObject
+
+        assertFalse(obj.get("ok").asBoolean)
+        assertEquals("Model 'missing' not found", obj.get("error").asString)
+        assertEquals("NOT_FOUND", obj.get("code").asString)
+    }
+
+    @Test
+    fun typedExceptionDetailsArePropagatedToErrorEnvelope() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest(
+                "running test tool",
+                AbstractOps.McpInvalidReferenceException(
+                    "Reference 'foo' could not be resolved",
+                    mapOf("ref" to "foo")
+                )
+            )
+        ).asJsonObject
+
+        assertEquals("INVALID_REFERENCE", obj.get("code").asString)
+        assertEquals("foo", obj.getAsJsonObject("details").get("ref").asString)
+    }
+
+    @Test
+    fun typedInvalidRequestExceptionMapsToInvalidRequest() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest(
+                "running test tool",
+                AbstractOps.McpInvalidRequestException("Some validation message mentioning json and not found")
+            )
+        ).asJsonObject
+
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+    }
+
+    @Test
+    fun bareIllegalArgumentExceptionMapsToInternalError() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest(
+                "running test tool",
+                IllegalArgumentException("Some validation message mentioning json and not found")
+            )
+        ).asJsonObject
+
+        assertEquals("INTERNAL_ERROR", obj.get("code").asString)
+        assertEquals("Internal error while running test tool", obj.get("error").asString)
+    }
+
+    @Test
+    fun makeTargetResolutionRejectsEmptyScopedRequest() {
+        val result = nodeToolset.resolveMakeTargets<String, String>(
+            requestedModels = emptyList(),
+            requestedModules = emptyList(),
+            wholeProject = false,
+            allProjectModels = { emptyList() },
+            allProjectModules = { emptyList() },
+            resolveModel = { null },
+            resolveModule = { null },
+            moduleOfModel = { null },
+            modelsOfModule = { emptyList() },
+        )
+
+        when (result) {
+            is JetBrainsMPSNodeMcpToolset.MakeTargetResolution.Invalid -> {
+                assertEquals("No model or module references were provided", result.message)
+            }
+
+            else -> fail("Expected invalid result for empty scoped request")
+        }
+    }
+
+    @Test
+    fun makeTargetResolutionReportsFullyInvalidInputDetails() {
+        val result = nodeToolset.resolveMakeTargets<String, String>(
+            requestedModels = listOf("missing.model"),
+            requestedModules = listOf("missing.module"),
+            wholeProject = false,
+            allProjectModels = { emptyList() },
+            allProjectModules = { emptyList() },
+            resolveModel = { null },
+            resolveModule = { null },
+            moduleOfModel = { null },
+            modelsOfModule = { emptyList() },
+        )
+
+        when (result) {
+            is JetBrainsMPSNodeMcpToolset.MakeTargetResolution.Invalid -> {
+                assertEquals("None of the requested models or modules could be resolved", result.message)
+                assertEquals(listOf("missing.model"), result.details["unresolvedModels"])
+                assertEquals(listOf("missing.module"), result.details["unresolvedModules"])
+            }
+
+            else -> fail("Expected invalid result for fully unresolved input")
+        }
+    }
+
+    @Test
+    fun makeTargetResolutionKeepsValidTargetsAndBuildsWarningsForMixedInput() {
+        val result = nodeToolset.resolveMakeTargets(
+            requestedModels = listOf("valid.model", "missing.model"),
+            requestedModules = listOf("valid.module", "missing.module"),
+            wholeProject = false,
+            allProjectModels = { emptyList<String>() },
+            allProjectModules = { emptyList<String>() },
+            resolveModel = { requested -> if (requested == "valid.model") requested else null },
+            resolveModule = { requested -> if (requested == "valid.module") requested else null },
+            moduleOfModel = { model -> "module-for:$model" },
+            modelsOfModule = { module -> listOf("model-for:$module") },
+        )
+
+        when (result) {
+            is JetBrainsMPSNodeMcpToolset.MakeTargetResolution.Ok -> {
+                assertEquals(
+                    linkedSetOf("valid.model", "model-for:valid.module"),
+                    result.modelsToMake,
+                )
+                assertEquals(
+                    linkedSetOf("module-for:valid.model", "valid.module"),
+                    result.modulesToMake,
+                )
+                assertEquals(
+                    listOf(
+                        "Unresolved model reference: missing.model",
+                        "Unresolved module reference: missing.module",
+                    ),
+                    result.warnings(),
+                )
+            }
+
+            else -> fail("Expected successful resolution for mixed valid/invalid input")
+        }
+    }
+
+    @Test
+    fun jsonSyntaxExceptionIsClassifiedAsInvalidJson() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest("running test tool", JsonSyntaxException("Unexpected token at position 4"))
+        ).asJsonObject
+
+        assertEquals("INVALID_JSON", obj.get("code").asString)
+        assertEquals("Unexpected token at position 4", obj.get("error").asString)
+    }
+
+    @Test
+    fun assignabilityExceptionIsClassifiedAsInvalidReference() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest(
+                "running test tool",
+                AbstractOps.AssignabilityException(
+                    jsonPath = "$",
+                    actualConcept = "ChildConcept",
+                    expectedConcepts = listOf("ExpectedConcept"),
+                    parentConcept = "ParentConcept",
+                    role = "child"
+                )
+            )
+        ).asJsonObject
+
+        assertEquals("INVALID_REFERENCE", obj.get("code").asString)
+    }
+
+    @Test
+    fun assignabilityExceptionMessageEnumeratesExpectedConcepts() {
+        val ex = AbstractOps.AssignabilityException(
+            jsonPath = "$.children[0]",
+            actualConcept = "test.lang.structure.Wrong",
+            expectedConcepts = listOf("test.lang.structure.A", "test.lang.structure.B"),
+            parentConcept = "test.lang.structure.Container",
+            role = "items"
+        )
+
+        val message = checkNotNull(ex.message)
+        assertTrue(message.contains("$.children[0]"))
+        assertTrue(message.contains("'test.lang.structure.Wrong'"))
+        assertTrue(message.contains("'test.lang.structure.A', 'test.lang.structure.B'"))
+        assertTrue(message.contains("'test.lang.structure.Container'"))
+        assertTrue(message.contains("'items'"))
+    }
+
+    @Test
+    fun setPropertyCoercesEnumLiteralByName() {
+        val property = TestEnumProperty()
+        val node = jetbrains.mps.smodel.SNode(TestConcept(listOf(property)))
+        node.setId(SNodeId.Regular(10L))
+
+        nodeOps.setPropertyForTest(node, property, "OTHER")
+
+        val stored = SNodeAccessUtil.getPropertyValue(node, property)
+        assertTrue("Expected literal stored, got: $stored", stored is TestEnumLiteral)
+        assertEquals("OTHER", (stored as TestEnumLiteral).name)
+        assertEquals(null, node.getProperty(property))
+    }
+
+    @Test
+    fun setPropertyCoercesEnumLiteralByPresentation() {
+        val property = TestPresentationEnumProperty()
+        val node = jetbrains.mps.smodel.SNode(TestConcept(listOf(property)))
+        node.setId(SNodeId.Regular(11L))
+
+        nodeOps.setPropertyForTest(node, property, "Red Apple")
+
+        val stored = SNodeAccessUtil.getPropertyValue(node, property)
+        assertTrue("Expected literal stored, got: $stored", stored is TestPresentationLiteral)
+        assertEquals("RED_APPLE", (stored as TestPresentationLiteral).name)
+        assertEquals("Red Apple", stored.presentation)
+    }
+
+    @Test
+    fun setPropertyPassesNonEnumValueThroughToNodeSetProperty() {
+        val property = TestStringProperty()
+        val node = jetbrains.mps.smodel.SNode(TestConcept(listOf(property)))
+        node.setId(SNodeId.Regular(12L))
+
+        nodeOps.setPropertyForTest(node, property, "hello world")
+
+        assertEquals("hello world", node.getProperty(property))
+        // Non-enum path doesn't go through SNodeAccessUtil.setPropertyValue, so the
+        // test instance's WeakHashMap should not have captured this value.
+        assertEquals(null, SNodeAccessUtil.getPropertyValue(node, property))
+    }
+
+    @Test
+    fun resolveNodeReferenceFindsRootByModelDotName() {
+        val rootRef = stubNodeReference("root-1")
+        val rootNode = stubRootNode("MyRoot", rootRef)
+        val model = modelWithRoots("my.lang.structure", listOf(rootNode))
+        val module = moduleWithModels(listOf(model))
+        val repository = repositoryWithModules(listOf(module))
+
+        val resolved = ops.resolveNodeReferenceForTest(repository, "my.lang.structure.MyRoot")
+
+        assertEquals(rootRef, resolved)
+    }
+
+    @Test
+    fun resolveNodeReferenceFallsBackToBareRootName() {
+        val rootRef = stubNodeReference("root-2")
+        val rootNode = stubRootNode("LonelyRoot", rootRef)
+        val model = modelWithRoots("my.lang.structure", listOf(rootNode))
+        val module = moduleWithModels(listOf(model))
+        val repository = repositoryWithModules(listOf(module))
+
+        val resolved = ops.resolveNodeReferenceForTest(repository, "LonelyRoot")
+
+        assertEquals(rootRef, resolved)
+    }
+
+    @Test
+    fun resolveNodeReferenceReturnsNullWhenRootNotFound() {
+        val rootRef = stubNodeReference("root-3")
+        val rootNode = stubRootNode("Existing", rootRef)
+        val model = modelWithRoots("my.lang.structure", listOf(rootNode))
+        val module = moduleWithModels(listOf(model))
+        val repository = repositoryWithModules(listOf(module))
+
+        val resolved = ops.resolveNodeReferenceForTest(repository, "my.lang.structure.NoSuchRoot")
+
+        assertEquals(null, resolved)
+    }
+
+    @Test
+    fun missingBlueprintConceptIsClassifiedAsInvalidRequest() {
+        val exception = try {
+            nodeOps.instantiateNodeForTest(JsonParser.parseString("{}").asJsonObject, modelWithRepository(emptyRepository()))
+            fail("Expected missing concept validation failure")
+            return
+        } catch (e: AbstractOps.McpInvalidRequestException) {
+            e
+        }
+
+        val obj = JsonParser.parseString(ops.toolFailureForTest("running test tool", exception)).asJsonObject
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        assertEquals("Missing 'concept' or 'conceptReference' property in JSON at path '$'", obj.get("error").asString)
+    }
+
+    @Test
+    fun conceptReferencePassedAsNodeReferenceIsClassifiedAsInvalidReference() {
+        val exception = try {
+            ops.resolveNodeReferenceForTest(emptyRepository(), "c:test.lang/TestConcept")
+            fail("Expected concept reference validation failure")
+            return
+        } catch (e: AbstractOps.McpInvalidReferenceException) {
+            e
+        }
+
+        val obj = JsonParser.parseString(ops.toolFailureForTest("running test tool", exception)).asJsonObject
+        assertEquals("INVALID_REFERENCE", obj.get("code").asString)
+        assertEquals(
+            "Expected a node reference (r:... or i:...), but a concept reference was provided: c:test.lang/TestConcept",
+            obj.get("error").asString
+        )
+    }
+
+    @Test
+    fun oversizedDirectJsonInputIsClassifiedAsInvalidRequest() {
+        val directJson = "{\"payload\":\"${"x".repeat(5000)}\"}"
+
+        val exception = try {
+            ops.readJsonOrFileForTest(directJson)
+            fail("Expected oversized JSON validation failure")
+            return
+        } catch (e: AbstractOps.McpInvalidRequestException) {
+            e
+        }
+
+        val obj = JsonParser.parseString(ops.toolFailureForTest("running test tool", exception)).asJsonObject
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        assertTrue(obj.get("error").asString.startsWith("Direct JSON input is too large ("))
+    }
+
+    @Test
+    fun errorIsRethrownByToolFailurePolicy() {
+        val error = OutOfMemoryError("simulated OOM")
+        try {
+            ops.toolFailureForTest("running test tool", error)
+            fail("Expected Error to be rethrown")
+        } catch (e: OutOfMemoryError) {
+            assertEquals("simulated OOM", e.message)
+        }
+    }
+
+    @Test
+    fun unexpectedFailureWithBlankMessageGetsInternalErrorResponse() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest("running test tool", RuntimeException(""))
+        ).asJsonObject
+
+        assertFalse(obj.get("ok").asBoolean)
+        assertEquals("Internal error while running test tool", obj.get("error").asString)
+        assertEquals("INTERNAL_ERROR", obj.get("code").asString)
+    }
+
+    @Test
+    fun unexpectedFailureWithNullMessageGetsInternalErrorResponse() {
+        val obj = JsonParser.parseString(
+            ops.toolFailureForTest("running test tool", RuntimeException(null as String?))
+        ).asJsonObject
+
+        assertFalse(obj.get("ok").asBoolean)
+        assertEquals("Internal error while running test tool", obj.get("error").asString)
+        assertEquals("INTERNAL_ERROR", obj.get("code").asString)
+    }
+
+    @Test
+    fun cancellationIsRethrownByToolFailurePolicy() {
+        try {
+            ops.toolFailureForTest("running test tool", CancellationException("cancelled"))
+            fail("Expected cancellation to be rethrown")
+        } catch (_: CancellationException) {
+        }
     }
 
     private class TestConcept(
@@ -274,6 +879,76 @@ class AbstractOpsPropertyProblemsTest {
         override fun getSourceNode(): SNodeReference? = null
     }
 
+    private class TestPresentationEnumProperty : SProperty {
+        private val enumType = TestPresentationEnumeration()
+
+        override fun getName(): String = "presEnumProp"
+
+        override fun getOwner(): SAbstractConcept = TestConcept(emptyList())
+
+        override fun isValid(): Boolean = true
+
+        override fun getType(): SDataType = enumType
+
+        override fun isValid(string: String?): Boolean = true
+
+        override fun getSourceNode(): SNodeReference? = null
+
+        override fun isTransient(): Boolean = false
+    }
+
+    private class TestPresentationEnumeration : SEnumeration {
+        override fun getName(): String = "TestPresEnum"
+
+        override fun getLiteral(name: String?): SEnumerationLiteral? = getLiterals().firstOrNull { it.name == name }
+
+        override fun fromString(string: String?): Any? = SType.NOT_A_VALUE
+
+        override fun toString(value: Any?): String? = (value as? TestPresentationLiteral)?.presentation
+
+        override fun isInstanceOf(value: Any?): Boolean = value is TestPresentationLiteral
+
+        override fun getLiterals(): MutableList<out SEnumerationLiteral> = mutableListOf(
+            TestPresentationLiteral("RED_APPLE", "Red Apple"),
+            TestPresentationLiteral("GREEN_PEAR", "Green Pear")
+        )
+
+        override fun getDefault(): SEnumerationLiteral = TestPresentationLiteral("RED_APPLE", "Red Apple")
+
+        override fun getSourceNode(): SNodeReference? = null
+    }
+
+    private data class TestPresentationLiteral(
+        private val literalName: String,
+        private val literalPresentation: String,
+    ) : SEnumerationLiteral {
+        override fun getName(): String = literalName
+
+        override fun getPresentation(): String = literalPresentation
+
+        override fun getOrdinal(): Int = if (literalName == "RED_APPLE") 0 else 1
+
+        override fun getSourceNode(): SNodeReference? = null
+
+        override fun getEnumeration(): SEnumeration = TestPresentationEnumeration()
+    }
+
+    private class TestStringProperty : SProperty {
+        override fun getName(): String = "stringProp"
+
+        override fun getOwner(): SAbstractConcept = TestConcept(emptyList())
+
+        override fun isValid(): Boolean = true
+
+        override fun getType(): SDataType = jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes.STRING
+
+        override fun isValid(string: String?): Boolean = true
+
+        override fun getSourceNode(): SNodeReference? = null
+
+        override fun isTransient(): Boolean = false
+    }
+
     private data class TestEnumLiteral(private val literalName: String) : SEnumerationLiteral {
         override fun getName(): String = literalName
 
@@ -327,5 +1002,116 @@ class AbstractOpsPropertyProblemsTest {
         override fun setAssociationImpl(node: SNode, referenceLink: SReferenceLink, target: SNodeReference?) {
             throw UnsupportedOperationException()
         }
+    }
+
+    private fun emptyRepository(): org.jetbrains.mps.openapi.module.SRepository = proxyWithDefaults {
+        when (it) {
+            "getModules" -> emptyList<Any>()
+            else -> null
+        }
+    }
+
+    private fun stubNodeReference(tag: String): SNodeReference = proxyWithDefaults {
+        when (it) {
+            "toString" -> "stubNodeReference($tag)"
+            else -> null
+        }
+    }
+
+    private fun stubRootNode(name: String, reference: SNodeReference): SNode = proxyWithDefaults {
+        when (it) {
+            "getName" -> name
+            "getReference" -> reference
+            else -> null
+        }
+    }
+
+    private fun modelWithRoots(longName: String, roots: List<SNode>): SModel {
+        val modelName = org.jetbrains.mps.openapi.model.SModelName(longName)
+        return proxyWithDefaults {
+            when (it) {
+                "getName" -> modelName
+                "getRootNodes" -> roots
+                else -> null
+            }
+        }
+    }
+
+    private fun moduleWithModels(models: List<SModel>): org.jetbrains.mps.openapi.module.SModule = proxyWithDefaults {
+        when (it) {
+            "getModels" -> models
+            else -> null
+        }
+    }
+
+    private fun repositoryWithModules(modules: List<org.jetbrains.mps.openapi.module.SModule>): org.jetbrains.mps.openapi.module.SRepository = proxyWithDefaults {
+        when (it) {
+            "getModules" -> modules
+            else -> null
+        }
+    }
+
+    private fun modelWithRepository(repository: org.jetbrains.mps.openapi.module.SRepository): SModel = proxyWithDefaults {
+        when (it) {
+            "getRepository" -> repository
+            else -> null
+        }
+    }
+
+    private fun assertSchemaFailure(expectedMessage: String, block: () -> Unit) {
+        try {
+            block()
+            fail("Expected schema validation failure")
+        } catch (e: IllegalArgumentException) {
+            assertEquals(expectedMessage, e.message)
+        }
+    }
+
+    private fun parseStructureConceptSpecsForTest(json: String, sourceName: String): Any? =
+        invokeSchemaFunction("parseStructureConceptSpecs", arrayOf(String::class.java, String::class.java), json, sourceName)
+
+    private fun parseEnumValueSpecsForTest(json: String): Any? =
+        invokeSchemaFunction("parseEnumValueSpecs", arrayOf(String::class.java, String::class.java), json, "valuesJson")
+
+    private fun parseJavaParseInsertRequestForTest(parameters: String): Any? =
+        invokeSchemaFunction("parseJavaParseInsertRequest", arrayOf(String::class.java), parameters)
+
+    private fun invokeSchemaFunction(name: String, parameterTypes: Array<Class<*>>, vararg args: Any?): Any? {
+        try {
+            return Class.forName("com.intellij.mcp.tools.McpToolInputSchemasKt")
+                .getMethod(name, *parameterTypes)
+                .invoke(null, *args)
+        } catch (e: InvocationTargetException) {
+            val cause = e.cause
+            if (cause is RuntimeException) {
+                throw cause
+            }
+            throw e
+        }
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    private inline fun <reified T> proxyWithDefaults(crossinline valueByMethodName: (String) -> Any?): T {
+        return Proxy.newProxyInstance(T::class.java.classLoader, arrayOf(T::class.java)) { proxy, method, args ->
+            when (method.name) {
+                "equals" -> proxy === args?.firstOrNull()
+                "hashCode" -> System.identityHashCode(proxy)
+                "toString" -> "${T::class.java.simpleName}Proxy"
+                else -> valueByMethodName(method.name) ?: defaultValue(method.returnType)
+            }
+        } as T
+    }
+
+    private fun defaultValue(returnType: Class<*>): Any? = when (returnType) {
+        java.lang.Boolean.TYPE -> false
+        java.lang.Byte.TYPE -> 0.toByte()
+        java.lang.Short.TYPE -> 0.toShort()
+        java.lang.Integer.TYPE -> 0
+        java.lang.Long.TYPE -> 0L
+        java.lang.Float.TYPE -> 0f
+        java.lang.Double.TYPE -> 0.0
+        java.lang.Character.TYPE -> 0.toChar()
+        java.lang.Void.TYPE -> null
+        else -> null
     }
 }

@@ -33,6 +33,10 @@ import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.persistence.Memento
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
+// MCP tool methods use snake_case names because they are part of the public MCP protocol
+// surface, and they are invoked via reflection by the MCP server framework, so static
+// analysis flags them as "never used".
+@Suppress("FunctionName", "unused")
 class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
@@ -52,23 +56,23 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Whether to reexport the dependency (false by default)")
         reexport: Boolean = false
     ): String = withMpsProject("Adding MPS module dependency") { mpsProject ->
-        executeCommand(mpsProject) {
+        executeShortCommandOnEdt(mpsProject) {
             val resolved = resolveAbstractModuleWithDescriptor(mpsProject, moduleName, requireWritable = true)
             if (resolved is AbstractModuleResolution.Err) {
-                return@executeCommand errJson(resolved.message)
+                return@executeShortCommandOnEdt errJson(resolved.message, resolved.code, resolved.details)
             }
             val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
 
             val target = resolveModule(mpsProject, targetModule, projectOnly = false)
-                ?: return@executeCommand errJson("Target module $targetModule not found")
+                ?: return@executeShortCommandOnEdt errJson("Target module $targetModule not found", McpErrorCode.NOT_FOUND)
 
             val targetRef = target.moduleReference
             if (abstractModule.moduleReference == targetRef) {
-                return@executeCommand errJson("Cannot add dependency to itself")
+                return@executeShortCommandOnEdt errJson("Cannot add dependency to itself", McpErrorCode.INVALID_REQUEST)
             }
 
             val depScope = scope?.let { s ->
-                SDependencyScope.values().find { it.toString().equals(s, ignoreCase = true) || it.name.equals(s, ignoreCase = true) }
+                SDependencyScope.entries.find { it.toString().equals(s, ignoreCase = true) || it.name.equals(s, ignoreCase = true) }
             } ?: SDependencyScope.DEFAULT
 
             val existing = descriptor.dependencies.find { it.moduleRef == targetRef }
@@ -82,7 +86,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                             (targetLang != null && dk.allExportedLanguageIds.any { it == targetLang })
                 }
                 if (providedByDevkit) {
-                    return@executeCommand okJson("true")
+                    return@executeShortCommandOnEdt okJson("true")
                 }
                 descriptor.dependencies.add(Dependency(targetRef, depScope, reexport))
             }
@@ -105,10 +109,10 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Target module name or reference")
         targetModule: String
     ): String = withMpsProject("Removing MPS module dependency") { mpsProject ->
-        executeCommand(mpsProject) {
+        executeShortCommandOnEdt(mpsProject) {
             val resolved = resolveAbstractModuleWithDescriptor(mpsProject, moduleName, requireWritable = true)
             if (resolved is AbstractModuleResolution.Err) {
-                return@executeCommand errJson(resolved.message)
+                return@executeShortCommandOnEdt errJson(resolved.message, resolved.code, resolved.details)
             }
             val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
 
@@ -118,11 +122,17 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 it.moduleRef.moduleName == targetModule ||
                         PersistenceFacade.getInstance().asString(it.moduleRef) == targetModule
             }?.moduleRef
-                ?: return@executeCommand errJson("Dependency to $targetModule not found in $moduleName")
+                ?: return@executeShortCommandOnEdt errJson(
+                    "Dependency to $targetModule not found in $moduleName",
+                    McpErrorCode.NOT_FOUND,
+                )
 
             val removed = descriptor.dependencies.removeIf { it.moduleRef == targetRef }
             if (!removed) {
-                return@executeCommand errJson("Dependency to $targetModule not found in $moduleName")
+                return@executeShortCommandOnEdt errJson(
+                    "Dependency to $targetModule not found in $moduleName",
+                    McpErrorCode.NOT_FOUND,
+                )
             }
             abstractModule.setChanged()
             abstractModule.save()
@@ -144,7 +154,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Module name or reference")
         moduleName: String
     ): String = withMpsProject("Get MPS module") { mpsProject ->
-        executeRead(mpsProject) {
+        executeShortReadOnEdt(mpsProject) {
             val exactMatch = resolveModule(mpsProject, moduleName)
             if (exactMatch != null) {
                 okJson(moduleInfoJson(mpsProject, exactMatch))
@@ -152,11 +162,14 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 val partialMatches = mpsProject.projectModulesWithGenerators
                     .filter { it.moduleName?.contains(moduleName) == true }
                 when (partialMatches.size) {
-                    0 -> errJson("Module '$moduleName' not found")
+                    0 -> errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
                     1 -> okJson(moduleInfoJson(mpsProject, partialMatches[0]))
                     else -> {
                         val names = partialMatches.mapNotNull { it.moduleName }.joinToString(", ")
-                        errJson("Module '$moduleName' not found. Multiple partial matches found: $names")
+                        errJson(
+                            "Module '$moduleName' not found. Multiple partial matches found: $names",
+                            McpErrorCode.INVALID_REQUEST,
+                        )
                     }
                 }
             }
@@ -191,11 +204,10 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("For language: also create a sandbox solution") withSandbox: Boolean = false,
         @McpDescription("For language: also create a runtime solution") withRuntime: Boolean = false
     ): String = withMpsProject("Create MPS module") { mpsProject ->
-        try {
-            // Holds either the created module or an error string. The block sets exactly one.
-            var created: SModule? = null
-            var error: String? = null
-            withContext(Dispatchers.EDT) {
+        // Holds either the created module or an error string. The block sets exactly one.
+        var created: SModule? = null
+        var error: String? = null
+        withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
                     val fs: jetbrains.mps.vfs.openapi.FileSystem = mpsProject.fileSystem
                     val dirFile: IFile? = if (type.lowercase() == "generator" && directory.isEmpty()) {
@@ -295,13 +307,10 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                     mpsProject.save()
                 }
             }
-            when {
-                created != null -> okJson(moduleInfoJson(mpsProject, created!!))
-                error != null -> errJson(error)
-                else -> errJson("Module creation failed for unknown reason")
-            }
-        } catch (e: Throwable) {
-            errJson(e.message ?: e.toString())
+        when {
+            created != null -> okJson(moduleInfoJson(mpsProject, created!!))
+            error != null -> errJson(error)
+            else -> errJson("Module creation failed for unknown reason")
         }
     }
 
@@ -332,45 +341,38 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         // compared to the previous behavior, which would silently apply virtualFolder
         // before reporting the rename-not-supported error.
         if (!newName.isNullOrBlank()) {
-            return@withMpsProject errJson("Module rename is not supported by this tool")
+            return@withMpsProject errJson("Module rename is not supported by this tool", McpErrorCode.INVALID_REQUEST)
         }
-        try {
-            var updated: SModule? = null
-            var error: String? = null
-            withContext(Dispatchers.EDT) {
-                var folderChanged = false
-                mpsProject.repository.modelAccess.executeCommand {
-                    val m = resolveModule(mpsProject, moduleName)
-                    if (m == null) {
-                        error = "Module '$moduleName' not found"
-                        return@executeCommand
+        var updated: SModule? = null
+        var folderChanged = false
+        withContext(Dispatchers.EDT) {
+            mpsProject.repository.modelAccess.executeCommand {
+                val m = resolveModule(mpsProject, moduleName)
+                    ?: throw McpNotFoundException("Module '$moduleName' not found")
+                if (!virtualFolder.isNullOrBlank()) {
+                    try {
+                        mpsProject.setVirtualFolder(m, virtualFolder)
+                    } catch (e: Throwable) {
+                        rethrowIfCancellation(e)
+                        if (e is Error) throw e
+                        // Treat folder-validation problems as a user input failure rather than an
+                        // INTERNAL_ERROR with a stack trace — the caller passed a bad value.
+                        throw McpInvalidRequestException(
+                            "Failed to set virtual folder: ${e.message ?: e.toString()}"
+                        )
                     }
-                    if (!virtualFolder.isNullOrBlank()) {
-                        try {
-                            mpsProject.setVirtualFolder(m, virtualFolder)
-                            folderChanged = true
-                        } catch (e: Throwable) {
-                            error = "Failed to set virtual folder: ${e.message ?: e.toString()}"
-                            return@executeCommand
-                        }
-                    }
-                    if (folderChanged) {
-                        (m as? AbstractModule)?.setChanged()
-                    }
-                    updated = m
+                    folderChanged = true
                 }
-                if (folderChanged && error == null) {
-                    mpsProject.save()
+                if (folderChanged) {
+                    (m as? AbstractModule)?.setChanged()
                 }
+                updated = m
             }
-            when {
-                error != null -> errJson(error)
-                updated == null -> errJson("Module '$moduleName' not found")
-                else -> okJson(moduleInfoJson(mpsProject, updated!!))
+            if (folderChanged) {
+                mpsProject.save()
             }
-        } catch (e: Throwable) {
-            errJson(e.message ?: e.toString())
         }
+        okJson(moduleInfoJson(mpsProject, updated!!))
     }
 
     @McpTool
@@ -387,49 +389,49 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Module name or reference") moduleName: String,
         @McpDescription("Whether to delete files from disk as well") deleteFiles: Boolean
     ): String = withMpsProject("Delete MPS module") { mpsProject ->
-        try {
-            var removed: SModule? = null
-            // Capture the descriptor file's parent BEFORE removing the module: after
-            // removeModule() the descriptor wiring may be torn down.
-            var moduleDir: IFile? = null
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    val m = resolveModule(mpsProject, moduleName)
-                    if (m != null) {
-                        if (deleteFiles) {
-                            moduleDir = (m as? AbstractModule)?.descriptorFile?.parent
-                        }
-                        mpsProject.removeModule(m)
-                        removed = m
-                        (removed as? AbstractModule)?.setChanged()
+        var removed: SModule? = null
+        // Capture the descriptor file's parent BEFORE removing the module: after
+        // removeModule() the descriptor wiring may be torn down.
+        var moduleDir: IFile? = null
+        withContext(Dispatchers.EDT) {
+            mpsProject.repository.modelAccess.executeCommand {
+                val m = resolveModule(mpsProject, moduleName)
+                if (m != null) {
+                    if (deleteFiles) {
+                        moduleDir = (m as? AbstractModule)?.descriptorFile?.parent
                     }
-                }
-                if (removed != null) {
-                    mpsProject.save()
-                }
-            }
-            if (removed == null) {
-                return@withMpsProject errJson("Module '$moduleName' not found")
-            }
-            var fsWarning: String? = null
-            if (deleteFiles) {
-                try {
-                    moduleDir?.delete()
-                } catch (e: Throwable) {
-                    fsWarning = e.message ?: e.toString()
+                    mpsProject.removeModule(m)
+                    removed = m
+                    (removed as? AbstractModule)?.setChanged()
                 }
             }
-            val payload = buildString {
-                append("{\"name\":\"").append(escapeJson(moduleName)).append("\",\"deleted\":true")
-                if (fsWarning != null) {
-                    append(",\"fileDeletionWarning\":\"").append(escapeJson(fsWarning!!)).append("\"")
-                }
-                append("}")
+            if (removed != null) {
+                mpsProject.save()
             }
-            okJson(payload)
-        } catch (e: Throwable) {
-            errJson(e.message ?: e.toString())
         }
+        if (removed == null) {
+            return@withMpsProject errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
+        }
+        var fsWarning: String? = null
+        if (deleteFiles) {
+            try {
+                moduleDir?.delete()
+            } catch (e: Throwable) {
+                rethrowIfCancellation(e)
+                if (e is Error) {
+                    throw e
+                }
+                fsWarning = e.message ?: e.toString()
+            }
+        }
+        val payload = jsonObject {
+            addProperty("name", moduleName)
+            addProperty("deleted", true)
+            if (fsWarning != null) {
+                addProperty("fileDeletionWarning", fsWarning)
+            }
+        }
+        okJson(payload)
     }
 
     @McpTool
@@ -438,34 +440,34 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
         Returns a JSON object with 'ok':true and 'data':{ "facetTypes": [{type, presentation, applicableToModule, recommendedForModule}, ...] } on success, or 'ok':false and 'error':"..." on failure.
     """)
+    // FacetsFacade.getInstance() is deprecated in favour of obtaining the registry via the
+    // owning ComponentPlugin (e.g. MPSCore), which requires plumbing a ComponentPlugin handle
+    // into the MCP toolsets. Tracked under phase 6 as a deferred architectural change.
+    @Suppress("DEPRECATION")
     suspend fun mps_mcp_list_facet_types(
         @McpDescription("Optional module name or reference to check applicability") @Nullable moduleName: String?
     ): String = withMpsProject("Listing module facet types") { mpsProject ->
         var result: String? = null
-        try {
-            mpsProject.repository.modelAccess.runReadAction {
-                val ff = FacetsFacade.getInstance()
-                val module = moduleName?.let { resolveModule(mpsProject, it, projectOnly = false) }
-                val recommendedTypes = module?.let { ff.getApplicableFacetTypes(it.usedLanguages) } ?: emptySet()
+        mpsProject.repository.modelAccess.runReadAction {
+            val ff = FacetsFacade.getInstance()
+            val module = moduleName?.let { resolveModule(mpsProject, it, projectOnly = false) }
+            val recommendedTypes = module?.let { ff.getApplicableFacetTypes(it.usedLanguages) } ?: emptySet()
 
-                val jsonArray = JsonArray()
-                for (type in ff.facetTypes.sorted()) {
-                    val factory = ff.getFacetFactory(type)
-                    val obj = JsonObject()
-                    obj.addProperty("type", type)
-                    obj.addProperty("presentation", factory?.presentation ?: "")
-                    if (module != null) {
-                        obj.addProperty("applicableToModule", factory?.isApplicable(module) ?: true)
-                        obj.addProperty("recommendedForModule", recommendedTypes.contains(type))
-                    }
-                    jsonArray.add(obj)
+            val jsonArray = JsonArray()
+            for (type in ff.facetTypes.sorted()) {
+                val factory = ff.getFacetFactory(type)
+                val obj = JsonObject()
+                obj.addProperty("type", type)
+                obj.addProperty("presentation", factory?.presentation ?: "")
+                if (module != null) {
+                    obj.addProperty("applicableToModule", factory?.isApplicable(module) ?: true)
+                    obj.addProperty("recommendedForModule", recommendedTypes.contains(type))
                 }
-                val resObj = JsonObject()
-                resObj.add("facetTypes", jsonArray)
-                result = okJson(resObj.toString())
+                jsonArray.add(obj)
             }
-        } catch (e: Throwable) {
-            return@withMpsProject errJson("Unexpected error: ${e.message ?: e.toString()}")
+            val resObj = JsonObject()
+            resObj.add("facetTypes", jsonArray)
+            result = okJson(resObj.toString())
         }
         result ?: errJson("Failed to list facet types")
     }
@@ -476,17 +478,18 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
         Returns a JSON object with 'ok':true and 'data':{ "activeFacets": [...], "persistedFacets": [...], "discrepancies": [...] } on success, or 'ok':false and 'error':"..." on failure.
     """)
+    // See note above mps_mcp_list_facet_types regarding deprecated FacetsFacade.getInstance().
+    @Suppress("DEPRECATION")
     suspend fun mps_mcp_get_module_facets(
         @McpDescription("Module name or reference") moduleName: String
     ): String = withMpsProject("Getting module facets") { mpsProject ->
         var result: String? = null
-        try {
-            mpsProject.repository.modelAccess.runReadAction {
-                val module = resolveModule(mpsProject, moduleName, projectOnly = false)
-                if (module == null) {
-                    result = errJson("Module $moduleName not found")
-                    return@runReadAction
-                }
+        mpsProject.repository.modelAccess.runReadAction {
+            val module = resolveModule(mpsProject, moduleName, projectOnly = false)
+            if (module == null) {
+                result = errJson("Module $moduleName not found", McpErrorCode.NOT_FOUND)
+                return@runReadAction
+            }
 
                 val ff = FacetsFacade.getInstance()
                 val abstractModule = module as? AbstractModule
@@ -522,14 +525,11 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                     }
                 }
 
-                val resObj = JsonObject()
-                resObj.add("activeFacets", activeFacets)
-                resObj.add("persistedFacets", persistedFacets)
-                resObj.add("discrepancies", discrepancies)
-                result = okJson(resObj.toString())
-            }
-        } catch (e: Throwable) {
-            return@withMpsProject errJson("Unexpected error: ${e.message ?: e.toString()}")
+            val resObj = JsonObject()
+            resObj.add("activeFacets", activeFacets)
+            resObj.add("persistedFacets", persistedFacets)
+            resObj.add("discrepancies", discrepancies)
+            result = okJson(resObj.toString())
         }
         result ?: errJson("Failed to get module facets")
     }
@@ -540,52 +540,41 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
         Returns a JSON object with 'ok':true and 'data':{"updated":true, "facetType":"..."} on success, or 'ok':false and 'error':"..." on failure.
     """)
+    // See note above mps_mcp_list_facet_types regarding deprecated FacetsFacade.getInstance().
+    @Suppress("DEPRECATION")
     suspend fun mps_mcp_update_module_facet(
         @McpDescription("Module name or reference") moduleName: String,
         @McpDescription("Facet type to update") facetType: String,
         @McpDescription("Whether to enable or disable the facet") @Nullable enabled: Boolean?,
         @McpDescription("JSON representation of the facet settings (Memento structure)") @Nullable settingsJson: String?
     ): String = withMpsProject("Updating module facet") { mpsProject ->
-        var error: String? = null
-        try {
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val resolved = resolveAbstractModuleWithDescriptor(mpsProject, moduleName, requireWritable = true)
-                        if (resolved is AbstractModuleResolution.Err) {
-                            error = resolved.message
-                            return@executeCommand
-                        }
-                        val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
+        withContext(Dispatchers.EDT) {
+            mpsProject.repository.modelAccess.executeCommand {
+                val resolved = resolveAbstractModuleWithDescriptor(mpsProject, moduleName, requireWritable = true)
+                when (resolved) {
+                    is AbstractModuleResolution.Err -> throw McpUserException(resolved.code, resolved.message, resolved.details)
+                    is AbstractModuleResolution.Ok -> {
+                        val (abstractModule, descriptor) = resolved
 
                         if (enabled == false) {
                             descriptor.moduleFacetDescriptors.removeIf { it.type == facetType }
                         } else if (enabled == true || settingsJson != null) {
                             val factory = FacetsFacade.getInstance().getFacetFactory(facetType)
-                            if (factory == null) {
-                                error = "Unknown facet type: $facetType. No factory registered."
-                                return@executeCommand
-                            }
+                                ?: throw McpInvalidRequestException("Unknown facet type: $facetType. No factory registered.")
 
                             val memento = MementoImpl()
                             if (settingsJson != null) {
-                                try {
-                                    val jsonElement = JsonParser.parseString(settingsJson)
-                                    if (!jsonElement.isJsonObject) {
-                                        error = "settingsJson must be a JSON object"
-                                        return@executeCommand
-                                    }
-                                    jsonToMemento(jsonElement.asJsonObject, memento)
+                                val jsonElement = try {
+                                    JsonParser.parseString(settingsJson)
                                 } catch (e: Exception) {
-                                    error = "Failed to parse settingsJson: ${e.message ?: e.toString()}"
-                                    return@executeCommand
+                                    throw McpInvalidRequestException("Failed to parse settingsJson: ${e.message ?: e.toString()}")
                                 }
-                            } else {
-                                // enabled = true, no settingsJson: if facet already exists, keep it as-is.
-                                if (descriptor.moduleFacetDescriptors.any { it.type == facetType }) {
-                                    return@executeCommand
+                                if (!jsonElement.isJsonObject) {
+                                    throw McpInvalidRequestException("settingsJson must be a JSON object")
                                 }
-                                // Otherwise fall through and create with a blank memento.
+                                jsonToMemento(jsonElement.asJsonObject, memento)
+                            } else if (descriptor.moduleFacetDescriptors.any { it.type == facetType }) {
+                                return@executeCommand
                             }
 
                             descriptor.moduleFacetDescriptors.removeIf { it.type == facetType }
@@ -594,19 +583,16 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
                         abstractModule.setModuleDescriptor(descriptor)
                         abstractModule.save()
-                    } catch (e: Throwable) {
-                        error = "Command failed: ${e.message ?: e.toString()}"
                     }
                 }
-                if (error == null) {
-                    mpsProject.save()
-                }
             }
-        } catch (e: Throwable) {
-            error = "Unexpected error: ${e.message ?: e.toString()}"
+            mpsProject.save()
         }
 
-        if (error != null) errJson(error) else okJson("{\"updated\":true, \"facetType\":\"$facetType\"}")
+        okJson(jsonObject {
+            addProperty("updated", true)
+            addProperty("facetType", facetType)
+        })
     }
 
     private fun applyVirtualFolder(mpsProject: MPSProject, module: SModule, virtualFolder: String?) {

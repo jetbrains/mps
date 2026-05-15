@@ -1,5 +1,7 @@
 package com.intellij.mcp.tools
 
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.smodel.language.LanguageRegistry
@@ -8,11 +10,14 @@ import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SEnumeration
 import org.jetbrains.mps.openapi.language.SNamedElement
 import org.jetbrains.mps.openapi.language.SLanguage
-import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import jetbrains.mps.smodel.ModelDependencyResolver
 
+// MCP tool methods use snake_case names because they are part of the public MCP protocol
+// surface, and they are invoked via reflection by the MCP server framework, so static
+// analysis flags them as "never used".
+@Suppress("FunctionName", "unused")
 class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
 
     companion object {
@@ -38,10 +43,9 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             return errJson("No concepts nor languages have been provided")
         }
         return withMpsProject("Getting MPS language concept details") { mpsProject ->
-            executeRead(mpsProject) {
-                try {
-                    val results = mutableListOf<String>()
-                    val conceptSet = mutableSetOf<SAbstractConcept>()
+            executeShortReadOnEdt(mpsProject) {
+                val results = JsonArray()
+                val conceptSet = mutableSetOf<SAbstractConcept>()
 
                     // Add explicitly provided concepts
                     for (conceptRef in conceptRefs) {
@@ -73,22 +77,14 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                     }
 
                     for (concept in conceptSet) {
-                        val baseInfo = conceptInfoJson(concept, mpsProject.repository)
-                        // baseInfo is "{" + ... + "}"
-                        // We want to insert properties, references and children before the final "}"
-                        val detailedInfo = baseInfo.substring(0, baseInfo.length - 1) +
-                                ",\"properties\":" + conceptPropertiesJson(concept, mpsProject.repository) +
-                                ",\"references\":" + conceptReferencesJson(concept, mpsProject.repository) +
-                                ",\"children\":" + conceptChildrenJson(concept, mpsProject.repository) +
-                                ",\"sampleNode\":" + conceptSampleJson(concept) +
-                                "}"
+                        val detailedInfo = conceptInfoJsonObject(concept, mpsProject.repository)
+                        detailedInfo.add("properties", conceptPropertiesJsonArray(concept, mpsProject.repository))
+                        detailedInfo.add("references", conceptReferencesJsonArray(concept, mpsProject.repository))
+                        detailedInfo.add("children", conceptChildrenJsonArray(concept, mpsProject.repository))
+                        detailedInfo.add("sampleNode", conceptSampleJsonObject(concept))
                         results.add(detailedInfo)
                     }
-                    val json = "[" + results.joinToString(",") + "]"
-                    saveToTempFileResult(json)
-                } catch (e: Exception) {
-                    errJson("Failed to get concept details: ${e.message}")
-                }
+                saveToTempFileResult(results.toString())
             }
         }
     }
@@ -112,17 +108,17 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         @McpDescription("The list of strings to search for. Multiple words in a string are treated as multiple required terms.") searchTexts: List<String>,
         @McpDescription("Optional persistent model reference to limit search to languages used by this model") modelReference: String? = null
     ): String = withMpsProject("Searching for MPS concepts") { mpsProject ->
-        executeRead(mpsProject) {
+        executeShortReadOnEdt(mpsProject) {
             val repo = mpsProject.repository
             val registry = LanguageRegistry.getInstance(repo)
             val languages: Iterable<SLanguage> = if (modelReference != null) {
                 val modelRef = try {
                     PersistenceFacade.getInstance().createModelReference(modelReference)
                 } catch (e: Exception) {
-                    return@executeRead errJson("Invalid model reference: $modelReference")
+                    return@executeShortReadOnEdt errJson("Invalid model reference: $modelReference")
                 }
                 val model = modelRef.resolve(repo)
-                    ?: return@executeRead errJson("Model '$modelReference' not found")
+                    ?: return@executeShortReadOnEdt errJson("Model '$modelReference' not found")
                 val mdr = ModelDependencyResolver(registry, repo)
                 mdr.usedLanguages(model)
             } else {
@@ -132,9 +128,9 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             val termGroups: List<List<String>> = searchTexts
                 .map { it.split(WHITESPACE).filter { term -> term.isNotBlank() } }
                 .filter { it.isNotEmpty() }
-            if (termGroups.isEmpty()) return@executeRead finalizeResult("[]")
+            if (termGroups.isEmpty()) return@executeShortReadOnEdt finalizeResult("[]")
 
-            val results = mutableListOf<String>()
+            val results = JsonArray()
             for (lang in languages) {
                 val runtime = registry.getLanguage(lang) ?: continue
                 for (concept in runtime.concepts) {
@@ -146,121 +142,104 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                     }
 
                     if (matches) {
-                        results.add(conceptInfoJson(concept, repo))
+                        results.add(conceptInfoJsonObject(concept, repo))
                     }
                 }
             }
-            finalizeResult("[" + results.joinToString(",") + "]")
+            finalizeResult(results.toString())
         }
     }
 
-
-    private fun StringBuilder.appendDocAndDeprecatedFor(declarationNode: SNode?) {
-        appendDocAndDeprecated(getDoc(declarationNode), getDeprecationInfo(declarationNode))
-    }
-
-    private inline fun <T> bareJsonArray(items: Iterable<T>, appendItem: StringBuilder.(T) -> Unit): String {
-        return buildString {
-            append('[')
-            var first = true
-            for (item in items) {
-                if (!first) append(',') else first = false
-                appendItem(item)
-            }
-            append(']')
-        }
-    }
-
-    private fun conceptPropertiesJson(concept: SAbstractConcept, repository: SRepository): String {
-        return bareJsonArray(concept.properties) { prop ->
-            append('{')
-            append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
+    private fun conceptPropertiesJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
+        val result = JsonArray()
+        for (prop in concept.properties) {
+            val obj = JsonObject()
+            obj.addProperty("name", prop.name)
             val type = prop.type
             val typeName = (type as? SNamedElement)?.name ?: "unknown"
-            append("\"type\":\"").append(escapeJson(typeName)).append("\",")
-            appendDocAndDeprecatedFor(prop.sourceNode?.resolve(repository))
+            obj.addProperty("type", typeName)
+            val declarationNode = prop.sourceNode?.resolve(repository)
+            addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
             if (type is SEnumeration) {
-                append(",\"enumerationValues\":[")
-                append(type.literals.joinToString(",") { "\"${escapeJson(it.name ?: it.presentation)}\"" })
-                append(']')
-            }
-            append('}')
-        }
-    }
-
-    private fun conceptReferencesJson(concept: SAbstractConcept, repository: SRepository): String {
-        return bareJsonArray(concept.referenceLinks) { ref ->
-            append('{')
-            append("\"name\":\"").append(escapeJson(ref.name)).append("\",")
-            append("\"targetConcept\":\"").append(escapeJson(structureQualifiedName(ref.targetConcept))).append("\",")
-            append("\"cardinality\":\"").append(getCardinality(ref)).append("\",")
-            appendDocAndDeprecatedFor(ref.sourceNode?.resolve(repository))
-            append('}')
-        }
-    }
-
-    private fun conceptChildrenJson(concept: SAbstractConcept, repository: SRepository): String {
-        return bareJsonArray(concept.containmentLinks) { link ->
-            append('{')
-            append("\"name\":\"").append(escapeJson(link.name)).append("\",")
-            append("\"targetConcept\":\"").append(escapeJson(structureQualifiedName(link.targetConcept))).append("\",")
-            append("\"cardinality\":\"").append(getCardinality(link)).append("\",")
-            appendDocAndDeprecatedFor(link.sourceNode?.resolve(repository))
-            append('}')
-        }
-    }
-
-    private fun conceptSampleJson(concept: SAbstractConcept): String {
-        return buildString {
-            append('{')
-            append("\"concept\":\"").append(escapeJson(structureQualifiedName(concept))).append("\",")
-
-            // Properties
-            append("\"properties\":[")
-            var firstProp = true
-            for (prop in concept.properties) {
-                if (!firstProp) append(',') else firstProp = false
-                append('{')
-                append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
-                val type = prop.type
-                val value = when {
-                    prop.name == "name" -> concept.name
-                    type is SEnumeration -> type.literals.firstOrNull()?.let { it.name ?: it.presentation } ?: "value"
-                    type.toString() == "integer" -> "1"
-                    type.toString() == "boolean" -> "true"
-                    else -> "example"
+                val values = JsonArray()
+                for (literal in type.literals) {
+                    values.add(literal.name ?: literal.presentation)
                 }
-                append("\"value\":\"").append(escapeJson(value)).append("\"")
-                append('}')
+                obj.add("enumerationValues", values)
             }
-            append("],")
-
-            // References
-            append("\"references\":[")
-            var firstRef = true
-            for (ref in concept.referenceLinks) {
-                if (!firstRef) append(',') else firstRef = false
-                append('{')
-                append("\"role\":\"").append(escapeJson(ref.name)).append("\",")
-                append("\"target\":\"/* Reference to ").append(escapeJson(structureQualifiedName(ref.targetConcept))).append(" */\"")
-                append('}')
-            }
-            append("],")
-
-            // Children
-            append("\"children\":[")
-            var firstChild = true
-            for (child in concept.containmentLinks) {
-                if (!firstChild) append(',') else firstChild = false
-                append('{')
-                append("\"role\":\"").append(escapeJson(child.name)).append("\",")
-                append("\"nodes\":[\"/* Instances of ").append(escapeJson(structureQualifiedName(child.targetConcept)))
-                    .append(" or its sub-concepts are expected here */\"]")
-                append('}')
-            }
-            append(']')
-            append('}')
+            result.add(obj)
         }
+        return result
     }
 
+    private fun conceptReferencesJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
+        val result = JsonArray()
+        for (ref in concept.referenceLinks) {
+            val obj = JsonObject()
+            obj.addProperty("name", ref.name)
+            obj.addProperty("targetConcept", structureQualifiedName(ref.targetConcept))
+            obj.addProperty("cardinality", getCardinality(ref))
+            val declarationNode = ref.sourceNode?.resolve(repository)
+            addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
+            result.add(obj)
+        }
+        return result
+    }
+
+    private fun conceptChildrenJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
+        val result = JsonArray()
+        for (link in concept.containmentLinks) {
+            val obj = JsonObject()
+            obj.addProperty("name", link.name)
+            obj.addProperty("targetConcept", structureQualifiedName(link.targetConcept))
+            obj.addProperty("cardinality", getCardinality(link))
+            val declarationNode = link.sourceNode?.resolve(repository)
+            addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
+            result.add(obj)
+        }
+        return result
+    }
+
+    private fun conceptSampleJsonObject(concept: SAbstractConcept): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("concept", structureQualifiedName(concept))
+
+        val properties = JsonArray()
+        for (prop in concept.properties) {
+            val propObj = JsonObject()
+            propObj.addProperty("name", prop.name)
+            val type = prop.type
+            val value = when {
+                prop.name == "name" -> concept.name
+                type is SEnumeration -> type.literals.firstOrNull()?.let { it.name ?: it.presentation } ?: "value"
+                type.toString() == "integer" -> "1"
+                type.toString() == "boolean" -> "true"
+                else -> "example"
+            }
+            propObj.addProperty("value", value)
+            properties.add(propObj)
+        }
+        obj.add("properties", properties)
+
+        val references = JsonArray()
+        for (ref in concept.referenceLinks) {
+            val refObj = JsonObject()
+            refObj.addProperty("role", ref.name)
+            refObj.addProperty("target", "/* Reference to ${structureQualifiedName(ref.targetConcept)} */")
+            references.add(refObj)
+        }
+        obj.add("references", references)
+
+        val children = JsonArray()
+        for (child in concept.containmentLinks) {
+            val childObj = JsonObject()
+            val nodes = JsonArray()
+            childObj.addProperty("role", child.name)
+            nodes.add("/* Instances of ${structureQualifiedName(child.targetConcept)} or its sub-concepts are expected here */")
+            childObj.add("nodes", nodes)
+            children.add(childObj)
+        }
+        obj.add("children", children)
+        return obj
+    }
 }

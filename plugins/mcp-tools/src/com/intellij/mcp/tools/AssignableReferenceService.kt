@@ -21,7 +21,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
 
     private val facade = PersistenceFacade.getInstance()
 
-    private fun errorResponse(message: String?): GetAssignableReferencesResponse =
+    internal fun errorResponse(message: String?): GetAssignableReferencesResponse =
         GetAssignableReferencesResponse(ok = false, data = emptyList(), error = message)
 
     // Concepts
@@ -173,7 +173,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
     // existing reference target), peek at the first scope element to fill it in. For ClassCreator,
     // the scope is already constrained to one class's constructors, so the first element's parent
     // is the declaring classifier.
-    private fun enrichContextFromScope(context: ReferenceResolutionContext, allAvailable: List<SNode>): ReferenceResolutionContext {
+    internal fun enrichContextFromScope(context: ReferenceResolutionContext, allAvailable: List<SNode>): ReferenceResolutionContext {
         if (context.inferredKind == CandidateKind.CONSTRUCTOR && context.expectedDeclaringType == null && allAvailable.isNotEmpty()) {
             val firstNode = allAvailable.first()
             val declaringClassifier = firstNode.parent
@@ -188,7 +188,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         return context
     }
 
-    private fun fqnOf(node: SNode): String? {
+    internal fun fqnOf(node: SNode): String? {
         val name = node.name ?: return null
         val modelLongName = node.model?.name?.longName ?: return name
         return "$modelLongName.$name"
@@ -301,7 +301,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         }
     }
 
-    private fun findContainingClassifier(node: SNode): SNode? {
+    internal fun findContainingClassifier(node: SNode): SNode? {
         var current: SNode? = node.parent
         while (current != null) {
             if (current.concept.isSubConceptOf(CONCEPTS_Classifier)) return current
@@ -312,7 +312,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
 
     // FIX #2: Compute accessibility from BaseLanguage visibility concepts. Follows Java visibility
     // rules (simplified for package-private and protected).
-    private fun computeAccessibility(candidateNode: SNode, context: ReferenceResolutionContext): Boolean {
+    internal fun computeAccessibility(candidateNode: SNode, context: ReferenceResolutionContext): Boolean {
         if (!candidateNode.concept.isSubConceptOf(CONCEPTS_BaseMethodDeclaration) &&
             !candidateNode.concept.isSubConceptOf(CONCEPTS_Classifier)
         ) {
@@ -384,7 +384,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         )
     }
 
-    private fun filterCandidate(scored: ScoredCandidate, context: ReferenceResolutionContext, request: GetAssignableReferencesRequest): Boolean {
+    internal fun filterCandidate(scored: ScoredCandidate, context: ReferenceResolutionContext, request: GetAssignableReferencesRequest): Boolean {
         val candidate = scored.candidate
         if (!request.includeInaccessible && !candidate.accessible) return false
 
@@ -420,7 +420,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         return true
     }
 
-    private fun containingRootRefOf(node: SNode): String? {
+    internal fun containingRootRefOf(node: SNode): String? {
         if (node.model == null) return null
         return facade.asString(node.containingRoot.reference)
     }
@@ -582,7 +582,7 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         return null
     }
 
-    private data class ReferenceResolutionContext(
+    internal data class ReferenceResolutionContext(
         val contextNodeRef: String,
         val referenceRole: String,
         val owningConcept: String,
@@ -598,5 +598,5 @@ class AssignableReferenceService(private val mpsProject: MPSProject) {
         val inferenceNotes: List<String>
     )
 
-    private data class ScoredCandidate(val node: SNode, val candidate: AssignableReferenceCandidate)
+    internal data class ScoredCandidate(val node: SNode, val candidate: AssignableReferenceCandidate)
 }

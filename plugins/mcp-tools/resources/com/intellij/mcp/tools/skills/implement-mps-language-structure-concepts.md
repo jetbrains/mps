@@ -39,6 +39,7 @@ description: Steps to define concepts, interface concepts, and enums in an MPS l
 
 Performs a structure-related operation in an MPS model, such as creating concepts or enumerations, or finding instances of a concept.
 Returns a JSON object with `'ok':true` and `'data':{...}` on success, or `'ok':false` and `'error':"..."` on failure.
+Failure responses can also include optional stable metadata fields: `'code'`, `'details'`, and `'warnings'`.
 Parameters are passed as a JSON object string.
 
 ### Supported operations

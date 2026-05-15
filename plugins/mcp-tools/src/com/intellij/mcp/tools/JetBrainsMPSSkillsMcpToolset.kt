@@ -1,8 +1,14 @@
 package com.intellij.mcp.tools
 
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 
+// MCP tool methods use snake_case names because they are part of the public MCP protocol
+// surface, and they are invoked via reflection by the MCP server framework, so static
+// analysis flags them as "never used".
+@Suppress("FunctionName", "unused")
 class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
     // Each entry holds three strings:
@@ -50,20 +56,15 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
         return listOf(name, description, text) // entry[2] = full file text
     }
 
-    private fun mps_mcp_list_skills(): String {
-        // Return a JSON array of objects from availableSkills
-        return buildString {
-            append('[')
-            var firstEntry = true
-            for (entry in availableSkills) {
-                if (!firstEntry) append(',') else firstEntry = false
-                append('{')
-                append("\"name\":\"").append(escapeJson(entry[0])).append("\",")
-                append("\"description\":\"").append(escapeJson(entry[1])).append("\"")
-                append('}')
-            }
-            append(']')
+    private fun skillsJsonArray(): JsonArray {
+        val result = JsonArray()
+        for (entry in availableSkills) {
+            val obj = JsonObject()
+            obj.addProperty("name", entry[0])
+            obj.addProperty("description", entry[1])
+            result.add(obj)
         }
+        return result
     }
 
     @McpTool
@@ -80,7 +81,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
     ): String {
         val match = availableSkills.firstOrNull { it.isNotEmpty() && it[0] == skillName }
         val skillDetails = match?.getOrNull(2) ?: return errJson("No details are available for this skill")
-        return okJson("\"" + escapeJson(skillDetails) + "\"")
+        return okJsonString(skillDetails)
     }
 
     @McpTool
@@ -98,8 +99,8 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
     ): String {
         val context = """           
             Any time in the future use the 'mps_mcp_get_skill' tools to include the task-specific procedural knowledge in the context, may such a need arise.            
-            Now giving you the list of MPS skills available through 'mps_mcp_get_skill': ${mps_mcp_list_skills()}
+            Now giving you the list of MPS skills available through 'mps_mcp_get_skill': ${skillsJsonArray()}
         """.trimIndent()
-        return okJson("\"" + escapeJson(context) + "\"")
+        return okJsonString(context)
     }
 }

@@ -51,6 +51,8 @@ To avoid truncation of large JSON payloads, use a staged workflow:
 5. **Full Root Updates**: Use `mps_mcp_update_root_node_from_json` only for full blueprints; omitted elements will be removed.
 6. **Final Cleanup**: Run `mps_mcp_check_root_node_problems` and use `mps_mcp_perform_operation` with `FIX_REFERENCES` if needed.
 
+Large node JSON files produced by `mps_mcp_print_node_json` contain the full MCP response envelope (`{ "ok": true, "data": ... }`). Node JSON mutation tools accept either that envelope file or a file containing only the raw `data` blueprint object or array.
+
 ### Troubleshooting
 * **JSON Mapping Errors**: If you see `Cannot invoke "JsonElement.getAsString()" because ... is null`, a required JSON field (like `concept` or `role`) is missing.
 * **Notation Mismatch**: User-provided textual code may differ from the canonical JSON structure; always map it to the structure defined by the concept.
@@ -61,6 +63,7 @@ To avoid truncation of large JSON payloads, use a staged workflow:
 
 Performs a specific operation on an MPS node, such as getting its parent or containing root, or moving a child node.
 Returns a JSON object with `'ok':true` and `'data':{...}` on success, or `'ok':false` and `'error':"..."` on failure. The exact `'data'` shape depends on the operation (see below).
+Failure responses can also include optional stable metadata fields: `'code'`, `'details'`, and `'warnings'`.
 Parameters are passed as a JSON object string.
 
 ### Supported operations
@@ -165,7 +168,8 @@ Parameters:
 #### `MAKE`
 Performs Make or Rebuild on a list of models or modules, or the whole project.
 NOTE: This operation can be long-running (often several minutes, especially for 'rebuild' or 'wholeProject'). The tool itself does not impose a timeout and will run until MPS finishes the build. If your MCP client or agent harness aborts the call due to its own request timeout, increase that timeout and/or retry the call with a longer timeout — the build on the MPS side will typically still complete in the background, and a subsequent MAKE call will be much faster (incremental).
-Returns JSON: `{ ok, data: { success: boolean, message: string, details: [ { kind, text }, ... ] } }` or a path to a temporary JSON file if the data is large.
+Returns JSON: `{ ok, data: { success: boolean, message: string, details: [ { kind, text }, ... ], warnings: [ string, ... ] } }` or a path to a temporary JSON file if the data is large.
+Invalid model/module references are reported explicitly. If all requested references are invalid, the operation fails with code `MAKE_INPUT_INVALID`; if some resolve and some do not, MAKE proceeds and unresolved inputs are listed in `data.warnings`.
 
 Parameters:
 ```

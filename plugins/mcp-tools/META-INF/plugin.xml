@@ -2,7 +2,7 @@
   <id>com.intellij.mcp.tools</id>
   <name>MCP MPS</name>
   <vendor>JetBrains</vendor>
-  <description>Demo plugin with a minimal McpToolset and a single Mcp tool.</description>
+  <description>A plugin enabling MPS mcp tools to AI coding agents.</description>
 
   <depends>com.intellij.mcpServer</depends>
   <depends>jetbrains.mps.core</depends>
@@ -18,7 +18,6 @@
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSRootNodeMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSNodeMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSEditorMcpToolset" />
-<!--    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSDocumentationMcpToolset" />-->
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageStructureMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSJavaMcpToolset" />
   </extensions>

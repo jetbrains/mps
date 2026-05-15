@@ -2,14 +2,19 @@ package com.intellij.mcp.tools
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.google.gson.JsonArray
+import com.google.gson.JsonElement
+import com.google.gson.JsonNull
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSyntaxException
 import com.intellij.mcpserver.McpToolset
 import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.progress.ProcessCanceledException
 import jetbrains.mps.classloading.ClassLoaderManager
 import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.ModelReportItem
@@ -62,15 +67,132 @@ import java.util.concurrent.atomic.AtomicBoolean
 abstract class AbstractOps : McpToolset {
     private val LOG = Logger.getInstance(AbstractOps::class.java)
 
+    enum class McpErrorCode {
+        INVALID_JSON,
+        INVALID_REFERENCE,
+        INVALID_REQUEST,
+        NOT_FOUND,
+        NOT_EDITABLE,
+        MAKE_INPUT_INVALID,
+        INTERNAL_ERROR
+    }
+
+    /**
+     * User-facing exceptions carrying a stable [McpErrorCode]. Throwing one of these from
+     * inside a tool boundary produces a non-logged, classified error response rather than
+     * an `INTERNAL_ERROR`. Use these instead of bare `IllegalArgumentException` whenever
+     * the failure category is known at the throw site.
+     */
+    open class McpUserException(
+        val errorCode: McpErrorCode,
+        message: String,
+        val errorDetails: Map<String, Any?> = emptyMap(),
+    ) : RuntimeException(message)
+
+    class McpInvalidReferenceException(message: String, details: Map<String, Any?> = emptyMap()) :
+        McpUserException(McpErrorCode.INVALID_REFERENCE, message, details)
+
+    class McpNotFoundException(message: String, details: Map<String, Any?> = emptyMap()) :
+        McpUserException(McpErrorCode.NOT_FOUND, message, details)
+
+    class McpNotEditableException(message: String, details: Map<String, Any?> = emptyMap()) :
+        McpUserException(McpErrorCode.NOT_EDITABLE, message, details)
+
+    class McpInvalidRequestException(message: String, details: Map<String, Any?> = emptyMap()) :
+        McpUserException(McpErrorCode.INVALID_REQUEST, message, details)
+
     companion object {
         private const val TEMP_JSON_PREFIX = "mps-node-"
         private const val TEMP_JSON_SUFFIX = ".json"
+        private val GSON = Gson()
+        private val PRETTY_GSON = GsonBuilder().setPrettyPrinting().create()
+
+        // Shared by all MCP toolset instances: a file created by one toolset may be consumed by another.
         private val createdTempJsonFiles = ConcurrentHashMap.newKeySet<String>()
     }
 
     // ---- helpers ----
     fun okJson(payload: String): String = "{" + "\"ok\":true,\"data\":" + payload + "}"
-    fun errJson(message: String?): String = "{" + "\"ok\":false,\"error\":\"" + escapeJson(message ?: "null") + "\"}"
+    fun okJson(payload: JsonElement): String {
+        return jsonObject {
+            addProperty("ok", true)
+            add("data", payload)
+        }.toString()
+    }
+
+    protected fun okJsonString(payload: String): String = okJson(JsonPrimitive(payload))
+
+    protected fun jsonObject(configure: JsonObject.() -> Unit): JsonObject =
+        JsonObject().apply(configure)
+
+    fun errJson(
+        message: String?,
+        code: McpErrorCode? = null,
+        details: Map<String, Any?> = emptyMap(),
+        warnings: List<String> = emptyList()
+    ): String {
+        val obj = JsonObject()
+        obj.addProperty("ok", false)
+        obj.addProperty("error", userVisibleMessage(message))
+        if (code != null) {
+            obj.addProperty("code", code.name)
+        }
+        if (details.isNotEmpty()) {
+            obj.add("details", GSON.toJsonTree(details))
+        }
+        if (warnings.isNotEmpty()) {
+            obj.add("warnings", GSON.toJsonTree(warnings))
+        }
+        return obj.toString()
+    }
+
+    protected fun invalidJson(message: String?, details: Map<String, Any?> = emptyMap()): String =
+        errJson(message, McpErrorCode.INVALID_JSON, details)
+
+    protected fun invalidReference(message: String?, details: Map<String, Any?> = emptyMap()): String =
+        errJson(message, McpErrorCode.INVALID_REFERENCE, details)
+
+    protected fun makeInputInvalid(message: String?, details: Map<String, Any?> = emptyMap()): String =
+        errJson(message, McpErrorCode.MAKE_INPUT_INVALID, details)
+
+    /**
+     * Maps a thrown exception to a stable MCP error response.
+     *
+     * Mapping policy — only the listed types receive a domain-specific code. Anything
+     * else falls through to [McpErrorCode.INTERNAL_ERROR] and is logged with the full
+     * stack trace. There is no automatic mapping from arbitrary exception classes to
+     * [McpErrorCode.INVALID_REQUEST] / [McpErrorCode.NOT_FOUND] etc.: when a tool
+     * implementation discovers a domain-specific failure, it must either throw the
+     * matching [McpUserException] subclass or build the response by calling
+     * [errJson]/[invalidJson]/[invalidReference]/[makeInputInvalid] directly.
+     */
+    protected fun toolFailure(activity: String, e: Throwable): String {
+        rethrowIfCancellation(e)
+        if (e is Error) {
+            throw e
+        }
+        return when (e) {
+            is McpUserException -> errJson(e.message, e.errorCode, e.errorDetails)
+            is JsonSyntaxException -> invalidJson(e.message)
+            is AssignabilityException -> errJson(e.message, McpErrorCode.INVALID_REFERENCE)
+            else -> {
+                LOG.warn("Unexpected failure in MCP tool: $activity", e)
+                errJson("Internal error while $activity", McpErrorCode.INTERNAL_ERROR)
+            }
+        }
+    }
+
+    protected fun rethrowIfCancellation(e: Throwable) {
+        if (e is CancellationException) {
+            throw e
+        }
+        if (e is ProcessCanceledException) {
+            throw e
+        }
+    }
+
+    private fun userVisibleMessage(message: String?): String =
+        message?.takeIf { it.isNotBlank() } ?: "Unknown error"
 
     /**
      * Boilerplate for MCP tools: reports activity, resolves the active MPS project,
@@ -80,8 +202,12 @@ abstract class AbstractOps : McpToolset {
     protected suspend inline fun withMpsProject(activity: String, block: (MPSProject) -> String): String {
         currentCoroutineContext().reportToolActivity(activity)
         val mpsProject = ProjectHelper.fromIdeaProject(currentCoroutineContext().project)
-            ?: return errJson("No MPS project available")
-        return block(mpsProject)
+            ?: return errJson("No MPS project available", McpErrorCode.NOT_FOUND)
+        return try {
+            block(mpsProject)
+        } catch (e: Throwable) {
+            toolFailure(activity, e)
+        }
     }
 
     /**
@@ -89,7 +215,11 @@ abstract class AbstractOps : McpToolset {
      */
     protected sealed class AbstractModuleResolution {
         data class Ok(val module: AbstractModule, val descriptor: ModuleDescriptor) : AbstractModuleResolution()
-        data class Err(val message: String) : AbstractModuleResolution()
+        data class Err(
+            val message: String,
+            val code: McpErrorCode,
+            val details: Map<String, Any?> = emptyMap(),
+        ) : AbstractModuleResolution()
     }
 
     /**
@@ -105,19 +235,19 @@ abstract class AbstractOps : McpToolset {
      * model is an [EditableSModel]. Returns [EditableModelResolution.Ok] on success
      * or [EditableModelResolution.Err] (with a pre-formatted errJson) on any failure.
      *
-     * Use this from inside a model-access action (e.g. executeCommand { ... }) so the
+     * Use this from inside a model-access action (e.g. executeShortCommandOnEdt { ... }) so the
      * resolution and the subsequent mutations happen under the same lock.
      */
     protected fun resolveEditableModel(repository: SRepository, modelRef: String): EditableModelResolution {
         val sModelRef = try {
             PersistenceFacade.getInstance().createModelReference(modelRef)
         } catch (e: Exception) {
-            return EditableModelResolution.Err(errJson("Invalid model reference '$modelRef': ${e.message}"))
+            return EditableModelResolution.Err(invalidReference("Invalid model reference '$modelRef': ${e.message}"))
         }
         val model = sModelRef.resolve(repository)
-            ?: return EditableModelResolution.Err(errJson("Model '$modelRef' not found"))
+            ?: return EditableModelResolution.Err(errJson("Model '$modelRef' not found", McpErrorCode.NOT_FOUND))
         if (model !is EditableSModel) {
-            return EditableModelResolution.Err(errJson("Model '$modelRef' is not editable"))
+            return EditableModelResolution.Err(errJson("Model '$modelRef' is not editable", McpErrorCode.NOT_EDITABLE))
         }
         return EditableModelResolution.Ok(model)
     }
@@ -137,7 +267,7 @@ abstract class AbstractOps : McpToolset {
      * node ... not found", "Child node ... not found", etc.) without re-implementing the
      * whole resolve sequence.
      *
-     * Use this from inside a model-access action (e.g. executeCommand { ... }) so the
+     * Use this from inside a model-access action (e.g. executeShortCommandOnEdt { ... }) so the
      * resolution and the subsequent mutations happen under the same lock.
      */
     protected fun resolveEditableNodeAndModel(
@@ -148,10 +278,10 @@ abstract class AbstractOps : McpToolset {
     ): EditableNodeResolution {
         val sNodeRef = resolveNodeReference(repository, nodeRef)
         val node = sNodeRef?.resolve(repository)
-            ?: return EditableNodeResolution.Err(errJson(missingMessageBuilder(nodeRef)))
+            ?: return EditableNodeResolution.Err(errJson(missingMessageBuilder(nodeRef), McpErrorCode.NOT_FOUND))
         val model = node.model
         if (model !is EditableSModel) {
-            return EditableNodeResolution.Err(errJson(nonEditableMessage))
+            return EditableNodeResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
         }
         return EditableNodeResolution.Ok(node, model)
     }
@@ -179,17 +309,17 @@ abstract class AbstractOps : McpToolset {
     ): RootableConceptResolution {
         if (conceptName.isNullOrEmpty() && conceptReference.isNullOrEmpty()) {
             return RootableConceptResolution.Err(
-                errJson("Either 'concept' (qualifiedName) or 'conceptReference' must be provided$label")
+                errJson("Either 'concept' (qualifiedName) or 'conceptReference' must be provided$label", McpErrorCode.INVALID_REQUEST)
             )
         }
         val sConcept = (if (!conceptReference.isNullOrEmpty()) resolveConcept(repository, conceptReference) else null)
             ?: (if (!conceptName.isNullOrEmpty()) resolveConcept(repository, conceptName) else null)
             ?: return RootableConceptResolution.Err(
-                errJson("Concept not found$label: concept='$conceptName', conceptReference='$conceptReference'")
+                errJson("Concept not found$label: concept='$conceptName', conceptReference='$conceptReference'", McpErrorCode.NOT_FOUND)
             )
         if (sConcept !is SConcept || !isRootable(sConcept, repository)) {
             return RootableConceptResolution.Err(
-                errJson("Concept '${sConcept.name}' is not a rootable concept$label")
+                errJson("Concept '${sConcept.name}' is not a rootable concept$label", McpErrorCode.INVALID_REQUEST)
             )
         }
         return RootableConceptResolution.Ok(sConcept)
@@ -218,14 +348,20 @@ abstract class AbstractOps : McpToolset {
         requireWritable: Boolean = false
     ): AbstractModuleResolution {
         val module = resolveModule(mpsProject, moduleName, projectOnly)
-            ?: return AbstractModuleResolution.Err("Module $moduleName not found")
+            ?: return AbstractModuleResolution.Err("Module $moduleName not found", McpErrorCode.NOT_FOUND)
         val abstractModule = module as? AbstractModule
-            ?: return AbstractModuleResolution.Err("Module $moduleName is not an AbstractModule")
+            ?: return AbstractModuleResolution.Err(
+                "Module $moduleName is not an AbstractModule",
+                McpErrorCode.INVALID_REQUEST,
+            )
         if (requireWritable && abstractModule.isReadOnly) {
-            return AbstractModuleResolution.Err("Module $moduleName is read-only")
+            return AbstractModuleResolution.Err("Module $moduleName is read-only", McpErrorCode.NOT_EDITABLE)
         }
         val descriptor = abstractModule.moduleDescriptor
-            ?: return AbstractModuleResolution.Err("Module $moduleName has no descriptor")
+            ?: return AbstractModuleResolution.Err(
+                "Module $moduleName has no descriptor",
+                McpErrorCode.INVALID_REQUEST,
+            )
         return AbstractModuleResolution.Ok(abstractModule, descriptor)
     }
 
@@ -250,7 +386,7 @@ abstract class AbstractOps : McpToolset {
     protected fun saveToTempFileResult(json: String): String {
         return try {
             val tempFile = saveToTempFile(json)
-            okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
+            okJsonString(tempFile.absolutePath)
         } catch (e: Exception) {
             LOG.warn("Failed to save MCP tool result to a temporary file", e)
             errJson("Failed to save result to a temporary file: ${e.message}")
@@ -277,11 +413,11 @@ abstract class AbstractOps : McpToolset {
 
     fun <T> parseJson(jsonString: String, type: java.lang.reflect.Type): T {
         if (jsonString.isBlank()) {
-            throw IllegalArgumentException("JSON string is empty or blank")
+            throw McpInvalidRequestException("JSON string is empty or blank")
         }
         try {
-            return Gson().fromJson(jsonString, type)
-                ?: throw IllegalArgumentException("Failed to parse JSON")
+            return GSON.fromJson(jsonString, type)
+                ?: throw McpInvalidRequestException("Failed to parse JSON")
         } catch (e: JsonSyntaxException) {
             val message = e.message ?: "Invalid JSON syntax"
             val regex = "at line (\\d+) column (\\d+)".toRegex()
@@ -290,9 +426,9 @@ abstract class AbstractOps : McpToolset {
                 val line = matchResult.groupValues[1].toInt()
                 val column = matchResult.groupValues[2].toInt()
                 val excerpt = getJsonExcerpt(jsonString, line, column)
-                throw IllegalArgumentException("$message\n\n$excerpt")
+                throw McpInvalidRequestException("$message\n\n$excerpt")
             }
-            throw IllegalArgumentException(message)
+            throw McpInvalidRequestException(message)
         }
     }
 
@@ -322,104 +458,65 @@ abstract class AbstractOps : McpToolset {
         return result.toString()
     }
 
-    fun escapeJson(s: String): String = buildString {
-        for (ch in s) when (ch) {
-            '"' -> append("\\\"")
-            '\\' -> append("\\\\")
-            '\n' -> append("\\n")
-            '\r' -> append("\\r")
-            '\t' -> append("\\t")
-            else -> append(ch)
-        }
-    }
-
-    protected fun <T> StringBuilder.appendJsonArray(name: String, items: Iterable<T>, appendItem: StringBuilder.(T) -> Unit) {
-        append("\"").append(name).append("\":[")
-        var first = true
-        for (item in items) {
-            if (!first) append(",") else first = false
-            appendItem(item)
-        }
-        append("]")
-    }
-
-    protected fun StringBuilder.appendNamedReferenceObject(
-        name: String,
-        reference: String,
-        appendExtraFields: (StringBuilder.() -> Unit)? = null
-    ) {
-        append("{")
-        append("\"name\":\"").append(escapeJson(name)).append("\",")
-        append("\"reference\":\"").append(escapeJson(reference)).append("\"")
-        if (appendExtraFields != null) {
-            append(",")
-            appendExtraFields()
-        }
-        append("}")
-    }
-
     protected fun namedReferenceJson(name: String, reference: String): String {
-        return buildString {
-            appendNamedReferenceObject(name, reference)
-        }
+        return namedReferenceJsonObject(name, reference).toString()
     }
 
     protected fun moduleReferenceJson(ref: SModuleReference): String {
-        return namedReferenceJson(ref.moduleName ?: "", PersistenceFacade.getInstance().asString(ref))
+        return moduleReferenceJsonObject(ref).toString()
     }
 
-    protected fun <T> StringBuilder.appendNamedReferenceArray(
-        name: String,
+    protected fun namedReferenceJsonObject(name: String, reference: String): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", name)
+        obj.addProperty("reference", reference)
+        return obj
+    }
+
+    protected fun moduleReferenceJsonObject(ref: SModuleReference): JsonObject =
+        namedReferenceJsonObject(ref.moduleName ?: "", PersistenceFacade.getInstance().asString(ref))
+
+    protected fun modelReferenceJsonObject(ref: SModelReference): JsonObject =
+        namedReferenceJsonObject(ref.modelName, PersistenceFacade.getInstance().asString(ref))
+
+    protected fun <T> namedReferenceJsonArray(
         items: Iterable<T>,
         itemName: (T) -> String,
         itemReference: (T) -> String,
-        appendExtraFields: (StringBuilder.(T) -> Unit)? = null
-    ) {
-        appendJsonArray(name, items) { item ->
-            if (appendExtraFields == null) {
-                appendNamedReferenceObject(itemName(item), itemReference(item))
-            } else {
-                appendNamedReferenceObject(itemName(item), itemReference(item)) {
-                    appendExtraFields(item)
-                }
-            }
+        configure: (JsonObject.(T) -> Unit)? = null
+    ): JsonArray {
+        val result = JsonArray()
+        for (item in items) {
+            val obj = namedReferenceJsonObject(itemName(item), itemReference(item))
+            configure?.invoke(obj, item)
+            result.add(obj)
         }
+        return result
     }
 
-    protected fun StringBuilder.appendDevkitExtendedDevkits(descriptor: DevkitDescriptor) {
-        appendNamedReferenceArray(
-            name = "extendedDevkits",
+    private fun devkitExtendedDevkitsJsonArray(descriptor: DevkitDescriptor): JsonArray =
+        namedReferenceJsonArray(
             items = descriptor.extendedDevkits,
             itemName = { it.moduleName ?: "" },
             itemReference = { PersistenceFacade.getInstance().asString(it) }
         )
-    }
 
-    protected fun StringBuilder.appendDevkitExportedLanguages(descriptor: DevkitDescriptor) {
-        appendNamedReferenceArray(
-            name = "exportedLanguages",
+    private fun devkitExportedLanguagesJsonArray(descriptor: DevkitDescriptor): JsonArray =
+        namedReferenceJsonArray(
             items = descriptor.exportedLanguages,
             itemName = { it.moduleName ?: "" },
             itemReference = { PersistenceFacade.getInstance().asString(it) }
         )
-    }
 
-    protected fun StringBuilder.appendDevkitExportedSolutions(descriptor: DevkitDescriptor) {
-        appendNamedReferenceArray(
-            name = "exportedSolutions",
+    private fun devkitExportedSolutionsJsonArray(descriptor: DevkitDescriptor): JsonArray =
+        namedReferenceJsonArray(
             items = descriptor.exportedSolutions,
             itemName = { it.moduleName ?: "" },
             itemReference = { PersistenceFacade.getInstance().asString(it) }
         )
-    }
 
-    protected fun StringBuilder.appendAssociatedGenPlan(plan: SModelReference) {
-        append("\"associatedGenPlan\":")
-        appendNamedReferenceObject(
-            plan.modelName,
-            PersistenceFacade.getInstance().asString(plan)
-        )
-    }
+    private fun associatedGenPlanJsonObject(plan: SModelReference): JsonObject =
+        namedReferenceJsonObject(plan.modelName, PersistenceFacade.getInstance().asString(plan))
 
     protected fun nodeInfoJsonObject(n: SNode): JsonObject {
         val name = n.name ?: n.presentation
@@ -458,105 +555,78 @@ abstract class AbstractOps : McpToolset {
     }
 
     protected fun nodeHierarchyToJson(node: SNode, deep: Boolean): String {
+        return nodeHierarchyJsonObject(node, deep).toString()
+    }
+
+    protected fun nodeHierarchyJsonObject(node: SNode, deep: Boolean): JsonObject {
         val repository = node.model?.repository
-        return buildString {
-            append("{")
-            val declarationNode = node.concept.sourceNode?.resolve(repository)
-            val doc = getDoc(declarationNode)
-            val deprecated = getDeprecationInfo(declarationNode)
-            append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
-            append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
-            appendDocAndDeprecated(doc, deprecated)
-            append(",")
-            append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
-            append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
+        val obj = JsonObject()
+        val declarationNode = node.concept.sourceNode?.resolve(repository)
+        obj.addProperty("name", node.name ?: node.presentation)
+        obj.addProperty("concept", node.concept.name)
+        addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
+        obj.addProperty("conceptReference", PersistenceFacade.getInstance().asString(node.concept))
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(node.reference))
 
-            // Properties
-            append("\"properties\":[")
-            var firstProp = true
-            for (prop in node.concept.properties) {
-                val value = SNodeAccessUtil.getPropertyValue(node, prop)?.let { prop.type.toString(it) }
-                if (value.isNullOrEmpty()) continue
-                if (!firstProp) append(",") else firstProp = false
-                append("{")
-                append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
-                append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-                val propDeclarationNode = prop.sourceNode?.resolve(repository)
-                appendDocAndDeprecated(getDoc(propDeclarationNode), getDeprecationInfo(propDeclarationNode))
-                append(",")
-                append("\"value\":\"").append(escapeJson(value)).append("\"")
-                append("}")
-            }
-            append("],")
-
-            // References
-            append("\"references\":[")
-            var firstRef = true
-            for (ref in node.references) {
-                if (!firstRef) append(",") else firstRef = false
-                val link = ref.link
-                append("{")
-                append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-                append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-                append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-                val linkDeclarationNode = link.sourceNode?.resolve(repository)
-                appendDocAndDeprecated(getDoc(linkDeclarationNode), getDeprecationInfo(linkDeclarationNode))
-                append(",")
-                val targetNode = ref.targetNode
-                if (targetNode != null) {
-                    append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
-                    append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(targetNode.reference))).append("\"")
-                } else {
-                    append("\"target\":null,")
-                    append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ref.targetNodeReference))).append("\"")
-                }
-                append("}")
-            }
-            append("],")
-
-            // Children
-            append("\"children\":[")
-            var firstChildRole = true
-            val childrenByRole = node.children.groupBy { it.containmentLink }
-            for (link in node.concept.containmentLinks) {
-                val childrenInRole = childrenByRole[link] ?: emptyList()
-                if (childrenInRole.isEmpty() && link.isOptional) continue
-
-                if (!firstChildRole) append(",") else firstChildRole = false
-                append("{")
-                append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-                append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-                append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-                val linkDeclarationNode = link.sourceNode?.resolve(repository)
-                appendDocAndDeprecated(getDoc(linkDeclarationNode), getDeprecationInfo(linkDeclarationNode))
-                if (deep) {
-                    append(",\"nodes\":[")
-                    var firstChild = true
-                    for (child in childrenInRole) {
-                        if (!firstChild) append(",") else firstChild = false
-                        append(nodeHierarchyToJson(child, deep))
-                    }
-                    append("]")
-                } else {
-                    append(",\"children\":[")
-                    var firstChild = true
-                    for (child in childrenInRole) {
-                        if (!firstChild) append(",") else firstChild = false
-                        append("{")
-                        append("\"name\":\"").append(escapeJson(child.name ?: child.presentation)).append("\",")
-                        append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(child.reference))).append("\"")
-                        append("}")
-                    }
-                    append("]")
-                }
-                append("}")
-            }
-            append("]")
-
-            append("}")
+        val properties = JsonArray()
+        for (prop in node.concept.properties) {
+            val value = SNodeAccessUtil.getPropertyValue(node, prop)?.let { prop.type.toString(it) }
+            if (value.isNullOrEmpty()) continue
+            val propDeclarationNode = prop.sourceNode?.resolve(repository)
+            val propObj = JsonObject()
+            propObj.addProperty("name", prop.name)
+            propObj.addProperty("type", getPropertyType(prop))
+            addDocAndDeprecated(propObj, getDoc(propDeclarationNode), getDeprecationInfo(propDeclarationNode))
+            propObj.addProperty("value", value)
+            properties.add(propObj)
         }
+        obj.add("properties", properties)
+
+        val references = JsonArray()
+        for (ref in node.references) {
+            val link = ref.link
+            val refObj = referenceLinkJsonObject(link, repository, includeDeprecated = true)
+            val targetNode = ref.targetNode
+            if (targetNode != null) {
+                refObj.addProperty("target", targetNode.name ?: targetNode.presentation)
+                refObj.addProperty("targetReference", PersistenceFacade.getInstance().asString(targetNode.reference))
+            }
+            else {
+                refObj.add("target", JsonNull.INSTANCE)
+                refObj.addProperty("targetReference", PersistenceFacade.getInstance().asString(ref.targetNodeReference))
+            }
+            references.add(refObj)
+        }
+        obj.add("references", references)
+
+        val children = JsonArray()
+        val childrenByRole = node.children.groupBy { it.containmentLink }
+        for (link in node.concept.containmentLinks) {
+            val childrenInRole = childrenByRole[link] ?: emptyList()
+            if (childrenInRole.isEmpty() && link.isOptional) continue
+
+            val childRole = containmentLinkInfoJsonObject(link, repository, includeDeprecated = true)
+            if (deep) {
+                val nodes = JsonArray()
+                for (child in childrenInRole) {
+                    nodes.add(nodeHierarchyJsonObject(child, deep))
+                }
+                childRole.add("nodes", nodes)
+            }
+            else {
+                val childSummaries = JsonArray()
+                for (child in childrenInRole) {
+                    val childObj = JsonObject()
+                    childObj.addProperty("name", child.name ?: child.presentation)
+                    childObj.addProperty("reference", PersistenceFacade.getInstance().asString(child.reference))
+                    childSummaries.add(childObj)
+                }
+                childRole.add("children", childSummaries)
+            }
+            children.add(childRole)
+        }
+        obj.add("children", children)
+        return obj
     }
 
     private fun getPropertyType(prop: SProperty): String {
@@ -600,33 +670,49 @@ abstract class AbstractOps : McpToolset {
         return if (link.isOptional) "0..1" else "1"
     }
 
-    protected fun StringBuilder.appendDocAndDeprecated(doc: String, deprecated: String) {
-        appendDoc(doc)
-        append(",")
-        appendDeprecated(deprecated)
+    protected fun addDocAndDeprecated(obj: JsonObject, doc: String, deprecated: String) {
+        obj.addProperty("doc", doc)
+        obj.addProperty("deprecated", deprecated)
     }
 
     protected fun structureQualifiedName(concept: SAbstractConcept): String {
         return concept.language.qualifiedName + ".structure." + concept.name
     }
 
-    private fun StringBuilder.appendDoc(doc: String) {
-        append("\"doc\":\"").append(escapeJson(doc)).append("\"")
+    private fun problemJsonObject(severity: MessageStatus, message: String): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("severity", problemSeverity(severity))
+        obj.addProperty("message", message)
+        return obj
     }
 
-    private fun StringBuilder.appendDeprecated(deprecated: String) {
-        append("\"deprecated\":\"").append(escapeJson(deprecated)).append("\"")
+    private fun errorProblemJsonObject(message: String): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("severity", "error")
+        obj.addProperty("message", message)
+        return obj
     }
 
-    private fun StringBuilder.appendProblemJson(severity: MessageStatus, message: String) {
-        append("{")
-        appendProblemFields(severity, message)
-        append("}")
+    private fun nodeProblemsJsonArray(problems: Iterable<NodeReportItem>): JsonArray {
+        val result = JsonArray()
+        for (problem in problems) {
+            result.add(problemJsonObject(problem.severity, problem.message))
+        }
+        return result
     }
 
-    private fun StringBuilder.appendProblemFields(severity: MessageStatus, message: String) {
-        append("\"severity\":\"").append(problemSeverity(severity)).append("\",")
-        append("\"message\":\"").append(escapeJson(message)).append("\"")
+    private fun referenceLinkJsonObject(link: SReferenceLink, repository: SRepository?, includeDeprecated: Boolean): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("role", link.name)
+        obj.addProperty("type", link.targetConcept.name)
+        obj.addProperty("typeReference", PersistenceFacade.getInstance().asString(link.targetConcept))
+        obj.addProperty("cardinality", getCardinality(link))
+        val declarationNode = link.sourceNode?.resolve(repository)
+        obj.addProperty("doc", getDoc(declarationNode))
+        if (includeDeprecated) {
+            obj.addProperty("deprecated", getDeprecationInfo(declarationNode))
+        }
+        return obj
     }
 
     private fun problemSeverity(severity: MessageStatus): String {
@@ -638,175 +724,97 @@ abstract class AbstractOps : McpToolset {
     }
 
     protected fun nodeWithProblemsToJson(node: SNode, problems: Map<SNode, List<NodeReportItem>>, deep: Boolean = true): String {
+        return nodeWithProblemsJsonObject(node, problems, deep).toString()
+    }
+
+    protected fun nodeWithProblemsJsonObject(node: SNode, problems: Map<SNode, List<NodeReportItem>>, deep: Boolean = true): JsonObject {
         val nodeProblems = problems[node] ?: emptyList()
         val problemsByTarget = nodeProblems.groupBy { it.messageTarget }
         val repository = node.model?.repository
 
-        return buildString {
-            append("{")
-            val doc = getDoc(node.concept.sourceNode?.resolve(repository))
-            append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
-            append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
-            append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
-            append("\"doc\":\"").append(escapeJson(doc)).append("\",")
-            append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
+        val obj = JsonObject()
+        obj.addProperty("name", node.name ?: node.presentation)
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(node.reference))
+        obj.addProperty("concept", node.concept.name)
+        obj.addProperty("doc", getDoc(node.concept.sourceNode?.resolve(repository)))
+        obj.addProperty("conceptReference", PersistenceFacade.getInstance().asString(node.concept))
 
-            // Problems (node-level)
-            val nodeLevelProblems = problemsByTarget.filter { it.key !is PropertyMessageTarget && it.key !is ReferenceMessageTarget }.values.flatten()
-            append("\"problems\":[")
-            var firstProb = true
-            for (prob in nodeLevelProblems) {
-                if (!firstProb) append(",") else firstProb = false
-                appendProblemJson(prob.severity, prob.message)
+        val nodeLevelProblems = problemsByTarget.filter { it.key !is PropertyMessageTarget && it.key !is ReferenceMessageTarget }.values.flatten()
+        obj.add("problems", nodeProblemsJsonArray(nodeLevelProblems))
+
+        val properties = JsonArray()
+        for (prop in node.concept.properties) {
+            val propertyState = getPropertyState(node, prop)
+            val value = propertyState.value
+            val propProblems = problemsByTarget.filter { (it.key as? PropertyMessageTarget)?.role == prop.name }.values.flatten()
+
+            if (value.isNullOrEmpty() && propProblems.isEmpty() && !propertyState.isEmptyEnum) continue
+
+            val propObj = JsonObject()
+            propObj.addProperty("name", prop.name)
+            propObj.addProperty("type", getPropertyType(prop))
+            propObj.addProperty("doc", getDoc(prop.sourceNode?.resolve(repository)))
+            propObj.addProperty("value", value ?: "")
+            val problemArray = nodeProblemsJsonArray(propProblems)
+            if (propertyState.isEmptyEnum) {
+                problemArray.add(errorProblemJsonObject("Empty enumeration property"))
             }
-            append("],")
-
-            // Properties
-            append("\"properties\":[")
-            var firstProp = true
-            for (prop in node.concept.properties) {
-                val propertyState = getPropertyState(node, prop)
-                val value = propertyState.value
-                val propProblems = problemsByTarget.filter { (it.key as? PropertyMessageTarget)?.role == prop.name }.values.flatten()
-
-                if (value.isNullOrEmpty() && propProblems.isEmpty() && !propertyState.isEmptyEnum) continue
-
-                if (!firstProp) append(",") else firstProp = false
-                append("{")
-                append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
-                append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-                appendDoc(getDoc(prop.sourceNode?.resolve(repository)))
-                append(",")
-                append("\"value\":\"").append(escapeJson(value ?: "")).append("\",")
-
-                // Property problems
-                append("\"problems\":[")
-                var firstPropProb = true
-                for (prob in propProblems) {
-                    if (!firstPropProb) append(",") else firstPropProb = false
-                    appendProblemJson(prob.severity, prob.message)
-                }
-
-                if (propertyState.isEmptyEnum) {
-                    if (!firstPropProb) append(",") else firstPropProb = false
-                    append("{\"severity\":\"error\",\"message\":\"Empty enumeration property\"}")
-                }
-
-                if (propertyState.isInvalid) {
-                    // Check if already reported
-                    if (propProblems.none { it.message.contains("invalid", ignoreCase = true) }) {
-                        if (!firstPropProb) {
-                            append(",")
-                        }
-                        append("{\"severity\":\"error\",\"message\":\"Property value is invalid\"}")
-                    }
-                }
-                append("]")
-                append("}")
+            if (propertyState.isInvalid && propProblems.none { it.message.contains("invalid", ignoreCase = true) }) {
+                problemArray.add(errorProblemJsonObject("Property value is invalid"))
             }
-            append("],")
-
-            // References
-            append("\"references\":[")
-            var firstRefRole = true
-            val referencesByRole = node.references.associateBy { it.link }
-            for (link in node.concept.referenceLinks) {
-                val ref = referencesByRole[link]
-                val refProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
-                if (ref == null && link.isOptional && refProblems.isEmpty()) continue
-
-                if (!firstRefRole) append(",") else firstRefRole = false
-                append("{")
-                append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-                append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-                append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-                val rdoc = getDoc(link.sourceNode?.resolve(repository))
-                append("\"doc\":\"").append(escapeJson(rdoc)).append("\",")
-                if (ref != null) {
-                    val targetNode = ref.targetNode
-                    if (targetNode != null) {
-                        append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
-                        append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(targetNode.reference))).append("\",")
-                    } else {
-                        append("\"target\":null,")
-                        append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ref.targetNodeReference))).append("\",")
-                    }
-                } else {
-                    append("\"target\":null,")
-                    append("\"targetReference\":null,")
-                }
-
-                // Reference problems
-                append("\"problems\":[")
-                var firstRefProb = true
-                for (prob in refProblems) {
-                    if (!firstRefProb) append(",") else firstRefProb = false
-                    append("{")
-                    val severity = when (prob.severity) {
-                        MessageStatus.ERROR -> "error"
-                        MessageStatus.WARNING -> "warning"
-                        else -> "info"
-                    }
-                    append("\"severity\":\"").append(severity).append("\",")
-                    append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
-                    append("}")
-                }
-                append("]")
-                append("}")
-            }
-            append("],")
-
-            // Children
-            append("\"children\":[")
-            var firstChildRole = true
-            val childrenByRole = node.children.groupBy { it.containmentLink }
-            for (link in node.concept.containmentLinks) {
-                val childrenInRole = childrenByRole[link] ?: emptyList()
-                val roleProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
-                if (childrenInRole.isEmpty() && link.isOptional && roleProblems.isEmpty()) continue
-
-                if (!firstChildRole) append(",") else firstChildRole = false
-                append("{")
-                append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-                append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-                append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-                append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-                val ldoc = getDoc(link.sourceNode?.resolve(repository))
-                append("\"doc\":\"").append(escapeJson(ldoc)).append("\",")
-
-                // Role-level problems (e.g. missing compulsory child)
-                append("\"problems\":[")
-                var firstRoleProb = true
-                for (prob in roleProblems) {
-                    if (!firstRoleProb) append(",") else firstRoleProb = false
-                    append("{")
-                    val severity = when (prob.severity) {
-                        MessageStatus.ERROR -> "error"
-                        MessageStatus.WARNING -> "warning"
-                        else -> "info"
-                    }
-                    append("\"severity\":\"").append(severity).append("\",")
-                    append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
-                    append("}")
-                }
-                append("]")
-
-                if (deep) {
-                    append(",\"nodes\":[")
-                    var firstChild = true
-                    for (child in childrenInRole) {
-                        if (!firstChild) append(",") else firstChild = false
-                        append(nodeWithProblemsToJson(child, problems, true))
-                    }
-                    append("]")
-                }
-                append("}")
-            }
-            append("]")
-
-            append("}")
+            propObj.add("problems", problemArray)
+            properties.add(propObj)
         }
+        obj.add("properties", properties)
+
+        val references = JsonArray()
+        val referencesByRole = node.references.associateBy { it.link }
+        for (link in node.concept.referenceLinks) {
+            val ref = referencesByRole[link]
+            val refProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
+            if (ref == null && link.isOptional && refProblems.isEmpty()) continue
+
+            val refObj = referenceLinkJsonObject(link, repository, includeDeprecated = false)
+            if (ref != null) {
+                val targetNode = ref.targetNode
+                if (targetNode != null) {
+                    refObj.addProperty("target", targetNode.name ?: targetNode.presentation)
+                    refObj.addProperty("targetReference", PersistenceFacade.getInstance().asString(targetNode.reference))
+                }
+                else {
+                    refObj.add("target", JsonNull.INSTANCE)
+                    refObj.addProperty("targetReference", PersistenceFacade.getInstance().asString(ref.targetNodeReference))
+                }
+            }
+            else {
+                refObj.add("target", JsonNull.INSTANCE)
+                refObj.add("targetReference", JsonNull.INSTANCE)
+            }
+            refObj.add("problems", nodeProblemsJsonArray(refProblems))
+            references.add(refObj)
+        }
+        obj.add("references", references)
+
+        val children = JsonArray()
+        val childrenByRole = node.children.groupBy { it.containmentLink }
+        for (link in node.concept.containmentLinks) {
+            val childrenInRole = childrenByRole[link] ?: emptyList()
+            val roleProblems = problemsByTarget.filter { (it.key as? ReferenceMessageTarget)?.role == link.name }.values.flatten()
+            if (childrenInRole.isEmpty() && link.isOptional && roleProblems.isEmpty()) continue
+
+            val roleObj = containmentLinkInfoJsonObject(link, repository, includeDeprecated = false)
+            roleObj.add("problems", nodeProblemsJsonArray(roleProblems))
+            if (deep) {
+                val nodes = JsonArray()
+                for (child in childrenInRole) {
+                    nodes.add(nodeWithProblemsJsonObject(child, problems, true))
+                }
+                roleObj.add("nodes", nodes)
+            }
+            children.add(roleObj)
+        }
+        obj.add("children", children)
+        return obj
     }
 
     /**
@@ -840,11 +848,15 @@ abstract class AbstractOps : McpToolset {
     }
 
     protected fun nodeWithProblemsListToJson(rootNode: SNode, problems: Map<SNode, List<NodeReportItem>>): String {
-        val resultList = mutableListOf<String>()
+        return nodeWithProblemsListJsonArray(rootNode, problems).toString()
+    }
+
+    protected fun nodeWithProblemsListJsonArray(rootNode: SNode, problems: Map<SNode, List<NodeReportItem>>): JsonArray {
+        val resultList = JsonArray()
 
         fun traverse(node: SNode) {
             if (hasLocalProblems(node, problems)) {
-                resultList.add(nodeWithProblemsToJson(node, problems, false))
+                resultList.add(nodeWithProblemsJsonObject(node, problems, false))
             }
             for (child in node.children) {
                 traverse(child)
@@ -852,30 +864,28 @@ abstract class AbstractOps : McpToolset {
         }
 
         traverse(rootNode)
-        return "[" + resultList.joinToString(",") + "]"
+        return resultList
     }
 
     protected fun modelWithProblemsToJson(model: SModel, problems: List<ModelReportItem>): String {
-        return buildString {
-            append("{")
-            append("\"name\":\"").append(escapeJson(model.name.value)).append("\",")
-            append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(model.reference))).append("\",")
-            append("\"module\":\"").append(escapeJson(model.module?.moduleName ?: "")).append("\",")
-            append("\"problems\":[")
-            var firstProb = true
-            for (prob in problems) {
-                if (!firstProb) append(",") else firstProb = false
-                append("{")
-                appendProblemFields(prob.severity, prob.message)
-                if (prob is NodeReportItem) {
-                    val nodeRef = prob.node
-                    append(",\"node\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(nodeRef))).append("\"")
-                }
-                append("}")
+        return modelWithProblemsJsonObject(model, problems).toString()
+    }
+
+    protected fun modelWithProblemsJsonObject(model: SModel, problems: List<ModelReportItem>): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", model.name.value)
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
+        obj.addProperty("module", model.module?.moduleName ?: "")
+        val problemArray = JsonArray()
+        for (problem in problems) {
+            val problemObj = problemJsonObject(problem.severity, problem.message)
+            if (problem is NodeReportItem) {
+                problemObj.addProperty("node", PersistenceFacade.getInstance().asString(problem.node))
             }
-            append("]")
-            append("}")
+            problemArray.add(problemObj)
         }
+        obj.add("problems", problemArray)
+        return obj
     }
 
     protected val LANG_STRUCTURE: SLanguage by lazy { SNodeUtil.concept_AbstractConceptDeclaration.language }
@@ -929,22 +939,28 @@ abstract class AbstractOps : McpToolset {
     }
 
     protected fun modelReferenceJson(ref: SModelReference): String {
-        return namedReferenceJson(ref.modelName, PersistenceFacade.getInstance().asString(ref))
+        return modelReferenceJsonObject(ref).toString()
     }
 
     protected fun modelInfoJson(m: SModel): String {
-        val name = m.name.value
-        val moduleName = m.module?.moduleName ?: ""
-        val reference = PersistenceFacade.getInstance().asString(m.reference)
-        return "{" +
-                "\"name\":\"" + escapeJson(name) + "\"," +
-                "\"module\":\"" + escapeJson(moduleName) + "\"," +
-                "\"reference\":\"" + escapeJson(reference) + "\"," +
-                "\"readOnly\":" + m.isReadOnly + "," +
-                "\"present\":true}"
+        return modelInfoJsonObject(m).toString()
+    }
+
+    protected fun modelInfoJsonObject(m: SModel): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", m.name.value)
+        obj.addProperty("module", m.module?.moduleName ?: "")
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(m.reference))
+        obj.addProperty("readOnly", m.isReadOnly)
+        obj.addProperty("present", true)
+        return obj
     }
 
     protected fun moduleInfoJson(project: MPSProject, m: SModule): String {
+        return moduleInfoJsonObject(project, m).toString()
+    }
+
+    protected fun moduleInfoJsonObject(project: MPSProject, m: SModule): JsonObject {
         val name = m.moduleName ?: ""
         val reference = PersistenceFacade.getInstance().asString(m.moduleReference)
         val vf = try {
@@ -953,32 +969,27 @@ abstract class AbstractOps : McpToolset {
             null
         }
 
-        return buildString {
-            append("{")
-            append("\"name\":\"").append(escapeJson(name)).append("\",")
-            append("\"reference\":\"").append(escapeJson(reference)).append("\",")
-            append("\"readOnly\":").append(m.isReadOnly).append(",")
-            if (vf != null) {
-                append("\"virtualFolder\":\"").append(escapeJson(vf)).append("\",")
-            }
-
-            val descriptor = (m as? AbstractModule)?.moduleDescriptor
-            if (descriptor is DevkitDescriptor) {
-                append("\"kind\":\"DevKit\",")
-                appendDevkitExtendedDevkits(descriptor)
-                append(",")
-                appendDevkitExportedLanguages(descriptor)
-                append(",")
-                appendDevkitExportedSolutions(descriptor)
-                descriptor.associatedGenPlan?.let {
-                    append(",")
-                    appendAssociatedGenPlan(it)
-                }
-                append(",")
-            }
-
-            append("\"present\":true}")
+        val obj = JsonObject()
+        obj.addProperty("name", name)
+        obj.addProperty("reference", reference)
+        obj.addProperty("readOnly", m.isReadOnly)
+        if (vf != null) {
+            obj.addProperty("virtualFolder", vf)
         }
+
+        val descriptor = (m as? AbstractModule)?.moduleDescriptor
+        if (descriptor is DevkitDescriptor) {
+            obj.addProperty("kind", "DevKit")
+            obj.add("extendedDevkits", devkitExtendedDevkitsJsonArray(descriptor))
+            obj.add("exportedLanguages", devkitExportedLanguagesJsonArray(descriptor))
+            obj.add("exportedSolutions", devkitExportedSolutionsJsonArray(descriptor))
+            descriptor.associatedGenPlan?.let {
+                obj.add("associatedGenPlan", associatedGenPlanJsonObject(it))
+            }
+        }
+
+        obj.addProperty("present", true)
+        return obj
     }
 
     protected suspend fun <T> executeShortReadOnEdt(mpsProject: MPSProject, action: () -> T): T {
@@ -1007,10 +1018,6 @@ abstract class AbstractOps : McpToolset {
             result as T
         }
     }
-
-    protected suspend fun <T> executeRead(mpsProject: MPSProject, action: () -> T): T = executeShortReadOnEdt(mpsProject, action)
-
-    protected suspend fun <T> executeCommand(mpsProject: MPSProject, action: () -> T): T = executeShortCommandOnEdt(mpsProject, action)
 
     protected suspend fun coroutineProgressMonitor(): EmptyProgressMonitor {
         return CoroutineProgressMonitor(currentCoroutineContext()[Job])
@@ -1052,7 +1059,7 @@ abstract class AbstractOps : McpToolset {
         if (sConcept.isAbstract) return null
         if (!sConcept.conceptAlias.isNullOrEmpty()) return null
         val ownReferences = sConcept.referenceLinks.filter {
-            it.owner.getQualifiedName() != "jetbrains.mps.lang.core.structure.BaseConcept"
+            structureQualifiedName(it.owner) != "jetbrains.mps.lang.core.structure.BaseConcept"
         }
         if (ownReferences.size != 1) return null
         val ref = ownReferences[0]
@@ -1295,7 +1302,7 @@ abstract class AbstractOps : McpToolset {
 
     protected fun resolveNodeReference(repository: SRepository, nodeRefStr: String): SNodeReference? {
         if (nodeRefStr.startsWith("c:")) {
-            throw IllegalArgumentException("Expected a node reference (r:... or i:...), but a concept reference was provided: $nodeRefStr")
+            throw McpInvalidReferenceException("Expected a node reference (r:... or i:...), but a concept reference was provided: $nodeRefStr")
         }
         val facade = PersistenceFacade.getInstance()
         try {
@@ -1332,20 +1339,28 @@ abstract class AbstractOps : McpToolset {
     }
 
     protected fun containmentLinkInfoJson(link: SContainmentLink, repository: SRepository?): String {
+        return containmentLinkInfoJsonObject(link, repository, includeDeprecated = true).toString()
+    }
+
+    protected fun containmentLinkInfoJsonObject(link: SContainmentLink, repository: SRepository?, includeDeprecated: Boolean = true): JsonObject {
         val declarationNode = if (repository != null) link.sourceNode?.resolve(repository) else null
-        val doc = getDoc(declarationNode)
-        val deprecated = getDeprecationInfo(declarationNode)
-        return "{" +
-                "\"role\":\"" + escapeJson(link.name) + "\"," +
-                "\"type\":\"" + escapeJson(link.targetConcept.name) + "\"," +
-                "\"typeReference\":\"" + escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept)) + "\"," +
-                "\"cardinality\":\"" + escapeJson(getCardinality(link)) + "\"," +
-                "\"doc\":\"" + escapeJson(doc) + "\"," +
-                "\"deprecated\":\"" + escapeJson(deprecated) + "\"" +
-                "}"
+        val obj = JsonObject()
+        obj.addProperty("role", link.name)
+        obj.addProperty("type", link.targetConcept.name)
+        obj.addProperty("typeReference", PersistenceFacade.getInstance().asString(link.targetConcept))
+        obj.addProperty("cardinality", getCardinality(link))
+        obj.addProperty("doc", getDoc(declarationNode))
+        if (includeDeprecated) {
+            obj.addProperty("deprecated", getDeprecationInfo(declarationNode))
+        }
+        return obj
     }
 
     protected fun conceptInfoJson(concept: SAbstractConcept, repository: SRepository): String {
+        return conceptInfoJsonObject(concept, repository).toString()
+    }
+
+    protected fun conceptInfoJsonObject(concept: SAbstractConcept, repository: SRepository): JsonObject {
         val facade = PersistenceFacade.getInstance()
         val name = concept.name
         val qualifiedName = structureQualifiedName(concept)
@@ -1353,9 +1368,6 @@ abstract class AbstractOps : McpToolset {
         val conceptReference = facade.asString(concept)
         val languageReference = facade.asString(concept.language)
         val superConcept = concept.superConcept?.let { facade.asString(it) } ?: ""
-        val superInterfaces = concept.superInterfaces.joinToString(prefix = "[", postfix = "]", separator = ",") {
-            "\"${escapeJson(facade.asString(it))}\""
-        }
         val sourceNode = concept.sourceNode?.let { facade.asString(it) } ?: ""
         val isAbstract = concept.isAbstract
         val isInterfaceConcept = concept is SInterfaceConcept
@@ -1365,30 +1377,35 @@ abstract class AbstractOps : McpToolset {
         val shortDescription = concept.shortDescription
         val doc = getDoc(declarationNode)
         val deprecated = getDeprecationInfo(declarationNode)
-        return "{" +
-                "\"name\":\"" + escapeJson(name) + "\"," +
-                "\"qualifiedName\":\"" + escapeJson(qualifiedName) + "\"," +
-                "\"conceptAlias\":\"" + escapeJson(conceptAlias) + "\"," +
-                "\"shortDescription\":\"" + escapeJson(shortDescription) + "\"," +
-                "\"doc\":\"" + escapeJson(doc) + "\"," +
-                "\"deprecated\":\"" + escapeJson(deprecated) + "\"," +
-                "\"conceptReference\":\"" + escapeJson(conceptReference) + "\"," +
-                "\"languageReference\":\"" + escapeJson(languageReference) + "\"," +
-                "\"superConcept\":\"" + escapeJson(superConcept) + "\"," +
-                "\"superInterfaces\":" + superInterfaces + "," +
-                "\"sourceNode\":\"" + escapeJson(sourceNode) + "\"," +
-                "\"isAbstract\":" + isAbstract + "," +
-                "\"isInterfaceConcept\":" + isInterfaceConcept + "," +
-                "\"isRootable\":" + isRootable + "," +
-                "\"virtualFolder\":\"" + escapeJson(virtualFolder) + "\"," +
-                "\"present\":true}"
+        val superInterfaces = JsonArray()
+        for (superInterface in concept.superInterfaces) {
+            superInterfaces.add(facade.asString(superInterface))
+        }
+
+        val obj = JsonObject()
+        obj.addProperty("name", name)
+        obj.addProperty("qualifiedName", qualifiedName)
+        obj.addProperty("conceptAlias", conceptAlias)
+        obj.addProperty("shortDescription", shortDescription)
+        addDocAndDeprecated(obj, doc, deprecated)
+        obj.addProperty("conceptReference", conceptReference)
+        obj.addProperty("languageReference", languageReference)
+        obj.addProperty("superConcept", superConcept)
+        obj.add("superInterfaces", superInterfaces)
+        obj.addProperty("sourceNode", sourceNode)
+        obj.addProperty("isAbstract", isAbstract)
+        obj.addProperty("isInterfaceConcept", isInterfaceConcept)
+        obj.addProperty("isRootable", isRootable)
+        obj.addProperty("virtualFolder", virtualFolder)
+        obj.addProperty("present", true)
+        return obj
     }
 
     protected fun saveToTempFile(json: String): File {
         val response = okJson(json)
         val prettyResponse = try {
             val jsonElement = JsonParser.parseString(response)
-            GsonBuilder().setPrettyPrinting().create().toJson(jsonElement)
+            PRETTY_GSON.toJson(jsonElement)
         } catch (e: Exception) {
             response
         }
@@ -1398,12 +1415,33 @@ abstract class AbstractOps : McpToolset {
         return tempFile
     }
 
+    /**
+     * Reads a parameter that conventionally holds a string (a stringified JSON blob, or a path
+     * to a JSON file consumed by [readJsonOrFile]). Some callers send the value as an inline
+     * `JsonObject`/`JsonArray` instead of a string; accept both shapes by serializing inline
+     * structures back to a JSON string. Returns `null` for missing or `null` values, and
+     * throws [McpInvalidRequestException] for unsupported shapes (e.g., a non-string primitive).
+     */
+    protected fun readStringOrInlineJsonParam(params: JsonObject, name: String): String? {
+        val element = params.get(name) ?: return null
+        if (element.isJsonNull) return null
+        if (element.isJsonPrimitive) {
+            val prim = element.asJsonPrimitive
+            if (prim.isString) return prim.asString
+            throw McpInvalidRequestException(
+                "Parameter '$name' must be a string (file path or stringified JSON) or an inline JSON object/array; got ${prim}"
+            )
+        }
+        if (element.isJsonObject || element.isJsonArray) return element.toString()
+        throw McpInvalidRequestException("Parameter '$name' has unsupported JSON shape")
+    }
+
     protected fun readJsonOrFile(jsonOrPath: String?, dryRun: Boolean = false): String? {
         if (jsonOrPath == null) return null
         val trimmed = jsonOrPath.trim()
         if (trimmed.startsWith("{") || trimmed.startsWith("[")) {
             if (jsonOrPath.length > 4096) {
-                throw IllegalArgumentException(
+                throw McpInvalidRequestException(
                     "Direct JSON input is too large (${jsonOrPath.length} chars). " +
                             "To prevent MCP truncation errors, please save the JSON to a temporary file and pass the absolute path instead. " +
                             "The limit for direct JSON is 4096 characters."
@@ -1413,10 +1451,11 @@ abstract class AbstractOps : McpToolset {
         }
         val file = File(jsonOrPath)
         if (!file.exists()) {
-            throw IllegalArgumentException("Input is neither a valid JSON object/array nor an existing file path: '$jsonOrPath'")
+            forgetCreatedTempFile(file)
+            throw McpInvalidRequestException("Input is neither a valid JSON object/array nor an existing file path: '$jsonOrPath'")
         }
         if (!file.isFile) {
-            throw IllegalArgumentException("Input path is not a regular file: '$jsonOrPath'")
+            throw McpInvalidRequestException("Input path is not a regular file: '$jsonOrPath'")
         }
         val content = file.readText()
         if (!dryRun) {
@@ -1437,13 +1476,13 @@ abstract class AbstractOps : McpToolset {
         if (!isDefaultTempJsonFile(canonicalFile)) return
 
         try {
-            if (canonicalFile.delete()) {
-                createdTempJsonFiles.remove(canonicalPath)
-            } else {
+            if (!canonicalFile.delete() && canonicalFile.exists()) {
                 LOG.warn("Failed to delete temporary JSON file: $canonicalPath")
             }
         } catch (e: Exception) {
             LOG.warn("Failed to delete temporary JSON file: $canonicalPath", e)
+        } finally {
+            createdTempJsonFiles.remove(canonicalPath)
         }
     }
 
@@ -1454,9 +1493,18 @@ abstract class AbstractOps : McpToolset {
             LOG.warn("Failed to resolve default temporary directory", e)
             return false
         }
+        // canonicalFile.parentFile is canonical too, so this comparison does not depend on path spelling.
         return file.parentFile == tempDir &&
                 file.name.startsWith(TEMP_JSON_PREFIX) &&
                 file.name.endsWith(TEMP_JSON_SUFFIX)
+    }
+
+    private fun forgetCreatedTempFile(file: File) {
+        try {
+            createdTempJsonFiles.remove(file.canonicalPath)
+        } catch (e: Exception) {
+            LOG.warn("Failed to resolve JSON input file path for cleanup", e)
+        }
     }
 
     /**
@@ -1612,7 +1660,11 @@ abstract class AbstractOps : McpToolset {
                         if (targetLanguageModuleRefs.isNotEmpty()) {
                             try {
                                 val classLoaderManager = mpsProject.getComponent(ClassLoaderManager::class.java)
-                                classLoaderManager?.reload(targetLanguageModuleRefs, makeMonitor)
+                                classLoaderManager?.reload(targetLanguageModuleRefs, EmptyProgressMonitor())
+                            } catch (e: CancellationException) {
+                                throw e
+                            } catch (e: ProcessCanceledException) {
+                                throw e
                             } catch (e: Exception) {
                                 messages.add(
                                     MakeMessage(
@@ -1651,8 +1703,12 @@ abstract class AbstractOps : McpToolset {
             } else {
                 MakeResult(false, "Make failed: ${result.message()}", messages)
             }
+        } catch (e: CancellationException) {
+            throw e
+        } catch (e: ProcessCanceledException) {
+            throw e
         } catch (e: Exception) {
-            MakeResult(false, "Make error: ${e.message}")
+            MakeResult(false, "Make error: ${e.message?.takeIf { it.isNotBlank() } ?: e.toString()}")
         }
     }
 }

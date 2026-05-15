@@ -1,6 +1,8 @@
 package com.intellij.mcp.tools
 
 import com.google.gson.JsonObject
+import com.google.gson.JsonParser
+import com.google.gson.JsonSyntaxException
 import com.intellij.mcpserver.reportToolActivity
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
@@ -25,12 +27,45 @@ import org.jetbrains.mps.openapi.module.SRepository
 
 abstract class AbstractNodeOps : AbstractOps() {
 
+    protected fun readNodeJsonOrFile(jsonOrPath: String?, dryRun: Boolean = false): String? {
+        return readJsonOrFile(jsonOrPath, dryRun)?.let { unwrapNodeJsonEnvelope(it) }
+    }
+
+    private fun unwrapNodeJsonEnvelope(json: String): String {
+        val trimmed = json.trimStart()
+        if (!trimmed.startsWith("{") || !trimmed.contains("\"ok\"")) return json
+        val obj = try {
+            JsonParser.parseString(json).takeIf { it.isJsonObject }?.asJsonObject ?: return json
+        } catch (e: JsonSyntaxException) {
+            return json
+        }
+        if (!obj.has("ok")) return json
+
+        val ok = try {
+            obj.get("ok").asBoolean
+        } catch (e: IllegalStateException) {
+            return json
+        } catch (e: UnsupportedOperationException) {
+            return json
+        }
+        if (!ok) {
+            val error = obj.get("error")?.takeIf { it.isJsonPrimitive }?.asString ?: "unknown error"
+            throw McpInvalidRequestException("MCP response envelope contains an error instead of node JSON data: $error")
+        }
+
+        val data = obj.get("data") ?: return json
+        if (!data.isJsonObject && !data.isJsonArray) {
+            throw McpInvalidRequestException("MCP response envelope data is not a node JSON blueprint object or array")
+        }
+        return data.toString()
+    }
+
     fun instantiateNode(jsonObject: JsonObject, model: SModel, dryRun: Boolean = false, jsonPath: String = "$"): SNode? {
         val conceptName = jsonObject.get("concept")?.asString
         val conceptRef = jsonObject.get("conceptReference")?.asString
         
         if (conceptName.isNullOrEmpty() && conceptRef.isNullOrEmpty()) {
-            throw IllegalArgumentException("Missing 'concept' or 'conceptReference' property in JSON at path '$jsonPath'")
+            throw McpInvalidRequestException("Missing 'concept' or 'conceptReference' property in JSON at path '$jsonPath'")
         }
 
         val sConcept = run {
@@ -40,7 +75,7 @@ abstract class AbstractNodeOps : AbstractOps() {
             val byRef = if (!conceptRef.isNullOrEmpty()) resolveConcept(model.repository, conceptRef) as? SConcept else null
             val byName = if (!conceptName.isNullOrEmpty()) resolveConcept(model.repository, conceptName) as? SConcept else null
             byRef ?: byName
-        } ?: throw IllegalArgumentException("Concept '$conceptName' with reference '$conceptRef' not found")
+        } ?: throw McpNotFoundException("Concept '$conceptName' with reference '$conceptRef' not found")
 
         // Ensure language is imported
         if (!dryRun && model is SModelInternal) {
@@ -149,7 +184,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         // additionally either start with a digit (illegal as the first char of a JVM identifier)
         // or contain '$' (technically legal but virtually never used in user-named things).
         if (looksLikeMpsXmlShortId(targetRefStr)) {
-            throw IllegalArgumentException(
+            throw McpInvalidReferenceException(
                 "Invalid node reference at $jsonPath.references[$index]: " +
                         "'$targetRefStr' looks like an MPS XML short ID (from a .mps file). " +
                         "These cannot be used as target references — they are an internal encoding " +
@@ -350,91 +385,35 @@ abstract class AbstractNodeOps : AbstractOps() {
 
     protected suspend fun update_node_child(mpsProject: MPSProject, nodeRef: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?, dryRun: Boolean = false): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node child")
-        return try {
-            executeCommand(mpsProject) {
-                val repo = mpsProject.repository
-                
-                if (childToReplaceOrDeleteRef != null) {
-                    // Replacement or Deletion
-                    val sChildNodeRef = resolveNodeReference(repo, childToReplaceOrDeleteRef)
-                    val childNode = sChildNodeRef?.resolve(repo) ?: return@executeCommand errJson("Child node '$childToReplaceOrDeleteRef' not found")
-                    
-                    val parent = childNode.parent ?: return@executeCommand errJson("Node '$childToReplaceOrDeleteRef' has no parent (it might be a root node)")
-                    
-                    val model = parent.model
-                    if (model !is EditableSModel) return@executeCommand errJson("Model containing the node is not editable")
-                    
-                    val role = childNode.containmentLink ?: return@executeCommand errJson("Node has no containment link")
-                    
-                    if (childJson != null) {
-                        // Replacement
-                        val jsonObject = try {
-                            parseJson(childJson)
-                        } catch (e: Exception) {
-                            return@executeCommand errJson(e.message)
-                        }
-                        val newChild = try {
-                            instantiateNode(jsonObject, model, dryRun)
-                        } catch (e: Exception) {
-                            return@executeCommand errJson("Failed to instantiate new child node from JSON: ${e.message}")
-                        }
-                        if (newChild == null) return@executeCommand errJson("Failed to instantiate new child node from JSON")
+        return executeShortCommandOnEdt(mpsProject) {
+            val repo = mpsProject.repository
 
-                        if (!newChild.concept.isSubConceptOf(role.targetConcept)) {
-                            throw AssignabilityException(
-                                jsonPath = "$",
-                                actualConcept = newChild.concept.name,
-                                expectedConcepts = listOf(role.targetConcept.name),
-                                parentConcept = parent.concept.name,
-                                role = role.name
-                            )
-                        }
-                        
-                        if (!dryRun) {
-                            parent.insertChildBefore(role, newChild, childNode)
-                            childNode.delete()
-                            performFixReferences(mpsProject, newChild)
-                            model.save()
-                            okJson(nodeInfoJson(parent))
-                        } else {
-                            okJson("{\"dryRun\":true,\"message\":\"Dry run successful for node replacement\"}")
-                        }
-                    } else {
-                        // Deletion
-                        if (!dryRun) {
-                            childNode.delete()
-                            model.save()
-                            okJson(nodeInfoJson(parent))
-                        } else {
-                            okJson("{\"dryRun\":true,\"message\":\"Dry run successful for node deletion\"}")
-                        }
-                    }
-                } else if (nodeRef != null && childRole != null && childJson != null) {
-                    // Addition
-                    val sNodeRef = resolveNodeReference(repo, nodeRef)
-                    val parent = sNodeRef?.resolve(repo) ?: return@executeCommand errJson("Parent node '$nodeRef' not found")
-                    
-                    val model = parent.model
-                    if (model !is EditableSModel) return@executeCommand errJson("Model containing the node is not editable")
-                    
-                    val role = parent.concept.containmentLinks.find { it.name == childRole } ?: return@executeCommand errJson("Child role '$childRole' not found in concept '${parent.concept.name}'")
-                    
+            if (childToReplaceOrDeleteRef != null) {
+                // Replacement or Deletion
+                val sChildNodeRef = resolveNodeReference(repo, childToReplaceOrDeleteRef)
+                val childNode = sChildNodeRef?.resolve(repo) ?: return@executeShortCommandOnEdt errJson("Child node '$childToReplaceOrDeleteRef' not found", McpErrorCode.NOT_FOUND)
+
+                val parent = childNode.parent ?: return@executeShortCommandOnEdt errJson("Node '$childToReplaceOrDeleteRef' has no parent (it might be a root node)", McpErrorCode.INVALID_REQUEST)
+
+                val model = parent.model
+                if (model !is EditableSModel) return@executeShortCommandOnEdt errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
+
+                val role = childNode.containmentLink ?: return@executeShortCommandOnEdt errJson("Node has no containment link", McpErrorCode.INVALID_REQUEST)
+
+                if (childJson != null) {
+                    // Replacement
                     val jsonObject = try {
                         parseJson(childJson)
                     } catch (e: Exception) {
-                        return@executeCommand errJson(e.message)
+                        return@executeShortCommandOnEdt invalidJson(e.message)
                     }
                     val newChild = try {
                         instantiateNode(jsonObject, model, dryRun)
                     } catch (e: Exception) {
-                        return@executeCommand errJson("Failed to instantiate child node from JSON: ${e.message}")
+                        return@executeShortCommandOnEdt errJson("Failed to instantiate new child node from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
                     }
-                    if (newChild == null) return@executeCommand errJson("Failed to instantiate child node from JSON")
-                    
-                    if (!role.isMultiple && !dryRun) {
-                        parent.getChildren(role).forEach { it.delete() }
-                    }
-                    
+                    if (newChild == null) return@executeShortCommandOnEdt errJson("Failed to instantiate new child node from JSON", McpErrorCode.INVALID_REQUEST)
+
                     if (!newChild.concept.isSubConceptOf(role.targetConcept)) {
                         throw AssignabilityException(
                             jsonPath = "$",
@@ -444,63 +423,120 @@ abstract class AbstractNodeOps : AbstractOps() {
                             role = role.name
                         )
                     }
-                    
+
                     if (!dryRun) {
-                        parent.addChild(role, newChild)
+                        parent.insertChildBefore(role, newChild, childNode)
+                        childNode.delete()
                         performFixReferences(mpsProject, newChild)
                         model.save()
                         okJson(nodeInfoJson(parent))
                     } else {
-                        okJson("{\"dryRun\":true,\"message\":\"Dry run successful for node addition\"}")
+                        okJson(jsonObject {
+                            addProperty("dryRun", true)
+                            addProperty("message", "Dry run successful for node replacement")
+                        })
                     }
                 } else {
-                    errJson("Invalid parameters for child update")
+                    // Deletion
+                    if (!dryRun) {
+                        childNode.delete()
+                        model.save()
+                        okJson(nodeInfoJson(parent))
+                    } else {
+                        okJson(jsonObject {
+                            addProperty("dryRun", true)
+                            addProperty("message", "Dry run successful for node deletion")
+                        })
+                    }
                 }
+            } else if (nodeRef != null && childRole != null && childJson != null) {
+                // Addition
+                val sNodeRef = resolveNodeReference(repo, nodeRef)
+                val parent = sNodeRef?.resolve(repo) ?: return@executeShortCommandOnEdt errJson("Parent node '$nodeRef' not found", McpErrorCode.NOT_FOUND)
+
+                val model = parent.model
+                if (model !is EditableSModel) return@executeShortCommandOnEdt errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
+
+                val role = parent.concept.containmentLinks.find { it.name == childRole } ?: return@executeShortCommandOnEdt errJson("Child role '$childRole' not found in concept '${parent.concept.name}'", McpErrorCode.NOT_FOUND)
+
+                val jsonObject = try {
+                    parseJson(childJson)
+                } catch (e: Exception) {
+                    return@executeShortCommandOnEdt invalidJson(e.message)
+                }
+                val newChild = try {
+                    instantiateNode(jsonObject, model, dryRun)
+                } catch (e: Exception) {
+                    return@executeShortCommandOnEdt errJson("Failed to instantiate child node from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
+                }
+                if (newChild == null) return@executeShortCommandOnEdt errJson("Failed to instantiate child node from JSON", McpErrorCode.INVALID_REQUEST)
+
+                if (!role.isMultiple && !dryRun) {
+                    parent.getChildren(role).forEach { it.delete() }
+                }
+
+                if (!newChild.concept.isSubConceptOf(role.targetConcept)) {
+                    throw AssignabilityException(
+                        jsonPath = "$",
+                        actualConcept = newChild.concept.name,
+                        expectedConcepts = listOf(role.targetConcept.name),
+                        parentConcept = parent.concept.name,
+                        role = role.name
+                    )
+                }
+
+                if (!dryRun) {
+                    parent.addChild(role, newChild)
+                    performFixReferences(mpsProject, newChild)
+                    model.save()
+                    okJson(nodeInfoJson(parent))
+                } else {
+                    okJson(jsonObject {
+                        addProperty("dryRun", true)
+                        addProperty("message", "Dry run successful for node addition")
+                    })
+                }
+            } else {
+                errJson("Invalid parameters for child update", McpErrorCode.INVALID_REQUEST)
             }
-        } catch (e: Exception) {
-            errJson(e.message)
         }
     }
 
     protected suspend fun update_node_reference(mpsProject: MPSProject, nodeRef: String, referenceRole: String, targetNodeRefStr: String?): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node reference '$referenceRole'")
-        return try {
-            executeCommand(mpsProject) {
-                val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
-                val node = sNodeRef?.resolve(mpsProject.repository) ?: return@executeCommand errJson("Node '$nodeRef' not found")
-                
-                val model = node.model
-                if (model !is EditableSModel) return@executeCommand errJson("Model containing the node is not editable")
+        return executeShortCommandOnEdt(mpsProject) {
+            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+            val node = sNodeRef?.resolve(mpsProject.repository) ?: return@executeShortCommandOnEdt errJson("Node '$nodeRef' not found", McpErrorCode.NOT_FOUND)
 
-                val sReferenceLink = node.concept.referenceLinks.find { it.name == referenceRole } ?: return@executeCommand errJson("Reference link '$referenceRole' not found in concept '${node.concept.name}'")
+            val model = node.model
+            if (model !is EditableSModel) return@executeShortCommandOnEdt errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
 
-                if (targetNodeRefStr != null) {
-                    applyReferenceUpdate(
-                        ownerNode = node,
-                        link = sReferenceLink,
-                        targetRefStr = targetNodeRefStr,
-                        model = model,
-                        repository = mpsProject.repository,
-                        parentConceptName = node.concept.name,
-                        roleName = referenceRole,
-                        errorPath = "targetNodeReference",
-                        xmlReferencePath = "$",
-                        xmlReferenceIndex = 0,
-                        dryRun = false,
-                        allowDynamicReference = true,
-                        validateXmlReference = false,
-                        persistentReferencesOnly = false
-                    )
-                } else {
-                    // Deletion
-                    node.dropReference(sReferenceLink)
-                }
+            val sReferenceLink = node.concept.referenceLinks.find { it.name == referenceRole } ?: return@executeShortCommandOnEdt errJson("Reference link '$referenceRole' not found in concept '${node.concept.name}'", McpErrorCode.NOT_FOUND)
 
-                model.save()
-                okJson(nodeInfoJson(node))
+            if (targetNodeRefStr != null) {
+                applyReferenceUpdate(
+                    ownerNode = node,
+                    link = sReferenceLink,
+                    targetRefStr = targetNodeRefStr,
+                    model = model,
+                    repository = mpsProject.repository,
+                    parentConceptName = node.concept.name,
+                    roleName = referenceRole,
+                    errorPath = "targetNodeReference",
+                    xmlReferencePath = "$",
+                    xmlReferenceIndex = 0,
+                    dryRun = false,
+                    allowDynamicReference = true,
+                    validateXmlReference = false,
+                    persistentReferencesOnly = false
+                )
+            } else {
+                // Deletion
+                node.dropReference(sReferenceLink)
             }
-        } catch (e: Exception) {
-            errJson(e.message)
+
+            model.save()
+            okJson(nodeInfoJson(node))
         }
     }
 
