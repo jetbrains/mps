@@ -1,6 +1,6 @@
 <idea-plugin>
-  <id>com.intellij.mcp.tools</id>
-  <name>MCP MPS</name>
+  <id>jetbrains.mps.agents.mcp.tools</id>
+  <name>Projectional Agent Toolkit</name>
   <vendor>JetBrains</vendor>
   <description>A plugin enabling MPS mcp tools to AI coding agents.</description>
 
@@ -10,16 +10,16 @@
   <depends>jetbrains.mps.ide.java</depends>
 
   <extensions defaultExtensionNs="com.intellij">
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSSkillsMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSProjectMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSModuleMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSModelMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSRootNodeMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSNodeMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSEditorMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageStructureMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSJavaMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSRunConfigurationMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSProjectMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSLanguageMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSModuleMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSModelMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSRootNodeMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSNodeMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSEditorMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSLanguageStructureMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSJavaMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSRunConfigurationMcpToolset" />
+    <mcpServer.mcpToolset implementation="jetbrains.mps.agents.mcp.tools.JetBrainsMPSSkillsMcpToolset" />
   </extensions>
 </idea-plugin>

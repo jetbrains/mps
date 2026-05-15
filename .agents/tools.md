@@ -10,6 +10,9 @@
  * * `MPS` - the MPS core functionality
  * * `MPSSPRT`- support issues submitted by MPS customers
  * * `IDEA` - issues of the underlying IntelliJ platform
+### AI co-authorship
+
+Every edit or comment to a YouTrack issue produced with AI assistance must include a `Co-Authored-By` trailer identifying the AI tool used.
 
 ## JetBrains IntelliJ IDEA
 

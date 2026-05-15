@@ -1191,10 +1191,10 @@ Implicit parameters inside the body:
 
 | Name | Concept FQN | What it is |
 |---|---|---|
-| `node` | `jetbrains.mps.lang.constraints.structure.CanBeAChildBlock_NodeParameter` | The candidate child node |
-| `parentNode` | `jetbrains.mps.lang.constraints.structure.CanBeAChildBlock_ParentParameter` | Proposed parent |
-| `link` | `jetbrains.mps.lang.constraints.structure.CanBeAChildBlock_LinkParameter` | Containment link role |
-| `childConcept` | `jetbrains.mps.lang.constraints.structure.CanBeAChildBlock_ChildConceptParameter` | Concept of `node` |
+| `node` | `jetbrains.mps.lang.constraints.structure.ConstraintsFunctionParameter_node` | The candidate child node (note the extra `s` in `Constraints`) |
+| `parentNode` | `jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_parentNode` | Proposed parent |
+| `link` | `jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_link` | Containment link role |
+| `childConcept` | `jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_childConcept` | Concept of `node` |
 
 ### 4.2 — canBeChild with grandparent traversal (Kaja)
 
@@ -1249,7 +1249,7 @@ The ancestor block concept is **`ConstraintFunction_CanBeAnAncestor`** (`jetbrai
 | `childNode` | The prospective descendant trying to attach below `node` |
 | `childConcept` | The concept of `childNode` |
 
-Verify exact parameter concept FQNs with `mps_mcp_get_concept_details("ConstraintFunction_CanBeAnAncestor")` — the naming convention mirrors `CanBeAChildBlock_*Parameter` but with `CanBeAnAncestorBlock_*Parameter` prefix.
+Verify exact parameter concept FQNs with `mps_mcp_search_concepts(["ConstraintFunctionParameter"])` — all `canBeAnAncestor` parameters use the same `ConstraintFunctionParameter_*` family as `canBeChild` (e.g. `ConstraintFunctionParameter_childNode`, `ConstraintFunctionParameter_childConcept`), except `node`, which uses `ConstraintsFunctionParameter_node` (note the extra `s`).
 
 **Pattern: restrict by descendant concept** — allow the annotated concept as ancestor only when the descendant is a specific type or subtype:
 

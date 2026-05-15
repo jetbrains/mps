@@ -8,9 +8,9 @@ type: reference
 
 This skill covers the **non-layout parts** of the MPS editor aspect: everything that controls what happens when the user **types**, **presses a key**, **triggers completion**, **pastes**, or **invokes a context action**, as opposed to what is **painted on the screen**.
 
-For the layout side (concept editors, cell models, style sheets, editor components) use the two companion skills — load them via `mps_mcp_get_skill`:
+For the layout side (concept editors, cell models, style sheets, editor components) see:
 
-- `master-mps-editor-implementation-workflow` — workflow: scaffold, componentise, refine.
+- `mps-mcp-workflow` — "MPS Concept Editor Workflow" section: scaffold, componentise, refine.
 - `mps-editor-technical-reference` — cell models, layout styles, style inheritance.
 
 Most concepts referenced below belong to the **editor language** (`jetbrains.mps.lang.editor.structure`). A small number (paste wrappers, node factories, copy-paste handlers) live in the **actions language** (`jetbrains.mps.lang.actions.structure`) — explicitly flagged inline where relevant. Roots typically live in `<lang>/languageModels/editor.mps`; paste wrappers, node factories and copy-paste handlers live in `<lang>/languageModels/actions.mps`.
@@ -913,8 +913,8 @@ To study the exact JSON of a real example, open the root in MPS and call `mps_mc
 
 ## 18 — Cross-references
 
-- **Layout** (cells, layouts, styles) → `master-mps-editor-implementation-workflow` and `mps-editor-technical-reference`.
+- **Layout** (cells, layouts, styles) → `mps-mcp-workflow` ("MPS Concept Editor Workflow") and `mps-editor-technical-reference`.
 - **Node initialisation** (NodeFactories in `jetbrains.mps.lang.actions`) → `mps-aspect-actions`.
 - **Intentions** (Alt+Enter) → `mps-aspect-intentions`. Intentions can also be surfaced inside a transformation menu via the `intention` adapter (§4.4).
-- **BaseLanguage function bodies** → `mps-model-code` and `writing-baselanguage-java-code-in-mps`.
-- **Concept identification / blueprint hygiene** → the project `MPS-AGENTS.md` and `add-or-update-mps-code-nodes`.
+- **BaseLanguage function bodies** → `mps-model-code` and `mps-baselanguage-java`.
+- **Concept identification / blueprint hygiene** → `mps-mcp-workflow` and `mps-node-editing`.

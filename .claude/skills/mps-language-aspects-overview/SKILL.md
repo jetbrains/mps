@@ -24,9 +24,9 @@ An MPS language is a collection of **aspects**, each a separate model inside the
 | **Generator** | `generator/template/*.mps` | `jetbrains.mps.lang.generator` | [`mps-aspect-generator`](../mps-aspect-generator/SKILL.md) |
 | **TextGen** | `textGen.mps` | `jetbrains.mps.lang.textGen` | [`mps-aspect-textgen`](../mps-aspect-textgen/SKILL.md) |
 | **Accessories / Dependencies** | `.mpl` and per-model | — | [`mps-aspect-accessories`](../mps-aspect-accessories/SKILL.md) |
-| **Code inside bodies** | any aspect that holds BL | `baseLanguage`, `smodel`, `collections`, `closures` | [`mps-model-code`](../mps-model-code/SKILL.md) (also served by the MPS MCP tool `mps_mcp_get_skill` if the relative link is unavailable) |
+| **Code inside bodies** | any aspect that holds BL | `baseLanguage`, `smodel`, `collections`, `closures` | [`mps-model-code`](../mps-model-code/SKILL.md) |
 
-Additional aspects exist (Dataflow, Find Usages, Refactorings, Scopes Provider, Plugin, Migration). They follow the same "per-concept rule root + body" pattern — consult MPS MCP skills or the MPS user guide when needed.
+Additional aspects exist (Dataflow, Find Usages, Refactorings, Scopes Provider, Plugin, Migration). They follow the same "per-concept rule root + body" pattern — consult companion skills in `.agents/skills/` or the MPS user guide when needed.
 
 **Generation Plans** (cross-cutting, not an aspect of a single language) are covered by [`mps-aspect-generation-plan`](../mps-aspect-generation-plan/SKILL.md). Use when you need to control generator ordering, enable cross-model reference resolution with checkpoints, fork generation into parallel branches, or conditionally contribute plans via `PlanContribution`.
 

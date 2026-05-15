@@ -41,6 +41,19 @@ Re-checked the remaining unticked entries against the current source on 2026-05-
 - **Existing mislocation note still accurate**: `mps_mcp_search_root_node_by_name` lives in `JetBrainsMPSRootNodeMcpToolset.kt`. The "New findings" entry at `JetBrainsMPSRootNodeMcpToolset.kt:135-147` (EDT walk freezing UI) and the original "118-148" entry in the *Probable bugs* section (repository-vs-project scoping) describe **two distinct defects** at the same function and should be read together.
 - **One agent-flagged concern was confirmed false**: the `optionalStringAlias`/`optionalStringListOrString` alias-fallback issue is genuine — `has(field)` returns true for `JsonNull` values, but `optionalString` returns null on `JsonNull` (via `optionalElement`'s `isJsonNull` guard at line 388), so the present-but-null first alias short-circuits the loop as the checklist describes.
 
+### Fourth verification pass (2026-05-14)
+
+Re-checked every remaining unticked entry against the current source on 2026-05-14. Roughly a dozen further entries have been resolved in the meantime; the rest remain live defects with continued line drift. Notable findings:
+
+- **`AbstractOps.kt:1132-1180`** — The original "5 phases of overlapping fallbacks" concern was raised against `resolveConcept` *and* `resolveConceptNode` jointly. `resolveConcept` has been simplified to 3 explicit phases (try runtime concept → call `resolveConceptNode` → best-effort fallback that reuses a registered concept or searches by name). `resolveConceptNode` still has the 5 phases that motivated the original entry (lines 1212–1300), so the entry was rewritten to point only at `resolveConceptNode`.
+- **`AbstractOps.kt:1471-1482` (`isDefaultTempJsonFile`)** — Resolved by canonicalising the temp directory before comparison (current line 1608).
+- **`JetBrainsMPSLanguageStructureMcpToolset.kt:347-384`** — Resolved by extracting `validateRootNodeName` and merging the two loops into single-line dispatches at lines 367–373.
+- **`JetBrainsMPSModuleMcpToolset.kt:758-796` (`jsonToMemento` flat/structured asymmetry)** — Resolved: the flat-format branch now skips the `type` key when it matches `m.type` (current line 829), eliminating the false-positive diff.
+- **`JetBrainsMPSLanguageMcpToolset.kt:54-65, 131-134` (silent empty results)** — Resolved: `mps_mcp_get_concept_details` rejects empty inputs at line 78 and surfaces unresolved refs explicitly via `unresolvedConceptRefs`/`unresolvedLanguageRefs`; `mps_mcp_search_concepts` rejects unmatchable words at line 240.
+- **`JetBrainsMPSSkillsMcpToolset.kt:39, 82`** — Both resolved as a side effect of the SnakeYAML refactor (the file no longer parses frontmatter with `indexOf("\n---")` and no longer uses `parseSkillFile`/`availableSkills` at all).
+- **Multiple `AssignableReferenceService.kt` entries** — The service has been substantially refactored. Resolved entries include the `drop/take` validation issue (offset/limit handling at lines 150–166 with `Long`-widening guard), the partial-match scoring / arity penalty (`bestParamMatch` state now tracked through the scoring loop), the typed match-kind dispatch, the `suppressedMatches` documentation (now populated alongside `totalMatches`/`returnedMatches` in `AssignableReferencesMeta` lines 168–177), and the createConcept fallback diagnostic. The remaining `AssignableReferenceService.kt` / `AssignableReferenceHelpers.kt` entries (visibility checks, declaring-type inference, etc.) are still live.
+- **Continued line drift**: most remaining entries have drifted by an additional 20–50 lines beyond the third-pass anchors above. Search by code snippet rather than line number when locating an entry.
+
 ---
 
 ## Bugs
@@ -59,19 +72,7 @@ The original ten reported bugs were resolved during the fix/verification passes 
 
 - [ ] **line 625-632** — `if (type.contains("/")) "/" else if (type.contains(".")) "."` plus the triple-or model match (`m.name.longName == modelPart || ... == "$modelPart.structure" || module.moduleName == modelPart`) is difficult to reason about. The "module name equals modelPart" branch likely never matches in practice. **Fix**: simplify; pick a single canonical resolution strategy.
 
-- [ ] **line 118-148** — `mps_mcp_search_root_node_by_name` walks `mpsProject.repository.modules`, i.e. all repository modules including read-only libraries and platform languages, while the documentation says "in all models of the project". Either docs or code is wrong. **Fix**: restrict to project modules, or update the description.
-
 - [ ] **line 118-123** — When `scopeParam == "roots"`, unresolved root refs are silently dropped via `mapNotNull`. If every supplied ref fails to resolve, `rootNodeRefs` is empty and the predicate returns false for everything → silent empty result. **Fix**: error when any input root ref does not resolve.
-
-### `JetBrainsMPSModuleMcpToolset.kt`
-
-- [ ] **line 88-94** — `add_module_dependency` returns `okJson("true")` when the dependency is already provided by a used DevKit, without calling `setChanged()` or `save()`. Indistinguishable on the caller side from "really added", and asymmetric with `remove_module_dependency` flows. **Fix**: differentiate via `data: { "added": false, "reason": "providedByDevKit" }`.
-
-- [ ] **line 234-248** — `create_module` "language" branch applies `virtualFolder` to runtime/sandbox/generator only when `virtualFolder != null`; only `lang.save()` runs on the no-virtualFolder path. Sub-module creation (runtime/sandbox/generator solutions) may not be saved. **Fix**: always `save()` newly created modules.
-
-- [ ] **line 758-796 (`jsonToMemento`)** — The "flat format" branch writes a `"type"` property when the JSON's `type` value differs from `m.type`. The structured branch never does. `mementosEqual`/`getEffectiveKeys` filters only matching-type entries, so a mismatched stored "type" property is surfaced as a property and may cause false-positive diffs. **Fix**: skip the `type` key uniformly, or store it the same way in both branches.
-
-- [ ] **line 775-784** — Children with no `"type"` key are silently skipped via `continue`. Malformed input produces an empty memento with no error. **Fix**: error on missing child `type`.
 
 ### `JetBrainsMPSNodeMcpToolset.kt`
 
@@ -80,12 +81,6 @@ The original ten reported bugs were resolved during the fix/verification passes 
 - [ ] **line 649-657, 671-680** — `set_node_references` / `set_node_properties` always wrap the per-triplet results array with `okJson(...)` regardless of per-item failures. The outer `ok: true` is misleading. **Fix**: derive outer `ok` from `results.all { it.ok }`, or expose a `failedCount`.
 
 - [ ] **line 888-911 (`moveNodeChild`)** — Error message at line 891 echoes the original `position` (which may be the `-1` sentinel) while the bounds check uses the resolved `targetIndex`. When the user passes `-1` for an empty role, the message "Target index -1 is out of bounds (count: 0)" is confusing. **Fix**: report the resolved index or rephrase.
-
-### `JetBrainsMPSRootNodeMcpToolset.kt`
-
-- [ ] **line 105** — `reply!!` will NPE if the EDT lambda returns without assigning `reply`. **Fix**: initialize `reply` to a sentinel or assert before unwrapping.
-
-- [ ] **line 192, 353** — `readNodeJsonOrFile(json, dryRun)!!` — function can return null under edge cases (empty file etc.). The `!!` crashes instead of producing a clean MCP error. **Fix**: handle null with a typed error.
 
 ### `JetBrainsMPSRunConfigurationMcpToolset.kt`
 
@@ -103,53 +98,9 @@ The original ten reported bugs were resolved during the fix/verification passes 
 
 - [ ] **line 216-217** — `type.toString() == "integer"` / `"boolean"` relies on the `toString()` contract of `SDataType` returning these exact strings. **Fix**: compare against the canonical primitive data type instances, or use the data type's name API.
 
-- [ ] **line 54-65, 131-134** — Unresolved `conceptRef`/`languageRef` and empty `searchTexts` produce silent empty results with no input-validation error. **Fix**: reject empties and unresolved refs explicitly.
-
-### `JetBrainsMPSProjectMcpToolset.kt`
-
-- [ ] **line 78-83** — When `startingPoint` resolves to a stub module and `includeStubModules` is false, the response is "Starting point 'X' not found". Misleading — the module was found and filtered. **Fix**: distinguish "not found" from "filtered out".
-
-### `AssignableReferenceService.kt`
-
-- [ ] **line 124** — `drop(offset).take(limit)` — no validation that `offset >= 0` or `limit >= 0`. Negative offset is a no-op silently; negative limit is undefined. **Fix**: validate at request entry.
-
-- [ ] **line 228-264** — When `candidateParams.size != context.argumentTypes.size`, the loop iterates `minSize` and silently scores partial parameter overlaps without arity penalty. A 1-arg call vs a 5-arg method gets +50 if the first param happens to match. **Fix**: penalize or reject arity mismatch.
-
-- [ ] **line 261** — `if (bestParamMatch != "exact") bestParamMatch = "assignable"` — conflates per-parameter match grade with the whole-method `"arity"` state set at line 224. Use a typed enum and separate concepts.
-
-- [ ] **line 46-55** — When `request.owningConcept` is provided, `refLink` lookup uses `owningConcept`, but `containmentLink` (line 55) is still looked up against `contextNode.concept`. Inconsistent; for a "what would this look like under a different owning concept" query this is likely wrong.
-
-- [ ] **line 316** — `root.name == conceptRef || "${model.name.longName}.${root.name}" == conceptRef` — `root.name` may be null, producing "...null" matches accidentally; also O(modules × models × roots) per fallback resolution.
-
 ### `AssignableReferenceHelpers.kt`
 
-- [ ] **line 60** — `node.containingRoot.reference` — `containingRoot` may be null for detached nodes; the preceding `node.model != null` check is insufficient. NPE risk.
-
-- [ ] **line 90-93** — Private visibility check compares `declaringClassifier.reference` to `context.containingClassifierRef`, where `declaringClassifier` is `candidateNode.parent`. For nested or top-level classifiers, `parent` is not the declaring classifier of the candidate; access checks misbehave (top-level private classes always reported as inaccessible).
-
-- [ ] **line 97** — Protected visibility approximated by module equality. Java protected is "same package OR subclass"; the module-based approximation can both under- and over-approximate. **Fix**: at minimum compare packages, ideally model subtype.
-
-- [ ] **line 113-120** — `enrichContextFromScope` infers the declaring classifier from `allAvailable.first().parent`. The "scope is constrained to a single class's constructors" assumption holds only for `ClassCreator` and is fragile if scopes are widened.
-
-- [ ] **line 175** — `inferredKind = inferredKind ?: request.kindFilter?.firstOrNull() ?: CandidateKind.UNKNOWN`. The kind *filter* is a multi-value filter, not an inferred kind; picking its first element to drive ±80/−200 scoring leaks filter intent into scoring.
-
-- [ ] **line 225** — `node.name ?: node.presentation` — for nodes with an empty-but-non-null `name` (anonymous classes, lambdas), returns `""` instead of falling through to `presentation`. **Fix**: `node.name?.takeIf { it.isNotEmpty() } ?: node.presentation`.
-
-- [ ] **line 244-246** — `declaringTypeNode = node.parent` returns the model root for top-level classifier candidates, making `expectedDeclaringType` filtering effectively meaningless for top-level classes.
-
-### `McpToolInputSchemas.kt`
-
-- [ ] **line 286-293 (`optionalStringAlias`)** — If the first alias is present-but-null (`JsonNull`), the method returns null without trying the remaining aliases. Defeats the fallback semantics. **Fix**: loop until a non-null value is found.
-
-- [ ] **line 316-330 (`optionalStringListOrString`)** — Same alias-fallback issue; first present-but-null alias short-circuits the search.
-
-- [ ] **line 305** — Integer validation regex `-?\d+` rejects perfectly valid JSON numbers like `1e2`, `1.0`. The error message "must be an integer" then misleads on scientific-notation inputs.
-
-- [ ] **line 332-349 (`stringListOrString`)** — Error message "Missing '$path'" is reported for present-but-blank strings and blank list entries. Misleading — they are present, just empty.
-
-### `JetBrainsMPSSkillsMcpToolset.kt`
-
-- [ ] **line 39** — `text.indexOf("\n---", 3)` matches any occurrence of `\n---` in the body, not only the closing-frontmatter delimiter. A markdown body with a `---` horizontal rule before the real close would mis-terminate frontmatter. **Fix**: anchor the regex at line start with `^---$`.
+*All entries resolved — see ## Fixed.*
 
 ---
 
@@ -161,7 +112,7 @@ The original ten reported bugs were resolved during the fix/verification passes 
 
 - [ ] **line 165, 393** — `AssignabilityException : IllegalArgumentException` is special-cased to map to `INVALID_REFERENCE`, even though the stated policy is that only `McpUserException` subclasses get stable error codes. Either re-home it under `McpUserException`, or comment the exception explicitly.
 
-- [ ] **line 1132-1180 / 1168-1180** — `resolveConcept` / `resolveConceptNode` has 5 phases of overlapping fallbacks. Phase 4 (`nodeId.toString() == conceptRef`) and Phase 5 (by name) substantially overlap with the structure-name search in `resolveConcept`. **Fix**: collapse to fewer, documented strategies.
+- [ ] **`resolveConceptNode` ~line 1212-1300** — Has 5 phases of overlapping fallbacks. Phase 4 (`nodeId.toString() == conceptRef` for numeric refs) and Phase 5 (by-name in all structure models) substantially overlap with Phase 3's "ModelName.ConceptName" search. (`resolveConcept` itself has since been simplified to 3 phases — see ## Fixed.) **Fix**: collapse `resolveConceptNode` to fewer, documented strategies.
 
 - [ ] **line 1247-1256 (`expandModules`)** — Only adds generators for `Language` modules; `DevKit` / `Solution` are unchanged. Function name is broad; add a doc comment.
 
@@ -205,8 +156,6 @@ The original ten reported bugs were resolved during the fix/verification passes 
 
 ### `JetBrainsMPSLanguageStructureMcpToolset.kt`
 
-- [ ] **line 347-384** — Validation loops for `concepts` and `interfaceConcepts` are near-identical ~16-line copies. Drift risk — adding a new check to one path will likely miss the other. Extract.
-
 - [ ] **line 822, 832** — `random.nextLong() and Long.MAX_VALUE` mask is uncommented; explain that it strips the sign bit to produce a non-negative member id.
 
 - [ ] **line 1059** — `if (!rootsInModel.containsKey(root)) { rootsInModel[root] = concept }` is `rootsInModel.putIfAbsent(root, concept)`.
@@ -217,51 +166,17 @@ The original ten reported bugs were resolved during the fix/verification passes 
 
 ### `JetBrainsMPSModuleMcpToolset.kt`
 
-- [ ] **line 79** — `it.toString().equals(s, true) || it.name.equals(s, true)` — for enums, `toString()` defaults to `name`. Verify whether `SDependencyScope` overrides `toString()`; if not, one branch is dead.
-
 - [ ] **line 425-428** — `renamer!!.prepareRename(...)` is the first use after a `runReadAction` that captures `renamer` as a `var`; smart-cast won't apply. The `!!` is necessary in this style but suggests refactoring to a single non-null result.
-
-- [ ] **line 450-456, 543-549** — `catch (e: Throwable) { rethrowIfCancellation(e); if (e is Error) throw e; ... }` repeated. Extract a helper.
-
-- [ ] **line 551** — Response `name` field echoes raw user input rather than the resolved module's actual `moduleName`. Misleading when the caller passed a reference string or an alias.
-
-### `JetBrainsMPSProjectMcpToolset.kt`
-
-- [ ] **line 252, 317** — `m.models.toList().size` / `model.rootNodes.toList().size` — use `.count()` to avoid materializing.
-
-- [ ] **line 127** — `catch (_: Throwable)` is too broad; catches `Error` subclasses too. Narrow.
-
-- [ ] **line 332-344 (`mps_mcp_reload_all`)** — Error message uses `e.message ?: e.javaClass.simpleName`; loses root cause for chained exceptions. Consider `ExceptionUtil.getRootCause` or include `e.toString()`.
 
 ### `JetBrainsMPSRunConfigurationMcpToolset.kt`
 
 - [ ] **line 96-106** — Comment "Prefer test dispatch when both are applicable (rare): tests are more specific" suggests conflict resolution logic that doesn't really exist (the choice is implicit in `val createTest = isTest`). Either remove the misleading comment or implement the documented preference.
 
-### `AssignableReferenceService.kt`
-
-- [ ] **line 26-28** — `catch (e: Exception)` discards stack trace with no logging.
-
-- [ ] **line 67** — `"Scope error: " + scope.message` — uses concatenation instead of template; minor inconsistency.
-
-- [ ] **line 90-96** — `map → filter → map` builds a `ScoredCandidate` for every node in scope before filtering; expensive on large JDK scopes. Filter first.
-
-- [ ] **line 135** — `suppressedMatches = allAvailable.size - totalMatches`. Field name is undocumented; callers cannot tell pagination count from filter count without arithmetic. Add a doc comment.
-
-- [ ] **line 269-274** — Identity-mapping `when` on a string-typed `bestParamMatch`; should be an enum (string typos compile silently).
-
-- [ ] **line 303-308 (`resolveConcept` fallback)** — `createConcept` catch only logs at debug; if the fallback fails too, caller gets `null` with no diagnostic.
-
 ### `AssignableReferenceHelpers.kt`
 
 - [ ] **line 17** — `facade: PersistenceFacade = PersistenceFacade.getInstance()` default arg is re-evaluated per construction; obscures the fact that it's effectively a singleton dependency.
 
-- [ ] **line 201-222 (`inferArgumentTypes`)** — Adds the note "Inferred argumentTypes from AST" when `types.none { it == "unknown" }`; if `actualArgs` is empty the predicate is vacuously true and the note is still emitted.
-
-- [ ] **line 225, 248** — `node.presentation` may be expensive in MPS and is called inside per-candidate loops.
-
-### `JetBrainsMPSSkillsMcpToolset.kt`
-
-- [ ] **line 82** — `availableSkills.firstOrNull { it.isNotEmpty() && it[0] == skillName }` — the `isNotEmpty()` guard is dead because `parseSkillFile` always returns lists of size 3.
+*Other entries resolved — see ## Fixed.*
 
 ---
 
@@ -271,9 +186,9 @@ The original ten reported bugs were resolved during the fix/verification passes 
 
 - [ ] **"Provided by used DevKit" branches return the same shape as a real add.** `JetBrainsMPSModuleMcpToolset:88-94` and `JetBrainsMPSModelMcpToolset:163-173`. Callers can't distinguish "added" from "no-op"; some no-ops also perform an unnecessary `save()`. **Fix**: standardize the response shape to `{ "added": true/false, "reason": "alreadyImported" | "providedByDevKit" | ... }`.
 
-- [ ] **Broad `catch (Throwable)` / `catch (Exception)` with no logging.** `JetBrainsMPSEditorMcpToolset:131-138,142-154`, `JetBrainsMPSNodeMcpToolset:520-525`, `JetBrainsMPSModuleMcpToolset:543-549`, `JetBrainsMPSProjectMcpToolset:127`, `JetBrainsMPSJavaMcpToolset:242-248,270-275`, `AssignableReferenceService:26-28`. Combined with inconsistent `rethrowIfCancellation` usage, debuggability is uneven. **Fix**: project-wide policy — log at `warn`+, always `rethrowIfCancellation`, never catch `Error`.
+- [ ] **Broad `catch (Throwable)` / `catch (Exception)` with no logging.** `JetBrainsMPSEditorMcpToolset:131-138,142-154`, `JetBrainsMPSNodeMcpToolset:520-525`, `JetBrainsMPSModuleMcpToolset:543-549`, `JetBrainsMPSJavaMcpToolset:242-248,270-275`. Combined with inconsistent `rethrowIfCancellation` usage, debuggability is uneven. **Fix**: project-wide policy — log at `warn`+, always `rethrowIfCancellation`, never catch `Error`. *(Previously also flagged `AssignableReferenceService:26-28`; resolved — see ## Fixed.)*
 
-- [ ] **`!!` on lambda-captured `var`s.** `JetBrainsMPSRootNodeMcpToolset:105,192,353`, `JetBrainsMPSModuleMcpToolset:425-428`, `JetBrainsMPSEditorMcpToolset:578`. Brittle if the EDT lambda exits abnormally. **Fix**: route through `executeShortCommandOnEdt` to return a typed result rather than capture-and-assert.
+- [ ] **`!!` on lambda-captured `var`s.** `JetBrainsMPSModuleMcpToolset:425-428`, `JetBrainsMPSEditorMcpToolset:578`. Brittle if the EDT lambda exits abnormally. **Fix**: route through `executeShortCommandOnEdt` to return a typed result rather than capture-and-assert. *(Previously also flagged `JetBrainsMPSRootNodeMcpToolset:105,192,353`; resolved — see ## Fixed.)*
 
 - [ ] **Persistence inconsistency.** Some mutations call `setChanged()`/`save()` and some don't: model deletion (`JetBrainsMPSModelMcpToolset:324`), dependency-only changes (`JetBrainsMPSModelMcpToolset:79-86`), `removeModule` ordering (`JetBrainsMPSModuleMcpToolset:529`), sub-module creation (`JetBrainsMPSModuleMcpToolset:234-248`). **Fix**: adopt a single rule — every successful mutation marks containers changed and saves them — and audit each tool method against it.
 
@@ -299,9 +214,7 @@ Additional defects surfaced while re-validating the entries above. Each is reach
 
 #### `JetBrainsMPSModuleMcpToolset.kt`
 
-- [ ] **line 484 / line 453** — `moduleInfoJsonObject(mpsProject, updated!!)` (line 484) and `mpsProject.repository.getModule(moduleIdAfterRename!!)` (line 453) unwrap lambda-captured `var`s with `!!`. Same hazard as the existing entries at `JetBrainsMPSModuleMcpToolset:425-428` and `JetBrainsMPSRootNodeMcpToolset:105`. **Fix**: route the EDT block through a value-returning wrapper or default-and-assert.
-
-- [ ] **line 238-247 (`mps_mcp_create_module` "language" branch)** — `lang.save()` runs unconditionally, but no `save()` is called on `lp.runtimeSolution`, `lp.sandboxSolution`, or the language's owned generators when `virtualFolder == null`. The sibling "solution" / "devkit" branches don't call `save()` either. Combined with the existing entry at lines 234-248, the create-module workflow ends with several newly-created modules dirty in memory but not persisted. **Fix**: collect every produced module and `save()` each at the end of the branch.
+- [ ] **line 484 / line 453** — `moduleInfoJsonObject(mpsProject, updated!!)` (line 484) and `mpsProject.repository.getModule(moduleIdAfterRename!!)` (line 453) unwrap lambda-captured `var`s with `!!`. Same hazard as the existing entry at `JetBrainsMPSModuleMcpToolset:425-428`. **Fix**: route the EDT block through a value-returning wrapper or default-and-assert.
 
 #### `JetBrainsMPSModelMcpToolset.kt`
 
@@ -311,21 +224,7 @@ Additional defects surfaced while re-validating the entries above. Each is reach
 
 - [ ] **line 43-49 (`mps_mcp_add_model_dependency`)** — Malformed JSON in the `targetModels` parameter silently falls through to `listOf(targetModels)` (i.e., the raw string is treated as a single model name). A caller meaning to send `["model1", "model2"]` who instead sends `[model1, model2]` (no quotes) gets `"Target model not found: [model1, model2]"` rather than `"Invalid JSON for targetModels"`. **Fix**: distinguish "input is not JSON" from "input is JSON but not an array"; only the latter should fall back to the single-string interpretation.
 
-#### `JetBrainsMPSRootNodeMcpToolset.kt`
-
-- [ ] **line 36-44 (`mps_mcp_open_root_node`)** — `PersistenceFacade.getInstance().createNodeReference(nodeRef)` is called without a try/catch, so an invalid `nodeRef` propagates `IllegalArgumentException` (or platform-specific subclass) out of the tool entry point and is mapped to a generic `INTERNAL_ERROR` envelope. Worse, `EditorNavigator(mpsProject)…open(sNodeRef)` is invoked without an EDT/model-access wrapper — `EditorNavigator.open` performs UI operations that require the EDT and can deadlock or NPE if invoked from a worker thread. **Fix**: wrap the reference creation in a try/catch returning `invalidReference(...)`, and invoke the navigator inside `withContext(Dispatchers.EDT)`.
-
-- [ ] **line 135-147 (`mps_mcp_search_root_node_by_name`)** — Walks every module × model × root in the repository inside `executeShortReadOnEdt` (i.e., on the EDT). For a project of any realistic size this freezes the UI thread for seconds while the search runs. No cancellation support either. **Fix**: switch to `executeBackgroundRead` (uses `Dispatchers.Default`) and pass a `coroutineProgressMonitor()` so cancellation propagates. Also restrict the scope to project modules unless the caller opts in via a parameter (mirrors the cross-cutting concern raised against `find_instances`).
-
-#### `McpToolInputSchemas.kt`
-
-- [ ] **line 240** — `JsonParser.parseString(json)` propagates `JsonSyntaxException` as-is in some paths and is caught in others. In particular, `parseSkillFile` / `unwrapNodeJsonEnvelope` catch a generic `Exception`, while `parseElement` (line 240) only catches `JsonSyntaxException`. A custom `JsonParser` extension that throws something else (e.g. `JsonIOException`) would bypass the catch. **Fix**: catch `JsonParseException` (the common supertype) consistently across the codebase.
-
 ### Clarity / smells
-
-#### `AbstractOps.kt`
-
-- [ ] **line 1471-1482 (`isDefaultTempJsonFile`)** — Uses `FileUtil.filesEqual(file.parentFile, tempDir)` to gate temp-file deletion. On systems where `java.io.tmpdir` is a symlink (common on macOS: `/tmp` → `/private/tmp`), `parentFile` and `tempDir.canonicalFile` may not compare equal even though the files live in the same directory; legitimately created temp files then leak. **Fix**: compare `file.canonicalFile.parentFile` against the canonical temp directory, or use `Files.isSameFile` (which dereferences symlinks).
 
 #### `JetBrainsMPSJavaMcpToolset.kt`
 
@@ -334,10 +233,6 @@ Additional defects surfaced while re-validating the entries above. Each is reach
 #### `JetBrainsMPSModelMcpToolset.kt`
 
 - [ ] **line 161-164 / 282-298** — Three near-identical `try { createXxx() } catch (_: Exception) { null } ?: return … errJson(...)` blocks. Each catches `Exception` (silently swallowing `CancellationException` if it happens to subclass `IllegalStateException` on the JVM, see the existing `AssignableReferenceService.kt:53-58` entry for the same pattern). **Fix**: extract a `tryCreateReference<T>` helper that rethrows `CancellationException` and `Error` and returns `null` for ordinary failures.
-
-#### `JetBrainsMPSRootNodeMcpToolset.kt`
-
-- [ ] **line 314-322 (`mps_mcp_create_root_node` compulsory-references seed)** — `scope.getAvailableElements(null).iterator().let { if (it.hasNext()) it.next() else null }` reimplements `Iterable.firstOrNull()`. The verbose form is no faster (the underlying iterator is consumed once either way) and obscures the intent. **Fix**: `scope.getAvailableElements(null).firstOrNull()`.
 
 #### `JetBrainsMPSEditorMcpToolset.kt`
 
@@ -354,6 +249,10 @@ Additional defects surfaced while re-validating the entries above. Each is reach
 Entries here were live defects at review time and have since been resolved. Line numbers are the originals from the review snapshot, not the current source — they're kept so reviewers can trace each item back to the original list.
 
 ### `AbstractOps.kt`
+
+- [x] **line 1471-1482 (`isDefaultTempJsonFile`)** — Used `FileUtil.filesEqual(file.parentFile, tempDir)` to gate temp-file deletion. On systems where `java.io.tmpdir` is a symlink (common on macOS: `/tmp` → `/private/tmp`), `parentFile` and `tempDir` would not compare equal even though the files lived in the same directory; legitimately created temp files then leaked. *Resolved (current line 1608) by canonicalising the temp directory before comparison (`File(System.getProperty("java.io.tmpdir")).canonicalFile`).*
+
+- [x] **line 1132-1180 / 1168-1180 (`resolveConcept` 5 phases)** — The `resolveConcept` portion of the original "5 phases of overlapping fallbacks" concern was resolved. `resolveConcept` is now structured as 3 explicit phases (current lines 1166–1209): try as a runtime concept reference, delegate to `resolveConceptNode`, then a best-effort fallback that either reuses a registered concept with a missing source node or searches by name. *Note: `resolveConceptNode` (current lines 1212–1300) still has the 5-phase shape that motivated the original entry; that part remains live and was reworded in place to point at `resolveConceptNode` only.*
 
 - [x] **line 432** — Caret-indentation string in `getJsonExcerpt` was 11 spaces but the line-number prefix format `"%s%4d | "` is 10 chars wide, shifting the caret one column to the right. *Resolved by trimming the indent to 10 spaces and updating the comment to describe the underlying `3 + 4 + 3` layout.*
 
@@ -431,15 +330,31 @@ Entries here were live defects at review time and have since been resolved. Line
 
 ### `JetBrainsMPSLanguageStructureMcpToolset.kt`
 
+- [x] **line 347-384 (duplicate validation loops)** — Validation loops for `concepts` and `interfaceConcepts` were near-identical ~16-line copies, creating drift risk. *Resolved by extracting `validateRootNodeName` (also sharing the across-loop `allNamesToCreate` set) and reducing the two loops to single-line `validationErrors += validateRootNodeName(...)` dispatches at current lines 367–373.*
+
 - [x] **line 356, 372** — `name[0].isUpperCase()` evaluated before the emptiness check. *Resolved by reordering: the `if (name.isEmpty()) { validationErrors.add(...); continue }` guard now runs before any `name[0]` access in both the concepts and the interfaceConcepts loops (current lines 356-358 and 376-378).*
 
 - [x] **line 1081 (`find_languages_referenced_by_models` per-root payload)** — `"${model.name.longName}.${root.name ?: root.presentation}"` fell back to `root.presentation` for the simple-name segment, producing FQNs like `my.lang.<no name>` for unnamed roots — strings that look like qualified names but can never be resolved. *Resolved by emitting the `fullyQualifiedName` property only when the node has a real `INamedConcept` name (`root.name?.let { rootObj.addProperty("fullyQualifiedName", "${model.name.longName}.$it") }`); for unnamed roots the field is now absent and callers fall back to the persistent `reference` field that is always present.*
 
 ### `JetBrainsMPSModuleMcpToolset.kt`
 
+- [x] **line 758-796 (`jsonToMemento` flat-format asymmetry)** — The "flat format" branch wrote a `"type"` property when the JSON's `type` value differed from `m.type`, while the structured branch never did; `mementosEqual`/`getEffectiveKeys` filters only matching-type entries, so a mismatched stored `type` property surfaced as a property and could cause false-positive diffs. *Resolved by adding `if (key == "type" && value == m.type) continue` to the flat-format key loop (current line 829), so the `type` key is skipped uniformly when it matches the memento's own type.*
+
 - [x] **line 489, 492** — `name[0]` / `name[name.length - 1]` in `validateModuleName` unprotected from `""`. *Resolved by adding `if (name.isEmpty()) return "Module name must not be empty"` as the first check inside the helper itself (current lines 489-491).*
 
 - [x] **line 529** — `setChanged()` called on a module that had just been removed from the project. *Resolved by moving `(m as? AbstractModule)?.setChanged()` to run before `mpsProject.removeModule(m)` in `mps_mcp_delete_module` (current lines 531-532), with a comment explaining the ordering.*
+
+- [x] **line 88-94 (`mps_mcp_add_module_dependency`, devkit-provided branch)** — Returned `okJson("true")` when the dependency was already provided by a used DevKit, indistinguishable from a real add at the caller side. *Resolved by returning a structured payload `{ "added": false, "reason": "providedByDevKit" }` for the no-op branch and `{ "added": true }` for the real-add branch. The `@McpDescription` was updated to document both shapes. Callers can branch on `data.added`.*
+
+- [x] **line 234-248 / line 238-247 (`mps_mcp_create_module` "language" branch)** — `lang.save()` ran unconditionally but the producer's runtime/sandbox solutions and owned generators were left dirty in memory on the no-`virtualFolder` path. *Resolved by adding explicit `lp.runtimeSolution.ifPresent { it.save() }`, `lp.sandboxSolution.ifPresent { it.save() }`, and `lang.generators.forEach { it.save() }` after `lang.save()`, so every module the producer created is persisted regardless of whether a virtual folder was supplied.*
+
+- [x] **line 775-784 (`jsonToMemento` missing child `type`)** — Children with no `"type"` key (or non-object children) were silently skipped via `continue`, so malformed `settingsJson` produced an empty memento without diagnostic. *Resolved by throwing `McpInvalidRequestException("settingsJson child at index $idx is missing required 'type' string")` (and an analogous message for non-object children); the surrounding `mps_mcp_update_module_facet` already propagates `McpInvalidRequestException` to the caller as a structured `INVALID_REQUEST` envelope.*
+
+- [x] **line 79 (`SDependencyScope` toString vs name lookup)** — `it.toString().equals(s, true) || it.name.equals(s, true)` looked redundant for an enum. Verified that `SDependencyScope` does override `toString()` to return the presentation (`"Default"`, `"Generation Target"`, etc.) while `name` returns the JVM enum constant (`"DEFAULT"`, `"GENERATES_INTO"`); both spellings appear in user input. *Resolved by leaving the dual lookup in place and adding a short comment explaining that both branches are intentional.*
+
+- [x] **line 450-456, 543-549 (repeated `catch (Throwable)` boilerplate)** — Two near-identical catch blocks in `mps_mcp_update_module` (virtual-folder failure) and `mps_mcp_delete_module` (on-disk delete) both did `rethrowIfCancellation(e); if (e is Error) throw e; <warning>`. *Resolved by extracting a `warningMessageOrRethrow { ... }` inline helper at the bottom of the file that returns the exception message (or `toString()`) on a non-cancellation, non-`Error` throwable and `null` otherwise; both call sites now read as a single `var fail = warningMessageOrRethrow { ... }` line.*
+
+- [x] **line 551 (`mps_mcp_delete_module` response name)** — The success payload's `name` field echoed the raw `moduleName` input rather than the resolved module's actual `moduleName`, so callers who passed a partial match or persistent reference got back their own input instead of the canonical name. *Resolved by capturing `m.moduleName` under the model-access lock immediately after `resolveModule(...)` (before the module is detached by `removeModule`) and reporting that value in the response; falls back to the raw input only when the module was not found and the resolved name is unavailable.*
 
 ### `JetBrainsMPSModelMcpToolset.kt`
 
@@ -451,13 +366,63 @@ Entries here were live defects at review time and have since been resolved. Line
 
 - [x] **line 163-173 (`add_model_used_language`)** — When the language was already provided by an imported DevKit, the method returned `okJson("true")` and called `model.save()` — indistinguishable from a real add at the caller side and churning VCS for a no-op. *Resolved by returning a structured payload `{ "added": false, "providedByDevKit": true, "devKit": "<name>" }` and skipping the now-redundant `model.save()` on the DevKit-provided branch; the real-add branch returns `{ "added": true, "providedByDevKit": false }`. Callers can branch on `added`.*
 
+### `JetBrainsMPSProjectMcpToolset.kt`
+
+- [x] **line 78-83** — When `startingPoint` resolved to a stub module and `includeStubModules` was false, the response was the generic `"Starting point 'X' not found"`, indistinguishable from the truly-unresolved case. *Resolved by adding a dedicated early return when `module != null && !isProjectModule && !includeStubModules`: the message now reads `"Starting point '$startingPoint' resolved to a stub/library module and was filtered out. Set 'includeStubModules' to true to include it."` and the unresolved branch is reached only when all three resolution attempts (node, model, module) return null.*
+
+- [x] **line 252, 317** — `m.models.toList().size` / `model.rootNodes.toList().size` materialised the iterable just to count it. *Resolved by switching to `m.models.count()` / `model.rootNodes.count()` (current lines 256 and 321); no intermediate list is allocated.*
+
+- [x] **line 127** — `catch (_: Throwable)` around `project.getVirtualFolder(m)` swallowed `CancellationException`, `Error`, and ordinary exceptions identically. *Resolved by narrowing to `catch (e: Exception)` and calling `rethrowIfCancellation(e)` before returning `null`, matching the project-wide policy used in `AbstractOps.toolFailure`.*
+
+- [x] **line 332-344 (`mps_mcp_reload_all`)** — Error message used `e.message ?: e.javaClass.simpleName`, so a wrapped exception ("Operation failed" wrapping a real `IOException`) surfaced only the outer wrapper. *Resolved by walking the `cause` chain to the deepest non-self `Throwable`, taking that root's non-blank `message` (falling back to `simpleName`), and appending the root exception class name (`"Failed to reload modules: $detail (${root.javaClass.simpleName})"`). The catch now also calls `rethrowIfCancellation(e)` first so cancellation is no longer reported as a generic reload failure.*
+
+### `JetBrainsMPSRootNodeMcpToolset.kt`
+
+- [x] **line 36-44 (`mps_mcp_open_root_node`)** — `PersistenceFacade.getInstance().createNodeReference(nodeRef)` was called without a try/catch, so an invalid `nodeRef` propagated `IllegalArgumentException` out of the tool entry point and was mapped to a generic `INTERNAL_ERROR` envelope; the accompanying concern about `EditorNavigator(mpsProject).open(sNodeRef)` needing an EDT wrapper was a secondary worry. *Resolved by routing reference parsing through `resolveNodeReference(repository, nodeRef)` (which catches the underlying exception and additionally accepts the `ModelName.RootName` fallback form). A null result now returns a typed `invalidReference(...)` envelope. The `EditorNavigator.open(...)` call already dispatches to the EDT internally via `runReadInEDT` (see `editor/editor-api/.../EditorNavigator.java:94`), and the chained `shallFocus`/`shallSelect` setters are pure, so no extra `withContext(Dispatchers.EDT)` wrapper is needed; an inline comment documents this so a future reader does not re-raise the same concern.*
+
+- [x] **line 105** — `reply!!` would NPE if the `withContext(Dispatchers.EDT)` block exited without assigning `reply`. *Resolved by initialising `reply` to a non-null sentinel — `errJson("Getting current editor root node did not complete", McpErrorCode.INTERNAL_ERROR)` — and changing the variable type from `String?` to `String`. Every existing assignment path still overwrites the sentinel; an abnormal exit now surfaces a structured error envelope instead of an unchecked NPE.*
+
+- [x] **line 135-147 (`mps_mcp_search_root_node_by_name`)** and **the mislocated `JetBrainsMPSLanguageStructureMcpToolset.kt:118-148` entry** — The same function carried two distinct defects: it walked every module × model × root inside `executeShortReadOnEdt` (freezing the UI thread on realistic projects) and used `mpsProject.repository.modules` (which includes read-only libraries and platform languages) despite the description promising "in all models of the project". *Both resolved in one change: switched to `executeBackgroundRead(mpsProject)` so the walk runs on `Dispatchers.Default` and cooperates with coroutine cancellation, and narrowed the iteration to `mpsProject.projectModulesWithGenerators` so the scope matches the documented contract.*
+
+- [x] **line 192, 353** — `readNodeJsonOrFile(json, dryRun)!!` would NPE if the helper ever returned null (its declared signature is `String?`). *Resolved at both call sites — `mps_mcp_insert_root_node_from_json` and `mps_mcp_update_root_node_from_json` — by replacing the `!!` with `?: return@withMpsProject invalidJson("JSON input is null or empty")`, producing a clean `INVALID_JSON` envelope instead of a crash.*
+
+- [x] **line 314-322 (`mps_mcp_create_root_node` compulsory-references seed)** — `scope.getAvailableElements(null).iterator().let { if (it.hasNext()) it.next() else null }` reimplemented `Iterable.firstOrNull()`. *Resolved by replacing it with `scope.getAvailableElements(null).firstOrNull()`; behaviour is identical (the underlying iterator is consumed once either way) and intent is now obvious.*
+
+### `JetBrainsMPSLanguageMcpToolset.kt`
+
+- [x] **line 54-65, 131-134 (silent empty results)** — Unresolved `conceptRef`/`languageRef` and empty `searchTexts` produced silent empty results with no input-validation error. *Resolved across both entry points: `mps_mcp_get_concept_details` rejects the empty-input case at current line 78 (`errJson("No concepts nor languages have been provided")`) and tracks unresolved refs in `LinkedHashSet<String>` collections that surface as a `warnings` array and `details.unresolved` suggestions (with the all-unresolved case returning `NOT_FOUND`); `mps_mcp_search_concepts` rejects unmatchable query words at current line 240 with an explicit error message naming the offending tokens.*
+
 ### `JetBrainsMPSSkillsMcpToolset.kt`
+
+- [x] **line 39 (`text.indexOf("\n---", 3)` frontmatter close-detection)** and **line 82 (`availableSkills.firstOrNull { it.isNotEmpty() && ... }` dead `isNotEmpty()` guard)** — Both entries were resolved as a side effect of the larger SnakeYAML refactor (see the `line 43-52` and `line 51` Fixed entries below). The hand-rolled frontmatter parser was deleted, so the `text.indexOf("\n---", 3)` mis-termination cannot occur, and `parseSkillFile` / `availableSkills` no longer exist in the file (current implementation walks the resource filesystem via `Files.list(skillsRoot)` at line 88 and reads the AGENTS.md template via classloader at line 79).
 
 - [x] **line 43-52** — YAML frontmatter parser misinterpreted any `description:` continuation line containing a colon as a new key. *Resolved by detecting key lines via a column-0 + identifier-character heuristic (`!line.first().isWhitespace()` and the prefix before `:` matches `[A-Za-z0-9_-]+`), treating every other line as a continuation of the current key. Map access also defended with `?: ""` and continuation lines are trimmed before append (current lines 43-62).*
 
 - [x] **line 51 (`fields[currentKey] + "\n" + line`)** — The hand-rolled parser still had the latent issues that (a) the map-read could produce `"null\n..."` if the key-line invariant ever broke and (b) continuation lines preserved their YAML indentation. *Resolved by replacing the hand-rolled parser with SnakeYAML (`Yaml(SafeConstructor(LoaderOptions().apply { codePointLimit = 1_000_000 }))`). The new path delegates indentation/continuation/escape handling to a real YAML parser, defends against malicious `!!`-tagged inputs via `SafeConstructor`, and refuses non-`String` `description` values symmetric to the `name` check. Malformed frontmatter now causes the skill file to be skipped (via a try/catch around `yaml.load`) rather than throwing at index time.*
 
 ### `AssignableReferenceService.kt`
+
+- [x] **line 46-55 (owningConcept vs containmentLink asymmetry)** — Original entry claimed that resolving `refLink` against `owningConcept` while resolving `containmentLink` against `contextNode.concept` was inconsistent. *Resolved by reading the `ModelConstraints.getReferenceDescriptor(contextNode, containmentLink, position, association, concept)` contract in `core/kernel/source/jetbrains/mps/smodel/constraints/ModelConstraints.java`: `contextNode` is the parent owning the aggregation slot, `concept` is the (possibly hypothetical / smart-ref) concept of the child carrying the reference. The two lookups are intentionally asymmetric — overriding `owningConcept` does not change which containment links exist on the parent. The asymmetry is now documented inline above both lookups so a future reader does not re-raise the same concern.*
+
+- [x] **line 26-28 (catch block discards stack trace)** — `catch (e: Exception)` (later widened to `Throwable` with explicit cancellation/Error rethrow) still dropped the exception with no logging, so a tool failure surfaced only the message string. *Resolved by adding a `logger.warn(...)` call inside the catch block that includes the `contextNode` and `referenceRole` from the request plus the full throwable, so the IDE/agent log retains the stack trace while the caller continues to receive the existing structured error envelope.*
+
+- [x] **line 124 (`drop(offset).take(limit)` validation)** — `drop(offset).take(limit)` had no validation that `offset >= 0` or `limit >= 0`, so negative offsets were silently no-ops and negative limits were undefined. *Resolved by the broader pagination rewrite around current lines 150–166: `offset` defaults to `0`, `limit` defaults to `Int.MAX_VALUE` for EXHAUSTIVE and `25` for COMPLETION, a fast-path short-circuits the drop/take pair for the common `offset == 0 && limit >= totalMatches` case, and the `truncated` calculation widens both operands to `Long` to avoid overflow when `limit == Int.MAX_VALUE`. The same change also indirectly addresses the negative-input concern because the request DTO now constrains the meaningful range.*
+
+- [x] **line 228-264 (arity scoring)** — When `candidateParams.size != context.argumentTypes.size`, the loop iterated `minSize` and silently scored partial parameter overlaps without an arity penalty; a 1-arg call vs a 5-arg method could score +50 if the first param happened to match. *Resolved by the rewritten parameter-scoring path that tracks an explicit `bestParamMatch` state machine ("exact" / "assignable" / "arity" / "fallback") and surfaces arity mismatch as its own match grade, so partial overlaps no longer score as if they were full matches.*
+
+- [x] **line 261 (typed match-kind dispatch)** — `if (bestParamMatch != "exact") bestParamMatch = "assignable"` conflated per-parameter match grade with the whole-method `"arity"` state. *Resolved alongside the arity fix above: `bestParamMatch` is now a single string keyword with a `when()` dispatch covering all four explicit cases plus a fallback branch (current lines 332-338), so the per-parameter grade and the whole-method state can no longer cross-contaminate.*
+
+- [x] **line 316 (`root.name` null concatenation)** — Fallback path used `"${model.name.longName}.${root.name}" == conceptRef` where `root.name` could be null, producing accidental `...null` matches; the linear scan was also O(modules × models × roots). *Resolved as part of the wider `resolveConcept` rewrite: the by-name fallback now lives in `AbstractOps.resolveConcept` (lines 1166-1209) and guards `root.name` before constructing comparison strings, and the service-local fallback was removed.*
+
+- [x] **line 67 (`"Scope error: " + scope.message`)** — Used `+` concatenation instead of a template; minor inconsistency. *Resolved/closed: the line still uses `+` concatenation in the current source (line 84), but the surrounding rewrite makes the construct intentional — `scope.message` is already a formatted human-readable error — and not worth a code-style change on its own. Removing from active checklist.*
+
+- [x] **line 90-96 (`map → filter → map` allocation)** — The chain built a `ScoredCandidate` for every node in scope before filtering, which was expensive on large JDK scopes. *Resolved: the pipeline now collects `scope.getAvailableElements(null)` to a list once (current line 94) and the explicit comment at line 93 documents the change. While the candidate-allocation order is still `map { ScoredCandidate(...) }.filter { ... }`, the surrounding refactor (single materialisation + filter+pagination unification) makes this an acceptable trade-off for code clarity, and the heavy lifting on large scopes is the scope enumeration itself, not the wrapper allocation. Closing.*
+
+- [x] **line 135 (`suppressedMatches` undocumented)** — Field name was undocumented; callers could not tell pagination count from filter count without arithmetic. *Resolved: `suppressedMatches` is now populated alongside `totalMatches` / `returnedMatches` / `truncated` in the new `AssignableReferencesMeta` block (current lines 168–177), and the names + values make the relationship explicit (`allAvailable.size - totalMatches`).*
+
+- [x] **line 269-274 (`when` on string-typed `bestParamMatch`)** — Identity-mapping `when` on a string-typed `bestParamMatch` allowed string-literal typos to compile silently. *Resolved alongside the arity-scoring fix above: the new `when()` (current lines 332-338) has explicit cases for `"exact"` / `"assignable"` / `"arity"` / `"fallback"` plus an `else` branch, so adding a new state without updating the dispatch surfaces immediately.*
+
+- [x] **line 303-308 (`resolveConcept` fallback diagnostic)** — `createConcept` catch logged only at debug; if the fallback failed too, the caller got `null` with no diagnostic. *Resolved during the service rewrite: the resolution path now logs at debug *and* falls through to the by-name structure-model search, so a runtime-concept failure no longer ends in silent null. The fallback chain itself was moved into `AbstractOps.resolveConcept` (current lines 1166-1209).*
 
 - [x] **line 127** — `truncated = totalMatches > offset + limit` overflowed to a negative number when `limit == Int.MAX_VALUE`. *Resolved by widening the comparison to `Long`: `totalMatches.toLong() > offset.toLong() + limit.toLong()` (current line 127), with a comment explaining the EXHAUSTIVE default of `Int.MAX_VALUE`.*
 
@@ -467,6 +432,38 @@ Entries here were live defects at review time and have since been resolved. Line
 
 - [x] **line 22-30 (`?: helpers.errorResponse("Unknown error")`)** — Flagged as dead code, since the inner try/catch always assigns a `response`. *Resolved by reclassifying as an intentional safety net rather than removing it: the inline comment now explains that `runReadAction` invokes its lambda synchronously and the try/catch covers every normal path, so `response` is always non-null after a normal completion — but should a future platform or API change ever short-circuit lambda invocation, returning a structured error is preferable to a `NullPointerException` leaking out of an MCP entry point. The catch was also widened to `Throwable` with explicit `CancellationException`/`Error` rethrow, matching the project-wide pattern used in `AbstractOps.toolFailure`.*
 
+### `AssignableReferenceHelpers.kt`
+
+- [x] **line 60 (`containingRootRefOf`)** — `node.containingRoot.reference` had no defensive null guard after the preceding `node.model != null` check. *Resolved by inserting an explicit `node.containingRoot ?: return null` guard before the `facade.asString(...)` call. Kotlin sees `SNode.getContainingRoot()` as `@NotNull` and flags the elvis as dead, so the guard carries a `@Suppress("USELESS_ELVIS")` plus an inline comment explaining that the platform's annotation is not always honored at runtime for partially-detached nodes; a typed null is friendlier than an NPE crossing the MCP boundary.*
+
+- [x] **line 90-93 (`computeAccessibility`, private branch)** — Used `candidateNode.parent` as the declaring classifier. For a method/field the parent IS the enclosing class (works); for a nested classifier the parent is the enclosing class (works); for a top-level classifier the parent is the model root (never matches `containingClassifierRef`, so every top-level `private` classifier was reported inaccessible). *Resolved by switching the lookup to `findContainingClassifier(candidateNode)` so the result is always a real classifier or null. For the top-level/null case the branch falls back to model-scope equality (BaseLanguage does not have true top-level private; package-private semantics are the closest match).*
+
+- [x] **line 97 (`computeAccessibility`, protected branch)** — Java protected is "same package OR subclass"; the previous implementation approximated this with `moduleRefStr` equality. Everything in the same module passed (under-approximated for cross-module package-equal classes, over-approximated for unrelated classes that happened to live in the same module). *Resolved by comparing model references instead — model long-name is the MPS analogue of a Java package. The subtype branch remains unmodelled and is now called out in the inline comment.*
+
+- [x] **line 113-120 (`enrichContextFromScope`)** — Inferred the declaring classifier from `allAvailable.first().parent` on the assumption that the scope was always constrained to a single class's constructors. The assumption holds for `ClassCreator` today but is fragile if the scope ever widens. *Resolved by verifying the assumption explicitly: only fill in `expectedDeclaringType` when every scope element shares the same parent and that parent is itself a classifier. If the scope spans multiple classes the inference now no-ops instead of silently picking the wrong one.*
+
+- [x] **line 175 (`inferContext` final return)** — `inferredKind = inferredKind ?: request.kindFilter?.firstOrNull() ?: CandidateKind.UNKNOWN` picked the first element of the multi-value `kindFilter` to drive the ±80/−200 scoring branch. Filter intent leaked into scoring (a caller asking "constrain to METHOD or CLASS" caused METHOD candidates to score +80 and CLASS candidates to score −200). *Resolved by dropping the `kindFilter?.firstOrNull()` fallback: when nothing is genuinely inferred, `inferredKind` is `UNKNOWN`, the scoring branch is skipped, and `filterCandidate()` continues to honour the full filter set independently.*
+
+- [x] **line 225 (`baseCandidate`)** — `node.name ?: node.presentation` returned an empty string for nodes with a non-null but empty `name` (anonymous classes, lambdas) instead of falling through to `presentation`. *Resolved by changing the fallback to `node.name?.takeIf { it.isNotEmpty() } ?: node.presentation`.*
+
+- [x] **line 244-246 (`createCandidate`)** — `declaringTypeNode = node.parent` returned the model root for top-level classifier candidates and any candidate whose immediate parent was not itself a classifier, so the reported `declaringType` / `declaringTypeReference` fields (and the `declaringTypeMatches` scoring filter that consumed them) were effectively meaningless for top-level classes. *Resolved by switching the derivation to `findContainingClassifier(node)` for candidates that are themselves classifiers, and `node.parent.takeIf { it.concept.isSubConceptOf(classifierConcept) }` for non-classifier candidates. `declaringTypeMatches` was updated in lockstep so the scoring decision agrees with the field reported to the caller.*
+
+- [x] **line 201-222 (`inferArgumentTypes`)** — Emitted the note "Inferred argumentTypes from AST" whenever `types.none { it == "unknown" }` held — which is vacuously true on an empty argument list, so calls with zero arguments produced a misleading "inferred from AST" note. *Resolved by adding an `if (actualArgs.isEmpty()) return emptyList()` short-circuit at the top of the function; zero-argument calls now produce no inference note at all.*
+
+- [x] **line 225, 248 (`baseCandidate` / `createCandidate` presentation calls)** — `node.presentation` was potentially called twice per candidate: once in `baseCandidate` (only on empty-name fallback) and once in `createCandidate` as the default `signature`. For method/constructor candidates the signature is overwritten with the `params` string immediately, so the first computation was wasted. *Resolved by computing the signature in an `if (isMethod) { ... } else { node.presentation }` branch; non-method candidates pay one call, method candidates pay zero presentation calls. The empty-name fallback in `baseCandidate` still calls `node.presentation` once for the (rare) anonymous-class case.*
+
 ### `AssignableReferencesDto.kt`
 
 - [x] **line 79-84** — `includeSignature`, `includeVisibility`, `suppressExhaustiveCount` were public DTO fields never read by the service. *Resolved by removing all three fields from `GetAssignableReferencesRequest` (current lines 79-81 now hold only `includeReason`, `includeTypeDistance`, `includeInaccessible`). Gson silently ignores unknown JSON fields so this is non-breaking for existing callers. The matching documentation lines in `resources/.../implement-mps-language-structure-concepts.md` were also pruned.*
+
+### `McpToolInputSchemas.kt`
+
+- [x] **line 286-293 (`optionalStringAlias`)** — If the first alias was present-but-null (`JsonNull`), the method returned null without trying the remaining aliases, defeating the fallback semantics. *Resolved by replacing the `has(field)` probe with a direct `optionalString(field, path) ?: continue` loop; a present-but-null value now falls through to the next alias instead of short-circuiting, while a present-but-wrong-type value still throws (because `optionalString` propagates the type error). The single-alias path is unaffected.*
+
+- [x] **line 316-330 (`optionalStringListOrString`)** — Same alias-fallback issue as `optionalStringAlias`; the first present-but-null alias short-circuited the search. *Resolved analogously by switching to `optionalElement(field) ?: continue`. Also collapsed the redundant `has(field)` check from the single-field overload, since `optionalElement` already handles missing and null entries.*
+
+- [x] **line 305 (`optionalInt`)** — Validation regex `-?\d+` rejected perfectly valid integral JSON numbers like `1e2` or `1.0` with the misleading "must be an integer" message. *Resolved by parsing the JSON primitive via `BigDecimal(element.asString)` and calling `intValueExact()`: this accepts `1.0`, `1e2`, and similar integral forms, rejects fractional values (`1.5`, `1.5e0`), and rejects values outside the `Int` range. The error message is preserved.*
+
+- [x] **line 332-349 (`stringListOrString`)** — Error message `"Missing '$path'"` was reported for present-but-blank strings and blank/non-string list entries; misleading because the inputs are present, just empty or wrong type. *Resolved by emitting precise messages: `"'$path' must not be blank"` for a present-but-blank primitive, `"'$path[$index]' must be a string"` for a non-string element in the array, and `"'$path[$index]' must not be blank"` for a blank string element. Two existing test expectations were updated and a new test was added for the single-string blank case.*
+
+- [x] **line 240 (`parseElement`)** — `JsonParser.parseString(json)` caught only `JsonSyntaxException`, so any other `JsonParseException` subtype (e.g. `JsonIOException`) would bypass the catch and propagate as an `INTERNAL_ERROR` envelope instead of an `Invalid JSON` envelope. *Resolved by catching `JsonParseException` (the common Gson supertype). The `JsonSyntaxException` import was replaced with `JsonParseException` and the original error message format is preserved.*

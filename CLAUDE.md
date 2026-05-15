@@ -8,8 +8,7 @@ Developers typically use two environments against the same checkout:
 
 Agents must adapt to the tools available in the current session. Use this file as the cross-environment entry point.
 
-IMPORTANT: Your reading the `MPS-AGENTS.md` file is essential for correct and efficient development in MPS - use of the `mps_mcp_...` tools and understanding of detailed MPS node, model, language, and generator workflows.
-If the `MPS-AGENTS.md` file is not available, the MPS mcp tools are most likely unavailable, too.
+For detailed MPS node, model, language, generator, validation, and MCP workflows, load the `mps-mcp-workflow` skill. If your agent runtime does not explicitly confirm that project skills are auto-loaded, read `.agents/skills/mps-mcp-workflow/SKILL.md` before changing MPS artifacts.
 
 ## Project Nature: JVM + MPS
 
@@ -72,7 +71,7 @@ When working on MPS artifacts:
 - Validate frequently after structural changes, reference updates, or generator changes.
 - Rebuild or regenerate when needed so downstream JVM code and project state remain consistent.
 
-Read `MPS-AGENTS.md` whenever the task involves MPS project structure, MPS modules or models, language syntax, concept relationships, generators, or MPS-specific changes. In practice, serious MPS work in this repository depends on that companion guide together with MPS MCP tools.
+Use the `mps-mcp-workflow` skill whenever the task involves MPS project structure, MPS modules or models, language syntax, concept relationships, generators, or MPS-specific changes. In practice, serious MPS work in this repository depends on that workflow skill together with MPS MCP tools.
 
 ## Rules For Generated Code
 
@@ -145,7 +144,7 @@ These rules are **mandatory** — always follow them, not just when a skill is a
 - [`.agents/quality-gates.md`](.agents/quality-gates.md) — quality standards
 
 ## Skills
-A skill is a set of local instructions to follow that is stored in a `SKILL.md` file or served by the `mps_mcp_get_skill` tool.
+A skill is a set of local instructions to follow that is stored in a `SKILL.md` file under `.claude/skills/<skill-name>/` (or `.agents/skills/<skill-name>/` for MPS-specific skills).
 
 Local skills in [`.claude/skills/`](.claude/skills/):
 

@@ -8,8 +8,7 @@ Developers typically use two environments against the same checkout:
 
 Agents must adapt to the tools available in the current session. Use this file as the cross-environment entry point.
 
-IMPORTANT: Your reading the `MPS-AGENTS.md` file is essential for correct and efficient development in MPS - use of the `mps_mcp_...` tools and understanding of detailed MPS node, model, language, and generator workflows.
-If the `MPS-AGENTS.md` file is not available, the MPS mcp tools are most likely unavailable, too.
+For detailed MPS node, model, language, generator, validation, and MCP workflows, load the `mps-mcp-workflow` skill. If your agent runtime does not explicitly confirm that project skills are auto-loaded, read `.agents/skills/mps-mcp-workflow/SKILL.md` before changing MPS artifacts.
 
 ## Project Nature: JVM + MPS
 
@@ -72,7 +71,7 @@ When working on MPS artifacts:
 - Validate frequently after structural changes, reference updates, or generator changes.
 - Rebuild or regenerate when needed so downstream JVM code and project state remain consistent.
 
-Read `MPS-AGENTS.md` whenever the task involves MPS project structure, MPS modules or models, language syntax, concept relationships, generators, or MPS-specific changes. In practice, serious MPS work in this repository depends on that companion guide together with MPS MCP tools.
+Use the `mps-mcp-workflow` skill whenever the task involves MPS project structure, MPS modules or models, language syntax, concept relationships, generators, or MPS-specific changes. In practice, serious MPS work in this repository depends on that workflow skill together with MPS MCP tools.
 
 ## Rules For Generated Code
 
@@ -145,7 +144,7 @@ These rules are **mandatory** — always follow them, not just when a skill is a
 - [`.agents/quality-gates.md`](.agents/quality-gates.md) — quality standards
 
 ## Skills
-A skill is a set of local instructions to follow that is stored in a `SKILL.md` file or served by the `mps_mcp_get_skill` tool.
+A skill is a set of local instructions to follow that is stored in a `SKILL.md` file under `.agents/skills/<skill-name>/`.
 
 Local skills in [`.agents/skills/`](.agents/skills/):
 
@@ -165,15 +164,25 @@ Local skills in [`.agents/skills/`](.agents/skills/):
 - [`mps-aspect-migrations`](.agents/skills/mps-aspect-migrations/SKILL.md) — MPS migration scripts and enhancement scripts.
 - [`mps-aspect-textgen`](.agents/skills/mps-aspect-textgen/SKILL.md) — MPS TextGen — concept-to-plain-text serialisation.
 - [`mps-aspect-typesystem`](.agents/skills/mps-aspect-typesystem/SKILL.md) — MPS typesystem — inference, subtyping, checking rules.
+- [`mps-baselanguage-java`](.agents/skills/mps-baselanguage-java/SKILL.md) — strategy and tips for editing `baseLanguage` nodes and setting references.
+- [`mps-baselanguage-json-ast`](.agents/skills/mps-baselanguage-json-ast/SKILL.md) — creating/updating non-trivial BaseLanguage/Java code via JSON AST.
+- [`mps-baselanguage-reference`](.agents/skills/mps-baselanguage-reference/SKILL.md) — mapping Java syntax to MPS `baseLanguage` concepts and roles.
 - [`mps-bugfix`](.agents/skills/mps-bugfix/SKILL.md) — MPS bugfixing workflow.
 - [`mps-build-language`](.agents/skills/mps-build-language/SKILL.md) — MPS Build Language scripts.
-- [`mps-distribution-build`](.claude/skills/mps-distribution-build/SKILL.md) — generated Ant pipeline (`build/mps*.xml`) that builds MPS distributions; how to bundle a new plain Java/Kotlin plugin.
-- [`mps-lang-core-xml`](.agents/skills/mps-lang-core-xml/SKILL.md) — `jetbrains.mps.core.xml` language for XML documents and generator templates.
+- [`mps-distribution-build`](.agents/skills/mps-distribution-build/SKILL.md) — generated Ant pipeline (`build/mps*.xml`) that builds MPS distributions; how to bundle a new plain Java/Kotlin plugin.
+- [`mps-dsl-memory`](.agents/skills/mps-dsl-memory/SKILL.md) — explore a live MPS DSL project and write a project-local `MEMORY.md` for future sessions.
+- [`mps-editor-technical-reference`](.agents/skills/mps-editor-technical-reference/SKILL.md) — technical reference for cell models, layout styles, and inheritance in MPS editors.
 - [`mps-ide-plugin`](.agents/skills/mps-ide-plugin/SKILL.md) — authoring MPS IDE plugins: actions, groups, tool windows, keymaps, preferences.
+- [`mps-lang-core-xml`](.agents/skills/mps-lang-core-xml/SKILL.md) — `jetbrains.mps.core.xml` language for XML documents and generator templates.
+- [`mps-language-analysis`](.agents/skills/mps-language-analysis/SKILL.md) — analyze MPS language definitions.
 - [`mps-language-aspects-overview`](.agents/skills/mps-language-aspects-overview/SKILL.md) — entry point for MPS language authoring; indexes all aspects.
+- [`mps-language-inheritance`](.agents/skills/mps-language-inheritance/SKILL.md) — investigate inheritance between MPS languages and concepts.
+- [`mps-mcp-workflow`](.agents/skills/mps-mcp-workflow/SKILL.md) — complete MPS workflow guide: models, languages, generators, node JSON blueprints, validation, MPS MCP tool usage.
 - [`mps-model-code`](.agents/skills/mps-model-code/SKILL.md) — BaseLanguage code combining smodel, closures, and collections.
+- [`mps-node-editing`](.agents/skills/mps-node-editing/SKILL.md) — adding or updating MPS nodes using JSON blueprints.
 - [`mps-quotations`](.agents/skills/mps-quotations/SKILL.md) — MPS quotations and anti-quotations for inline SNode trees.
-- [`mps-tests`](.claude/skills/mps-tests/SKILL.md) — writing tests in MPS test models: NodesTestCase, EditorTestCase, MigrationTestCase, BTestCase.
+- [`mps-structure-concepts`](.agents/skills/mps-structure-concepts/SKILL.md) — defining concepts, interface concepts, and enums in an MPS language; full `mps_mcp_perform_structure_operation` reference.
+- [`mps-tests`](.agents/skills/mps-tests/SKILL.md) — writing tests in MPS test models: NodesTestCase, EditorTestCase, MigrationTestCase, BTestCase.
 - [`registry`](.agents/skills/registry/SKILL.md) — IntelliJ Registry API.
 - [`ssr`](.agents/skills/ssr/SKILL.md) — Structural Search and Replace in IntelliJ.
 - [`teamcity-cli`](.agents/skills/teamcity-cli/SKILL.md) — TeamCity CI/CD CLI usage.

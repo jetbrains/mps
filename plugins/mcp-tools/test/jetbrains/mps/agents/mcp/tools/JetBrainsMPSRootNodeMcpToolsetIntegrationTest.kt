@@ -1,0 +1,462 @@
+package jetbrains.mps.agents.mcp.tools
+
+import com.google.gson.JsonParser
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import org.junit.Assert.assertEquals
+import org.junit.Assert.assertFalse
+import org.junit.Assert.assertNotNull
+import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
+import org.junit.Test
+
+/**
+ * End-to-end integration tests for [JetBrainsMPSRootNodeMcpToolset].
+ *
+ * Covers lifecycle (`create_root_node`, `insert_root_node_from_json` single/array/dry-run,
+ * `update_root_node_from_json` happy + dry-run, `delete_root_node`),
+ * navigation/queries (`search_root_node_by_name`, `get_current_editor_root_node` when no
+ * editor is open), and the basic error envelopes for each.
+ *
+ * Concepts used are picked from `jetbrains.mps.lang.structure` so they are
+ * always loaded in the test bench.
+ */
+class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
+
+    private val toolset = JetBrainsMPSRootNodeMcpToolset()
+
+    private val conceptDeclarationFqn = "jetbrains.mps.lang.structure.structure.ConceptDeclaration"
+
+    // ── create_root_node ──────────────────────────────────────────────────────────────────
+
+    @Test
+    fun `create_root_node creates a named concept declaration in the target model`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_create_root_node(
+                modelRef = structureModelRef,
+                concept = conceptDeclarationFqn,
+                conceptReference = null,
+                name = "MyConcept",
+            )
+        }
+        val data = expectOk(response)
+        assertEquals("MyConcept", data.get("name").asString)
+        assertTrue(data.get("isRoot").asBoolean)
+
+        readOnRepo {
+            val match = structureModel.rootNodes.singleOrNull { it.name == "MyConcept" }
+            assertNotNull("created root must be registered in the model: $response", match)
+        }
+    }
+
+    @Test
+    fun `create_root_node rejects unknown model with NOT_FOUND envelope`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_create_root_node(
+                modelRef = "r:00000000-0000-0000-0000-000000000000(no.such.model)",
+                concept = conceptDeclarationFqn,
+                conceptReference = null,
+                name = "X",
+            )
+        }
+        assertTrue(expectErr(response).contains("not found"))
+    }
+
+    @Test
+    fun `create_root_node rejects unknown concept`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_create_root_node(
+                modelRef = structureModelRef,
+                concept = "totally.unknown.concept.X",
+                conceptReference = null,
+                name = "Y",
+            )
+        }
+        assertTrue(expectErr(response).contains("not found"))
+    }
+
+    // ── insert_root_node_from_json ───────────────────────────────────────────────────────
+
+    @Test
+    fun `insert_root_node_from_json with single object inserts one root`() {
+        val json = """
+            {
+              "concept": "$conceptDeclarationFqn",
+              "properties": [ { "name": "name", "value": "Single" } ]
+            }
+        """.trimIndent()
+
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = false)
+        }
+        val data = expectOk(response)
+        assertEquals("Single", data.get("name").asString)
+
+        readOnRepo {
+            assertEquals(1, structureModel.rootNodes.count { it.name == "Single" })
+        }
+    }
+
+    @Test
+    fun `insert_root_node_from_json single object response includes fixReferences info`() {
+        // ConceptDeclaration with no references → performFixReferences should report nothing fixed.
+        val json = """
+            {
+              "concept": "$conceptDeclarationFqn",
+              "properties": [ { "name": "name", "value": "WithFixInfo" } ]
+            }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = false)
+        }
+        val data = expectOk(response)
+        val fix = data.get("fixReferences")
+        assertNotNull("single-object insert must carry data.fixReferences: $response", fix)
+        val fixObj = fix.asJsonObject
+        assertEquals(0, fixObj.get("fixed").asInt)
+        assertEquals(0, fixObj.get("repointed").asInt)
+        assertEquals(0, fixObj.get("stillBroken").asInt)
+        assertNotNull("fixReferences.message must be present", fixObj.get("message"))
+    }
+
+    @Test
+    fun `insert_root_node_from_json array response carries per-node fixReferences info`() {
+        val json = """
+            [
+              { "concept": "$conceptDeclarationFqn", "properties": [ { "name": "name", "value": "BatchA" } ] },
+              { "concept": "$conceptDeclarationFqn", "properties": [ { "name": "name", "value": "BatchB" } ] }
+            ]
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = false)
+        }
+        val arr = parseDataArray(response)
+        assertEquals(2, arr.size())
+        for (i in 0 until arr.size()) {
+            val entry = arr.get(i).asJsonObject
+            val fix = entry.get("fixReferences")
+            assertNotNull("entry $i must carry fixReferences: $entry", fix)
+            val fixObj = fix.asJsonObject
+            assertEquals(0, fixObj.get("fixed").asInt)
+            assertEquals(0, fixObj.get("repointed").asInt)
+            assertEquals(0, fixObj.get("stillBroken").asInt)
+        }
+    }
+
+    @Test
+    fun `insert_root_node_from_json array with forward sibling reference reports no broken refs`() {
+        // Regression: when a batched root referenced a later sibling by plain name,
+        // performFixReferences ran while that sibling was not yet a root, so the response
+        // claimed stillBroken=1 even though the reference resolved correctly once the batch
+        // finished. The two-pass attach-then-fix ordering must make the counters match the
+        // observable post-batch state.
+        val json = """
+            [
+              { "concept": "$conceptDeclarationFqn",
+                "properties": [ { "name": "name", "value": "FwdChild" } ],
+                "references": [ { "role": "extends", "target": "FwdParent" } ] },
+              { "concept": "$conceptDeclarationFqn",
+                "properties": [ { "name": "name", "value": "FwdParent" } ] }
+            ]
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = false)
+        }
+        val arr = parseDataArray(response)
+        assertEquals(2, arr.size())
+        val childEntry = arr.firstOrNull { it.asJsonObject.get("name").asString == "FwdChild" }?.asJsonObject
+        assertNotNull("child entry must be present in response: $response", childEntry)
+        val childFix = childEntry!!.get("fixReferences").asJsonObject
+        assertEquals(
+            "child's extends ref must not be reported as broken once the sibling is in the model: $response",
+            0,
+            childFix.get("stillBroken").asInt,
+        )
+
+        // And verify the reference truly resolved.
+        readOnRepo {
+            val child = structureModel.rootNodes.single { it.name == "FwdChild" }
+            val parent = structureModel.rootNodes.single { it.name == "FwdParent" }
+            val target = child.references.firstOrNull { it.link.name == "extends" }?.targetNode
+            assertNotNull("FwdChild.extends must resolve after batched insert", target)
+            assertEquals(parent.reference, target!!.reference)
+        }
+    }
+
+    @Test
+    fun `insert_root_node_from_json with array inserts the whole batch atomically`() {
+        val json = """
+            [
+              { "concept": "$conceptDeclarationFqn", "properties": [ { "name": "name", "value": "A" } ] },
+              { "concept": "$conceptDeclarationFqn", "properties": [ { "name": "name", "value": "B" } ] }
+            ]
+        """.trimIndent()
+
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = false)
+        }
+        // The envelope's `data` is a JSON-string holding the inserted-node array
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        val rawData = if (obj.get("data").isJsonPrimitive) obj.get("data").asString else obj.get("data").toString()
+        val arr = JsonParser.parseString(rawData).asJsonArray
+        val names = arr.map { it.asJsonObject.get("name").asString }.toSet()
+        assertEquals(setOf("A", "B"), names)
+
+        readOnRepo {
+            val present = structureModel.rootNodes.mapNotNull { it.name }.toSet()
+            assertTrue("both inserted roots must be present: $present", present.containsAll(setOf("A", "B")))
+        }
+    }
+
+    @Test
+    fun `insert_root_node_from_json dryRun does not mutate the model`() {
+        val before = readOnRepo { structureModel.rootNodes.mapNotNull { it.name }.toSet() }
+        val json = """
+            { "concept": "$conceptDeclarationFqn", "properties": [ { "name": "name", "value": "DryRoot" } ] }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = true)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        val raw = if (obj.get("data").isJsonPrimitive) obj.get("data").asString else obj.get("data").toString()
+        val payload = JsonParser.parseString(raw).asJsonObject
+        assertTrue("dryRun payload must be flagged: $raw", payload.get("dryRun").asBoolean)
+        assertFalse(
+            "dryRun marker must not carry fixReferences: $payload",
+            payload.has("fixReferences"),
+        )
+
+        readOnRepo {
+            val after = structureModel.rootNodes.mapNotNull { it.name }.toSet()
+            assertEquals("dryRun must not mutate the model", before, after)
+        }
+    }
+
+    @Test
+    fun `insert_root_node_from_json with invalid JSON returns INVALID_JSON envelope`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, "{ not really JSON", dryRun = false)
+        }
+        assertTrue(expectErr(response).contains("Failed to parse JSON"))
+    }
+
+    @Test
+    fun `insert_root_node_from_json rejects XML-short-id-like reference target with qualified-name hint`() {
+        // The string `_my_var$` trips the looksLikeMpsXmlShortId heuristic: length 8, all-valid
+        // identifier chars, contains '$'. A user supplying such a string usually pasted an MPS
+        // XML short ID, which is not a usable target reference. But the same shape can match a
+        // legitimate JVM identifier with a trailing '$'; the error message must therefore both
+        // (1) explain the rejection and (2) point at the qualified-name workaround so a real
+        // name does not become unaddressable.
+        val json = """
+            {
+              "concept": "$conceptDeclarationFqn",
+              "properties": [ { "name": "name", "value": "HasShortIdRef" } ],
+              "references": [ { "role": "extends", "target": "_my_var${'$'}" } ]
+            }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = false)
+        }
+        val err = expectErr(response)
+        assertTrue("error must surface the XML-short-id rejection: $err", err.contains("XML short ID"))
+        assertTrue(
+            "error must hint at the model-prefix workaround for legitimate names: $err",
+            err.contains("qualify it with a model prefix"),
+        )
+        readOnRepo {
+            val polluted = structureModel.rootNodes.any { it.name == "HasShortIdRef" }
+            assertFalse("rejected insert must not leave a partial root behind", polluted)
+        }
+    }
+
+    @Test
+    fun `insert_root_node_from_json rejects array containing non-rootable concept and rolls back`() {
+        // EnumerationMemberDeclaration is NOT a rootable concept.
+        val json = """
+            [
+              { "concept": "$conceptDeclarationFqn", "properties": [ { "name": "name", "value": "FirstOK" } ] },
+              { "concept": "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration",
+                "properties": [ { "name": "name", "value": "BadMember" } ] }
+            ]
+        """.trimIndent()
+        val before = readOnRepo { structureModel.rootNodes.mapNotNull { it.name }.toSet() }
+
+        val response = runTool(toolset) {
+            it.mps_mcp_insert_root_node_from_json(structureModelRef, json, dryRun = false)
+        }
+        val msg = expectErr(response)
+        assertTrue("error must mention the non-rootable concept: $msg",
+            msg.contains("not a rootable concept"))
+
+        readOnRepo {
+            val after = structureModel.rootNodes.mapNotNull { it.name }.toSet()
+            assertEquals(
+                "failed batch insertion must not leave any of its nodes behind (atomicity)",
+                before,
+                after,
+            )
+        }
+    }
+
+    // ── update_root_node_from_json ───────────────────────────────────────────────────────
+
+    @Test
+    fun `update_root_node_from_json updates non-name properties and preserves name`() {
+        // The implementation of updateNodeFromBlueprint intentionally preserves the root's
+        // `name` (it's the root's identity). Verify both: (1) non-name properties ARE updated
+        // and (2) `name` survives even when the blueprint tries to overwrite it.
+        val rootRef = createConceptRoot("Original")
+
+        val json = """
+            { "concept": "$conceptDeclarationFqn",
+              "properties": [
+                { "name": "name", "value": "AttemptedRename" },
+                { "name": "virtualPackage", "value": "test.pkg" }
+              ] }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_update_root_node_from_json(rootRef, json, dryRun = false)
+        }
+        val data = expectOk(response)
+        assertEquals("Original", data.get("name").asString)
+        assertEquals("test.pkg", data.get("virtualFolder").asString)
+
+        readOnRepo {
+            val node = PersistenceFacade.getInstance().createNodeReference(rootRef).resolve(structureModel.repository)
+            assertNotNull(node)
+            assertEquals("Original", node!!.name)
+            assertEquals("test.pkg", node.getPropertyByName("virtualPackage"))
+        }
+    }
+
+    @Test
+    fun `update_root_node_from_json response includes fixReferences info`() {
+        val rootRef = createConceptRoot("UpdateMe")
+        val json = """
+            { "concept": "$conceptDeclarationFqn",
+              "properties": [ { "name": "virtualPackage", "value": "after.update" } ] }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_update_root_node_from_json(rootRef, json, dryRun = false)
+        }
+        val data = expectOk(response)
+        val fix = data.get("fixReferences")
+        assertNotNull("update response must carry data.fixReferences: $response", fix)
+        val fixObj = fix.asJsonObject
+        assertEquals(0, fixObj.get("fixed").asInt)
+        assertEquals(0, fixObj.get("repointed").asInt)
+        assertEquals(0, fixObj.get("stillBroken").asInt)
+    }
+
+    @Test
+    fun `update_root_node_from_json dryRun does not mutate the model`() {
+        val rootRef = createConceptRoot("KeepMe")
+        val json = """
+            { "concept": "$conceptDeclarationFqn",
+              "properties": [ { "name": "name", "value": "Different" } ] }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_update_root_node_from_json(rootRef, json, dryRun = true)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        val raw = if (obj.get("data").isJsonPrimitive) obj.get("data").asString else obj.get("data").toString()
+        val payload = JsonParser.parseString(raw).asJsonObject
+        assertTrue("dryRun payload must be flagged: $raw", payload.get("dryRun").asBoolean)
+        assertFalse(
+            "dryRun marker must not carry fixReferences: $payload",
+            payload.has("fixReferences"),
+        )
+
+        readOnRepo {
+            val node = PersistenceFacade.getInstance().createNodeReference(rootRef).resolve(structureModel.repository)
+            assertEquals("KeepMe", node!!.name)
+        }
+    }
+
+    @Test
+    fun `update_root_node_from_json reports NOT_FOUND for unknown node`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_update_root_node_from_json(
+                "r:00000000-0000-0000-0000-000000000000(ghost)/0",
+                """{ "concept": "$conceptDeclarationFqn" }""",
+                dryRun = false,
+            )
+        }
+        assertTrue(expectErr(response).contains("not found"))
+    }
+
+    // ── delete_root_node ──────────────────────────────────────────────────────────────────
+
+    @Test
+    fun `delete_root_node removes the root from its model`() {
+        val rootRef = createConceptRoot("ToDelete")
+
+        val response = runTool(toolset) { it.mps_mcp_delete_root_node(rootRef) }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        val data = parseDataObject(obj.get("data"))
+        assertEquals(rootRef, data.get("reference").asString)
+        assertTrue(data.get("deleted").asBoolean)
+
+        readOnRepo {
+            assertNull(
+                "node must no longer resolve",
+                PersistenceFacade.getInstance().createNodeReference(rootRef).resolve(structureModel.repository),
+            )
+        }
+    }
+
+    @Test
+    fun `delete_root_node returns NOT_FOUND envelope for unknown node`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_delete_root_node("r:00000000-0000-0000-0000-000000000000(ghost)/1")
+        }
+        assertTrue(expectErr(response).contains("not found"))
+    }
+
+    // ── search_root_node_by_name ─────────────────────────────────────────────────────────
+
+    @Test
+    fun `search_root_node_by_name with single string returns matching roots`() {
+        createConceptRoot("Findable")
+        val response = runTool(toolset) { it.mps_mcp_search_root_node_by_name("Findable") }
+        val arr = parseDataArray(response)
+        val names = arr.map { it.asJsonObject.get("name").asString }
+        assertTrue("results must contain the created concept: $names", names.contains("Findable"))
+    }
+
+    @Test
+    fun `search_root_node_by_name accepts a JSON array of names`() {
+        createConceptRoot("LookupA")
+        createConceptRoot("LookupB")
+        val response = runTool(toolset) {
+            it.mps_mcp_search_root_node_by_name("""["LookupA","LookupB"]""")
+        }
+        val names = parseDataArray(response).map { it.asJsonObject.get("name").asString }.toSet()
+        assertTrue("results must contain both names: $names",
+            names.containsAll(setOf("LookupA", "LookupB")))
+    }
+
+    @Test
+    fun `search_root_node_by_name returns empty array when nothing matches`() {
+        val response = runTool(toolset) { it.mps_mcp_search_root_node_by_name("DefinitelyNotARealConceptName") }
+        val arr = parseDataArray(response)
+        assertEquals(0, arr.size())
+    }
+
+    // ── get_current_editor_root_node ──────────────────────────────────────────────────────
+
+    @Test
+    fun `get_current_editor_root_node returns an error envelope when no editor is open`() {
+        // The headless test environment never opens an MPS editor, so this exercises the
+        // 'no editor selected' early-return path of the tool. It's the only branch we can
+        // reliably hit without a real editor.
+        val response = runTool(toolset) { it.mps_mcp_get_current_editor_root_node() }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope when no editor is open: $response", obj.get("ok").asBoolean)
+    }
+
+}

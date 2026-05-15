@@ -957,4 +957,4 @@ For a typical task ("add a menu item that does X on the selected node"):
 - `mps-aspect-intentions` — Alt+Enter context actions *inside* the projectional editor.
 - `mps-build-language` — packaging a plugin solution into a distributable MPS/IDEA plugin.
 - `mps-quotations` / `mps-model-code` — writing the base-language bodies inside `execute`/`isApplicable`/`init`/`dispose` blocks.
-- `writing-baselanguage-java-code-in-mps` (MCP skill) — mechanics of building BaseLanguage JSON.
+- `mps-baselanguage-java` (MCP skill) — mechanics of building BaseLanguage JSON.
