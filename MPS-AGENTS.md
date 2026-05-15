@@ -203,6 +203,9 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 - `mps_mcp_set_node_properties`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_delete_node_child`, `mps_mcp_set_node_references`.
 - `mps_mcp_check_root_node_problems`: Validation tool. Use this frequently to ensure your changes are correct.
 
+### Execution
+- `mps_mcp_create_run_configuration`: Registers a run configuration in the IDEA project for an MPS root node. Supports root nodes whose concept implements `jetbrains.mps.execution.util.structure.IMainClass` (yields a `Java` config) or `jetbrains.mps.baseLanguage.unitTest.structure.ITestCase` (yields a `JUnit Tests` config, covering `NodesTestCase` / `EditorTestCase` / `MigrationTestCase` / `BTestCase` / BL `TestCase`; the `inProcess` flag mirrors the standard producer). Use it before `execute_run_configuration` (an IDEA MCP tool) when no suitable run config exists for the target root yet.
+
 ### Language Definition
 - `mps_mcp_get_concept_details`: Provides properties, children, and references for a list of concepts and/or concepts of specified languages. Make/rebuild languages with `mps_mcp_perform_operation` for `mps_mcp_get_concept_details` to see their concepts. 
 - `mps_mcp_search_concepts`: Global search for concepts by name, alias or description using a list of search strings.

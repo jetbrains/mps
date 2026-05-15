@@ -1,7 +1,6 @@
 package com.intellij.mcp.tools
 
 import jetbrains.mps.persistence.PersistenceRegistry
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SConcept
 import org.jetbrains.mps.openapi.language.SContainmentLink
@@ -12,169 +11,31 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.junit.Assert.*
 import org.junit.BeforeClass
 import org.junit.Test
-import sun.misc.Unsafe
 import java.lang.reflect.Proxy
 
 /**
- * Unit tests for [AssignableReferenceService] focused on its pure helper methods.
+ * Unit tests for [AssignableReferenceHelpers]: the project-free helpers extracted from
+ * [AssignableReferenceService]. Because none of these methods need an [jetbrains.mps.project.MPSProject],
+ * the helper can be constructed directly — no Unsafe, no reflective field injection.
  *
- * Construction strategy:
- *  - [AssignableReferenceService] takes a real [jetbrains.mps.project.MPSProject] which is hard to
- *    construct in a unit test. We use [Unsafe.allocateInstance] to get an instance whose
- *    constructor was never invoked. The internal `LINKS_*` / `CONCEPTS_*` fields are then
- *    populated reflectively (mirroring the production initializers) so that pure helpers like
- *    [AssignableReferenceService.findContainingClassifier] can run.
- *  - `mpsProject` stays null. Methods that touch it (e.g. `isProjectNode`) are out of scope here.
- *  - Tests that would require [PersistenceFacade.asString] round-trips on mocked references are
- *    intentionally not included; they belong to the integration test plan.
+ * [PersistenceFacade] is bootstrapped once in [bootstrap] so that
+ * [AssignableReferenceHelpers.computeAccessibility]'s private-visibility branch can call
+ * `facade.asString(...)`.
  */
 class AssignableReferenceServiceTest {
 
     companion object {
+        private lateinit var helpers: AssignableReferenceHelpers
+
         @JvmStatic
         @BeforeClass
-        fun bootstrapPersistence() {
+        fun bootstrap() {
             if (PersistenceFacade.getInstance() == null) {
                 PersistenceRegistry(null, null).init()
             }
-        }
-
-        private val service: AssignableReferenceService = createServiceWithoutCtor()
-
-        private fun createServiceWithoutCtor(): AssignableReferenceService {
-            val unsafe = Unsafe::class.java.getDeclaredField("theUnsafe")
-                .also { it.isAccessible = true }
-                .get(null) as Unsafe
-            val instance = unsafe.allocateInstance(AssignableReferenceService::class.java) as AssignableReferenceService
-            initInstanceFields(instance)
-            return instance
-        }
-
-        private fun initInstanceFields(instance: AssignableReferenceService) {
-            val cls = AssignableReferenceService::class.java
-            fun set(name: String, value: Any?) {
-                cls.getDeclaredField(name).also { it.isAccessible = true }.set(instance, value)
-            }
-            set("facade", PersistenceFacade.getInstance())
-            set(
-                "CONCEPTS_ClassCreator",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator"
-                )
-            )
-            set(
-                "CONCEPTS_IMethodCall",
-                MetaAdapterFactory.getInterfaceConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"
-                )
-            )
-            set(
-                "CONCEPTS_BaseMethodDeclaration",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"
-                )
-            )
-            set(
-                "CONCEPTS_ConstructorDeclaration",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration"
-                )
-            )
-            set(
-                "CONCEPTS_Classifier",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier"
-                )
-            )
-            set(
-                "CONCEPTS_InstanceMethodDeclaration",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration"
-                )
-            )
-            set(
-                "CONCEPTS_StaticMethodDeclaration",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration"
-                )
-            )
-            set(
-                "CONCEPTS_ClassifierType",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType"
-                )
-            )
-            set(
-                "CONCEPTS_PrivateVisibility",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility"
-                )
-            )
-            set(
-                "CONCEPTS_ProtectedVisibility",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility"
-                )
-            )
-            set(
-                "CONCEPTS_PublicVisibility",
-                MetaAdapterFactory.getConcept(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility"
-                )
-            )
-            set(
-                "LINKS_baseMethodDeclaration",
-                MetaAdapterFactory.getReferenceLink(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration"
-                )
-            )
-            set(
-                "LINKS_actualArgument",
-                MetaAdapterFactory.getContainmentLink(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x11857355952L, 0xf8c78301aeL, "actualArgument"
-                )
-            )
-            set(
-                "LINKS_parameter",
-                MetaAdapterFactory.getContainmentLink(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"
-                )
-            )
-            set(
-                "LINKS_type",
-                MetaAdapterFactory.getContainmentLink(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x450368d90ce1522fL, 0x450368d90ce15230L, "type"
-                )
-            )
-            set(
-                "LINKS_classifier",
-                MetaAdapterFactory.getReferenceLink(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x101de48bf9eL, 0x101de490babL, "classifier"
-                )
-            )
-            set(
-                "LINKS_visibility",
-                MetaAdapterFactory.getContainmentLink(
-                    0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
-                    0x112670d273fL, 0x112670d886aL, "visibility"
-                )
-            )
+            // Must happen after PersistenceFacade is initialized: the helper captures the facade in
+            // its constructor and the type is non-nullable.
+            helpers = AssignableReferenceHelpers()
         }
     }
 
@@ -182,7 +43,7 @@ class AssignableReferenceServiceTest {
 
     @Test
     fun errorResponseReturnsFailureWithMessage() {
-        val response = service.errorResponse("Boom")
+        val response = helpers.errorResponse("Boom")
         assertFalse(response.ok)
         assertTrue(response.data.isEmpty())
         assertEquals("Boom", response.error)
@@ -191,7 +52,7 @@ class AssignableReferenceServiceTest {
 
     @Test
     fun errorResponseToleratesNullMessage() {
-        val response = service.errorResponse(null)
+        val response = helpers.errorResponse(null)
         assertFalse(response.ok)
         assertNull(response.error)
         assertTrue(response.data.isEmpty())
@@ -202,19 +63,19 @@ class AssignableReferenceServiceTest {
     @Test
     fun fqnOfFormatsModelLongNamePlusNodeName() {
         val node = mockSNode(name = "Foo", modelLongName = "my.lang.structure")
-        assertEquals("my.lang.structure.Foo", service.fqnOf(node))
+        assertEquals("my.lang.structure.Foo", helpers.fqnOf(node))
     }
 
     @Test
     fun fqnOfWithoutModelReturnsNodeNameAlone() {
         val node = mockSNode(name = "Foo", modelLongName = null)
-        assertEquals("Foo", service.fqnOf(node))
+        assertEquals("Foo", helpers.fqnOf(node))
     }
 
     @Test
     fun fqnOfWithoutNodeNameReturnsNull() {
         val node = mockSNode(name = null, modelLongName = "irrelevant")
-        assertNull(service.fqnOf(node))
+        assertNull(helpers.fqnOf(node))
     }
 
     // -------------------------------------------------------- findContainingClassifier ----
@@ -234,7 +95,7 @@ class AssignableReferenceServiceTest {
             parent = intermediate
         )
 
-        assertSame(classifierAncestor, service.findContainingClassifier(starting))
+        assertSame(classifierAncestor, helpers.findContainingClassifier(starting))
     }
 
     @Test
@@ -242,7 +103,7 @@ class AssignableReferenceServiceTest {
         val ancestor = mockSNode(concept = mockConcept(isClassifier = false), parent = null)
         val starting = mockSNode(concept = mockConcept(isClassifier = false), parent = ancestor)
 
-        assertNull(service.findContainingClassifier(starting))
+        assertNull(helpers.findContainingClassifier(starting))
     }
 
     @Test
@@ -254,7 +115,7 @@ class AssignableReferenceServiceTest {
             parent = null
         )
 
-        assertNull(service.findContainingClassifier(starting))
+        assertNull(helpers.findContainingClassifier(starting))
     }
 
     // ----------------------------------------------------------- computeAccessibility ----
@@ -262,7 +123,7 @@ class AssignableReferenceServiceTest {
     @Test
     fun computeAccessibilityIsTrueForArbitraryNonMethodNonClassifier() {
         val candidate = mockSNode(concept = mockConcept())
-        assertTrue(service.computeAccessibility(candidate, stubContext()))
+        assertTrue(helpers.computeAccessibility(candidate, stubContext()))
     }
 
     @Test
@@ -270,17 +131,12 @@ class AssignableReferenceServiceTest {
         val publicVisibilityChild = mockSNode(
             concept = mockConcept(matchesQualifiedName = "jetbrains.mps.baseLanguage.structure.PublicVisibility")
         )
-        val visibilityLink = AssignableReferenceService::class.java
-            .getDeclaredField("LINKS_visibility")
-            .also { it.isAccessible = true }
-            .get(service) as SContainmentLink
-
         val candidate = mockSNode(
             concept = mockConcept(matchesQualifiedName = "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"),
-            childrenByLink = mapOf(visibilityLink to listOf(publicVisibilityChild))
+            childrenByLink = mapOf(helpers.visibilityLink to listOf(publicVisibilityChild))
         )
 
-        assertTrue(service.computeAccessibility(candidate, stubContext()))
+        assertTrue(helpers.computeAccessibility(candidate, stubContext()))
     }
 
     // -------------------------------------------------------------- helpers ----

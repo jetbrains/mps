@@ -35,6 +35,7 @@ import java.lang.reflect.Field;
     JetBrainsMPSJavaMcpToolsetIntegrationTest.class,
     JetBrainsMPSModuleMcpToolsetIntegrationTest.class,
     JetBrainsMPSNodeMcpToolsetIntegrationTest.class,
+    JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest.class,
     AbstractOpsPropertyProblemsTest.class,
     AssignableReferenceServiceTest.class,
     McpToolInputSchemasTest.class,
@@ -48,7 +49,11 @@ public class McpToolsIntegrationTestSuite extends BaseMpsSuite {
     // private cache field to bypass that assertion. The check expects the user.dir to be
     // an MPS checkout root.
     seedMpsHome();
-    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig().withTestModeOn();
+    // withExecutionPlugins() loads execution-languages and execution-configurations so that the
+    // "Java" and "JUnit Tests" ConfigurationType extensions register in the test environment.
+    // The run-configuration toolset's happy paths need this; tests in other toolsets do not
+    // depend on it but tolerate the extra plugins fine.
+    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig().withExecutionPlugins().withTestModeOn();
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();
   }

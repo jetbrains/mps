@@ -20,5 +20,6 @@
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSEditorMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageStructureMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSJavaMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSRunConfigurationMcpToolset" />
   </extensions>
 </idea-plugin>

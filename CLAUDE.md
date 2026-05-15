@@ -167,11 +167,13 @@ Local skills in [`.claude/skills/`](.claude/skills/):
 - [`mps-aspect-typesystem`](.claude/skills/mps-aspect-typesystem/SKILL.md) — MPS typesystem — inference, subtyping, checking rules.
 - [`mps-bugfix`](.claude/skills/mps-bugfix/SKILL.md) — MPS bugfixing workflow.
 - [`mps-build-language`](.claude/skills/mps-build-language/SKILL.md) — MPS Build Language scripts.
+- [`mps-distribution-build`](.claude/skills/mps-distribution-build/SKILL.md) — generated Ant pipeline (`build/mps*.xml`) that builds MPS distributions; how to bundle a new plain Java/Kotlin plugin.
 - [`mps-lang-core-xml`](.claude/skills/mps-lang-core-xml/SKILL.md) — `jetbrains.mps.core.xml` language for XML documents and generator templates.
 - [`mps-ide-plugin`](.claude/skills/mps-ide-plugin/SKILL.md) — authoring MPS IDE plugins: actions, groups, tool windows, keymaps, preferences.
 - [`mps-language-aspects-overview`](.claude/skills/mps-language-aspects-overview/SKILL.md) — entry point for MPS language authoring; indexes all aspects.
 - [`mps-model-code`](.claude/skills/mps-model-code/SKILL.md) — BaseLanguage code combining smodel, closures, and collections.
 - [`mps-quotations`](.claude/skills/mps-quotations/SKILL.md) — MPS quotations and anti-quotations for inline SNode trees.
+- [`mps-tests`](.claude/skills/mps-tests/SKILL.md) — writing tests in MPS test models: NodesTestCase, EditorTestCase, MigrationTestCase, BTestCase.
 - [`registry`](.claude/skills/registry/SKILL.md) — IntelliJ Registry API.
 - [`ssr`](.claude/skills/ssr/SKILL.md) — Structural Search and Replace in IntelliJ.
 - [`teamcity-cli`](.claude/skills/teamcity-cli/SKILL.md) — TeamCity CI/CD CLI usage.

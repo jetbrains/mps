@@ -697,8 +697,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpDescription(
         """
         Adds a child node described by a JSON blueprint to a specified containment role of the given MPS node.
-        The child is added as the last child in the role, if the role permits multiple children.
-        If the role permits only one child, the new child replaces the previous child.
+        For multi-cardinality roles the new child is appended at the end by default; pass 'position' to
+        insert at a specific 0-based index instead. For single-cardinality roles the new child replaces
+        the previous child; 'position' is allowed only if null, -1, or 0 (any other value is rejected).
         The concept of the child node must be assignable to the role's concept.
         Updates the dependencies and used languages of the containing model.
         The 'childJson' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local file containing it.
@@ -719,6 +720,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         - Prefer this tool for staged construction when a large root-node JSON would be too big or gets truncated. Insert the parent first, then add child subtrees over multiple calls.
 
         Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
+        On success 'data' describes the newly inserted child node; the parent's persistent reference is available as 'data.parentReference'.
     """
     )
     suspend fun mps_mcp_add_node_child(
@@ -732,9 +734,17 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             Use the unified JSON format.
         """
         ) childJson: String,
-        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
+        @McpDescription(
+            """
+            Optional 0-based index at which to insert the new child in a multi-cardinality role.
+            Omit (or pass null, -1, or the current child count N) to append at the end (default).
+            Values outside [-1, N] are rejected. For single-cardinality (0..1 / 1) roles only null, -1, or 0
+            are accepted; any other value is rejected. Default: null (append).
+        """
+        ) position: Int? = null,
+        @McpDescription("Optional: if true, only validate JSON, concept-role assignability, and position without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
-        return update_node_child(nodeRef, childRole, childJson, null, dryRun)
+        return update_node_child(nodeRef, childRole, childJson, null, position, dryRun)
     }
 
     @McpTool
@@ -776,7 +786,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         ) childJson: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
-        return update_node_child(null, null, childJson, childNodeRef, dryRun)
+        return update_node_child(null, null, childJson, childNodeRef, null, dryRun)
     }
 
     @McpTool
@@ -793,7 +803,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         // future change to the wrapper signature (e.g. additional pre-processing) is
         // applied consistently here too. Passing childJson=null skips JSON parsing
         // and the base-class update_node_child() takes the deletion path.
-        return update_node_child(null, null, null, childNodeRef)
+        return update_node_child(null, null, null, childNodeRef, null)
     }
 
     private suspend fun update_node_child(
@@ -801,10 +811,11 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         childRole: String?,
         childJson: String?,
         childToReplaceOrDeleteRef: String?,
+        position: Int?,
         dryRun: Boolean = false
     ): String = withMpsProject("Updating MPS node child") { mpsProject ->
         val actualJson = readNodeJsonOrFile(childJson, dryRun)
-        update_node_child(mpsProject, nodeRef, childRole, actualJson, childToReplaceOrDeleteRef, dryRun)
+        update_node_child(mpsProject, nodeRef, childRole, actualJson, childToReplaceOrDeleteRef, position, dryRun)
     }
 
     private suspend fun update_node_reference(
@@ -944,6 +955,15 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     val containmentLink = newParent.concept.containmentLinks.find { it.name == role }
                         ?: return@executeShortCommandOnEdt errJson("Child role '$role' not found in concept '${newParent.concept.name}'", McpErrorCode.NOT_FOUND)
 
+                    // Validate target position BEFORE detaching the node so an invalid request
+                    // doesn't leave the model in a partially-mutated state.
+                    if (position != null && position != -1) {
+                        val preCount = newParent.getChildren(containmentLink).toList().size
+                        if (position !in 0..preCount) {
+                            return@executeShortCommandOnEdt errJson("Target index $position is out of bounds (count: $preCount)", McpErrorCode.INVALID_REQUEST)
+                        }
+                    }
+
                     detachNode(node, sourceModel)
 
                     // Add to new parent
@@ -951,11 +971,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                         newParent.addChild(containmentLink, node)
                     } else {
                         val childrenInRole = newParent.getChildren(containmentLink).toList()
-                        val count = childrenInRole.size
-                        if (position !in 0..count) {
-                            return@executeShortCommandOnEdt errJson("Target index $position is out of bounds (count: $count)", McpErrorCode.INVALID_REQUEST)
-                        }
-                        val anchor = if (position < count) childrenInRole[position] else null
+                        val anchor = if (position < childrenInRole.size) childrenInRole[position] else null
                         newParent.insertChildBefore(containmentLink, node, anchor)
                     }
                     targetModel.save()

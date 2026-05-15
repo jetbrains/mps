@@ -383,7 +383,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
     }
 
-    protected suspend fun update_node_child(mpsProject: MPSProject, nodeRef: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?, dryRun: Boolean = false): String {
+    protected suspend fun update_node_child(mpsProject: MPSProject, nodeRef: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?, position: Int? = null, dryRun: Boolean = false): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node child")
         return executeShortCommandOnEdt(mpsProject) {
             val repo = mpsProject.repository
@@ -459,6 +459,31 @@ abstract class AbstractNodeOps : AbstractOps() {
 
                 val role = parent.concept.containmentLinks.find { it.name == childRole } ?: return@executeShortCommandOnEdt errJson("Child role '$childRole' not found in concept '${parent.concept.name}'", McpErrorCode.NOT_FOUND)
 
+                // Snapshot existing children only for multi-cardinality roles; for 0..1 / 1 the
+                // count and order are irrelevant — the role either replaces or rejects.
+                val existingChildrenInRole: List<SNode> =
+                    if (role.isMultiple) parent.getChildren(role).toList() else emptyList()
+
+                // Validate `position` up front so we never partially mutate the model.
+                if (position != null) {
+                    if (role.isMultiple) {
+                        val existingChildCount = existingChildrenInRole.size
+                        if (position < -1 || position > existingChildCount) {
+                            return@executeShortCommandOnEdt errJson(
+                                "position out of range: $position for role '$childRole' which has $existingChildCount children",
+                                McpErrorCode.INVALID_REQUEST
+                            )
+                        }
+                    } else {
+                        if (position != -1 && position != 0) {
+                            return@executeShortCommandOnEdt errJson(
+                                "position $position not applicable to single-cardinality role '$childRole' (only null, -1, or 0 are allowed)",
+                                McpErrorCode.INVALID_REQUEST
+                            )
+                        }
+                    }
+                }
+
                 val jsonObject = try {
                     parseJson(childJson)
                 } catch (e: Exception) {
@@ -486,10 +511,17 @@ abstract class AbstractNodeOps : AbstractOps() {
                 }
 
                 if (!dryRun) {
-                    parent.addChild(role, newChild)
+                    val appendAtEnd = position == null || position == -1 || !role.isMultiple || position >= existingChildrenInRole.size
+                    if (appendAtEnd) {
+                        parent.addChild(role, newChild)
+                    } else {
+                        // position is in [0, existingChildrenInRole.size); the snapshot was taken before any mutation.
+                        val anchor = existingChildrenInRole[position]
+                        parent.insertChildBefore(role, newChild, anchor)
+                    }
                     performFixReferences(mpsProject, newChild)
                     model.save()
-                    okJson(nodeInfoJson(parent))
+                    okJson(nodeInfoJson(newChild))
                 } else {
                     okJson(jsonObject {
                         addProperty("dryRun", true)

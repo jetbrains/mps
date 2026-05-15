@@ -39,6 +39,7 @@
   <property name="artifacts.mpsKotlinPlugin" location="${build.dir}/artifacts/mpsKotlinPlugin" />
   <property name="artifacts.mpsCore" location="${build.dir}/artifacts/mpsCore" />
   <property name="artifacts.mpsAntToolsPlugin" location="${build.dir}/artifacts/mpsAntToolsPlugin" />
+  <property name="artifacts.mpsMcpTools" location="${build.dir}/artifacts/mpsMcpTools" />
   <property file="${artifacts.mpsBuild}/build.properties" prefix="import.mpsBuild" />
   <property name="mpsBootstrapCore.version.major" value="${import.mpsBuild.mpsBootstrapCore.version.major}" />
   <property name="mpsBootstrapCore.version.minor" value="${import.mpsBuild.mpsBootstrapCore.version.minor}" />
@@ -242,6 +243,9 @@
     <copy todir="${build.layout}/plugins/mps-ant-make">
       <fileset dir="${artifacts.mpsAntToolsPlugin}/mps-ant-make" />
     </copy>
+    <copy todir="${build.layout}/plugins">
+      <fileset dir="${artifacts.mpsMcpTools}" />
+    </copy>
     <zip destfile="${build.layout}/samples.zip">
       <zipfileset dir="${basedir}/samples" prefix="MPSSamples">
         <exclude name="**/vcs.xml" />
@@ -306,6 +310,7 @@
     <ant antfile="build/mpsSpellCheckPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsKotlinPlugin.xml" inheritAll="false" useNativeBasedir="true" />
     <ant antfile="build/mpsAntToolsPlugin.xml" inheritAll="false" useNativeBasedir="true" />
+    <ant antfile="build/mpsMcpTools.xml" inheritAll="false" useNativeBasedir="true" />
   </target>
   
   <target name="fetchDependencies" />
