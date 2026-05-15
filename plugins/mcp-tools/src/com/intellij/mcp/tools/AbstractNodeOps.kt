@@ -1,8 +1,6 @@
 package com.intellij.mcp.tools
 
-import com.google.gson.Gson
 import com.google.gson.JsonObject
-import com.intellij.codeInspection.incorrectFormatting.detectFormattingChanges
 import com.intellij.mcpserver.reportToolActivity
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
@@ -22,6 +20,8 @@ import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil
 import org.jetbrains.mps.openapi.model.SReference
+import org.jetbrains.mps.openapi.model.SNodeReference
+import org.jetbrains.mps.openapi.module.SRepository
 
 abstract class AbstractNodeOps : AbstractOps() {
 
@@ -116,47 +116,21 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
                 val link = sConcept.referenceLinks.find { it.name == roleName }
                 if (link != null && !targetRefStr.isNullOrEmpty()) {
-                    // Detect MPS XML short IDs (e.g. "23xMseU$JuM") — these are the compact encoded
-                    // form used inside .mps XML files and are NOT valid MCP node references.
-                    // Using them silently produces a null/dangling reference; fail loudly instead.
-                    failIfXMLReferenceIsUsed(targetRefStr, jsonPath, index)
-                    val isPersistentRef = targetRefStr.startsWith("r:") || targetRefStr.startsWith("i:") || targetRefStr.contains(".")
-                    val targetRef = if (isPersistentRef) resolveNodeReference(model.repository, targetRefStr) else null
-                    val targetNode = targetRef?.resolve(model.repository)
-                    if (targetNode != null) {
-                        if (!targetNode.concept.isSubConceptOf(link.targetConcept)) {
-                            throw AssignabilityException(
-                                jsonPath = "$jsonPath.references[$index]",
-                                actualConcept = targetNode.concept.name,
-                                expectedConcepts = listOf(link.targetConcept.name),
-                                parentConcept = sConcept.name,
-                                role = roleName ?: "unknown"
-                            )
-                        }
-                        newNode.setReference(link, targetRef!!)
-
-                        // Ensure target model is imported
-                        if (!dryRun) {
-                            val targetModelRef = targetRef.modelReference
-                            if (targetModelRef != null && model is SModelInternal && !model.modelImports.contains(targetModelRef)) {
-                                model.addModelImport(targetModelRef)
-
-                                // Also add module dependency
-                                val targetModule = targetNode.model?.module
-                                val currentModule = model.module
-                                if (targetModule != null && currentModule != null && targetModule != currentModule) {
-                                    (currentModule as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
-                                }
-                            }
-                        }
-                    } else if (targetRef != null) {
-                        // Persistent reference that does not resolve yet
-                        newNode.setReference(link, targetRef)
-                    } else if (!dryRun) {
-                        // Not a persistent reference, set as dynamic reference via resolveInfo
-                        // This allows the reference to be fixed later if it refers to a node that's being created in the same call.
-                        newNode.setReference(link, ResolveInfo.of(targetRefStr))
-                    }
+                    applyReferenceUpdate(
+                        ownerNode = newNode,
+                        link = link,
+                        targetRefStr = targetRefStr,
+                        model = model,
+                        repository = model.repository,
+                        parentConceptName = sConcept.name,
+                        roleName = roleName ?: "unknown",
+                        errorPath = "$jsonPath.references[$index]",
+                        xmlReferencePath = jsonPath,
+                        xmlReferenceIndex = index,
+                        dryRun = dryRun,
+                        allowDynamicReference = !dryRun,
+                        assignResolvedReferenceOnDryRun = true
+                    )
                 }
             }
         }
@@ -165,22 +139,115 @@ abstract class AbstractNodeOps : AbstractOps() {
     }
 
     private fun failIfXMLReferenceIsUsed(targetRefStr: String, jsonPath: String, index: Int) {
-        // Detect MPS XML short IDs (e.g. "23xMseU$JuM") — these are the compact encoded
-        // form used inside .mps XML files and are NOT valid MCP node references.
+        // Detect MPS XML short IDs (e.g. "23xMseU$JuM", "37ibr6CxHv8") — these are the compact
+        // base-encoded form used inside .mps XML files and are NOT valid MCP node references.
         // Using them silently produces a null/dangling reference; fail loudly instead.
-        if (targetRefStr.matches(Regex("[0-9A-Za-z\$_]{8,20}")) &&
-            !targetRefStr.contains(".") &&
-            !targetRefStr.startsWith("r:") &&
-            !targetRefStr.startsWith("i:")
-        ) {
+        //
+        // Distinguishing them from plain identifiers (which the API legitimately accepts for
+        // name-based auto-resolution) requires more than a generic [0-9A-Za-z$_]{8,20} match —
+        // identifiers like "walkToWall" or "MyClassName" trip that filter. Real XML short IDs
+        // additionally either start with a digit (illegal as the first char of a JVM identifier)
+        // or contain '$' (technically legal but virtually never used in user-named things).
+        if (looksLikeMpsXmlShortId(targetRefStr)) {
             throw IllegalArgumentException(
                 "Invalid node reference at $jsonPath.references[$index]: " +
                         "'$targetRefStr' looks like an MPS XML short ID (from a .mps file). " +
                         "These cannot be used as target references — they are an internal encoding " +
                         "that differs from the persistent references used by the MCP API. " +
                         "Use the persistent reference from mps_mcp_print_node_json output instead " +
-                        "(e.g. 'r:<modelId>/<nodeId>'), or use a plain name for auto-resolution."
+                        "(e.g. 'r:<modelId>/<nodeId>')."
             )
+        }
+    }
+
+    private fun looksLikeMpsXmlShortId(s: String): Boolean {
+        if (s.length !in 8..20) return false
+        if (s.contains('.') || s.startsWith("r:") || s.startsWith("i:")) return false
+        if (!s.matches(Regex("[0-9A-Za-z\$_]+"))) return false
+        // Containing '$' or starting with a digit are both illegal/extremely rare in plain
+        // JVM identifiers but normal for MPS-encoded short IDs. Require at least one of these
+        // to avoid false-positives on plain camelCase / PascalCase names.
+        return s.contains('$') || s.first().isDigit()
+    }
+
+    private fun applyReferenceUpdate(
+        ownerNode: SNode,
+        link: SReferenceLink,
+        targetRefStr: String,
+        model: SModel,
+        repository: SRepository,
+        parentConceptName: String,
+        roleName: String,
+        errorPath: String,
+        xmlReferencePath: String,
+        xmlReferenceIndex: Int,
+        dryRun: Boolean,
+        allowDynamicReference: Boolean,
+        assignResolvedReferenceOnDryRun: Boolean = false,
+        validateXmlReference: Boolean = true,
+        persistentReferencesOnly: Boolean = true
+    ) {
+        if (validateXmlReference) {
+            failIfXMLReferenceIsUsed(targetRefStr, xmlReferencePath, xmlReferenceIndex)
+        }
+        val targetRef = if (persistentReferencesOnly) {
+            resolveReferenceTarget(repository, targetRefStr)
+        } else {
+            resolveNodeReference(repository, targetRefStr)
+        }
+        val targetNode = targetRef?.resolve(repository)
+        if (targetNode != null) {
+            validateReferenceTarget(targetNode, link, parentConceptName, roleName, errorPath)
+            if (!dryRun || assignResolvedReferenceOnDryRun) {
+                ownerNode.setReference(link, targetRef)
+            }
+            if (!dryRun) {
+                ensureReferenceDependencies(model, targetRef, targetNode)
+            }
+            return
+        }
+        if (targetRef != null) {
+            if (!dryRun || assignResolvedReferenceOnDryRun) {
+                ownerNode.setReference(link, targetRef)
+            }
+        } else if (!dryRun && allowDynamicReference) {
+            ownerNode.setReference(link, ResolveInfo.of(targetRefStr))
+        }
+    }
+
+    private fun resolveReferenceTarget(repository: SRepository, targetRefStr: String): SNodeReference? {
+        val isPersistentRef = targetRefStr.startsWith("r:") || targetRefStr.startsWith("i:") || targetRefStr.contains(".")
+        return if (isPersistentRef) resolveNodeReference(repository, targetRefStr) else null
+    }
+
+    private fun validateReferenceTarget(
+        targetNode: SNode,
+        link: SReferenceLink,
+        parentConceptName: String,
+        roleName: String,
+        errorPath: String
+    ) {
+        if (!targetNode.concept.isSubConceptOf(link.targetConcept)) {
+            throw AssignabilityException(
+                jsonPath = errorPath,
+                actualConcept = targetNode.concept.name,
+                expectedConcepts = listOf(link.targetConcept.name),
+                parentConcept = parentConceptName,
+                role = roleName
+            )
+        }
+    }
+
+    private fun ensureReferenceDependencies(model: SModel, targetRef: SNodeReference, targetNode: SNode) {
+        val targetModelRef = targetRef.modelReference ?: return
+        val editableModel = model as? SModelInternal ?: return
+        if (editableModel.modelImports.contains(targetModelRef)) return
+        editableModel.addModelImport(targetModelRef)
+
+        val targetModule = targetNode.model?.module ?: return
+        val currentModule = model.module ?: return
+        if (targetModule != currentModule) {
+            (currentModule as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
         }
     }
 
@@ -262,46 +329,20 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
                 val link = sConcept.referenceLinks.find { it.name == roleName }
                 if (link != null && !targetRefStr.isNullOrEmpty()) {
-                    failIfXMLReferenceIsUsed(targetRefStr, jsonPath, index)
-                    val isPersistentRef = targetRefStr.startsWith("r:") || targetRefStr.startsWith("i:") || targetRefStr.contains(".")
-                    val targetRef = if (isPersistentRef) resolveNodeReference(model.repository, targetRefStr) else null
-                    val targetNode = targetRef?.resolve(model.repository)
-                    if (targetNode != null) {
-                        if (!targetNode.concept.isSubConceptOf(link.targetConcept)) {
-                            throw AssignabilityException(
-                                jsonPath = "$jsonPath.references[$index]",
-                                actualConcept = targetNode.concept.name,
-                                expectedConcepts = listOf(link.targetConcept.name),
-                                parentConcept = sConcept.name,
-                                role = roleName
-                            )
-                        }
-                        if (!dryRun) {
-                            node.setReference(link, targetRef!!)
-
-                            // Ensure target model is imported
-                            val targetModelRef = targetRef.modelReference
-                            if (targetModelRef != null && model is SModelInternal && !model.modelImports.contains(targetModelRef)) {
-                                model.addModelImport(targetModelRef)
-
-                                // Also add module dependency
-                                val targetModule = targetNode.model?.module
-                                val currentModule = model.module
-                                if (targetModule != null && currentModule != null && targetModule != currentModule) {
-                                    (currentModule as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
-                                }
-                            }
-                        }
-                    } else if (!dryRun) {
-                        if (targetRef != null) {
-                            // Persistent reference that does not resolve yet
-                            node.setReference(link, targetRef)
-                        } else {
-                            // Not a persistent reference, set as dynamic reference via resolveInfo
-                            // This allows the reference to be fixed later if it refers to a node that's being created in the same call.
-                            node.setReference(link, ResolveInfo.of(targetRefStr))
-                        }
-                    }
+                    applyReferenceUpdate(
+                        ownerNode = node,
+                        link = link,
+                        targetRefStr = targetRefStr,
+                        model = model,
+                        repository = model.repository,
+                        parentConceptName = sConcept.name,
+                        roleName = roleName,
+                        errorPath = "$jsonPath.references[$index]",
+                        xmlReferencePath = jsonPath,
+                        xmlReferenceIndex = index,
+                        dryRun = dryRun,
+                        allowDynamicReference = !dryRun
+                    )
                 }
             }
         }
@@ -312,7 +353,6 @@ abstract class AbstractNodeOps : AbstractOps() {
         return try {
             executeCommand(mpsProject) {
                 val repo = mpsProject.repository
-                val gson = Gson()
                 
                 if (childToReplaceOrDeleteRef != null) {
                     // Replacement or Deletion
@@ -435,42 +475,22 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val sReferenceLink = node.concept.referenceLinks.find { it.name == referenceRole } ?: return@executeCommand errJson("Reference link '$referenceRole' not found in concept '${node.concept.name}'")
 
                 if (targetNodeRefStr != null) {
-                    val targetNodeRef = resolveNodeReference(mpsProject.repository, targetNodeRefStr)
-                    val targetNode = targetNodeRef?.resolve(mpsProject.repository)
-                    if (targetNode != null) {
-                        val expectedConcept = sReferenceLink.targetConcept
-                        if (!targetNode.concept.isSubConceptOf(expectedConcept)) {
-                            throw AssignabilityException(
-                                jsonPath = "targetNodeReference",
-                                actualConcept = targetNode.concept.name,
-                                expectedConcepts = listOf(expectedConcept.name),
-                                parentConcept = node.concept.name,
-                                role = referenceRole
-                            )
-                        }
-                        node.setReference(sReferenceLink, targetNodeRef!!)
-
-                        // Dependency management
-                        if (model is SModelInternal) {
-                            val targetModelRef = targetNodeRef.modelReference
-                            if (targetModelRef != null && !model.modelImports.contains(targetModelRef)) {
-                                model.addModelImport(targetModelRef)
-
-                                val targetModel = targetModelRef.resolve(mpsProject.repository)
-                                val targetModule = targetModel?.module
-                                val currentModule = model.module
-                                if (targetModule != null && currentModule != null && targetModule != currentModule) {
-                                    (currentModule as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
-                                }
-                            }
-                        }
-                    } else if (targetNodeRef != null) {
-                        // Persistent reference that does not resolve yet
-                        node.setReference(sReferenceLink, targetNodeRef)
-                    } else {
-                        // Not a persistent reference, set as dynamic reference via resolveInfo
-                        node.setReference(sReferenceLink, ResolveInfo.of(targetNodeRefStr))
-                    }
+                    applyReferenceUpdate(
+                        ownerNode = node,
+                        link = sReferenceLink,
+                        targetRefStr = targetNodeRefStr,
+                        model = model,
+                        repository = mpsProject.repository,
+                        parentConceptName = node.concept.name,
+                        roleName = referenceRole,
+                        errorPath = "targetNodeReference",
+                        xmlReferencePath = "$",
+                        xmlReferenceIndex = 0,
+                        dryRun = false,
+                        allowDynamicReference = true,
+                        validateXmlReference = false,
+                        persistentReferencesOnly = false
+                    )
                 } else {
                     // Deletion
                     node.dropReference(sReferenceLink)

@@ -4,11 +4,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonObject
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
-import com.intellij.mcpserver.project
-import com.intellij.mcpserver.reportToolActivity
-import com.intellij.openapi.application.EDT
 import jetbrains.mps.classloading.ClassLoaderManager
-import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.java.core.newparser.*
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
@@ -26,9 +22,6 @@ import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.smodel.constraints.ModelConstraints
 import jetbrains.mps.smodel.language.LanguageRegistry
 import jetbrains.mps.typechecking.TypecheckingFacade
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.withContext
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.language.SProperty
@@ -42,6 +35,23 @@ import java.lang.reflect.Field
 
 
 class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
+    companion object {
+        data class EffectiveJavaParseSource(val code: String, val featureKind: FeatureKind)
+
+        fun effectiveJavaParseSource(code: String, featureKind: FeatureKind, isExpression: Boolean): EffectiveJavaParseSource {
+            val effectiveFeatureKind = when (featureKind) {
+                FeatureKind.FIELD, FeatureKind.METHOD, FeatureKind.NESTED_CLASS -> FeatureKind.CLASS_CONTENT
+                else -> featureKind
+            }
+            if (!isExpression) {
+                return EffectiveJavaParseSource(code, effectiveFeatureKind)
+            }
+
+            val stripped = code.trimEnd().trimEnd(';')
+            // Plain arithmetic such as "a - b * c" is not a valid Java expression-statement, so parse it through a variable initializer.
+            return EffectiveJavaParseSource("Object __mcp_expr__ = $stripped;", FeatureKind.STATEMENTS)
+        }
+    }
 
     // IYetUnresolved interface concept (jetbrains.mps.baseLanguage.structure.IYetUnresolved)
     private val IYET_UNRESOLVED: SAbstractConcept = MetaAdapterFactory.getInterfaceConcept(
@@ -190,7 +200,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     private fun fixMethodReferences(roots: Iterable<SNode>) {
         val rootList = roots.toList()
         val repo = rootList.firstOrNull()?.model?.repository
-        
+
         // Try to get MethodResolveUtil via reflection, trying multiple classloaders if needed.
         val replaceFromEditor: java.lang.reflect.Method? = try {
             var clazz: Class<*>? = null
@@ -203,13 +213,14 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                     if (module != null) {
                         clazz = ClassLoaderManager.getInstance().getClassLoader(module)?.loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
                     }
-                    
+
                     if (clazz == null) {
                         val lang = LanguageRegistry.getInstance(repo).getLanguage("jetbrains.mps.baseLanguage")
                         val runtimeModuleRef = lang?.runtimeModules?.firstOrNull()
                         val runtimeModule = if (runtimeModuleRef != null) repo.getModule(runtimeModuleRef.moduleId) else null
                         if (runtimeModule != null) {
-                            clazz = ClassLoaderManager.getInstance().getClassLoader(runtimeModule)?.loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
+                            clazz =
+                                ClassLoaderManager.getInstance().getClassLoader(runtimeModule)?.loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
                         }
                     }
                 }
@@ -227,12 +238,13 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         for (root in rootList) {
             val descendants = SNodeOperations.getNodeDescendants(root, null, true, emptyArray())
             for (node in descendants) {
-                if (SNodeOperations.isInstanceOf(node, IFIXABLE_METHOD_REF) || 
+                if (SNodeOperations.isInstanceOf(node, IFIXABLE_METHOD_REF) ||
                     SNodeOperations.isInstanceOf(node, IMETHOD_CALL) ||
-                    SNodeOperations.isInstanceOf(node, ANONYMOUS_CLASS) || 
-                    SNodeOperations.isInstanceOf(node, CLASS_CREATOR) || 
-                    SNodeOperations.isInstanceOf(node, INSTANCE_METHOD_CALL)) {
-                    
+                    SNodeOperations.isInstanceOf(node, ANONYMOUS_CLASS) ||
+                    SNodeOperations.isInstanceOf(node, CLASS_CREATOR) ||
+                    SNodeOperations.isInstanceOf(node, INSTANCE_METHOD_CALL)
+                ) {
+
                     try {
                         var fixed = false
                         if (replaceFromEditor != null) {
@@ -263,10 +275,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             if (!SNodeOperations.isInstanceOf(target, BASE_METHOD_DECL)) {
                 continue
             }
-            
+
             val actualArgs = SLinkOperations.getChildren(node, ACTUAL_ARGUMENT_LINK)
             val targetParams = SLinkOperations.getChildren(target, PARAMETER_LINK)
-            
+
             if (actualArgs.size != targetParams.size) {
                 return false
             }
@@ -278,17 +290,17 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         for (ref in node.references) {
             val target = ref.targetNode
             if (target != null && !SNodeOperations.isInstanceOf(target, BASE_METHOD_DECL)) continue
-            
+
             val actualArgs = SLinkOperations.getChildren(node, ACTUAL_ARGUMENT_LINK)
             val actualArgsCount = actualArgs.size
-            
+
             // If current target has wrong parameter count, try to find a better one in the scope
             if (target == null || SLinkOperations.getChildren(target, PARAMETER_LINK).size != actualArgsCount) {
                 val scope = ModelConstraints.getScope(ref)
                 if (scope != null) {
                     var refText = (ref as? SReference)?.resolveInfo
                         ?: SPropertyOperations.getString(target, NAME_PROPERTY)
-                    
+
                     if ((refText == null || refText.isEmpty()) && SNodeOperations.isInstanceOf(node, ANONYMOUS_CLASS)) {
                         val classifier = SLinkOperations.getTarget(node, CLASSIFIER_LINK)
                         refText = SPropertyOperations.getString(classifier, NAME_PROPERTY)
@@ -297,14 +309,14 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                     if (refText == null || refText.isEmpty()) {
                         continue
                     }
-                    
+
                     val candidates = scope.getAvailableElements(refText).toList()
                     val methodCandidates = candidates.filter { SNodeOperations.isInstanceOf(it, BASE_METHOD_DECL) }
-                    
-                    val bestMatch = methodCandidates.find { cand -> 
-                        SLinkOperations.getChildren(cand, PARAMETER_LINK).size == actualArgsCount 
+
+                    val bestMatch = methodCandidates.find { cand ->
+                        SLinkOperations.getChildren(cand, PARAMETER_LINK).size == actualArgsCount
                     }
-                    
+
                     if (bestMatch != null) {
                         if (bestMatch !== target) {
                             node.setReferenceTarget(ref.link, bestMatch)
@@ -324,6 +336,165 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         val position: Int?,
         val virtualPackage: String? = null
     )
+
+    private data class ChildInsertContext(
+        val parent: SNode,
+        val link: SContainmentLink,
+        val model: EditableSModel
+    )
+
+    private data class ReplaceInsertContext(
+        val targetNode: SNode,
+        val model: EditableSModel
+    )
+
+    private sealed class JavaParsePreparation {
+        data class Ok(
+            val parseResult: JavaParser.JavaParseResult,
+            val parsedNodes: List<SNode>
+        ) : JavaParsePreparation()
+
+        data class Err(val message: String) : JavaParsePreparation()
+    }
+
+    private suspend fun prepareJavaParseResult(
+        mpsProject: jetbrains.mps.project.MPSProject,
+        code: String,
+        featureKind: FeatureKind,
+        isExpression: Boolean,
+        recovery: Boolean,
+        contextNodeRefStr: String?
+    ): JavaParsePreparation {
+        return executeBackgroundRead(mpsProject) {
+            val repo = mpsProject.repository
+            val contextNode: SNode? = if (!contextNodeRefStr.isNullOrEmpty()) {
+                val nr = resolveNodeReference(repo, contextNodeRefStr)
+                nr?.resolve(repo) ?: return@executeBackgroundRead JavaParsePreparation.Err("Context node '$contextNodeRefStr' not found")
+            } else null
+
+            val parseResult = try {
+                val effectiveSource = effectiveJavaParseSource(code, featureKind, isExpression)
+                JavaParser().parse(effectiveSource.code, effectiveSource.featureKind, contextNode, recovery)
+            } catch (e: JavaParseException) {
+                return@executeBackgroundRead JavaParsePreparation.Err("Java parsing error: ${e.message}")
+            }
+
+            val parsedNodes = unwrapExpressionNodes(parseResult.getNodes(), isExpression)
+            if (parsedNodes.isEmpty()) {
+                JavaParsePreparation.Err(parseResult.getErrorMsg() ?: "Parser returned no nodes")
+            } else {
+                JavaParsePreparation.Ok(parseResult, parsedNodes)
+            }
+        }
+    }
+
+    private fun unwrapExpressionNodes(nodes: List<SNode>, isExpression: Boolean): List<SNode> {
+        if (!isExpression) {
+            return nodes
+        }
+        return nodes.map { node ->
+            val concept = node.concept
+            when (concept.name) {
+                "LocalVariableDeclarationStatement" -> {
+                    // Unwrap: LocalVariableDeclarationStatement -> LocalVariableDeclaration -> initializer.
+                    val varDecl = node.children.firstOrNull()
+                    if (varDecl != null) {
+                        val initLink = varDecl.concept.containmentLinks.find { it.name == "initializer" }
+                        if (initLink != null) varDecl.getChildren(initLink).firstOrNull() ?: node
+                        else varDecl.children.lastOrNull() ?: node
+                    } else node
+                }
+
+                "ExpressionStatement" -> {
+                    val link = concept.containmentLinks.find { it.name == "expression" }
+                    if (link != null) node.getChildren(link).firstOrNull() ?: node
+                    else node.children.firstOrNull() ?: node
+                }
+
+                else -> node
+            }
+        }
+    }
+
+    private fun resolveEditableModel(repo: SRepository, modelRefStr: String, onError: (String) -> Unit): EditableSModel? {
+        val mref = PersistenceFacade.getInstance().createModelReference(modelRefStr)
+        val model = mref.resolve(repo)
+        if (model == null) {
+            onError("Model '$modelRefStr' not found")
+            return null
+        }
+        if (model !is EditableSModel) {
+            onError("Target model is not editable")
+            return null
+        }
+        return model
+    }
+
+    private fun resolveChildInsertContext(
+        repo: SRepository,
+        parentRefStr: String,
+        roleName: String,
+        onError: (String) -> Unit
+    ): ChildInsertContext? {
+        val nref = resolveNodeReference(repo, parentRefStr)
+        val parent = nref?.resolve(repo)
+        if (parent == null) {
+            onError("Parent node '$parentRefStr' not found")
+            return null
+        }
+        val link = parent.concept.containmentLinks.find { it.name == roleName }
+        if (link == null) {
+            onError("Child role '$roleName' not found in concept '${parent.concept.name}'")
+            return null
+        }
+        val model = parent.model
+        if (model !is EditableSModel) {
+            onError("Target model is not editable")
+            return null
+        }
+        return ChildInsertContext(parent, link, model)
+    }
+
+    private fun resolveReplaceInsertContext(
+        repo: SRepository,
+        targetRefStr: String,
+        onError: (String) -> Unit
+    ): ReplaceInsertContext? {
+        val tref = resolveNodeReference(repo, targetRefStr)
+        val targetNode = tref?.resolve(repo)
+        if (targetNode == null) {
+            onError("Target node '$targetRefStr' not found")
+            return null
+        }
+        val model = targetNode.model
+        if (model !is EditableSModel) {
+            onError("Target model is not editable")
+            return null
+        }
+        return ReplaceInsertContext(targetNode, model)
+    }
+
+    // Best-effort: only the inserted nodes are undone. Side effects of resolveIteratively
+    // (JDK dep added+saved by ensureJDKDependency, ModelImports updates) are not reverted —
+    // they remain in memory but are not persisted, since model.save() runs only on success.
+    private fun finalizeInsertedNodes(
+        model: EditableSModel,
+        repo: SRepository,
+        inserted: List<SNode>,
+        featureKind: FeatureKind,
+        doImportLang: Boolean,
+        doResolveRefs: Boolean,
+        parseResult: JavaParser.JavaParseResult,
+        rollbackInsertedNodes: () -> Unit
+    ) {
+        try {
+            resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
+            model.save()
+        } catch (e: Exception) {
+            rollbackInsertedNodes()
+            throw e
+        }
+    }
 
     private fun removeJavaImports(roots: Iterable<SNode>) {
         val toRemove = mutableListOf<SNode>()
@@ -513,40 +684,37 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     )
     suspend fun mps_mcp_parse_java_and_insert(
         @McpDescription("JSON string with parameters, see the description above") parameters: String
-    ): String {
-        currentCoroutineContext().reportToolActivity("Parsing Java and inserting nodes")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        return try {
+    ): String = withMpsProject("Parsing Java and inserting nodes") { mpsProject ->
+        try {
             val gson = Gson()
-            val json = gson.fromJson(parameters, JsonObject::class.java) ?: return errJson("Invalid JSON parameters")
+            val json = gson.fromJson(parameters, JsonObject::class.java) ?: return@withMpsProject errJson("Invalid JSON parameters")
 
-            val code = json.get("code")?.asString ?: return errJson("Missing 'code'")
+            val code = json.get("code")?.asString ?: return@withMpsProject errJson("Missing 'code'")
             if (code.length > 50_000) {
-                return errJson("Code exceeds maximum allowed length of 50_000 characters")
+                return@withMpsProject errJson("Code exceeds maximum allowed length of 50_000 characters")
             }
 
-            val featureKindStr = json.get("featureKind")?.asString ?: return errJson("Missing 'featureKind'")
+            val featureKindStr = json.get("featureKind")?.asString ?: return@withMpsProject errJson("Missing 'featureKind'")
             if (featureKindStr == "CLASS_STUB") {
-                return errJson("featureKind 'CLASS_STUB' is not supported")
+                return@withMpsProject errJson("featureKind 'CLASS_STUB' is not supported")
             }
             val isExpression = featureKindStr == "EXPRESSION"
             val featureKind = if (isExpression) FeatureKind.STATEMENTS else try {
                 FeatureKind.valueOf(featureKindStr)
             } catch (e: Exception) {
-                return errJson("Unknown featureKind: '$featureKindStr'")
+                return@withMpsProject errJson("Unknown featureKind: '$featureKindStr'")
             }
 
             val recovery = json.get("recovery")?.asBoolean ?: true
             val contextNodeRefStr = json.get("contextNodeRef")?.asString
             if (contextNodeRefStr.isNullOrEmpty() &&
                 (featureKind == FeatureKind.FIELD || featureKind == FeatureKind.METHOD ||
-                        featureKind == FeatureKind.NESTED_CLASS || featureKind == FeatureKind.CLASS_CONTENT)) {
-                return errJson("'contextNodeRef' is required for featureKind '$featureKindStr' to provide the target Classifier")
+                        featureKind == FeatureKind.NESTED_CLASS || featureKind == FeatureKind.CLASS_CONTENT)
+            ) {
+                return@withMpsProject errJson("'contextNodeRef' is required for featureKind '$featureKindStr' to provide the target Classifier")
             }
 
-            val insertObj = json.getAsJsonObject("insert") ?: return errJson("Missing 'insert' object")
+            val insertObj = json.getAsJsonObject("insert") ?: return@withMpsProject errJson("Missing 'insert' object")
             val insertTarget = InsertTarget(
                 mode = insertObj.get("mode")?.asString,
                 modelRef = insertObj.get("modelRef")?.asString,
@@ -561,205 +729,151 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             val doImportLang = post?.get("importUsedLanguages")?.asBoolean ?: true
             val doResolveRefs = post?.get("resolveReferences")?.asBoolean ?: true
 
+            val parsedJava = when (
+                val preparation = prepareJavaParseResult(mpsProject, code, featureKind, isExpression, recovery, contextNodeRefStr)
+            ) {
+                is JavaParsePreparation.Ok -> preparation
+                is JavaParsePreparation.Err -> return@withMpsProject errJson(preparation.message)
+            }
+
             var resultJson: String? = null
             var error: String? = null
 
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val repo = mpsProject.repository
+            executeShortCommandOnEdt(mpsProject) {
+                try {
+                    val repo = mpsProject.repository
+                    val parseResult = parsedJava.parseResult
+                    val parsedNodes = parsedJava.parsedNodes
 
-                        val contextNode: SNode? = if (!contextNodeRefStr.isNullOrEmpty()) {
-                            val nr = resolveNodeReference(repo, contextNodeRefStr)
-                            nr?.resolve(repo) ?: run {
-                                error = "Context node '$contextNodeRefStr' not found"
-                                return@executeCommand
-                            }
-                        } else null
+                    val inserted = mutableListOf<SNode>()
 
-                        val parseResult = try {
-                            val parser = JavaParser()
-                            val effectiveFeatureKind = when (featureKind) {
-                                FeatureKind.FIELD, FeatureKind.METHOD, FeatureKind.NESTED_CLASS -> FeatureKind.CLASS_CONTENT
-                                else -> featureKind
+                    when (insertTarget.mode) {
+                        "root" -> {
+                            val modelRefStr = insertTarget.modelRef ?: run {
+                                error = "'modelRef' is required for root insertion"
+                                return@executeShortCommandOnEdt
                             }
-                            val (effectiveCode, finalFeatureKind) = if (isExpression) {
-                                val stripped = code.trimEnd().trimEnd(';')
-                                // Wrap in a variable declaration so that any expression (including
-                                // pure arithmetic like "a - b * c") is a valid Java statement.
-                                // Plain arithmetic is NOT a valid Java expression-statement, causing
-                                // a parse error and garbage recovery nodes. Primitives autobox to
-                                // Object, so this wrapper is safe for all non-void expressions.
-                                "Object __mcp_expr__ = $stripped;" to FeatureKind.STATEMENTS
-                            } else {
-                                code to effectiveFeatureKind
+                            val model = resolveEditableModel(repo, modelRefStr) {
+                                error = it
+                            } ?: return@executeShortCommandOnEdt
+                            for (n in parsedNodes) {
+                                model.addRootNode(n)
+                                if (insertTarget.virtualPackage != null) {
+                                    n.setProperty(jetbrains.mps.smodel.SNodeUtil.property_BaseConcept_virtualPackage, insertTarget.virtualPackage)
+                                }
+                                inserted.add(n)
                             }
-                            parser.parse(effectiveCode, finalFeatureKind, contextNode, recovery)
-                        } catch (e: JavaParseException) {
-                            error = "Java parsing error: ${e.message}"
-                            return@executeCommand
-                        }
 
-                        var parsedNodes = parseResult.getNodes()
-                        if (isExpression) {
-                            parsedNodes = parsedNodes.map { node ->
-                                val concept = node.concept
-                                when (concept.name) {
-                                    "LocalVariableDeclarationStatement" -> {
-                                        // Unwrap: LocalVariableDeclarationStatement
-                                        //           → LocalVariableDeclaration
-                                        //               → initializer (the actual expression)
-                                        val varDecl = node.children.firstOrNull()
-                                        if (varDecl != null) {
-                                            val initLink = varDecl.concept.containmentLinks.find { it.name == "initializer" }
-                                            if (initLink != null) varDecl.getChildren(initLink).firstOrNull() ?: node
-                                            else varDecl.children.lastOrNull() ?: node
-                                        } else node
+                            finalizeInsertedNodes(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult) {
+                                inserted.asReversed().forEach { insertedNode ->
+                                    if (insertedNode.model === model) {
+                                        model.removeRootNode(insertedNode)
                                     }
-                                    "ExpressionStatement" -> {
-                                        val link = concept.containmentLinks.find { it.name == "expression" }
-                                        if (link != null) node.getChildren(link).firstOrNull() ?: node
-                                        else node.children.firstOrNull() ?: node
-                                    }
-                                    else -> node
                                 }
                             }
                         }
-                        if (parsedNodes.isEmpty()) {
-                            val msg = parseResult.getErrorMsg() ?: "Parser returned no nodes"
-                            error = msg
-                            return@executeCommand
-                        }
 
-                        val inserted = mutableListOf<SNode>()
+                        "child" -> {
+                            val parentRefStr = insertTarget.parentRef ?: run {
+                                error = "'parentRef' is required for child insertion"
+                                return@executeShortCommandOnEdt
+                            }
+                            val roleName = insertTarget.role ?: run {
+                                error = "'role' is required for child insertion"
+                                return@executeShortCommandOnEdt
+                            }
+                            val childContext = resolveChildInsertContext(repo, parentRefStr, roleName) {
+                                error = it
+                            } ?: return@executeShortCommandOnEdt
+                            val parent = childContext.parent
+                            val link = childContext.link
+                            val model = childContext.model
 
-                        when (insertTarget.mode) {
-                            "root" -> {
-                                val modelRefStr = insertTarget.modelRef ?: run {
-                                    error = "'modelRef' is required for root insertion"
-                                    return@executeCommand
-                                }
-                                val mref = PersistenceFacade.getInstance().createModelReference(modelRefStr)
-                                val model = mref.resolve(repo)
-                                if (model == null) {
-                                    error = "Model '$modelRefStr' not found"
-                                    return@executeCommand
-                                }
-                                if (model !is EditableSModel) {
-                                    error = "Target model is not editable"
-                                    return@executeCommand
-                                }
+                            val pos = insertTarget.position
+                            if (pos == null || pos == -1) {
                                 for (n in parsedNodes) {
-                                    model.addRootNode(n)
-                                    if (insertTarget.virtualPackage != null) {
-                                        n.setProperty(jetbrains.mps.smodel.SNodeUtil.property_BaseConcept_virtualPackage, insertTarget.virtualPackage)
-                                    }
+                                    parent.addChild(link, n)
                                     inserted.add(n)
                                 }
-                                model.save()
-
-                                // Post-process: import used languages, JDK and resolve
-                                resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
-                            }
-                            "child" -> {
-                                val parentRefStr = insertTarget.parentRef ?: run {
-                                    error = "'parentRef' is required for child insertion"
-                                    return@executeCommand
-                                }
-                                val roleName = insertTarget.role ?: run {
-                                    error = "'role' is required for child insertion"
-                                    return@executeCommand
-                                }
-                                val nref = resolveNodeReference(repo, parentRefStr)
-                                val parent = nref?.resolve(repo)
-                                if (parent == null) {
-                                    error = "Parent node '$parentRefStr' not found"
-                                    return@executeCommand
-                                }
-                                val link: SContainmentLink? = parent.concept.containmentLinks.find { it.name == roleName }
-                                if (link == null) {
-                                    error = "Child role '$roleName' not found in concept '${parent.concept.name}'"
-                                    return@executeCommand
-                                }
-                                val model = parent.model
-                                if (model !is EditableSModel) {
-                                    error = "Target model is not editable"
-                                    return@executeCommand
-                                }
-
-                                val pos = insertTarget.position
-                                if (pos == null || pos == -1) {
-                                    for (n in parsedNodes) {
-                                        parent.addChild(link, n)
-                                        inserted.add(n)
+                            } else {
+                                var index = pos
+                                for (n in parsedNodes) {
+                                    val children = parent.getChildren(link).toList()
+                                    if (index < 0 || index > children.size) {
+                                        error = "Target index $index is out of bounds (count: ${children.size})"
+                                        return@executeShortCommandOnEdt
                                     }
-                                } else {
-                                    var index = pos
-                                    for (n in parsedNodes) {
-                                        val children = parent.getChildren(link).toList()
-                                        if (index < 0 || index > children.size) {
-                                            error = "Target index $index is out of bounds (count: ${children.size})"
-                                            return@executeCommand
-                                        }
-                                        val anchor = if (index < children.size) children[index] else null
-                                        parent.insertChildBefore(link, n, anchor)
-                                        inserted.add(n)
-                                        index++
+                                    val anchor = if (index < children.size) children[index] else null
+                                    parent.insertChildBefore(link, n, anchor)
+                                    inserted.add(n)
+                                    index++
+                                }
+                            }
+
+                            finalizeInsertedNodes(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult) {
+                                inserted.asReversed().forEach { insertedNode ->
+                                    if (insertedNode.parent != null) {
+                                        SNodeOperations.deleteNode(insertedNode)
                                     }
                                 }
-                                model.save()
-
-                                // Post-process: import used languages, JDK and resolve
-                                resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
                             }
-                            "replace" -> {
-                                val targetRefStr = insertTarget.targetRef ?: run {
-                                    error = "'targetRef' is required for replace mode"
-                                    return@executeCommand
+                        }
+
+                        "replace" -> {
+                            val targetRefStr = insertTarget.targetRef ?: run {
+                                error = "'targetRef' is required for replace mode"
+                                return@executeShortCommandOnEdt
+                            }
+                            val replaceContext = resolveReplaceInsertContext(repo, targetRefStr) {
+                                error = it
+                            } ?: return@executeShortCommandOnEdt
+                            val targetNode = replaceContext.targetNode
+                            val model = replaceContext.model
+
+                            val newNode = parsedNodes.first()
+                            val parent = targetNode.parent
+                            if (parent == null) {
+                                error = "Target node '$targetRefStr' is a root; root replacement not supported via 'replace' mode"
+                                return@executeShortCommandOnEdt
+                            }
+                            // getContainmentLink() is documented to return null only for nodes without a parent.
+                            val link = targetNode.containmentLink!!
+                            val nextSibling = targetNode.nextSibling
+                            SNodeOperations.replaceWithAnother(targetNode, newNode)
+                            inserted.add(newNode)
+
+                            finalizeInsertedNodes(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult) {
+                                if (newNode.parent != null) {
+                                    SNodeOperations.deleteNode(newNode)
                                 }
-                                val tref = resolveNodeReference(repo, targetRefStr)
-                                val targetNode = tref?.resolve(repo)
-                                if (targetNode == null) {
-                                    error = "Target node '$targetRefStr' not found"
-                                    return@executeCommand
-                                }
-                                val model = targetNode.model
-                                if (model !is EditableSModel) {
-                                    error = "Target model is not editable"
-                                    return@executeCommand
-                                }
-                                
-                                val newNode = parsedNodes.first()
                                 if (targetNode.parent == null) {
-                                    error = "Target node '$targetRefStr' is a root; root replacement not supported via 'replace' mode"
-                                    return@executeCommand
+                                    if (nextSibling != null && nextSibling.parent == parent && nextSibling.containmentLink == link) {
+                                        parent.insertChildBefore(link, targetNode, nextSibling)
+                                    } else {
+                                        parent.addChild(link, targetNode)
+                                    }
                                 }
-                                SNodeOperations.replaceWithAnother(targetNode, newNode)
-                                inserted.add(newNode)
-                                model.save()
-
-                                // Post-process: import used languages, JDK and resolve
-                                resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
-                            }
-                            else -> {
-                                error = "Unknown insert.mode '${insertTarget.mode}'"
-                                return@executeCommand
                             }
                         }
 
-                        val pkg = parseResult.getPackage()
-                        val langs = parseResult.getLanguages()?.map { it.qualifiedName } ?: emptyList()
-                        val insertedInfos = inserted.map { nodeInfoJsonObject(it) }
-                        val data = JsonObject().apply {
-                            add("inserted", gson.toJsonTree(insertedInfos))
-                            addProperty("package", pkg)
-                            add("languages", gson.toJsonTree(langs))
-                            addProperty("errorMsg", parseResult.getErrorMsg())
+                        else -> {
+                            error = "Unknown insert.mode '${insertTarget.mode}'"
+                            return@executeShortCommandOnEdt
                         }
-                        resultJson = okJson(data.toString())
-                    } catch (e: Exception) {
-                        error = e.message
                     }
+
+                    val pkg = parseResult.getPackage()
+                    val langs = parseResult.getLanguages()?.map { it.qualifiedName } ?: emptyList()
+                    val insertedInfos = inserted.map { nodeInfoJsonObject(it) }
+                    val data = JsonObject().apply {
+                        add("inserted", gson.toJsonTree(insertedInfos))
+                        addProperty("package", pkg)
+                        add("languages", gson.toJsonTree(langs))
+                        addProperty("errorMsg", parseResult.getErrorMsg())
+                    }
+                    resultJson = okJson(data.toString())
+                } catch (e: Exception) {
+                    error = e.message
                 }
             }
 

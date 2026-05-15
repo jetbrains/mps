@@ -5,15 +5,9 @@ import com.google.gson.annotations.SerializedName
 enum class ReferenceSearchMode {
     @SerializedName("exhaustive")
     EXHAUSTIVE,
+    @Suppress("unused") // implicit else of the EXHAUSTIVE branch; populated via Gson
     @SerializedName("completion")
     COMPLETION
-}
-
-enum class ResponseMode {
-    @SerializedName("legacy")
-    LEGACY,
-    @SerializedName("rich")
-    RICH
 }
 
 enum class ScopeMode {
@@ -28,20 +22,7 @@ enum class ScopeMode {
     @SerializedName("project")
     PROJECT,
     @SerializedName("jdk")
-    JDK,
-    @SerializedName("all")
-    ALL
-}
-
-enum class MatchMode {
-    @SerializedName("exact")
-    EXACT,
-    @SerializedName("assignable")
-    ASSIGNABLE,
-    @SerializedName("convertible")
-    CONVERTIBLE,
-    @SerializedName("any")
-    ANY
+    JDK
 }
 
 enum class CandidateKind {
@@ -51,12 +32,8 @@ enum class CandidateKind {
     INSTANCE_METHOD,
     @SerializedName("staticMethods")
     STATIC_METHOD,
-    @SerializedName("fields")
-    FIELD,
     @SerializedName("classes")
     CLASS,
-    @SerializedName("roots")
-    ROOT,
     @SerializedName("unknown")
     UNKNOWN
 }
@@ -81,7 +58,6 @@ data class GetAssignableReferencesRequest(
     val position: Int? = null,
 
     val mode: ReferenceSearchMode = ReferenceSearchMode.EXHAUSTIVE,
-    val responseMode: ResponseMode = ResponseMode.LEGACY,
     val limit: Int? = null,
     val offset: Int? = null,
 
@@ -94,7 +70,6 @@ data class GetAssignableReferencesRequest(
     val receiverType: String? = null,
     val argumentTypes: List<String>? = null,
     val argumentCount: Int? = null,
-    val matchMode: MatchMode = MatchMode.ASSIGNABLE,
 
     val sortBy: SortMode = SortMode.RELEVANCE,
     val preferSameModel: Boolean = true,

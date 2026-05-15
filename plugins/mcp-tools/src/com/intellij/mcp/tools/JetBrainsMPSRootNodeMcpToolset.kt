@@ -18,8 +18,6 @@ import jetbrains.mps.smodel.constraints.ModelConstraints
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.withContext
-import org.jetbrains.mps.openapi.language.SConcept
-import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
 class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
@@ -31,15 +29,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_open_root_node(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String
-    ): String {
-        currentCoroutineContext().reportToolActivity("Opening MPS root node")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-//        val engine = KotlinJsr223StandardScriptEngineFactory4Idea().scriptEngine
-//        println("Engine: $engine")
-
-        return try {
+    ): String = withMpsProject("Opening MPS root node") { mpsProject ->
+        try {
             val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
             EditorNavigator(mpsProject).shallFocus(true).shallSelect(true).open(sNodeRef)
             okJson("{\"present\":true}")
@@ -123,43 +114,45 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String
     ): String {
-        currentCoroutineContext().reportToolActivity("Searching for MPS root node by name")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+        return withMpsProject("Searching for MPS root node by name") { mpsProject ->
+            val nameSet: Set<String> = try {
+                val elem = JsonParser.parseString(names)
+                when {
+                    elem.isJsonArray -> elem.asJsonArray.map { it.asString }.toSet()
+                    // A JSON-encoded primitive string like "\"Foo\"" must unwrap to "Foo",
+                    // not stay as the quoted literal.
+                    elem.isJsonPrimitive && elem.asJsonPrimitive.isString -> setOf(elem.asString)
+                    else -> setOf(names)
+                }
+            } catch (_: Exception) {
+                setOf(names)
+            }
 
-        val nameSet: Set<String> = try {
-            val elem = JsonParser.parseString(names)
-            if (elem.isJsonArray) elem.asJsonArray.map { it.asString }.toSet() else setOf(names)
-        } catch (e: Exception) {
-            setOf(names)
-        }
-
-        var reply: String? = null
-        mpsProject.repository.modelAccess.runReadAction {
             try {
-                val results = mutableListOf<String>()
-                for (module in mpsProject.repository.modules) {
-                    for (model in module.models) {
-                        for (root in model.rootNodes) {
-                            if (root.name in nameSet) {
-                                results.add(nodeInfoJson(root))
+                executeRead(mpsProject) {
+                    val results = mutableListOf<String>()
+                    for (module in mpsProject.repository.modules) {
+                        for (model in module.models) {
+                            for (root in model.rootNodes) {
+                                if (root.name in nameSet) {
+                                    results.add(nodeInfoJson(root))
+                                }
                             }
                         }
                     }
+                    finalizeResult("[" + results.joinToString(",") + "]")
                 }
-                reply = finalizeResult("[" + results.joinToString(",") + "]")
             } catch (e: Exception) {
-                reply = errJson(e.message)
+                errJson(e.message)
             }
         }
-        return reply!!
     }
 
     @McpTool
     @McpDescription("""
         Bulk creation of one or more MPS root nodes from a JSON description.
-        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local temporary file containing it.
-        If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).
+        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local file containing it.
+        Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
 
         ### Unified JSON Format — single node
         {
@@ -184,106 +177,78 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Persistent form of SModelReference") modelRef: String,
-        @McpDescription("The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Use the unified JSON format.") json: String,
+        @McpDescription("The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local file containing it. Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true). Use the unified JSON format.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the model. Default: false.") dryRun: Boolean = false
     ): String {
-        currentCoroutineContext().reportToolActivity("Inserting MPS root node from JSON")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+        return withMpsProject("Inserting MPS root node from JSON") { mpsProject ->
+            try {
+                val actualJson = readJsonOrFile(json, dryRun)!!
 
-        return try {
-            val actualJson = readJsonOrFile(json, dryRun)!!
-            var result: String? = null
-            var error: String? = null
-
-            val jsonElement = try {
-                JsonParser.parseString(actualJson)
-            } catch (e: Exception) {
-                return errJson("Failed to parse JSON: ${e.message}")
-            }
-            val jsonObjects: List<JsonObject> = when {
-                jsonElement.isJsonArray -> jsonElement.asJsonArray.mapIndexed { i, elem ->
-                    if (!elem.isJsonObject) return errJson("Array element [$i] is not a JSON object")
-                    elem.asJsonObject
+                val jsonElement = try {
+                    JsonParser.parseString(actualJson)
+                } catch (e: Exception) {
+                    return errJson("Failed to parse JSON: ${e.message}")
                 }
-                jsonElement.isJsonObject -> listOf(jsonElement.asJsonObject)
-                else -> return errJson("Expected a JSON object or array, got ${jsonElement.javaClass.simpleName}")
-            }
-
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val sModelRef = PersistenceFacade.getInstance().createModelReference(modelRef)
-                        val model = sModelRef.resolve(mpsProject.repository)
-                        if (model == null) {
-                            error = "Model '$modelRef' not found"
-                            return@executeCommand
-                        }
-                        if (model !is EditableSModel) {
-                            error = "Model '$modelRef' is not editable"
-                            return@executeCommand
-                        }
-
-                        val nodeInfos = mutableListOf<String>()
-                        for ((index, jsonObject) in jsonObjects.withIndex()) {
-                            val indexLabel = if (jsonObjects.size > 1) " [$index]" else ""
-                            val conceptName = jsonObject.get("concept")?.asString
-                            val conceptRef = jsonObject.get("conceptReference")?.asString
-
-                            if (conceptName.isNullOrEmpty() && conceptRef.isNullOrEmpty()) {
-                                error = "Either 'concept' (qualifiedName) or 'conceptReference' must be provided in the JSON$indexLabel"
-                                return@executeCommand
-                            }
-
-                            val sConcept = (if (!conceptRef.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptRef) else null)
-                                ?: (if (!conceptName.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptName) else null)
-                            if (sConcept == null) {
-                                error = "Concept not found for node$indexLabel: concept='$conceptName', conceptReference='$conceptRef'"
-                                return@executeCommand
-                            }
-
-                            if (sConcept !is SConcept || !isRootable(sConcept, mpsProject.repository)) {
-                                error = "Concept '${sConcept.name}' is not a rootable concept (node$indexLabel)"
-                                return@executeCommand
-                            }
-
-                            val newNode = try {
-                                instantiateNode(jsonObject, model, dryRun)
-                            } catch (e: Exception) {
-                                error = "Failed to instantiate node$indexLabel from JSON: ${e.message}"
-                                null
-                            }
-                            if (newNode == null) {
-                                if (error == null) error = "Failed to instantiate node$indexLabel from JSON"
-                                return@executeCommand
-                            }
-
-                            if (!dryRun) {
-                                model.addRootNode(newNode)
-                                performFixReferences(mpsProject, newNode)
-                                nodeInfos.add(nodeInfoJson(newNode))
-                            }
-                        }
-
-                        result = if (dryRun) {
-                            "{\"dryRun\":true,\"message\":\"Dry run successful for root node insertion\"}"
-                        } else if (jsonObjects.size == 1) {
-                            nodeInfos.first()
-                        } else {
-                            "[${nodeInfos.joinToString(",")}]"
-                        }
-                        if (!dryRun) model.save()
-                    } catch (e: Exception) {
-                        error = e.message
+                val jsonObjects: List<JsonObject> = when {
+                    jsonElement.isJsonArray -> jsonElement.asJsonArray.mapIndexed { i, elem ->
+                        if (!elem.isJsonObject) return errJson("Array element [$i] is not a JSON object")
+                        elem.asJsonObject
                     }
+                    jsonElement.isJsonObject -> listOf(jsonElement.asJsonObject)
+                    else -> return errJson("Expected a JSON object or array, got ${jsonElement.javaClass.simpleName}")
                 }
-            }
 
-            if (error != null) errJson(error)
-            else if (result != null) okJson(result!!)
-            else errJson("Failed to insert root node")
-        } catch (e: Exception) {
-            errJson(e.message)
+                executeCommand(mpsProject) {
+                    val model = when (val r = resolveEditableModel(mpsProject.repository, modelRef)) {
+                        is EditableModelResolution.Ok -> r.model
+                        is EditableModelResolution.Err -> return@executeCommand r.errJson
+                    }
+
+                    val nodeInfos = mutableListOf<String>()
+                    for ((index, jsonObject) in jsonObjects.withIndex()) {
+                        val indexLabel = if (jsonObjects.size > 1) " [$index]" else ""
+                        // The concept is only validated here; the actual construction
+                        // is done by instantiateNode(), which reads concept info from
+                        // the blueprint JSON itself.
+                        when (val r = resolveRootableConcept(
+                            mpsProject.repository,
+                            conceptName = jsonObject.get("concept")?.asString,
+                            conceptReference = jsonObject.get("conceptReference")?.asString,
+                            label = indexLabel
+                        )) {
+                            is RootableConceptResolution.Ok -> {} // validated
+                            is RootableConceptResolution.Err -> return@executeCommand r.errJson
+                        }
+
+                        val newNode = try {
+                            instantiateNode(jsonObject, model, dryRun)
+                        } catch (e: Exception) {
+                            return@executeCommand errJson("Failed to instantiate node$indexLabel from JSON: ${e.message}")
+                        }
+                        if (newNode == null) {
+                            return@executeCommand errJson("Failed to instantiate node$indexLabel from JSON")
+                        }
+
+                        if (!dryRun) {
+                            model.addRootNode(newNode)
+                            performFixReferences(mpsProject, newNode)
+                            nodeInfos.add(nodeInfoJson(newNode))
+                        }
+                    }
+
+                    val result = if (dryRun) {
+                        "{\"dryRun\":true,\"message\":\"Dry run successful for root node insertion\"}"
+                    } else if (jsonObjects.size == 1) {
+                        nodeInfos.first()
+                    } else {
+                        "[${nodeInfos.joinToString(",")}]"
+                    }
+                    if (!dryRun) model.save()
+                    okJson(result)
+                }
+            } catch (e: Exception) {
+                errJson(e.message)
+            }
         }
     }
 
@@ -298,71 +263,52 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         @McpDescription("Optional: Persistent form of SConcept (c:...) or fully qualified concept name") conceptReference: String? = null,
         @McpDescription("Name for the new root node") name: String
     ): String {
-        currentCoroutineContext().reportToolActivity("Creating MPS root node")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        return try {
-            var result: String? = null
-            var error: String? = null
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val sModelRef = PersistenceFacade.getInstance().createModelReference(modelRef)
-                        val model = sModelRef.resolve(mpsProject.repository)
-                        if (model == null) {
-                            error = "Model '$modelRef' not found"
-                            return@executeCommand
-                        }
-                        if (model !is EditableSModel) {
-                            error = "Model '$modelRef' is not editable"
-                            return@executeCommand
-                        }
-                        val resolveStr = if (conceptReference.isNullOrEmpty()) concept else conceptReference
-                        val sConcept = resolveConcept(mpsProject.repository, resolveStr)
-                        if (sConcept == null) {
-                            error = "Concept '$concept' ('$conceptReference') not found"
-                            return@executeCommand
-                        }
-
-                        if (sConcept !is SConcept || !isRootable(sConcept, mpsProject.repository)) {
-                            error = "Concept '$concept' ('$conceptReference') is not a rootable concept"
-                            return@executeCommand
-                        }
-                        val newNode = SNodeFactoryOperations.createNewRootNode(model, sConcept, null)
-                        val nameProperty = SNodeUtil.property_INamedConcept_name
-                        if (newNode.concept.properties.contains(nameProperty)) {
-                            newNode.setProperty(nameProperty, name)
-                        }
-                        // Detect and initialize compulsory references
-                        val compulsoryRefs = sConcept.referenceLinks.filter { !it.isOptional }
-                        if (compulsoryRefs.isNotEmpty()) {
-                            for (link in compulsoryRefs) {
-                                val scope = ModelConstraints.getReferenceDescriptor(newNode, link).scope
-                                val first = scope.getAvailableElements(null).iterator().let { if (it.hasNext()) it.next() else null }
-                                if (first != null) {
-                                    newNode.setReferenceTarget(link, first)
-                                } else {
-                                    println("Note: New root node has compulsory reference '${link.name}' that could not be initialized (empty scope)")
-                                }
+        return withMpsProject("Creating MPS root node") { mpsProject ->
+            try {
+                executeCommand(mpsProject) {
+                    val model = when (val r = resolveEditableModel(mpsProject.repository, modelRef)) {
+                        is EditableModelResolution.Ok -> r.model
+                        is EditableModelResolution.Err -> return@executeCommand r.errJson
+                    }
+                    val sConcept = when (val r = resolveRootableConcept(
+                        mpsProject.repository,
+                        conceptName = concept,
+                        conceptReference = conceptReference
+                    )) {
+                        is RootableConceptResolution.Ok -> r.concept
+                        is RootableConceptResolution.Err -> return@executeCommand r.errJson
+                    }
+                    val newNode = SNodeFactoryOperations.createNewRootNode(model, sConcept, null)
+                    val nameProperty = SNodeUtil.property_INamedConcept_name
+                    if (newNode.concept.properties.contains(nameProperty)) {
+                        newNode.setProperty(nameProperty, name)
+                    }
+                    // Initialize compulsory references with the first scope-available candidate
+                    // as a placeholder. We deliberately do NOT call performFixReferences here:
+                    // it would run ScopeResolver over every reference and re-resolve by name,
+                    // which can overwrite the placeholder with a different node whenever the
+                    // name is ambiguous in scope or when getAvailableElements() and
+                    // Scope.resolve(name) disagree on ordering. Callers that want fully resolved
+                    // references should use mps_mcp_insert_root_node_from_json / set_node_references
+                    // / update_root_node_from_json, all of which feed real targets through
+                    // applyReferenceUpdate and run performFixReferences appropriately.
+                    val compulsoryRefs = sConcept.referenceLinks.filter { !it.isOptional }
+                    if (compulsoryRefs.isNotEmpty()) {
+                        for (link in compulsoryRefs) {
+                            val scope = ModelConstraints.getReferenceDescriptor(newNode, link).scope
+                            val first = scope.getAvailableElements(null).iterator().let { if (it.hasNext()) it.next() else null }
+                            if (first != null) {
+                                newNode.setReferenceTarget(link, first)
                             }
                         }
-
-                        model.save()
-                        result = nodeInfoJson(newNode!!)
-                    } catch (e: Exception) {
-                        println("Exception while creating new root node in an MPS model: " + e.message)
-                        error = e.message
                     }
-                }
-            }
-            if (error != null) errJson(error)
-            else if (result != null) okJson(result)
-            else errJson("Failed to create root node")
-        } catch (e: Throwable) {
-            println("Exception while creating a root node: " + e.message)
 
-            errJson(e.message)
+                    model.save()
+                    okJson(nodeInfoJson(newNode))
+                }
+            } catch (e: Throwable) {
+                errJson(e.message)
+            }
         }
     }
 
@@ -370,8 +316,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     @McpDescription("""
         Updates an MPS root node from a JSON description.
         The root node itself is preserved, but its properties, references and children are re-set according to the provided JSON blueprint.
-        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local temporary file containing it.
-        If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).
+        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local file containing it.
+        Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
         
         ### Unified JSON Format
         {
@@ -389,72 +335,50 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
-        @McpDescription("The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Use the unified JSON format.") json: String,
+        @McpDescription("The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local file containing it. Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true). Use the unified JSON format.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
-        currentCoroutineContext().reportToolActivity("Updating MPS root node from JSON")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+        return withMpsProject("Updating MPS root node from JSON") { mpsProject ->
+            try {
+                val actualJson = readJsonOrFile(json, dryRun)!!
+                executeCommand(mpsProject) {
+                    val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject.repository, nodeRef)) {
+                        is EditableNodeResolution.Ok -> r.node to r.model
+                        is EditableNodeResolution.Err -> return@executeCommand r.errJson
+                    }
 
-        return try {
-            val actualJson = readJsonOrFile(json, dryRun)!!
-            var result: String? = null
-            var error: String? = null
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
-                        val node = sNodeRef?.resolve(mpsProject.repository)
-                        if (node == null) {
-                            error = "Node '$nodeRef' not found"
-                            return@executeCommand
-                        }
-                        val model = node.model
-                        if (model !is EditableSModel) {
-                            error = "Model containing the node is not editable"
-                            return@executeCommand
-                        }
-
-                        val jsonObject = try {
-                            val elem = JsonParser.parseString(actualJson)
-                            when {
-                                elem.isJsonObject -> elem.asJsonObject
-                                elem.isJsonArray -> {
-                                    val arr = elem.asJsonArray
-                                    if (arr.size() == 1 && arr[0].isJsonObject) arr[0].asJsonObject
-                                    else {
-                                        error = "JSON array with ${arr.size()} elements is not valid for a node update; provide a single JSON object"
-                                        return@executeCommand
-                                    }
-                                }
-                                else -> {
-                                    error = "Expected a JSON object, got ${elem.javaClass.simpleName}"
-                                    return@executeCommand
+                    val jsonObject = try {
+                        val elem = JsonParser.parseString(actualJson)
+                        when {
+                            elem.isJsonObject -> elem.asJsonObject
+                            elem.isJsonArray -> {
+                                val arr = elem.asJsonArray
+                                if (arr.size() == 1 && arr[0].isJsonObject) arr[0].asJsonObject
+                                else {
+                                    return@executeCommand errJson("JSON array with ${arr.size()} elements is not valid for a node update; provide a single JSON object")
                                 }
                             }
-                        } catch (e: Exception) {
-                            error = e.message
-                            return@executeCommand
-                        }
-
-                        updateNodeFromBlueprint(node, jsonObject, dryRun)
-
-                        if (!dryRun) {
-                            performFixReferences(mpsProject, node)
-                            model.save()
-                            result = nodeInfoJson(node)
-                        } else {
-                            result = "{\"dryRun\":true,\"message\":\"Dry run successful for root node update\"}"
+                            else -> {
+                                return@executeCommand errJson("Expected a JSON object, got ${elem.javaClass.simpleName}")
+                            }
                         }
                     } catch (e: Exception) {
-                        error = e.message
+                        return@executeCommand errJson(e.message)
+                    }
+
+                    updateNodeFromBlueprint(node, jsonObject, dryRun)
+
+                    if (!dryRun) {
+                        performFixReferences(mpsProject, node)
+                        model.save()
+                        okJson(nodeInfoJson(node))
+                    } else {
+                        okJson("{\"dryRun\":true,\"message\":\"Dry run successful for root node update\"}")
                     }
                 }
+            } catch (e: Exception) {
+                errJson(e.message)
             }
-            if (error != null) errJson(error)
-            else if (result != null) okJson(result!!) else errJson("Failed to update root node")
-        } catch (e: Exception) {
-            errJson(e.message)
         }
     }
 
@@ -467,40 +391,20 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_delete_root_node(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String
     ): String {
-        currentCoroutineContext().reportToolActivity("Deleting MPS root node")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        return try {
-            var deleted = false
-            var error: String? = null
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
-                        val node = sNodeRef?.resolve(mpsProject.repository)
-                        if (node == null) {
-                            error = "Node '$nodeRef' not found"
-                            return@executeCommand
-                        }
-                        val model = node.model
-                        if (model !is EditableSModel) {
-                            error = "Model containing the node is not editable"
-                            return@executeCommand
-                        }
-                        model.removeRootNode(node)
-                        model.save()
-                        deleted = true
-                    } catch (e: Exception) {
-                        error = e.message
+        return withMpsProject("Deleting MPS root node") { mpsProject ->
+            try {
+                executeCommand(mpsProject) {
+                    val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject.repository, nodeRef)) {
+                        is EditableNodeResolution.Ok -> r.node to r.model
+                        is EditableNodeResolution.Err -> return@executeCommand r.errJson
                     }
+                    model.removeRootNode(node)
+                    model.save()
+                    okJson("{\"reference\":\"${escapeJson(nodeRef)}\",\"deleted\":true}")
                 }
+            } catch (e: Throwable) {
+                errJson(e.message)
             }
-            if (error != null) errJson(error)
-            else if (deleted) okJson("{\"reference\":\"" + escapeJson(nodeRef) + "\",\"deleted\":true}")
-            else errJson("Failed to delete root node")
-        } catch (e: Throwable) {
-            errJson(e.message)
         }
     }
 }
