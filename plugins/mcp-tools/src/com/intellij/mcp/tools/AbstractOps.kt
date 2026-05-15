@@ -23,9 +23,16 @@ import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SNodeUtil
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.IAttributeDescriptor
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
+import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration
+import jetbrains.mps.smodel.adapter.ids.SLanguageId
 import jetbrains.mps.smodel.language.LanguageRegistry
+import jetbrains.mps.smodel.language.LanguageRegistryListener
+import jetbrains.mps.smodel.language.LanguageRuntime
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import jetbrains.mps.smodel.resources.MResource
 import jetbrains.mps.smodel.resources.MakeKeys
 import jetbrains.mps.smodel.resources.ModelsToResources
@@ -42,6 +49,16 @@ abstract class AbstractOps : McpToolset {
     // ---- helpers ----
     fun okJson(payload: String): String = "{" + "\"ok\":true,\"data\":" + payload + "}"
     fun errJson(message: String?): String = "{" + "\"ok\":false,\"error\":\"" + escapeJson(message?:"null") + "\"}"
+
+    /**
+     * Reads the set of registered languages under the LanguageRegistry's read lock.
+     * This serves as a lightweight synchronization point: it ensures the caller
+     * observes the same registry state that was established by a preceding
+     * afterLanguagesLoaded notification (which holds the write lock while updating).
+     */
+    protected fun refreshRegistries(repository: SRepository) {
+        LanguageRegistry.getInstance(repository).allLanguages
+    }
 
     protected fun finalizeResult(json: String): String {
         return if (json.length > 20_000) {
@@ -767,15 +784,57 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
+    /**
+     * Returns the characteristic SReferenceLink if the concept is a smart reference, or null otherwise.
+     * Checks for explicit SmartReferenceAttribute annotation first, then falls back to the implicit
+     * heuristic: non-abstract, no alias, exactly one mandatory own reference link.
+     */
+    protected fun getSmartReferenceLink(sConcept: SAbstractConcept, repo: SRepository): SReferenceLink? {
+        val conceptNode = sConcept.sourceNode?.resolve(repo)
+        if (conceptNode != null) {
+            val smartRefAttrConcept = MetaAdapterFactory.getConcept(
+                0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x7ab7b29c4d6297e8L,
+                "jetbrains.mps.lang.structure.structure.SmartReferenceAttribute"
+            )
+            val charRefLink = MetaAdapterFactory.getReferenceLink(
+                0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x7ab7b29c4d6297e8L, 0x7ab7b29c4d6297edL,
+                "charactersticReference"
+            )
+            val smartRefAttr = IAttributeDescriptor.NodeAttribute(smartRefAttrConcept).get(conceptNode)
+            if (smartRefAttr != null) {
+                val linkDeclarationNode = smartRefAttr.getReferenceTarget(charRefLink) ?: return null
+                return MetaAdapterByDeclaration.getReferenceLink(linkDeclarationNode)
+            }
+        }
+        if (sConcept.isAbstract) return null
+        if (!sConcept.conceptAlias.isNullOrEmpty()) return null
+        val ownReferences = sConcept.referenceLinks.filter {
+            it.owner.getQualifiedName() != "jetbrains.mps.lang.core.structure.BaseConcept"
+        }
+        if (ownReferences.size != 1) return null
+        val ref = ownReferences[0]
+        if (ref.isOptional) return null
+        return ref
+    }
+
     protected fun resolveConcept(repository: SRepository, conceptRef: String): SAbstractConcept? {
+        refreshRegistries(repository)
         val facade = PersistenceFacade.getInstance()
-        
+        var registeredConcept: SAbstractConcept? = null
+
         // 1. Try as a runtime concept reference
         try {
             val concept = facade.createConcept(conceptRef)
             // If the language is registered, we can return the runtime concept
             if (LanguageRegistry.getInstance(repository).getLanguage(concept.language) != null) {
-                return concept
+                // Check if the concept has a source node.
+                // If not, it might be a newly created concept that isn't fully indexed yet.
+                // Falling back to resolveConceptNode ensures we get the concept declaration node from the model.
+                if (concept.sourceNode != null) {
+                    return concept
+                }
+                // Language is registered but sourceNode is missing; save as last-resort fallback.
+                registeredConcept = concept
             }
         } catch (e: Exception) {}
 
@@ -785,7 +844,9 @@ abstract class AbstractOps : McpToolset {
             return MetaAdapterByDeclaration.getConcept(declarationNode)
         }
 
-        // 3. Fallback: try creating concept from string
+        // 3. Best-effort fallback: reuse the registered concept (may have null sourceNode) rather than
+        //    calling facade.createConcept a second time, or search by name for unregistered languages.
+        if (registeredConcept != null) return registeredConcept
         return try {
             facade.createConcept(conceptRef)
         } catch (e: Exception) {
@@ -813,15 +874,18 @@ abstract class AbstractOps : McpToolset {
             if (parts.size == 2) {
                 val langRef = parts[0]
                 val conceptRefOrName = parts[1]
+                // Normalize: strip 'c:' or 'l:' prefix from the language part (concept refs use 'c:', module IDs use 'l:').
+                // Strip ':qualifiedName' suffix from the concept part (full format is 'conceptId:qualifiedName').
+                val langId = langRef.removePrefix("c:").removePrefix("l:")
+                val conceptId = conceptRefOrName.substringBefore(":")
                 for (module in repository.modules) {
                     if (module !is jetbrains.mps.smodel.Language) continue
-                    if (module.moduleReference.moduleId.toString() == langRef ||
-                        module.moduleReference.moduleId.toString().removePrefix("l:") == langRef ||
-                        module.moduleName == langRef) {
+                    val moduleId = module.moduleReference.moduleId.toString().removePrefix("l:")
+                    if (moduleId == langId || module.moduleName == langRef) {
                         for (model in module.models) {
                             if (model.name.longName.endsWith(".structure")) {
                                 for (root in model.rootNodes) {
-                                    if (root.nodeId.toString() == conceptRefOrName || root.name == conceptRefOrName) {
+                                    if (root.nodeId.toString() == conceptId || root.name == conceptId) {
                                         if (root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) {
                                             return root
                                         }
@@ -1138,9 +1202,25 @@ abstract class AbstractOps : McpToolset {
                 }
             }
 
+            // Collect the language IDs we expect to see reloaded after the build, so
+            // the afterLanguagesLoaded latch can be made language-specific and not
+            // triggered prematurely by an unrelated background language reload.
+            var targetLanguageIds = emptySet<SLanguageId>()
             val (resourcesList, session, openNewSessionFlag) = mpsProject.modelAccess.computeReadAction {
                 // Expand modules to include generators for languages
                 val expandedModules = expandModules(modules)
+
+                // Derive the Language modules from both the provided models and the
+                // explicit/expanded modules list.
+                val ids = mutableSetOf<SLanguageId>()
+                for (model in models) {
+                    val m = model.module
+                    if (m is Language) ids.add(MetaIdByDeclaration.getLanguageId(m))
+                }
+                for (m in expandedModules) {
+                    if (m is Language) ids.add(MetaIdByDeclaration.getLanguageId(m))
+                }
+                targetLanguageIds = ids
 
                 // Compose resources from provided models and explicit modules
                 val list = mutableListOf<jetbrains.mps.make.resources.IResource>()
@@ -1180,9 +1260,57 @@ abstract class AbstractOps : McpToolset {
                 return MakeResult(true, "Nothing to make (no inputs resolved)")
             }
 
-            val future = makeService.make(session, resourcesList)
-            val result = withContext(Dispatchers.IO) {
-                future.get()
+            // Register the listener BEFORE starting the make so no afterLanguagesLoaded
+            // notification is missed even if the language is reloaded during the build.
+            val languageReloadLatch = CountDownLatch(1)
+            val reloadListener = object : LanguageRegistryListener {
+                override fun afterLanguagesLoaded(languages: Iterable<LanguageRuntime>) {
+                    // Only count down when a language we're actually building is reloaded.
+                    // Ignoring unrelated background reloads prevents premature latch release
+                    // that would let concept-detail tools read a stale StructureAspectDescriptor.
+                    // When targetLanguageIds is empty (e.g. solution modules with no language
+                    // runtime) we fall back to accepting any reload to avoid an unnecessary wait.
+                    if (targetLanguageIds.isEmpty() || languages.any { it.getId() in targetLanguageIds }) {
+                        languageReloadLatch.countDown()
+                    }
+                }
+            }
+            val languageRegistry = LanguageRegistry.getInstance(mpsProject.repository)
+            languageRegistry.addRegistryListener(reloadListener)
+
+            val result = try {
+                val future = makeService.make(session, resourcesList)
+                withContext(Dispatchers.IO) {
+                    val r = future.get()
+                    if (r.isSucessful) {
+                        // Wait for the MPS ConceptRegistry to be updated.
+                        // afterLanguagesLoaded fires (in a write action) once the language
+                        // runtime classes are (re)deployed into the JVM after the build.
+                        // A 30-second timeout guards against builds that produce no language
+                        // reload (e.g. an incremental make that found nothing to regenerate).
+                        val latchFired = languageReloadLatch.await(30, TimeUnit.SECONDS)
+                        if (!latchFired && targetLanguageIds.isNotEmpty()) {
+                            // The language runtime was not reloaded within the timeout window.
+                            // This typically means the incremental make decided nothing had
+                            // changed, so the StructureAspectDescriptor was not regenerated.
+                            // Concept properties / references / children may be stale or absent.
+                            // Callers should retry with rebuild=true if they observe empty results.
+                            messages.add(
+                                MakeMessage(
+                                    "WARNING",
+                                    "Language runtime did not reload within 30 s after the build " +
+                                    "(languages: ${targetLanguageIds.joinToString()}). " +
+                                    "The incremental make may have skipped regeneration. " +
+                                    "Concept descriptors (properties, references, children) may be " +
+                                    "stale. Retry with rebuild=true if concept details appear empty."
+                                )
+                            )
+                        }
+                    }
+                    r
+                }
+            } finally {
+                languageRegistry.removeRegistryListener(reloadListener)
             }
 
             if (result.isSucessful) {

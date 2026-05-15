@@ -1,23 +1,19 @@
 ---
 name: add-or-update-mps-code-nodes
-description: Modify MPS nodes using tools and JSON blueprints. Use when adding or updating MPS nodes.
+description: Use when adding or updating MPS nodes using JSON blueprints.
 ---
 
-First, make sure you have acquired the 'understand-mps-languages' skill.
-Unless you are creating new root nodes, first resolve the node that is to be edited. It could be the current root node open in the editor ('mps_mcp_open_root_node').
-To start writing code, resolve the languages and concepts that will be used:
-- start with the list of used languages of the current model ('mps_mcp_get_project_structure') as these are most likely to be needed.
-- when having a language reference use 'mps_mcp_get_concept_details' to get its concepts.
-- use 'mps_mcp_search_concepts' to find concepts if not found in used languages or a language that was mentioned in the request.
-
-MPS code is written by tools that accept a JSON description of the hierarchy of nodes.
-Either a deep JSON description can be provided for a substantial part of the code,
-  or smaller chunks of code or only individual child nodes can be provided to the available MCP tools.
-Very large JSON inputs may occasionally be truncated before a tool reads them.
-When that is a risk or when truncation is suspected, prefer a staged workflow over a single huge JSON payload.
+### Prerequisites
+* Ensure you have the `understand-mps-languages` skill.
+* Unless creating new root nodes, resolve the target node (e.g., via `mps_mcp_get_current_editor_root_node`).
+* Resolve required languages and concepts:
+    * Check used languages of the current model via `mps_mcp_get_project_structure`.
+    * Get concept details using `mps_mcp_get_concept_details` for specific languages.
+    * Use `mps_mcp_search_concepts` for discovery.
 
 ### Unified JSON Format
-Use the following structure for all node insertions and updates:
+MPS tools use a JSON blueprint to represent node hierarchies. Use this format for all insertions and updates:
+
 ```json
 {
   "concept": "fully.qualified.ConceptName",
@@ -28,7 +24,7 @@ Use the following structure for all node insertions and updates:
     {
       "role": "childRoleName",
       "nodes": [
-        { "concept": "...", ... }
+        { "concept": "fully.qualified.ChildConcept", "properties": [...] }
       ]
     }
   ],
@@ -40,26 +36,21 @@ Use the following structure for all node insertions and updates:
   ]
 }
 ```
-- **Concept Identification**: Use the fully qualified concept name in the `concept` field. This is the preferred way. `conceptReference` is optional.
-- **Properties, Children, References**: All these sections are optional and can be omitted if not needed.
-- **Automatic Reference Resolution**: If you don't have a persistent reference (`r:...`) for a target node, you can provide its **name** in the `target` field. The tool will automatically resolve it to a node with that name in the scope after the nodes are created. This is ideal for "local" references within the same JSON blueprint.
-- **Avoid Use of Deprecated**: Deprecated concepts, properties, references and children roles shoudl be avoided.
 
-### Workflow for large node hierarchies
-If the JSON for a whole root node or a large subtree may be too large:
-1. For initial creation, insert the parent/root node first with only its properties, references, and a minimal set of children (skeleton only — no method bodies yet).
-2. **Checkpoint**: run `mps_mcp_check_root_node_problems` on the skeleton before proceeding. Fix structural errors early rather than after the full body is inserted.
-3. Add remaining child subtrees in follow-up calls with `mps_mcp_add_node_child`.
-4. If a specific child subtree already exists and must be rewritten, use `mps_mcp_replace_node_child`.
-5. For an existing root node, use `mps_mcp_update_root_node_from_json` only with a complete root blueprint, because omitted children and references are removed.
-6. For incremental edits of an existing root, prefer `mps_mcp_add_node_child` / `mps_mcp_replace_node_child` instead of a partial root JSON.
-7. Run `mps_mcp_check_root_node_problems` after full insertion and use `mps_mcp_perform_operation` with `FIX_REFERENCES` if references could not be resolved during staged insertion.
+* **Concept**: Always use the fully qualified concept name.
+* **Optional Sections**: `properties`, `children`, and `references` can be omitted if empty.
+* **Reference Resolution**: `target` accepts a persistent node reference (`r:...`) or a node **name** for auto-resolution in scope. Auto-resolution is ideal for local references within the same blueprint.
+* **Best Practices**: Avoid deprecated concepts, properties, or roles.
 
-The user may use textual (visual) notation when representing code. This may differ from the JSON structure. The JSON structure is the canonical representation of the code.
+### Handling Large Hierarchies
+To avoid truncation of large JSON payloads, use a staged workflow:
+1. **Skeleton First**: Insert the parent/root node with properties, references, and a minimal child skeleton (e.g., empty method bodies).
+2. **Validate Early**: Run `mps_mcp_check_root_node_problems` on the skeleton to catch structural errors.
+3. **Incremental Fill**: Use `mps_mcp_add_node_child` to add remaining subtrees.
+4. **Targeted Updates**: Use `mps_mcp_replace_node_child` to rewrite specific subtrees.
+5. **Full Root Updates**: Use `mps_mcp_update_root_node_from_json` only for full blueprints; omitted elements will be removed.
+6. **Final Cleanup**: Run `mps_mcp_check_root_node_problems` and use `mps_mcp_perform_operation` with `FIX_REFERENCES` if needed.
 
-When adding child nodes to a node:
-    1. The unified JSON structure must be followed.
-    2. Use the 'concept' qualified name for all nodes.
-    3. 'target' in references can be a persistent node reference or a placeholder name for auto-resolution.
-
-An error message "Cannot invoke \"com.google.gson.JsonElement.getAsString()\" because the return value of \"com.google.gson.JsonObject.get(String)\" is null" means that a required field is missing.
+### Troubleshooting
+* **JSON Mapping Errors**: If you see `Cannot invoke "JsonElement.getAsString()" because ... is null`, a required JSON field (like `concept` or `role`) is missing.
+* **Notation Mismatch**: User-provided textual code may differ from the canonical JSON structure; always map it to the structure defined by the concept.

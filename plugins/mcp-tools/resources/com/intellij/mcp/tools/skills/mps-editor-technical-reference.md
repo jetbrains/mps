@@ -1,47 +1,59 @@
 ---
 name: mps-editor-technical-reference
-description: Technical details on cell models, layout styles, and inheritance for MPS editors. Use for technical details, concept IDs, or JSON templates. Drop once complete.
+description: Technical reference for cell models, layout styles, and inheritance in MPS editors.
 ---
 
-# MPS Editor Technical Reference
-
-## Core Concepts (`jetbrains.mps.lang.editor`)
+### Core Concepts (`jetbrains.mps.lang.editor`)
 
 | Concept | Suffix | Purpose |
 |---|---|---|
 | `ConceptEditorDeclaration` | `1071666914219` | Binds an editor to a concept via `conceptDeclaration`. |
-| `EditorComponentDeclaration` | `1078938745671` | Defines a reusable editor component for a concept and its sub-concepts. |
-| `CellModel_Collection` | `1073389446423` | Container cell. |
-| `CellModel_Constant` | `1073389577006` | Static text (keywords, punctuation); set `text` property. |
-| `CellModel_Property` | `1073389658414` | Editable property cell; `relationDeclaration` -> property link. |
-| `CellModel_RefNode` | `1073389882823` | Single child cell (`0..1` or `1`); `relationDeclaration` -> child link. |
-| `CellModel_RefNodeList` | `1073390211982` | Multi-cardinality list (`0..n`); `relationDeclaration` -> child link. |
-| `CellModel_RefCell` | `1088013125922` | Displays a referenced node's property; `relationDeclaration` -> reference link. |
-| `CellModel_Component` | `1078939183254` | Reuses an editor component; set `editorComponent` reference. |
+| `EditorComponentDeclaration` | `1078938745671` | Defines a reusable editor component for a concept and its descendants. |
+| `CellModel_Collection` | `1073389446423` | Container cell with a `cellLayout` (prefer `CellLayout_Indent`). |
+| `CellModel_Constant` | `1073389577006` | Static text (keywords, symbols); set `text` property. |
+| `CellModel_Property` | `1073389658414` | Editable property cell; set `relationDeclaration` to property link. |
+| `CellModel_RefNode` | `1073389882823` | Single child cell (`0..1` or `1`); set `relationDeclaration` to child link. |
+| `CellModel_RefNodeList` | `1073390211982` | Multi-cardinality list (`0..n`); set `relationDeclaration` to child link. |
+| `CellModel_RefCell` | `1088013125922` | Displays a referenced node's property; requires an `InlineEditorComponent`. |
+| `CellModel_Component` | `1078939183254` | Reuses an `EditorComponentDeclaration`; set `editorComponent` reference. |
 | `InlineEditorComponent` | `1088185857835` | Layout for `CellModel_RefCell`. |
 
-## Layout and Styles
-Prefer **Indent Layout** (`CellLayout_Indent`, Suffix: `1237303669825`).
+### Layout Styles (Indent Layout)
+Use `CellLayout_Indent` (suffix `1237303669825`) as the `cellLayout` for collections.
 
 | Style Item | Suffix | Meaning |
 |---|---|---|
-| `IndentLayoutOnNewLineStyleClassItem` | `1237385578942` | Starts cell on a new line. |
+| `IndentLayoutOnNewLineStyleClassItem` | `1237385578942` | Starts cell on a new line (preferred over `IndentLayoutNewLineStyle`). |
 | `IndentLayoutIndentStyleClassItem` | `1237307900041` | Indents the cell. |
-| `IndentLayoutNewLineChildrenStyleClassItem` | `1237375020029` | List: each child on its own line (`flag=true`). |
-| `SelectableStyleSheetItem` | `1186414928363` | Selectable as a unit. |
+| `IndentLayoutNewLineChildrenStyleClassItem` | `1237375020029` | In a list, each child starts on its own line (`flag=true`). |
+| `SelectableStyleSheetItem` | `1186414928363` | Makes the cell selectable. |
 
-## Rules and Gotchas
-- **Reference Cells**: When using `CellModel_RefCell` with `InlineEditorComponent`, set the internal `CellModel_Property` (pointing to the `name` property) to `readOnly=true` to prevent accidental changes to the target node's identity.
+### Technical Rules
+* **Reference Cells**: Set the internal `CellModel_Property` (e.g., `name`) to `readOnly=true` in `InlineEditorComponent` to prevent accidental target renaming.
+* **Smart references**: No wrapping layout cell, just a single CellModel_RefCell with editorComponent: InlineEditorComponent with cellModel: CellModel_Property (relationDeclaration: name, readOnly: true).
 - **Inheritance**: Components can be reused if they are defined for the concept, its super-concepts, or implemented interfaces.
-- **Stylesheets**: Define reusable styles in `StyleSheet` nodes. Always check for existing style classes in extended languages before creating new ones.
+* **Stylesheets**: Check for existing style classes in extended languages before creating new ones in a `StyleSheet` node.
 - **List Cardinality**: Always use `CellModel_RefNodeList` for `0..n` or `1..n` children. `CellModel_RefNode` is for single cardinality only.
-- **Empty States**: Use the `emptyCellModel` role in lists to provide a `CellModel_Constant` with descriptive text (e.g., `<no items>`).
-- **New-line style placement**: `indent-layout-on-new-line` is applied to the cell that should appear on a new line. `indent-layout-new-line` is applied to the cell *before* the break — easier to get wrong, so prefer `indent-layout-on-new-line`.
+* **List Empty State**: Use the `emptyCellModel` role in lists to provide a `CellModel_Constant` placeholder (e.g., `<no items>`).
+* **Line Breaks**: Apply `indent-layout-on-new-line` to the cell that *should* start on a new line. `indent-layout-new-line` is applied to the cell *before* the break — easier to get wrong, so prefer `indent-layout-on-new-line`.
 
-## Common Patterns
+### Common Patterns (JSON Structure)
 
-### Named concept with keyword header (inline)
+#### Indented Child on New Line
+```json
+{
+  "concept": "jetbrains.mps.lang.editor.structure.CellModel_RefNode",
+  "children": [
+    { "role": "relationDeclaration", "target": "<child link>" },
+    { "role": "styleItem", "nodes": [
+        { "concept": "jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem" },
+        { "concept": "jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem" }
+    ]}
+  ]
+}
+```
 
+#### Named Concept with Keyword Header (inline)
 ```
 ConceptEditorDeclaration
   cellModel: CellModel_Collection
@@ -75,8 +87,7 @@ CellModel_RefCell
     references: styleClass → Reference style class
 ```
 
-### Transparent list (no surrounding syntax, each item on its own line)
-
+#### Transparent List (no surrounding syntax, each item on its own line)
 ```
 CellModel_Collection
   cellLayout: CellLayout_Indent
@@ -90,13 +101,9 @@ CellModel_Collection
     emptyCellModel: CellModel_Constant  text="<no items>"
 ```
 
-## JSON Template
-
-A minimal `ConceptEditorDeclaration` JSON for `mps_mcp_insert_root_node_from_json`:
-
+#### Minimal Editor Blueprint
 ```json
 {
-  "name": "MyConcept_Editor",
   "concept": "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration",
   "properties": [{ "name": "name", "value": "MyConcept_Editor" }],
   "references": [{ "role": "conceptDeclaration", "target": "<concept ref>" }],
@@ -106,17 +113,11 @@ A minimal `ConceptEditorDeclaration` JSON for `mps_mcp_insert_root_node_from_jso
       "concept": "jetbrains.mps.lang.editor.structure.CellModel_Collection",
       "children": [
         { "role": "cellLayout", "nodes": [{ "concept": "jetbrains.mps.lang.editor.structure.CellLayout_Indent" }] },
-        {
-          "role": "childCellModel",
-          "nodes": [{
-            "concept": "jetbrains.mps.lang.editor.structure.CellModel_Constant",
-            "properties": [{ "name": "text", "value": "keyword" }]
-          }]
-        }
+        { "role": "childCellModel", "nodes": [
+          { "concept": "jetbrains.mps.lang.editor.structure.CellModel_Constant", "properties": [{ "name": "text", "value": "{" }] }
+        ]}
       ]
     }]
   }]
 }
 ```
-
-**Note**: Drop this knowledge once your editor work is complete.

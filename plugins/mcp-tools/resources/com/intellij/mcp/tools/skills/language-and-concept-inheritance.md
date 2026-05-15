@@ -1,43 +1,33 @@
 ---
 name: language-and-concept-inheritance
-description: Investigate inheritance between MPS languages and concepts. Use when investigating a language or using an unfamiliar one.
+description: Investigate inheritance between MPS languages and concepts.
 ---
 
-To understand the language "extends" hierarchy in JetBrains MPS using the existing MCP tools, agents can follow several complementary approaches at both the language and concept levels.
+### Module-Level Inheritance (Language Extension)
+One language can inherit the structure and functionality of another via an "extends" relationship.
 
-### 1. Language-to-Language "Extends" Relationship
-The language "extends" relationship is a module-level dependency where one language inherits the structure and functionality of another.
+1. **Tool**: `mps_mcp_get_project_structure` (with `includeDependencies: true`).
+2. **Workflow**: Check the `extendedLanguages` field in the response for the target language. This lists direct parent languages.
+3. **Hierarchy Tracing**: Recursively call this tool for each parent to build the full inheritance tree.
 
-*   **Primary Tool**: `mps_mcp_get_project_structure`
-*   **Workflow**:
-    1.  Call `mps_mcp_get_project_structure` and set the `startingPoint` to the fully qualified name or reference of the language in question.
-    2.  Set `includeDependencies: true` in the parameters.
-    3.  In the resulting JSON, locate the `extendedLanguages` field. This array contains the names and references of all languages that the target language directly extends.
-    4.  **Tracing the Hierarchy**: To build a full inheritance tree, the agent can recursively call this tool for each language found in the `extendedLanguages` list.
+### Concept-Level Inheritance
+Language extension is realized through concept inheritance.
 
-### 2. Concept-Level Inheritance Hierarchy
-Since language extension is primarily realized through concept inheritance, exploring the hierarchy of concepts is essential for understanding how languages are actually extended.
+#### Upward Hierarchy (Ancestors)
+* **Direct Ancestors**: Use `mps_mcp_get_concept_details`. The response includes:
+    * `superConcept`: Immediate parent concept.
+    * `superInterfaces`: Immediate implemented interface concepts.
+* **Full Closure**: Use `mps_mcp_perform_structure_operation` with `GET_ALL_SUPERCONCEPTS` to get the complete chain of ancestors and interfaces in one call.
 
-#### A. Upward Hierarchy (Super-concepts)
-*   **Direct Super-concepts**: Use `mps_mcp_get_concept_details` for a specific concept or an entire language. The response for each concept includes:
-    *   `superConcept`: The reference to the immediate parent concept.
-    *   `superInterfaces`: A list of references to all implemented interface concepts.
-*   **Full Transitive Closure**: Use `mps_mcp_perform_structure_operation` with the `GET_ALL_SUPERCONCEPTS` operation. This returns the complete chain of inheritance (all ancestors and implemented interfaces) in a single call, which is more efficient for understanding the full context of a concept.
+#### Downward Hierarchy (Descendants)
+* **Specializations**: Use `mps_mcp_perform_structure_operation` with `GET_SUB_CONCEPTS` to find all concepts (direct and indirect) inheriting from a base.
+* **Implementations**: Use `GET_ASSIGNABLE_CONCEPTS` to retrieve only non-abstract subconcepts that can be instantiated.
 
-#### B. Downward Hierarchy (Sub-concepts)
-*   **Finding Specializations**: Use `mps_mcp_perform_structure_operation` with the `GET_SUB_CONCEPTS` operation. This reveals all concepts (direct and indirect) that inherit from the specified base concept.
-*   **Finding Concrete Implementations**: Use `GET_ASSIGNABLE_CONCEPTS` to filter the downward hierarchy and retrieve only non-abstract concepts that can be instantiated in roles where the base concept is expected.
+### Strategic Analysis
+* **Verification**: Use `mps_mcp_perform_structure_operation` with `IS_SUBCONCEPT_OF` to check if concept A inherits from concept B.
+* **Cross-Language Extension**: Compare the `languageReference` of a concept with that of its `superConcept`. Different references indicate a language boundary specialization.
+* **Discovery**: Use `mps_mcp_search_concepts` to find base concepts (e.g., "Statement") for extension.
+* **Implicit Dependencies**: If a model uses a language without an explicit import, check if its used languages extend the missing language via `mps_mcp_get_project_structure`.
 
-### 3. Verification and Relationship Analysis
-Agents can perform targeted checks to understand the relationship between specific entities.
-
-*   **Relationship Verification**: Use `mps_mcp_perform_structure_operation` with the `IS_SUBCONCEPT_OF` operation to verify if one concept is a subconcept of another. This is particularly useful for checking if a concept from a new language correctly extends a concept from a base language.
-*   **Identifying Cross-Language Extensions**: By calling `mps_mcp_get_concept_details` for a concept, an agent can compare the `languageReference` of the concept itself with the `languageReference` of its `superConcept`. If they belong to different languages, it identifies a point where the language hierarchy is being specialized.
-
-### 4. Strategic Discovery
-*   **Contextual Search**: Use `mps_mcp_search_concepts` to find concepts by keywords (e.g., searching for "Statement" or "Expression" in `BaseLanguage`) to identify suitable base concepts for extension.
-*   **Dependency Exploration**: When a model uses a language that is not explicitly imported, use `mps_mcp_get_project_structure` on the used languages to see if they extend the missing language, explaining why its concepts are available in the scope.
-*   Use `IS_SUBCONCEPT_OF` to verify if one concept extends another.
-
-### Recommended Best Practice for Agents
-To understand a language's extension points, first use `mps_mcp_get_project_structure` to see the high-level `extendedLanguages`, and then use `mps_mcp_get_concept_details` on the language's concepts to see which specific base concepts are being extended across the language boundaries.
+### Best Practice
+Identify extension points by first checking high-level `extendedLanguages` via `mps_mcp_get_project_structure`, then use `mps_mcp_get_concept_details` to pinpoint cross-language concept specializations.

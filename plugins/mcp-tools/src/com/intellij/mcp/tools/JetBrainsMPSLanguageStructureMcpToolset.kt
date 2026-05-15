@@ -52,7 +52,8 @@ enum class MPSStructureOperation {
     RENAME_CONCEPT_CHILD,
     RENAME_CONCEPT_REFERENCE,
     LIST_CONCEPT_ASPECTS,
-    GET_ASSIGNABLE_REFERENCES
+    GET_ASSIGNABLE_REFERENCES,
+    IS_SMART_REFERENCE
 }
 
 class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
@@ -266,9 +267,15 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "includeInherited": "Optional: boolean, whether to include aspects from superconcepts and interfaces (default: false)"
           }
+        - IS_SMART_REFERENCE: Checks whether a concept is a smart reference concept (either explicitly annotated with SmartReferenceAttribute or implicitly qualifying as one).
+          A concept is an implicit smart reference if it is non-abstract, has no concept alias, and has exactly one mandatory own reference link.
+          Returns a JSON object with 'isSmartReference': boolean, and when true, 'characteristicReferenceName': string with the name of the characteristic reference link.
+          Parameters: {
+            "conceptRef": "Fully qualified concept name (e.g. 'my.lang.structure.MyConcept') or persistent node reference to the concept's declaration root node"
+          }
     """)
     suspend fun mps_mcp_perform_structure_operation(
-        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES)") operation: MPSStructureOperation,
+        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES, IS_SMART_REFERENCE)") operation: MPSStructureOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
         currentCoroutineContext().reportToolActivity("Performing MPS structure operation: $operation")
@@ -516,6 +523,28 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     val conceptRef = params.get("conceptRef")?.asString ?: return errJson("Parameter 'conceptRef' is missing")
                     val includeInherited = params.get("includeInherited")?.asBoolean ?: false
                     mps_mcp_list_concept_aspects(conceptRef, includeInherited)
+                }
+                MPSStructureOperation.IS_SMART_REFERENCE -> {
+                    val conceptRef = params.get("conceptRef")?.asString ?: return errJson("Parameter 'conceptRef' is missing")
+                    var reply: String? = null
+                    mpsProject.repository.modelAccess.runReadAction {
+                        try {
+                            val concept = resolveConcept(mpsProject.repository, conceptRef) ?: run {
+                                reply = errJson("Concept not found: $conceptRef")
+                                return@runReadAction
+                            }
+                            val smartRefLink = getSmartReferenceLink(concept, mpsProject.repository)
+                            val result = JsonObject()
+                            result.addProperty("isSmartReference", smartRefLink != null)
+                            if (smartRefLink != null) {
+                                result.addProperty("characteristicReferenceName", smartRefLink.name ?: "")
+                            }
+                            reply = okJson(gson.toJson(result))
+                        } catch (e: Exception) {
+                            reply = errJson(e.message)
+                        }
+                    }
+                    reply!!
                 }
             }
         } catch (e: Exception) {

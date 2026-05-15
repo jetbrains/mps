@@ -6,6 +6,7 @@ import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.smodel.language.LanguageRegistry
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import kotlinx.coroutines.currentCoroutineContext
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SEnumeration
@@ -57,7 +58,17 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                     if (lang != null) {
                         val runtime = LanguageRegistry.getInstance(mpsProject.repository).getLanguage(lang)
                         if (runtime != null) {
-                            conceptSet.addAll(runtime.concepts)
+                            for (c in runtime.concepts) {
+                                if (c.sourceNode == null) {
+                                    // Point 5: Diagnostics/Robustness - try to find the source node if missing in runtime concept
+                                    val node = resolveConceptNode(mpsProject.repository, PersistenceFacade.getInstance().asString(c))
+                                    if (node != null) {
+                                        conceptSet.add(MetaAdapterByDeclaration.getConcept(node))
+                                        continue
+                                    }
+                                }
+                                conceptSet.add(c)
+                            }
                         }
                     }
                 }

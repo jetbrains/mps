@@ -1,6 +1,9 @@
 # Agents Guide for This MPS Project
 
-This is a JetBrains MPS language project. All source of truth lives in MPS models, language definitions, and generators. Use this file as the entry point. If `MPS-AGENTS.md` is present in the project root, also read it — it provides the detailed MPS node, model, language, and generator workflows. If it is absent, inform the user: the file is a required companion and should be added from the MPS distribution alongside this file.
+This is a JetBrains MPS language project. All source of truth lives in MPS models, language definitions, and generators. Use this file as the entry point.
+
+If `MPS-AGENTS.md` is present in the project root, also read it — it provides the detailed MPS node, model, language, and generator workflows. If it is absent, inform the user: the file is a required companion and should be added from the MPS distribution alongside this file.
+IMPORTANT: Your reading the `MPS-AGENTS.md` file is essential for correct and efficient development in MPS - use of the `mps_mcp_...` tools and understanding of detailed MPS node, model, language, and generator workflows.
 
 MCP integration with MPS is an experimental feature. Use it with caution, expect surprises as well as future changes, and report any issues to the JetBrains MPS team.
 
