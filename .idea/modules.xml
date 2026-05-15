@@ -43,6 +43,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/kotlin-stub/kotlin-stub.iml" filepath="$PROJECT_DIR$/core/kotlin-stub/kotlin-stub.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/logging/logging.iml" filepath="$PROJECT_DIR$/core/logging/logging.iml" group="core" />
       <module fileurl="file://$PROJECT_DIR$/core/make-runtime/make-runtime.iml" filepath="$PROJECT_DIR$/core/make-runtime/make-runtime.iml" group="core" />
+      <module fileurl="file://$PROJECT_DIR$/plugins/mcp-tools/mcp-tools.iml" filepath="$PROJECT_DIR$/plugins/mcp-tools/mcp-tools.iml" group="plugins" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-api/messages-api.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-api/messages-api.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-for-legacy-constraints/messages-for-legacy-constraints.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-for-legacy-constraints/messages-for-legacy-constraints.iml" group="core/aspects/feedback" />
       <module fileurl="file://$PROJECT_DIR$/core/aspects/feedback/messages-for-rules/messages-for-rules.iml" filepath="$PROJECT_DIR$/core/aspects/feedback/messages-for-rules/messages-for-rules.iml" group="core/aspects/feedback" />

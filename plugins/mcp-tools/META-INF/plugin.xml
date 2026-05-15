@@ -1,0 +1,20 @@
+<idea-plugin>
+  <id>com.intellij.mcp.tools</id>
+  <name>MCP MPS</name>
+  <vendor>JetBrains</vendor>
+  <description>Demo plugin with a minimal McpToolset and a single Mcp tool.</description>
+
+  <depends>com.intellij.mcpServer</depends>
+  <depends>jetbrains.mps.core</depends>
+  <depends>com.intellij.modules.mps</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSModuleMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSModelMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSRootNodeMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSNodeMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSDocumentationMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSSkillsMcpToolset" />
+  </extensions>
+</idea-plugin>
