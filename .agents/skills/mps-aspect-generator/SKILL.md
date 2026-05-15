@@ -106,7 +106,8 @@ Each rule has an `applicableConcept` (or a pattern) and either:
 {
   "concept": "jetbrains.mps.lang.generator.structure.Reduction_MappingRule",
   "references": [
-    { "role": "applicableConcept", "target": "<EmptyOperation-concept-node-ref>" }
+    { "role": "applicableConcept",
+      "target": "r:6226607e-5523-4a99-8422-428d837c9864(org.example.statecharts.structure)/<EmptyOperation-nodeId>" }
   ],
   "children": [
     { "role": "ruleConsequence", "nodes": [
@@ -115,6 +116,8 @@ Each rule has an `applicableConcept` (or a pattern) and either:
   ]
 }
 ```
+
+> **`applicableConcept` always takes the structure-model node ref, never the `c:` concept ref.** All rules (`Root_MappingRule`, `Reduction_MappingRule`, `Weaving_MappingRule`, switch cases) and `TemplateDeclaration` itself expect this. The shape is `r:<structureModelUUID>(<lang>.structure)/<conceptDeclarationNodeId>` — the persistent ID of the `ConceptDeclaration` node inside the language's structure model. If you supply the `c:<langUUID>/<conceptId>` form (the form returned by `mps_mcp_get_concept_details.conceptReference` and visible in `.mps` XML), MPS will silently or noisily report `Unresolved reference: c:...`. Resolve a structure-model node ref via `mps_mcp_search_root_node_by_name` against the structure model, or by reading the concept's `sourceNode` field.
 
 Use `AbandonInput_RuleConsequence` whenever the source concept has no counterpart in the output (placeholder / no-op nodes, unused annotations, empty blocks). It is strictly stronger than "empty template": an empty template still produces a target placeholder; `AbandonInput` deletes the slot.
 
@@ -159,6 +162,10 @@ All macro concepts live in `jetbrains.mps.lang.generator.structure`. Attach any 
 > - `VarMacro2` is rare — most "store a value" needs are met by `PropertyMacro` or by computing on the fly in queries. See §2.7 for the cases where it still beats the alternatives.
 
 Additionally, **`TemplateFragment`** (`jetbrains.mps.lang.generator.structure.TemplateFragment`, also attached as `smodelAttribute`) marks the subtree inside a `TemplateDeclaration.contentNode` that is actually produced as the replacement — nodes outside the fragment are scaffolding. **`RootTemplateAnnotation`** is the analogous marker that turns a target-language root into a template root (carries a ref `applicableConcept`).
+
+> **A `TemplateDeclaration` used as a reduction target requires at least one `TemplateFragment`.** Without it the rule fires but emits nothing — the matched input simply disappears from the output, which looks identical to "the rule never matched". If a refactor splits inline content into a standalone `TemplateDeclaration` and the output silently loses those elements, the missing `TemplateFragment` on the produced subtree is the first thing to check. The fragment goes on the *exact* node that should replace the input — typically the outermost element of the template's `contentNode`.
+
+> **Multiple sibling macros on the same `smodelAttribute` slot are valid and order-independent.** The canonical example is `LoopMacro` + `CopySrcNodeMacro` together on a single target node ("for each source element, copy it through reductions"). MPS treats the macros as a set, not as a sequence; the order in which children sit under `smodelAttribute` does not change semantics. Add them with separate `mps_mcp_add_node_child` calls — no need to coordinate ordering.
 
 #### CopySrcNodeMacro (minimal, no query)
 
@@ -281,7 +288,7 @@ Gates the owning target subtree. Body returns `boolean`:
 
 #### LoopMacro
 
-Repeats the owning target subtree once per element. Body returns `sequence<node<>>`:
+Repeats the owning target subtree once per element. Most typically used to generate node's child collections. Body returns `sequence<node<>>`:
 
 ```json
 {
@@ -1328,6 +1335,29 @@ If a reduction rule keeps matching its own output:
 - Reused across rules / bigger than a dozen nodes → standalone `TemplateDeclaration` referenced via `TemplateDeclarationReference`.
 - One-off, small subtree, local to a single rule → `InlineTemplate_RuleConsequence` or `InlineTemplateWithContext_RuleConsequence`. Keeps the rule self-contained.
 
+### 13.10 — Extract inline LOOP content into a Reduction_MappingRule
+
+When a root template grows unwieldy (everything inlined under one big node tree), pull each looped subtree into its own `TemplateDeclaration` + `Reduction_MappingRule`. The pattern: keep a tiny **delegation placeholder** at the original site, let the reduction supply the real content.
+
+**Steps**
+
+1. **Create the standalone `TemplateDeclaration`** (e.g. `reduce_Transition`) in the same generator template model. Set its `applicableConcept` reference to the **structure-model node ref** of the source concept (`r:<structureModelUUID>(<lang>.structure)/<conceptDeclarationNodeId>`) — *not* the `c:` concept ref (see §1.2).
+2. **Build the `contentNode`** as the desired output subtree (e.g. an `XmlElement` `<transition>`).
+3. **Attach `TemplateFragment`** as an `smodelAttribute` of the produced node. Without it the reduction emits nothing — see §2 note. Use `mps_mcp_add_node_child(role="smodelAttribute", concept="jetbrains.mps.lang.generator.structure.TemplateFragment")`.
+4. **Add macros inside the fragment** (`PropertyMacro` for attribute values, etc.) exactly as you would inline.
+5. **Add a `Reduction_MappingRule`** to the `MappingConfiguration.reductionMappingRule` role. Set `applicableConcept` (structure-model node ref again) and a `ruleConsequence` child of concept `TemplateDeclarationReference` whose `template` ref points at the new declaration.
+6. **Replace the inline subtree at the call site** with a delegation placeholder — a target node of the same type (e.g. an empty `XmlElement` with the same `tagName`) carrying two `smodelAttribute` siblings: `LoopMacro` (body: source sequence, e.g. `node.transitions`) and `CopySrcNodeMacro` (no query). The LOOP replicates the placeholder per source element; COPY_SRC copies that element through reductions, so your new rule fires.
+7. **Validate then MAKE.** Run `mps_mcp_check_root_node_problems` on the `MappingConfiguration` *and* the new template, then `mps_mcp_perform_operation MAKE` over the generator + sandbox models. Diff `source_gen/` to confirm the output is identical to before.
+
+**Common refactor pitfalls (in order of frequency I've seen):**
+
+- Forgetting `TemplateFragment` on the produced subtree → output silently loses the elements that the inline version produced. Symptom: rule fires, but the slot is empty.
+- Using `c:<langUUID>/<conceptId>` for `applicableConcept` → "Unresolved reference: c:..." problem on the rule. Always use the `r:` structure-model node ref.
+- Leaving the original inline subtree in place (forgetting step 6) → both inline content *and* the reduction output appear, doubling the elements.
+- Adding only `LoopMacro` (without `CopySrcNodeMacro`) on the placeholder → loop replicates the placeholder shape but no reduction fires; output contains empty placeholders.
+
+This refactor scales: repeat per concept (Transition, then State, then …) until each reduction is a small focused template and the root template is just structural scaffolding plus delegation placeholders.
+
 ---
 
 ## 14 — Common pitfalls
@@ -1348,6 +1378,9 @@ If a reduction rule keeps matching its own output:
 | Switch default doesn't fire | A `Reduction_MappingRule` case matched (possibly via inheritance) | Check `extends`; add a stricter condition on competing cases |
 | Mapping script mutates input and other generators see stale data | Pre-script ran without `modifiesModel = true` | Set `modifiesModel` so MPS clones the model for this generator |
 | Pattern rule never matches | Pattern variables declared on wrong role / wrong concept | Verify pattern variable attachment (`smodelAttribute` → `PatternVariableDeclaration`) and ensure the hole concept subtypes the variable's declared concept |
+| `Unresolved reference: c:<uuid>/<id>` on `applicableConcept` | Used the `c:` concept ref instead of the structure-model node ref | Replace with `r:<structureModelUUID>(<lang>.structure)/<conceptDeclarationNodeId>`. See §1.2 |
+| Refactor extracted a reduction; output is now silently empty | The new `TemplateDeclaration` is missing the `TemplateFragment` smodelAttribute on the produced subtree | Add `TemplateFragment` to the exact node that should replace the input. See §2 / §13.10 |
+| `mps_mcp_check_root_node_problems` shows "rule disappeared" or partial tree | `onlyNodesWithProblems = true` (default) hides clean siblings; the rule is actually fine | Re-run with `onlyNodesWithProblems = false` to see the full tree before concluding the rule was deleted |
 
 ---
 

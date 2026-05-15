@@ -7,6 +7,7 @@ import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
 import com.intellij.mcpserver.McpToolset
 import com.intellij.openapi.application.EDT
+import jetbrains.mps.classloading.ClassLoaderManager
 import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.ModelReportItem
 import jetbrains.mps.errors.item.NodeReportItem
@@ -15,6 +16,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
 import jetbrains.mps.ide.MPSCoreComponents
 import jetbrains.mps.make.MakeServiceComponent
 import jetbrains.mps.make.MakeSession
+import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.messages.IMessage
 import jetbrains.mps.messages.IMessageHandler
 import jetbrains.mps.messages.MessageKind
@@ -41,6 +43,7 @@ import kotlinx.coroutines.withContext
 import org.jetbrains.mps.openapi.language.*
 import org.jetbrains.mps.openapi.model.*
 import org.jetbrains.mps.openapi.module.SModule
+import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.io.File
@@ -1205,7 +1208,10 @@ abstract class AbstractOps : McpToolset {
             // Collect the language IDs we expect to see reloaded after the build, so
             // the afterLanguagesLoaded latch can be made language-specific and not
             // triggered prematurely by an unrelated background language reload.
+            // Also collect the corresponding module references so we can drive
+            // ClassLoaderManager.reload synchronously after the make completes.
             var targetLanguageIds = emptySet<SLanguageId>()
+            var targetLanguageModuleRefs = emptySet<SModuleReference>()
             val (resourcesList, session, openNewSessionFlag) = mpsProject.modelAccess.computeReadAction {
                 // Expand modules to include generators for languages
                 val expandedModules = expandModules(modules)
@@ -1213,14 +1219,22 @@ abstract class AbstractOps : McpToolset {
                 // Derive the Language modules from both the provided models and the
                 // explicit/expanded modules list.
                 val ids = mutableSetOf<SLanguageId>()
+                val refs = mutableSetOf<SModuleReference>()
                 for (model in models) {
                     val m = model.module
-                    if (m is Language) ids.add(MetaIdByDeclaration.getLanguageId(m))
+                    if (m is Language) {
+                        ids.add(MetaIdByDeclaration.getLanguageId(m))
+                        refs.add(m.moduleReference)
+                    }
                 }
                 for (m in expandedModules) {
-                    if (m is Language) ids.add(MetaIdByDeclaration.getLanguageId(m))
+                    if (m is Language) {
+                        ids.add(MetaIdByDeclaration.getLanguageId(m))
+                        refs.add(m.moduleReference)
+                    }
                 }
                 targetLanguageIds = ids
+                targetLanguageModuleRefs = refs
 
                 // Compose resources from provided models and explicit modules
                 val list = mutableListOf<jetbrains.mps.make.resources.IResource>()
@@ -1283,26 +1297,49 @@ abstract class AbstractOps : McpToolset {
                 withContext(Dispatchers.IO) {
                     val r = future.get()
                     if (r.isSucessful) {
-                        // Wait for the MPS ConceptRegistry to be updated.
-                        // afterLanguagesLoaded fires (in a write action) once the language
-                        // runtime classes are (re)deployed into the JVM after the build.
-                        // A 30-second timeout guards against builds that produce no language
-                        // reload (e.g. an incremental make that found nothing to regenerate).
-                        val latchFired = languageReloadLatch.await(30, TimeUnit.SECONDS)
+                        // The make pipeline only refreshes the language runtime indirectly:
+                        // Project.reconcileProjectFiles -> markDirtyAndRefresh -> module
+                        // events -> ClassLoaderManager.processModuleChanges -> notifyLoad
+                        // -> afterLanguagesLoaded. That chain is asynchronous (invokeLater)
+                        // and races EDT scheduling; under contention, or when the make
+                        // produced no class-file deltas, the latch can miss its window and
+                        // callers end up reading a stale StructureAspectDescriptor (empty
+                        // properties / references / children, null sourceNode).
+                        //
+                        // Drive the reload synchronously instead, mirroring what
+                        // DefaultMakeTask does after a regular UI make. CLM.reload is
+                        // idempotent and acquires its own write action, so calling it here
+                        // is safe even when a natural reload already happened earlier.
+                        // afterLanguagesLoaded fires synchronously inside CLM.reload, so
+                        // by the time it returns the latch is down for the target
+                        // languages.
+                        if (targetLanguageModuleRefs.isNotEmpty()) {
+                            try {
+                                val classLoaderManager = mpsProject.getComponent(ClassLoaderManager::class.java)
+                                classLoaderManager?.reload(targetLanguageModuleRefs, EmptyProgressMonitor())
+                            } catch (e: Exception) {
+                                messages.add(
+                                    MakeMessage(
+                                        "WARNING",
+                                        "Explicit ClassLoaderManager.reload failed: ${e.message}. " +
+                                        "Concept descriptors may be stale; try `mps_mcp_reload_all`."
+                                    )
+                                )
+                            }
+                        }
+                        // Short safety-net await: the listener should already have fired
+                        // synchronously inside CLM.reload above. We still wait briefly to
+                        // cover natural reloads (e.g. languages outside targetLanguageModuleRefs)
+                        // and to absorb any tail latency of LanguageRegistry notifications.
+                        val latchFired = languageReloadLatch.await(10, TimeUnit.SECONDS)
                         if (!latchFired && targetLanguageIds.isNotEmpty()) {
-                            // The language runtime was not reloaded within the timeout window.
-                            // This typically means the incremental make decided nothing had
-                            // changed, so the StructureAspectDescriptor was not regenerated.
-                            // Concept properties / references / children may be stale or absent.
-                            // Callers should retry with rebuild=true if they observe empty results.
                             messages.add(
                                 MakeMessage(
                                     "WARNING",
-                                    "Language runtime did not reload within 30 s after the build " +
+                                    "Language runtime did not reload within 10 s after the build " +
                                     "(languages: ${targetLanguageIds.joinToString()}). " +
-                                    "The incremental make may have skipped regeneration. " +
-                                    "Concept descriptors (properties, references, children) may be " +
-                                    "stale. Retry with rebuild=true if concept details appear empty."
+                                    "Concept descriptors (properties, references, children) may " +
+                                    "be stale. Try `mps_mcp_reload_all` or restart MPS, then retry."
                                 )
                             )
                         }

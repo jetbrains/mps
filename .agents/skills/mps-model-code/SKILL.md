@@ -11,6 +11,12 @@ behavior methods, typesystem rule bodies, etc. — where the code is written in
 
 ---
 
+## 0 — Golden Rules / Common Gotchas
+
+- **Node Equality**: When comparing nodes for equality, ALWAYS use the `:eq:` and `:ne:` operators (`NPEEqualsExpression` / `NPENotEqualsExpression`). Never use `==` or `equals()`, as they can cause `NullPointerException`s or compare incorrectly in MPS.
+
+---
+
 ## 1 — Background: two worlds in one model
 
 A checking rule or behavior method uses:
@@ -215,6 +221,7 @@ These concepts live in `jetbrains.mps.lang.smodel` and are not parseable from Ja
 | `node.link` or `node:Concept.link` | `SLinkAccess` inside `DotExpression` | Already in tree; keep it, or use `SLinkOperations.getTarget` in parsed Java |
 | `node:CatchClause` (type-cast) | `SNodeTypeCastExpression` | Cannot be parsed; if you need the casted node as an argument, restructure: pass the outer node (`throwStatement`) and derive the cast inside the new Java method |
 | `throwStatement` (applicable-node ref) | `ApplicableNodeReference` | **Already resolves** when you parse an expression inside a rule body — the parser finds `throwStatement` in scope and creates an `ApplicableNodeReference` automatically |
+| `node` (predefined parameter in editor / intention / action / behavior query functions) | `ConceptFunctionParameter_node` (in the language that owns the function — e.g. `jetbrains.mps.lang.editor.structure.ConceptFunctionParameter_node` for editor query functions like `QueryFunction_ModelAccess_Getter`, `jetbrains.mps.lang.intentions.structure.ConceptFunctionParameter_node` for intentions) | **Does NOT auto-resolve** when parsing Java inside a query-function body — `node.someBehaviorMethod()` collapses into a single `UnknownDotCall` (callee=`someBehaviorMethod`, tokens=`node`). Replace it manually with `DotExpression { ConceptFunctionParameter_node, Node_ConceptMethodCall(→method) }`. Note: each aspect has its own `ConceptFunctionParameter_node` concept — pick the one in the language matching the surrounding query function. |
 | `.getCaughtTypes()` (behavior method call) | `Node_ConceptMethodCall` | Cannot be parsed; keep the existing call, or call the behavior descriptor directly: `AbstractCatchClause__BehaviorDescriptor.getCaughtTypes_id2FJPm3OMxhX.invoke(node)` |
 | `node.parent:C` | `DotExpression(Node_GetParentOperation, SNodeTypeCastExpression)` | Cannot be parsed; use `SNodeOperations.getParent(node)` + `SNodeOperations.cast(...)` in parsed Java |
 
@@ -405,6 +412,7 @@ Language/module prefix for all BaseLanguage structure IDs:
 | `type List<SNode> is not a subtype of sequence<node<Type>>` | Method return type was parsed as Java `List<SNode>` instead of MPS `SequenceType` | Replace the `returnType` child after parsing using `mps_mcp_replace_node_child` |
 | `StaticMethodCall` inserts as root node (not into tree) | `parse_java_and_insert` with `mode: "replace"` silently failed to find the target | Verify the target node ref is correct and still in the tree; check that the parent still exists |
 | Smodel expression (e.g. `:CatchClause` cast) cannot be passed as argument | Java parser has no syntax for smodel casts | Change method signature to accept wider node and compute cast inside the method |
+| `access to link 'X' is not expected here` / `out of search scope` despite correct cardinality | Operand typed as `node<>` rather than `node<X>` (e.g. `ForEachVariable` over `sequence<node<>>`, loosely-typed parameter) | Wrap operand in `SNodeTypeCastExpression` to typed `node<X>` (see §11.1 cast subsection) |
 | Warning: "Prefer explicit node presentation" | `+` string concatenation with an SNode argument | Pre-existing warning in `RulesFunctions_BaseLanguage`; not introduced by your changes |
 
 ---
@@ -721,6 +729,7 @@ All five statements share the same shape: a mandatory `commandClosureLiteral` ch
 | `ForeachStatement` (BaseLanguage) | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1144226303539` | Java-style `for (T v : iterable)` — uses `LocalVariableDeclaration` for the loop var. **Different** from the `collections.ForEachStatement` (see §10.2 and §12). |
 | `BlockStatement` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1082485599095` | Nested `{ ... }` block (body is a `StatementList`). |
 | `NPEEqualsExpression` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1225271283259` | `:eq:` null-safe equality |
+| `NPENotEqualsExpression` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1225271221393` | `:ne:` null-safe inequality |
 | `BreakStatement` | `c:f3061a53-9226-4cc5-a443-f952ceaf5816/1081855346303` | `break;` |
 
 ---
@@ -738,7 +747,89 @@ DotExpression
 
 ### 11.1 Composite patterns (with blueprints)
 
-#### `node.linkName` — link access
+#### Closure literal — reusable building block
+
+`ClosureLiteral` (`{ p1, p2 => body }`) is the actual argument for `.where`, `.translate`, `.any`, `.forEach`, `.foldLeft`, scope/canBe/factory-style callbacks, and SAM-conversion sites. It always has the same two children: a `parameter` list (cardinality `0..n`) and a single `body` (a `StatementList`).
+
+```json
+{
+  "concept": "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral",
+  "children": [
+    { "role": "parameter", "nodes": [{
+      "concept": "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration",
+      "properties": [{ "name": "name", "value": "it" }, { "name": "resolveInfo", "value": "it" }]
+    }]},
+    { "role": "body", "nodes": [{
+      "concept": "jetbrains.mps.baseLanguage.structure.StatementList",
+      "children": [{ "role": "statement", "nodes": [ /* statements */ ] }]
+    }]}
+  ]
+}
+```
+
+Notes:
+- `InferredClosureParameterDeclaration` lets the type be inferred from context — almost always what you want inside collection operations. Always set both `name` and `resolveInfo` to the same value so other code can resolve `VariableReference`s back to the parameter.
+- For multi-parameter closures (`{a, b => ...}`), repeat `parameter` children — the role has cardinality `0..n`.
+- To reference the parameter from inside the body, use `jetbrains.mps.baseLanguage.structure.VariableReference` with a `variableDeclaration` reference targeting the `InferredClosureParameterDeclaration`. Do not insert a fresh declaration each time you reference it.
+- **Forward references by plain name within the same blueprint**: when authoring a JSON blueprint that both *declares* a parameter (e.g. `ParameterDeclaration` / `InferredClosureParameterDeclaration` with `name: "it"`) and *references* it elsewhere in the same tree, you may set the `VariableReference`'s `variableDeclaration` `target` to the plain string `"it"` — the unified-JSON-format auto-resolver matches it to the parameter declared elsewhere in the same `add_node_child` / `insert_root_node_from_json` call. Confirmed working for closure parameters used inside `where`/`select` predicates. No need to perform the insert in two stages just to capture a persistent ref for the parameter.
+- The body is a `StatementList`, not a bare expression. The "last expression is the result" rule means: wrap the value in an `ExpressionStatement` and place it last (or use a `ReturnStatement` if the closure has an explicit return type).
+
+#### Cardinality cheatsheet — `SLinkAccess` vs `SLinkListAccess` (and child variants)
+
+The choice of access concept depends on the **link/child cardinality**, not on what feels natural in the dot expression. Picking the wrong one produces confusing errors that don't point at the cardinality mismatch.
+
+| Cardinality | Reference (link) access | Containment (child) access | Result type |
+|---|---|---|---|
+| `1`, `0..1` | `SLinkAccess` | `SChildAccess` | `node<Target>` |
+| `0..n`, `1..n` | `SLinkListAccess` | `SChildListAccess` | `sequence<node<Target>>` |
+
+Symptoms of using the singular form (`SLinkAccess`/`SChildAccess`) on a list-cardinality role:
+- "operation is not applicable to null"
+- "access to link/child 'X' is not expected here"
+- "The reference X is out of search scope"
+
+None of these mention cardinality — check it explicitly when these errors appear.
+
+#### Operand must be a typed `node<X>` — cast an untyped operand
+
+`SLinkAccess` / `SLinkListAccess` / `SPropertyAccess` / `SChildAccess` / `SChildListAccess`
+all require their **operand** to be typed as `node<X>` where `X` is the concept that
+declares the link/property. A plain `node<>` (e.g. the result of a generic operation that
+loses concept information, a parameter typed loosely as `node<BaseConcept>`, or a
+`VariableReference` to a `ForEachVariable` whose source sequence is `sequence<node<>>`)
+will fail validation with the same family of errors as the cardinality mismatch above —
+particularly **"out of search scope"** or **"access to link 'X' is not expected here"**.
+
+**Fix**: wrap the operand in an `SNodeTypeCastExpression` to give it the right concept
+type. Use `asCast=false` (the strict `:` form) when you know statically that the node is
+of concept `X`; use `asCast=true` (the null-safe `as` form) when the cast may legitimately
+miss. The `SNodeTypeCastExpression` becomes the new `operand` of the surrounding
+`DotExpression`:
+
+```json
+{
+  "concept": "jetbrains.mps.baseLanguage.structure.DotExpression",
+  "children": [
+    { "role": "operand", "nodes": [{
+      "concept": "jetbrains.mps.lang.smodel.structure.SNodeTypeCastExpression",
+      "properties": [{ "name": "asCast", "value": "false" }],
+      "children": [
+        { "role": "leftExpression", "nodes": [{ "...": "<untyped node<> expression>" }] },
+        { "role": "conceptArgument", "nodes": [{
+          "concept": "jetbrains.mps.lang.smodel.structure.RefConcept_Reference",
+          "references": [{ "role": "conceptDeclaration", "target": "<X-concept-noderef>" }]
+        }]}
+      ]
+    }]},
+    { "role": "operation", "nodes": [{ "...": "<SLinkAccess / SPropertyAccess / etc. on link/property of X>" }] }
+  ]
+}
+```
+
+See §11.1 "`node as C` vs `node:C`" for the full `SNodeTypeCastExpression` blueprint and
+the difference between the two cast forms.
+
+#### `node.linkName` — link access (cardinality `1` or `0..1`)
 
 ```json
 {
@@ -752,6 +843,8 @@ DotExpression
   ]
 }
 ```
+
+For list cardinality (`0..n` or `1..n`), use `jetbrains.mps.lang.smodel.structure.SLinkListAccess` instead — same shape, different concept. The same applies to `SChildAccess` vs `SChildListAccess` for containment links.
 
 #### `node.parent` — direct parent (no concept filtering)
 
@@ -1795,10 +1888,14 @@ child), `iterable` → `Expression`, `body` → `StatementList`.
 
 ---
 
-## 13 — NPEEqualsExpression: null-safe node identity
+## 13 — NPEEqualsExpression / NPENotEqualsExpression: null-safe node identity
 
 The `:eq:` operator (`NPEEqualsExpression`) is the correct way to compare two nodes for
-identity when either might be null. Regular `==` can NPE; this cannot.
+identity when either might be null. Regular `==` can NPE or compare incorrectly on MPS
+nodes; the null-safe forms cannot. Use `:ne:` (`NPENotEqualsExpression`) for the negation.
+
+Both concepts have the same shape — two children, `leftExpression` and `rightExpression`,
+each holding any Expression:
 
 ```json
 {
@@ -1810,8 +1907,18 @@ identity when either might be null. Regular `==` can NPE; this cannot.
 }
 ```
 
+```json
+{
+  "concept": "jetbrains.mps.baseLanguage.structure.NPENotEqualsExpression",
+  "children": [
+    { "role": "leftExpression",  "nodes": [{ "...": "<expression>" }] },
+    { "role": "rightExpression", "nodes": [{ "...": "<expression>" }] }
+  ]
+}
+```
+
 **Typical use:** inside a `ClosureLiteral` body to compare a traversed node
-against a captured variable: `superType :eq: caughtType`.
+against a captured variable: `superType :eq: caughtType` or `state :ne: initial`.
 
 ---
 

@@ -28,6 +28,7 @@ description: Steps to define concepts, interface concepts, and enums in an MPS l
 7. **Leave alias empty on smart references and transparent collections**: e.g., `StatementList`.
 8. **Property Definition**:
     * For enum properties: Create the `EnumerationDeclaration` first, then set the property `dataType` to reference it.
-8. **Bulk Operations**: Use `mps_mcp_perform_structure_operation` for creating multiple concepts or enums efficiently.
+9. **Proper cardinality**: Make sure that indended child collections have the cardinality of 0..n or 1..n.
+10.**Bulk Operations**: Use `mps_mcp_perform_structure_operation` for creating multiple concepts or enums efficiently.
    * Local references within the same JSON blueprint can use names for resolution.
-10. **Reload Runtime**: Always rebuild the language (via `mps_mcp_perform_operation` with `MAKE`) after structural changes to make concepts discoverable.
+11.**Reload Runtime**: Always rebuild the language (via `mps_mcp_perform_operation` with `MAKE` and 'rebuild="true"') after structural changes to make concepts discoverable.

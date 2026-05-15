@@ -128,9 +128,9 @@ To verify that platform sources are accessible via MCP, use `search_symbol` (e.g
 ## Build & test
 
 The primary way for agents to build the project is through the IntelliJ IDEA MCP tools:
-- Use `mcp_my-idea-mcp-server_build_project` to compile the entire project.
+- Use `build_project` to compile the entire project.
 - Verified to use **JDK 21** (`JB JDK 21` in `.idea/misc.xml`).
-- Run configurations such as `CoreTestSuite` or `MPS` can be found via `mcp_my-idea-mcp-server_get_run_configurations`.
+- Run configurations such as `CoreTestSuite` or `MPS` can be found via `get_run_configurations`.
 
 ## Docs
 
@@ -147,31 +147,31 @@ These rules are **mandatory** — always follow them, not just when a skill is a
 ## Skills
 A skill is a set of local instructions to follow that is stored in a `SKILL.md` file or served by the `mps_mcp_get_skill` tool.
 
-Local skills in [`.claude/skills/`](.claude/skills/):
+Local skills in [`.agents/skills/`](.agents/skills/):
 
-- [`actions`](.claude/skills/actions/SKILL.md) — guidelines for implementing IntelliJ actions (AnAction).
-- [`code-style`](.claude/skills/code-style/SKILL.md) — code style rules for the IntelliJ codebase.
-- [`commits`](.claude/skills/commits/SKILL.md) — IntelliJ-repo commit format and workflow.
-- [`debugging`](.claude/skills/debugging/SKILL.md) — debugging techniques and tools for IntelliJ development.
-- [`mps-aspect-accessories`](.claude/skills/mps-aspect-accessories/SKILL.md) — MPS language dependencies, used languages, runtime solutions, and accessory models.
-- [`mps-aspect-actions`](.claude/skills/mps-aspect-actions/SKILL.md) — MPS node factories (the "actions" aspect).
-- [`mps-aspect-behavior`](.claude/skills/mps-aspect-behavior/SKILL.md) — MPS ConceptBehavior — per-concept methods and virtual dispatch.
-- [`mps-aspect-constraints`](.claude/skills/mps-aspect-constraints/SKILL.md) — MPS language constraints — property validators, scopes, can-be rules.
-- [`mps-aspect-dataflow`](.claude/skills/mps-aspect-dataflow/SKILL.md) — MPS dataflow builders.
-- [`mps-aspect-editor-menus-and-keymaps`](.claude/skills/mps-aspect-editor-menus-and-keymaps/SKILL.md) — MPS editor action maps, keymaps, transformation/substitute menus.
-- [`mps-aspect-generation-plan`](.claude/skills/mps-aspect-generation-plan/SKILL.md) — MPS generation plans, checkpoints, forks, plan contributions.
-- [`mps-aspect-generator`](.claude/skills/mps-aspect-generator/SKILL.md) — MPS generators — rules, macros, template switches, mapping labels.
-- [`mps-aspect-intentions`](.claude/skills/mps-aspect-intentions/SKILL.md) — MPS intentions (context actions).
-- [`mps-aspect-migrations`](.claude/skills/mps-aspect-migrations/SKILL.md) — MPS migration scripts and enhancement scripts.
-- [`mps-aspect-textgen`](.claude/skills/mps-aspect-textgen/SKILL.md) — MPS TextGen — concept-to-plain-text serialisation.
-- [`mps-aspect-typesystem`](.claude/skills/mps-aspect-typesystem/SKILL.md) — MPS typesystem — inference, subtyping, checking rules.
-- [`mps-bugfix`](.claude/skills/mps-bugfix/SKILL.md) — MPS bugfixing workflow.
-- [`mps-build-language`](.claude/skills/mps-build-language/SKILL.md) — MPS Build Language scripts.
-- [`mps-lang-core-xml`](.claude/skills/mps-lang-core-xml/SKILL.md) — `jetbrains.mps.core.xml` language for XML documents and generator templates.
-- [`mps-ide-plugin`](.claude/skills/mps-ide-plugin/SKILL.md) — authoring MPS IDE plugins: actions, groups, tool windows, keymaps, preferences.
-- [`mps-language-aspects-overview`](.claude/skills/mps-language-aspects-overview/SKILL.md) — entry point for MPS language authoring; indexes all aspects.
-- [`mps-model-code`](.claude/skills/mps-model-code/SKILL.md) — BaseLanguage code combining smodel, closures, and collections.
-- [`mps-quotations`](.claude/skills/mps-quotations/SKILL.md) — MPS quotations and anti-quotations for inline SNode trees.
-- [`registry`](.claude/skills/registry/SKILL.md) — IntelliJ Registry API.
-- [`ssr`](.claude/skills/ssr/SKILL.md) — Structural Search and Replace in IntelliJ.
-- [`teamcity-cli`](.claude/skills/teamcity-cli/SKILL.md) — TeamCity CI/CD CLI usage.
+- [`actions`](.agents/skills/actions/SKILL.md) — guidelines for implementing IntelliJ actions (AnAction).
+- [`code-style`](.agents/skills/code-style/SKILL.md) — code style rules for the IntelliJ codebase.
+- [`commits`](.agents/skills/commits/SKILL.md) — IntelliJ-repo commit format and workflow.
+- [`debugging`](.agents/skills/debugging/SKILL.md) — debugging techniques and tools for IntelliJ development.
+- [`mps-aspect-accessories`](.agents/skills/mps-aspect-accessories/SKILL.md) — MPS language dependencies, used languages, runtime solutions, and accessory models.
+- [`mps-aspect-actions`](.agents/skills/mps-aspect-actions/SKILL.md) — MPS node factories (the "actions" aspect).
+- [`mps-aspect-behavior`](.agents/skills/mps-aspect-behavior/SKILL.md) — MPS ConceptBehavior — per-concept methods and virtual dispatch.
+- [`mps-aspect-constraints`](.agents/skills/mps-aspect-constraints/SKILL.md) — MPS language constraints — property validators, scopes, can-be rules.
+- [`mps-aspect-dataflow`](.agents/skills/mps-aspect-dataflow/SKILL.md) — MPS dataflow builders.
+- [`mps-aspect-editor-menus-and-keymaps`](.agents/skills/mps-aspect-editor-menus-and-keymaps/SKILL.md) — MPS editor action maps, keymaps, transformation/substitute menus.
+- [`mps-aspect-generation-plan`](.agents/skills/mps-aspect-generation-plan/SKILL.md) — MPS generation plans, checkpoints, forks, plan contributions.
+- [`mps-aspect-generator`](.agents/skills/mps-aspect-generator/SKILL.md) — MPS generators — rules, macros, template switches, mapping labels.
+- [`mps-aspect-intentions`](.agents/skills/mps-aspect-intentions/SKILL.md) — MPS intentions (context actions).
+- [`mps-aspect-migrations`](.agents/skills/mps-aspect-migrations/SKILL.md) — MPS migration scripts and enhancement scripts.
+- [`mps-aspect-textgen`](.agents/skills/mps-aspect-textgen/SKILL.md) — MPS TextGen — concept-to-plain-text serialisation.
+- [`mps-aspect-typesystem`](.agents/skills/mps-aspect-typesystem/SKILL.md) — MPS typesystem — inference, subtyping, checking rules.
+- [`mps-bugfix`](.agents/skills/mps-bugfix/SKILL.md) — MPS bugfixing workflow.
+- [`mps-build-language`](.agents/skills/mps-build-language/SKILL.md) — MPS Build Language scripts.
+- [`mps-lang-core-xml`](.agents/skills/mps-lang-core-xml/SKILL.md) — `jetbrains.mps.core.xml` language for XML documents and generator templates.
+- [`mps-ide-plugin`](.agents/skills/mps-ide-plugin/SKILL.md) — authoring MPS IDE plugins: actions, groups, tool windows, keymaps, preferences.
+- [`mps-language-aspects-overview`](.agents/skills/mps-language-aspects-overview/SKILL.md) — entry point for MPS language authoring; indexes all aspects.
+- [`mps-model-code`](.agents/skills/mps-model-code/SKILL.md) — BaseLanguage code combining smodel, closures, and collections.
+- [`mps-quotations`](.agents/skills/mps-quotations/SKILL.md) — MPS quotations and anti-quotations for inline SNode trees.
+- [`registry`](.agents/skills/registry/SKILL.md) — IntelliJ Registry API.
+- [`ssr`](.agents/skills/ssr/SKILL.md) — Structural Search and Replace in IntelliJ.
+- [`teamcity-cli`](.agents/skills/teamcity-cli/SKILL.md) — TeamCity CI/CD CLI usage.

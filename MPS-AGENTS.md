@@ -4,6 +4,8 @@ This companion guide preserves the detailed MPS-specific instructions for workin
 
 Read this document together with `AGENTS.md` whenever the task involves MPS artifacts or MPS MCP tooling.
 
+> **Tool name note:** MPS MCP tools are named with a `mps_mcp_` prefix (e.g. `mps_mcp_get_skill`, `mps_mcp_get_context`). Your MCP client wraps these with a server-specific prefix (e.g. `mcp__mps-mcp-server__<env>___`), which varies by environment. Match tools by the stable `mps_mcp_*` suffix.
+
 ## Skills
 
 ### Skills in local files
@@ -47,6 +49,7 @@ The MPS skills available in this environment are surfaced by `mps_mcp_get_contex
 | `understand-mps-languages`                    | Analyze MPS language definitions. Use when analyzing or inspecting MPS languages.                                                            |
 | `language-and-concept-inheritance`            | Investigate inheritance between MPS languages and concepts. Use when investigating a language or using an unfamiliar one.                    |
 | `add-or-update-mps-code-nodes`                | Modify MPS nodes using tools and JSON blueprints. Use when adding or updating MPS nodes.                                                     |
+| `create-dsl-memory`                           | Explore a live MPS DSL project and write (or update) a project-local `MEMORY.md` for future sessions. Use after any session where new DSL facts were discovered. |
 
 If a prompt mentions a skill that is matched both by a file skill and an mcp skill, you typically need to read both.
 
@@ -106,6 +109,8 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 - User expected the entire JSON file representing MPS nodes to be read and presented without truncation.
 - WHEN large file output is truncated THEN read and return the file in sequential chunks
 - Preserve node IDs: prefer `mps_mcp_update_root_node_from_json` or surgical edits (`mps_mcp_add_node_child`, `mps_mcp_set_node_properties`, etc.) over delete-and-reinsert. Deleting a root node destroys its persistent ID and breaks any incoming references. Only delete-and-reinsert when the node is brand new, has no incoming references, and the user has not requested ID preservation.
+- **Surgical edit tool selection** — when a single child needs to change, prefer `mps_mcp_replace_node_child` (replaces one named child by reference, preserving siblings and the parent's ID) over re-running `mps_mcp_update_root_node_from_json` on the whole root. The latter rewrites every property/child/reference of the root and is wasteful (and risky) when only one subtree changed. Reach for `mps_mcp_update_root_node_from_json` only when the entire root needs to be rewritten.
+- **Reload after compiled-aspect changes** — after inserting or modifying nodes in the **typesystem**, **constraints**, **behavior**, **editor**, or any other compiled aspect of a language, call `mps_mcp_reload_all` (or rebuild the language module via `mps_mcp_perform_operation` `MAKE`) before validating with `mps_mcp_check_root_node_problems` on a model that uses the language. Without a reload, the cached compiled rules continue to fire — checking will report stale errors or miss new ones, producing misleading feedback loops.
 
 
 #### JSON format for nodes
@@ -148,6 +153,15 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 - For nodes that are created as part of the same bulk operation, you can use their **name** as a placeholder in the `target` field. The tool will automatically resolve these "local" references once all nodes are created.
 - If automatic resolution is not possible or desired, leave the target references empty and set them later with `mps_mcp_set_node_references` once you have discovered the IDs of the newly created nodes.
 
+#### Print-shallow-then-add-children workflow
+- Prefer **staged construction** over one giant blueprint when a subtree is large or its child node refs are needed for later edits. Single JSON blueprints over ~4KB get truncated, and very deep trees are hard to debug.
+- The pattern is:
+  1. Insert (or create) the **outer node** with a minimal blueprint — concept, properties, and just enough children/references to make the node valid.
+  2. Call `mps_mcp_print_node_json` with `deep=false` (shallow) on the outer node to learn the **persistent refs** of its direct children and roles.
+  3. Fill or extend each child role with `mps_mcp_add_node_child` (append a new child in a role) or `mps_mcp_replace_node_child` (swap an existing placeholder child for a real subtree).
+  4. Repeat the print-shallow step on any newly inserted child to drill further down — every staged call returns its own node ref.
+- Use this pattern whenever you would otherwise paste a node ref you have not yet seen, when the subtree might exceed the JSON size limit, or when intermediate validation (`mps_mcp_check_root_node_problems`) between layers helps localise errors.
+
 ### 5. Analyzing MPS Code and Languages
 - Use `mps_mcp_show_node_representation` for a textual or html projection.
 - Use `mps_mcp_print_node_json` for the structural JSON form.
@@ -166,6 +180,7 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 - Use `mps_mcp_get_skill` to acquire a particular skill and use it to write MPS code.
 - Acquire the `writing-baselanguage-java-code-in-mps` skill as soon as you need to write any code in BaseLanguage or Java.
 - Acquire the `implement-mps-language-structure-concepts` skill as soon as you need to define or change a language or its concepts.
+- If `MEMORY.md` exists in the project root, **read it before starting any DSL task** — it records concept structure, node refs, and JSON blueprints from prior sessions. After a session where you discovered new facts about the DSL, use `mps_mcp_get_skill` with `create-dsl-memory` to update it.
 
 ## Available MCP Tools
 
@@ -201,8 +216,8 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 3.  **Respect the AST**: Remember that you are editing a tree. When writing Java (`BaseLanguage`), use `ParenthesizedExpression` if you are unsure about operation priorities in the tree structure.
 4.  **Learn from samples**: Study existing code to understand how to perform common tasks. Use `mps_mcp_perform_structure_operation` (FIND_INSTANCES) to existing nodes of a given concept.
 5   **Defensive Problem Checking**: Always use `mps_mcp_check_root_node_problems` immediately after inserting or modifying a complex node. A successful insertion "ok": true does not guarantee the resulting AST is semantically or structurally valid.
-6   **Validate Frequently**: Make/rebuild languages with `mps_mcp_perform_operation` after making changes to be able to import and use them as well as to see if the languages generate and compile.
+6   **Validate Frequently**: Make/rebuild languages with `mps_mcp_perform_operation` after making changes so they can be imported and used, and so you see whether they generate and compile. Pass `MAKE` with a JSON parameters object that names what to build — `{"modules": ["<module-ref>"]}` for one or more modules (e.g. a language plus its generator), `{"models": ["<model-ref>"]}` to make individual models, or `{"wholeProject": true}` to rebuild everything. Combine with `mps_mcp_check_root_node_problems` afterwards to surface generation errors.
 7.  **Missed skill adoption**: When an MPS skill is offered that can find models/modules/languages by name, the agent should decide to learn and use it to perform the lookup.
 
-Important detail: I like light blue color.
+
 ---

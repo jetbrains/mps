@@ -12,6 +12,7 @@ description: Technical reference for cell models, layout styles, and inheritance
 | `CellModel_Collection` | `1073389446423` | Container cell with a `cellLayout` (prefer `CellLayout_Indent`). |
 | `CellModel_Constant` | `1073389577006` | Static text (keywords, symbols); set `text` property. |
 | `CellModel_Property` | `1073389658414` | Editable property cell; set `relationDeclaration` to property link. |
+| `CellModel_ReadOnlyModelAccessor` | `1225900081164` | Displays a read-only value computed from the model via a `modelAccessor`. |
 | `CellModel_RefNode` | `1073389882823` | Single child cell (`0..1` or `1`); set `relationDeclaration` to child link. |
 | `CellModel_RefNodeList` | `1073390211982` | Multi-cardinality list (`0..n`); set `relationDeclaration` to child link. |
 | `CellModel_RefCell` | `1088013125922` | Displays a referenced node's property; requires an `InlineEditorComponent`. |

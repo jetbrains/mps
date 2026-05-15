@@ -58,6 +58,14 @@ Inspection of generated code is allowed when:
 
 Read `MPS-AGENTS.md` for complete guidance on MPS workflows, skills, available tools, and best practices.
 
+## DSL Memory
+
+If `MEMORY.md` exists in the project root, **read it before starting any task** — it captures DSL concept structure, sandbox node refs, JSON blueprints, and gotchas discovered in prior sessions, saving you from re-exploring the same ground.
+
+After completing a task where you learned something new about the DSL (new concept details, node refs, usage patterns, or non-obvious constraints not already in `MEMORY.md`), use the `create-dsl-memory` skill to update it:
+- Load it with `mps_mcp_get_skill` using skill name `create-dsl-memory`.
+- If no `MEMORY.md` exists yet, the skill will create one from scratch.
+
 ## Skills
 
 A skill is a set of local instructions stored in a `SKILL.md` file under `.agents/skills/` or served by the `mps_mcp_get_skill` tool. Use `mps_mcp_get_context` to discover what skills the current MPS instance provides. Skills listed in `MPS-AGENTS.md` are always available.

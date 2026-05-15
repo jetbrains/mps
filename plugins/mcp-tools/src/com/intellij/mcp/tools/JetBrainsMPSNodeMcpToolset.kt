@@ -103,6 +103,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           Returns JSON: { ok, data: { role, type, typeReference, cardinality } }
           Parameters: { "nodeRef": "Persistent reference of the node (SNodeReference)" }
         - MAKE: Performs Make or Rebuild on a list of models or modules, or the whole project.
+          NOTE: This operation can be long-running (often several minutes, especially for 'rebuild' or 'wholeProject'). The tool itself does not impose a timeout and will run until MPS finishes the build. If your MCP client or agent harness aborts the call due to its own request timeout, increase that timeout and/or retry the call with a longer timeout — the build on the MPS side will typically still complete in the background, and a subsequent MAKE call will be much faster (incremental).
           Returns JSON: { ok, data: { success: boolean, message: string, details: [ { kind, text }, ... ] } } or a path to a temporary JSON file if the data is large.
           Parameters: { "models": "Optional: list of persistent model references", "modules": "Optional: list of persistent module references", "rebuild": "Optional: boolean, default false", "wholeProject": "Optional: boolean, default false. If true, 'models' and 'modules' must be absent." }
         - FIX_REFERENCES: Attempts to re-resolve all references in a node and all its descendants using scope-based resolution.

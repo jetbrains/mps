@@ -24,6 +24,7 @@ description: Mapping Java syntax to MPS `baseLanguage` concepts and roles.
 | `field` (instance/static)  | `FieldDeclaration` / `StaticFieldDeclaration` | `name`, `type`                                                       |
 | `int x = 5;`               | `LocalVariableDeclarationStatement` | `localVariableDeclaration` -> `LocalVariableDeclaration`             |
 | `x = 5;` (assignment)      | `ExpressionStatement` | `expression` -> `AssignmentExpression` (`lValue`, `rValue`)          |
+| `node1 :eq: node2`         | `NPEEqualsExpression` / `NPENotEqualsExpression` | `leftExpression`, `rightExpression`                                  |
 | `if` / `while`             | `IfStatement` / `WhileStatement` | `condition`, `ifTrue` / `body` (StatementList)                       |
 | `for` / `foreach`          | `ForStatement` / `ForeachStatement` | `variable`, `condition`, `iteration` / `iterable`, `body`            |
 | `try { ... } catch`        | `TryCatchStatement` | `body` (StatementList), `catchClause`                                |
@@ -70,6 +71,17 @@ description: Mapping Java syntax to MPS `baseLanguage` concepts and roles.
     "properties": [{ "name": "name", "value": "count" }],
     "children": [{ "role": "type", "nodes": [{ "concept": "jetbrains.mps.baseLanguage.structure.IntegerType" }] }]
   }]}]
+}
+```
+
+**Node Equality (`:eq:` / `:ne:`)**
+```json
+{
+  "concept": "jetbrains.mps.baseLanguage.structure.NPEEqualsExpression",
+  "children": [
+    { "role": "leftExpression", "nodes": [{ "concept": "VariableReference", "references": [{ "role": "variableDeclaration", "target": "node1" }] }] },
+    { "role": "rightExpression", "nodes": [{ "concept": "VariableReference", "references": [{ "role": "variableDeclaration", "target": "node2" }] }] }
+  ]
 }
 ```
 

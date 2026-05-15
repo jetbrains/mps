@@ -26,7 +26,7 @@ Do not continue until a valid-looking issue ID is supplied.
 
 ### 0.2 – YouTrack MCP
 
-Check that the YouTrack MCP server tools are available in this session (look for `mcp__youtrack__*` tools).
+Check that the YouTrack MCP server tools are available in this session (by attempting to call `get_issue`).
 
 If they are not available:
 > **YouTrack MCP is not connected.** Please start the YouTrack MCP server and retry.
@@ -35,7 +35,7 @@ Stop until the tools are available.
 
 ### 0.3 – Fetch the issue
 
-Call `mcp__youtrack__get_issue` with the provided issue ID.
+Call `get_issue` with the provided issue ID.
 
 - If the issue does not exist, report the error and stop.
 - If it exists, extract and display:
@@ -52,7 +52,7 @@ Call `mcp__youtrack__get_issue` with the provided issue ID.
 
 ### 0.4 – IDEA MCP (MPS project)
 
-Check that the `mcp__my-idea-mcp-server__*` tools are available.
+Check that the `mcp_idea_*` tools are available.
 
 If not available:
 > **IDEA MCP is not connected.** Please open the MPS project in IntelliJ IDEA with the MCP plugin running and retry.
@@ -61,7 +61,7 @@ Do not continue without the IDEA MCP tools.
 
 ### 0.5 – IDEA MCP (platform project)
 
-Call `mcp__my-idea-mcp-server__get_project_modules` or `mcp__my-idea-mcp-server__get_repositories` to verify that the IntelliJ platform project (`../intellij-community`) is also open/accessible via the IDEA MCP.
+Call `mcp_idea_get_project_modules` or `mcp_idea_get_repositories` to verify that the IntelliJ platform project (`../intellij-community`) is also open/accessible via the IDEA MCP.
 
 If the platform project is **not accessible**:
 > The IntelliJ platform sources at `../intellij-community` are not visible through the IDEA MCP.
@@ -120,7 +120,7 @@ Present the proposed branch name and YouTrack fix version to the user for confir
 
 ### 1.4 – Update YouTrack fix version
 
-After user confirms, call `mcp__youtrack__update_issue` to set the **Fix versions** field to the agreed version.
+After user confirms, call `update_issue` to set the **Fix versions** field to the agreed version.
 
 Report the result.
 
@@ -204,7 +204,7 @@ Offer:
 
 > Shall I post the root cause analysis and implementation plan as a YouTrack comment on $ARGUMENTS for future reference? (yes / no)
 
-If the user says yes, call `mcp__youtrack__add_issue_comment` with a Markdown-formatted summary of the Phase 2 analysis and the chosen solution plan.
+If the user says yes, call `add_issue_comment` with a Markdown-formatted summary of the Phase 2 analysis and the chosen solution plan.
 
 ---
 
@@ -239,7 +239,7 @@ Follow the AGENTS.md rules throughout:
 - Keep changes minimal — touch only what the fix requires.
 - Match conventions of the surrounding code.
 - Validate after each logical change:
-  - `mcp__my-idea-mcp-server__get_file_problems` on modified files
+  - `mcp_idea_get_file_problems` on modified files
   - Build the affected module
   - Run the smallest relevant test suite
 
@@ -255,7 +255,7 @@ Once the implementation is complete, offer:
 
 > The implementation is done. Shall I run an agent-performed code review of the changes? (yes / no)
 
-If the user agrees, launch a code-reviewer agent (from the `feature-dev` plugin) scoped to the diff of the current branch vs its base:
+If the user agrees, invoke the `/review` skill scoped to the diff of the current branch vs its base:
 
 ```
 git diff <base-branch>...HEAD
@@ -280,7 +280,7 @@ Once the user confirms the issue is resolved, offer:
 
 > Shall I post a brief comment on $ARGUMENTS summarising the fix — what was changed and why? (yes / no)
 
-If the user says yes, compose and post a short YouTrack comment via `mcp__youtrack__add_issue_comment`:
+If the user says yes, compose and post a short YouTrack comment via `add_issue_comment`:
 
 ```
 Fixed in branch `<branch-name>` (targeting <MPS version>).

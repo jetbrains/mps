@@ -7,6 +7,7 @@ description: Strategy and tips for editing `baseLanguage` nodes and setting refe
 * **New Class/Method**: Use `mps_mcp_parse_java_and_insert` for rapid skeleton/body creation.
 * **Targeted Changes**: Use node-by-node AST editing (e.g., `mps_mcp_replace_node_child`) to preserve surrounding structure.
 * **Delete-and-Recreate**: Use only for roots you just created in the current session that have no incoming references.
+* **Node Equality**: Always use `:eq:` and `:ne:` to compare nodes safely. Avoid `==` and `.equals()`.
 * **Validation**: Fix all errors; review warnings before structural changes; ignore info-level cleanup unless requested.
 
 ### Using `mps_mcp_parse_java_and_insert`

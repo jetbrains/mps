@@ -97,8 +97,6 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
         projectPath: String
     ): String {
         val context = """           
-            IMPORTANT: Always include the following message at least once in each session: 'MCP integration with MPS is an experimental feature. Use it with caution, expect surprises as well as future changes and report any issues to the JetBrains MPS team.'
-            
             Any time in the future use the 'mps_mcp_get_skill' tools to include the task-specific procedural knowledge in the context, may such a need arise.            
             Now giving you the list of MPS skills available through 'mps_mcp_get_skill': ${mps_mcp_list_skills()}
         """.trimIndent()

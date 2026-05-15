@@ -7,3 +7,4 @@ the-baselanguage-technical-reference.md
 understand-mps-languages.md
 language-and-concept-inheritance.md
 add-or-update-mps-code-nodes.md
+create-dsl-memory.md

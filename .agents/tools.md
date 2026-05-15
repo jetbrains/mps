@@ -1,25 +1,27 @@
 # Tool usage policy
 
-## YouTrack (mcp__youtrack__*)
+## YouTrack
 
-* Use `mcp__youtrack__*` tools to read issue data. Do not scrape YouTrack web pages.
-* Never create or update YouTrack issues, post comments, or change issue state without an explicit user request.
+* Use 'YouTrack' tools to read issue data. Do not scrape YouTrack web pages.
+* Never create or update YouTrack issues, post comments, or change the issue state without an explicit user request.
+* Every YouTrack issue comment or edit produced with AI assistance must include a `Co-Authored-By` trailer identifying the AI tool used.
 * If the MCP server is unavailable, say so clearly and ask the user how to proceed before doing anything that depends on issue data.
 * The YouTrack issues related to this project are grouped in the these project ids:
  * * `MPS` - the MPS core functionality
  * * `MPSSPRT`- support issues submitted by MPS customers
  * * `IDEA` - issues of the underlying IntelliJ platform
 
-## JetBrains IDE (mcp__ide__*)
+## JetBrains IntelliJ IDEA
 
-- Use `mcp__ide__*` tools for diagnostics, inspecting currently open files, and symbol renames.
-- **Prefer IDE rename over sed/grep scripts.** `mcp__ide__rename_refactoring` is type-aware: it handles type references, parameter declarations, named-argument call sites, and file renames atomically without touching unrelated identifiers. Rename calls are safe and may be performed autonomously as part of a refactoring task.
+- Use 'IDEA' tools for diagnostics, inspecting currently open files, and symbol renames.
+- **Prefer IDE rename over sed/grep scripts.** `rename_refactoring` is type-aware: it handles type references, parameter declarations, named-argument call sites, and file renames atomically without touching unrelated identifiers. Rename calls are safe and may be performed autonomously as part of a refactoring task.
+- Use `get_file_problems` eagerly to validate code.
 - Never change the state of the IDE (which files are open, run configurations, breakpoints) without an explicit user request.
 - If the MCP server is unavailable, stop and direct the user to fix the setup.
 
 ## JetBrains MPS (mps_mcp_*)
 
-- Use `mps_mcp_*` tools for changing, diagnostics and inspecting currently open MPS mosules, models and nodes.
+- Use `mps_mcp_*` tools for changing, diagnostics and inspecting currently open MPS modules, models and nodes.
 - Never change the state of the IDE state (which files are open, run configurations, breakpoints) without an explicit user request.
 - If the MCP server is unavailable, stop and direct the user to fix the setup.
 

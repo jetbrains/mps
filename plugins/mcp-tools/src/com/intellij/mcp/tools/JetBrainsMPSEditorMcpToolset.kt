@@ -75,7 +75,10 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
             }
 
             // If concept is not valid (not properly loaded in runtime) or generation is required for its model, we must perform a make.
-            if (c != null && c.isValid && !generationRequired) null
+            // A null sourceNode also signals a stale/hollow runtime descriptor: c.isValid only checks
+            // that *some* descriptor is present, but a hollow descriptor (no origin, empty
+            // properties/references/children) leaves nothing to scaffold from.
+            if (c != null && c.isValid && c.sourceNode != null && !generationRequired) null
             else model
         }
         if (structureModelForMake != null) {
@@ -92,8 +95,51 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                 mpsProject.repository.modelAccess.executeCommand {
                     try {
                         val repo = mpsProject.repository
+                        fun requiredConcept(name: String): SConcept? = (resolveConcept(repo, name) as? SConcept) ?: run {
+                            error = "Concept '$name' not found"
+                            null
+                        }
+
+                        fun requiredContainmentLink(concept: SConcept, linkName: String, conceptName: String): org.jetbrains.mps.openapi.language.SContainmentLink? =
+                            concept.containmentLinks.find { it.name == linkName } ?: run {
+                                error = "Containment link '$linkName' not found in $conceptName"
+                                null
+                            }
+
+                        fun requiredReferenceLink(concept: SConcept, linkName: String, conceptName: String): org.jetbrains.mps.openapi.language.SReferenceLink? =
+                            concept.referenceLinks.find { it.name == linkName } ?: run {
+                                error = "Reference link '$linkName' not found in $conceptName"
+                                null
+                            }
+
+                        fun requiredProperty(concept: SConcept, propertyName: String, conceptName: String): org.jetbrains.mps.openapi.language.SProperty? =
+                            concept.properties.find { it.name == propertyName } ?: run {
+                                error = "Property '$propertyName' not found in $conceptName"
+                                null
+                            }
+
                         val sConcept = resolveConcept(repo, conceptRef) ?: run {
                             error = "Concept '$conceptRef' not found"
+                            return@executeCommand
+                        }
+
+                        // Detect a hollow runtime descriptor up-front. When the runtime concept reports
+                        // no sourceNode AND empty properties/references/children, the MPS language
+                        // runtime is out of sync with the structure model — typically because the
+                        // language was not reloaded after a make. Scaffolding from this state would
+                        // silently produce an empty CellModel_Collection. Bail out with a clear
+                        // message instead of writing a useless editor.
+                        if (sConcept.sourceNode == null &&
+                            sConcept.properties.isEmpty() &&
+                            sConcept.referenceLinks.isEmpty() &&
+                            sConcept.containmentLinks.isEmpty()
+                        ) {
+                            error = "Concept '${sConcept.qualifiedName}' has a hollow runtime descriptor " +
+                                    "(null sourceNode and no properties, references, or children). " +
+                                    "The MPS language runtime is out of sync with the structure model — " +
+                                    "the language was likely not reloaded after a make. Try " +
+                                    "`mps_mcp_reload_all`, or rebuild the structure module and restart MPS, " +
+                                    "then retry."
                             return@executeCommand
                         }
 
@@ -105,24 +151,15 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
                         // Resolve editor concepts and links
                         val editorConceptName = if (type == "component") "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration" else "jetbrains.mps.lang.editor.structure.ConceptEditorDeclaration"
-                        val editorConcept = resolveConcept(repo, editorConceptName) as? SConcept ?: run {
-                            error = "Concept '$editorConceptName' not found"
-                            return@executeCommand
-                        }
+                        val editorConcept = requiredConcept(editorConceptName) ?: return@executeCommand
                         
                         // Create editor/component
                         val editorDeclaration = SNodeFactoryOperations.createNewRootNode(model, editorConcept, null)
-                        if (type == "component") {
-                            val nameProp = SNodeUtil.property_INamedConcept_name
-                            if (editorConcept.properties.contains(nameProp)) {
-                                editorDeclaration.setProperty(nameProp, "${sConcept.name}_Component")
-                            }
+                        if (type == "component" && editorConcept.properties.contains(SNodeUtil.property_INamedConcept_name)) {
+                            editorDeclaration.setProperty(SNodeUtil.property_INamedConcept_name, "${sConcept.name}_Component")
                         }
 
-                        val conceptDeclLink = editorConcept.referenceLinks.find { it.name == "conceptDeclaration" } ?: run {
-                            error = "Reference link 'conceptDeclaration' not found in $editorConceptName"
-                            return@executeCommand
-                        }
+                        val conceptDeclLink = requiredReferenceLink(editorConcept, "conceptDeclaration", editorConceptName) ?: return@executeCommand
                         // sConcept.sourceNode is non-null once the language is compiled and its runtime
                         // classes are loaded into the ConceptRegistry.  performMake now waits for
                         // afterLanguagesLoaded before returning, so this should be non-null after a
@@ -137,58 +174,30 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         editorDeclaration.setReference(conceptDeclLink, sourceNode)
 
                         // Set virtual folder
-                        val sourceNodeResolved = sourceNode.resolve(repo)
-                        if (sourceNodeResolved != null) {
-                            val conceptVirtualPackageProp = sourceNodeResolved.concept.properties.find { it.name == "virtualPackage" }
-                            if (conceptVirtualPackageProp != null) {
-                                val virtualPackage = sourceNodeResolved.getProperty(conceptVirtualPackageProp)
-                                if (virtualPackage != null && virtualPackage.isNotEmpty()) {
-                                    val editorVirtualPackageProp = editorConcept.properties.find { it.name == "virtualPackage" }
-                                    if (editorVirtualPackageProp != null) {
-                                        editorDeclaration.setProperty(editorVirtualPackageProp, virtualPackage)
-                                    }
-                                }
+                        sourceNode.resolve(repo)?.let { sourceNodeResolved ->
+                            val virtualPackage = sourceNodeResolved.concept.properties.find { it.name == "virtualPackage" }
+                                ?.let(sourceNodeResolved::getProperty)
+                                ?.takeIf { it.isNotEmpty() }
+                            val editorVirtualPackageProp = editorConcept.properties.find { it.name == "virtualPackage" }
+                            if (virtualPackage != null && editorVirtualPackageProp != null) {
+                                editorDeclaration.setProperty(editorVirtualPackageProp, virtualPackage)
                             }
                         }
 
                         // Main Collection (indent layout)
-                        val collectionConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_Collection") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_Collection' not found"
-                            return@executeCommand
-                        }
-                        val cellModelLink = editorConcept.containmentLinks.find { it.name == "cellModel" } ?: run {
-                            error = "Containment link 'cellModel' not found in $editorConceptName"
-                            return@executeCommand
-                        }
+                        val collectionConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_Collection") ?: return@executeCommand
+                        val cellModelLink = requiredContainmentLink(editorConcept, "cellModel", editorConceptName) ?: return@executeCommand
                         // Clear existing cellModel (e.g. from node factory) to avoid "transfer" behavior
                         editorDeclaration.getChildren(cellModelLink).toList().forEach { it.delete() }
 
                         val smartRefLink = getSmartReferenceLink(sConcept, repo)
                         if (smartRefLink != null && type != "component") {
-                            val refCellConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_RefCell") as? SConcept ?: run {
-                                error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_RefCell' not found"
-                                return@executeCommand
-                            }
-                            val inlineEditorLink = refCellConcept.containmentLinks.find { it.name == "editorComponent" } ?: run {
-                                error = "Containment link 'editorComponent' not found in CellModel_RefCell"
-                                return@executeCommand
-                            }
-                            val inlineEditorConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.InlineEditorComponent") as? SConcept ?: run {
-                                error = "Concept 'jetbrains.mps.lang.editor.structure.InlineEditorComponent' not found"
-                                return@executeCommand
-                            }
-                            val inlineCellModelLink = inlineEditorConcept.containmentLinks.find { it.name == "cellModel" } ?: run {
-                                error = "Containment link 'cellModel' not found in InlineEditorComponent"
-                                return@executeCommand
-                            }
-                            val propertyCellConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_Property") as? SConcept ?: run {
-                                error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_Property' not found"
-                                return@executeCommand
-                            }
-                            val relationDeclLink = propertyCellConcept.referenceLinks.find { it.name == "relationDeclaration" } ?: run {
-                                error = "Reference link 'relationDeclaration' not found in CellModel_Property"
-                                return@executeCommand
-                            }
+                            val refCellConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_RefCell") ?: return@executeCommand
+                            val inlineEditorLink = requiredContainmentLink(refCellConcept, "editorComponent", "CellModel_RefCell") ?: return@executeCommand
+                            val inlineEditorConcept = requiredConcept("jetbrains.mps.lang.editor.structure.InlineEditorComponent") ?: return@executeCommand
+                            val inlineCellModelLink = requiredContainmentLink(inlineEditorConcept, "cellModel", "InlineEditorComponent") ?: return@executeCommand
+                            val propertyCellConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_Property") ?: return@executeCommand
+                            val relationDeclLink = requiredReferenceLink(propertyCellConcept, "relationDeclaration", "CellModel_Property") ?: return@executeCommand
 
                             val refCell = SNodeFactoryOperations.addNewChild(editorDeclaration, cellModelLink, refCellConcept)
                             smartRefLink.sourceNode?.let { refCell.setReference(relationDeclLink, it) }
@@ -199,10 +208,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             val nameProp = smartRefLink.targetConcept.properties.find { it.name == "name" }
                             nameProp?.sourceNode?.let { inlinePropCell.setReference(relationDeclLink, it) }
 
-                            val readOnlyProp = propertyCellConcept.properties.find { it.name == "readOnly" }
-                            if (readOnlyProp != null) {
-                                inlinePropCell.setProperty(readOnlyProp, "true")
-                            }
+                            propertyCellConcept.properties.find { it.name == "readOnly" }?.let { inlinePropCell.setProperty(it, "true") }
 
                             if (referenceStyle != null) {
                                 applyStyle(refCell, referenceStyle, repo)
@@ -216,10 +222,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
                         val mainCollection = SNodeFactoryOperations.addNewChild(editorDeclaration, cellModelLink, collectionConcept)
 
-                        val cellLayoutLink = collectionConcept.containmentLinks.find { it.name == "cellLayout" } ?: run {
-                            error = "Containment link 'cellLayout' not found in CellModel_Collection"
-                            return@executeCommand
-                        }
+                        val cellLayoutLink = requiredContainmentLink(collectionConcept, "cellLayout", "CellModel_Collection") ?: return@executeCommand
                         // Style Items concepts
                         val onNewLineConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.IndentLayoutOnNewLineStyleClassItem") as? SConcept
                         val indentConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.IndentLayoutIndentStyleClassItem") as? SConcept
@@ -229,22 +232,17 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             if (styleItemConcept == null) return
                             val styleItemLink = node.concept.containmentLinks.find { it.name == "styleItem" } ?: return
                             val item = SNodeFactoryOperations.addNewChild(node, styleItemLink, styleItemConcept)
-                            val flagProp = item.concept.properties.find { it.name == "flag" }
-                            if (flagProp != null) {
-                                item.setProperty(flagProp, "true")
-                            }
+                            item.concept.properties.find { it.name == "flag" }?.let { item.setProperty(it, "true") }
                         }
 
-                        val indentLayoutConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellLayout_Indent") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.CellLayout_Indent' not found"
-                            return@executeCommand
+                        fun includeElement(name: String, includeNames: List<String>?, excludedNames: Set<String> = emptySet()): Boolean {
+                            return includeNames?.contains(name) ?: (name !in excludedNames)
                         }
+
+                        val indentLayoutConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellLayout_Indent") ?: return@executeCommand
                         SNodeFactoryOperations.setNewChild(mainCollection, cellLayoutLink, indentLayoutConcept)
 
-                        val childCellModelLink = collectionConcept.containmentLinks.find { it.name == "childCellModel" } ?: run {
-                            error = "Containment link 'childCellModel' not found in CellModel_Collection"
-                            return@executeCommand
-                        }
+                        val childCellModelLink = requiredContainmentLink(collectionConcept, "childCellModel", "CellModel_Collection") ?: return@executeCommand
 
                         // Collect suitable components
                         val includedComponents = mutableListOf<SNode>()
@@ -254,14 +252,12 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         val availableComponents = mutableListOf<SNode>()
 
                         // 1. Resolve explicitly included components
-                        if (includeComponents != null) {
-                            for (ref in includeComponents) {
+                        includeComponents?.forEach { ref ->
                                 val nodeRef = resolveNodeReference(repo, ref)
                                 val node = nodeRef?.resolve(repo)
                                 if (node != null && node.concept.getQualifiedName() == "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration") {
                                     availableComponents.add(node)
                                 }
-                            }
                         }
 
                         // 2. Detect suitable components
@@ -271,19 +267,12 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                                 val module = lang.sourceModule
                                 if (module is Language) {
                                     val editorModel = LanguageAspect.EDITOR.get(module)
-                                    if (editorModel != null) {
-                                        for (root in editorModel.rootNodes) {
-                                            if (root.concept.getQualifiedName() == "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration") {
-                                                val targetConceptNode = root.references.find { it.link.name == "conceptDeclaration" }?.targetNode
-                                                if (targetConceptNode != null) {
-                                                    val targetSConcept = MetaAdapterByDeclaration.getConcept(targetConceptNode)
-                                                    if (superConcepts.contains(targetSConcept)) {
-                                                        if (!availableComponents.contains(root)) {
-                                                            availableComponents.add(root)
-                                                        }
-                                                    }
-                                                }
-                                            }
+                                    editorModel?.rootNodes?.forEach { root ->
+                                        if (root.concept.getQualifiedName() != "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration") return@forEach
+                                        val targetConceptNode = root.references.find { it.link.name == "conceptDeclaration" }?.targetNode ?: return@forEach
+                                        val targetSConcept = MetaAdapterByDeclaration.getConcept(targetConceptNode)
+                                        if (targetSConcept in superConcepts && root !in availableComponents) {
+                                            availableComponents.add(root)
                                         }
                                     }
                                 }
@@ -292,25 +281,19 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
                         // 3. Determine which components to include and what they cover
                         val allElements = mutableSetOf<SNodeReference>()
-                        sConcept.properties.forEach { 
-                            if (includeProperties != null) {
-                                if (includeProperties.contains(it.name)) it.sourceNode?.let { nodeRef -> allElements.add(nodeRef) }
-                            } else {
-                                if (it.name != "name" && it.name != "virtualPackage" && it.name != "shortDescription") it.sourceNode?.let { nodeRef -> allElements.add(nodeRef) } 
+                        sConcept.properties.forEach {
+                            if (includeElement(it.name, includeProperties, setOf("name", "virtualPackage", "shortDescription"))) {
+                                it.sourceNode?.let(allElements::add)
                             }
                         }
-                        sConcept.referenceLinks.forEach { 
-                            if (includeReferences != null) {
-                                if (includeReferences.contains(it.name)) it.sourceNode?.let { nodeRef -> allElements.add(nodeRef) }
-                            } else {
-                                it.sourceNode?.let { nodeRef -> allElements.add(nodeRef) } 
+                        sConcept.referenceLinks.forEach {
+                            if (includeElement(it.name, includeReferences)) {
+                                it.sourceNode?.let(allElements::add)
                             }
                         }
-                        sConcept.containmentLinks.forEach { 
-                            if (includeChildren != null) {
-                                if (includeChildren.contains(it.name)) it.sourceNode?.let { nodeRef -> allElements.add(nodeRef) }
-                            } else {
-                                if (it.name != "smodelAttribute") it.sourceNode?.let { nodeRef -> allElements.add(nodeRef) } 
+                        sConcept.containmentLinks.forEach {
+                            if (includeElement(it.name, includeChildren, setOf("smodelAttribute"))) {
+                                it.sourceNode?.let(allElements::add)
                             }
                         }
                         // name property is special but we can include it if covered
@@ -354,41 +337,38 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         var childCount = 0
                         var referenceCount = 0
 
-                        val constantConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_Constant") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_Constant' not found"
-                            return@executeCommand
-                        }
-                        val textProp = constantConcept.properties.find { it.name == "text" } ?: run {
-                            error = "Property 'text' not found in CellModel_Constant"
-                            return@executeCommand
+                        val constantConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_Constant") ?: return@executeCommand
+                        val textProp = requiredProperty(constantConcept, "text", "CellModel_Constant") ?: return@executeCommand
+
+                        fun addConstantCell(text: String, style: String? = null, addNewLineStyle: Boolean = false): SNode {
+                            val cell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, constantConcept)
+                            cell.setProperty(textProp, text)
+                            if (addNewLineStyle) {
+                                addStyleItem(cell, onNewLineConcept)
+                            }
+                            if (style != null) {
+                                applyStyle(cell, style, repo)
+                            }
+                            return cell
                         }
 
                         // Constant for alias
                         val alias = sConcept.conceptAlias ?: ""
                         if (alias.isNotEmpty() && type != "component") {
-                            val constantCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, constantConcept)
-                            constantCell.setProperty(textProp, alias)
-                            if (keywordStyle != null) {
-                                applyStyle(constantCell, keywordStyle, repo)
-                            }
+                            addConstantCell(alias, keywordStyle)
                             constantCount++
                         }
 
                         // Properties
-                        val propertyCellConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_Property") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_Property' not found"
-                            return@executeCommand
-                        }
-                        val relationDeclLink = propertyCellConcept.referenceLinks.find { it.name == "relationDeclaration" } ?: run {
-                            error = "Reference link 'relationDeclaration' not found in CellModel_Property"
-                            return@executeCommand
-                        }
+                        val propertyCellConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_Property") ?: return@executeCommand
+                        val relationDeclLink = requiredReferenceLink(propertyCellConcept, "relationDeclaration", "CellModel_Property") ?: return@executeCommand
 
                         // name property first
                         val nameProp = sConcept.properties.find { it.name == "name" }
-                        if (nameProp != null && (includeProperties == null || includeProperties.contains("name")) && !coveredElements.contains(nameProp.sourceNode)) {
+                        if (nameProp != null && includeProperties?.contains("name") != false) {
                             val propSourceNode = nameProp.sourceNode
-                            if (propSourceNode != null) {
+                            if (propSourceNode != null && propSourceNode !in coveredElements) {
+                                addConstantCell("Name:", addNewLineStyle = true)
                                 val propCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, propertyCellConcept)
                                 propCell.setReference(relationDeclLink, propSourceNode)
                                 propertyCount++
@@ -401,9 +381,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             val propSourceNode = prop.sourceNode ?: continue
                             if (coveredElements.contains(propSourceNode)) continue
 
-                            val labelCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, constantConcept)
-                            labelCell.setProperty(textProp, "${prop.name}:")
-                            addStyleItem(labelCell, onNewLineConcept)
+                            addConstantCell("${prop.name}:", addNewLineStyle = true)
 
                             val propCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, propertyCellConcept)
                             propCell.setReference(relationDeclLink, propSourceNode)
@@ -411,31 +389,17 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         }
 
                         // References
-                        val refCellConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_RefCell") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_RefCell' not found"
-                            return@executeCommand
-                        }
-                        val inlineEditorLink = refCellConcept.containmentLinks.find { it.name == "editorComponent" } ?: run {
-                            error = "Containment link 'editorComponent' not found in CellModel_RefCell"
-                            return@executeCommand
-                        }
-                        val inlineEditorConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.InlineEditorComponent") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.InlineEditorComponent' not found"
-                            return@executeCommand
-                        }
-                        val inlineCellModelLink = inlineEditorConcept.containmentLinks.find { it.name == "cellModel" } ?: run {
-                            error = "Containment link 'cellModel' not found in InlineEditorComponent"
-                            return@executeCommand
-                        }
+                        val refCellConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_RefCell") ?: return@executeCommand
+                        val inlineEditorLink = requiredContainmentLink(refCellConcept, "editorComponent", "CellModel_RefCell") ?: return@executeCommand
+                        val inlineEditorConcept = requiredConcept("jetbrains.mps.lang.editor.structure.InlineEditorComponent") ?: return@executeCommand
+                        val inlineCellModelLink = requiredContainmentLink(inlineEditorConcept, "cellModel", "InlineEditorComponent") ?: return@executeCommand
 
                         for (ref in sConcept.referenceLinks) {
                             if (includeReferences != null && !includeReferences.contains(ref.name)) continue
                             val refSourceNode = ref.sourceNode ?: continue
                             if (coveredElements.contains(refSourceNode)) continue
 
-                            val labelCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, constantConcept)
-                            labelCell.setProperty(textProp, "${ref.name}:")
-                            addStyleItem(labelCell, onNewLineConcept)
+                            addConstantCell("${ref.name}:", addNewLineStyle = true)
 
                             val refCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, refCellConcept)
                             refCell.setReference(relationDeclLink, refSourceNode)
@@ -443,10 +407,8 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             val inlineEditor = SNodeFactoryOperations.setNewChild(refCell, inlineEditorLink, inlineEditorConcept)
                             val inlinePropCell = SNodeFactoryOperations.setNewChild(inlineEditor, inlineCellModelLink, propertyCellConcept)
 
-                            val targetNameProp = ref.targetConcept.properties.find { it.name == "name" }
-                            val targetNamePropSourceNode = targetNameProp?.sourceNode
-                            if (targetNamePropSourceNode != null) {
-                                inlinePropCell.setReference(relationDeclLink, targetNamePropSourceNode)
+                            ref.targetConcept.properties.find { it.name == "name" }?.sourceNode?.let {
+                                inlinePropCell.setReference(relationDeclLink, it)
                             }
 
                             if (referenceStyle != null) {
@@ -456,14 +418,8 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         }
 
                         // Children
-                        val refNodeListConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_RefNodeList") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_RefNodeList' not found"
-                            return@executeCommand
-                        }
-                        val refNodeConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.CellModel_RefNode") as? SConcept ?: run {
-                            error = "Concept 'jetbrains.mps.lang.editor.structure.CellModel_RefNode' not found"
-                            return@executeCommand
-                        }
+                        val refNodeListConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_RefNodeList") ?: return@executeCommand
+                        val refNodeConcept = requiredConcept("jetbrains.mps.lang.editor.structure.CellModel_RefNode") ?: return@executeCommand
 
                         for (link in sConcept.containmentLinks) {
                             if (link.name == "smodelAttribute") continue
@@ -471,9 +427,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             val linkSourceNode = link.sourceNode ?: continue
                             if (coveredElements.contains(linkSourceNode)) continue
 
-                            val labelCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, constantConcept)
-                            labelCell.setProperty(textProp, "${link.name}:")
-                            addStyleItem(labelCell, onNewLineConcept)
+                            addConstantCell("${link.name}:", addNewLineStyle = true)
 
                             if (link.isMultiple) {
                                 val listCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, refNodeListConcept)
@@ -482,10 +436,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                                 addStyleItem(listCell, indentConcept)
                                 addStyleItem(listCell, newLineChildrenConcept)
 
-                                val listCellLayoutLink = refNodeListConcept.containmentLinks.find { it.name == "cellLayout" } ?: run {
-                                    error = "Containment link 'cellLayout' not found in CellModel_RefNodeList"
-                                    return@executeCommand
-                                }
+                                val listCellLayoutLink = requiredContainmentLink(refNodeListConcept, "cellLayout", "CellModel_RefNodeList") ?: return@executeCommand
                                 SNodeFactoryOperations.setNewChild(listCell, listCellLayoutLink, indentLayoutConcept)
                             } else {
                                 val nodeCell = SNodeFactoryOperations.addNewChild(mainCollection, childCellModelLink, refNodeConcept)
@@ -494,6 +445,25 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                                 addStyleItem(nodeCell, indentConcept)
                             }
                             childCount++
+                        }
+
+                        // If scaffolding produced no cells at all (no alias, no components, no
+                        // properties/references/children), the editor is just an empty
+                        // CellModel_Collection. Roll back the partially-created editor declaration
+                        // and surface a clear error rather than persisting a useless artifact.
+                        val totalCells = constantCount + propertyCount + referenceCount + childCount + includedComponents.size
+                        if (totalCells == 0) {
+                            try { editorDeclaration.delete() } catch (_: Exception) {}
+                            error = "Scaffolding produced no editor cells for '${sConcept.qualifiedName}'. " +
+                                    "The runtime concept descriptor reports no scaffoldable content " +
+                                    "(properties=${sConcept.properties.size}, " +
+                                    "references=${sConcept.referenceLinks.size}, " +
+                                    "children=${sConcept.containmentLinks.size}, " +
+                                    "alias='${sConcept.conceptAlias ?: ""}'). " +
+                                    "If the structure model has properties/children that should appear, " +
+                                    "the MPS language runtime is likely stale — try `mps_mcp_reload_all` " +
+                                    "or restart MPS, then retry."
+                            return@executeCommand
                         }
 
                         model.save()
