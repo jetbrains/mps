@@ -7,6 +7,7 @@
   <depends>com.intellij.mcpServer</depends>
   <depends>jetbrains.mps.core</depends>
   <depends>com.intellij.modules.mps</depends>
+  <depends>jetbrains.mps.ide.java</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSSkillsMcpToolset" />
@@ -19,5 +20,6 @@
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSEditorMcpToolset" />
 <!--    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSDocumentationMcpToolset" />-->
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageStructureMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSJavaMcpToolset" />
   </extensions>
 </idea-plugin>

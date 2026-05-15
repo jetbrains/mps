@@ -156,8 +156,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         The JSON format is a deep printout of a node:
         {
           "name": "NodeName",
-          "concept": "ConceptName",
-          "conceptReference": "PersistentConceptReference",
+          "concept": "jetbrains.mps.baseLanguage.structure.ClassConcept",  // Use qualifiedName from mps_mcp_search_concepts / mps_mcp_get_concept_details. conceptReference is optional.
+          "conceptReference": "c:...",  // Optional. If omitted, 'concept' qualifiedName is used for resolution.
           "properties": [
             { "name": "propertyName", "value": "propertyValue" }
           ],
@@ -165,10 +165,10 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             { "role": "linkRole", "target": "TargetNodeName", "targetReference": "PersistentTargetReference" }
           ],
           "children": [
-            { 
-              "role": "linkRole", 
-              "nodes": [ 
-                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+            {
+              "role": "linkRole",
+              "nodes": [
+                 { "name": "ChildNodeName", "concept": "...", "properties": [...], "references": [...], "children": [...] }
               ]
             }
           ]
@@ -177,7 +177,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Persistent form of SModelReference") modelRef: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") json: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. Use 'concept' qualifiedName for all nodes. 'conceptReference' is optional. 'targetReference' can be empty for references to nodes not yet created.") json: String
     ): String {
         currentCoroutineContext().reportToolActivity("Inserting MPS root node from JSON")
         val project = currentCoroutineContext().project
@@ -207,14 +207,15 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                         val conceptName = jsonObject.get("concept")?.asString
                         val conceptRef = jsonObject.get("conceptReference")?.asString
 
-                        if (conceptRef.isNullOrEmpty()) {
-                            error = "'conceptReference' property in JSON must not be null or empty"
+                        if (conceptName.isNullOrEmpty() && conceptRef.isNullOrEmpty()) {
+                            error = "Either 'concept' (qualifiedName) or 'conceptReference' must be provided in the JSON"
                             return@executeCommand
                         }
 
-                        val sConcept = resolveConcept(mpsProject.repository, conceptRef)
+                        val sConcept = (if (!conceptRef.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptRef) else null)
+                            ?: (if (!conceptName.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptName) else null)
                         if (sConcept == null) {
-                            error = "Concept not found for the top-level node: $conceptRef"
+                            error = "Concept not found for the top-level node: concept='$conceptName', conceptReference='$conceptRef'"
                             return@executeCommand
                         }
 
@@ -339,8 +340,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         The JSON format is a deep printout of a node:
         {
           "name": "NodeName", // Ignored for the root node
-          "concept": "ConceptName",
-          "conceptReference": "PersistentConceptReference",
+          "concept": "jetbrains.mps.baseLanguage.structure.ClassConcept",  // Use qualifiedName from mps_mcp_search_concepts / mps_mcp_get_concept_details. conceptReference is optional.
+          "conceptReference": "c:...",  // Optional. If omitted, 'concept' qualifiedName is used for resolution.
           "properties": [
             { "name": "propertyName", "value": "propertyValue" }
           ],
@@ -348,10 +349,10 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             { "role": "linkRole", "target": "TargetNodeName", "targetReference": "PersistentTargetReference" }
           ],
           "children": [
-            { 
-              "role": "linkRole", 
-              "nodes": [ 
-                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+            {
+              "role": "linkRole",
+              "nodes": [
+                 { "name": "ChildNodeName", "concept": "...", "properties": [...], "references": [...], "children": [...] }
               ]
             }
           ]
@@ -360,7 +361,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") json: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. Use 'concept' qualifiedName for all nodes. 'conceptReference' is optional. 'targetReference' can be empty for references to nodes not yet created.") json: String
     ): String {
         currentCoroutineContext().reportToolActivity("Updating MPS root node from JSON")
         val project = currentCoroutineContext().project

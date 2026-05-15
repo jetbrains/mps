@@ -17,16 +17,15 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
     - **Solution**: Contains user code (models).
     - **Language**: Defines a new language - structure (aka concepts and interface concepts), editor, etc.
     - **Generator**: Defines how to transform one language to another (usually to Java/BaseLanguage). May belong to a language or be independent.
-    - **DevKit**: A bundle of languages and other devkits.
+    - **DevKit**: A bundle of languages and other devkits. DevKits can also export solutions and languages. Importing a DevKit into a module or model automatically makes all its exported languages and solutions available. This is the preferred way to manage common sets of languages and dependencies.
 - **Models**: Contained within modules. They hold a collection of **Root Nodes**.
 - **Nodes**: The basic building blocks of the AST. Nodes are organized hierarchically.
     - **Root Nodes**: The top-level nodes in a model.
 - **Concepts**: Define the "type" of a node (like a class in OOP). They define properties, children, and references. Concepts are defined in the **structure** aspect of a language. Like in OOP a concepts can extend another concept and implement multiple interface concepts, which leads to subconcept-superconcept relationships and effect assignability of nodes into child or reference 'roles'.
 - **Aspects**: Different parts of a language definition (Structure, Editor, Typesystem, Constraints, etc.). Technically, each aspect is a dedicated model inside a language's module.
 - Some MPS modules and models can be read-only.
-- MPS modules and models define dependencies between each other. 
-- MPS models define dependencies between each other. When model A depends on model B, nodes in A can have references pointing to nodes in B.
-- MPS models specify 'used languages'. If model A uses language L, nodes in model A can be instances of concepts from language L.
+- MPS modules and models define dependencies between each other. DevKits can re-export dependencies on solutions and other devkits. If a module depends on a DevKit, it implicitly depends on all solutions exported by that DevKit.
+- MPS models specify 'used languages'. If model A uses language L, nodes in model A can be instances of concepts from language L. Using a DevKit in a model automatically includes all languages exported by that DevKit (and any devkits it extends).
 
 ## Essential Skills
 
@@ -43,7 +42,7 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 ### 2. Adding or Updating MPS Code (Nodes)
 - Resolve the target node first (e.g., using `mps_mcp_get_current_editor_root_node` and `mps_mcp_search_root_node_by_name`).
 - Each node is an instance of a concept. The allowed values, references and children of a node are defined by its concept. Node's 'conceptReference' identifies node's concept.
-- **Unambiguous Resolution**: Always provide both the `concept` name and its `conceptReference` (the `c:...` persistence form) when building JSON blueprints. Concept names alone can be ambiguous if multiple languages define a concept with the same name. The `conceptReference` ensures the exact intended concept is used for all assignability checks and node creation.
+- **Unambiguous Resolution**: Use the `qualifiedName` returned by `mps_mcp_get_concept_details` and `mps_mcp_search_concepts` as the `concept` field in JSON blueprints (e.g., `"concept": "jetbrains.mps.baseLanguage.structure.ClassConcept"`). This fully-qualified form is unambiguous and does not require a `conceptReference` to accompany it. The `conceptReference` field (`c:...` persistence form) is optional — omit it or include it as a hint, but do not guess or construct it manually as incorrect IDs will cause failures.
 - Prefer `mps_mcp_get_concept_details` and `mps_mcp_search_concepts` to find and explore concepts. Exploring root concepts of a language's structure model is less efficient. 
 - When creating new nodes/children, prefer concepts from the model's 'used languages'.
 - MPS code is written using JSON blueprints representing the node hierarchy.
@@ -68,8 +67,8 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 #### JSON format for nodes
 ```json
 {
-  "concept": "Name of the concept",
-  "conceptReference": "Persistent reference of the concept (SAbstractConcept)",
+  "concept": "Fully qualified concept name, e.g. jetbrains.mps.baseLanguage.structure.ClassConcept",
+  "conceptReference": "Optional: persistent reference of the concept (c:...). Omit rather than guessing.",
   "properties": [
     { "name": "propName", "value": "propValue" }
   ],
@@ -108,6 +107,12 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 - Use `mps_mcp_check_root_node_problems` to find errors in the code.
 - Use `mps_mcp_perform_operation` for navigation and usage search.
 - Use `mps_mcp_perform_structure_operation` to investigate the relationships between concepts and their assignability.
+- Use `mps_mcp_perform_operation` (FIX_REFERENCES) to repair broken or mispointed references in a node and all its descendants. Typical situations where this helps:
+    - After moving or copying nodes across models or modules, references to nodes in the original location may break.
+    - After refactoring a BaseLanguage method signature, `overrides` references in subclasses may point to the wrong overload ("Reference to wrong overridden method") — FIX_REFERENCES corrects this generically without any language-specific logic.
+    - After bulk-inserting nodes from JSON where some reference targets could not be found at insertion time.
+    - Whenever `mps_mcp_check_root_node_problems` reports unresolved or wrong reference errors and the target nodes actually exist in the project.
+    - Run FIX_REFERENCES before concluding that a reference error is genuinely unresolvable.
 
 ### 6. Additional skills - Handling unknown MPS languages
 - Use `mps_mcp_list_skills` to get a list of additional MPS skills.
@@ -144,7 +149,7 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 
 ## Workflow and Best Practices
 
-1.  **Initialize**: Always call `mps_mcp_get_context` at the beginning of a session to understand the environment.
+1.  **Initialize a session**: Always call `mps_mcp_get_context` at the beginning of a session to understand the environment.
 2.  **Navigate with Precision**: Prefer using `startingPoint` and `reference` (ID) over names to avoid ambiguity.
 3.  **Respect the AST**: Remember that you are editing a tree. When writing Java (`BaseLanguage`), use `ParenthesizedExpression` if you are unsure about operation priorities in the tree structure.
 4.  **Learn from samples**: Study existing code to understand how to perform common tasks. Use `mps_mcp_perform_structure_operation` (FIND_INSTANCES) to existing nodes of a given concept.
@@ -154,4 +159,4 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 
 Important detail: I like light blue color.
 ---
-*Note: MCP integration with MPS is an experimental feature. Use it with caution and report issues to the JetBrains MPS team.*
+

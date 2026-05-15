@@ -38,7 +38,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             "Steps to define concept editors in MPS",
             "Use this skill when asked to create a language or concept editors in a language",
             """
-            - Read the `PROJECT_HOME/.agents/skills/mps-editor/SKILL.md` file to get a skill on how to create MPS editors.                
+            - Read the `PROJECT_HOME/.agents/skills/mps-editor/SKILL.md` (PROJECT_HOME stands for the directory of the current project) file to get a skill on how to create MPS editors.                
             - Use the 'jetbrains.mps.lang.editor' language.
             - An MPS 'ConceptEditor' (sometimes called 'editor definition') is a root node in the 'editor' model of an MPS language (MPS module).
             - When defining a style for editor cells, use stylesheets effectively so the styles can be reused.
@@ -57,16 +57,44 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             "Tips to edit nodes from the jetbrains.mps.baseLanguage and especially to set references correctly",
             "You must use this skill when creating Java code using the jetbrains.mps.baseLanguage language",
             """
-            ### 1. Binary expression priorities                
+            There are two options, which can well be combined:
+            1. Use the `mps_mcp_parse_java_and_insert` tool to parse Java code and insert it into BaseLanguage nodes.
+            2. Use the standard MPS mcp tools that manipulate nodes.
+            
+            ### BaseLanguage Editing Strategy
+            - Use `mps_mcp_parse_java_and_insert` when creating a new BaseLanguage class or method from scratch and the code is easy to express as ordinary Java.
+            - Use node-by-node AST editing when you need a precise local change inside an existing node and must preserve the surrounding structure exactly.
+            - Use delete-and-recreate only for a root node you just created yourself, when replacing the whole node is simpler and there are no user edits, incoming references, or other dependencies on its identity.
+            - Prefer this rule of thumb:
+              - New BaseLanguage class or method: `mps_mcp_parse_java_and_insert`
+              - Small targeted change in existing structure: node-by-node editing
+              - Fresh throwaway root with a minor issue: maybe delete-and-recreate
+            - Treat validation results with judgment:
+              - Errors should be fixed
+              - Warnings should usually be reviewed before changing structure
+              - Info-level suggestions should usually be left alone unless cleanup was requested
+
+            ### Using `mps_mcp_parse_java_and_insert`:
+            - Resolve all references - in the json printout of the parsed and inserted code make sure all references are set to proper target nodes.
+            - Make sure that all nodes referred to from the parsed code have their containing models imported into the current model.
+            - Make sure the imported models have their containing modules imported into the current module.
+            
+            ### Tips on editing BaseLanguage nodes directly:
+            #### 1. Binary expression priorities                
             - When building binary expressions (BinaryOperation), the operation priorities are only ensured by the structure on the nodes (children are calculated before the parent).
             - Either use parentheses (ParenthesizedExpression) extensively or ensure that hierarchy is correct (e.g. multiplication must be a child of addition).
-            ### 2. Setting References for Java Stubs
+            - Use `mps_mcp_parse_java_and_insert` with constant value placeholders to insert a skeleton of a desired expression and then replace the placeholders with concrete nodes individually.
+            #### 2. Setting References for Java Stubs
             - WHEN setting BaseLanguage references to JDK stubs THEN use persistent nodeRefs, URL-encode signatures, then run root error check
             - **URL Encoding**: Ensure parentheses `(` and `)` in method signatures are URL-encoded as `%28` and `%29`.
             - **Method Signatures**: Do not include the return type suffix (e.g., `:void`) unless explicitly confirmed by a `mps_mcp_print_node_json` output from a known-good reference.
             - **Example**: Use `...println%28java.lang.Object%29` instead of `...println(java.lang.Object):void`.
-            ### 3. String and string
+            #### 3. String and string
             - The string (StringType) and String (ClassifierType that has the 'classifier' reference point to the String root node of JDK module's 'lang' model) can be used interchangeably. Prefer 'string'.
+            #### 4. Java compatibility
+            - BaseLanguage supports full Java 7 specification, including generics.
+            - Avoid lambdas, records and other new Java features.
+
                 """.trimIndent()
         ),
         listOf(
@@ -94,7 +122,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
                     Description: Found in the shortDescription field.
                     ID: Found in the conceptReference field (typically in the c:language-uuid/concept-id format).
                     Important details: rootable and abstract concepts.
-                    Read the `PROJECT_HOME/.agents/skills/mps-language-concept-inheritance/SKILL.md` file to get a skill on how to investigate the inheritance hierarchy of languages or concepts.
+                    Read the `PROJECT_HOME/.agents/skills/mps-language-concept-inheritance/SKILL.md` (PROJECT_HOME stands for the directory of the current project) file to get a skill on how to investigate the inheritance hierarchy of languages or concepts.
                     
                 4. (Optional) Drill Down:
                     - If specific details about properties or children are needed, they are already included in the mps_mcp_get_concept_details response.
@@ -186,6 +214,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             
             Any time in the future use the 'mps_mcp_get_skill' tools to include the task-specific procedural knowledge in the context, may such a need arise.            
             Now giving you the list of MPS skills available through 'mps_mcp_get_skill': ${mps_mcp_list_skills()}
+            Other, no less important, skills are located in hierarchically organized SKILL.md files in the PROJECT_HOME/.agents/skills directory (PROJECT_HOME stands for the directory of the current project)
         """.trimIndent()
         return okJson("\"" + escapeJson(context) + "\"")
     }

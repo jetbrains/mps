@@ -35,7 +35,8 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         - Use 'include...' flags to control traversal depth and detail levels.
         - Eagerly filter (keep 'include' flags false) for fast project-wide discovery.
         - Useful for expanding shortened names (e.g., 'j.m.l.core' -> 'jetbrains.mps.lang.core').
-        - Includes names, persistent references, kind, virtual folder, dependencies, etc.
+        - Includes names, persistent references, kind, virtual folder, dependencies, used languages, etc.
+        - For DevKits, it includes extended devkits, exported languages, and exported solutions.
 
         Returns a JSON object with 'ok':true and 'data':"/absolute/path/to/result.json" on success, or 'ok':false and 'error':"..." on failure.
     """)

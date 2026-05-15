@@ -9,6 +9,7 @@ import com.intellij.openapi.application.EDT
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.AbstractModule
+import jetbrains.mps.project.DevKit
 import jetbrains.mps.smodel.SModelInternal
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
@@ -177,6 +178,18 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                     if (lang == null) {
                         result = errJson("Language not found: $usedLanguage")
                         return@executeCommand
+                    }
+                    // Check if already provided by DevKit
+                    for (dkRef in (model as SModelInternal).importedDevkits()) {
+                        val dk = dkRef.resolve(mpsProject.repository) as? DevKit ?: continue
+                        if (dk.allExportedLanguageIds.contains(lang)) {
+                            // Already provided
+                            if (model is EditableSModel) {
+                                model.save()
+                            }
+                            result = okJson("true")
+                            return@executeCommand
+                        }
                     }
                     model.addLanguage(lang)
                     if (model is EditableSModel) {

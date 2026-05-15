@@ -4,6 +4,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.intellij.mcpserver.McpToolset
+import com.intellij.openapi.application.EDT
 import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget
@@ -14,7 +15,9 @@ import jetbrains.mps.make.MakeSession
 import jetbrains.mps.messages.IMessage
 import jetbrains.mps.messages.IMessageHandler
 import jetbrains.mps.messages.MessageKind
+import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
+import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
@@ -25,11 +28,9 @@ import jetbrains.mps.smodel.resources.MakeKeys
 import jetbrains.mps.smodel.resources.ModelsToResources
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import com.intellij.openapi.application.EDT
 import org.jetbrains.mps.openapi.language.*
 import org.jetbrains.mps.openapi.model.*
 import org.jetbrains.mps.openapi.module.SModule
-import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.io.File
@@ -538,12 +539,61 @@ abstract class AbstractOps : McpToolset {
         val reference = PersistenceFacade.getInstance().asString(m.moduleReference)
         val vf = try { project.getVirtualFolder(m) } catch (_: Throwable) { null }
         val vfPart = if (vf != null) "\"virtualFolder\":\"" + escapeJson(vf) + "\"," else ""
-        return "{" +
-                "\"name\":\"" + escapeJson(name) + "\"," +
-                "\"reference\":\"" + escapeJson(reference) + "\"," +
-                "\"readOnly\":" + m.isReadOnly + "," +
-                vfPart +
-                "\"present\":true}"
+
+        val sb = StringBuilder()
+        sb.append("{")
+        sb.append("\"name\":\"").append(escapeJson(name)).append("\",")
+        sb.append("\"reference\":\"").append(escapeJson(reference)).append("\",")
+        sb.append("\"readOnly\":").append(m.isReadOnly).append(",")
+        sb.append(vfPart)
+
+        val descriptor = (m as? AbstractModule)?.moduleDescriptor
+        if (descriptor is DevkitDescriptor) {
+            sb.append("\"kind\":\"DevKit\",")
+            sb.append("\"extendedDevkits\":[")
+            var firstExt = true
+            for (ext in descriptor.extendedDevkits) {
+                if (!firstExt) sb.append(",") else firstExt = false
+                sb.append("{")
+                sb.append("\"name\":\"").append(escapeJson(ext.moduleName ?: "")).append("\",")
+                sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ext))).append("\"")
+                sb.append("}")
+            }
+            sb.append("],")
+
+            sb.append("\"exportedLanguages\":[")
+            var firstLang = true
+            for (lang in descriptor.exportedLanguages) {
+                if (!firstLang) sb.append(",") else firstLang = false
+                sb.append("{")
+                sb.append("\"name\":\"").append(escapeJson(lang.moduleName ?: "")).append("\",")
+                sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(lang))).append("\"")
+                sb.append("}")
+            }
+            sb.append("],")
+
+            sb.append("\"exportedSolutions\":[")
+            var firstSol = true
+            for (sol in descriptor.exportedSolutions) {
+                if (!firstSol) sb.append(",") else firstSol = false
+                sb.append("{")
+                sb.append("\"name\":\"").append(escapeJson(sol.moduleName ?: "")).append("\",")
+                sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(sol))).append("\"")
+                sb.append("}")
+            }
+            sb.append("],")
+
+            val plan = descriptor.associatedGenPlan
+            if (plan != null) {
+                sb.append("\"associatedGenPlan\":{")
+                sb.append("\"name\":\"").append(escapeJson(plan.modelName.toString())).append("\",")
+                sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(plan))).append("\"")
+                sb.append("},")
+            }
+        }
+
+        sb.append("\"present\":true}")
+        return sb.toString()
     }
 
     protected suspend fun <T> executeRead(mpsProject: MPSProject, action: () -> T): T {
@@ -825,6 +875,7 @@ abstract class AbstractOps : McpToolset {
     protected fun conceptInfoJson(concept: SAbstractConcept, repository: SRepository): String {
         val facade = PersistenceFacade.getInstance()
         val name = concept.name
+        val qualifiedName = concept.language.qualifiedName + ".structure." + concept.name
         val conceptAlias = concept.conceptAlias
         val conceptReference = facade.asString(concept)
         val languageReference = facade.asString(concept.language)
@@ -842,6 +893,7 @@ abstract class AbstractOps : McpToolset {
         val doc = getDoc(declarationNode)
         return "{" +
                 "\"name\":\"" + escapeJson(name) + "\"," +
+                "\"qualifiedName\":\"" + escapeJson(qualifiedName) + "\"," +
                 "\"conceptAlias\":\"" + escapeJson(conceptAlias) + "\"," +
                 "\"shortDescription\":\"" + escapeJson(shortDescription) + "\"," +
                 "\"doc\":\"" + escapeJson(doc) + "\"," +

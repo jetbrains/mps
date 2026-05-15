@@ -27,9 +27,14 @@ abstract class AbstractNodeOps : AbstractOps() {
             throw IllegalArgumentException("Missing 'concept' or 'conceptReference' property in JSON")
         }
 
-        val resolveStr = if (conceptRef.isNullOrEmpty()) conceptName!! else conceptRef
-        val sConcept = resolveConcept(model.repository, resolveStr) as? SConcept
-            ?: throw IllegalArgumentException("Concept '$conceptName' with reference '$conceptRef' not found")
+        val sConcept = run {
+            // Try conceptReference first (c:... form), fall back to concept name if it fails or is absent.
+            // Name-based resolution is more reliable because agents tend to get names right
+            // but occasionally produce slightly incorrect concept reference IDs.
+            val byRef = if (!conceptRef.isNullOrEmpty()) resolveConcept(model.repository, conceptRef) as? SConcept else null
+            val byName = if (!conceptName.isNullOrEmpty()) resolveConcept(model.repository, conceptName) as? SConcept else null
+            byRef ?: byName
+        } ?: throw IllegalArgumentException("Concept '$conceptName' with reference '$conceptRef' not found")
 
         // Ensure language is imported
         if (model is SModelInternal) {

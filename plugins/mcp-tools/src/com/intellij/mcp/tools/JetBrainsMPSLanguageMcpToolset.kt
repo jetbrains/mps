@@ -23,7 +23,8 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         Concepts can be specified either individually or by providing entire languages.
 
         Returns a JSON object with 'ok':true and 'data':"/path/to/local/file.json" on success, or 'ok':false and 'error':"..." on failure.
-        Format of data in the file: [{ name, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", "ref2", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true, properties: [...], references: [...], children: [...] }, ...]
+        Format of data in the file: [{ name, qualifiedName, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", "ref2", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true, properties: [...], references: [...], children: [...] }, ...]
+        Use the 'qualifiedName' field (e.g. "jetbrains.mps.baseLanguage.structure.ClassConcept") as the 'concept' field in JSON node blueprints. It is unambiguous and does not require a conceptReference.
     """)
     suspend fun mps_mcp_get_concept_details(
         @McpDescription("List of persistent references (SAbstractConcept) or fully qualified names of the concepts and interface concepts") conceptRefs: List<String>,
@@ -86,10 +87,11 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
     @McpDescription("""
         Searches for concepts and interface concepts whose name, alias or short description contains any of the specified search strings.
         If modelReference is provided, only searches in languages used by that model. This is faster than searching all languages. Concepts in already used languages are more likely to be suitable than concepts from other languages.
-        
+
         Try with a model first, if no concept is found, try a general search without a model.
 
-        Returns a JSON object with 'ok':true and 'data':[{ name, conceptAlias, shortDescription, conceptReference, languageReference, isAbstract, isInterfaceConcept, isRootable, present:true }, ...] on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':[{ name, qualifiedName, conceptAlias, shortDescription, conceptReference, languageReference, isAbstract, isInterfaceConcept, isRootable, present:true }, ...] on success, or 'ok':false and 'error':"..." on failure.
+        Use the 'qualifiedName' field (e.g. "jetbrains.mps.baseLanguage.structure.ClassConcept") as the 'concept' field in JSON node blueprints. It is unambiguous and does not require a conceptReference.
     """)
     suspend fun mps_mcp_search_concepts(
         @McpDescription("The list of strings to search for in concept names, aliases and short descriptions") searchTexts: List<String>,

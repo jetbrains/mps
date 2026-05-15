@@ -30,6 +30,8 @@ import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SearchScope
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import jetbrains.mps.resolve.ResolverComponent
+import org.jetbrains.mps.openapi.language.SReferenceLink
 import org.jetbrains.mps.openapi.util.Consumer
 
 
@@ -43,7 +45,8 @@ enum class MPSNodeOperation {
     NODE_INDEX,
     SIBLINGS,
     GET_CHILD_ROLE,
-    MAKE
+    MAKE,
+    FIX_REFERENCES
 }
 
 class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
@@ -100,9 +103,17 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         - MAKE: Performs Make or Rebuild on a list of models or modules, or the whole project.
           Returns JSON: { ok, data: { success: boolean, message: string, details: [ { kind, text }, ... ] } }
           Parameters: { "models": "Optional: list of persistent model references", "modules": "Optional: list of persistent module references", "rebuild": "Optional: boolean, default false", "wholeProject": "Optional: boolean, default false. If true, 'models' and 'modules' must be absent." }
+        - FIX_REFERENCES: Attempts to re-resolve all references in a node and all its descendants using scope-based resolution.
+          This handles both broken references (target node is null) and wrong references (target is resolved but points to an incorrect node, e.g. "Reference to wrong overridden method").
+          Each reference is re-resolved using its resolveInfo string against the current scope; if the scope finds a better or correct target it is applied.
+          Returns JSON: { ok, data: { fixed: number, repointed: number, stillBroken: number, message: string } }
+            fixed: references that were broken (null target) and are now resolved
+            repointed: references that were resolved but pointed to a wrong node and are now corrected
+            stillBroken: references that could not be resolved
+          Parameters: { "nodeRef": "Persistent reference of the node (SNodeReference)" }
     """)
     suspend fun mps_mcp_perform_operation(
-        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, MOVE_CHILD, GET_MODEL_FOR_NODE, FIND_USAGES, MOVE_NODE_TO_PARENT, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE, MAKE)") operation: MPSNodeOperation,
+        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, MOVE_CHILD, GET_MODEL_FOR_NODE, FIND_USAGES, MOVE_NODE_TO_PARENT, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE, MAKE, FIX_REFERENCES)") operation: MPSNodeOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
         currentCoroutineContext().reportToolActivity("Performing MPS operation: $operation")
@@ -316,6 +327,78 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     }
                     okJson(Gson().toJson(result))
                 }
+                MPSNodeOperation.FIX_REFERENCES -> {
+                    val nodeRef = params.get("nodeRef")?.asString ?: return errJson("Parameter 'nodeRef' is missing")
+                    executeCommand(mpsProject) {
+                        try {
+                            val repo = mpsProject.repository
+                            val sNodeRef = resolveNodeReference(repo, nodeRef)
+                            val node = sNodeRef?.resolve(repo) ?: return@executeCommand errJson("Node '$nodeRef' not found")
+                            val model = node.model
+                            if (model !is EditableSModel) return@executeCommand errJson("Model containing the node is not editable")
+
+                            // Collect ALL references in the node and descendants (BFS), recording each target before re-resolution.
+                            // We re-resolve all references (not just broken ones) so that already-resolved but wrong references
+                            // (e.g. "Reference to wrong overridden method") are also corrected generically.
+                            val allRefs = mutableListOf<SReference>()
+                            val srcNodes = mutableListOf<SNode>()
+                            val refLinks = mutableListOf<SReferenceLink>()
+                            val targetsBefore = mutableListOf<SNode?>()
+                            val queue = ArrayDeque<SNode>()
+                            queue.add(node)
+                            while (queue.isNotEmpty()) {
+                                val current = queue.removeFirst()
+                                for (ref in current.references) {
+                                    allRefs.add(ref)
+                                    srcNodes.add(current)
+                                    refLinks.add(ref.link)
+                                    targetsBefore.add(ref.targetNode)
+                                }
+                                for (child in current.children) queue.add(child)
+                            }
+
+                            if (allRefs.isEmpty()) {
+                                return@executeCommand okJson(Gson().toJson(mapOf("fixed" to 0, "repointed" to 0, "stillBroken" to 0, "message" to "No references found")))
+                            }
+
+                            // Attempt scope-based re-resolution on every reference
+                            val resolver = mpsProject.getComponent(ResolverComponent::class.java)
+                            resolver.resolveScopesOnly(allRefs as Iterable<SReference>, repo)
+
+                            // Compare before/after per reference to count what changed
+                            var fixed = 0       // was null → now resolved
+                            var repointed = 0   // was resolved but wrong → now different target
+                            var stillBroken = 0 // was null → still null
+                            for (i in allRefs.indices) {
+                                val targetAfter = srcNodes[i].getReference(refLinks[i])?.targetNode
+                                val targetBefore = targetsBefore[i]
+                                when {
+                                    targetBefore == null && targetAfter != null -> fixed++
+                                    targetBefore == null && targetAfter == null -> stillBroken++
+                                    targetBefore != null && targetAfter != null && targetAfter != targetBefore -> repointed++
+                                }
+                            }
+
+                            if (fixed > 0 || repointed > 0) {
+                                model.save()
+                            }
+
+                            val message = when {
+                                fixed == 0 && repointed == 0 && stillBroken == 0 -> "All references are already correctly resolved"
+                                fixed == 0 && repointed == 0 -> "$stillBroken broken reference(s) could not be resolved"
+                                else -> buildString {
+                                    if (fixed > 0) append("$fixed broken reference(s) resolved")
+                                    if (repointed > 0) { if (fixed > 0) append(", "); append("$repointed reference(s) repointed to correct target") }
+                                    if (stillBroken > 0) append("; $stillBroken remain broken")
+                                }
+                            }
+
+                            okJson(Gson().toJson(mapOf("fixed" to fixed, "repointed" to repointed, "stillBroken" to stillBroken, "message" to message)))
+                        } catch (e: Exception) {
+                            errJson(e.message)
+                        }
+                    }
+                }
             }
         } catch (e: Exception) {
             errJson(e.message)
@@ -504,8 +587,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           "data": "/path/to/local/file.json"
           "format of data in the files": {
             "name": "NodeName",
-            "concept": "FullyQualifiedConceptName",
-            "conceptReference": "PersistentConceptReference",
+            "concept": "FullyQualifiedConceptName",  // Use this value as the 'concept' field when rebuilding node blueprints
+            "conceptReference": "PersistentConceptReference",  // Informational; optional in blueprints
             "reference": "PersistentNodeReference",
             "properties": [
               { "name": "propertyName", "type": "propertyType", "value": "propertyValue" }
@@ -654,7 +737,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         {
           "name": "NodeName",
           "concept": "FullyQualifiedConceptName",
-          "conceptReference": "PersistentConceptReference", // Required, must be a valid persistence reference
+          "conceptReference": "c:...",  // Optional. If omitted, 'concept' qualifiedName is used for resolution.
           "properties": [
             { "name": "propertyName", "value": "propertyValue" }
           ],
@@ -662,10 +745,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             { "role": "linkRole", "targetReference": "PersistentTargetReference" } // Optional, can be empty or a placeholder
           ],
           "children": [
-            { 
-              "role": "linkRole", 
-              "nodes": [ 
-                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+            {
+              "role": "linkRole",
+              "nodes": [
+                 { "name": "ChildNodeName", "concept": "...", "properties": [...], "references": [...], "children": [...] }
               ]
             }
           ]
@@ -675,7 +758,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_add_node_child(
         @McpDescription("Persistent form of the parent SNodeReference") nodeRef: String,
         @McpDescription("The role name of the child") childRole: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of the child node's deep printout. targetReference can be placeholders or empty and set later, but conceptReference must be valid.") childJson: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of the child node's deep printout. Use 'concept' qualifiedName for all nodes. 'conceptReference' is optional. 'targetReference' can be empty for references to nodes not yet created.") childJson: String
     ): String {
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
@@ -694,7 +777,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         {
           "name": "NodeName",
           "concept": "FullyQualifiedConceptName",
-          "conceptReference": "PersistentConceptReference", // Required, must be a valid persistence reference
+          "conceptReference": "c:...",  // Optional. If omitted, 'concept' qualifiedName is used for resolution.
           "properties": [
             { "name": "propertyName", "value": "propertyValue" }
           ],
@@ -702,10 +785,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             { "role": "linkRole", "targetReference": "PersistentTargetReference" } // Optional, can be empty or a placeholder
           ],
           "children": [
-            { 
-              "role": "linkRole", 
-              "nodes": [ 
-                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+            {
+              "role": "linkRole",
+              "nodes": [
+                 { "name": "ChildNodeName", "concept": "...", "properties": [...], "references": [...], "children": [...] }
               ]
             }
           ]
@@ -714,7 +797,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_replace_node_child(
         @McpDescription("Persistent form of the SNodeReference of the child to replace") childNodeRef: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of the new child node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") childJson: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of the new child node's deep printout. Use 'concept' qualifiedName for all nodes. 'conceptReference' is optional. 'targetReference' can be empty for references to nodes not yet created.") childJson: String
     ): String {
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")

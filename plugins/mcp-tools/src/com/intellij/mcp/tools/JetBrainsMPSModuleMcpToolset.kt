@@ -1,39 +1,40 @@
 package com.intellij.mcp.tools
 
 // MPS APIs used for CRUD
+import com.google.gson.JsonArray
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import jetbrains.mps.ide.project.ProjectHelper
+import jetbrains.mps.module.PersistenceContextImpl
+import jetbrains.mps.persistence.MementoImpl
 import jetbrains.mps.project.AbstractModule
-import jetbrains.mps.project.MPSProject
+import jetbrains.mps.project.DevKit
 import jetbrains.mps.project.modules.DevkitProducer
 import jetbrains.mps.project.modules.LanguageAndSolutionsProducer
 import jetbrains.mps.project.modules.LanguageProducer
 import jetbrains.mps.project.modules.SolutionProducer
 import jetbrains.mps.project.structure.modules.Dependency
+import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor
 import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.ModuleDependencyVersions
 import jetbrains.mps.smodel.ModuleRepositoryFacade
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import jetbrains.mps.smodel.language.LanguageRegistry
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.withContext
 import org.jetbrains.annotations.Nullable
+import org.jetbrains.mps.openapi.module.FacetsFacade
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SModule
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.persistence.Memento
-import jetbrains.mps.persistence.MementoImpl
-import org.jetbrains.mps.openapi.module.FacetsFacade
-import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor
-import jetbrains.mps.module.PersistenceContextImpl
-import com.google.gson.JsonObject
-import com.google.gson.JsonArray
-import com.google.gson.JsonParser
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
 class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
@@ -102,6 +103,19 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                     existing.scope = depScope
                     existing.isReexport = reexport
                 } else {
+                    // Check if the target is already provided by a DevKit
+                    val targetLang = if (target is Language) MetaAdapterByDeclaration.getLanguage(target) else null
+                    for (dkRef in descriptor.usedDevkits) {
+                        val dk = dkRef.resolve(mpsProject.repository) as? DevKit ?: continue
+                        if (dk.allExportedSolutions.any { it.moduleReference == targetRef }) {
+                            // Already provided by DevKit
+                            return@executeCommand
+                        }
+                        if (targetLang != null && dk.allExportedLanguageIds.any { it == targetLang }) {
+                            // Already provided by DevKit
+                            return@executeCommand
+                        }
+                    }
                     descriptor.dependencies.add(Dependency(targetRef, depScope, reexport))
                 }
                 abstractModule.setChanged()
@@ -169,7 +183,8 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         If a precise match is not found, a partial match by name is used.
         If more than one partial match is found, returns an error containing the found full module names.
 
-        Returns a JSON object with 'ok':true and 'data':{ name, moduleRef, virtualFolder?, readOnly, present:true } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ name, reference, virtualFolder?, readOnly, present:true, ... } on success.
+        For DevKits, the data also includes: kind: "DevKit", extendedDevkits: [...], exportedLanguages: [...], exportedSolutions: [...], associatedGenPlan?: {...}.
     """
     )
     suspend fun mps_mcp_get_module(
