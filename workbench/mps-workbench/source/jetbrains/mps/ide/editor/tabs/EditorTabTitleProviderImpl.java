@@ -75,20 +75,26 @@ public class EditorTabTitleProviderImpl implements EditorTabTitleProvider {
     List<MPSNodeVirtualFile> tabStructureFiles = new ArrayList<>();
     List<MPSNodeVirtualFile> tabAspectFiles = new ArrayList<>();
     for (VirtualFile other : openFiles) {
-      if (!(other instanceof MPSNodeVirtualFile otherMainFile)) {
+      //noinspection UseVirtualFileEquals
+      if (other == mainFile || !(other instanceof MPSNodeVirtualFile otherMainFile)) {
         continue;
       }
       @SuppressWarnings("UseVirtualFileEquals")
       MPSNodeVirtualFile otherAspect = (otherMainFile == mainFile) ? aspectFile : findFileForCurrentAspectTab(project, otherMainFile);
+      if (otherAspect.getPath().equals(aspectFile.getPath())) {
+        // do not try to disambiguate identical names (may happen for generator aspects)
+        return title;
+      }
       if (title.equals(otherAspect.getPresentableName())) {
         tabStructureFiles.add(otherMainFile);
         tabAspectFiles.add(otherAspect);
       }
     }
-    if (tabStructureFiles.size() < 2) {
+    if (tabStructureFiles.isEmpty()) {
       return title;
     }
     UniqueNameBuilder<MPSNodeVirtualFile> builder = new UniqueNameBuilder<>("", "/");
+    builder.addPath(mainFile, stripNodePrefix(aspectFile.getPath()));
     for (int i = 0; i < tabStructureFiles.size(); i++) {
       builder.addPath(tabStructureFiles.get(i), stripNodePrefix(tabAspectFiles.get(i).getPath()));
     }
