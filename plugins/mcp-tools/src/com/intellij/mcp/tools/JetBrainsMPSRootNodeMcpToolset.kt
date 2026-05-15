@@ -258,8 +258,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_create_root_node(
         @McpDescription("Persistent form of SModelReference") modelRef: String,
-        @McpDescription("Fully qualified concept name") concept: String,
-        @McpDescription("Persistent form of SConcept") conceptReference: String,
+        @McpDescription("Fully qualified concept name or name") concept: String,
+        @McpDescription("Optional: Persistent form of SConcept (c:...) or fully qualified concept name") conceptReference: String? = null,
         @McpDescription("Name for the new root node") name: String
     ): String {
         currentCoroutineContext().reportToolActivity("Creating MPS root node")
@@ -282,7 +282,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                             error = "Model '$modelRef' is not editable"
                             return@executeCommand
                         }
-                        val sConcept = resolveConcept(mpsProject.repository, conceptReference)
+                        val resolveStr = if (conceptReference.isNullOrEmpty()) concept else conceptReference
+                        val sConcept = resolveConcept(mpsProject.repository, resolveStr)
                         if (sConcept == null) {
                             error = "Concept '$concept' ('$conceptReference') not found"
                             return@executeCommand
@@ -331,20 +332,43 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Updates a root node (currently supports renaming).
-
+        Updates an MPS root node from a JSON description.
+        The root node itself is preserved, but its properties, references and children are re-set according to the provided JSON blueprint.
+        The node's name is not changed.
+        The 'json' parameter is an absolute path to a local temporary file containing the actual JSON description.
+        The JSON format is a deep printout of a node:
+        {
+          "name": "NodeName", // Ignored for the root node
+          "concept": "ConceptName",
+          "conceptReference": "PersistentConceptReference",
+          "properties": [
+            { "name": "propertyName", "value": "propertyValue" }
+          ],
+          "references": [
+            { "role": "linkRole", "target": "TargetNodeName", "targetReference": "PersistentTargetReference" }
+          ],
+          "children": [
+            { 
+              "role": "linkRole", 
+              "nodes": [ 
+                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
+              ]
+            }
+          ]
+        }
         Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun mps_mcp_update_root_node(
+    suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
-        @McpDescription("New name for the root node") newName: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") json: String
     ): String {
-        currentCoroutineContext().reportToolActivity("Updating MPS root node")
+        currentCoroutineContext().reportToolActivity("Updating MPS root node from JSON")
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
 
         return try {
-            var payload: String? = null
+            val actualJson = readFromFile(json)
+            var result: String? = null
             var error: String? = null
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
@@ -360,23 +384,22 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                             error = "Model containing the node is not editable"
                             return@executeCommand
                         }
-                        val nameProperty = SNodeUtil.property_INamedConcept_name
-                        if (node.concept.properties.contains(nameProperty)) {
-                            node.setProperty(nameProperty, newName)
-                        } else {
-                            error = "Concept '${node.concept.name}' does not have a name property"
-                            return@executeCommand
-                        }
+
+                        val gson = Gson()
+                        val jsonObject = gson.fromJson(actualJson, JsonObject::class.java)
+
+                        updateNodeFromBlueprint(node, jsonObject)
+
                         model.save()
-                        payload = nodeInfoJson(node)
+                        result = nodeInfoJson(node)
                     } catch (e: Exception) {
                         error = e.message
                     }
                 }
             }
             if (error != null) errJson(error)
-            else if (payload != null) okJson(payload) else errJson("Failed to update root node")
-        } catch (e: Throwable) {
+            else if (result != null) okJson(result) else errJson("Failed to update root node")
+        } catch (e: Exception) {
             errJson(e.message)
         }
     }

@@ -4,9 +4,10 @@ This guide provides essential insight into how JetBrains MPS (Meta Programming S
 
 ## Skills
 
-| Invoke                | What it does                                                        |
-|-----------------------|---------------------------------------------------------------------|
-| `/mps-editor`         | Define or modify editors for concepts in a JetBrains MPS language   |
+| Invoke            | What it does                                                      |
+|-------------------|-------------------------------------------------------------------|
+| `/mps-editor`     | Define or modify editors for concepts in a JetBrains MPS language |
+| `/baselanguage`   | Work with code written using the MPS BaseLanguage language        |
 
 ## Key Concepts
 
@@ -127,7 +128,7 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 ### Root Nodes and Nodes
 - `mps_mcp_open_root_node`: Opens a root node in the editor.
 - `mps_mcp_get_current_editor_root_node`: Identifies the node the user is currently looking at.
-- `mps_mcp_create_root_node`, `mps_mcp_update_root_node`, `mps_mcp_delete_root_node`
+- `mps_mcp_create_root_node`, `mps_mcp_update_root_node_from_json`, `mps_mcp_delete_root_node`
 - `mps_mcp_perform_operation`: General node navigation, search, transformation and code generation/compilation.
 - `mps_mcp_show_node_representation`: Shows the "visual" projection of a node.
 - `mps_mcp_print_node_json`: Shows the underlying JSON structure.
@@ -139,6 +140,7 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 - `mps_mcp_get_concept_details`: Provides properties, children, and references for a list of concepts and/or concepts of specified languages. Make/rebuild languages with `mps_mcp_perform_operation` for `mps_mcp_get_concept_details` to see their concepts. 
 - `mps_mcp_search_concepts`: Global search for concepts by name, alias or description using a list of search strings.
 - `mps_mcp_perform_structure_operation`: Advanced language-aware operations like `CREATE_CONCEPTS`, `CREATE_ENUM`, `FIND_INSTANCES`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ASSIGNABLE_REFERENCES`.
+- `mps_mcp_scaffold_editor`: Generates a default ConceptEditorDeclaration for a specified concept, automatically wiring relation declarations properties, children, references to default cell models.
 
 ## Workflow and Best Practices
 

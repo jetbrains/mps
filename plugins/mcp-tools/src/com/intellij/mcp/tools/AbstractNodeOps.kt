@@ -6,6 +6,7 @@ import com.intellij.mcpserver.reportToolActivity
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.smodel.SModelInternal
+import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import kotlinx.coroutines.currentCoroutineContext
 import org.jetbrains.mps.openapi.language.SConcept
@@ -19,13 +20,15 @@ import org.jetbrains.mps.openapi.model.SNodeAccessUtil
 abstract class AbstractNodeOps : AbstractOps() {
 
     fun instantiateNode(jsonObject: JsonObject, model: SModel): SNode? {
-        val conceptName = jsonObject.get("concept")?.asString ?: throw IllegalArgumentException("Missing 'concept' property in JSON")
-        val conceptRef = jsonObject.get("conceptReference")?.asString ?: throw IllegalArgumentException("Missing 'conceptReference' property in JSON")
-        if (conceptRef.isEmpty()) {
-            throw IllegalArgumentException("'conceptReference' property in JSON cannot be empty")
+        val conceptName = jsonObject.get("concept")?.asString
+        val conceptRef = jsonObject.get("conceptReference")?.asString
+        
+        if (conceptName.isNullOrEmpty() && conceptRef.isNullOrEmpty()) {
+            throw IllegalArgumentException("Missing 'concept' or 'conceptReference' property in JSON")
         }
 
-        val sConcept = resolveConcept(model.repository, conceptRef) as? SConcept
+        val resolveStr = if (conceptRef.isNullOrEmpty()) conceptName!! else conceptRef
+        val sConcept = resolveConcept(model.repository, resolveStr) as? SConcept
             ?: throw IllegalArgumentException("Concept '$conceptName' with reference '$conceptRef' not found")
 
         // Ensure language is imported
@@ -42,7 +45,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         // Set name if present and supported
         val name = jsonObject.get("name")?.asString
         if (name != null) {
-            val nameProperty = jetbrains.mps.smodel.SNodeUtil.property_INamedConcept_name
+            val nameProperty = SNodeUtil.property_INamedConcept_name
             if (sConcept.properties.contains(nameProperty)) {
                 newNode.setProperty(nameProperty, name)
             }
@@ -122,6 +125,94 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         return newNode
+    }
+
+    fun updateNodeFromBlueprint(node: SNode, jsonObject: JsonObject) {
+        val model = node.model ?: throw IllegalArgumentException("Node must be in a model")
+        val sConcept = node.concept
+
+        // 1. Properties
+        // Clear all properties first to "re-set" (except name)
+        sConcept.properties.forEach {
+            if (it != SNodeUtil.property_INamedConcept_name) {
+                node.setProperty(it, null)
+            }
+        }
+
+        val properties = jsonObject.getAsJsonArray("properties")
+        if (properties != null) {
+            for (propElement in properties) {
+                val propObject = propElement.asJsonObject
+                val propName = propObject.get("name")?.asString ?: continue
+                val propValue = propObject.get("value")?.asString
+                val sProperty = sConcept.properties.find { it.name == propName }
+                if (sProperty != null) {
+                    if (sProperty == SNodeUtil.property_INamedConcept_name) continue
+                    setProperty(node, sProperty, propValue)
+                }
+            }
+        }
+
+        // 2. Children
+        node.children.toList().forEach { it.delete() }
+        val children = jsonObject.getAsJsonArray("children")
+        if (children != null) {
+            for (childRoleElement in children) {
+                val childRoleObject = childRoleElement.asJsonObject
+                val roleName = childRoleObject.get("role")?.asString ?: continue
+                val childNodes = childRoleObject.getAsJsonArray("nodes")
+                if (childNodes != null) {
+                    val link = sConcept.containmentLinks.find { it.name == roleName }
+                    if (link != null) {
+                        for (nodeElement in childNodes) {
+                            val childNode = instantiateNode(nodeElement.asJsonObject, model)
+                            if (childNode != null) {
+                                if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
+                                    throw IllegalArgumentException("Child node concept '${childNode.concept.name}' is not assignable to expected concept '${link.targetConcept.name}' for role '${link.name}' in concept '${sConcept.name}'")
+                                }
+                                node.addChild(link, childNode)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. References
+        node.references.toList().forEach { node.dropReference(it.link) }
+        val references = jsonObject.getAsJsonArray("references")
+        if (references != null) {
+            for (refElement in references) {
+                val refObject = refElement.asJsonObject
+                val roleName = refObject.get("role")?.asString ?: continue
+                val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
+                val link = sConcept.referenceLinks.find { it.name == roleName }
+                if (link != null && !targetRefStr.isNullOrEmpty()) {
+                    val targetRef = resolveNodeReference(model.repository, targetRefStr)
+                    if (targetRef != null) {
+                        val targetNode = targetRef.resolve(model.repository) ?: throw IllegalArgumentException("Target node reference could not be resolved: $targetRefStr")
+                        if (!targetNode.concept.isSubConceptOf(link.targetConcept)) {
+                            throw IllegalArgumentException("Target node '${targetNode.presentation}' of concept '${targetNode.concept.name}' is not assignable to expected concept '${link.targetConcept.name}' for reference link '$roleName' in concept '${sConcept.name}'")
+                        }
+                        node.setReference(link, targetRef)
+
+                        // Ensure target model is imported
+                        val targetModelRef = targetRef.modelReference
+                        if (targetModelRef != null && model is SModelInternal && !model.modelImports.contains(targetModelRef)) {
+                            model.addModelImport(targetModelRef)
+
+                            // Also add module dependency
+                            val targetModel = targetModelRef.resolve(model.repository)
+                            val targetModule = targetModel?.module
+                            val currentModule = model.module
+                            if (targetModule != null && currentModule != null && targetModule != currentModule) {
+                                (currentModule as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     protected suspend fun update_node_child(mpsProject: MPSProject, nodeRef: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?): String {

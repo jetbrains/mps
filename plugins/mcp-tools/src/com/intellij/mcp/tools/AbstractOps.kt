@@ -605,20 +605,25 @@ abstract class AbstractOps : McpToolset {
             nodeRef.resolve(repository)?.let { return it }
         } catch (e: Exception) {}
 
-        // 2. Try as a concept reference (runtime ID string languageId/conceptId)
+        // 2. Try as a concept reference (runtime ID string languageId/conceptId) or languageName/conceptName
         if (conceptRef.contains("/")) {
             val parts = conceptRef.split("/")
             if (parts.size == 2) {
-                val langIdStr = parts[0]
-                val conceptIdStr = parts[1]
+                val langRef = parts[0]
+                val conceptRefOrName = parts[1]
                 for (module in repository.modules) {
                     if (module !is jetbrains.mps.smodel.Language) continue
-                    if (module.moduleReference.moduleId.toString() == langIdStr ||
-                        module.moduleReference.moduleId.toString().removePrefix("l:") == langIdStr) {
+                    if (module.moduleReference.moduleId.toString() == langRef ||
+                        module.moduleReference.moduleId.toString().removePrefix("l:") == langRef ||
+                        module.moduleName == langRef) {
                         for (model in module.models) {
                             if (model.name.longName.endsWith(".structure")) {
                                 for (root in model.rootNodes) {
-                                    if (root.nodeId.toString() == conceptIdStr) return root
+                                    if (root.nodeId.toString() == conceptRefOrName || root.name == conceptRefOrName) {
+                                        if (root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) {
+                                            return root
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -636,7 +641,8 @@ abstract class AbstractOps : McpToolset {
             for (module in repository.modules) {
                 for (model in module.models) {
                     if (model.name.longName == possibleModelName ||
-                        model.name.longName == "$possibleModelName.structure") {
+                        model.name.longName == "$possibleModelName.structure" ||
+                        (module.moduleName == possibleModelName && model.name.longName == "$possibleModelName.structure")) {
                         for (root in model.rootNodes) {
                             if (root.name == conceptName && root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) {
                                 return root

@@ -38,15 +38,18 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             "Steps to define concept editors in MPS",
             "Use this skill when asked to create a language or concept editors in a language",
             """
+            - Read the `PROJECT_HOME/.agents/skills/mps-editor/SKILL.md` file to get a skill on how to create MPS editors.                
             - Use the 'jetbrains.mps.lang.editor' language.
             - An MPS 'ConceptEditor' (sometimes called 'editor definition') is a root node in the 'editor' model of an MPS language (MPS module).
-            - Use the same virtual package that is used for the concept.                
             - When defining a style for editor cells, use stylesheets effectively so the styles can be reused.
-            - Before creating a new style, first check if a suitable style is not available in a stylesheet defined in any of the extended languages.
+            - Before creating a new style, first check if a suitable style is not available in a stylesheet defined in the current language or any of the languages it extendeds.
             - When creating editors, always use the same virtual packages that are used for their respective concepts.            
             - Use `CellModel_RefCell` for references to show properties of the target node. 'relationDeclaration' must point to the 'LinkDeclaration' to be represented by this cell.the 'editorComponent' LinkDeclaration contains an instance of 'InlineEditorComponent'. Its 'cellModel' LinkDeclaration is set to 'CellModel_Property' with relationDeclaration set to 'name' (for INamedConcept targets) or 'CellModel_ReferencePresentation' for targets without a name. Be sure to set the CellModel_Property's "readOnly" property to "true" to prevent changes to the name property through the reference cell.
-            - Ensure all non-abstract concepts have an editor (either defined directly or inherited).
+            - An editor can also be inherited from extended concepts or implemented interface concepts.
+            - For editor definitions to be complete, ensure all non-abstract concepts have an editor (either defined directly or inherited from a super-concept).
             - Control layout with layout managers, When using "indent layout", collection cells are typically put on a new line and indented. The "indent-layout-indent" style attribute controls indentation. The "indent-layout-new-line" must be applied to a cell preceding the cell that should be put on a new line. Alternatively use "indent-layout-on-new-line", which should be applied to the cell that must be placed on a new line.
+            - Extract reusable parts of editor definitions into "editor components" (jetbrains.mps.lang.editor.structure.EditorComponentDeclaration) to avoid code duplication. Then use jetbrains.mps.lang.editor.structure.CellModel_Component to insert EditorComponentDeclarations into editor definitions. 
+            - Do read the .agents/skills/mps-editor/SKILL.md file in the project directory.            
                 """.trimIndent()
         ),
         listOf(
@@ -67,20 +70,36 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
                 """.trimIndent()
         ),
         listOf(
-            "Analyze MPS languages",
+            "Understand an MPS languages",
             "Steps to analyze MPS language definitions",
-            "Use this skill when asked to analyze, verify or inspect MPS languages or concepts",
+            "Use this skill when asked to use, analyze, verify or inspect MPS languages or concepts",
             """
-                Start investigating the concepts of a language - 'mps_mcp_get_concept_details', their defined properties, references and children.
-                Investigate and report the rootable and abstract concepts.
-                Investigate the inheritance hierarchy of concepts.
-                Investigate also the 'structure' models of the analyzed languages.
-                Use 'mps_mcp_show_node_representation' to take a look at code in its textual projection.
-                Some code may be better looked at in the structural form (aka nodes as JSON). Use 'mps_mcp_print_node_json' to get a structural printout.
-                Use 'mps_mcp_check_root_node_problems' to check for errors in code.
-                Use 'mps_mcp_perform_operation' to navigate around the nodes in the structure model, search for their usages and to make any model/module to check for generation/compilation problems.
-                Use 'mps_mcp_perform_structure_operation' to navigate around elements of the language definition and to search for instances of concepts in models
-                Check that all non-abstract concepts have an editor defined in the 'editor' aspect model. An editor can also be inherited from extended concepts or implemented interface concepts.
+                Workflow: Obtaining Concepts, Descriptions, and IDs from a Language Name. If you only have a language name (e.g., jetbrains.mps.lang.core), follow this workflow:
+                1. Verify and Resolve the Language:
+                    Call `mps_mcp_get_project_structure` with the language name as a filter:
+                    {
+                      "startingPoint": "PROJECT",
+                      "filter": "languageName"
+                    }
+                    This confirms the language exists and provides its fully qualified name or module UUID.
+                2. Retrieve All Concept Details:
+                    Use `mps_mcp_get_concept_details` by passing the language name in the languageRefs parameter. This tool is designed to return all concepts and interface concepts for the given languages:
+                    {
+                      "conceptRefs": [],
+                      "languageRefs": ["languageName"]
+                    }
+                3. Extract the Required Data:
+                    The tool returns a JSON array of concept objects. For each object in the array, you can extract:
+                    Name: Found in the name field.
+                    Description: Found in the shortDescription field.
+                    ID: Found in the conceptReference field (typically in the c:language-uuid/concept-id format).
+                    Important details: rootable and abstract concepts.
+                    Read the `PROJECT_HOME/.agents/skills/mps-language-concept-inheritance/SKILL.md` file to get a skill on how to investigate the inheritance hierarchy of languages or concepts.
+                    
+                4. (Optional) Drill Down:
+                    - If specific details about properties or children are needed, they are already included in the mps_mcp_get_concept_details response.
+                    - If you need to find the actual declaration node in the MPS editor, use the sourceNode reference returned in the details with mps_mcp_open_root_node.
+                    - Use 'mps_mcp_perform_structure_operation' to find instances of concepts and then use either 'mps_mcp_show_node_representation' or mps_mcp_print_node_json to explore examples of their use. This is typically most fruitful to do on rootable concepts.
                 """.trimIndent()
         ),
         listOf(
@@ -88,13 +107,12 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
             "Rules to make changes to MPS nodes using the MPS tools and the expected json format",
             "Use this skill when asked to write or change MPS code, add or update MPS nodes",
             """
+                First, make sure you have acquired the 'Understand an MPS languages' skill.
                 Unless you are creating new root nodes, first resolve the node that is to be edited. It could be the current root node open in the editor ('mps_mcp_open_root_node').
                 To start writing code, resolve the languages and concepts that will be used:
                 - start with the list of used languages of the current model ('mps_mcp_get_project_structure') as these are most likely to be needed.
                 - when having a language reference use 'mps_mcp_get_concept_details' to get its concepts.
-                - the 'mps_mcp_search_concepts' is a last resort option to find a concept if not found in used languages or a language that was mentioned in the request as it consumes a lot of tokens.
-                The info that you obtain on concepts give you its basic properties (rootable, abstract, etc.), references to related concepts and a reference to the source node (the instance of AbstractConceptDeclaration concept that defines this concept in the structure model of the module of the language).
-                Use 'mps_mcp_perform_structure_operation' to investigate concepts more.
+                - use 'mps_mcp_search_concepts' to find concepts if not found in used languages or a language that was mentioned in the request.
 
                 MPS code is written by tools that accept json description of the hierarchy of nodes.
                 Either a deep json description can be provided for a substantial part of the code,

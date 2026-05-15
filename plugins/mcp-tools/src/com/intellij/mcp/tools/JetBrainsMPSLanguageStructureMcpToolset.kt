@@ -149,7 +149,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         - FIND_INSTANCES: Returns all nodes that are instances of the specified concept.
           Returns a JSON array of node info objects.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept)",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
             "scope": "Optional: 'all', 'editable' (default), 'models', 'modules'",
             "models": "Optional: list of persistent model references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'models')",
             "modules": "Optional: list of persistent module references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'models')",
@@ -158,34 +158,34 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         - IS_SUBCONCEPT_OF: (aka is_assignable_to) Indicates whether a concept is a direct or indirect subconcept of another concept or a concept interface. A subconcept is assignable where superconcept is expected.
           Returns a boolean value (true/false).
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept)",
-            "superConceptRef": "Persistent reference of the super-concept or interface (SAbstractConcept)"
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
+            "superConceptRef": "Persistent reference of the super-concept or interface (SAbstractConcept) or fully qualified concept name"
           }
         - GET_SUB_CONCEPTS: Returns all subconcepts of the specified concept in the specified languages or in all available languages.
           Returns a JSON array of concept info objects: { name, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true }
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept)",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
             "languageRefs": "Optional list of persistent references (SLanguage) or qualified names of the languages to search in."
           }
         - GET_ASSIGNABLE_CONCEPTS: Returns all non-abstract concepts that can be assigned to a particular concept. Returns all non-abstract sub-concepts of the given concept. If the provided concept is non-abstract, it will be included too.
           Returns a JSON array of concept info objects (same format as GET_SUB_CONCEPTS).
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept)",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
             "languageRefs": "Optional list of persistent references (SLanguage) or qualified names of the languages to search in."
           }
         - GET_ALL_SUPERCONCEPTS: Returns a transitive closure of super concepts and interface concepts for a given concept. Returns a collection of concept info objects.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept)"
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name"
           }
         - UPDATE_CONCEPT_PROPERTY: Creates, updates, or deletes a property definition in a concept.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "propertyName": "Name of the property",
             "dataType": "Optional: data type for the property (e.g., 'string', 'integer', 'boolean', or a reference to an enumeration). If empty or missing, the property is deleted."
           }
         - UPDATE_CONCEPT_CHILD: Creates, updates, or deletes a child definition in a concept.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "role": "Name of the child role",
             "targetConcept": "Optional: reference to the target concept. If empty or missing, the child definition is deleted.",
             "multiple": "Optional: boolean, whether multiple children are allowed (default: false)",
@@ -193,29 +193,28 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
           }
         - UPDATE_CONCEPT_REFERENCE: Creates, updates, or deletes a reference definition in a concept.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "role": "Name of the reference role",
             "targetConcept": "Optional: reference to the target concept. If empty or missing, the reference definition is deleted.",
             "optional": "Optional: boolean, whether the reference is optional (default: true)"
           }
         - RENAME_CONCEPT_PROPERTY: Renames a property definition in a concept.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "oldName": "Current name of the property",
             "newName": "New name for the property"
           }
         - RENAME_CONCEPT_CHILD: Renames a child definition in a concept.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "oldRole": "Current name of the child role",
             "newRole": "New name for the child role"
           }
         - RENAME_CONCEPT_REFERENCE: Renames a reference definition in a concept.
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node",
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept) or its root node, or fully qualified concept name",
             "oldRole": "Current name of the reference role",
-            "newRole": "New name for the reference role"
-          }
+            "newRole": "New name for the reference role"            
     """)
     suspend fun mps_mcp_perform_structure_operation(
         @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE)") operation: MPSStructureOperation,
@@ -811,13 +810,14 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         }
 
         // Try as FQN or search in all models
-        val modelPart = if (type.contains(".")) type.substringBeforeLast(".") else null
-        val nodePart = if (type.contains(".")) type.substringAfterLast(".") else type
+        val separator = if (type.contains("/")) "/" else if (type.contains(".")) "." else null
+        val modelPart = if (separator != null) type.substringBeforeLast(separator) else null
+        val nodePart = if (separator != null) type.substringAfterLast(separator) else type
         
         for (module in mpsProject.repository.modules) {
             for (m in module.models) {
                 // If FQN was provided, check the model name
-                if (modelPart != null && m.name.longName != modelPart) continue
+                if (modelPart != null && m.name.longName != modelPart && m.name.longName != "$modelPart.structure" && module.moduleName != modelPart) continue
                 
                 // For simple names, we prefer structure models
                 if (modelPart == null && !m.name.longName.endsWith(".structure")) continue
