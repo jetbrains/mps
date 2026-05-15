@@ -17,6 +17,6 @@
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSRootNodeMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSNodeMcpToolset" />
     <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSDocumentationMcpToolset" />
-    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSStructureUtilMcpToolset" />
+    <mcpServer.mcpToolset implementation="com.intellij.mcp.tools.JetBrainsMPSLanguageStructureMcpToolset" />
   </extensions>
 </idea-plugin>

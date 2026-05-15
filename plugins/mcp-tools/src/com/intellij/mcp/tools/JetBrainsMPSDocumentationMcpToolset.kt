@@ -4,7 +4,7 @@ package com.intellij.mcp.tools
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 
-class JetBrainsMPSDocumentationMcpToolset : JetBrainsMPSMcpToolset() {
+class JetBrainsMPSDocumentationMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""

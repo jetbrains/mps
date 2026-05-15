@@ -1,6 +1,5 @@
 package com.intellij.mcp.tools
 
-// MPS APIs used for CRUD
 import com.intellij.mcpserver.McpToolset
 import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.NodeReportItem
@@ -9,6 +8,7 @@ import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
 import jetbrains.mps.smodel.SNodeUtil
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SConcept
+import org.jetbrains.mps.openapi.language.SInterfaceConcept
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.language.SEnumeration
 import org.jetbrains.mps.openapi.language.SProperty
@@ -17,8 +17,11 @@ import org.jetbrains.mps.openapi.model.SModelReference
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonParser
+import java.io.File
 
-abstract class JetBrainsMPSMcpToolset : McpToolset {
+abstract class AbstractOps : McpToolset {
     // ---- helpers ----
     fun okJson(payload: String): String = "{" + "\"ok\":true,\"data\":" + payload + "}"
     fun errJson(message: String?): String = "{" + "\"ok\":false,\"error\":\"" + escapeJson(message?:"null") + "\"}"
@@ -163,82 +166,82 @@ abstract class JetBrainsMPSMcpToolset : McpToolset {
         return if (link.isOptional) "0..1" else "1"
     }
 
-    protected fun nodeHierarchyToJson2(node: SNode, deep: Boolean): String {
-        val sb = StringBuilder()
-        sb.append("{")
-        sb.append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
-        sb.append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
-        sb.append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
-        sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
-
-        // Properties
-        sb.append("\"properties\":[")
-        var firstProp = true
-        for (prop in node.properties) {
-            if (!firstProp) sb.append(",") else firstProp = false
-            sb.append("{")
-            sb.append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
-            sb.append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-            sb.append("\"value\":\"").append(escapeJson(node.getProperty(prop) ?: "")).append("\"")
-            sb.append("}")
-        }
-        sb.append("],")
-
-        // References
-        sb.append("\"references\":[")
-        var firstRef = true
-        for (ref in node.references) {
-            if (!firstRef) sb.append(",") else firstRef = false
-            val link = ref.link
-            sb.append("{")
-            sb.append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-            sb.append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-            sb.append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-            sb.append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-            val targetNode = ref.targetNode
-            if (targetNode != null) {
-                sb.append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
-                sb.append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(targetNode.reference))).append("\"")
-            } else {
-                sb.append("\"target\":null,")
-                sb.append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ref.targetNodeReference))).append("\"")
-            }
-            sb.append("}")
-        }
-        sb.append("],")
-
-        // Children
-        sb.append("\"children\":[")
-        var firstChildRole = true
-        val childrenByRole = node.children.groupBy { it.containmentLink }
-        for (link in node.concept.containmentLinks) {
-            val childrenInRole = childrenByRole[link] ?: emptyList()
-            if (childrenInRole.isEmpty() && link.isOptional) continue
-
-            if (!firstChildRole) sb.append(",") else firstChildRole = false
-            sb.append("{")
-            sb.append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-            sb.append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-            sb.append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-            sb.append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-            if (deep) {
-                sb.append("\"nodes\":[")
-                var firstChild = true
-                for (child in childrenInRole) {
-                    if (!firstChild) sb.append(",") else firstChild = false
-                    sb.append(nodeHierarchyToJson2(child, deep))
-                }
-                sb.append("]")
-            } else {
-                sb.append("\"count\":").append(childrenInRole.size)
-            }
-            sb.append("}")
-        }
-        sb.append("]")
-
-        sb.append("}")
-        return sb.toString()
-    }
+//    protected fun nodeHierarchyToJson2(node: SNode, deep: Boolean): String {
+//        val sb = StringBuilder()
+//        sb.append("{")
+//        sb.append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
+//        sb.append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
+//        sb.append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
+//        sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
+//
+//        // Properties
+//        sb.append("\"properties\":[")
+//        var firstProp = true
+//        for (prop in node.properties) {
+//            if (!firstProp) sb.append(",") else firstProp = false
+//            sb.append("{")
+//            sb.append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
+//            sb.append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
+//            sb.append("\"value\":\"").append(escapeJson(node.getProperty(prop) ?: "")).append("\"")
+//            sb.append("}")
+//        }
+//        sb.append("],")
+//
+//        // References
+//        sb.append("\"references\":[")
+//        var firstRef = true
+//        for (ref in node.references) {
+//            if (!firstRef) sb.append(",") else firstRef = false
+//            val link = ref.link
+//            sb.append("{")
+//            sb.append("\"role\":\"").append(escapeJson(link.name)).append("\",")
+//            sb.append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
+//            sb.append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
+//            sb.append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
+//            val targetNode = ref.targetNode
+//            if (targetNode != null) {
+//                sb.append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
+//                sb.append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(targetNode.reference))).append("\"")
+//            } else {
+//                sb.append("\"target\":null,")
+//                sb.append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ref.targetNodeReference))).append("\"")
+//            }
+//            sb.append("}")
+//        }
+//        sb.append("],")
+//
+//        // Children
+//        sb.append("\"children\":[")
+//        var firstChildRole = true
+//        val childrenByRole = node.children.groupBy { it.containmentLink }
+//        for (link in node.concept.containmentLinks) {
+//            val childrenInRole = childrenByRole[link] ?: emptyList()
+//            if (childrenInRole.isEmpty() && link.isOptional) continue
+//
+//            if (!firstChildRole) sb.append(",") else firstChildRole = false
+//            sb.append("{")
+//            sb.append("\"role\":\"").append(escapeJson(link.name)).append("\",")
+//            sb.append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
+//            sb.append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
+//            sb.append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
+//            if (deep) {
+//                sb.append("\"nodes\":[")
+//                var firstChild = true
+//                for (child in childrenInRole) {
+//                    if (!firstChild) sb.append(",") else firstChild = false
+//                    sb.append(nodeHierarchyToJson2(child, deep))
+//                }
+//                sb.append("]")
+//            } else {
+//                sb.append("\"count\":").append(childrenInRole.size)
+//            }
+//            sb.append("}")
+//        }
+//        sb.append("]")
+//
+//        sb.append("}")
+//        return sb.toString()
+//    }
 
     protected fun nodeWithProblemsToJson(node: SNode, problems: Map<SNode, List<NodeReportItem>>): String {
         val nodeProblems = problems[node] ?: emptyList()
@@ -404,6 +407,15 @@ abstract class JetBrainsMPSMcpToolset : McpToolset {
                 "}"
     }
 
+    protected fun containmentLinkInfoJson(link: SContainmentLink): String {
+        return "{" +
+                "\"role\":\"" + escapeJson(link.name) + "\"," +
+                "\"type\":\"" + escapeJson(link.targetConcept.name) + "\"," +
+                "\"typeReference\":\"" + escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept)) + "\"," +
+                "\"cardinality\":\"" + escapeJson(getCardinality(link)) + "\"" +
+                "}"
+    }
+
     protected fun conceptInfoJson(concept: SAbstractConcept, repository: SRepository): String {
         val facade = PersistenceFacade.getInstance()
         val name = concept.name
@@ -416,21 +428,45 @@ abstract class JetBrainsMPSMcpToolset : McpToolset {
         }
         val sourceNode = concept.sourceNode?.let { facade.asString(it) } ?: ""
         val isAbstract = concept.isAbstract
+        val isInterfaceConcept = concept is SInterfaceConcept
         val isRootable = (concept as? SConcept)?.isRootable ?: false
         val declarationNode = concept.sourceNode?.resolve(repository)
         val virtualFolder = declarationNode?.getProperty(SNodeUtil.property_BaseConcept_virtualPackage) ?: ""
+        val shortDescription = concept.shortDescription
         return "{" +
                 "\"name\":\"" + escapeJson(name) + "\"," +
                 "\"conceptAlias\":\"" + escapeJson(conceptAlias) + "\"," +
+                "\"shortDescription\":\"" + escapeJson(shortDescription) + "\"," +
                 "\"conceptReference\":\"" + escapeJson(conceptReference) + "\"," +
                 "\"languageReference\":\"" + escapeJson(languageReference) + "\"," +
                 "\"superConcept\":\"" + escapeJson(superConcept) + "\"," +
                 "\"superInterfaces\":" + superInterfaces + "," +
                 "\"sourceNode\":\"" + escapeJson(sourceNode) + "\"," +
                 "\"isAbstract\":" + isAbstract + "," +
+                "\"isInterfaceConcept\":" + isInterfaceConcept + "," +
                 "\"isRootable\":" + isRootable + "," +
                 "\"virtualFolder\":\"" + escapeJson(virtualFolder) + "\"," +
                 "\"present\":true}"
     }
 
+    protected fun saveToTempFile(json: String): File {
+        val response = okJson(json)
+        val prettyResponse = try {
+            val jsonElement = JsonParser.parseString(response)
+            GsonBuilder().setPrettyPrinting().create().toJson(jsonElement)
+        } catch (e: Exception) {
+            response
+        }
+        val tempFile = File.createTempFile("mps-node-", ".json")
+        tempFile.writeText(prettyResponse)
+        return tempFile
+    }
+
+    protected fun readFromFile(filePath: String): String {
+        val file = File(filePath)
+        if (!file.exists()) {
+            throw IllegalArgumentException("File '$filePath' not found")
+        }
+        return file.readText()
+    }
 }

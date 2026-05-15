@@ -11,10 +11,7 @@ import jetbrains.mps.checkers.ConstraintsChecker
 import jetbrains.mps.checkers.RefScopeChecker
 import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
-import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.NodeReportItem
-import jetbrains.mps.errors.messageTargets.PropertyMessageTarget
-import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.AbstractModule
@@ -23,7 +20,6 @@ import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.validation.StructureChecker
 import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.smodel.SModelInternal
-import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker
 import kotlinx.coroutines.Dispatchers
@@ -42,16 +38,20 @@ import org.jetbrains.mps.openapi.module.SearchScope
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.util.Consumer
 
+
 enum class MPSNodeOperation {
     GET_PARENT,
     GET_ROOT,
     MOVE_CHILD,
     GET_MODEL_FOR_NODE,
     FIND_USAGES,
-    MOVE_NODE_TO_PARENT
+    MOVE_NODE_TO_PARENT,
+    NODE_INDEX,
+    SIBLINGS,
+    GET_CHILD_ROLE
 }
 
-class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
+class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
@@ -93,9 +93,18 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
             "position": "Optional: The target index (0-based, -1 for last) (used if newParentRef is present)", 
             "modelRef": "Optional: Persistent reference of the model where the node should become a root (required if newParentRef is not present)" 
           }
+        - NODE_INDEX: Returns the integer position of the node in its containing collection (multiple) role.
+          Returns JSON: { ok, data: index }
+          Parameters: { "nodeRef": "Persistent reference of the node (SNodeReference)" }
+        - SIBLINGS: Returns node info on all sibling nodes in the same collection role, including the specified node.
+          Returns JSON: { ok, data: [ { nodeInfo }, ... ] }
+          Parameters: { "nodeRef": "Persistent reference of the node (SNodeReference)" }
+        - GET_CHILD_ROLE: Returns the description of the containing containment role for a node in a child position.
+          Returns JSON: { ok, data: { role, type, typeReference, cardinality } }
+          Parameters: { "nodeRef": "Persistent reference of the node (SNodeReference)" }
     """)
     suspend fun perform_MPS_operation(
-        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, MOVE_CHILD, GET_MODEL_FOR_NODE, FIND_USAGES, MOVE_NODE_TO_PARENT)") operation: MPSNodeOperation,
+        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, MOVE_CHILD, GET_MODEL_FOR_NODE, FIND_USAGES, MOVE_NODE_TO_PARENT, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE)") operation: MPSNodeOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
         currentCoroutineContext().reportToolActivity("Performing MPS operation: $operation")
@@ -111,7 +120,8 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
 
         return try {
             when (operation) {
-                MPSNodeOperation.GET_PARENT, MPSNodeOperation.GET_ROOT, MPSNodeOperation.GET_MODEL_FOR_NODE -> {
+                MPSNodeOperation.GET_PARENT, MPSNodeOperation.GET_ROOT, MPSNodeOperation.GET_MODEL_FOR_NODE,
+                MPSNodeOperation.NODE_INDEX, MPSNodeOperation.SIBLINGS, MPSNodeOperation.GET_CHILD_ROLE -> {
                     val nodeRef = params.get("nodeRef")?.asString ?: return errJson("Parameter 'nodeRef' is missing")
                     var reply: String? = null
                     mpsProject.repository.modelAccess.runReadAction {
@@ -136,6 +146,46 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                                             okJson(modelReferenceJson(model.reference))
                                         } else {
                                             errJson("Node '$nodeRef' is not in a model")
+                                        }
+                                    }
+                                    MPSNodeOperation.NODE_INDEX -> {
+                                        val parent = node.parent
+                                        if (parent == null) {
+                                            reply = errJson("Node is a root node")
+                                        } else {
+                                            val link = node.containmentLink
+                                            if (link == null) {
+                                                reply = errJson("Node does not have a containment role")
+                                            } else if (!link.isMultiple) {
+                                                reply = errJson("Node is not in a multiple role")
+                                            } else {
+                                                val index = parent.getChildren(link).indexOf(node)
+                                                reply = okJson(index.toString())
+                                            }
+                                        }
+                                    }
+                                    MPSNodeOperation.SIBLINGS -> {
+                                        val parent = node.parent
+                                        if (parent == null) {
+                                            reply = errJson("Node is a root node")
+                                        } else {
+                                            val link = node.containmentLink
+                                            if (link == null) {
+                                                reply = errJson("Node does not have a containment role")
+                                            } else if (!link.isMultiple) {
+                                                reply = errJson("Node is not in a multiple role")
+                                            } else {
+                                                val siblings = parent.getChildren(link)
+                                                reply = okJson("[" + siblings.map { nodeInfoJson(it) }.joinToString(",") + "]")
+                                            }
+                                        }
+                                    }
+                                    MPSNodeOperation.GET_CHILD_ROLE -> {
+                                        val link = node.containmentLink
+                                        if (link == null) {
+                                            reply = errJson("Node is a root node or not in a containment role")
+                                        } else {
+                                            reply = okJson(containmentLinkInfoJson(link))
                                         }
                                     }
                                     else -> reply = errJson("Unsupported operation: $operation")
@@ -233,8 +283,13 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
 
     @McpTool
     @McpDescription("""
-        Returns a representation of the specified MPS node as displayed in the MPS editor.
-        Returns a string containing either HTML or plain text, depending on the 'asHtml' parameter.
+        Returns a representation of the specified MPS node as displayed in the MPS editor and saves it to a local text file.
+        Returns JSON format with the path to the local file:
+        {
+          "ok": true,
+          "data": "/path/to/local/file.json"
+        }
+        The file contains either HTML or plain text, depending on the 'asHtml' parameter.
     """)
     suspend fun show_MPS_node_representation(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
@@ -264,7 +319,8 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                             } else {
                                 component.rootCell.renderText().getText()
                             }
-                            reply = okJson("\"" + escapeJson(text) + "\"")
+                            val tempFile = saveToTempFile("\"" + escapeJson(text) + "\"")
+                            reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                         } finally {
                             component.dispose()
                         }
@@ -281,12 +337,13 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
 
     @McpTool
     @McpDescription("""
-        Checks the specified MPS node and its descendants for errors, warnings, and infos.
+        Checks the specified MPS node and its descendants for errors, warnings, and infos. If any problems in the code are found it saves the result to a local text file.
         Returns either a "no problems found" message or a deep printout of the node with problems included.
-        Returns JSON format:
+        Returns JSON format with the path to the local file:
         {
           "ok": true,
-          "data": {
+          "data": "/path/to/local/file.json | no problems found"
+          "format of data in the file": {
             "name": "NodeName",
             "reference": "PersistentNodeReference",
             "concept": "ConceptName",
@@ -370,7 +427,9 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                 if (!hasProblems(node)) {
                     reply = okJson("\"no problems found\"")
                 } else {
-                    reply = okJson(nodeWithProblemsToJson(node, problems))
+                    val json = nodeWithProblemsToJson(node, problems)
+                    val tempFile = saveToTempFile(json)
+                    reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                 }
             } catch (e: Exception) {
                 reply = errJson(e.message)
@@ -381,13 +440,14 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
 
     @McpTool
     @McpDescription("""
-        Performs a json-formatted printout of the specified MPS node.
+        Performs a json-formatted printout of the specified MPS node and saves it to a local text file.
         If 'deep' is true, recursively prints all descendants.
         If 'deep' is false (shallow), lists properties, children roles (with references), and reference roles.
-        Returns JSON format:
+        Returns JSON format with the path to the local file:
         {
           "ok": true,
-          "data": {
+          "data": "/path/to/local/file.json"
+          "format of data in the files": {
             "name": "NodeName",
             "concept": "FullyQualifiedConceptName",
             "conceptReference": "PersistentConceptReference",
@@ -432,7 +492,9 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                 if (node == null) {
                     reply = errJson("Node '$nodeRef' not found")
                 } else {
-                    reply = okJson(nodeHierarchyToJson(node, deep))
+                    val json = nodeHierarchyToJson(node, deep)
+                    val tempFile = saveToTempFile(json)
+                    reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                 }
             } catch (e: Exception) {
                 reply = errJson(e.message)
@@ -441,176 +503,12 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         return reply!!
     }
 
-    @McpTool
-    @McpDescription("""
-        Inserts a node described by a JSON deep printout as a root into the specified MPS model.
-        Updates the dependencies and used languages of the containing model.
-        Verifies that the top-level concept is rootable before insertion.
-        The JSON format must follow the deep printout structure:
-        {
-          "name": "NodeName",
-          "concept": "FullyQualifiedConceptName",
-          "conceptReference": "PersistentConceptReference", // Required, must be a valid persistence reference
-          "properties": [
-            { "name": "propertyName", "value": "propertyValue" }
-          ],
-          "references": [
-            { "role": "linkRole", "targetReference": "PersistentTargetReference" } // Optional, can be empty or a placeholder
-          ],
-          "children": [
-            { 
-              "role": "linkRole", 
-              "nodes": [ 
-                 { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "properties": [...], "references": [...], "children": [...] }
-              ]
-            }
-          ]
-        }
-        Returns JSON format of the created root node.
-    """)
-    suspend fun insert_MPS_root_node_from_json(
-        @McpDescription("Persistent form of SModelReference") modelRef: String,
-        @McpDescription("JSON description of a node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") json: String
-    ): String {
-        currentCoroutineContext().reportToolActivity("Inserting MPS root node from JSON")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        return try {
-            var result: String? = null
-            var error: String? = null
-            
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val sModelRef = PersistenceFacade.getInstance().createModelReference(modelRef)
-                        val model = sModelRef.resolve(mpsProject.repository)
-                        if (model == null) {
-                            error = "Model '$modelRef' not found"
-                            return@executeCommand
-                        }
-                        if (model !is EditableSModel) {
-                            error = "Model '$modelRef' is not editable"
-                            return@executeCommand
-                        }
-
-                        val gson = Gson()
-                        val jsonObject = gson.fromJson(json, JsonObject::class.java)
-                        val conceptName = jsonObject.get("concept")?.asString
-                        val conceptRef = jsonObject.get("conceptReference")?.asString
-                        
-                        if (conceptRef.isNullOrEmpty()) {
-                            error = "'conceptReference' property in JSON must not be null or empty"
-                            return@executeCommand
-                        }
-
-                        val sConcept = try {
-                            PersistenceFacade.getInstance().createConcept(conceptRef) as? SConcept
-                        } catch (e: Exception) {
-                            null
-                        }
-
-                        if (sConcept == null) {
-                            error = "Concept not found for the top-level node"
-                            return@executeCommand
-                        }
-                        
-                        val isRootableValue = (sConcept as? org.jetbrains.mps.openapi.language.SConcept)?.isRootable ?: false
-                        if (!isRootableValue) {
-                            error = "Concept '${sConcept.name}' is not a rootable concept"
-                            return@executeCommand
-                        }
-
-                        val newNode = try {
-                            instantiateNode(jsonObject, model)
-                        } catch (e: Exception) {
-                            error = "Failed to instantiate node from JSON: ${e.message}"
-                            null
-                        }
-                        if (newNode == null) {
-                            if (error == null) error = "Failed to instantiate node from JSON"
-                            return@executeCommand
-                        }
-
-                        model.addRootNode(newNode)
-                        model.save()
-                        result = nodeInfoJson(newNode)
-                    } catch (e: Exception) {
-                        error = e.message
-                    }
-                }
-            }
-            
-            if (error != null) errJson(error)
-            else if (result != null) okJson(result)
-            else errJson("Failed to insert root node")
-        } catch (e: Exception) {
-            errJson(e.message)
-        }
-    }
-
-    @McpTool
-    @McpDescription("""
-        Returns the persistence reference of a concept with the specified name.
-        Searches for the concept in the model's used languages.
-        If not found, reports an error listing all searched languages.
-    """)
-    suspend fun get_concept_persistence_reference(
-        @McpDescription("Persistent form of SModelReference") modelRef: String,
-        @McpDescription("The name of the desired concept") conceptName: String
-    ): String {
-        currentCoroutineContext().reportToolActivity("Getting concept persistence reference")
-        val project = currentCoroutineContext().project
-        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        return try {
-            var result: String? = null
-            var error: String? = null
-
-            mpsProject.repository.modelAccess.runReadAction {
-                try {
-                    val sModelRef = PersistenceFacade.getInstance().createModelReference(modelRef)
-                    val model = sModelRef.resolve(mpsProject.repository)
-                    if (model == null) {
-                        error = "Model '$modelRef' not found"
-                        return@runReadAction
-                    }
-
-                    val languages = (model as? SModelInternal)?.importedLanguageIds() ?: emptyList()
-                    val searchedLanguages = mutableListOf<String>()
-                    val languageRegistry = jetbrains.mps.smodel.language.LanguageRegistry.getInstance(mpsProject.repository)
-
-                    for (lang in languages) {
-                        val langName = lang.qualifiedName
-                        searchedLanguages.add(langName)
-                        val languageRuntime = languageRegistry.getLanguage(lang)
-                        val abstractConcept = languageRuntime?.concepts?.find { it.name == conceptName || it.conceptAlias == conceptName }
-                        if (abstractConcept != null) {
-                            result = "\"" + escapeJson(PersistenceFacade.getInstance().asString(abstractConcept)) + "\""
-                            return@runReadAction
-                        }
-                    }
-
-                    error = "Concept '$conceptName' not found in the model's used languages: ${searchedLanguages.joinToString(", ")}"
-                } catch (e: Exception) {
-                    error = e.message
-                }
-            }
-
-            if (error != null) errJson(error)
-            else if (result != null) okJson(result)
-            else errJson("Failed to find concept")
-        } catch (e: Exception) {
-            errJson(e.message)
-        }
-    }
-
-    @McpTool
-    @McpDescription("""
-        Sets or adds a value to a specified property of the given MPS node.
-        Returns JSON format of the updated node.
-    """)
-    suspend fun set_MPS_node_property(
+//    @McpTool
+//    @McpDescription("""
+//        Sets or adds a value to a specified property of the given MPS node.
+//        Returns JSON format of the updated node.
+//    """)
+    private suspend fun set_MPS_node_property(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("The name of the property to set") propertyName: String,
         @McpDescription("The new value for the property") propertyValue: String
@@ -631,28 +529,70 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
     }
 
 
-    @McpTool
-    @McpDescription("Sets an enumeration property of an MPS node.")
-    suspend fun set_MPS_node_enumeration_property(
-        @McpDescription("Persistent form of SNodeReference") nodeRef: String,
-        @McpDescription("The name of the property to set") propertyName: String,
-        @McpDescription("The name of the enumeration literal to set") literalName: String
-    ): String {
-        return update_node_property(nodeRef, propertyName, literalName)
-    }
+//    @McpTool
+//    @McpDescription("Sets an enumeration property of an MPS node.")
+//    suspend fun set_MPS_node_enumeration_property(
+//        @McpDescription("Persistent form of SNodeReference") nodeRef: String,
+//        @McpDescription("The name of the property to set") propertyName: String,
+//        @McpDescription("The name of the enumeration literal to set") literalName: String
+//    ): String {
+//        return update_node_property(nodeRef, propertyName, literalName)
+//    }
 
-    @McpTool
-    @McpDescription("""
-        Sets or adds a target node to a specified reference role of the given MPS node.
-        Ensures model and module dependencies are added if the target is in a different model/module.
-        Returns JSON format of the updated node.
-    """)
-    suspend fun add_MPS_node_reference(
+//    @McpTool
+//    @McpDescription("""
+//        Sets a target node to a specified reference role of the given MPS node.
+//        Ensures model and module dependencies are added if the target is in a different model/module.
+//        Returns JSON format of the updated node.
+//    """)
+    private suspend fun set_MPS_node_reference(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("The role name of the reference") referenceRole: String,
         @McpDescription("Persistent form of the target SNodeReference") targetNodeRef: String
     ): String {
         return update_node_reference(nodeRef, referenceRole, targetNodeRef)
+    }
+
+    @McpTool
+    @McpDescription("""
+        Sets multiple target nodes to specified reference roles of the given MPS nodes.
+        Receives a collection of triplets (nodeRef, referenceRole, targetNodeRef) and sets the specified reference individually for each triplet. Each triplet is represented as a list of three strings.
+        Returns JSON format of the results for all triplets.
+    """)
+    suspend fun set_MPS_node_references(
+        @McpDescription("A collection of triplets (nodeRef, referenceRole, targetNodeRef), each as a list of three strings")
+        references: List<List<String>>
+    ): String {
+        val results = mutableListOf<String>()
+        for (triplet in references) {
+            if (triplet.size >= 3) {
+                results.add(set_MPS_node_reference(triplet[0], triplet[1], triplet[2]))
+            } else {
+                results.add(errJson("Invalid reference triplet: expected at least 3 elements"))
+            }
+        }
+        return okJson("[" + results.joinToString(",") + "]")
+    }
+
+    @McpTool
+    @McpDescription("""
+        Sets multiple values to specified properties of the given MPS nodes.
+        Receives a collection of triplets (nodeRef, propertyName, propertyValue) and sets the specified properties individually for each triplet. Each triplet is represented as a list of three strings.
+        Returns JSON format of the results for all triplets.
+    """)
+    suspend fun set_MPS_node_properties(
+        @McpDescription("A collection of triplets (nodeRef, propertyName, propertyValue), each as a list of three strings")
+        properties: List<List<String>>
+    ): String {
+        val results = mutableListOf<String>()
+        for (triplet in properties) {
+            if (triplet.size >= 3) {
+                results.add(set_MPS_node_property(triplet[0], triplet[1], triplet[2]))
+            } else {
+                results.add(errJson("Invalid property triplet: expected at least 3 elements"))
+            }
+        }
+        return okJson("[" + results.joinToString(",") + "]")
     }
 
     @McpTool
@@ -674,6 +614,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         If the role permits only one child, the new child replaces the previous child.
         The concept of the childNode (childJson) must be assignable to the role's concept.
         Updates the dependencies and used languages of the containing model.
+        The 'childJson' parameter is an absolute path to a local temporary file containing the actual JSON description.
         The JSON format must follow the deep printout structure:
         {
           "name": "NodeName",
@@ -699,7 +640,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
     suspend fun add_MPS_node_child(
         @McpDescription("Persistent form of the parent SNodeReference") nodeRef: String,
         @McpDescription("The role name of the child") childRole: String,
-        @McpDescription("JSON description of the child node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") childJson: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of the child node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") childJson: String
     ): String {
         return update_node_child(nodeRef, childRole, childJson, null)
     }
@@ -710,6 +651,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         The position of the original child node in a child collection is preserved.
         The concept of the childNode (childJson) must be assignable to the role's concept.
         Updates the dependencies and used languages of the containing model.
+        The 'childJson' parameter is an absolute path to a local temporary file containing the actual JSON description.
         The JSON format must follow the deep printout structure:
         {
           "name": "NodeName",
@@ -732,9 +674,9 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         }
         Returns JSON format of the parent node.
     """)
-    suspend fun change_MPS_node_child(
+    suspend fun replace_MPS_node_child(
         @McpDescription("Persistent form of the SNodeReference of the child to replace") childNodeRef: String,
-        @McpDescription("JSON description of the new child node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") childJson: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of the new child node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") childJson: String
     ): String {
         return update_node_child(null, null, childJson, childNodeRef)
     }
@@ -756,6 +698,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
 
         return try {
+            val actualJson = if (childJson != null) readFromFile(childJson) else null
             var result: String? = null
             var error: String? = null
             
@@ -788,9 +731,9 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                             
                             val role = childNode.containmentLink ?: return@executeCommand
                             
-                            if (childJson != null) {
+                            if (actualJson != null) {
                                 // Replacement
-                                val jsonObject = gson.fromJson(childJson, JsonObject::class.java)
+                                val jsonObject = gson.fromJson(actualJson, JsonObject::class.java)
                                 val newChild = try {
                                     instantiateNode(jsonObject, model)
                                 } catch (e: Exception) {
@@ -816,7 +759,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                                 model.save()
                                 result = nodeInfoJson(parent)
                             }
-                        } else if (nodeRef != null && childRole != null && childJson != null) {
+                        } else if (nodeRef != null && childRole != null && actualJson != null) {
                             // Addition
                             val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
                             val parent = sNodeRef.resolve(repo)
@@ -837,7 +780,7 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
                                 return@executeCommand
                             }
                             
-                            val jsonObject = gson.fromJson(childJson, JsonObject::class.java)
+                            val jsonObject = gson.fromJson(actualJson, JsonObject::class.java)
                             val newChild = try {
                                 instantiateNode(jsonObject, model)
                             } catch (e: Exception) {
@@ -1020,124 +963,6 @@ class JetBrainsMPSNodeMcpToolset : JetBrainsMPSMcpToolset() {
         } catch (e: Exception) {
             errJson(e.message)
         }
-    }
-
-    private fun instantiateNode(jsonObject: JsonObject, model: SModel): SNode? {
-        val conceptName = jsonObject.get("concept")?.asString ?: throw IllegalArgumentException("Missing 'concept' property in JSON")
-        val conceptRef = jsonObject.get("conceptReference")?.asString ?: throw IllegalArgumentException("Missing 'conceptReference' property in JSON")
-        if (conceptRef.isEmpty()) {
-            throw IllegalArgumentException("'conceptReference' property in JSON cannot be empty")
-        }
-
-        val sConcept = try {
-            PersistenceFacade.getInstance().createConcept(conceptRef) as? SConcept
-        } catch (e: Exception) {
-            throw IllegalArgumentException("Failed to resolve concept '$conceptName' with reference '$conceptRef': ${e.message}", e)
-        } ?: throw IllegalArgumentException("Concept '$conceptName' with reference '$conceptRef' not found")
-
-        // Ensure language is imported
-        if (model is SModelInternal) {
-            val language = sConcept.language
-            if (!model.importedLanguageIds().contains(language)) {
-                model.addLanguage(language)
-            }
-        }
-
-        val newNode = SNodeFactoryOperations.createNewNode(sConcept, null)
-        newNode.children.forEach { it.delete() }
-        
-//        val newNode = model.createNode(sConcept, null);
-//        val newNode = SModelOperations.node;
-
-        // Set name if present and supported
-        val name = jsonObject.get("name")?.asString
-        if (name != null) {
-            val nameProperty = jetbrains.mps.smodel.SNodeUtil.property_INamedConcept_name
-            if (sConcept.properties.contains(nameProperty)) {
-                newNode.setProperty(nameProperty, name)
-            }
-        }
-
-        // Properties
-        val properties = jsonObject.getAsJsonArray("properties")
-        if (properties != null) {
-            for (propElement in properties) {
-                val propObject = propElement.asJsonObject
-                val propName = propObject.get("name")?.asString ?: continue
-                val propValue = propObject.get("value")?.asString
-                val sProperty = sConcept.properties.find { it.name == propName }
-                if (sProperty != null) {
-                    setProperty(newNode, sProperty, propValue)
-                }
-            }
-        }
-
-        // Children
-        val children = jsonObject.getAsJsonArray("children")
-        if (children != null) {
-            for (childRoleElement in children) {
-                val childRoleObject = childRoleElement.asJsonObject
-                val roleName = childRoleObject.get("role")?.asString ?: continue
-                val childNodes = childRoleObject.getAsJsonArray("nodes")
-                if (childNodes != null) {
-                    val link = sConcept.containmentLinks.find { it.name == roleName }
-                    if (link != null) {
-                        for (nodeElement in childNodes) {
-                            val childNode = instantiateNode(nodeElement.asJsonObject, model)
-                            if (childNode != null) {
-                                if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
-                                    throw IllegalArgumentException("Child node concept '${childNode.concept.name}' is not assignable to expected concept '${link.targetConcept.name}' for role '${link.name}' in concept '${sConcept.name}'")
-                                }
-                                newNode.addChild(link, childNode)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        // References
-        val references = jsonObject.getAsJsonArray("references")
-        if (references != null) {
-            for (refElement in references) {
-                val refObject = refElement.asJsonObject
-                val roleName = refObject.get("role")?.asString
-                val targetRefStr = refObject.get("targetReference")?.asString
-                val link = sConcept.referenceLinks.find { it.name == roleName }
-                if (link != null && !targetRefStr.isNullOrEmpty()) {
-                    val targetRef = try {
-                        PersistenceFacade.getInstance().createNodeReference(targetRefStr)
-                    } catch (e: Exception) {
-                        null
-                    }
-                    if (targetRef != null) {
-                        val targetNode = targetRef.resolve(model.repository)
-                        if (targetNode != null) {
-                            if (!targetNode.concept.isSubConceptOf(link.targetConcept)) {
-                                throw IllegalArgumentException("Target node '${targetNode.presentation}' of concept '${targetNode.concept.name}' is not assignable to expected concept '${link.targetConcept.name}' for reference link '$roleName' in concept '${sConcept.name}'")
-                            }
-                        }
-                        newNode.setReference(link, targetRef)
-
-                        // Ensure target model is imported
-                        val targetModelRef = targetRef.modelReference
-                        if (targetModelRef != null && model is SModelInternal && !model.modelImports.contains(targetModelRef)) {
-                            model.addModelImport(targetModelRef)
-
-                            // Also add module dependency
-                            val targetModel = targetModelRef.resolve(model.repository)
-                            val targetModule = targetModel?.module
-                            val currentModule = model.module
-                            if (targetModule != null && currentModule != null && targetModule != currentModule) {
-                                (currentModule as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        return newNode
     }
 
     private suspend fun move_MPS_node_child(

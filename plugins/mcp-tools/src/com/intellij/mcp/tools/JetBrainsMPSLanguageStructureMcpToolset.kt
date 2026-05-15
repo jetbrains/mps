@@ -27,6 +27,7 @@ import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.FindUsagesFacade
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SModuleReference
+import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.module.SearchScope
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.Random
@@ -37,51 +38,11 @@ enum class MPSStructureOperation {
     GET_ENUMERATION_LITERALS,
     FIND_INSTANCES,
     IS_SUBCONCEPT_OF,
-    GET_SUB_CONCEPTS
+    GET_SUB_CONCEPTS,
+    GET_ASSIGNABLE_CONCEPTS
 }
 
-class JetBrainsMPSStructureUtilMcpToolset : JetBrainsMPSMcpToolset() {
-
-    private fun resolveModel(mpsProject: MPSProject, modelRef: String): SModel? {
-        val ref = try {
-            PersistenceFacade.getInstance().createModelReference(modelRef)
-        } catch (e: Exception) {
-            return null
-        }
-        return ref.resolve(mpsProject.repository)
-    }
-
-    private val CONCEPT_ConceptDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")
-    private val CONCEPT_InterfaceConceptDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration")
-    private val CONCEPT_InterfaceConceptReference: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference")
-    private val CONCEPT_EnumerationDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c5fuL.toLong(), "jetbrains.mps.lang.structure.structure.EnumerationDeclaration")
-    private val CONCEPT_EnumerationMemberDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c60uL.toLong(), "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration")
-    private val CONCEPT_PropertyDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration")
-    private val CONCEPT_DataTypeDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf8910915e2L, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration")
-    private val CONCEPT_LinkDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration")
-
-    private val PROP_Name: SProperty = MetaAdapterFactory.getProperty(0xceab519525ea4f22uL.toLong(), 0x9b92103b95ca8c0cuL.toLong(), 0x110396eaaa4L, 0x110396ec041L, "name")
-    private val PROP_Presentation: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c60uL.toLong(), 0x9538e3a78561888L, "presentation")
-    private val PROP_MemberId: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c60uL.toLong(), 0x13b8f6fdce540e38L, "memberId")
-    private val PROP_ConceptAlias: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias")
-    private val PROP_Abstract: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract")
-    private val PROP_Rootable: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, 0xff49c1d648L, "rootable")
-    private val PROP_LinkDeclaration_MetaClass: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf980556927L, "metaClass")
-    private val PROP_LinkDeclaration_Role: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf98052f333L, "role")
-    private val PROP_LinkDeclaration_SourceCardinality: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality")
-
-    private val LINK_Members: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c5fuL.toLong(), 0x2e770ca32c607cc1uL.toLong(), "members")
-    private val LINK_DefaultMember: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c5fuL.toLong(), 0xeeb344f63fe016cL, "defaultMember")
-    private val LINK_Extends: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, 0xf979be93cfL, "extends")
-    private val LINK_Implements: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, 0x110358d693eL, "implements")
-    private val LINK_InterfaceConceptReference_Intfc: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x110356fc618L, 0x110356fe029L, "intfc")
-    private val LINK_PropertyDeclaration: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration")
-    private val LINK_PropertyDeclaration_DataType: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086bL, 0xfc26f42fe5L, "dataType")
-    private val LINK_LinkDeclaration: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration")
-    private val LINK_LinkDeclaration_Target: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf98055fef0L, "target")
-
-    private val ENUM_LinkMetaclass: SEnumeration = MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass")
-    private val ENUM_Cardinality: SEnumeration = MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality")
+class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
@@ -135,20 +96,27 @@ class JetBrainsMPSStructureUtilMcpToolset : JetBrainsMPSMcpToolset() {
             "modules": "Optional: list of persistent module references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'models')",
             "exact": "Boolean (optional, default: false). Whether to exclude instances of subconcepts."
           }
-        - IS_SUBCONCEPT_OF: Indicates whether a concept is a direct or indirect subconcept of another concept or a concept interface.
+        - IS_SUBCONCEPT_OF: (aka is_assignable_to) Indicates whether a concept is a direct or indirect subconcept of another concept or a concept interface. A subconcept is assignable where superconcept is expected.
           Returns a boolean value (true/false).
           Parameters: {
             "conceptRef": "Persistent reference of the concept (SAbstractConcept)",
             "superConceptRef": "Persistent reference of the super-concept or interface (SAbstractConcept)"
           }
-        - GET_SUB_CONCEPTS: Returns all subconcepts of the specified concept in all available languages.
-          Returns a JSON array of concept info objects.
+        - GET_SUB_CONCEPTS: Returns all subconcepts of the specified concept in the specified languages or in all available languages.
+          Returns a JSON array of concept info objects: { name, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true }
           Parameters: {
-            "conceptRef": "Persistent reference of the concept (SAbstractConcept)"
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept)",
+            "languageRefs": "Optional list of persistent references (SLanguage) or qualified names of the languages to search in."
+          }
+        - GET_ASSIGNABLE_CONCEPTS: Returns all non-abstract concepts that can be assigned to a particular concept. Returns all non-abstract sub-concepts of the given concept. If the provided concept is non-abstract, it will be included too.
+          Returns a JSON array of concept info objects (same format as GET_SUB_CONCEPTS).
+          Parameters: {
+            "conceptRef": "Persistent reference of the concept (SAbstractConcept)",
+            "languageRefs": "Optional list of persistent references (SLanguage) or qualified names of the languages to search in."
           }
     """)
     suspend fun perform_MPS_structure_operation(
-        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS)") operation: MPSStructureOperation,
+        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS)") operation: MPSStructureOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
         currentCoroutineContext().reportToolActivity("Performing MPS structure operation: $operation")
@@ -260,19 +228,40 @@ class JetBrainsMPSStructureUtilMcpToolset : JetBrainsMPSMcpToolset() {
                     }
                     reply!!
                 }
-                MPSStructureOperation.GET_SUB_CONCEPTS -> {
+                MPSStructureOperation.GET_SUB_CONCEPTS,
+                MPSStructureOperation.GET_ASSIGNABLE_CONCEPTS -> {
                     val conceptRef = params.get("conceptRef")?.asString ?: return errJson("Parameter 'conceptRef' is missing")
+                    val languageRefsElement = params.get("languageRefs")
                     var reply: String? = null
                     mpsProject.repository.modelAccess.runReadAction {
                         try {
                             val targetConcept = PersistenceFacade.getInstance().createConcept(conceptRef)
                             val allConcepts = mutableSetOf<SAbstractConcept>()
                             val languageRegistry = LanguageRegistry.getInstance(mpsProject.repository)
-                            for (lang in languageRegistry.allLanguages) {
+
+                            val languages = if (languageRefsElement != null && languageRefsElement.isJsonArray) {
+                                val refs = gson.fromJson<List<String>>(languageRefsElement, object : TypeToken<List<String>>() {}.type)
+                                if (refs.isEmpty()) {
+                                    languageRegistry.allLanguages
+                                } else {
+                                    refs.mapNotNull { resolveLanguage(mpsProject.repository, it) }
+                                }
+                            } else {
+                                languageRegistry.allLanguages
+                            }
+
+                            val onlyAssignable = operation == MPSStructureOperation.GET_ASSIGNABLE_CONCEPTS
+                            for (lang in languages) {
                                 val runtime = languageRegistry.getLanguage(lang) ?: continue
                                 for (concept in runtime.concepts) {
                                     if (concept.isSubConceptOf(targetConcept)) {
-                                        allConcepts.add(concept)
+                                        if (onlyAssignable) {
+                                            if (!concept.isAbstract) {
+                                                allConcepts.add(concept)
+                                            }
+                                        } else {
+                                            allConcepts.add(concept)
+                                        }
                                     }
                                 }
                             }
@@ -635,4 +624,54 @@ class JetBrainsMPSStructureUtilMcpToolset : JetBrainsMPSMcpToolset() {
         }
         return reply!!
     }
+
+    private fun resolveLanguage(repository: SRepository, languageRef: String): SLanguage? {
+        val facade = PersistenceFacade.getInstance()
+        if (languageRef.startsWith("l:")) {
+            return try { facade.createLanguage(languageRef) } catch (e: Exception) { null }
+        }
+        val allLanguages = LanguageRegistry.getInstance(repository).allLanguages
+        return allLanguages.find { it.qualifiedName == languageRef }
+    }
+
+    private fun resolveModel(mpsProject: MPSProject, modelRef: String): SModel? {
+        val ref = try {
+            PersistenceFacade.getInstance().createModelReference(modelRef)
+        } catch (e: Exception) {
+            return null
+        }
+        return ref.resolve(mpsProject.repository)
+    }
+
+    private val CONCEPT_ConceptDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, "jetbrains.mps.lang.structure.structure.ConceptDeclaration")
+    private val CONCEPT_InterfaceConceptDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103556dcafL, "jetbrains.mps.lang.structure.structure.InterfaceConceptDeclaration")
+    private val CONCEPT_InterfaceConceptReference: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x110356fc618L, "jetbrains.mps.lang.structure.structure.InterfaceConceptReference")
+    private val CONCEPT_EnumerationDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c5fuL.toLong(), "jetbrains.mps.lang.structure.structure.EnumerationDeclaration")
+    private val CONCEPT_EnumerationMemberDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c60uL.toLong(), "jetbrains.mps.lang.structure.structure.EnumerationMemberDeclaration")
+    private val CONCEPT_PropertyDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086bL, "jetbrains.mps.lang.structure.structure.PropertyDeclaration")
+    private val CONCEPT_DataTypeDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf8910915e2L, "jetbrains.mps.lang.structure.structure.DataTypeDeclaration")
+    private val CONCEPT_LinkDeclaration: SConcept = MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, "jetbrains.mps.lang.structure.structure.LinkDeclaration")
+
+    private val PROP_Name: SProperty = MetaAdapterFactory.getProperty(0xceab519525ea4f22uL.toLong(), 0x9b92103b95ca8c0cuL.toLong(), 0x110396eaaa4L, 0x110396ec041L, "name")
+    private val PROP_Presentation: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c60uL.toLong(), 0x9538e3a78561888L, "presentation")
+    private val PROP_MemberId: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c60uL.toLong(), 0x13b8f6fdce540e38L, "memberId")
+    private val PROP_ConceptAlias: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0x46ab0ad5826c74caL, "conceptAlias")
+    private val PROP_Abstract: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0x403a32c5772c7ec2L, "abstract")
+    private val PROP_Rootable: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, 0xff49c1d648L, "rootable")
+    private val PROP_LinkDeclaration_MetaClass: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf980556927L, "metaClass")
+    private val PROP_LinkDeclaration_Role: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf98052f333L, "role")
+    private val PROP_LinkDeclaration_SourceCardinality: SProperty = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf98054bb04L, "sourceCardinality")
+
+    private val LINK_Members: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c5fuL.toLong(), 0x2e770ca32c607cc1uL.toLong(), "members")
+    private val LINK_DefaultMember: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x2e770ca32c607c5fuL.toLong(), 0xeeb344f63fe016cL, "defaultMember")
+    private val LINK_Extends: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, 0xf979be93cfL, "extends")
+    private val LINK_Implements: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, 0x110358d693eL, "implements")
+    private val LINK_InterfaceConceptReference_Intfc: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x110356fc618L, 0x110356fe029L, "intfc")
+    private val LINK_PropertyDeclaration: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0xf979c3ba6cL, "propertyDeclaration")
+    private val LINK_PropertyDeclaration_DataType: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086bL, 0xfc26f42fe5L, "dataType")
+    private val LINK_LinkDeclaration: SContainmentLink = MetaAdapterFactory.getContainmentLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x1103553c5ffL, 0xf979c3ba6bL, "linkDeclaration")
+    private val LINK_LinkDeclaration_Target: SReferenceLink = MetaAdapterFactory.getReferenceLink(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979bd086aL, 0xf98055fef0L, "target")
+
+    private val ENUM_LinkMetaclass: SEnumeration = MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xfc6f4e95b7L, "jetbrains.mps.lang.structure.structure.LinkMetaclass")
+    private val ENUM_Cardinality: SEnumeration = MetaAdapterFactory.getEnumeration(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xfc6f3944c2L, "jetbrains.mps.lang.structure.structure.Cardinality")
 }

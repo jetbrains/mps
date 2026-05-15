@@ -20,115 +20,8 @@ import jetbrains.mps.project.structure.modules.Dependency
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
-import java.util.Objects
 
-class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
-    private fun moduleInfoJson(project: MPSProject, m: SModule): String {
-        val vf: String? = try { project.getVirtualFolder(m) } catch (_: Throwable) { null }
-        val name = m.moduleName ?: ""
-        val ref = PersistenceFacade.getInstance().asString(m.moduleReference)
-        val vfPart = vf?.let { "\"virtualFolder\":\"" + escapeJson(it) + "\"," } ?: ""
-        return "{" +
-                "\"name\":\"" + escapeJson(name) + "\"," +
-                "\"moduleRef\":\"" + escapeJson(ref) + "\"," +
-                vfPart +
-                "\"present\":true}"
-    }
-
-    private fun dependencyJson(d: Dependency): String {
-        return "{" +
-                "\"moduleName\":\"" + escapeJson(d.moduleRef.moduleName ?: "") + "\"," +
-                "\"moduleRef\":\"" + escapeJson(PersistenceFacade.getInstance().asString(d.moduleRef)) + "\"," +
-                "\"scope\":\"" + escapeJson(d.scope.toString()) + "\"," +
-                "\"reexport\":" + d.isReexport + "}"
-    }
-
-    private fun resolveModule(mpsProject: MPSProject, nameOrRef: String, projectOnly: Boolean = true): SModule? {
-        val repository = mpsProject.repository
-        val facade = PersistenceFacade.getInstance()
-
-        // 1. Try to parse as reference string
-        try {
-            val ref = facade.createModuleReference(nameOrRef)
-            val resolved = ref.resolve(repository)
-            if (resolved != null) {
-                if (!projectOnly || mpsProject.isProjectModule(resolved)) {
-                    return resolved
-                }
-            }
-        } catch (_: Exception) {
-            // Not a valid reference string, ignore
-        }
-
-        // 2. Try exact name match
-        val modulesToSearch = if (projectOnly) mpsProject.projectModulesWithGenerators else repository.modules
-        return modulesToSearch.find { it.moduleName == nameOrRef }
-    }
-
-    // ---- READ: list modules (JSON) ----
-//    @McpTool
-//    @McpDescription("""
-//        Lists all MPS modules available in the current project. Returns JSON.
-//        Response: { ok, data: [{ name, moduleRef, virtualFolder?, present:true }, ...] }
-//    """
-//    )
-//    suspend fun list_MPS_modules(): String {
-//        currentCoroutineContext().reportToolActivity("Getting MPS modules")
-//        val project = currentCoroutineContext().project
-//        val mpsProject = ProjectHelper.fromIdeaProject(project)
-//        if (mpsProject == null) {
-//            return errJson("No MPS project available")
-//        }
-//        val items = buildString {
-//            append('[')
-//            var first = true
-//            mpsProject.repository.modelAccess.runReadAction {
-//                for (m in mpsProject.projectModules) {
-//                    if (!first) append(',') else first = false
-//                    append(moduleInfoJson(mpsProject, m))
-//                }
-//            }
-//            append(']')
-//        }
-//        return okJson(items)
-//    }
-
-    // ---- READ: list module dependencies (JSON) ----
-//    @McpTool
-//    @McpDescription("""
-//        Lists all dependencies of an MPS module. Returns JSON.
-//        Response: { ok, data: [{ moduleName, moduleRef, scope, reexport }, ...] }
-//    """
-//    )
-//    suspend fun list_MPS_module_dependencies(
-//        @McpDescription("Module name or reference")
-//        moduleName: String
-//    ): String {
-//        currentCoroutineContext().reportToolActivity("Listing MPS module dependencies")
-//        val ideaProject = currentCoroutineContext().project
-//        val mpsProject = ProjectHelper.fromIdeaProject(ideaProject) ?: return errJson("No MPS project available")
-//        val items = buildString {
-//            append('[')
-//            var first = true
-//            mpsProject.repository.modelAccess.runReadAction {
-//                val module = resolveModule(mpsProject, moduleName)
-//                if (module != null) {
-//                    val abstractModule = module as? jetbrains.mps.project.AbstractModule
-//                    val descriptor = abstractModule?.moduleDescriptor
-//                    if (descriptor != null) {
-//                        for (d in descriptor.dependencies) {
-//                            if (!first) append(',') else first = false
-//                            append(dependencyJson(d))
-//                        }
-//                    }
-//                }
-//            }
-//            append(']')
-//        }
-//        return okJson(items)
-//    }
-//
-    // ---- WRITE: add module dependency (JSON) ----
+class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Adds a dependency to an MPS module.
@@ -202,7 +95,6 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         return if (error != null) errJson(error) else okJson("true")
     }
 
-    // ---- WRITE: remove module dependency (JSON) ----
     @McpTool
     @McpDescription("""
         Removes a dependency from an MPS module.
@@ -253,11 +145,10 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         return if (error != null) errJson(error) else okJson("true")
     }
 
-    // ---- READ: get a single module by name (JSON) ----
     @McpTool
     @McpDescription("""
         Gets information about a single MPS module by its name or reference. Returns JSON.
-        Response: { ok, data: { name, moduleRef, virtualFolder?, present:true } } or { ok:false, error }
+        Response: { ok, data: { name, moduleRef, virtualFolder?, readOnly, present:true } } or { ok:false, error }
         If a precise match is not found, a partial match by name is used.
         If more than one partial match is found, returns an error containing the found full module names.
     """
@@ -290,7 +181,6 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         return reply!!
     }
 
-    // ---- CREATE ----
     @McpTool
     @McpDescription("""
         Creates a new, empty MPS module of the given type at the specified directory (The directory gets created, if needed).
@@ -375,7 +265,6 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         }
     }
 
-    // ---- UPDATE ----
     @McpTool
     @McpDescription("""
         Updates an MPS module. Returns JSON.
@@ -432,7 +321,6 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         }
     }
 
-    // ---- DELETE ----
     @McpTool
     @McpDescription("""
         Deletes an MPS module by name or reference. Returns JSON.
@@ -471,5 +359,40 @@ class JetBrainsMPSModuleMcpToolset : JetBrainsMPSMcpToolset() {
         } catch (e: Throwable) {
             errJson(e.message)
         }
+    }
+
+    private fun moduleInfoJson(project: MPSProject, m: SModule): String {
+        val vf: String? = try { project.getVirtualFolder(m) } catch (_: Throwable) { null }
+        val name = m.moduleName ?: ""
+        val ref = PersistenceFacade.getInstance().asString(m.moduleReference)
+        val vfPart = vf?.let { "\"virtualFolder\":\"" + escapeJson(it) + "\"," } ?: ""
+        return "{" +
+                "\"name\":\"" + escapeJson(name) + "\"," +
+                "\"moduleRef\":\"" + escapeJson(ref) + "\"," +
+                "\"readOnly\":" + m.isReadOnly + "," +
+                vfPart +
+                "\"present\":true}"
+    }
+
+    private fun resolveModule(mpsProject: MPSProject, nameOrRef: String, projectOnly: Boolean = true): SModule? {
+        val repository = mpsProject.repository
+        val facade = PersistenceFacade.getInstance()
+
+        // 1. Try to parse as reference string
+        try {
+            val ref = facade.createModuleReference(nameOrRef)
+            val resolved = ref.resolve(repository)
+            if (resolved != null) {
+                if (!projectOnly || mpsProject.isProjectModule(resolved)) {
+                    return resolved
+                }
+            }
+        } catch (_: Exception) {
+            // Not a valid reference string, ignore
+        }
+
+        // 2. Try exact name match
+        val modulesToSearch = if (projectOnly) mpsProject.projectModulesWithGenerators else repository.modules
+        return modulesToSearch.find { it.moduleName == nameOrRef }
     }
 }

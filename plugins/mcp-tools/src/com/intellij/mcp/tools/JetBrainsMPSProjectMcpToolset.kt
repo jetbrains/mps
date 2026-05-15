@@ -17,14 +17,15 @@ import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
-class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
+class JetBrainsMPSProjectMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
         Returns json of a complete structure of the project - modules, models in each module, root nodes in each model, a complete hierarchy of nodes under each root node.
+        Saves the result to a local JSON file.
         For all entities include their fully qualified name and a persistent reference.
-        Additionally, for modules include their virtual folder, kind (Solution, Language, DevKit, Generator), dependencies on other modules (the other module is identified by its full name and a persistent reference), scope, the reexport flag.
-        For models additionally include the dependencies on other models (full name and a persistent reference) and used languages (full name and a persistent reference).
+        Additionally, for modules include their virtual folder, kind (Solution, Language, DevKit, Generator), read-only flag, dependencies on other modules (the other module is identified by its full name and a persistent reference), scope, the reexport flag.
+        For models additionally include the read-only flag, the dependencies on other models (full name and a persistent reference) and used languages (full name and a persistent reference).
         For nodes use the info as specified in the deep_print_MPS_node method.
         Whether to include or exclude the stub (read-only) modules must be configurable by the parameters.
         Whether to include or exclude the information on module/model dependencies and used languages must be configurable by the parameters.
@@ -36,6 +37,11 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
         The results can be filtered by 'moduleKind' (Solution, Language, DevKit, Generator) only when no 'startingPoint' is provided.
         NOTE: The output of this method can easily become too large for the MCP protocol limits. 
         It is highly recommended to use the 'startingPoint' parameter and be eager with filtering (keeping 'include' parameters false) to limit the response size.
+        Returns JSON format with the path to the local file:
+        {
+          "ok": true,
+          "data": "/path/to/local/file.json"
+        }
     """)
     suspend fun get_MPS_project_structure(
         @McpDescription("Whether to include read-only modules (libraries). Default is false.") includeStubModules: Boolean = false,
@@ -54,7 +60,7 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
             return errJson("Parameters 'startingPoint' and 'moduleKind' cannot be used together.")
         }
 
-        var result: String? = null
+        var reply: String? = null
         mpsProject.repository.modelAccess.runReadAction {
             try {
                 if (startingPoint != null && startingPoint.isNotBlank()) {
@@ -65,7 +71,9 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
                     val nodeRef = try { facade.createNodeReference(startingPoint) } catch (_: Exception) { null }
                     val node = nodeRef?.resolve(mpsProject.repository)
                     if (node != null) {
-                        result = okJson(nodeHierarchyToJson2(node, includeNodes))
+                        val json = nodeHierarchyToJson(node, includeNodes)
+                        val tempFile = saveToTempFile(json)
+                        reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                         return@runReadAction
                     }
 
@@ -73,7 +81,9 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
                     val modelRef = try { facade.createModelReference(startingPoint) } catch (_: Exception) { null }
                     val model = modelRef?.resolve(mpsProject.repository)
                     if (model != null) {
-                        result = okJson(modelToJson(model, includeRootNodes, includeNodes, includeDependencies))
+                        val json = modelToJson(model, includeRootNodes, includeNodes, includeDependencies)
+                        val tempFile = saveToTempFile(json)
+                        reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                         return@runReadAction
                     }
 
@@ -81,7 +91,9 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
                     val moduleRef = try { facade.createModuleReference(startingPoint) } catch (_: Exception) { null }
                     val module = moduleRef?.resolve(mpsProject.repository)
                     if (module != null) {
-                        result = okJson(moduleToJson(mpsProject, module, includeModels, includeRootNodes, includeNodes, includeDependencies))
+                        val json = moduleToJson(mpsProject, module, includeModels, includeRootNodes, includeNodes, includeDependencies)
+                        val tempFile = saveToTempFile(json)
+                        reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                         return@runReadAction
                     }
                     
@@ -89,11 +101,13 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
                     val allModules = if (includeStubModules) mpsProject.repository.modules else mpsProject.projectModulesWithGenerators
                     val moduleByName = allModules.find { it.moduleName == startingPoint }
                     if (moduleByName != null) {
-                        result = okJson(moduleToJson(mpsProject, moduleByName, includeModels, includeRootNodes, includeNodes, includeDependencies))
+                        val json = moduleToJson(mpsProject, moduleByName, includeModels, includeRootNodes, includeNodes, includeDependencies)
+                        val tempFile = saveToTempFile(json)
+                        reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                         return@runReadAction
                     }
 
-                    result = errJson("Starting point '$startingPoint' not found")
+                    reply = errJson("Starting point '$startingPoint' not found")
                 } else {
                     val sb = StringBuilder()
                     sb.append("{\"modules\":[")
@@ -109,14 +123,16 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
                         sb.append(moduleToJson(mpsProject, m, includeModels, includeRootNodes, includeNodes, includeDependencies))
                     }
                     sb.append("]}")
-                    result = okJson(sb.toString())
+                    val json = sb.toString()
+                    val tempFile = saveToTempFile(json)
+                    reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                 }
             } catch (e: Exception) {
-                result = errJson(e.message)
+                reply = errJson(e.message)
             }
         }
 
-        return result ?: errJson("Failed to generate project structure")
+        return reply ?: errJson("Failed to generate project structure")
     }
 
     private fun moduleToJson(project: MPSProject, m: SModule, includeModels: Boolean, includeRootNodes: Boolean, includeNodes: Boolean, includeDependencies: Boolean): String {
@@ -128,6 +144,7 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
         if (vf != null) {
             sb.append("\"virtualFolder\":\"").append(escapeJson(vf)).append("\",")
         }
+        sb.append("\"readOnly\":").append(m.isReadOnly).append(",")
         sb.append("\"kind\":\"").append(getModuleKind(m)).append("\",")
 
         if (includeDependencies) {
@@ -180,6 +197,7 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
         sb.append("{")
         sb.append("\"name\":\"").append(escapeJson(model.name.longName)).append("\",")
         sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(model.reference))).append("\",")
+        sb.append("\"readOnly\":").append(model.isReadOnly).append(",")
 
         if (includeDependencies) {
             sb.append("\"dependencies\":[")
@@ -222,7 +240,7 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
             var firstRoot = true
             for (root in model.rootNodes) {
                 if (!firstRoot) sb.append(",") else firstRoot = false
-                sb.append(nodeHierarchyToJson2(root, includeNodes))
+                sb.append(nodeHierarchyToJson(root, includeNodes))
             }
             sb.append("]")
         } else {
