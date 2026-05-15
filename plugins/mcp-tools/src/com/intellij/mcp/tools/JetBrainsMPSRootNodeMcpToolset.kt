@@ -47,7 +47,7 @@ class JetBrainsMPSRootNodeMcpToolset : JetBrainsMPSMcpToolset() {
     @McpTool
     @McpDescription("""
         Gets the root node that is currently open in the MPS editor. Returns JSON.
-        Response: { ok, data: { name, concept, reference, modelReference, virtualFolder, present:true } } or { ok:false, error }
+        Response: { ok, data: { name, concept, conceptReference, reference, parentReference, rootReference, modelReference, virtualFolder, present:true } } or { ok:false, error }
     """)
     suspend fun get_current_editor_MPS_root_node(): String {
         currentCoroutineContext().reportToolActivity("Getting current editor root node")
@@ -279,7 +279,7 @@ class JetBrainsMPSRootNodeMcpToolset : JetBrainsMPSMcpToolset() {
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
 
         return try {
-            var updated: SNode? = null
+            var payload: String? = null
             var error: String? = null
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
@@ -303,15 +303,14 @@ class JetBrainsMPSRootNodeMcpToolset : JetBrainsMPSMcpToolset() {
                             return@executeCommand
                         }
                         model.save()
-                        updated = node
+                        payload = nodeInfoJson(node)
                     } catch (e: Exception) {
                         error = e.message
                     }
                 }
             }
             if (error != null) errJson(error)
-            else if (updated != null) okJson(nodeInfoJson(updated!!))
-            else errJson("Failed to update root node")
+            else if (payload != null) okJson(payload) else errJson("Failed to update root node")
         } catch (e: Throwable) {
             errJson(e.message)
         }

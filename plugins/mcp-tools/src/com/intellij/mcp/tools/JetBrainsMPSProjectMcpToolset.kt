@@ -13,12 +13,7 @@ import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SModelInternal
 import kotlinx.coroutines.currentCoroutineContext
-import org.jetbrains.mps.openapi.language.SContainmentLink
-import org.jetbrains.mps.openapi.language.SEnumeration
-import org.jetbrains.mps.openapi.language.SProperty
-import org.jetbrains.mps.openapi.language.SReferenceLink
 import org.jetbrains.mps.openapi.model.SModel
-import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
@@ -43,9 +38,9 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
         It is highly recommended to use the 'startingPoint' parameter and be eager with filtering (keeping 'include' parameters false) to limit the response size.
     """)
     suspend fun get_MPS_project_structure(
-        @McpDescription("Whether to include stub (read-only) modules. Default is false.") includeStubModules: Boolean = false,
+        @McpDescription("Whether to include read-only modules (libraries). Default is false.") includeStubModules: Boolean = false,
         @McpDescription("Whether to include models inside modules. Default is false.") includeModels: Boolean = false,
-        @McpDescription("Whether to include module/model dependencies and used languages. Default is false.") includeDependencies: Boolean = false,
+        @McpDescription("Whether to include module's/model's dependencies (imported modules, imported models) and model's used languages. Default is false.") includeDependencies: Boolean = false,
         @McpDescription("Whether to include root nodes. Default is false.") includeRootNodes: Boolean = false,
         @McpDescription("Whether to include nodes beyond the root node level. Default is false.") includeNodes: Boolean = false,
         @McpDescription("Optional starting point reference (module, model, root node, or node)") startingPoint: String? = null,
@@ -70,7 +65,7 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
                     val nodeRef = try { facade.createNodeReference(startingPoint) } catch (_: Exception) { null }
                     val node = nodeRef?.resolve(mpsProject.repository)
                     if (node != null) {
-                        result = okJson(nodeToJson(node, includeNodes))
+                        result = okJson(nodeHierarchyToJson2(node, includeNodes))
                         return@runReadAction
                     }
 
@@ -227,7 +222,7 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
             var firstRoot = true
             for (root in model.rootNodes) {
                 if (!firstRoot) sb.append(",") else firstRoot = false
-                sb.append(nodeToJson(root, includeNodes))
+                sb.append(nodeHierarchyToJson2(root, includeNodes))
             }
             sb.append("]")
         } else {
@@ -237,103 +232,5 @@ class JetBrainsMPSProjectMcpToolset : JetBrainsMPSMcpToolset() {
 
         sb.append("}")
         return sb.toString()
-    }
-
-    private fun nodeToJson(node: SNode, deep: Boolean): String {
-        val sb = StringBuilder()
-        sb.append("{")
-        sb.append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
-        sb.append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
-        sb.append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
-        sb.append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
-
-        // Properties
-        sb.append("\"properties\":[")
-        var firstProp = true
-        for (prop in node.properties) {
-            if (!firstProp) sb.append(",") else firstProp = false
-            sb.append("{")
-            sb.append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
-            sb.append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-            sb.append("\"value\":\"").append(escapeJson(node.getProperty(prop) ?: "")).append("\"")
-            sb.append("}")
-        }
-        sb.append("],")
-
-        // References
-        sb.append("\"references\":[")
-        var firstRef = true
-        for (ref in node.references) {
-            if (!firstRef) sb.append(",") else firstRef = false
-            val link = ref.link
-            sb.append("{")
-            sb.append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-            sb.append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-            sb.append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-            sb.append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-            val targetNode = ref.targetNode
-            if (targetNode != null) {
-                sb.append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
-                sb.append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(targetNode.reference))).append("\"")
-            } else {
-                sb.append("\"target\":null,")
-                sb.append("\"targetReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(ref.targetNodeReference))).append("\"")
-            }
-            sb.append("}")
-        }
-        sb.append("],")
-
-        // Children
-        sb.append("\"children\":[")
-        var firstChildRole = true
-        val childrenByRole = node.children.groupBy { it.containmentLink }
-        for (link in node.concept.containmentLinks) {
-            val childrenInRole = childrenByRole[link] ?: emptyList()
-            if (childrenInRole.isEmpty() && link.isOptional) continue
-
-            if (!firstChildRole) sb.append(",") else firstChildRole = false
-            sb.append("{")
-            sb.append("\"role\":\"").append(escapeJson(link.name)).append("\",")
-            sb.append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
-            sb.append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
-            sb.append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
-            if (deep) {
-                sb.append("\"nodes\":[")
-                var firstChild = true
-                for (child in childrenInRole) {
-                    if (!firstChild) sb.append(",") else firstChild = false
-                    sb.append(nodeToJson(child, deep))
-                }
-                sb.append("]")
-            } else {
-                sb.append("\"count\":").append(childrenInRole.size)
-            }
-            sb.append("}")
-        }
-        sb.append("]")
-
-        sb.append("}")
-        return sb.toString()
-    }
-
-    private fun getPropertyType(prop: SProperty): String {
-        val type = prop.type
-        return if (type is SEnumeration) {
-            "enum:${type.name}"
-        } else {
-            type.toString()
-        }
-    }
-
-    private fun getCardinality(link: SContainmentLink): String {
-        return if (link.isMultiple) {
-            if (link.isOptional) "0..n" else "1..n"
-        } else {
-            if (link.isOptional) "0..1" else "1"
-        }
-    }
-
-    private fun getCardinality(link: SReferenceLink): String {
-        return if (link.isOptional) "0..1" else "1"
     }
 }

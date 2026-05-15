@@ -18,7 +18,7 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
             "Use this skill when asked to create a language, design a language or create concepts in a language",
             """
                 Preconditions: You must know the name of the language to create or enhance.
-                1. Use 'get_MPS_language_info_by_name' to see if the language already exists.
+                1. Use 'get_MPS_project_structure' to see if the language already exists.
                 2. If the language does not exist, use 'get_MPS_module' to see if any module has a colliding name with the language to be created. Stop if so.
                 3. Then create a new language module in MPS - 'create_MPS_module' (pass the absolute path as a parameter, it will create the directory, do not create a directory by direct file access)
                 4. Plan the structure of the language 
@@ -27,8 +27,8 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
                     - enumerations (concept EnumerationDeclaration) to enumerate all allowed string values of a property (use 'create_MPS_enum' to create, passing values as a JSON list of maps, if created manually make sure that after creating an enumeration it does not contain any undesired enum values that may have been created automatically)
                     - constraint data types (concept ConstrainedDataTypeDeclaration) to restrict a string value of a property by a regex
                 5. Plan which concepts should be rootable.
-                6. Concepts that need a "name" property should instead implement the INamedConcept interface from the jetbrains.mps.lang.core.structure language in order to inherit 'name'.
-                7. Create individual MPS concepts (aka MPS root nodes) - 'create_MPS_root_node' on the 'structure' model of the language.
+                6. Concepts that need a "name" property should instead implement the INamedConcept (the relationship is not 'extend', but really 'implement') interface from the jetbrains.mps.lang.core.structure language in order to inherit 'name'.
+                7. Create individual MPS concepts (aka MPS root nodes) - 'create_MPS_root_node' on the 'structure' model of the language. Use 'perform_MPS_structure_operation' to investigate concepts more or to speed up creation of various language elements (enumerations, concepts, etc.).
                 8. For each concept specify its properties and children.
                 9. Only after all the planned concepts (root nodes) have been created you can use them in children and references, so create empty concepts first, the fill them with properties, children and references.
                 10. Open the most fundamental concept of the ones created in the editor (open_MPS_root_node).
@@ -41,7 +41,46 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
             "Use this skill when asked to create a language or concept editors in a language",
             """
                 Preconditions: You must know the name of the language to create or enhance.
-                TODO
+                When creating an editor cell for a reference, the 'CellModel_RefCell' is typically the best choice to show a property of the target node of the reference:
+                - 'relationDeclaration' must point to the 'LinkDeclaration' to be represented by this cell
+                - the 'editorComponent' LinkDeclaration contains an instance of 'InlineEditorComponent'. Its 'cellModel' LinkDeclaration is set to 'CellModel_Property' with relationDeclaration set to 'name' (for INamedConcept targets) or 'CellModel_ReferencePresentation' for targets without a name.                 
+                """.trimIndent()
+        ),
+        listOf(
+            "Writing BaseLanguage (Java) code in MPS",
+            "Tips to edit nodes from the jetbrains.mps.BaseLanguage",
+            "Use this skill when asked to write Java code",
+            """
+                When building binary expressions (BinaryOperation), the operation priorities are only ensured by the structure on the nodes (children are calculated before the parent).
+                 Either use parentheses (ParenthesizedExpression) extensively or ensure that hierarchy is correct (e.g. multiplication must be a child of addition).
+                """.trimIndent()
+        ),
+        listOf(
+            "Analyze MPS code",
+            "Steps to analyze code in MPS models",
+            "Use this skill when asked to analyze, verify or inspect MPS code/nodes",
+            """
+                Use 'show_MPS_node_representation' to take a look at code in its textual projection.
+                Some code may be better looked at in the structural form (aka nodes as JSON). Use 'print_MPS_node_json' to get a structural printout.
+                Use 'check_MPS_root_node_errors' to check for errors in code.
+                Use 'perform_MPS_operation' to navigate around nodes and search for their usages.
+                """.trimIndent()
+        ),
+        listOf(
+            "Analyze MPS languages",
+            "Steps to analyze MPS language definitions",
+            "Use this skill when asked to analyze, verify or inspect MPS languages or concepts",
+            """
+                Start investigating the concepts of a language - 'list_MPS_language_concepts', their defined properties, references and children.
+                Investigate and report the rootable and abstract concepts.
+                Investigate the inheritance hierarchy of concepts.
+                Investigate also the 'structure' models of the analyzed languages.
+                Use 'show_MPS_node_representation' to take a look at code in its textual projection.
+                Some code may be better looked at in the structural form (aka nodes as JSON). Use 'print_MPS_node_json' to get a structural printout.
+                Use 'check_MPS_root_node_errors' to check for errors in code.
+                Use 'perform_MPS_operation' to navigate around the nodes in the structure model and search for their usages.
+                Use 'perform_MPS_structure_operation' to navigate around elements of the language definition and to search for instances of concepts in models
+                Check that all non-abstract concepts have an editor defined in the 'editor' aspect model. An editor can also be inherited from extended concepts or implemented interface concepts.
                 """.trimIndent()
         ),
         listOf(
@@ -70,17 +109,24 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
             "Guidelines to find MPS models, modules and languages by name, recommendations to recover from failures to find them",
             "Use this skill when failing to find a model, module or language such as e.g. 'Language XXX not found'",
             """
-                The 'get_MPS_project_structure' is a universal tool to obtain the structure of an MPS project and in particular of any part of it.
+                A fully qualified name or a unique persistent reference is needed to unambiguously represent a model, module (language, devkit, solution, generator), root node or a node.
+                Passing an incomplete name or a name with shortened package names as parameters to tool calls will fail, but they may return a list of partial matches as a clue. 
+                                
+                The 'get_MPS_project_structure' is a universal tool to obtain the structure of an MPS project. Use it preferably when:
+                - searching for modules (languages, solutions, devkits and generators) by their name
+                - searching for models in a module
+                - searching for root nodes in a model
+                - inspecting the dependencies of a module or dependencies and used languages of a model
                 
-                A fully qualified name is needed to obtain a model, module or language reference.
-                Calling tools with an incomplete name or a name with shortened package names will fail.
-                A good strategy, when given a name with shortened packages or an incomplete name, is to use the tools that 'list' models/modules/languages and text-search in their output to find the fully qualified name.
+                A good strategy, when given a name with shortened packages or an incomplete name:
+                - a module: call 'get_MPS_project_structure' with eager filtering to obtain just the project's modules (their fully qualified names and the unique persistent references).
+                - a model:  call 'get_MPS_project_structure' with filtering that includes modules as well as models.
                 
-                An MPS language is a special kind of an MPS module. Tools specialized to languages like e.g. 'get_MPS_language_concept' are very handy to investigate language definition. The take a language reference as a parameter.
+                An MPS language is a special kind of an MPS module. Tools specialized to languages like e.g. 'get_MPS_concept' are very handy to investigate language definition. They take a language reference as a parameter.
                 If you do not have a language reference, you can use 'get_MPS_language_by_name' to find a language by its fully qualified name.
                 However, there is a very important limitation - if a language has not been registered/loaded into MPS, which typically is the case for newly created languages before they get a chance to get compiled for the first time,
-                 the language cannot be discovered by tools like 'list_MPS_languages' and 'get_MPS_language_info_by_name'.
-                It can still be discovered as a module by e.g. 'list_MPS_modules' or 'get_MPS_module'. The 'structure' model of this module contains the elements defining the language. 
+                 the language and its concepts cannot be discovered by tools like 'list_MPS_language_concepts'.
+                It can still be discovered as a module by e.g. 'get_MPS_project_structure'. The 'structure' model of this module contains the elements defining the language. 
                 
                 Names with shortened packages, like e.g. 'j.m.l.core.xml' cannot be used to obtain a module/model from MPS mcp tools, since the single-char package names only stand for a complete package name that starts with that char. 
                 j - expands to 'jetbrains'
@@ -98,11 +144,12 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
                 For any node you can get its containing model ('get_MPS_model_reference_by_node') and a model lets you inspect its dependencies (visible nodes outside of the current model)
                  as well as used languages (concepts that can be instantiated in the current model)
                 To start writing code, resolve the languages and concepts that will be used:
-                - start with the list of used languages of the current model ('list_MPS_model_used_languages') as these are most likely to be needed.
-                - 'list_MPS_languages' returns all available languages, included the not imported ones.
-                - if a language is vaguely referred to by the user, use 'get_MPS_language_info_by_name' to find it by the name (with expanded packages in the name). If multiple good matches are found, clarify with the user, which language to use.
+                - start with the list of used languages of the current model ('get_MPS_project_structure') as these are most likely to be needed.
+                - 'get_MPS_project_structure' can also return all available languages.
                 - when having a language reference use 'list_MPS_language_concepts' to get its concepts.
                 - the 'search_MPS_concepts' is a last resort option to find a concept if not found in used languages or a language that was mentioned in the request as it consumes a lot of tokens.
+                The info that you obtain on concepts give you its basic properties (rootable, abstract, etc.), references to related concepts and a reference to the source node (the instance of AbstractConceptDeclaration concept that defines this concept in the structure model of the module of the language).
+                Use 'perform_MPS_structure_operation' to investigate concepts more.
 
                 MPS code is written by tools that accept json description of the hierarchy of nodes.
                 Either a deep json description can be provided for a substantial part of the code,
@@ -119,19 +166,18 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
                 Child roles may be single-valued or multi-valued. Single-valued roles can only have one child node. Multi-valued roles can have multiple child nodes.
                 Abstract concepts and concept interfaces cannot be instantiated into nodes.
                 Names of modules or models may be abbreviated to single letters separated by . (e.g. j.m.l.core.Foo). Always expand them and only then use them as parameters to other tools.
-                MPS uses structured editing. The json structure that is used to represent MPS nodes is a tree structure with nodes and roles. Each node has a concept and a set of roles. Each role has a type and a value. The value of a role is either a node or a list of nodes. The type of a role is either a concept or a list of concepts. The value of a role is either a node or a list of nodes. The type of a role is either a concept or a list of concepts.
-                The user may use textual (visual) notation when representing code. This may differ from the json structure. The json structure is the canonical representation of the code.
+                MPS uses structured editing. The JSON structure used to represent MPS nodes is a tree structure with nodes and roles. Each node has a concept and a set of roles. Each role has a type and a value. The value of a role is either a node or a list of nodes. The type of a role is either a concept or a list of concepts.
+                The user may use textual (visual) notation when representing code. This may differ from the JSON structure. The JSON structure is the canonical representation of the code.
                 
                 When adding child nodes to a node:
-                    1. The expected json structure as advertised by the methods must be followed to the letter.
-                    2. The JSON must have either concept or conceptReference (preferably conceptReference) for every node.
-                    2. Properties are optional but must be an array of objects with name and value
-                    3. Children are optional but must be an array of objects for each child role
-                    4. References are optional but must be an array for each role
+                    1. The expected JSON structure as advertised by the methods must be followed to the letter.
+                    2. The JSON must have either 'concept' or 'conceptReference' (preferably 'conceptReference') for every node.
+                    3. Properties are optional but must be an array of objects with 'name' and 'value'.
+                    4. Children are optional but must be an array of objects for each child role.
+                    5. References are optional but must be an array of objects for each role.
                 
-                An error message "Cannot invoke "com.google.gson.JsonElement.getAsString()" because the return value of "com.google.gson.JsonObject.get(String)" is null" means that a required field is missing.
+                An error message "Cannot invoke \"com.google.gson.JsonElement.getAsString()\" because the return value of \"com.google.gson.JsonObject.get(String)\" is null" means that a required field is missing.
                 
-                Always check for errors after making substantial changes to a node or just before moving on from a changed a root node (the check_MPS_node_errors tool).
                 """.trimIndent()
         )
     )
@@ -170,8 +216,8 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
     @McpTool
     @McpDescription("""
         Provides an essential context for a coding agent.
+        You must call this tool at the beginning of every session.
         Returns a string explaining to the calling coding agent that it runs in JetBrains MPS.
-        Coding agents must call this tool at the very beginning of each session to understand the MPS environment and the available mcp tools.
     """
     )
     suspend fun get_MPS_context(
@@ -179,7 +225,7 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
         projectPath: String
     ): String {
         return """
-            You are running in JetBrains MPS. Your role is to assist developers in designing languages and writing DSL code in a structured format (JSON).
+            You are running in JetBrains MPS. Your role is to assist developers in designing languages and writing DSL code in a structured format (JSON) with MPS nodes.
             By default, all coding requests made by the user are meant to be performed using the MPS-specific tools on MPS modules, models, root nodes, or node hierarchies, rather than on plain text files. 
             MPS-related tools are your priority. Resorting to text-based tools and searches should be considered a last resort attempt to solve a problem only when MPS-specific tools are not applicable.
             When it is not obvious what code the user is referring to, assume it is the root node currently open in the editor. Obtain it using the 'get_current_editor_MPS_root_node' tool.
@@ -188,10 +234,6 @@ class JetBrainsMPSSkillsMcpToolset : JetBrainsMPSMcpToolset() {
             
             Any time in the future use the 'get_MPS_skill' tools to include the task-specific procedural knowledge in the context, may such a need arise.            
             Now giving you the list of MPS skills available through 'get_MPS_skill': ${list_MPS_skills()}
-            
-            ${get_MPS_skill("Relationships between MPS elements")}
-            
-            ${get_MPS_skill("Finding models, modules and languages by name")}
             
             You must call 'get_MPS_context' again if its content have been removed from the agent's context window due to compaction, because this information is key to proper agent's functioning in the context of MPS projects.            
         """.trimIndent()
