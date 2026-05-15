@@ -2,9 +2,15 @@
 
 This guide provides essential insight into how JetBrains MPS (Meta Programming System) works and how to use the available MCP tools to design languages and write DSL code.
 
+## Skills
+
+| Invoke                | What it does                                                        |
+|-----------------------|---------------------------------------------------------------------|
+| `/mps-editor`         | Define or modify editors for concepts in a JetBrains MPS language   |
+
 ## Key Concepts
 
-MPS is a projectional editor and a language workbench. Unlike text-based IDEs, MPS works with an Abstract Syntax Tree (AST) directly.
+MPS is a projectional editor and a language workbench. Unlike text-based IDEs, MPS works with an Abstract Syntax Tree (AST) directly. JSON is used to represent MPS nodes and their properties in a structured format for the MPS tools.
 
 - **Modules**: The top-level containers in an MPS project.
     - **Solution**: Contains user code (models).
@@ -25,32 +31,37 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 
 ### 1. Finding Models, Modules, and Languages
 - A fully qualified name or a unique persistent reference is needed to unambiguously represent an entity.
-- If given an incomplete or shortened name (e.g., `j.m.l.core`), use `get_MPS_project_structure` with eager filtering to find the full name.
+- If given an incomplete or shortened name (e.g., `j.m.l.core`), use `mps_mcp_get_project_structure` with eager filtering to find the full name.
 - Single-letter packages usually expand: `j` -> `jetbrains`, `m` -> `mps`, `l` -> `lang`.
-- For incomplete names call `get_MPS_project_structure` with eager filtering.
-- Newly created languages might not be discoverable by specialized language tools until they are compiled. Use `get_MPS_project_structure` to find them as modules and investigate their `structure` model.
-- Use `get_MPS_project_structure` to read the organization of an MPS project and to understand the dependencies of a module or dependencies and used languages of a model.
+- For incomplete names call `mps_mcp_get_project_structure` with eager filtering.
+- Newly created languages might not be discoverable by specialized language tools until they are compiled. Use `mps_mcp_get_project_structure` to find them as modules and investigate their `structure` model.
+- Use `mps_mcp_get_project_structure` to read the organization of an MPS project and to understand the dependencies of a module or dependencies and used languages of a model.
+- When not explicitly pointing to a node, assume the user is refering to the root node currently open in the editor and possibly also a selected node within that root node. Use `mps_mcp_get_current_editor_root_node`.
+- WHEN asked for the 'current model' or 'current module/solution/language/generator', it is the model/module of the root node currently open in the editor - use `mps_mcp_get_current_editor_root_node`.
 
 ### 2. Adding or Updating MPS Code (Nodes)
-- Resolve the target node first (e.g., using `get_current_editor_MPS_root_node` and `search_MPS_root_node_by_name`).
+- Resolve the target node first (e.g., using `mps_mcp_get_current_editor_root_node` and `mps_mcp_search_root_node_by_name`).
 - Each node is an instance of a concept. The allowed values, references and children of a node are defined by its concept. Node's 'conceptReference' identifies node's concept.
-- Prefer `get_MPS_concept_details` and `search_MPS_concepts` to find and explore concepts. Exploring root concepts of a language's structure model is less efficient. 
+- **Unambiguous Resolution**: Always provide both the `concept` name and its `conceptReference` (the `c:...` persistence form) when building JSON blueprints. Concept names alone can be ambiguous if multiple languages define a concept with the same name. The `conceptReference` ensures the exact intended concept is used for all assignability checks and node creation.
+- Prefer `mps_mcp_get_concept_details` and `mps_mcp_search_concepts` to find and explore concepts. Exploring root concepts of a language's structure model is less efficient. 
 - When creating new nodes/children, prefer concepts from the model's 'used languages'.
 - MPS code is written using JSON blueprints representing the node hierarchy.
 - The ids of nodes, concepts, models and modules never change. When used in JSON blueprints, be sure they are 100% accurate.
 - Role names (properties, children, references) must match the concept definition exactly.
 - When setting a property value on a node, make sure the type of the value matches the expected type of the property defined in the concept.
-- When setting a property typed to an enumeration, use `perform_MPS_structure_operation` (GET_ENUMERATION_LITERALS) to get the list of allowed values.
+- When setting a property typed to an enumeration, use `mps_mcp_perform_structure_operation` (GET_ENUMERATION_LITERALS) to get the list of allowed values.
 - Concepts extend other concepts and implement interface concepts. These are transitive relationships. Both extended concepts and implemented interfaces have an effect on assignability. 
 - When setting a reference to a target node, make sure the concept of the target node is assignable to the required concept of the reference role.
 - When adding/changing a child node, make sure the node's concept is not abstract and is assignable to the concept of the role.
 - Child roles as well as reference roles may be optional or required. Optional roles may be null. Required roles must have a value.
 - Child roles may be single-valued or multivalued. Single-valued roles can only have one child node. Multivalued roles can have multiple child nodes.
 - You must not create nodes of concept interfaces and abstract concepts.
-- Use `perform_MPS_structure_operation` (GET_ASSIGNABLE_CONCEPTS) to get a list of concepts assignable to node's references and node's children.
+- Use `mps_mcp_perform_structure_operation` (GET_ASSIGNABLE_CONCEPTS) to get a list of concepts assignable to node's references and node's children.
 - Do not add used languages explicitly up front. When a node is added to a model a dependency on the node's concept is added automatically.
 - Only add dependencies on models when a problem with a reference being out of scope is reported.
 - WHEN selecting a concept for node creation THEN verify it is concrete; avoid interface/abstract
+- User expected the entire JSON file representing MPS nodes to be read and presented without truncation.
+- WHEN large file output is truncated THEN read and return the file in sequential chunks
 
 
 #### JSON format for nodes
@@ -74,58 +85,70 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
   ]
 }
 ```
-### 3. Bulk node creation and updates
+### 3. Reference Formats and Resolution
+- Persistent references in MPS follow specific formats:
+    - **Node References** (used in `targetReference` or `target` fields): Start with `r:` (regular) or `i:` (stub/internal). Format: `r:model-uuid(model-name)#node-id`.
+    - **Concept References** (used in `conceptReference` field): Start with `c:`. Format: `c:language-uuid(language-name)/concept-id`.
+- **CRITICAL**: Never use a concept reference (`c:...`) where a node reference (`r:...`) is expected. If you need a reference to point to the **declaration node** of a concept (its definition), you must use its node reference.
+- To obtain the node reference (`r:...`) for a concept:
+    - Use `mps_mcp_get_concept_details` and check the **`sourceNode`** field in the response.
+    - Alternatively, use `mps_mcp_search_concepts` and check the `sourceNode` field for each match.
+- The `mps_mcp_insert_root_node_from_json` and `mps_mcp_set_node_references` tools will reject `c:...` strings in reference roles and will fail if a provided node reference cannot be resolved.
+
+### 4. Bulk node creation and updates
 - Identify the existing nodes that will be refered to by the nodes to be created.
 - Include the ids of these nodes in the json blueprint wherever they fit the role of target nodes.
 - The nodes that will be created as part of the bulk operation do not yet have a unique id (persistent reference) to include in the json blueprint. Leave the target references empty where they should be pointing to these not-existent nodes.
 - Once the bulk operation succeeds, remember to discover the ids (persistent references) of these newly created nodes and set them as targets for those empty references.
 
-### 4. Analyzing MPS Code and Languages
-- Use `show_MPS_node_representation` for a textual or html projection.
-- Use `print_MPS_node_json` for the structural JSON form.
-- Use `check_MPS_root_node_errors` to find errors in the code.
-- Use `perform_MPS_operation` for navigation and usage search.
-- Use `perform_MPS_structure_operation` to investigate the relationships between concepts and their assignability.
+### 5. Analyzing MPS Code and Languages
+- Use `mps_mcp_show_node_representation` for a textual or html projection.
+- Use `mps_mcp_print_node_json` for the structural JSON form.
+- Use `mps_mcp_check_root_node_problems` to find errors in the code.
+- Use `mps_mcp_perform_operation` for navigation and usage search.
+- Use `mps_mcp_perform_structure_operation` to investigate the relationships between concepts and their assignability.
 
-### 5. Additional skills - Handling unknown MPS languages
-- Use `list_MPS_skills` to get a list of additional MPS skills.
-- Use `get_MPS_skill` to acquire a particular skill and use it to write MPS code.
+### 6. Additional skills - Handling unknown MPS languages
+- Use `mps_mcp_list_skills` to get a list of additional MPS skills.
+- Use `mps_mcp_get_skill` to acquire a particular skill and use it to write MPS code.
 - Acquire the 'Writing BaseLanguage/Java code in MPS' skill as soon as you need to write any code in BaseLanguage or Java.
-- Acquire the 'Design an MPS language' skill as soon as you need to define or change a language or its concepts.
+- Acquire the 'Implement MPS language structure (concepts)' skill as soon as you need to define or change a language or its concepts.
 
 ## Available MCP Tools
 
 ### Project and Structure
-- `get_MPS_project_structure`: The universal tool to explore the project. Use `startingPoint` and filtering to avoid large responses.
+- `mps_mcp_get_project_structure`: The universal tool to explore the project. Use `startingPoint` and filtering to avoid large responses.
 
 ### Modules and Models
-- `get_MPS_module`, `create_MPS_module`, `update_MPS_module`, `delete_MPS_module`
-- `create_MPS_model`, `update_MPS_model`, `delete_MPS_model`
-- `add_MPS_module_dependency`, `add_MPS_model_dependency`, `add_MPS_model_used_language`
+- `mps_mcp_get_module`, `mps_mcp_create_module`, `mps_mcp_update_module`, `mps_mcp_delete_module`
+- `mps_mcp_create_model`, `mps_mcp_update_model`, `mps_mcp_delete_model`
+- `mps_mcp_add_module_dependency`, `mps_mcp_add_model_dependency`, `mps_mcp_add_model_used_language`
 
 ### Root Nodes and Nodes
-- `open_MPS_root_node`: Opens a root node in the editor.
-- `get_current_editor_MPS_root_node`: Identifies the node the user is currently looking at.
-- `create_MPS_root_node`, `update_MPS_root_node`, `delete_MPS_root_node`
-- `perform_MPS_operation`: General node navigation, search, and transformation.
-- `show_MPS_node_representation`: Shows the "visual" projection of a node.
-- `print_MPS_node_json`: Shows the underlying JSON structure.
-- `insert_MPS_root_node_from_json`: Bulk node creation. Leave the references empty if target nodes do not exist. Remember to set them later with `set_MPS_node_references` and `set_MPS_node_reference`.
-- `set_MPS_node_property`, `add_MPS_node_child`, `change_MPS_node_child`, `set_MPS_node_references`, `set_MPS_node_reference`.
-- `check_MPS_root_node_errors`: Validation tool. Use this frequently to ensure your changes are correct.
+- `mps_mcp_open_root_node`: Opens a root node in the editor.
+- `mps_mcp_get_current_editor_root_node`: Identifies the node the user is currently looking at.
+- `mps_mcp_create_root_node`, `mps_mcp_update_root_node`, `mps_mcp_delete_root_node`
+- `mps_mcp_perform_operation`: General node navigation, search, transformation and code generation/compilation.
+- `mps_mcp_show_node_representation`: Shows the "visual" projection of a node.
+- `mps_mcp_print_node_json`: Shows the underlying JSON structure.
+- `mps_mcp_insert_root_node_from_json`: Bulk node creation. Leave the references empty if target nodes do not exist. Remember to set them later with `mps_mcp_set_node_references`.
+- `mps_mcp_set_node_properties`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_delete_node_child`, `mps_mcp_set_node_references`.
+- `mps_mcp_check_root_node_problems`: Validation tool. Use this frequently to ensure your changes are correct.
 
 ### Language Definition
-- `get_MPS_concept_details`: Provides properties, children, and references for a list of concepts and/or concepts of specified languages.
-- `search_MPS_concepts`: Global search for concepts by name, alias or description using a list of search strings.
-- `perform_MPS_structure_operation`: Advanced language-aware operations like `CREATE_CONCEPTS`, `CREATE_ENUM`, `FIND_INSTANCES`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ASSIGNABLE_REFERENCES`.
+- `mps_mcp_get_concept_details`: Provides properties, children, and references for a list of concepts and/or concepts of specified languages. Make/rebuild languages with `mps_mcp_perform_operation` for `mps_mcp_get_concept_details` to see their concepts. 
+- `mps_mcp_search_concepts`: Global search for concepts by name, alias or description using a list of search strings.
+- `mps_mcp_perform_structure_operation`: Advanced language-aware operations like `CREATE_CONCEPTS`, `CREATE_ENUM`, `FIND_INSTANCES`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ASSIGNABLE_REFERENCES`.
 
 ## Workflow and Best Practices
 
-1.  **Initialize**: Always call `get_MPS_context` at the beginning of a session to understand the environment.
+1.  **Initialize**: Always call `mps_mcp_get_context` at the beginning of a session to understand the environment.
 2.  **Navigate with Precision**: Prefer using `startingPoint` and `reference` (ID) over names to avoid ambiguity.
 3.  **Respect the AST**: Remember that you are editing a tree. When writing Java (`BaseLanguage`), use `ParenthesizedExpression` if you are unsure about operation priorities in the tree structure.
-4.  **Learn from samples**: Study existing code to understand how to perform common tasks. Use `perform_MPS_structure_operation` (FIND_INSTANCES) to existing nodes of a given concept.
-5.  **Validate Frequently**: Run `check_MPS_root_node_errors` after making changes to ensure the model remains consistent.
+4.  **Learn from samples**: Study existing code to understand how to perform common tasks. Use `mps_mcp_perform_structure_operation` (FIND_INSTANCES) to existing nodes of a given concept.
+5   **Defensive Problem Checking**: Always use `mps_mcp_check_root_node_problems` immediately after inserting or modifying a complex node. A successful insertion "ok": true does not guarantee the resulting AST is semantically or structurally valid.
+6   **Validate Frequently**: Make/rebuild languages with `mps_mcp_perform_operation` after making changes to be able to import and use them as well as to see if the languages generate and compile.
+7.  **Missed skill adoption**: When an MPS skill is offered that can find models/modules/languages by name, the agent should decide to learn and use it to perform the lookup.
 
 Important detail: I like light blue color.
 ---

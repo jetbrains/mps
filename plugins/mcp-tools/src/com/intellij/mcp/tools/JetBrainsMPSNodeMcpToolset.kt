@@ -14,23 +14,17 @@ import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.progress.EmptyProgressMonitor
-import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.validation.StructureChecker
 import jetbrains.mps.smodel.BaseScope
-import jetbrains.mps.smodel.SModelInternal
 import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.withContext
-import org.jetbrains.mps.openapi.language.*
-import org.jetbrains.mps.openapi.model.EditableSModel
-import org.jetbrains.mps.openapi.model.SModel
-import org.jetbrains.mps.openapi.model.SModelReference
-import org.jetbrains.mps.openapi.model.SNode
-import org.jetbrains.mps.openapi.model.SNodeAccessUtil
+import org.jetbrains.mps.openapi.language.SEnumeration
+import org.jetbrains.mps.openapi.model.*
 import org.jetbrains.mps.openapi.module.FindUsagesFacade
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SModuleReference
@@ -48,7 +42,8 @@ enum class MPSNodeOperation {
     MOVE_NODE_TO_PARENT,
     NODE_INDEX,
     SIBLINGS,
-    GET_CHILD_ROLE
+    GET_CHILD_ROLE,
+    MAKE
 }
 
 class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
@@ -56,7 +51,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription("""
         Performs a specific operation on an MPS node, such as getting its parent or containing root, or moving a child node.
-        Returns JSON format.
+        Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. The exact 'data' shape depends on the operation (see below).
         Parameters are passed as a JSON object string.
         Supported operations and their parameters:
         - GET_PARENT: Returns the parent of the specified node.
@@ -76,7 +71,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           }
         - MOVE_CHILD: Moves an existing child node within its containing collection to a specified position (index).
           Indexing starts at 0. Use -1 for the last position. Fails if the index is out of bounds or the child node is not part of the specified role.
-          Returns JSON format of the parent node.
+          Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
           Parameters: { 
             "nodeRef": "Persistent reference of the parent node (SNodeReference)", 
             "childRole": "The role name of the child collection", 
@@ -102,9 +97,12 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         - GET_CHILD_ROLE: Returns the description of the containing containment role for a node in a child position.
           Returns JSON: { ok, data: { role, type, typeReference, cardinality } }
           Parameters: { "nodeRef": "Persistent reference of the node (SNodeReference)" }
+        - MAKE: Performs Make or Rebuild on a list of models or modules, or the whole project.
+          Returns JSON: { ok, data: { success: boolean, message: string, details: [ { kind, text }, ... ] } }
+          Parameters: { "models": "Optional: list of persistent model references", "modules": "Optional: list of persistent module references", "rebuild": "Optional: boolean, default false", "wholeProject": "Optional: boolean, default false. If true, 'models' and 'modules' must be absent." }
     """)
-    suspend fun perform_MPS_operation(
-        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, MOVE_CHILD, GET_MODEL_FOR_NODE, FIND_USAGES, MOVE_NODE_TO_PARENT, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE)") operation: MPSNodeOperation,
+    suspend fun mps_mcp_perform_operation(
+        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, MOVE_CHILD, GET_MODEL_FOR_NODE, FIND_USAGES, MOVE_NODE_TO_PARENT, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE, MAKE)") operation: MPSNodeOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
         currentCoroutineContext().reportToolActivity("Performing MPS operation: $operation")
@@ -123,103 +121,92 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 MPSNodeOperation.GET_PARENT, MPSNodeOperation.GET_ROOT, MPSNodeOperation.GET_MODEL_FOR_NODE,
                 MPSNodeOperation.NODE_INDEX, MPSNodeOperation.SIBLINGS, MPSNodeOperation.GET_CHILD_ROLE -> {
                     val nodeRef = params.get("nodeRef")?.asString ?: return errJson("Parameter 'nodeRef' is missing")
-                    var reply: String? = null
-                    mpsProject.repository.modelAccess.runReadAction {
+                    executeRead(mpsProject) {
                         try {
-                            val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                            val node = sNodeRef.resolve(mpsProject.repository)
-                            if (node == null) {
-                                reply = errJson("Node '$nodeRef' not found")
-                            } else {
-                                when (operation) {
-                                    MPSNodeOperation.GET_PARENT -> {
-                                        val parent = node.parent
-                                        reply = if (parent != null) okJson(nodeInfoJson(parent)) else okJson("null")
+                            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                            val node = sNodeRef?.resolve(mpsProject.repository)
+                                ?: return@executeRead errJson("Node '$nodeRef' not found")
+                            
+                            when (operation) {
+                                MPSNodeOperation.GET_PARENT -> {
+                                    val parent = node.parent
+                                    if (parent != null) okJson(nodeInfoJson(parent)) else okJson("null")
+                                }
+                                MPSNodeOperation.GET_ROOT -> {
+                                    val root = node.containingRoot
+                                    if (root != null) okJson(nodeInfoJson(root)) else okJson("null")
+                                }
+                                MPSNodeOperation.GET_MODEL_FOR_NODE -> {
+                                    val model = node.model
+                                    if (model != null) {
+                                        okJson(modelReferenceJson(model.reference))
+                                    } else {
+                                        errJson("Node '$nodeRef' is not in a model")
                                     }
-                                    MPSNodeOperation.GET_ROOT -> {
-                                        val root = node.containingRoot
-                                        reply = if (root != null) okJson(nodeInfoJson(root)) else okJson("null")
-                                    }
-                                    MPSNodeOperation.GET_MODEL_FOR_NODE -> {
-                                        val model = node.model
-                                        reply = if (model != null) {
-                                            okJson(modelReferenceJson(model.reference))
-                                        } else {
-                                            errJson("Node '$nodeRef' is not in a model")
-                                        }
-                                    }
-                                    MPSNodeOperation.NODE_INDEX -> {
-                                        val parent = node.parent
-                                        if (parent == null) {
-                                            reply = errJson("Node is a root node")
-                                        } else {
-                                            val link = node.containmentLink
-                                            if (link == null) {
-                                                reply = errJson("Node does not have a containment role")
-                                            } else if (!link.isMultiple) {
-                                                reply = errJson("Node is not in a multiple role")
-                                            } else {
-                                                val index = parent.getChildren(link).indexOf(node)
-                                                reply = okJson(index.toString())
-                                            }
-                                        }
-                                    }
-                                    MPSNodeOperation.SIBLINGS -> {
-                                        val parent = node.parent
-                                        if (parent == null) {
-                                            reply = errJson("Node is a root node")
-                                        } else {
-                                            val link = node.containmentLink
-                                            if (link == null) {
-                                                reply = errJson("Node does not have a containment role")
-                                            } else if (!link.isMultiple) {
-                                                reply = errJson("Node is not in a multiple role")
-                                            } else {
-                                                val siblings = parent.getChildren(link)
-                                                reply = okJson("[" + siblings.map { nodeInfoJson(it) }.joinToString(",") + "]")
-                                            }
-                                        }
-                                    }
-                                    MPSNodeOperation.GET_CHILD_ROLE -> {
+                                }
+                                MPSNodeOperation.NODE_INDEX -> {
+                                    val parent = node.parent
+                                    if (parent == null) {
+                                        errJson("Node is a root node")
+                                    } else {
                                         val link = node.containmentLink
                                         if (link == null) {
-                                            reply = errJson("Node is a root node or not in a containment role")
+                                            errJson("Node does not have a containment role")
+                                        } else if (!link.isMultiple) {
+                                            errJson("Node is not in a multiple role")
                                         } else {
-                                            reply = okJson(containmentLinkInfoJson(link))
+                                            val index = parent.getChildren(link).indexOf(node)
+                                            okJson(index.toString())
                                         }
                                     }
-                                    else -> reply = errJson("Unsupported operation: $operation")
                                 }
+                                MPSNodeOperation.SIBLINGS -> {
+                                    val parent = node.parent
+                                    if (parent == null) {
+                                        errJson("Node is a root node")
+                                    } else {
+                                        val link = node.containmentLink
+                                        if (link == null) {
+                                            errJson("Node does not have a containment role")
+                                        } else if (!link.isMultiple) {
+                                            errJson("Node is not in a multiple role")
+                                        } else {
+                                            val siblings = parent.getChildren(link)
+                                            okJson("[" + siblings.map { nodeInfoJson(it) }.joinToString(",") + "]")
+                                        }
+                                    }
+                                }
+                                MPSNodeOperation.GET_CHILD_ROLE -> {
+                                    val link = node.containmentLink
+                                    if (link == null) {
+                                        errJson("Node is a root node or not in a containment role")
+                                    } else {
+                                        okJson(containmentLinkInfoJson(link, mpsProject.repository))
+                                    }
+                                }
+                                else -> errJson("Unsupported operation: $operation")
                             }
                         } catch (e: Exception) {
-                            reply = errJson(e.message)
+                            errJson(e.message)
                         }
                     }
-                    reply!!
                 }
                 MPSNodeOperation.FIND_USAGES -> {
                     val nodeRef = params.get("nodeRef")?.asString ?: return errJson("Parameter 'nodeRef' is missing")
                     val scopeParam = params.get("scope")?.asString ?: "editable"
-                    var reply: String? = null
-                    mpsProject.repository.modelAccess.runReadAction {
+                    executeRead(mpsProject) {
                         try {
-                            val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                            val node = sNodeRef.resolve(mpsProject.repository)
-                            if (node == null) {
-                                reply = errJson("Node '$nodeRef' not found")
-                                return@runReadAction
-                            }
+                            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                            val node = sNodeRef?.resolve(mpsProject.repository)
+                                ?: return@executeRead errJson("Node '$nodeRef' not found")
 
                             val searchScope: SearchScope = when (scopeParam) {
                                 "all" -> GlobalScope(mpsProject.repository)
                                 "editable" -> EditableFilteringScope(GlobalScope(mpsProject.repository))
                                 "models" -> {
                                     val modelsArray = params.getAsJsonArray("models")
-                                    if (modelsArray == null) {
-                                        reply = errJson("Parameter 'models' is missing for scope 'models'")
-                                        return@runReadAction
-                                    }
-                                    val modelRefs = modelsArray.map { PersistenceFacade.getInstance().createModelReference(it.asString) }.toSet()
+                                        ?: return@executeRead errJson("Parameter 'models' is missing for scope 'models'")
+                                    val modelRefs = modelsArray.mapNotNull { resolveModel(mpsProject.repository, it.asString)?.reference }.toSet()
                                     object : BaseScope() {
                                         override fun getModules(): Iterable<SModule> = modelRefs.mapNotNull { it.resolve(mpsProject.repository)?.module }.distinct()
                                         override fun getModels(): Iterable<SModel> = modelRefs.mapNotNull { it.resolve(mpsProject.repository) }
@@ -229,11 +216,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                                 }
                                 "modules" -> {
                                     val modulesArray = params.getAsJsonArray("modules")
-                                    if (modulesArray == null) {
-                                        reply = errJson("Parameter 'modules' is missing for scope 'modules'")
-                                        return@runReadAction
-                                    }
-                                    val moduleRefs = modulesArray.map { PersistenceFacade.getInstance().createModuleReference(it.asString) }.toSet()
+                                        ?: return@executeRead errJson("Parameter 'modules' is missing for scope 'modules'")
+                                    val moduleRefs = modulesArray.mapNotNull { resolveModule(mpsProject.repository, it.asString)?.moduleReference }.toSet()
                                     object : BaseScope() {
                                         override fun getModules(): Iterable<SModule> = moduleRefs.mapNotNull { it.resolve(mpsProject.repository) }
                                         override fun getModels(): Iterable<SModel> = getModules().flatMap { it.models }
@@ -241,10 +225,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                                         override fun resolve(reference: SModelReference): SModel? = reference.resolve(mpsProject.repository)
                                     }
                                 }
-                                else -> {
-                                    reply = errJson("Unsupported scope: $scopeParam")
-                                    return@runReadAction
-                                }
+                                else -> return@executeRead errJson("Unsupported scope: $scopeParam")
                             }
 
                             val results = mutableSetOf<SNode>()
@@ -253,19 +234,18 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                             }, EmptyProgressMonitor())
 
                             val jsonResults = results.map { nodeInfoJson(it) }
-                            reply = okJson("[" + jsonResults.joinToString(",") + "]")
+                            okJson("[" + jsonResults.joinToString(",") + "]")
                         } catch (e: Exception) {
-                            reply = errJson(e.message)
+                            errJson(e.message)
                         }
                     }
-                    reply!!
                 }
                 MPSNodeOperation.MOVE_CHILD -> {
                     val nodeRef = params.get("nodeRef")?.asString ?: return errJson("Parameter 'nodeRef' is missing")
                     val childRole = params.get("childRole")?.asString ?: return errJson("Parameter 'childRole' is missing")
                     val childNodeRef = params.get("childNodeRef")?.asString ?: return errJson("Parameter 'childNodeRef' is missing")
                     val position = params.get("position")?.asInt ?: return errJson("Parameter 'position' is missing")
-                    move_MPS_node_child(nodeRef, childRole, childNodeRef, position)
+                    moveNodeChild(nodeRef, childRole, childNodeRef, position)
                 }
                 MPSNodeOperation.MOVE_NODE_TO_PARENT -> {
                     val nodeRef = params.get("nodeRef")?.asString ?: return errJson("Parameter 'nodeRef' is missing")
@@ -273,7 +253,68 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     val role = params.get("role")?.asString
                     val position = if (params.has("position")) params.get("position").asInt else null
                     val modelRef = params.get("modelRef")?.asString
-                    move_MPS_node_to_parent(nodeRef, newParentRef, role, position, modelRef)
+                    moveNodeToParent(nodeRef, newParentRef, role, position, modelRef)
+                }
+                MPSNodeOperation.MAKE -> {
+                    val modelsArray = params.getAsJsonArray("models")
+                    val modulesArray = params.getAsJsonArray("modules")
+                    val rebuild = params.get("rebuild")?.asBoolean ?: false
+                    val wholeProject = params.get("wholeProject")?.asBoolean ?: false
+
+                    if (wholeProject) {
+                        if (modelsArray != null || modulesArray != null) {
+                            return errJson("Parameters 'models' and 'modules' must not be provided when 'wholeProject' is true")
+                        }
+                    } else if (modelsArray == null && modulesArray == null) {
+                        return errJson("At least one of 'models', 'modules' or 'wholeProject' parameters must be provided")
+                    }
+
+                    val modelsToMake = mutableListOf<SModel>()
+                    val modulesToMake = mutableListOf<SModule>()
+                    mpsProject.modelAccess.runReadAction {
+                        if (wholeProject) {
+                            // Include all project modules (with generators) and all their models
+                            modulesToMake.addAll(mpsProject.projectModulesWithGenerators)
+                            for (m in mpsProject.scope.models) {
+                                modelsToMake.add(m)
+                            }
+                        } else {
+                            modelsArray?.forEach {
+                                val modelRefStr = it.asString
+                                try {
+                                    val model = resolveModel(mpsProject.repository, modelRefStr)
+                                    if (model != null) {
+                                        modelsToMake.add(model)
+                                        model.module?.let { mod -> modulesToMake.add(mod) }
+                                    }
+                                } catch (e: Exception) {
+                                    // Ignore invalid model refs
+                                }
+                            }
+                            modulesArray?.forEach {
+                                val moduleRefStr = it.asString
+                                try {
+                                    val module = resolveModule(mpsProject.repository, moduleRefStr)
+                                    if (module != null) {
+                                        modulesToMake.add(module)
+                                        modelsToMake.addAll(module.models)
+                                    }
+                                } catch (e: Exception) {
+                                    // Ignore invalid module refs
+                                }
+                            }
+                        }
+                    }
+
+                    // Use shared performMake function from AbstractOps
+                    val makeResult = performMake(mpsProject, modelsToMake, modulesToMake, rebuild)
+                    val result = mutableMapOf<String, Any>()
+                    result["success"] = makeResult.success
+                    result["message"] = makeResult.message
+                    if (makeResult.details.isNotEmpty()) {
+                        result["details"] = makeResult.details
+                    }
+                    okJson(Gson().toJson(result))
                 }
             }
         } catch (e: Exception) {
@@ -291,7 +332,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         }
         The file contains either HTML or plain text, depending on the 'asHtml' parameter.
     """)
-    suspend fun show_MPS_node_representation(
+    suspend fun mps_mcp_show_node_representation(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("Whether to return HTML (true) or plain text (false). Defaults to false.") asHtml: Boolean = false
     ): String {
@@ -304,8 +345,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.runReadAction {
                     try {
-                        val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                        val node = sNodeRef.resolve(mpsProject.repository)
+                        val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                        val node = sNodeRef?.resolve(mpsProject.repository)
                         if (node == null) {
                             reply = errJson("Node '$nodeRef' not found")
                             return@runReadAction
@@ -339,6 +380,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpDescription("""
         Checks the specified MPS node and its descendants for errors, warnings, and infos. If any problems in the code are found it saves the result to a local text file.
         Returns either a "no problems found" message or a deep printout of the node with problems included.
+        Alternatively, if 'onlyNodesWithProblems' is true, it returns a concise collection of only those nodes in the subtree that have problems.
         Returns JSON format with the path to the local file:
         {
           "ok": true,
@@ -372,8 +414,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           }
         }
     """)
-    suspend fun check_MPS_root_node_errors(
-        @McpDescription("Persistent form of SNodeReference") nodeRef: String
+    suspend fun mps_mcp_check_root_node_problems(
+        @McpDescription("Persistent form of SNodeReference") nodeRef: String,
+        @McpDescription("If true, returns only nodes with problems in a list instead of a full tree (default = true)") onlyNodesWithProblems: Boolean = true
     ): String {
         currentCoroutineContext().reportToolActivity("Checking MPS node errors")
         val project = currentCoroutineContext().project
@@ -418,6 +461,14 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 // Check if any problems exist for the node or its descendants
                 fun hasProblems(n: SNode): Boolean {
                     if (problems.containsKey(n)) return true
+                    
+                    // Custom checks for empty enums and invalid properties
+                    for (prop in n.concept.properties) {
+                        val value = SNodeAccessUtil.getPropertyValue(n, prop)?.let { prop.type.toString(it) }
+                        if (prop.type is SEnumeration && (value == null || value.isEmpty())) return true
+                        if (value != null && value.isNotEmpty() && !prop.isValid(value)) return true
+                    }
+
                     for (child in n.children) {
                         if (hasProblems(child)) return true
                     }
@@ -427,7 +478,11 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 if (!hasProblems(node)) {
                     reply = okJson("\"no problems found\"")
                 } else {
-                    val json = nodeWithProblemsToJson(node, problems)
+                    val json = if (onlyNodesWithProblems) {
+                        nodeWithProblemsListToJson(node, problems)
+                    } else {
+                        nodeWithProblemsToJson(node, problems)
+                    }
                     val tempFile = saveToTempFile(json)
                     reply = okJson("\"" + escapeJson(tempFile.absolutePath) + "\"")
                 }
@@ -475,7 +530,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           }
         }
     """)
-    suspend fun print_MPS_node_json(
+    suspend fun mps_mcp_print_node_json(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("Whether to perform a deep (true) or shallow (false) printout. Defaults to false.") deep: Boolean = false
     ): String {
@@ -503,12 +558,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         return reply!!
     }
 
-//    @McpTool
-//    @McpDescription("""
-//        Sets or adds a value to a specified property of the given MPS node.
-//        Returns JSON format of the updated node.
-//    """)
-    private suspend fun set_MPS_node_property(
+    private suspend fun setNodeProperty(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("The name of the property to set") propertyName: String,
         @McpDescription("The new value for the property") propertyValue: String
@@ -519,33 +569,16 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription("""
         Deletes the value of a specified property of the given MPS node.
-        Returns JSON format of the updated node.
+        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun delete_MPS_node_property(
+    suspend fun mps_mcp_delete_node_property(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("The name of the property to delete") propertyName: String
     ): String {
         return update_node_property(nodeRef, propertyName, null)
     }
 
-
-//    @McpTool
-//    @McpDescription("Sets an enumeration property of an MPS node.")
-//    suspend fun set_MPS_node_enumeration_property(
-//        @McpDescription("Persistent form of SNodeReference") nodeRef: String,
-//        @McpDescription("The name of the property to set") propertyName: String,
-//        @McpDescription("The name of the enumeration literal to set") literalName: String
-//    ): String {
-//        return update_node_property(nodeRef, propertyName, literalName)
-//    }
-
-//    @McpTool
-//    @McpDescription("""
-//        Sets a target node to a specified reference role of the given MPS node.
-//        Ensures model and module dependencies are added if the target is in a different model/module.
-//        Returns JSON format of the updated node.
-//    """)
-    private suspend fun set_MPS_node_reference(
+    private suspend fun setNodeReference(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("The role name of the reference") referenceRole: String,
         @McpDescription("Persistent form of the target SNodeReference") targetNodeRef: String
@@ -559,14 +592,14 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         Receives a collection of triplets (nodeRef, referenceRole, targetNodeRef) and sets the specified reference individually for each triplet. Each triplet is represented as a list of three strings.
         Returns JSON format of the results for all triplets.
     """)
-    suspend fun set_MPS_node_references(
+    suspend fun mps_mcp_set_node_references(
         @McpDescription("A collection of triplets (nodeRef, referenceRole, targetNodeRef), each as a list of three strings")
         references: List<List<String>>
     ): String {
         val results = mutableListOf<String>()
         for (triplet in references) {
             if (triplet.size >= 3) {
-                results.add(set_MPS_node_reference(triplet[0], triplet[1], triplet[2]))
+                results.add(setNodeReference(triplet[0], triplet[1], triplet[2]))
             } else {
                 results.add(errJson("Invalid reference triplet: expected at least 3 elements"))
             }
@@ -580,14 +613,14 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         Receives a collection of triplets (nodeRef, propertyName, propertyValue) and sets the specified properties individually for each triplet. Each triplet is represented as a list of three strings.
         Returns JSON format of the results for all triplets.
     """)
-    suspend fun set_MPS_node_properties(
+    suspend fun mps_mcp_set_node_properties(
         @McpDescription("A collection of triplets (nodeRef, propertyName, propertyValue), each as a list of three strings")
         properties: List<List<String>>
     ): String {
         val results = mutableListOf<String>()
         for (triplet in properties) {
             if (triplet.size >= 3) {
-                results.add(set_MPS_node_property(triplet[0], triplet[1], triplet[2]))
+                results.add(setNodeProperty(triplet[0], triplet[1], triplet[2]))
             } else {
                 results.add(errJson("Invalid property triplet: expected at least 3 elements"))
             }
@@ -598,13 +631,15 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription("""
         Deletes the target node from a specified reference role of the given MPS node.
-        Returns JSON format of the updated node.
+        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun delete_MPS_node_reference(
+    suspend fun mps_mcp_delete_node_reference(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("The role name of the reference") referenceRole: String
     ): String {
-        return update_node_reference(nodeRef, referenceRole, null)
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+        return update_node_reference(mpsProject, nodeRef, referenceRole, null)
     }
 
     @McpTool
@@ -635,14 +670,17 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             }
           ]
         }
-        Returns JSON format of the parent node.
+        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun add_MPS_node_child(
+    suspend fun mps_mcp_add_node_child(
         @McpDescription("Persistent form of the parent SNodeReference") nodeRef: String,
         @McpDescription("The role name of the child") childRole: String,
-        @McpDescription("Absolute path to a local temporary file containing the JSON description of the child node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") childJson: String
+        @McpDescription("Absolute path to a local temporary file containing the JSON description of the child node's deep printout. targetReference can be placeholders or empty and set later, but conceptReference must be valid.") childJson: String
     ): String {
-        return update_node_child(nodeRef, childRole, childJson, null)
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+        val actualJson = try { readFromFile(childJson) } catch (e: Exception) { return errJson(e.message) }
+        return update_node_child(mpsProject, nodeRef, childRole, actualJson, null)
     }
 
     @McpTool
@@ -672,249 +710,42 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             }
           ]
         }
-        Returns JSON format of the parent node.
+        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun replace_MPS_node_child(
+    suspend fun mps_mcp_replace_node_child(
         @McpDescription("Persistent form of the SNodeReference of the child to replace") childNodeRef: String,
         @McpDescription("Absolute path to a local temporary file containing the JSON description of the new child node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") childJson: String
     ): String {
-        return update_node_child(null, null, childJson, childNodeRef)
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+        val actualJson = try { readFromFile(childJson) } catch (e: Exception) { return errJson(e.message) }
+        return update_node_child(mpsProject, null, null, actualJson, childNodeRef)
     }
 
     @McpTool
     @McpDescription("""
         Deletes a specified child node from its parent.
-        Returns JSON format of the parent node.
+        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun delete_MPS_node_child(
+    suspend fun mps_mcp_delete_node_child(
         @McpDescription("Persistent form of the SNodeReference of the child to delete") childNodeRef: String
     ): String {
-        return update_node_child(null, null, null, childNodeRef)
+        val project = currentCoroutineContext().project
+        val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
+        return update_node_child(mpsProject, null, null, null, childNodeRef)
     }
 
     private suspend fun update_node_child(nodeRef: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?): String {
-        currentCoroutineContext().reportToolActivity("Updating MPS node child")
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        return try {
-            val actualJson = if (childJson != null) readFromFile(childJson) else null
-            var result: String? = null
-            var error: String? = null
-            
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val repo = mpsProject.repository
-                        val gson = Gson()
-                        
-                        if (childToReplaceOrDeleteRef != null) {
-                            // Replacement or Deletion
-                            val sChildNodeRef = PersistenceFacade.getInstance().createNodeReference(childToReplaceOrDeleteRef)
-                            val childNode = sChildNodeRef.resolve(repo)
-                            if (childNode == null) {
-                                error = "Child node '$childToReplaceOrDeleteRef' not found"
-                                return@executeCommand
-                            }
-                            
-                            val parent = childNode.parent
-                            if (parent == null) {
-                                error = "Node '$childToReplaceOrDeleteRef' has no parent (it might be a root node)"
-                                return@executeCommand
-                            }
-                            
-                            val model = parent.model
-                            if (model !is EditableSModel) {
-                                error = "Model containing the node is not editable"
-                                return@executeCommand
-                            }
-                            
-                            val role = childNode.containmentLink ?: return@executeCommand
-                            
-                            if (actualJson != null) {
-                                // Replacement
-                                val jsonObject = gson.fromJson(actualJson, JsonObject::class.java)
-                                val newChild = try {
-                                    instantiateNode(jsonObject, model)
-                                } catch (e: Exception) {
-                                    error = "Failed to instantiate new child node from JSON: ${e.message}"
-                                    null
-                                }
-                                if (newChild == null) {
-                                    if (error == null) error = "Failed to instantiate new child node from JSON"
-                                    return@executeCommand
-                                }
-                                if (!newChild.concept.isSubConceptOf(role.targetConcept)) {
-                                    error = "Child node concept '${newChild.concept.name}' is not assignable to expected concept '${role.targetConcept.name}' for role '${role.name}'"
-                                    return@executeCommand
-                                }
-                                
-                                parent.insertChildBefore(role, newChild, childNode)
-                                childNode.delete()
-                                model.save()
-                                result = nodeInfoJson(parent)
-                            } else {
-                                // Deletion
-                                childNode.delete()
-                                model.save()
-                                result = nodeInfoJson(parent)
-                            }
-                        } else if (nodeRef != null && childRole != null && actualJson != null) {
-                            // Addition
-                            val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                            val parent = sNodeRef.resolve(repo)
-                            if (parent == null) {
-                                error = "Parent node '$nodeRef' not found"
-                                return@executeCommand
-                            }
-                            
-                            val model = parent.model
-                            if (model !is EditableSModel) {
-                                error = "Model containing the node is not editable"
-                                return@executeCommand
-                            }
-                            
-                            val role = parent.concept.containmentLinks.find { it.name == childRole }
-                            if (role == null) {
-                                error = "Child role '$childRole' not found in concept '${parent.concept.name}'"
-                                return@executeCommand
-                            }
-                            
-                            val jsonObject = gson.fromJson(actualJson, JsonObject::class.java)
-                            val newChild = try {
-                                instantiateNode(jsonObject, model)
-                            } catch (e: Exception) {
-                                error = "Failed to instantiate child node from JSON: ${e.message}"
-                                null
-                            }
-                            if (newChild == null) {
-                                if (error == null) error = "Failed to instantiate child node from JSON"
-                                return@executeCommand
-                            }
-                            
-                            if (!role.isMultiple) {
-                                parent.getChildren(role).forEach { it.delete() }
-                            }
-                            
-                            if (!newChild.concept.isSubConceptOf(role.targetConcept)) {
-                                error = "Child node concept '${newChild.concept.name}' is not assignable to expected concept '${role.targetConcept.name}' for role '${role.name}'"
-                                return@executeCommand
-                            }
-                            
-                            parent.addChild(role, newChild)
-                            model.save()
-                            result = nodeInfoJson(parent)
-                        } else {
-                            error = "Invalid parameters for child update"
-                        }
-                    } catch (e: Exception) {
-                        error = e.message
-                    }
-                }
-            }
-            
-            if (error != null) errJson(error)
-            else if (result != null) okJson(result)
-            else errJson("Failed to update node child")
-        } catch (e: Exception) {
-            errJson(e.message)
-        }
+        val actualJson = childJson?.let { try { readFromFile(it) } catch (e: Exception) { return errJson(e.message) } }
+        return update_node_child(mpsProject, nodeRef, childRole, actualJson, childToReplaceOrDeleteRef)
     }
 
     private suspend fun update_node_reference(nodeRef: String, referenceRole: String, targetNodeRefStr: String?): String {
-        currentCoroutineContext().reportToolActivity("Updating MPS node reference '$referenceRole'")
         val project = currentCoroutineContext().project
         val mpsProject = ProjectHelper.fromIdeaProject(project) ?: return errJson("No MPS project available")
-
-        return try {
-            var result: String? = null
-            var error: String? = null
-            
-            withContext(Dispatchers.EDT) {
-                mpsProject.repository.modelAccess.executeCommand {
-                    try {
-                        val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                        val node = sNodeRef.resolve(mpsProject.repository)
-                        if (node == null) {
-                            error = "Node '$nodeRef' not found"
-                            return@executeCommand
-                        }
-                        
-                        val model = node.model
-                        if (model !is EditableSModel) {
-                            error = "Model containing the node is not editable"
-                            return@executeCommand
-                        }
-
-                        val sReferenceLink = node.concept.referenceLinks.find { it.name == referenceRole }
-                        if (sReferenceLink == null) {
-                            error = "Reference link '$referenceRole' not found in concept '${node.concept.name}'"
-                            return@executeCommand
-                        }
-
-                        if (targetNodeRefStr != null) {
-                            val targetNodeRef = PersistenceFacade.getInstance().createNodeReference(targetNodeRefStr)
-                            val targetNode = targetNodeRef.resolve(mpsProject.repository)
-                            if (targetNode != null) {
-                                val expectedConcept = sReferenceLink.targetConcept
-                                if (!targetNode.concept.isSubConceptOf(expectedConcept)) {
-                                    error = "Target node '${targetNode.presentation}' of concept '${targetNode.concept.name}' is not assignable to expected concept '${expectedConcept.name}' for reference link '$referenceRole'"
-                                    return@executeCommand
-                                }
-                            }
-                            node.setReference(sReferenceLink, targetNodeRef)
-
-                            // Dependency management
-                            if (model is SModelInternal) {
-                                val targetModelRef = targetNodeRef.modelReference
-                                if (targetModelRef != null && !model.modelImports.contains(targetModelRef)) {
-                                    model.addModelImport(targetModelRef)
-
-                                    val targetModel = targetModelRef.resolve(model.repository)
-                                    val targetModule = targetModel?.module
-                                    val currentModule = model.module
-                                    if (targetModule != null && currentModule != null && targetModule != currentModule) {
-                                        (currentModule as? AbstractModule)?.addDependency(targetModule.moduleReference, false)
-                                    }
-                                }
-                            }
-                        } else {
-                            // Deletion
-                            node.dropReference(sReferenceLink)
-                        }
-
-                        model.save()
-                        result = nodeInfoJson(node)
-                    } catch (e: Exception) {
-                        error = e.message
-                    }
-                }
-            }
-            
-            if (error != null) errJson(error)
-            else if (result != null) okJson(result)
-            else errJson("Failed to update node reference")
-        } catch (e: Exception) {
-            errJson(e.message)
-        }
-    }
-
-    private fun setProperty(node: SNode, sProperty: SProperty, propertyValue: String?) {
-        val type = sProperty.type
-        if (type is SEnumeration && propertyValue != null) {
-            val literal = type.getLiteral(propertyValue)
-            if (literal != null) {
-                SNodeAccessUtil.setPropertyValue(node, sProperty, literal)
-                return
-            }
-            // fallback to presentation
-            val byPresentation = type.literals.find { it.presentation == propertyValue }
-            if (byPresentation != null) {
-                SNodeAccessUtil.setPropertyValue(node, sProperty, byPresentation)
-                return
-            }
-        }
-        node.setProperty(sProperty, propertyValue)
+        return update_node_reference(mpsProject, nodeRef, referenceRole, targetNodeRefStr)
     }
 
     private suspend fun update_node_property(nodeRef: String, propertyName: String, propertyValue: String?): String {
@@ -929,8 +760,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
                     try {
-                        val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                        val node = sNodeRef.resolve(mpsProject.repository)
+                        val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                        val node = sNodeRef?.resolve(mpsProject.repository)
                         if (node == null) {
                             error = "Node '$nodeRef' not found"
                             return@executeCommand
@@ -965,7 +796,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         }
     }
 
-    private suspend fun move_MPS_node_child(
+    private suspend fun moveNodeChild(
         nodeRef: String,
         childRole: String,
         childNodeRef: String,
@@ -983,15 +814,15 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 mpsProject.repository.modelAccess.executeCommand {
                     try {
                         val repo = mpsProject.repository
-                        val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                        val parent = sNodeRef.resolve(repo)
+                        val sNodeRef = resolveNodeReference(repo, nodeRef)
+                        val parent = sNodeRef?.resolve(repo)
                         if (parent == null) {
                             error = "Parent node '$nodeRef' not found"
                             return@executeCommand
                         }
 
-                        val sChildNodeRef = PersistenceFacade.getInstance().createNodeReference(childNodeRef)
-                        val childNode = sChildNodeRef.resolve(repo)
+                        val sChildNodeRef = resolveNodeReference(repo, childNodeRef)
+                        val childNode = sChildNodeRef?.resolve(repo)
                         if (childNode == null) {
                             error = "Child node '$childNodeRef' not found"
                             return@executeCommand
@@ -1071,7 +902,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         }
     }
 
-    private suspend fun move_MPS_node_to_parent(
+    private suspend fun moveNodeToParent(
         nodeRef: String,
         newParentRef: String?,
         role: String?,
@@ -1090,8 +921,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 mpsProject.repository.modelAccess.executeCommand {
                     try {
                         val repo = mpsProject.repository
-                        val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                        val node = sNodeRef.resolve(repo)
+                        val sNodeRef = resolveNodeReference(repo, nodeRef)
+                        val node = sNodeRef?.resolve(repo)
                         if (node == null) {
                             error = "Node '$nodeRef' not found"
                             return@executeCommand
@@ -1108,8 +939,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                                 error = "Parameter 'role' is missing for MOVE_NODE_TO_PARENT with newParentRef"
                                 return@executeCommand
                             }
-                            val sNewParentRef = PersistenceFacade.getInstance().createNodeReference(newParentRef)
-                            val newParent = sNewParentRef.resolve(repo)
+                            val sNewParentRef = resolveNodeReference(repo, newParentRef)
+                            val newParent = sNewParentRef?.resolve(repo)
                             if (newParent == null) {
                                 error = "New parent node '$newParentRef' not found"
                                 return@executeCommand

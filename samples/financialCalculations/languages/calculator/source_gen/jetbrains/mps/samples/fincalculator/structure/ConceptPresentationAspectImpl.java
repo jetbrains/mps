@@ -40,6 +40,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Calculation:
         if (props_Calculation == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("Allows for a BaseLanguage calculation to be created as Java (BaseLanguage) statements with a ReturnStatement returning the required result");
           cpb.presentationByName();
           props_Calculation = cpb.create();
         }
@@ -54,6 +55,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.CalculationValue:
         if (props_CalculationValue == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("A simple constant, its type depends on the numeric type of the initializer");
           cpb.presentationByName();
           props_CalculationValue = cpb.create();
         }
@@ -94,7 +96,6 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Field:
         if (props_Field == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
-          cpb.presentationByName();
           props_Field = cpb.create();
         }
         return props_Field;
@@ -108,6 +109,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.InputField:
         if (props_InputField == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("Allows the user to insert a value of a given value_kind, in BaseLanguage, the Java type of InputField's value is 'double'");
           cpb.presentationByName();
           props_InputField = cpb.create();
         }
@@ -150,6 +152,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.OutputField:
         if (props_OutputField == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("A field that displays a calculated value using an expression on input fields and parameters");
           cpb.presentationByName();
           props_OutputField = cpb.create();
         }
@@ -164,6 +167,7 @@ public class ConceptPresentationAspectImpl extends ConceptPresentationAspectBase
       case LanguageConceptSwitch.Parameter:
         if (props_Parameter == null) {
           ConceptPresentationBuilder cpb = new ConceptPresentationBuilder();
+          cpb.shortDesc("An input field with a default value");
           cpb.presentationByName();
           props_Parameter = cpb.create();
         }

@@ -24,8 +24,10 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpDescription("""
         Adds a dependency (import) to an MPS model. 
         Also adds a "Default" dependency of the containing module on the target model's module.
+
+        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun add_MPS_model_dependency(
+    suspend fun mps_mcp_add_model_dependency(
         @McpDescription("Source persistent model reference")
         modelRefStr: String,
         @McpDescription("Target model name or reference")
@@ -85,8 +87,10 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Removes a dependency (import) from an MPS model.
+
+        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun remove_MPS_model_dependency(
+    suspend fun mps_mcp_remove_model_dependency(
         @McpDescription("Source persistent model reference")
         modelRefStr: String,
         @McpDescription("Target model reference")
@@ -133,8 +137,10 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Adds a used language or devkit to an MPS model.
+
+        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun add_MPS_model_used_language(
+    suspend fun mps_mcp_add_model_used_language(
         @McpDescription("Persistent model reference")
         modelRef: String,
         @McpDescription("Language or devkit name or reference")
@@ -206,8 +212,10 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Removes a used language or devkit from an MPS model.
+
+        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun remove_MPS_model_used_language(
+    suspend fun mps_mcp_remove_model_used_language(
         @McpDescription("Persistent model reference")
         modelRef: String,
         @McpDescription("Language or devkit reference")
@@ -275,9 +283,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     // ---- CREATE ----
     @McpTool
     @McpDescription("""
-        Creates a new, empty MPS model in the given module. Returns JSON.
+        Creates a new, empty MPS model in the given module.
+
+        Returns a JSON object with 'ok':true and 'data':{ name, reference, moduleReference, isReadOnly, present:true } on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun create_MPS_model(
+    suspend fun mps_mcp_create_model(
         @McpDescription("Module name") moduleName: String,
         @McpDescription("Model name") modelName: String
     ): String {
@@ -319,9 +329,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     // ---- UPDATE ----
     @McpTool
     @McpDescription("""
-        Updates an MPS model. Currently supports renaming. Returns JSON.
+        Updates an MPS model. Currently supports renaming.
+
+        Returns a JSON object with 'ok':true and 'data':{ name, reference, moduleReference, isReadOnly, present:true } on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun update_MPS_model(
+    suspend fun mps_mcp_update_model(
         @McpDescription("Persistent model reference")
         modelRef: String,
         @McpDescription("New model name")
@@ -362,8 +374,10 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Deletes an MPS model. Returns JSON.
+
+        Returns a JSON object with 'ok':true and 'data':{"name":"...", "deleted":true} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun delete_MPS_model(
+    suspend fun mps_mcp_delete_model(
         @McpDescription("Persistent model reference")
         modelRef: String
     ): String {
@@ -407,18 +421,6 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         } catch (e: Throwable) {
             errJson(e.message)
         }
-    }
-
-    private fun modelInfoJson(m: SModel): String {
-        val name = m.name.value
-        val moduleName = m.module?.moduleName ?: ""
-        val reference = PersistenceFacade.getInstance().asString(m.reference)
-        return "{" +
-                "\"name\":\"" + escapeJson(name) + "\"," +
-                "\"module\":\"" + escapeJson(moduleName) + "\"," +
-                "\"reference\":\"" + escapeJson(reference) + "\"," +
-                "\"readOnly\":" + m.isReadOnly + "," +
-                "\"present\":true}"
     }
 
     private fun resolveModel(mpsProject: MPSProject, modelRef: String): SModel? {

@@ -24,5 +24,6 @@
     <orderEntry type="module" module-name="editor-runtime" />
     <orderEntry type="module" module-name="project-check" />
     <orderEntry type="module" module-name="typesystemEngine" />
+    <orderEntry type="module" module-name="make-runtime" />
   </component>
 </module>

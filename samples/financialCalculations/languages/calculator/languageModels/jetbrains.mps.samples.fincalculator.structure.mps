@@ -18,11 +18,15 @@
       <concept id="3348158742936976479" name="jetbrains.mps.lang.structure.structure.EnumerationDeclaration" flags="ng" index="25R3W">
         <child id="3348158742936976577" name="members" index="25R1y" />
       </concept>
+      <concept id="7862711839422615209" name="jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation" flags="ng" index="t5JxF">
+        <property id="7862711839422615217" name="text" index="t5JxN" />
+      </concept>
       <concept id="1082978164218" name="jetbrains.mps.lang.structure.structure.DataTypeDeclaration" flags="ng" index="AxPO6">
         <property id="7791109065626895363" name="datatypeId" index="3F6X1D" />
       </concept>
       <concept id="1169125787135" name="jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration" flags="ig" index="PkWjJ">
         <property id="6714410169261853888" name="conceptId" index="EcuMT" />
+        <property id="4628067390765907488" name="conceptShortDescription" index="R4oN_" />
         <property id="4628067390765956802" name="abstract" index="R5$K7" />
         <property id="5092175715804935370" name="conceptAlias" index="34LRSv" />
         <child id="1071489727083" name="linkDeclaration" index="1TKVEi" />
@@ -52,6 +56,7 @@
     <language id="ceab5195-25ea-4f22-9b92-103b95ca8c0c" name="jetbrains.mps.lang.core">
       <concept id="1133920641626" name="jetbrains.mps.lang.core.structure.BaseConcept" flags="ng" index="2VYdi">
         <property id="1193676396447" name="virtualPackage" index="3GE5qa" />
+        <child id="5169995583184591170" name="smodelAttribute" index="lGtFl" />
       </concept>
       <concept id="1169194658468" name="jetbrains.mps.lang.core.structure.INamedConcept" flags="ngI" index="TrEIO">
         <property id="1169194664001" name="name" index="TrG5h" />
@@ -84,6 +89,7 @@
     <property role="TrG5h" value="InputField" />
     <property role="EcuMT" value="1241362608529" />
     <property role="34LRSv" value="input" />
+    <property role="R4oN_" value="Allows the user to insert a value of a given value_kind, in BaseLanguage, the Java type of InputField's value is 'double'" />
     <ref role="1TJDcQ" node="1Oh785uWQ0G" resolve="Field" />
     <node concept="PrWs8" id="i46YChP" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
@@ -93,6 +99,7 @@
     <property role="TrG5h" value="OutputField" />
     <property role="EcuMT" value="1241362815640" />
     <property role="34LRSv" value="output" />
+    <property role="R4oN_" value="A field that displays a calculated value using an expression on input fields and parameters" />
     <ref role="1TJDcQ" node="1Oh785uWQ0G" resolve="Field" />
     <node concept="1TJgyj" id="i470dVI" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT/aggregation" />
@@ -140,11 +147,15 @@
       <property role="3tVfz5" value="2094486643673034957" />
       <property role="TrG5h" value="numeric" />
     </node>
+    <node concept="t5JxF" id="4luVC1jg5Wh" role="lGtFl">
+      <property role="t5JxN" value="WHEN creating or updating fincalculator forms THEN set ValueKind explicitly (amount or number)" />
+    </node>
   </node>
   <node concept="1TIwiD" id="1Oh785uVCBI">
     <property role="EcuMT" value="2094486643673041390" />
     <property role="TrG5h" value="Parameter" />
     <property role="34LRSv" value="parameter" />
+    <property role="R4oN_" value="An input field with a default value" />
     <ref role="1TJDcQ" node="i46Yz6h" resolve="InputField" />
     <node concept="1TJgyi" id="1Oh785uVCBJ" role="1TKVEl">
       <property role="IQ2nx" value="2094486643673041391" />
@@ -166,6 +177,7 @@
   <node concept="1TIwiD" id="1Oh785uWQ0G">
     <property role="EcuMT" value="2094486643673358380" />
     <property role="TrG5h" value="Field" />
+    <property role="R5$K7" value="true" />
     <ref role="1TJDcQ" node="1Oh785uWmPg" resolve="Command" />
     <node concept="1TJgyi" id="1Oh785uUtIN" role="1TKVEl">
       <property role="IQ2nx" value="2094486643672734643" />
@@ -183,6 +195,9 @@
     <ref role="1TJDcQ" node="1Oh785uWmPg" resolve="Command" />
     <node concept="PrWs8" id="49kBZ1Lqm_P" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="t5JxF" id="4luVC1jgEaA" role="lGtFl">
+      <property role="t5JxN" value="A check box input that evaluates to a boolean value true/false. Refered to by instances of 'LogicalReference' in 'Calculation'" />
     </node>
   </node>
   <node concept="1TIwiD" id="49kBZ1LqmAC">
@@ -216,6 +231,9 @@
     <node concept="PrWs8" id="49kBZ1LqWqd" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
     </node>
+    <node concept="t5JxF" id="4luVC1jgEa$" role="lGtFl">
+      <property role="t5JxN" value="A drop-down box style input field, options as 'Option' concept instances, set value_kind to the desired type of selector's values" />
+    </node>
   </node>
   <node concept="1TIwiD" id="49kBZ1LqWqf">
     <property role="EcuMT" value="4779620959590794895" />
@@ -228,6 +246,9 @@
     </node>
     <node concept="PrWs8" id="49kBZ1LqWqg" role="PzmwI">
       <ref role="PrY4T" to="tpck:h0TrEE$" resolve="INamedConcept" />
+    </node>
+    <node concept="t5JxF" id="4luVC1jgEa_" role="lGtFl">
+      <property role="t5JxN" value="An option for Selector" />
     </node>
   </node>
   <node concept="1TIwiD" id="49kBZ1LqWso">
@@ -245,6 +266,7 @@
     <property role="EcuMT" value="2369396721457577845" />
     <property role="TrG5h" value="Calculation" />
     <property role="34LRSv" value="calculation" />
+    <property role="R4oN_" value="Allows for a BaseLanguage calculation to be created as Java (BaseLanguage) statements with a ReturnStatement returning the required result" />
     <ref role="1TJDcQ" node="1Oh785uWmPg" resolve="Command" />
     <node concept="1TJgyj" id="23xMseUtsxB" role="1TKVEi">
       <property role="IQ2ns" value="2369396721457678439" />
@@ -310,6 +332,7 @@
     <property role="EcuMT" value="5982026979498910643" />
     <property role="TrG5h" value="CalculationValue" />
     <property role="34LRSv" value="value" />
+    <property role="R4oN_" value="A simple constant, its type depends on the numeric type of the initializer" />
     <ref role="1TJDcQ" node="1Oh785uWmPg" resolve="Command" />
     <node concept="1TJgyj" id="5c4rtvXPueO" role="1TKVEi">
       <property role="IQ2ns" value="5982026979498910644" />

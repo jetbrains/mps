@@ -1,24 +1,37 @@
 package com.intellij.mcp.tools
 
+import com.google.gson.GsonBuilder
+import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.intellij.mcpserver.McpToolset
 import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
+import jetbrains.mps.ide.MPSCoreComponents
+import jetbrains.mps.make.MakeServiceComponent
+import jetbrains.mps.make.MakeSession
+import jetbrains.mps.messages.IMessage
+import jetbrains.mps.messages.IMessageHandler
+import jetbrains.mps.messages.MessageKind
+import jetbrains.mps.project.MPSProject
+import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SNodeUtil
-import org.jetbrains.mps.openapi.language.SAbstractConcept
-import org.jetbrains.mps.openapi.language.SConcept
-import org.jetbrains.mps.openapi.language.SInterfaceConcept
-import org.jetbrains.mps.openapi.language.SContainmentLink
-import org.jetbrains.mps.openapi.language.SEnumeration
-import org.jetbrains.mps.openapi.language.SProperty
-import org.jetbrains.mps.openapi.language.SReferenceLink
-import org.jetbrains.mps.openapi.model.SModelReference
-import org.jetbrains.mps.openapi.model.SNode
+import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
+import jetbrains.mps.smodel.language.LanguageRegistry
+import jetbrains.mps.smodel.resources.MResource
+import jetbrains.mps.smodel.resources.MakeKeys
+import jetbrains.mps.smodel.resources.ModelsToResources
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
+import com.intellij.openapi.application.EDT
+import org.jetbrains.mps.openapi.language.*
+import org.jetbrains.mps.openapi.model.*
+import org.jetbrains.mps.openapi.module.SModule
+import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonParser
 import java.io.File
 
 abstract class AbstractOps : McpToolset {
@@ -36,46 +49,63 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
-    protected fun nodeInfoJson(n: SNode): String {
+    protected fun nodeInfoJsonObject(n: SNode): JsonObject {
         val name = n.name ?: n.presentation
         val concept = n.concept.name
         val conceptReference = PersistenceFacade.getInstance().asString(n.concept)
+        val conceptDoc = getDoc(n.concept.sourceNode?.resolve(n.model?.repository))
         val reference = PersistenceFacade.getInstance().asString(n.reference)
-        val modelReference = PersistenceFacade.getInstance().asString(n.model!!.reference)
+        val modelReference = n.model?.let { PersistenceFacade.getInstance().asString(it.reference) } ?: ""
+        val moduleReference = n.model?.module?.let { PersistenceFacade.getInstance().asString(it.moduleReference) } ?: ""
         val virtualFolder = n.getProperty(SNodeUtil.property_BaseConcept_virtualPackage) ?: ""
         val parentReference = n.parent?.let { PersistenceFacade.getInstance().asString(it.reference) } ?: ""
         val rootReference = PersistenceFacade.getInstance().asString(n.containingRoot.reference)
         val isRoot = n.parent == null
-        return "{" +
-                "\"name\":\"" + escapeJson(name) + "\"," +
-                "\"concept\":\"" + escapeJson(concept) + "\"," +
-                "\"conceptReference\":\"" + escapeJson(conceptReference) + "\"," +
-                "\"reference\":\"" + escapeJson(reference) + "\"," +
-                "\"parentReference\":\"" + escapeJson(parentReference) + "\"," +
-                "\"rootReference\":\"" + escapeJson(rootReference) + "\"," +
-                "\"modelReference\":\"" + escapeJson(modelReference) + "\"," +
-                "\"virtualFolder\":\"" + escapeJson(virtualFolder) + "\"," +
-                "\"isRoot\":" + isRoot + "," +
-                "\"present\":true}"
+
+        val obj = JsonObject()
+        obj.addProperty("name", name)
+        obj.addProperty("concept", concept)
+        obj.addProperty("conceptDoc", conceptDoc)
+        obj.addProperty("conceptReference", conceptReference)
+        obj.addProperty("reference", reference)
+        obj.addProperty("parentReference", parentReference)
+        obj.addProperty("rootReference", rootReference)
+        obj.addProperty("modelReference", modelReference)
+        obj.addProperty("moduleReference", moduleReference)
+        obj.addProperty("virtualFolder", virtualFolder)
+        obj.addProperty("isRoot", isRoot)
+        obj.addProperty("present", true)
+        return obj
+    }
+
+    protected fun nodeInfoJson(n: SNode): String {
+        return nodeInfoJsonObject(n).toString()
     }
 
     protected fun nodeHierarchyToJson(node: SNode, deep: Boolean): String {
+        val repository = node.model?.repository
         return buildString {
             append("{")
+            val doc = getDoc(node.concept.sourceNode?.resolve(repository))
             append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
             append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
+            append("\"doc\":\"").append(escapeJson(doc)).append("\",")
             append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
             append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
 
             // Properties
             append("\"properties\":[")
             var firstProp = true
-            for (prop in node.properties) {
+            for (prop in node.concept.properties) {
+                val value = SNodeAccessUtil.getPropertyValue(node, prop)?.let { prop.type.toString(it) }
+                if (value == null || value.isEmpty()) continue
                 if (!firstProp) append(",") else firstProp = false
                 append("{")
                 append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-                append("\"value\":\"").append(escapeJson(node.getProperty(prop) ?: "")).append("\"")
+                val pdoc = getDoc(prop.sourceNode?.resolve(repository))
+                append("\"doc\":\"").append(escapeJson(pdoc)).append("\",")
+                append("\"value\":\"").append(escapeJson(value)).append("\"")
                 append("}")
             }
             append("],")
@@ -91,6 +121,8 @@ abstract class AbstractOps : McpToolset {
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
                 append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
+                val rdoc = getDoc(link.sourceNode?.resolve(repository))
+                append("\"doc\":\"").append(escapeJson(rdoc)).append("\",")
                 val targetNode = ref.targetNode
                 if (targetNode != null) {
                     append("\"target\":\"").append(escapeJson(targetNode.name ?: targetNode.presentation)).append("\",")
@@ -117,6 +149,8 @@ abstract class AbstractOps : McpToolset {
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
                 append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
+                val ldoc = getDoc(link.sourceNode?.resolve(repository))
+                append("\"doc\":\"").append(escapeJson(ldoc)).append("\",")
                 if (deep) {
                     append("\"nodes\":[")
                     var firstChild = true
@@ -243,15 +277,18 @@ abstract class AbstractOps : McpToolset {
 //        return sb.toString()
 //    }
 
-    protected fun nodeWithProblemsToJson(node: SNode, problems: Map<SNode, List<NodeReportItem>>): String {
+    protected fun nodeWithProblemsToJson(node: SNode, problems: Map<SNode, List<NodeReportItem>>, deep: Boolean = true): String {
         val nodeProblems = problems[node] ?: emptyList()
         val problemsByTarget = nodeProblems.groupBy { it.messageTarget }
+        val repository = node.model?.repository
 
         return buildString {
             append("{")
+            val doc = getDoc(node.concept.sourceNode?.resolve(repository))
             append("\"name\":\"").append(escapeJson(node.name ?: node.presentation)).append("\",")
             append("\"reference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.reference))).append("\",")
             append("\"concept\":\"").append(escapeJson(node.concept.name)).append("\",")
+            append("\"doc\":\"").append(escapeJson(doc)).append("\",")
             append("\"conceptReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(node.concept))).append("\",")
 
             // Problems (node-level)
@@ -275,15 +312,26 @@ abstract class AbstractOps : McpToolset {
             // Properties
             append("\"properties\":[")
             var firstProp = true
-            for (prop in node.properties) {
+            for (prop in node.concept.properties) {
+                val value = SNodeAccessUtil.getPropertyValue(node, prop)?.let { prop.type.toString(it) }
+                val propProblems = problemsByTarget.filter { (it.key as? PropertyMessageTarget)?.role == prop.name }.values.flatten()
+                
+                val isEnum = prop.type is SEnumeration
+                val hasValue = value != null && value.isNotEmpty()
+                val isEmptyEnum = isEnum && !hasValue
+                val isInvalid = hasValue && !prop.isValid(value)
+
+                if (!hasValue && propProblems.isEmpty() && !isEmptyEnum) continue
+
                 if (!firstProp) append(",") else firstProp = false
                 append("{")
                 append("\"name\":\"").append(escapeJson(prop.name)).append("\",")
                 append("\"type\":\"").append(escapeJson(getPropertyType(prop))).append("\",")
-                append("\"value\":\"").append(escapeJson(node.getProperty(prop) ?: "")).append("\",")
+                val pdoc = getDoc(prop.sourceNode?.resolve(repository))
+                append("\"doc\":\"").append(escapeJson(pdoc)).append("\",")
+                append("\"value\":\"").append(escapeJson(value ?: "")).append("\",")
 
                 // Property problems
-                val propProblems = problemsByTarget.filter { (it.key as? PropertyMessageTarget)?.role == prop.name }.values.flatten()
                 append("\"problems\":[")
                 var firstPropProb = true
                 for (prob in propProblems) {
@@ -297,6 +345,20 @@ abstract class AbstractOps : McpToolset {
                     append("\"severity\":\"").append(severity).append("\",")
                     append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
                     append("}")
+                }
+                
+                if (isEmptyEnum) {
+                    if (!firstPropProb) append(",") else firstPropProb = false
+                    append("{\"severity\":\"error\",\"message\":\"Empty enumeration property\"}")
+                    firstPropProb = false
+                }
+                
+                if (isInvalid) {
+                    // Check if already reported
+                    if (propProblems.none { it.message.contains("invalid", ignoreCase = true) }) {
+                        if (!firstPropProb) append(",") else firstPropProb = false
+                        append("{\"severity\":\"error\",\"message\":\"Property value is invalid\"}")
+                    }
                 }
                 append("]")
                 append("}")
@@ -318,6 +380,8 @@ abstract class AbstractOps : McpToolset {
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
                 append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
+                val rdoc = getDoc(link.sourceNode?.resolve(repository))
+                append("\"doc\":\"").append(escapeJson(rdoc)).append("\",")
                 if (ref != null) {
                     val targetNode = ref.targetNode
                     if (targetNode != null) {
@@ -367,6 +431,8 @@ abstract class AbstractOps : McpToolset {
                 append("\"type\":\"").append(escapeJson(link.targetConcept.name)).append("\",")
                 append("\"typeReference\":\"").append(escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept))).append("\",")
                 append("\"cardinality\":\"").append(escapeJson(getCardinality(link))).append("\",")
+                val ldoc = getDoc(link.sourceNode?.resolve(repository))
+                append("\"doc\":\"").append(escapeJson(ldoc)).append("\",")
 
                 // Role-level problems (e.g. missing compulsory child)
                 append("\"problems\":[")
@@ -383,15 +449,17 @@ abstract class AbstractOps : McpToolset {
                     append("\"message\":\"").append(escapeJson(prob.message)).append("\"")
                     append("}")
                 }
-                append("],")
-
-                append("\"nodes\":[")
-                var firstChild = true
-                for (child in childrenInRole) {
-                    if (!firstChild) append(",") else firstChild = false
-                    append(nodeWithProblemsToJson(child, problems))
-                }
                 append("]")
+                
+                if (deep) {
+                    append(",\"nodes\":[")
+                    var firstChild = true
+                    for (child in childrenInRole) {
+                        if (!firstChild) append(",") else firstChild = false
+                        append(nodeWithProblemsToJson(child, problems, true))
+                    }
+                    append("]")
+                }
                 append("}")
             }
             append("]")
@@ -400,19 +468,351 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
+    protected fun nodeWithProblemsListToJson(rootNode: SNode, problems: Map<SNode, List<NodeReportItem>>): String {
+        val resultList = mutableListOf<String>()
+
+        fun hasLocalProblems(node: SNode): Boolean {
+            if (problems[node]?.isNotEmpty() == true) return true
+
+            for (prop in node.concept.properties) {
+                val value = SNodeAccessUtil.getPropertyValue(node, prop)?.let { prop.type.toString(it) }
+                val isEnum = prop.type is SEnumeration
+                val hasValue = value != null && value.isNotEmpty()
+                if (isEnum && !hasValue) return true
+                if (hasValue && !prop.isValid(value)) return true
+            }
+            return false
+        }
+
+        fun traverse(node: SNode) {
+            if (hasLocalProblems(node)) {
+                resultList.add(nodeWithProblemsToJson(node, problems, false))
+            }
+            for (child in node.children) {
+                traverse(child)
+            }
+        }
+
+        traverse(rootNode)
+        return "[" + resultList.joinToString(",") + "]"
+    }
+
+    protected val LANG_STRUCTURE: SLanguage by lazy { SNodeUtil.concept_AbstractConceptDeclaration.language }
+    protected val CONCEPT_DocumentedNodeAnnotation: SConcept by lazy {
+        val registry = MPSCoreComponents.getInstance()?.platform?.findComponent(LanguageRegistry::class.java)
+        registry?.getLanguage(LANG_STRUCTURE)?.concepts?.filterIsInstance<SConcept>()?.find { it.name == "DocumentedNodeAnnotation" }
+            ?: MetaAdapterFactory.getConcept(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x6d1df6c2700b0ea9L, "jetbrains.mps.lang.structure.structure.DocumentedNodeAnnotation")
+    }
+    protected val PROP_DocumentedNodeAnnotation_Text: SProperty by lazy {
+        CONCEPT_DocumentedNodeAnnotation.properties.find { it.name == "text" }
+            ?: MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0x6d1df6c2700b0ea9L, 0x6d1df6c2700b0eb1L, "text")
+    }
+
+    protected fun getDoc(n: SNode?): String {
+        if (n == null) return ""
+        val docAnnotation = n.getChildren(SNodeUtil.link_BaseConcept_smodelAttribute).find { it.concept == CONCEPT_DocumentedNodeAnnotation }
+        return docAnnotation?.getProperty(PROP_DocumentedNodeAnnotation_Text) ?: ""
+    }
+
     protected fun modelReferenceJson(ref: SModelReference): String {
         return "{" +
-                "\"name\":\"" + escapeJson(ref.modelName.toString()) + "\"," +
+                "\"name\":\"" + escapeJson(ref.modelName) + "\"," +
                 "\"reference\":\"" + escapeJson(PersistenceFacade.getInstance().asString(ref)) + "\"" +
                 "}"
     }
 
-    protected fun containmentLinkInfoJson(link: SContainmentLink): String {
+    protected fun modelInfoJson(m: SModel): String {
+        val name = m.name.value
+        val moduleName = m.module?.moduleName ?: ""
+        val reference = PersistenceFacade.getInstance().asString(m.reference)
+        return "{" +
+                "\"name\":\"" + escapeJson(name) + "\"," +
+                "\"module\":\"" + escapeJson(moduleName) + "\"," +
+                "\"reference\":\"" + escapeJson(reference) + "\"," +
+                "\"readOnly\":" + m.isReadOnly + "," +
+                "\"present\":true}"
+    }
+
+    protected fun moduleInfoJson(project: MPSProject, m: SModule): String {
+        val name = m.moduleName ?: ""
+        val reference = PersistenceFacade.getInstance().asString(m.moduleReference)
+        val vf = try { project.getVirtualFolder(m) } catch (_: Throwable) { null }
+        val vfPart = if (vf != null) "\"virtualFolder\":\"" + escapeJson(vf) + "\"," else ""
+        return "{" +
+                "\"name\":\"" + escapeJson(name) + "\"," +
+                "\"reference\":\"" + escapeJson(reference) + "\"," +
+                "\"readOnly\":" + m.isReadOnly + "," +
+                vfPart +
+                "\"present\":true}"
+    }
+
+    protected suspend fun <T> executeRead(mpsProject: MPSProject, action: () -> T): T {
+        return withContext(Dispatchers.EDT) {
+            mpsProject.modelAccess.computeReadAction {
+                action()
+            }
+        }
+    }
+
+    protected suspend fun <T> executeCommand(mpsProject: MPSProject, action: () -> T): T {
+        return withContext(Dispatchers.EDT) {
+            var result: T? = null
+            mpsProject.modelAccess.executeCommand {
+                result = action()
+            }
+            @Suppress("UNCHECKED_CAST")
+            result as T
+        }
+    }
+
+    protected fun resolveConcept(repository: SRepository, conceptRef: String): SAbstractConcept? {
+        val facade = PersistenceFacade.getInstance()
+        
+        // 1. Try as a runtime concept reference
+        try {
+            val concept = facade.createConcept(conceptRef)
+            // If the language is registered, we can return the runtime concept
+            if (LanguageRegistry.getInstance(repository).getLanguage(concept.language) != null) {
+                return concept
+            }
+        } catch (e: Exception) {}
+
+        // 2. Try as a node reference or by searching in structure models
+        val declarationNode = resolveConceptNode(repository, conceptRef)
+        if (declarationNode != null) {
+            return MetaAdapterByDeclaration.getConcept(declarationNode)
+        }
+
+        // 3. Fallback: try creating concept from string
+        return try {
+            facade.createConcept(conceptRef)
+        } catch (e: Exception) {
+            // Try searching by name if it's not a reference
+            val allLanguages = LanguageRegistry.getInstance(repository).allLanguages
+            for (lang in allLanguages) {
+                val runtime = LanguageRegistry.getInstance(repository).getLanguage(lang) ?: continue
+                val concept = runtime.concepts.find { it.name == conceptRef || facade.asString(it) == conceptRef }
+                if (concept != null) return concept
+            }
+            null
+        }
+    }
+
+    protected fun resolveConceptNode(repository: SRepository, conceptRef: String): SNode? {
+        // 1. Try as a node reference
+        try {
+            val nodeRef = PersistenceFacade.getInstance().createNodeReference(conceptRef)
+            nodeRef.resolve(repository)?.let { return it }
+        } catch (e: Exception) {}
+
+        // 2. Try as a concept reference (runtime ID string languageId/conceptId)
+        if (conceptRef.contains("/")) {
+            val parts = conceptRef.split("/")
+            if (parts.size == 2) {
+                val langIdStr = parts[0]
+                val conceptIdStr = parts[1]
+                for (module in repository.modules) {
+                    if (module !is jetbrains.mps.smodel.Language) continue
+                    if (module.moduleReference.moduleId.toString() == langIdStr ||
+                        module.moduleReference.moduleId.toString().removePrefix("l:") == langIdStr) {
+                        for (model in module.models) {
+                            if (model.name.longName.endsWith(".structure")) {
+                                for (root in model.rootNodes) {
+                                    if (root.nodeId.toString() == conceptIdStr) return root
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 3. Try as format: ModelName.ConceptName or LanguageName.ConceptName
+        if (conceptRef.contains(".")) {
+            val lastDot = conceptRef.lastIndexOf(".")
+            val possibleModelName = conceptRef.substring(0, lastDot)
+            val conceptName = conceptRef.substring(lastDot + 1)
+
+            for (module in repository.modules) {
+                for (model in module.models) {
+                    if (model.name.longName == possibleModelName ||
+                        model.name.longName == "$possibleModelName.structure") {
+                        for (root in model.rootNodes) {
+                            if (root.name == conceptName && root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) {
+                                return root
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // 4. Try as a concept ID string (without language ID) if it's a long number
+        if (conceptRef.toLongOrNull() != null) {
+            for (module in repository.modules) {
+                if (module !is jetbrains.mps.smodel.Language) continue
+                for (model in module.models) {
+                    if (model.name.longName.endsWith(".structure")) {
+                        for (root in model.rootNodes) {
+                            if (root.nodeId.toString() == conceptRef) return root
+                        }
+                    }
+                }
+            }
+        }
+
+        // 5. Try searching by name in all structure models
+        for (module in repository.modules) {
+            if (module !is jetbrains.mps.smodel.Language) continue
+            for (model in module.models) {
+                if (model.name.longName.endsWith(".structure")) {
+                    for (root in model.rootNodes) {
+                        if (root.name == conceptRef && root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) {
+                            return root
+                        }
+                    }
+                }
+            }
+        }
+
+        return null
+    }
+
+    protected fun resolveModel(repository: SRepository, modelRef: String): SModel? {
+        // 1. Try as a model reference
+        try {
+            val ref = PersistenceFacade.getInstance().createModelReference(modelRef)
+            ref.resolve(repository)?.let { return it }
+        } catch (e: Exception) {}
+
+        // 2. Try searching by long name
+        for (module in repository.modules) {
+            for (model in module.models) {
+                if (model.name.longName == modelRef || model.name.value == modelRef) {
+                    return model
+                }
+            }
+        }
+        return null
+    }
+
+    protected fun resolveModule(repository: SRepository, moduleRef: String): SModule? {
+        // 1. Try as a module reference
+        try {
+            val ref = PersistenceFacade.getInstance().createModuleReference(moduleRef)
+            ref.resolve(repository)?.let { return it }
+        } catch (e: Exception) {}
+
+        // 2. Try searching by name
+        for (module in repository.modules) {
+            if (module.moduleName == moduleRef) {
+                return module
+            }
+        }
+        return null
+    }
+
+    protected fun resolveModule(mpsProject: MPSProject, moduleRef: String, projectOnly: Boolean = true): SModule? {
+        // 1. Try as a module reference
+        try {
+            val ref = PersistenceFacade.getInstance().createModuleReference(moduleRef)
+            val resolved = ref.resolve(mpsProject.repository)
+            if (resolved != null) {
+                if (!projectOnly || mpsProject.isProjectModule(resolved)) {
+                    return resolved
+                }
+            }
+        } catch (e: Exception) {}
+
+        // 2. Try searching by name
+        val modulesToSearch = if (projectOnly) mpsProject.projectModulesWithGenerators else mpsProject.repository.modules
+        for (module in modulesToSearch) {
+            if (module.moduleName == moduleRef) {
+                return module
+            }
+        }
+        return null
+    }
+
+    protected fun expandModules(modules: Collection<SModule>): Set<SModule> {
+        val result = mutableSetOf<SModule>()
+        for (module in modules) {
+            result.add(module)
+            if (module is Language) {
+                result.addAll(module.ownedGenerators)
+            }
+        }
+        return result
+    }
+
+    protected fun isRootable(concept: SAbstractConcept, repository: SRepository): Boolean {
+        if (concept is SConcept && concept.isRootable) return true
+        
+        // Fallback for uncompiled concepts
+        val conceptRef = PersistenceFacade.getInstance().asString(concept)
+        val declarationNode = resolveConceptNode(repository, conceptRef)
+        if (declarationNode != null) {
+            val rootableProp = MetaAdapterFactory.getProperty(0xc72da2b97cce4447uL.toLong(), 0x8389f407dc1158b7uL.toLong(), 0xf979ba0450L, 0xff49c1d648L, "rootable")
+            return "true" == declarationNode.getProperty(rootableProp)
+        }
+        return false
+    }
+
+    protected fun resolveLanguage(repository: SRepository, languageRef: String): SLanguage? {
+        val facade = PersistenceFacade.getInstance()
+        if (languageRef.startsWith("l:")) {
+            return try { facade.createLanguage(languageRef) } catch (e: Exception) { null }
+        }
+        val allLanguages = LanguageRegistry.getInstance(repository).allLanguages
+        return allLanguages.find { it.qualifiedName == languageRef }
+    }
+
+    protected fun resolveNodeReference(repository: SRepository, nodeRefStr: String): SNodeReference? {
+        if (nodeRefStr.startsWith("c:")) {
+            throw IllegalArgumentException("Expected a node reference (r:... or i:...), but a concept reference was provided: $nodeRefStr")
+        }
+        val facade = PersistenceFacade.getInstance()
+        try {
+            return facade.createNodeReference(nodeRefStr)
+        } catch (e: Exception) {
+            // Try searching by name (root nodes)
+            // Support "ModelName.RootName" format
+            if (nodeRefStr.contains(".")) {
+                val lastDot = nodeRefStr.lastIndexOf(".")
+                val modelName = nodeRefStr.substring(0, lastDot)
+                val rootName = nodeRefStr.substring(lastDot + 1)
+                for (module in repository.modules) {
+                    for (model in module.models) {
+                        if (model.name.longName == modelName || model.name.value == modelName) {
+                            for (root in model.rootNodes) {
+                                if (root.name == rootName) return root.reference
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (module in repository.modules) {
+                for (model in module.models) {
+                    for (root in model.rootNodes) {
+                        if (root.name == nodeRefStr) {
+                            return root.reference
+                        }
+                    }
+                }
+            }
+        }
+        return null
+    }
+
+    protected fun containmentLinkInfoJson(link: SContainmentLink, repository: SRepository?): String {
+        val doc = if (repository != null) getDoc(link.sourceNode?.resolve(repository)) else ""
         return "{" +
                 "\"role\":\"" + escapeJson(link.name) + "\"," +
                 "\"type\":\"" + escapeJson(link.targetConcept.name) + "\"," +
                 "\"typeReference\":\"" + escapeJson(PersistenceFacade.getInstance().asString(link.targetConcept)) + "\"," +
-                "\"cardinality\":\"" + escapeJson(getCardinality(link)) + "\"" +
+                "\"cardinality\":\"" + escapeJson(getCardinality(link)) + "\"," +
+                "\"doc\":\"" + escapeJson(doc) + "\"" +
                 "}"
     }
 
@@ -429,14 +829,16 @@ abstract class AbstractOps : McpToolset {
         val sourceNode = concept.sourceNode?.let { facade.asString(it) } ?: ""
         val isAbstract = concept.isAbstract
         val isInterfaceConcept = concept is SInterfaceConcept
-        val isRootable = (concept as? SConcept)?.isRootable ?: false
+        val isRootable = isRootable(concept, repository)
         val declarationNode = concept.sourceNode?.resolve(repository)
         val virtualFolder = declarationNode?.getProperty(SNodeUtil.property_BaseConcept_virtualPackage) ?: ""
         val shortDescription = concept.shortDescription
+        val doc = getDoc(declarationNode)
         return "{" +
                 "\"name\":\"" + escapeJson(name) + "\"," +
                 "\"conceptAlias\":\"" + escapeJson(conceptAlias) + "\"," +
                 "\"shortDescription\":\"" + escapeJson(shortDescription) + "\"," +
+                "\"doc\":\"" + escapeJson(doc) + "\"," +
                 "\"conceptReference\":\"" + escapeJson(conceptReference) + "\"," +
                 "\"languageReference\":\"" + escapeJson(languageReference) + "\"," +
                 "\"superConcept\":\"" + escapeJson(superConcept) + "\"," +
@@ -468,5 +870,95 @@ abstract class AbstractOps : McpToolset {
             throw IllegalArgumentException("File '$filePath' not found")
         }
         return file.readText()
+    }
+
+    /**
+     * Detailed message from the make operation.
+     */
+    data class MakeMessage(val kind: String, val text: String)
+
+    /**
+     * Result of a make operation.
+     */
+    data class MakeResult(val success: Boolean, val message: String, val details: List<MakeMessage> = emptyList())
+
+    /**
+     * Performs a make operation on the given models.
+     * This is a shared utility used by multiple MCP tools.
+     */
+    protected suspend fun performMake(mpsProject: MPSProject, models: List<SModel>, modules: List<SModule> = emptyList(), rebuild: Boolean): MakeResult {
+        return try {
+            val makeServiceComponent = mpsProject.getComponent(MakeServiceComponent::class.java)
+                ?: return MakeResult(false, "Make service component not found")
+
+            val makeService = makeServiceComponent.get()
+                ?: return MakeResult(false, "No active make service")
+
+            if (makeService.isSessionActive) {
+                return MakeResult(false, "Another make session is already active")
+            }
+
+            val messages = mutableListOf<MakeMessage>()
+            val handler = IMessageHandler { msg: IMessage ->
+                if (msg.kind == MessageKind.ERROR || msg.kind == MessageKind.WARNING) {
+                    messages.add(MakeMessage(msg.kind.name, msg.text))
+                }
+            }
+
+            val (resourcesList, session, openNewSessionFlag) = mpsProject.modelAccess.computeReadAction {
+                // Expand modules to include generators for languages
+                val expandedModules = expandModules(modules)
+
+                // Compose resources from provided models and explicit modules
+                val list = mutableListOf<jetbrains.mps.make.resources.IResource>()
+                val seenModules = HashSet<String>()
+
+                // 1) Resources for models (grouped by module, clean/rebuild propagated)
+                val modelResources = ModelsToResources(models, rebuild).resources()
+                for (r in modelResources) {
+                    list.add(r)
+                    if (r is MResource) {
+                        seenModules.add(PersistenceFacade.getInstance().asString(r.module().moduleReference))
+                    }
+                }
+
+                // 2) Ensure every requested module is present as a resource, even if it has no generatable models
+                for (m in expandedModules) {
+                    val key = PersistenceFacade.getInstance().asString(m.moduleReference)
+                    if (!seenModules.contains(key)) {
+                        val mr = MResource(m, m.models)
+                        if (rebuild) {
+                            mr.setValue(MakeKeys.CLEAN_MAKE, true)
+                        }
+                        list.add(mr)
+                        seenModules.add(key)
+                    }
+                }
+
+                val s = MakeSession(mpsProject, handler, rebuild)
+                Triple(list, s, makeService.openNewSession(s))
+            }
+
+            if (!openNewSessionFlag) {
+                return MakeResult(false, "Opening the make session failed")
+            }
+
+            if (resourcesList.isEmpty()) {
+                return MakeResult(true, "Nothing to make (no inputs resolved)")
+            }
+
+            val future = makeService.make(session, resourcesList)
+            val result = withContext(Dispatchers.IO) {
+                future.get()
+            }
+
+            if (result.isSucessful) {
+                MakeResult(true, "Make successful", messages)
+            } else {
+                MakeResult(false, "Make failed: ${result.message()}", messages)
+            }
+        } catch (e: Exception) {
+            MakeResult(false, "Make error: ${e.message}")
+        }
     }
 }

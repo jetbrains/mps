@@ -9,6 +9,7 @@ import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.smodel.SNodeUtil
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.smodel.constraints.ModelConstraints
 import kotlinx.coroutines.Dispatchers
@@ -27,10 +28,10 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Opens the specified root node in the MPS editor. Returns JSON.
-        Response: { ok:true } or { ok:false, error }
+        Opens the specified root node in the MPS editor.
+        Returns a JSON object with 'ok':true and 'data':{"present":true} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun open_MPS_root_node(
+    suspend fun mps_mcp_open_root_node(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String
     ): String {
         currentCoroutineContext().reportToolActivity("Opening MPS root node")
@@ -51,10 +52,10 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Gets the root node that is currently open in the MPS editor. Returns JSON.
-        Response: { ok, data: { name, concept, conceptReference, reference, parentReference, rootReference, modelReference, virtualFolder, present:true } } or { ok:false, error }
+        Gets the root node that is currently open in the MPS editor. Optionally also provides the currently selected node or the node with the cursor on it.
+        Returns a JSON object with 'ok':true and 'data':{ name, concept, conceptReference, reference, parentReference, rootReference, modelReference, moduleReference, virtualFolder, selectedNodeReference, present:true } on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun get_current_editor_MPS_root_node(): String {
+    suspend fun mps_mcp_get_current_editor_root_node(): String {
         currentCoroutineContext().reportToolActivity("Getting current editor root node")
         val project = currentCoroutineContext().project
 
@@ -89,7 +90,23 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     if (node == null) {
                         reply = errJson("Could not detect the current root node")
                     } else {
-                        reply = okJson(nodeInfoJson(node))
+                        var selectedNodeReference: String? = null
+                        val nodeEditor = mpsEditor.nodeEditor
+                        if (nodeEditor != null) {
+                            val editorComponent = nodeEditor.currentEditorComponent
+                            if (editorComponent != null) {
+                                val selectedNode = editorComponent.selectedNode
+                                if (selectedNode != null) {
+                                    selectedNodeReference = PersistenceFacade.getInstance().asString(selectedNode.reference)
+                                }
+                            }
+                        }
+
+                        val info = nodeInfoJsonObject(node)
+                        if (selectedNodeReference != null) {
+                            info.addProperty("selectedNodeReference", selectedNodeReference)
+                        }
+                        reply = okJson(info.toString())
                     }
                 }
             }
@@ -102,9 +119,9 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription("""
         Searches for root nodes with the specified name in all models of the project.
-        Returns a JSON-formatted list of matching nodes.
+        Returns a JSON object with 'ok':true and 'data':[nodeInfo, ...] on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun search_MPS_root_node_by_name(
+    suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name of the root node to search for") name: String
     ): String {
         currentCoroutineContext().reportToolActivity("Searching for MPS root node by name")
@@ -156,9 +173,9 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             }
           ]
         }
-        Returns JSON format of the created root node.
+        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun insert_MPS_root_node_from_json(
+    suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Persistent form of SModelReference") modelRef: String,
         @McpDescription("Absolute path to a local temporary file containing the JSON description of a node's deep printout. targetReference can be placeholders or empty, but conceptReference must be valid.") json: String
     ): String {
@@ -195,19 +212,13 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                             return@executeCommand
                         }
 
-                        val sConcept = try {
-                            PersistenceFacade.getInstance().createConcept(conceptRef) as? SConcept
-                        } catch (e: Exception) {
-                            null
-                        }
-
+                        val sConcept = resolveConcept(mpsProject.repository, conceptRef)
                         if (sConcept == null) {
-                            error = "Concept not found for the top-level node"
+                            error = "Concept not found for the top-level node: $conceptRef"
                             return@executeCommand
                         }
 
-                        val isRootableValue = (sConcept as? org.jetbrains.mps.openapi.language.SConcept)?.isRootable ?: false
-                        if (!isRootableValue) {
+                        if (sConcept !is SConcept || !isRootable(sConcept, mpsProject.repository)) {
                             error = "Concept '${sConcept.name}' is not a rootable concept"
                             return@executeCommand
                         }
@@ -242,9 +253,10 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Creates a new root node in the specified model. Returns JSON.
+        Creates a new root node in the specified model.
+        Returns a JSON object with 'ok':true and 'data':{ name, concept, conceptReference, reference, parentReference, rootReference, modelReference, moduleReference, virtualFolder, isRoot, present:true } on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun create_MPS_root_node(
+    suspend fun mps_mcp_create_root_node(
         @McpDescription("Persistent form of SModelReference") modelRef: String,
         @McpDescription("Fully qualified concept name") concept: String,
         @McpDescription("Persistent form of SConcept") conceptReference: String,
@@ -270,8 +282,13 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                             error = "Model '$modelRef' is not editable"
                             return@executeCommand
                         }
-                        val sConcept = PersistenceFacade.getInstance().createConcept(conceptReference)
-                        if (sConcept !is org.jetbrains.mps.openapi.language.SConcept || !sConcept.isRootable) {
+                        val sConcept = resolveConcept(mpsProject.repository, conceptReference)
+                        if (sConcept == null) {
+                            error = "Concept '$concept' ('$conceptReference') not found"
+                            return@executeCommand
+                        }
+
+                        if (sConcept !is SConcept || !isRootable(sConcept, mpsProject.repository)) {
                             error = "Concept '$concept' ('$conceptReference') is not a rootable concept"
                             return@executeCommand
                         }
@@ -314,9 +331,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Updates a root node (currently supports renaming). Returns JSON.
+        Updates a root node (currently supports renaming).
+
+        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun update_MPS_root_node(
+    suspend fun mps_mcp_update_root_node(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
         @McpDescription("New name for the root node") newName: String
     ): String {
@@ -330,8 +349,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
                     try {
-                        val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                        val node = sNodeRef.resolve(mpsProject.repository)
+                        val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                        val node = sNodeRef?.resolve(mpsProject.repository)
                         if (node == null) {
                             error = "Node '$nodeRef' not found"
                             return@executeCommand
@@ -364,9 +383,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Deletes a root node. Returns JSON.
+        Deletes a root node.
+
+        Returns a JSON object with 'ok':true and 'data':{"reference":"...", "deleted":true} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun delete_MPS_root_node(
+    suspend fun mps_mcp_delete_root_node(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String
     ): String {
         currentCoroutineContext().reportToolActivity("Deleting MPS root node")
@@ -379,8 +400,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
                     try {
-                        val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
-                        val node = sNodeRef.resolve(mpsProject.repository)
+                        val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                        val node = sNodeRef?.resolve(mpsProject.repository)
                         if (node == null) {
                             error = "Node '$nodeRef' not found"
                             return@executeCommand

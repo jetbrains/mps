@@ -205,7 +205,7 @@ public class StructureAspectDescriptor extends BaseStructureAspectDescriptor {
   }
   private static ConceptDescriptor createDescriptorForField() {
     ConceptDescriptorBuilder2 b = new ConceptDescriptorBuilder2("jetbrains.mps.samples.fincalculator", "Field", 0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ef3602cL);
-    b.class_(false, false, false);
+    b.class_(false, true, false);
     // extends: jetbrains.mps.samples.fincalculator.structure.Command
     b.super_(0x26b3d6d5b99a4ed6L, 0x83bed2ea6f3627c2L, 0x1d111c815ef16d50L);
     b.parent(0xceab519525ea4f22L, 0x9b92103b95ca8c0cL, 0x110396eaaa4L);
