@@ -10,9 +10,27 @@ Read this document together with `AGENTS.md` whenever the task involves MPS arti
 
 Skills may be available in local files in the `.agents/skills` directory.
 
-| Invoke                         | What it does |
-|--------------------------------|--------------|
-| `no skill currently available` | N/A          |
+| Invoke                              | What it does |
+|-------------------------------------|--------------|
+| `mps-language-aspects-overview`     | Entry point for defining an MPS language — lists the aspects, what each owns, where to look, and the typical authoring order. Start here. |
+| `mps-model-code`                    | Writing and editing MPS BaseLanguage code (smodel, closures, collections). Use when editing checking rules, behavior methods, typesystem rules, or any model code that manipulates nodes. |
+| `mps-aspect-accessories`            | How MPS language dependencies, used languages, runtime solutions, and accessory models fit together; when to use each. |
+| `mps-aspect-actions`                | How to define MPS node factories (the "actions" aspect) — concept-specific setup functions that initialize newly created nodes. |
+| `mps-aspect-behavior`               | How to define MPS ConceptBehavior — per-concept methods, constructors, virtual dispatch, and calling behavior methods from other aspects. |
+| `mps-aspect-constraints`            | How to define MPS language constraints — property validators/setters, referent scopes, canBe rules. |
+| `mps-aspect-dataflow`               | How to define MPS dataflow builders — control and data flow declarations for concept nodes, enabling reachability analysis and variable-use checking. |
+| `mps-aspect-editor-menus-and-keymaps` | How to author the non-layout parts of the MPS editor aspect — action maps, cell keymaps, transformation menus, substitute menus, side transforms, legacy cell menus, paste wrappers, copy-paste handlers, completion styling and reference presentation. |
+| `mps-aspect-generator`              | How to define MPS generators — template-based model-to-model transformations with root mapping rules, reduction rules, macros, and mapping labels. |
+| `mps-aspect-intentions`             | How to define MPS intentions — context actions (Alt+Enter) with description and execute blocks, plus parameterized, surround, and quick-fix variants. |
+| `mps-aspect-migrations`             | How to define MPS migration scripts — upgrading user models when language definitions change, using MigrationScript and Enhancement Scripts. |
+| `mps-aspect-textgen`                | How to define MPS TextGen — concept-to-plain-text serialisation rules for languages whose final output is text. |
+| `mps-aspect-typesystem`             | How to define MPS typesystem — inference rules, subtyping, replacement, comparison, and non-typesystem checking rules. |
+| `mps-lang-core-xml`                 | How to use the jetbrains.mps.core.xml language for authoring XML documents as MPS models and building XML-generating generator templates. |
+| `mps-quotations`                    | How to use MPS quotations and anti-quotations — node literals that create SNode trees inline in behavior, generator, and other model code, with runtime substitution via antiquotations (child, list, reference, property) and light quotations (NodeBuilder). |
+| `mps-aspect-generation-plan`        | How to define MPS generation plans — explicit ordering of generation steps, checkpoints for cross-model reference resolution, forks for parallel branches, and plan contributions for conditional activation. |
+| `mps-build-language`                | How to author MPS Build Language scripts — declarative DSL that generates Ant `build.xml` files for packaging MPS language plugins, plain Java modules, and standalone IDEs. |
+| `mps-ide-plugin`                    | How to author and modify MPS IDE plugins — actions, action groups, tool windows, keymaps, preference components, and project/application plugins, using jetbrains.mps.lang.plugin and jetbrains.mps.lang.plugin.standalone. |
+| `mps-bugfix`                        | MPS bugfixing workflow. Use when investigating and fixing MPS-related bugs. |
 
 ### Skills obtained from MPS mcp services
 

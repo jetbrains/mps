@@ -82,9 +82,11 @@ ConceptEditorDeclaration
 ```
 CellModel_RefCell
   relationDeclaration → <reference link>
-  InlineEditorComponent
-    properties: role="name"
-    references: styleClass → Reference style class
+  editorComponent: InlineEditorComponent
+    cellModel: CellModel_Property
+      relationDeclaration → name property
+      readOnly: true
+      styleItem: [Reference style class]
 ```
 
 #### Transparent List (no surrounding syntax, each item on its own line)

@@ -9,8 +9,7 @@ Developers typically use two environments against the same checkout:
 Agents must adapt to the tools available in the current session. Use this file as the cross-environment entry point.
 
 IMPORTANT: Your reading the `MPS-AGENTS.md` file is essential for correct and efficient development in MPS - use of the `mps_mcp_...` tools and understanding of detailed MPS node, model, language, and generator workflows.
-
-MCP integration with MPS is an experimental feature. Use it with caution, expect surprises as well as future changes and report any issues to the JetBrains MPS team.
+If the `MPS-AGENTS.md` file is not available, the MPS mcp tools are most likely unavailable, too.
 
 ## Project Nature: JVM + MPS
 
@@ -95,7 +94,7 @@ Before editing generated code, identify:
 ## Validation Expectations
 
 Match validation to the kind of change:
-- Java/Kotlin changes: use IDEA inspections and the smallest relevant build, test, or run configuration
+- Java/Kotlin changes: use IDEA inspections (`get_file_problems`) and the smallest relevant build, test, or run configuration
 - MPS model changes: check model or root problems and rebuild or regenerate as needed
 - generator changes: validate both generation results and downstream compilation or tests
 - cross-cutting changes: validate both the MPS side and the JVM side
@@ -106,17 +105,32 @@ Prefer focused validation before broad suites.
 
 Common assumptions for this repository:
 - developers often open the same checkout in both IntelliJ IDEA and MPS
-- MPS is frequently started from source using project run configurations such as `MPS` and `MPS (2nd inst.)`
-- JDK 21 is required for building from source
-- user-facing visual choices should prefer light blue when that fits the task
+- MPS is frequently started from source using project run configurations such as `MPS` and `MPS (2nd inst.)`. Note: the run configuration may time out in the IDE tool after launching the long-running GUI, which is expected.
+- To reliably verify that MPS has started, use `ps aux | grep -i mps` (with `executeInShell: true`) to confirm the process is alive, or check `log/idea.log` for recent activity (e.g., repository saving, exiting dumb mode).
+
+### Git Configuration
+
+Current environment uses:
+- `origin`: `git@github.com:JetBrains/MPS-development.git` (master branch)
 
 ---
+## Platform sources
+
+This project builds on top of the IntelliJ platform. It is bundled with the project as jar files. The platform Java and Kotlin classes are typically organized into `com.intellij...` packages, while MPS code is in `jetbrains.mps...`.
+When the sources of the platform are required for understanding an MPS feature/code/problem, the platform sources can be read in the source code form.
+The sources of the IntelliJ platform used by this project are located in `../intellij-community` or a similar location. Ask the user for exact location of the platform sources and convert it to an absolute path.
+The user can open the platform project in an IntelliJ IDEA instance making them available for coding agents through the IDE mcp tools. Ask the user to open the platform project in IDEA, if you need to access the sources.
+The IDEA mcp tools will be serving code from two projects, each in its own directory - one in the platform and one is the MPS project.
+IMPORTANT: To access the platform sources via MCP tools, you must use the **absolute path** for the `projectPath` parameter (e.g., `/Users/vaclav/work/MPS/intellij-community/`).
+Do not make changes to the code of the platform, do not compile or run the platform code. Use the Git branch of the platform that has been set by the user, do not switch branches of the platform project.
+To verify that platform sources are accessible via MCP, use `search_symbol` (e.g., query `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`) rather than `list_directory_tree` — the latter may return an empty tree even when the project is fully loaded, and should not be used as an availability check.
 
 ## Build & test
 
-```bash
-TODO
-```
+The primary way for agents to build the project is through the IntelliJ IDEA MCP tools:
+- Use `mcp_my-idea-mcp-server_build_project` to compile the entire project.
+- Verified to use **JDK 21** (`JB JDK 21` in `.idea/misc.xml`).
+- Run configurations such as `CoreTestSuite` or `MPS` can be found via `mcp_my-idea-mcp-server_get_run_configurations`.
 
 ## Docs
 
@@ -132,3 +146,32 @@ These rules are **mandatory** — always follow them, not just when a skill is a
 
 ## Skills
 A skill is a set of local instructions to follow that is stored in a `SKILL.md` file or served by the `mps_mcp_get_skill` tool.
+
+Local skills in [`.claude/skills/`](.claude/skills/):
+
+- [`actions`](.claude/skills/actions/SKILL.md) — guidelines for implementing IntelliJ actions (AnAction).
+- [`code-style`](.claude/skills/code-style/SKILL.md) — code style rules for the IntelliJ codebase.
+- [`commits`](.claude/skills/commits/SKILL.md) — IntelliJ-repo commit format and workflow.
+- [`debugging`](.claude/skills/debugging/SKILL.md) — debugging techniques and tools for IntelliJ development.
+- [`mps-aspect-accessories`](.claude/skills/mps-aspect-accessories/SKILL.md) — MPS language dependencies, used languages, runtime solutions, and accessory models.
+- [`mps-aspect-actions`](.claude/skills/mps-aspect-actions/SKILL.md) — MPS node factories (the "actions" aspect).
+- [`mps-aspect-behavior`](.claude/skills/mps-aspect-behavior/SKILL.md) — MPS ConceptBehavior — per-concept methods and virtual dispatch.
+- [`mps-aspect-constraints`](.claude/skills/mps-aspect-constraints/SKILL.md) — MPS language constraints — property validators, scopes, can-be rules.
+- [`mps-aspect-dataflow`](.claude/skills/mps-aspect-dataflow/SKILL.md) — MPS dataflow builders.
+- [`mps-aspect-editor-menus-and-keymaps`](.claude/skills/mps-aspect-editor-menus-and-keymaps/SKILL.md) — MPS editor action maps, keymaps, transformation/substitute menus.
+- [`mps-aspect-generation-plan`](.claude/skills/mps-aspect-generation-plan/SKILL.md) — MPS generation plans, checkpoints, forks, plan contributions.
+- [`mps-aspect-generator`](.claude/skills/mps-aspect-generator/SKILL.md) — MPS generators — rules, macros, template switches, mapping labels.
+- [`mps-aspect-intentions`](.claude/skills/mps-aspect-intentions/SKILL.md) — MPS intentions (context actions).
+- [`mps-aspect-migrations`](.claude/skills/mps-aspect-migrations/SKILL.md) — MPS migration scripts and enhancement scripts.
+- [`mps-aspect-textgen`](.claude/skills/mps-aspect-textgen/SKILL.md) — MPS TextGen — concept-to-plain-text serialisation.
+- [`mps-aspect-typesystem`](.claude/skills/mps-aspect-typesystem/SKILL.md) — MPS typesystem — inference, subtyping, checking rules.
+- [`mps-bugfix`](.claude/skills/mps-bugfix/SKILL.md) — MPS bugfixing workflow.
+- [`mps-build-language`](.claude/skills/mps-build-language/SKILL.md) — MPS Build Language scripts.
+- [`mps-lang-core-xml`](.claude/skills/mps-lang-core-xml/SKILL.md) — `jetbrains.mps.core.xml` language for XML documents and generator templates.
+- [`mps-ide-plugin`](.claude/skills/mps-ide-plugin/SKILL.md) — authoring MPS IDE plugins: actions, groups, tool windows, keymaps, preferences.
+- [`mps-language-aspects-overview`](.claude/skills/mps-language-aspects-overview/SKILL.md) — entry point for MPS language authoring; indexes all aspects.
+- [`mps-model-code`](.claude/skills/mps-model-code/SKILL.md) — BaseLanguage code combining smodel, closures, and collections.
+- [`mps-quotations`](.claude/skills/mps-quotations/SKILL.md) — MPS quotations and anti-quotations for inline SNode trees.
+- [`registry`](.claude/skills/registry/SKILL.md) — IntelliJ Registry API.
+- [`ssr`](.claude/skills/ssr/SKILL.md) — Structural Search and Replace in IntelliJ.
+- [`teamcity-cli`](.claude/skills/teamcity-cli/SKILL.md) — TeamCity CI/CD CLI usage.

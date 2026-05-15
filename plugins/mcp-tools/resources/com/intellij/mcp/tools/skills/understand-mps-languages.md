@@ -11,7 +11,7 @@ Follow this workflow to discover concepts and metadata from a language name (e.g
 3. **Extract Data**: The response includes:
     * **Name**: Concept FQN.
     * **Description**: Found in `shortDescription`.
-    * **Metadata**: `rootable`, `abstract`, and the `conceptReference` ID.
+    * **Metadata**: `isRootable`, `isAbstract`, and the `conceptReference` ID.
     * **Structure**: Properties, children, and references are detailed here.
 4. **Drill Down**:
     * **Declaration**: Use the `sourceNode` reference with `mps_mcp_open_root_node` to open the definition.
