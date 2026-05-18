@@ -82,9 +82,11 @@ utility methods
 ```
 
 - **`nodes`** (role `nodesToCheck`, children of type `TestNode`) — wrapper nodes holding *snippets of the language under test*. Each `TestNode` contains one root from the target language (e.g. a `ClassConcept`, a `Module`, etc.). The snippet does not have to be syntactically perfect — the point is to assert structural/semantic properties about it.
-- **`test methods`** (role `testMethods`, children of type `NodesTestMethod`) — BaseLanguage methods. Each becomes one JUnit test method. Inside they can use `project`, `model`, smodel queries, and assertions to interrogate the nodes above.
+- **`test methods`** (role `testMethods`, concrete concept **`SimpleNodeTest`**) — BaseLanguage methods. Each becomes one JUnit test method. Inside they can use `project`, `model`, smodel queries, and assertions to interrogate the nodes above. The role's declared type is `NodesTestMethod`, but that concept is **abstract** — you must instantiate `SimpleNodeTest` (its only concrete subconcept; concept ref `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225978065297`). Inserting a raw `NodesTestMethod` will fail `check_root_node_problems` with `"Abstract concept instance detected"`.
 - **`utility methods`** — non-test helpers, reused across test methods.
 - **`accessMode`** property — one of `unset`, `none`, `read`, `command` (default). Controls whether the test body runs in a write command, a read action, or without any wrapping.
+
+> **Label namespace.** `TestNodeAnnotation` makes its target referenceable from test-method bodies as `node<label>`. Labels live **only** in that test-binding namespace — they do **not** participate in the snippet's own reference resolution. When wiring an in-snippet reference (e.g. setting `RoutineCall.routine`), use the target node's own `name` property (resolved through the language's scope) or a persistent `r:` node ref — *not* the annotation label.
 
 ### Inline assertion annotations
 
@@ -104,7 +106,7 @@ The most idiomatic way to test typesystem/constraints/scope rules is to annotate
 
 The visual cue in the editor is `<check ... has error IsNotSubtypeOf>` or `<check expression has type int>` wrapping the asserted node.
 
-Scope tests use a `ScopeTestAnnotation` placed on a reference (Alt+Enter → *Scope Test Annotation*); list expected items in the inspector panel.
+Scope tests use the **`ScopesTest`** annotation (concept ref `c:8585453e-6bfb-4d80-98de-b16074f1d86c/511191073233700873`, FQN `jetbrains.mps.lang.test.structure.ScopesTest`) — see §3.x below for the JSON blueprint. Inside MPS the same annotation is created via Alt+Enter → *Scope Test Annotation*; list expected items in the inspector panel.
 
 Example — typesystem assertion inside a snippet:
 
@@ -134,6 +136,49 @@ test compositeConvertDiffTest() {
 ```
 
 `assertNodesMatch` (`AssertMatch`, `JA50E`) does a structural compare of two nodes, ignoring volatile fields. Apply it via Alt+Enter inside a test method.
+
+### 3.x — Declarative scope assertions (`ScopesTest`)
+
+`ScopesTest` is the declarative way to test a reference's scope. The test runner generates one JUnit method per `ScopesTest` annotation (named `test_ScopeOf_<NodeConcept>_<referenceRole>_<nodeId>`), so you do **not** need a `SimpleNodeTest` body to invoke it — adding the annotation to the snippet is enough.
+
+**Where it lives.** `ScopesTest` extends `AbstractTestNodeAnnotation` and is attached as a `smodelAttribute` child of the **node that holds the reference** being checked (e.g. a `RoutineCall` in Kaja, an `InputFieldReference` in Calculator, etc.). It commonly sits next to a `TestNodeAnnotation` on the same target node — both children of the same `smodelAttribute` slot.
+
+**Children / refs.**
+
+| Role | Concept | Card. | Purpose |
+|---|---|---|---|
+| `checkingReference` (ref) | `BaseConcept` | 0..1 | Points at the **resolved target** of the reference whose scope is being checked. The runner uses it to disambiguate when the node has more than one outgoing reference. For a `RoutineCall` (one `routine` ref) you can omit it; setting it to the call's current target makes the intent explicit and the generated test name stable. |
+| `nodes` (child) | `ScopesExpectedNode` | 0..n | One entry per **expected** scope member. Semantics is *exact set* — if the actual scope contains anything else, or omits one of these, the test fails. |
+| `ScopesExpectedNode.ref` (ref) | `BaseConcept` | 1 | The expected node (must be a persistent `r:` node ref — these are not scope-resolved like routine names). |
+
+**Minimal JSON blueprint** — attach this as a `smodelAttribute` child of the node holding the reference:
+
+```json
+{
+  "concept": "jetbrains.mps.lang.test.structure.ScopesTest",
+  "references": [
+    { "role": "checkingReference", "target": "<resolved-target-node-ref>" }
+  ],
+  "children": [{
+    "role": "nodes",
+    "nodes": [
+      { "concept": "jetbrains.mps.lang.test.structure.ScopesExpectedNode",
+        "references": [{ "role": "ref", "target": "<expected-node-ref-1>" }] },
+      { "concept": "jetbrains.mps.lang.test.structure.ScopesExpectedNode",
+        "references": [{ "role": "ref", "target": "<expected-node-ref-2>" }] }
+    ]
+  }]
+}
+```
+
+**Authoring tip — stage construction.** `ScopesExpectedNode.ref` is not scope-resolved, so plain names won't auto-resolve. Insert the snippet's structure first (Script, routines, the call with a plain-name `routine` target), then `mps_mcp_print_node_json` to harvest the persistent refs of the routines and the call's resolved target, then add the `ScopesTest` annotation as a second-stage `add_node_child` with those refs.
+
+**Why prefer it over imperative assertions.** Declarative `ScopesTest` annotations:
+- generate a separate JUnit test per scope site (better isolation, clearer failure reporting),
+- check the scope **exactly** (catches over-broad scopes that the resolved reference can't detect),
+- need no `SimpleNodeTest` body, no `assertTrue`/`:eq:` boilerplate.
+
+Use a `SimpleNodeTest` only when the property under test isn't expressible as "the scope of *this* reference equals *this* set" — e.g. when you need to compute something across multiple snippets.
 
 ---
 
@@ -311,6 +356,10 @@ When asked to "write tests" for an MPS language feature:
 - **Caret position in EditorTestCase.** A test that types text or invokes an intention is sensitive to which cell currently owns the caret; if the test mysteriously fails, inspect the `AnonymousCellAnnotation` on the `before` node (cell id, `useLabelSelection`, `isLastPosition`). For an empty list role, target `empty_<role>` — *not* `refNodeList_<role>`.
 - **`press VK_ENTER` is not the same as `invoke action Insert`.** Raw key dispatch via `PressKeyStatement` may bypass the action infrastructure that actually creates new children in a collection. When testing what Enter "does" in a cell, invoke the named action (`Insert`, `Delete`, `MoveUp`, `MoveDown` from `jetbrains.mps.ide.editor.actions`, etc.) rather than the keystroke.
 - **Labels collide with names.** `node<label>` references look like identifiers but bind to the label, not a Java variable — pick distinct label names per test method.
+- **`NodesTestMethod` is abstract.** The role `testMethods` declares `NodesTestMethod` as its child type, but that concept is abstract — use the concrete subtype `SimpleNodeTest`. Validation reports `"Abstract concept instance detected. Use one of sub-concepts instead."` if you instantiate the abstract type directly.
+- **`TestNodeAnnotation` labels don't drive in-snippet reference resolution.** Labels are only resolvable through `TestNodeReference` inside test-method bodies. When the JSON insert needs to set a reference *inside the snippet* (e.g. `RoutineCall.routine`), use the target node's `name` (resolved via the language's own scope) or a persistent `r:` node ref — not the annotation label name.
+- **`mps_mcp_replace_node_child` mints a new persistent ref for the replacement.** The old ref is invalidated by the call, and the tool's response returns the *parent's* ref, not the new child's. If you need to act on the replacement again (e.g. add children to it), re-print the parent via `mps_mcp_print_node_json` and harvest the new child's ref from there.
+- **`ScopesExpectedNode.ref` is not scope-resolved.** Auto-resolution of plain names works only where MPS has a scope for the reference (e.g. `RoutineCall.routine` which uses Kaja's scope). `ScopesExpectedNode.ref` targets `BaseConcept` generically — supply a persistent `r:` node ref. The stage-construction recipe in §3.x covers this.
 
 ---
 
@@ -336,7 +385,10 @@ When asked to "write tests" for an MPS language feature:
 | `NodeTypeSystemErrorCheckOperation` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/428590876651279930` |
 | `CheckNodeForErrorMessagesOperation` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1215607067978` |
 | `AssertMatch` (assertNodesMatch) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1211979288880` |
-| `SimpleNodeTest` (anonymous BaseLanguage block in editor test) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225978065297` |
+| `SimpleNodeTest` (concrete subconcept of `NodesTestMethod`; the test-method body inside a `NodesTestCase.testMethods`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225978065297` |
+| `ScopesTest` (declarative scope assertion on a node holding a reference) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/511191073233700873` |
+| `ScopesExpectedNode` (one expected member in a `ScopesTest.nodes`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/3655334166513314291` |
+| `ScopeEntry` (named scope partition; used by `MockScopeProvider` and similar) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/2153278993333648098` |
 | `TypeKeyStatement` (`type "..."`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1227182079811` |
 | `PressKeyStatement` (`press ...`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1228934484974` |
 | `InvokeActionStatement` (`invoke action ...`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/7011073693661765739` |
