@@ -42,7 +42,7 @@ All MPS skills live in a per-harness directory loaded by the agent host (e.g. `.
 | `mps-aspect-migrations`             | Migration scripts — upgrading user models when language definitions change. |
 | `mps-aspect-textgen`                | TextGen — concept-to-plain-text serialization rules. |
 | `mps-aspect-typesystem`             | Typesystem — inference rules, subtyping, replacement, comparison, non-typesystem checking. |
-| `mps-editor-technical-reference`    | Technical details on cell models, layout styles, and editor inheritance — concept IDs, JSON templates. |
+| `mps-aspect-editor`                 | Overall workflow for creating and changing MPS editor definitions — scaffolding, componentizing, cell models, layouts, styles, validation. |
 | `mps-language-analysis`             | Analyze MPS language definitions — discover concepts, metadata, aspects, sample nodes. |
 | `mps-language-inheritance`          | Investigate inheritance between MPS languages and concepts — extends, super, sub, assignable. |
 | `mps-node-editing`                  | Modify MPS nodes using JSON blueprints — the canonical workflow for any node mutation. |

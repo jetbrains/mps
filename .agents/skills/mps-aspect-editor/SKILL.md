@@ -1,6 +1,6 @@
 ---
-name: mps-editor-technical-reference
-description: Technical reference for MPS editor cell models, layout styles, indent-layout style items, smart-reference cell wiring, and inheritance — plus minimal JSON blueprints for common editor shapes. Use when refining a scaffolded editor, choosing between `CellModel_RefNode`/`CellModel_RefNodeList`/`CellModel_RefCell`, debugging line-break/indent behaviour, or hand-building an editor JSON.
+name: mps-aspect-editor
+description: Use when creating or changing MPS editor definitions — the overall workflow from scaffolding a `ConceptEditorDeclaration` through componentizing reusable `EditorComponentDeclaration`s, refining cell models and cell layouts, applying style sheets and indent-layout style items, wiring smart references, leveraging inheritance via super-concepts and interfaces, inspecting (`print_node_json`, `show_node_representation`) and validating (`check_root_node_problems`). Covers `jetbrains.mps.lang.editor` cell models (`CellModel_RefNode`/`CellModel_RefNodeList`/`CellModel_RefCell`/`CellModel_Property`/`CellModel_Constant`), layout choices, and JSON blueprints for common editor shapes. For the non-layout side (action maps, keymaps, transformation/substitute menus) use `mps-aspect-editor-menus-and-keymaps`.
 type: reference
 ---
 

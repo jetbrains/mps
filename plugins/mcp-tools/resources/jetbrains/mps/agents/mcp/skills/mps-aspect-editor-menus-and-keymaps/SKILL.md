@@ -1,6 +1,6 @@
 ---
 name: mps-aspect-editor-menus-and-keymaps
-description: Use when authoring the **non-layout** parts of the MPS editor aspect — what happens when the user types, presses a key, triggers completion, pastes, or invokes a context action. Covers action maps (`CellActionMapDeclaration`), cell keymaps (`CellKeyMapDeclaration`), transformation menus (`TransformationMenu_Default` / `_Named` / `_Contribution`), substitute menus (`SubstituteMenu_Default` / `SubstituteMenu` / contributions), side transforms (LEFT/RIGHT), legacy cell menus, paste wrappers and copy-paste handlers (in the actions language), completion styling, reference presentation, two-step deletion, and the editor selection API. Trigger terms: `actionMap`, `keyMap`, `delete_action_id`, `transformationMenu`, `substituteMenu`, `Ctrl+Space`, `Ctrl+Alt+B`, side transform, paste wrapper, completion styling, `PasteWrappers`, `CopyPasteHandlers`. For the **layout** side (cells, layouts, style sheets) use `mps-editor-technical-reference` instead.
+description: Use when authoring the **non-layout** parts of the MPS editor aspect — what happens when the user types, presses a key, triggers completion, pastes, or invokes a context action. Covers action maps (`CellActionMapDeclaration`), cell keymaps (`CellKeyMapDeclaration`), transformation menus (`TransformationMenu_Default` / `_Named` / `_Contribution`), substitute menus (`SubstituteMenu_Default` / `SubstituteMenu` / contributions), side transforms (LEFT/RIGHT), legacy cell menus, paste wrappers and copy-paste handlers (in the actions language), completion styling, reference presentation, two-step deletion, and the editor selection API. Trigger terms: `actionMap`, `keyMap`, `delete_action_id`, `transformationMenu`, `substituteMenu`, `Ctrl+Space`, `Ctrl+Alt+B`, side transform, paste wrapper, completion styling, `PasteWrappers`, `CopyPasteHandlers`. For the **layout** side (cells, layouts, style sheets) use `mps-aspect-editor` instead.
 type: reference
 ---
 
@@ -8,7 +8,7 @@ type: reference
 
 This skill covers the **non-layout parts** of the MPS editor aspect: everything that controls user interaction (typing, keystrokes, completion, paste, context actions). Most concepts belong to `jetbrains.mps.lang.editor.structure`; paste wrappers / node factories / copy-paste handlers live in `jetbrains.mps.lang.actions.structure`. Roots typically live in `<lang>/languageModels/editor.mps` or `actions.mps`.
 
-For the **layout** side (concept editors, cell models, style sheets, editor components) see `mps-mcp-workflow` and `mps-editor-technical-reference`.
+For the **layout** side (concept editors, cell models, style sheets, editor components) see `mps-mcp-workflow` and `mps-aspect-editor`.
 
 ## Critical Directives
 
@@ -55,7 +55,7 @@ For a typical "let the user invoke action X when they do Y" task:
 ## Related Skills
 
 - `mps-mcp-workflow` — "MPS Concept Editor Workflow" section: scaffold, componentise, refine. Covers the **layout** side.
-- `mps-editor-technical-reference` — cell models, layout styles, style inheritance.
+- `mps-aspect-editor` — overall workflow for creating and changing MPS editor definitions; cell models, layout styles, style inheritance.
 - `mps-aspect-actions` — `NodeFactory` initialisation of new nodes (in the actions language, often referenced from menus).
 - `mps-aspect-intentions` — Alt+Enter context actions. Intentions can be surfaced inside a transformation menu via the `intention` adapter.
 - `mps-model-code` — smodel operations used in execute/text/condition bodies.

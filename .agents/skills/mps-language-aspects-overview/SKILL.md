@@ -19,7 +19,7 @@ An MPS language is a collection of **aspects**, each a separate model inside the
 | Aspect | Model file | Language DSL | Detailed skill |
 |---|---|---|---|
 | **Structure** | `structure.mps` | `jetbrains.mps.lang.structure` | [`mps-structure-concepts`](../mps-structure-concepts/SKILL.md) |
-| **Editor** | `editor.mps` | `jetbrains.mps.lang.editor` | [`mps-aspect-editor-menus-and-keymaps`](../mps-aspect-editor-menus-and-keymaps/SKILL.md), [`mps-editor-technical-reference`](../mps-editor-technical-reference/SKILL.md) |
+| **Editor** | `editor.mps` | `jetbrains.mps.lang.editor` | [`mps-aspect-editor`](../mps-aspect-editor/SKILL.md), [`mps-aspect-editor-menus-and-keymaps`](../mps-aspect-editor-menus-and-keymaps/SKILL.md) |
 | **Constraints** | `constraints.mps` | `jetbrains.mps.lang.constraints` | [`mps-aspect-constraints`](../mps-aspect-constraints/SKILL.md) |
 | **Behavior** | `behavior.mps` | `jetbrains.mps.lang.behavior` | [`mps-aspect-behavior`](../mps-aspect-behavior/SKILL.md) |
 | **Typesystem & Checking** | `typesystem.mps` | `jetbrains.mps.lang.typesystem` | [`mps-aspect-typesystem`](../mps-aspect-typesystem/SKILL.md) |

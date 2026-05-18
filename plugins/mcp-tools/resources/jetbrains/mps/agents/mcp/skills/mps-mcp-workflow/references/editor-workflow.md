@@ -7,7 +7,7 @@ Designing, scaffolding, and refining MPS concept editors:
 3. **Scaffold**: call `mps_mcp_scaffold_editor` with `detectComponents: true`.
 4. **Componentize**: extract reusable parts into `EditorComponentDeclaration`.
 5. **Inspect**: verify AST and layout via `mps_mcp_print_node_json` and `mps_mcp_show_node_representation`.
-6. **Refine**: customize cells/styles using the `mps-editor-technical-reference` skill.
+6. **Refine**: customize cells/styles using the `mps-aspect-editor` skill.
 7. **Verify**: check for errors via `mps_mcp_check_root_node_problems`.
 
 ## Editor Procedural Guidelines
