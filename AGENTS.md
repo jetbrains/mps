@@ -164,9 +164,7 @@ Local skills in [`.agents/skills/`](.agents/skills/):
 - [`mps-aspect-migrations`](.agents/skills/mps-aspect-migrations/SKILL.md) — MPS migration scripts and enhancement scripts.
 - [`mps-aspect-textgen`](.agents/skills/mps-aspect-textgen/SKILL.md) — MPS TextGen — concept-to-plain-text serialisation.
 - [`mps-aspect-typesystem`](.agents/skills/mps-aspect-typesystem/SKILL.md) — MPS typesystem — inference, subtyping, checking rules.
-- [`mps-baselanguage-java`](.agents/skills/mps-baselanguage-java/SKILL.md) — strategy and tips for editing `baseLanguage` nodes and setting references.
-- [`mps-baselanguage-json-ast`](.agents/skills/mps-baselanguage-json-ast/SKILL.md) — creating/updating non-trivial BaseLanguage/Java code via JSON AST.
-- [`mps-baselanguage-reference`](.agents/skills/mps-baselanguage-reference/SKILL.md) — mapping Java syntax to MPS `baseLanguage` concepts and roles.
+- [`mps-baselanguage`](.agents/skills/mps-baselanguage/SKILL.md) — authoring `jetbrains.mps.baseLanguage` (Java) nodes: parser vs JSON AST blueprints, concept/role mapping, stub references, validation.
 - [`mps-bugfix`](.agents/skills/mps-bugfix/SKILL.md) — MPS bugfixing workflow.
 - [`mps-build-language`](.agents/skills/mps-build-language/SKILL.md) — MPS Build Language scripts.
 - [`mps-distribution-build`](.agents/skills/mps-distribution-build/SKILL.md) — generated Ant pipeline (`build/mps*.xml`) that builds MPS distributions; how to bundle a new plain Java/Kotlin plugin.

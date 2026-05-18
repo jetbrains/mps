@@ -1,6 +1,7 @@
 ---
 name: mps-dsl-memory
 description: Explore a live MPS DSL project and write a project-local MEMORY.md for future sessions.
+type: reference
 ---
 
 ### When to Use

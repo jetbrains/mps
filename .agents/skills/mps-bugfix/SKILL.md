@@ -1,7 +1,8 @@
 ---
 name: mps-bugfix
-description: MPS bugfixing workflow. Use when the user invokes "/bugfix", mentions "fix a bug", "work on a bug", "investigate an issue", or provides a YouTrack issue ID to investigate and fix.
+description: Structured MPS bugfix workflow driven by a YouTrack issue ID — preflight tool checks, version/branch derivation, parallel-agent problem analysis, solution design, branch creation, implementation, review, and YouTrack updates. Use when the user invokes "/bugfix", asks to "fix a bug", "work on a bug", "investigate an issue", or provides a YouTrack issue ID.
 argument-hint: <YouTrack issue ID, e.g. MPS-12345>
+type: reference
 ---
 
 # MPS Bugfix Workflow
@@ -10,13 +11,19 @@ You are guiding a structured bugfix process for the JetBrains MPS project. Follo
 
 The issue to fix: **$ARGUMENTS**
 
----
+## Critical Directives
 
-## Phase 0: Pre-flight Checks
+- **Never start implementing code before the user gives explicit approval.** Wait for "implement", "go ahead", "start coding", "do it", etc.
+- **Never skip Phase 0 preflight.** Missing YouTrack MCP, IDEA MCP, or the platform project changes how you should proceed; surface the gap before touching code.
+- **Prefer fixing the true source of truth (MPS model/generator) over patching generated code.**
+- **Use IDEA MCP for Java/Kotlin navigation and inspection; use MPS MCP for MPS model edits.**
+- **Validate after each logical change** — `mcp_idea_get_file_problems` on modified files, build affected module, run smallest relevant test suite.
 
-**Goal**: Verify all required tools and inputs are present before doing any work.
+## Phase 0 — Pre-flight Checks
 
-### 0.1 – Issue ID
+Verify all required tools and inputs before doing any work.
+
+### 0.1 — Issue ID
 
 If `$ARGUMENTS` is empty, stop immediately and ask:
 
@@ -24,7 +31,7 @@ If `$ARGUMENTS` is empty, stop immediately and ask:
 
 Do not continue until a valid-looking issue ID is supplied.
 
-### 0.2 – YouTrack MCP
+### 0.2 — YouTrack MCP
 
 Check that the YouTrack MCP server tools are available in this session (by attempting to call `get_issue`).
 
@@ -33,24 +40,11 @@ If they are not available:
 
 Stop until the tools are available.
 
-### 0.3 – Fetch the issue
+### 0.3 — Fetch the issue
 
-Call `get_issue` with the provided issue ID.
+Call `get_issue` with the provided issue ID. If the issue does not exist, report the error and stop. If it exists, extract and display the fields listed in `references/issue-fields.md`. Keep the raw issue data available for later phases.
 
-- If the issue does not exist, report the error and stop.
-- If it exists, extract and display:
-  - **Summary** (title)
-  - **Description**
-  - **Type** (Bug / Exception / etc.)
-  - **State**
-  - **Current Fix Version(s)** (if any)
-  - **Affected Version(s)** (if any)
-  - **Assignee**
-  - **Reporter**
-  - **Any attachments or linked issues** (mention them; read attachments if they seem relevant)
-- Keep the raw issue data available for later phases.
-
-### 0.4 – IDEA MCP (MPS project)
+### 0.4 — IDEA MCP (MPS project)
 
 Check that the `mcp_idea_*` tools are available.
 
@@ -59,160 +53,37 @@ If not available:
 
 Do not continue without the IDEA MCP tools.
 
-### 0.5 – IDEA MCP (platform project)
+### 0.5 — IDEA MCP (platform project)
 
-Call `mcp_idea_get_project_modules` or `mcp_idea_get_repositories` to verify that the IntelliJ platform project (`../intellij-community`) is also open/accessible via the IDEA MCP.
+Call `mcp_idea_get_project_modules` or `mcp_idea_get_repositories` to verify that the IntelliJ platform project (`../intellij-community`) is also open/accessible via the IDEA MCP. If not, ask whether to proceed with MPS-only sources or wait. See `references/platform-prompt.md` for the exact prompt.
 
-If the platform project is **not accessible**:
-> The IntelliJ platform sources at `../intellij-community` are not visible through the IDEA MCP.
-> If the analysis may require platform sources, please open the platform project in a second IntelliJ IDEA instance (or the same one) with the MCP plugin active.
-> Shall I continue with only MPS sources for now, or wait until the platform is also available?
+## Phase 1 — Version Clarification
 
-Wait for the user's answer before continuing.
+Determine which MPS version the fix targets and derive the correct branch and YouTrack fix version.
 
----
+1. **Identify available release branches**: run `git branch -r --list 'origin/20*'` and inspect master HEAD.
+2. **Ask the user** which version to target — see `references/version-prompt.md` for the exact wording.
+3. **Derive branch metadata** — see `references/branch-naming.md` for the full table.
+4. **Update YouTrack fix version** with `update_issue` after the user confirms.
 
-## Phase 1: Version Clarification
+## Phase 2 — Problem Analysis
 
-**Goal**: Determine which MPS version the fix targets and derive the correct branch and YouTrack fix version.
+Deeply understand the bug by reading relevant source code in both MPS and the platform.
 
-### 1.1 – Identify available release branches
+1. **MPS source analysis**: launch 2–3 parallel Explore agents (reproduction path, similar code/existing handling, test coverage). Prompts in `references/explore-prompts.md`.
+2. **Platform analysis** (if accessible): a fourth Explore agent against the platform sources.
+3. **Root cause identification**: present the structured RCA. Template in `references/root-cause-template.md`.
 
-Run:
-```
-git branch -r --list 'origin/20*'
-```
-to enumerate remote release branches (e.g. `origin/2024.3`, `origin/2025.1`).
+## Phase 3 — Solution Design
 
-Also check the current `master` HEAD to understand the in-development version.
+1. **Propose 2–3 distinct fix approaches** with trade-offs.
+2. **State your recommendation.**
+3. **Detailed implementation plan** for the recommended approach — files, line-level precision, generation steps, validation.
+4. **Offer to post the RCA + plan as a YouTrack comment** via `add_issue_comment`.
 
-### 1.2 – Ask the user
+## Phase 4 — Branch Creation
 
-Present your findings and ask:
-
-> **Which MPS version should this fix target?**
->
-> Available release branches: _[list them]_
-> Master branch (in-development): _[next version, e.g. 2026.1]_
->
-> Options:
-> - A **released version** → fix will be backported (base branch: e.g. `2025.1`)
-> - The **next release** currently in development → fix goes to `master`
->
-> Please confirm or specify the target version.
-
-Wait for the user's explicit answer.
-
-### 1.3 – Derive branch metadata
-
-Once the user answers, compute:
-
-| Field | Value |
-|---|---|
-| **Target MPS version** | e.g. `2025.1` or `2026.1` |
-| **Base branch** | `2025.1` (release) or `master` (next) |
-| **Branch version prefix** | `251` (2025.1) or `261` (2026.1), etc. |
-| **Git username** | from `git config user.name` (lowercase, spaces → hyphens) |
-| **Proposed branch name** | `<prefix>/<username>/MPS-NNNNN-short-description` |
-| **YouTrack fix version** | e.g. `2025.1.x` or `2026.1` |
-
-Present the proposed branch name and YouTrack fix version to the user for confirmation before creating them.
-
-### 1.4 – Update YouTrack fix version
-
-After user confirms, call `update_issue` to set the **Fix versions** field to the agreed version.
-
-Report the result.
-
----
-
-## Phase 2: Problem Analysis
-
-**Goal**: Deeply understand the bug by reading relevant source code in both MPS and the platform.
-
-### 2.1 – MPS source analysis
-
-Launch 2–3 parallel Explore agents, each focused on a different angle, for example:
-
-- **Reproduction path**: "Trace the code path described in issue $ARGUMENTS from the entry point through to the failure. Return the 5–10 most relevant files with line ranges."
-- **Similar code / existing handling**: "Find code that handles cases similar to the one described in $ARGUMENTS. Look for existing error handling, related subsystems, and patterns. Return the 5–10 most relevant files."
-- **Test coverage**: "Find existing tests that cover the subsystem or code path relevant to $ARGUMENTS. Return relevant test files and test method names."
-
-Read every file returned by the agents. Build a comprehensive picture of the code path, data flow, and invariants.
-
-### 2.2 – Platform analysis (if accessible)
-
-If the IntelliJ platform project is accessible, launch a parallel Explore agent:
-
-- "In the IntelliJ platform sources at `../intellij-community`, find the platform APIs and classes that the MPS code (from the analysis above) relies on. Identify if any platform change could be involved in the bug. Return 5–10 key files."
-
-Read the returned platform files.
-
-### 2.3 – Root cause identification
-
-Synthesize the findings into a structured root cause analysis:
-
-**Present to the user:**
-
-```
-## Root Cause Analysis — <issue ID>
-
-### Problem Summary
-<1–2 sentence description of what goes wrong and why>
-
-### Code Path
-<Numbered list of the key steps, with file:line references>
-
-### Root Cause
-<What exactly causes the failure — a missing null check, wrong assumption,
- API misuse, race condition, platform behaviour change, etc.>
-
-### Platform Involvement
-<Is a platform API behaving unexpectedly? A platform change relevant? Or is
- it entirely within MPS code?>
-
-### Affected Versions
-<Which versions are likely affected and why>
-```
-
----
-
-## Phase 3: Solution Design
-
-**Goal**: Propose concrete, implementable solutions.
-
-### 3.1 – Propose solutions
-
-Design 2–3 distinct fix approaches (e.g. minimal targeted patch, cleaner refactor, defensive workaround), each with:
-- What changes it makes and where
-- Trade-offs (risk, scope, invasiveness)
-- Whether it applies cleanly to the target branch
-
-Your recommendation: state clearly which approach you prefer and why.
-
-### 3.2 – Implementation plan
-
-For the recommended approach, provide a detailed step-by-step plan:
-- Files to modify, with line-level precision where possible
-- New classes, methods, or tests to add
-- Generation steps to run (if MPS models are involved)
-- Validation steps (inspections, build, test)
-
-### 3.3 – YouTrack analysis comment (optional)
-
-Offer:
-
-> Shall I post the root cause analysis and implementation plan as a YouTrack comment on $ARGUMENTS for future reference? (yes / no)
-
-If the user says yes, call `add_issue_comment` with a Markdown-formatted summary of the Phase 2 analysis and the chosen solution plan.
-
----
-
-## Phase 4: Branch Creation
-
-**Goal**: Create the fix branch from the right base.
-
-After the user has reviewed the plan and explicitly approves moving forward (e.g. "go ahead", "start", "implement it", "proceed"), create the branch:
+After the user explicitly approves moving forward, run:
 
 ```
 git checkout <base-branch>
@@ -220,77 +91,44 @@ git pull origin <base-branch>
 git checkout -b <proposed-branch-name>
 ```
 
-Report the created branch name.
+**Do not start implementing code until the user gives an explicit command.**
 
-**Do not start implementing code until the user gives an explicit command to begin (e.g. "implement", "go ahead", "start coding", "do it").**
+## Phase 5 — Implementation
 
----
+**Only begin after explicit user command.**
 
-## Phase 5: Implementation
+Follow AGENTS.md rules throughout:
 
-**Goal**: Execute the implementation plan from Phase 3.
-
-**ONLY begin after the user gives an explicit command to start.**
-
-Follow the AGENTS.md rules throughout:
-- Use IDEA MCP tools for Java/Kotlin code navigation and inspection.
-- Use MPS MCP tools for MPS model edits (if available and required).
-- Prefer fixing the true source of truth (MPS model/generator) over patching generated code.
+- Use IDEA MCP for Java/Kotlin code navigation and inspection.
+- Use MPS MCP for MPS model edits (if required).
+- Prefer fixing the source of truth (MPS model/generator) over patching generated code.
 - Keep changes minimal — touch only what the fix requires.
-- Match conventions of the surrounding code.
-- Validate after each logical change:
-  - `mcp_idea_get_file_problems` on modified files
-  - Build the affected module
-  - Run the smallest relevant test suite
+- Match conventions of surrounding code.
+- Validate after each logical change: `mcp_idea_get_file_problems`, module build, smallest relevant test.
 
-Commit each logical unit of change with a clear message following the project format, including a `Co-Authored-By` trailer.
+Commit each logical unit of change with a clear message following project format, including a `Co-Authored-By` trailer.
 
----
+## Phase 6 — Review
 
-## Phase 6: Review
-
-**Goal**: Catch issues before the fix is shared.
-
-Once the implementation is complete, offer:
+Once implementation is complete, offer:
 
 > The implementation is done. Shall I run an agent-performed code review of the changes? (yes / no)
 
-If the user agrees, invoke the `/review` skill scoped to the diff of the current branch vs its base:
+If yes, invoke `/review` scoped to `git diff <base-branch>...HEAD`. Checks listed in `references/review-checklist.md`.
 
-```
-git diff <base-branch>...HEAD
-```
+Present the findings and ask the user how to proceed (fix issues, ignore, or proceed as-is).
 
-The reviewer agent should check:
-- Correctness and logic of the fix
-- Adherence to project conventions (AGENTS.md, .agents/conventions.md)
-- Missing edge cases or null checks
-- Test coverage adequacy
-- No accidental changes outside the fix scope
+## Phase 7 — Completion
 
-Present the review findings and ask the user how to proceed (fix issues, ignore, or proceed as-is).
+Once the user confirms resolution, offer to post a short YouTrack summary comment via `add_issue_comment`. Template in `references/completion-comment.md`. Remind the user to push the branch / open PR, update issue state, and consider backports.
 
----
+## Reference Index
 
-## Phase 7: Completion
-
-**Goal**: Close the loop on YouTrack.
-
-Once the user confirms the issue is resolved, offer:
-
-> Shall I post a brief comment on $ARGUMENTS summarising the fix — what was changed and why? (yes / no)
-
-If the user says yes, compose and post a short YouTrack comment via `add_issue_comment`:
-
-```
-Fixed in branch `<branch-name>` (targeting <MPS version>).
-
-**Root cause**: <one sentence>
-**Fix**: <one sentence describing what was changed>
-**Files changed**: <comma-separated list of key files>
-```
-
-Remind the user to:
-- Push the branch and open a PR/code review
-- Update the YouTrack issue state if needed (e.g. mark as Fixed)
-- Backport to other affected versions if required
+- `references/issue-fields.md` — fields to extract from the fetched issue.
+- `references/platform-prompt.md` — prompt when platform sources are not accessible.
+- `references/version-prompt.md` — Phase 1 version-clarification prompt.
+- `references/branch-naming.md` — branch-name derivation table (prefix, username, version).
+- `references/explore-prompts.md` — Phase 2 parallel Explore-agent prompts.
+- `references/root-cause-template.md` — structured RCA markdown template.
+- `references/review-checklist.md` — what the agent reviewer must check.
+- `references/completion-comment.md` — Phase 7 YouTrack closing-comment template.

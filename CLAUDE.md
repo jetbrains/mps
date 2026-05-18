@@ -164,6 +164,7 @@ Local skills in [`.claude/skills/`](.claude/skills/):
 - [`mps-aspect-migrations`](.claude/skills/mps-aspect-migrations/SKILL.md) — MPS migration scripts and enhancement scripts.
 - [`mps-aspect-textgen`](.claude/skills/mps-aspect-textgen/SKILL.md) — MPS TextGen — concept-to-plain-text serialisation.
 - [`mps-aspect-typesystem`](.claude/skills/mps-aspect-typesystem/SKILL.md) — MPS typesystem — inference, subtyping, checking rules.
+- [`mps-baselanguage`](.claude/skills/mps-baselanguage/SKILL.md) — authoring `jetbrains.mps.baseLanguage` (Java) nodes: parser vs JSON AST blueprints, concept/role mapping, stub references, validation.
 - [`mps-bugfix`](.claude/skills/mps-bugfix/SKILL.md) — MPS bugfixing workflow.
 - [`mps-build-language`](.claude/skills/mps-build-language/SKILL.md) — MPS Build Language scripts.
 - [`mps-distribution-build`](.claude/skills/mps-distribution-build/SKILL.md) — generated Ant pipeline (`build/mps*.xml`) that builds MPS distributions; how to bundle a new plain Java/Kotlin plugin.

@@ -1,97 +1,49 @@
 ---
 name: mps-aspect-accessories
-description: How MPS language dependencies, used languages, runtime solutions, and accessory models fit together; when to use each.
+description: Wire MPS module and model dependencies, used languages, used devkits, extended languages, runtime solutions, accessory models, and language/dependency versions. Use when adding/removing module dependencies, importing languages or devkits into a model, declaring runtime solutions, or shipping accessory content visible to consumers without explicit import.
 type: reference
 ---
 
-# MPS Module & Model Dependencies, Accessory Models
+# MPS Module and Model Dependencies, Accessory Models
 
-This skill covers the *wiring* layer of an MPS language — the module descriptor (`.mpl`) and the per-model imports — and the special role of **accessory models**.
+This skill covers the *wiring* layer of an MPS language — the module descriptor (`.mpl`) and the per-model imports — and the special role of **accessory models** and **runtime solutions**.
 
----
+## Critical Directives
 
-## 1 — Module-level dependencies (`.mpl`)
+- **Prefer MCP wiring tools over hand-editing `.mpl` XML.** Hand-editing can silently corrupt the module descriptor. If you must hand-edit (e.g. for `accessoryModels`, which has no dedicated MCP tool), make a backup, edit only the targeted block, and rebuild the module immediately afterwards so MPS re-reads the descriptor.
+- **Don't hand-edit `languageVersions` / `dependencyVersions`.** MPS maintains these. Use the MPS "Update language/dependency versions" action.
+- **Generator modules have their own dependency list.** Add target-language deps to the generator, not the parent language.
+- **Used languages auto-import** when nodes are inserted via `mps_mcp_insert_root_node_from_json` / `mps_mcp_add_node_child` / `mps_mcp_replace_node_child`. Manually add a used language only for hand-written code or implicit dependencies.
 
-A language module declares:
+## Rule of Thumb — Dependency vs. Used Language
 
-- **`dependencies`** — modules whose code/classes this module compiles against. Scopes: `Default`, `Design`, `Compile`, `Runtime`, `Generation Target`, `Extends`.
-- **`usedLanguages`** — languages whose concepts can be used in this module's own models (structure, editor, constraints…). Each entry is a language module.
-- **`usedDevKits`** — convenience bundles that wrap sets of languages.
-- **`extendedLanguages`** — languages whose concepts this language inherits from and can extend.
-- **`runtimeModules`** — solution modules that ship with the language and are visible to consumers at runtime (e.g. helper classes, plugin APIs).
-- **`generators`** — nested generator modules declared by the language.
-- **`accessoryModels`** — see §3.
-- **`languageVersions` / `dependencyVersions`** — version stamps that MPS maintains; don't hand-edit.
+- If a concept is **used in your language definition** → add a `usedLanguage`.
+- If a Java class is **referenced in hand-written code** → add a `dependency` with the right scope.
 
-Helpful MCP tools:
-- `mps_mcp_add_module_dependency` / `mps_mcp_remove_module_dependency`
-- `mps_mcp_get_module` / `mps_mcp_get_project_structure` to inspect existing wiring
+## MCP Tools Quick Reference
 
-**Rule of thumb**: if a concept is *used in your language definition* → add a `usedLanguage`. If a Java class is *referenced in hand-written code* → add a `dependency` with the right scope. Generator modules need their own dependency list (they compile independently).
+- Module-level: `mps_mcp_add_module_dependency`, `mps_mcp_remove_module_dependency`, `mps_mcp_get_module`, `mps_mcp_get_project_structure`.
+- Model-level: `mps_mcp_add_model_dependency`, `mps_mcp_remove_model_dependency`, `mps_mcp_add_model_used_language` (kind = `language` or `devkit`), `mps_mcp_remove_model_used_language`.
+- Module creation: `mps_mcp_create_module(type="solution", …)` for a runtime solution.
 
----
+## Common Workflow
 
-## 2 — Model-level imports
+1. **Inspect** existing wiring: `mps_mcp_get_module` for the `.mpl`, `mps_mcp_get_project_structure` for traversal.
+2. **Diagnose** the symptom against the pitfalls table (`references/pitfalls.md`).
+3. **Apply** the right MCP tool at the right layer (module vs. model vs. accessory).
+4. **Rebuild** the module so MPS re-reads the descriptor.
 
-Each model in the language (structure, editor, behavior, …) has:
+## Related Skills
 
-- **Model imports (`dependencies`)** — models this model references by node
-- **Used languages** — which DSLs the model uses to author its nodes
-- **Used devkits** — same idea, bundled
+- **`mps-language-inheritance`** — when you need the difference between `extendedLanguages` and `usedLanguages` in detail.
+- **`mps-aspect-generator`** — generator-module dependencies are managed separately from the parent language.
+- **`mps-language-aspects-overview`** — to know which aspects exist and where each one lives.
 
-MCP tools:
-- `mps_mcp_add_model_dependency` / `mps_mcp_remove_model_dependency`
-- `mps_mcp_add_model_used_language` / `mps_mcp_remove_model_used_language` (kind = `language` or `devkit`)
+## Reference Index
 
-These are updated automatically when using `mps_mcp_insert_root_node_from_json` / `mps_mcp_add_node_child` / `mps_mcp_replace_node_child` because those tools auto-import the languages of the concepts they insert. Manual adjustment is usually only needed for used languages of hand-written code or implicit dependencies.
-
----
-
-## 3 — Accessory models
-
-An **accessory model** is a model that is logically part of the language and becomes available to *every consumer* of the language — without requiring a consumer-side import. Typical uses:
-
-- Predefined constants / enum-like singletons (colors, units, platform types)
-- Built-in library nodes (e.g. a standard library of operators)
-- Named configurations the consumer should pick by reference, not rewrite
-
-Declared in the `.mpl` under `accessoryModels` by model name. The consumer's editor and constraints can then resolve references to roots of that accessory model just as if they were imported.
-
-Create accessory content as a normal MPS model inside the language's `languageModels/` folder, then list its name in the `.mpl` `<accessoryModels>` section. Each entry is:
-
-```xml
-<accessoryModels>
-  <model modelUID="r:<model-uuid>(<model-name>)" />
-</accessoryModels>
-```
-
-No MPS MCP tool currently exposes accessory-model declaration directly (`mps_mcp_add_module_dependency` and `mps_mcp_update_module` do not cover it). Either edit the `.mpl` XML by hand — hand-editing can silently corrupt the module descriptor if the format is wrong, so make a backup first, edit only the `<accessoryModels>` block, and rebuild the module immediately afterwards so MPS re-reads the descriptor — or declare it through the MPS UI (Module properties → Accessory Models) and then inspect via `mps_mcp_get_module`.
-
----
-
-## 4 — Runtime solutions
-
-A **runtime solution** ships Java code that the *generated* programs need at run time (helper classes, data structures, reflection-free APIs). It is declared in the `.mpl` as a runtime module. Consumers of the language automatically depend on it at the appropriate scope.
-
-Create with `mps_mcp_create_module(type="solution", …)` and link it as a runtime module on the language.
-
----
-
-## 5 — Extends vs. uses
-
-- **`extendedLanguages`** — your language *inherits* from another language. Your concepts may subclass the other language's concepts; your editor may override theirs. Use sparingly.
-- **`usedLanguages`** — your language *depends on* another language's concepts as peers (composition). Used by most real languages (e.g. a DSL that embeds BaseLanguage expressions).
-
----
-
-## 6 — Common pitfalls
-
-| Symptom | Cause | Fix |
-|---|---|---|
-| "Cannot resolve concept X" in a model | Missing used language | `add_model_used_language` for the concept's language |
-| "Cannot resolve class Y" in behavior/rule body | Missing module dependency | `add_module_dependency` with correct scope (`Default` for design-time) |
-| Consumer can't reference a shared constant | Model not declared as `accessoryModel` | Add to `accessoryModels` in the `.mpl` |
-| Generated code fails at runtime with `ClassNotFoundException` | Runtime solution missing | Declare a runtime solution and include the required classes |
-| Generator can't find target-language concept | Generator module has its own dependency list | Add the target language to the generator module, not the language |
-| Version mismatch warnings on build | Stale `languageVersions` / `dependencyVersions` | Use MPS's "Update language/dependency versions" action, or let MCP tools update on save |
-| Devkit changes not picked up | Consumer uses an older devkit snapshot | Re-import the devkit; rebuild |
+- Open `references/module-level-deps.md` for the full list of `.mpl` declarations (dependencies, usedLanguages, usedDevKits, extendedLanguages, runtimeModules, generators, accessoryModels, version stamps) and their scopes.
+- Open `references/model-level-imports.md` for per-model `dependencies`, used languages, used devkits, and the auto-import behavior of node-insertion tools.
+- Open `references/accessory-models.md` when shipping a model that should be available to every consumer of the language without an explicit import — including the `.mpl` `<accessoryModels>` XML shape and the hand-edit caveat.
+- Open `references/runtime-solutions.md` for shipping Java code that generated programs need at runtime.
+- Open `references/extends-vs-uses.md` for the semantic difference between `extendedLanguages` and `usedLanguages` with examples.
+- Open `references/pitfalls.md` when you need to diagnose a symptom ("Cannot resolve concept X", "ClassNotFoundException", version mismatch, generator can't find target-language concept, devkit changes not picked up).

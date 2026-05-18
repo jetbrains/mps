@@ -1,6 +1,6 @@
 ---
 name: mps-tests
-description: How to write tests for MPS languages and models — NodesTestCase (typesystem/constraints/scope), EditorTestCase (intentions/actions/keystrokes), GeneratorTestCase, MigrationTestCase, and plain BTestCase JUnit tests. Use when authoring or modifying tests inside `.mps` test models.
+description: Use when writing or modifying tests inside MPS `@tests` models — `NodesTestCase` (typesystem, constraints, scopes, dataflow, generator output), `EditorTestCase` (intentions, actions, keystrokes, side-transforms, completion), `MigrationTestCase` (migration scripts), `BTestCase` (plain JUnit on hand-written Java/Kotlin runtime), inline annotations such as `has error` / `has type` / `ScopesTest`, label-based `node<label>` cross-references, caret markers, and running tests via MCP / in MPS. Reach for this skill whenever the task involves authoring or fixing tests in a `tests`-stereotype model, or interpreting failures from one.
 type: reference
 ---
 
@@ -10,413 +10,59 @@ MPS ships a dedicated **test language** — `jetbrains.mps.lang.test` — for te
 
 A test is a **root node** living in a model whose **stereotype is `tests`** (the model file name ends in `@tests.mps`). The test model lives in a Solution module (kind `Other`), not in the language module itself, so it can depend on the language under test plus arbitrary runtime libraries.
 
-This skill is the reference for *what to put in a test model* and *what each test type means*. For the mechanics of creating/modifying nodes via MCP, see `mps-model-code` and the `mps_mcp_*` tool docs.
+This skill is the reference for *what to put in a test model* and *what each test type means*. For the mechanics of creating/modifying nodes via MCP, see `mps-model-code` and the `mps_mcp_*` tool docs. Documentation: <https://www.jetbrains.com/help/mps/testing-languages.html>. Source: `plugins/mps-testing/languages/lang.test/`.
 
-Companion docs:
-- Documentation: https://www.jetbrains.com/help/mps/testing-languages.html
-- Source of the test language: `plugins/mps-testing/languages/lang.test/`
+## Critical Directives
 
----
+- The test model **must** carry stereotype `tests` (file name `…@tests.mps`). Without it, roots compile but are not discovered as JUnit tests.
+- Used languages on a test model: `jetbrains.mps.lang.test`, `jetbrains.mps.baseLanguage.unitTest`, the language(s) under test, plus `jetbrains.mps.baseLanguage`, `jetbrains.mps.baseLanguage.collections`, `jetbrains.mps.lang.smodel`, `jetbrains.mps.lang.text` as needed by assertion code.
+- The containing Solution must be kind `Other` (`solutionKind = OTHER`) — Languages and Generators don't compile the test classes.
+- The `testMethods` role declares `NodesTestMethod`, which is **abstract** — instantiate `SimpleNodeTest` (`c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225978065297`). Inserting raw `NodesTestMethod` fails with `"Abstract concept instance detected"`.
+- Inside snippets, `TestNodeAnnotation` labels are **only** resolvable via `TestNodeReference` from test-method bodies. For *in-snippet* references (e.g. setting `RoutineCall.routine`) use the target node's own `name` property (resolved through the language's scope) or a persistent `r:` node ref, never the label name.
+- Prefer `invoke action <ActionId>` over raw `press <chord>` for Enter/Tab/etc. in `EditorTestCase` — `PressKeyStatement` may bypass the named-action dispatcher used by the production editor. Editor actions live in `r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)`.
+- For an empty list role, target `empty_<role>` for the caret — *not* `refNodeList_<role>` (the latter is the populated wrapper cell).
+- Never edit `test_gen/` or `classes_gen/` — those are regenerated.
 
-## 1 — Test model setup
+## Common-Path Workflow
 
-A test model must have:
+When asked to "write tests" for an MPS language feature:
 
-- **Stereotype**: `tests` (use the `@tests` suffix in the model name, e.g. `mylang.tests@tests`).
-- **Languages used**:
-  - `jetbrains.mps.lang.test` — provides `NodesTestCase`, `EditorTestCase`, `GeneratorTestCase`, `MigrationTestCase`, `TestNode`, etc.
-  - `jetbrains.mps.baseLanguage.unitTest` — provides `BTestCase`, `TestMethod`, assertions, `BeforeTest`.
-  - The language(s) under test, so you can write valid sample code in `TestNode` snippets.
-  - `jetbrains.mps.baseLanguage`, `jetbrains.mps.baseLanguage.collections`, `jetbrains.mps.lang.smodel`, `jetbrains.mps.lang.text` as needed for assertion code.
-- **Containing module**: a Solution with kind `Other` (`solutionKind = OTHER`) so it gets compiled and runs JUnit. Place it under `<lang>/tests/` or `<lang>.test/` next to the language module.
-- **Module dependency**: depend on the language module and any runtime needed by sample code.
-- Optional **`TestInfo` root node**: a single `TestInfo` per model that records the project path. Used by out-of-process test runners. The `mps.test.project.path` system property overrides it.
+1. **Decide the test type.** Typesystem / scope / constraint → `NodesTestCase`. Intention / action / keystroke → `EditorTestCase`. Migration → `MigrationTestCase`. Runtime helper → `BTestCase`. Generator output equivalence → `NodesTestCase` + `assertNodesMatch`. See `references/test-types.md`.
+2. **Find or create the test model.** Prefer extending an existing `@tests` model in the language's adjacent test Solution; only create a new one if no suitable Solution exists.
+3. **Add the test root** with `mps_mcp_create_root_node` using the concept ref from `references/concept-identifiers.md`, then populate `nodes` / `code` / etc. with `mps_mcp_add_node_child`. Use `mps_mcp_parse_java_and_insert` to drop a Java/BaseLanguage snippet into a `TestNode`.
+4. **Mark assertions** using the appropriate annotation concept (see `references/nodes-test-case.md` and `references/editor-test-case.md`). For prototypes, open the model in MPS and use the Alt+Enter intentions ("Add Node Operations Test Annotation", "Add Test Node Label", "Mark Caret Position") — they create the right annotations without hand-building blueprints.
+5. **Validate** with `mps_mcp_check_root_node_problems` on the new root.
+6. **Run.** Register a `JUnit Tests` config via `mps_mcp_create_run_configuration` (pass the test root's reference) and launch it with `execute_run_configuration`, or ask the user to run it in MPS.
 
-> If the only goal is plain JUnit on hand-written Java/Kotlin (no MPS-specific assertions), prefer a regular module test source root rather than a `@tests` model — see `mps-distribution-build` for how `BTestCase`-based MPS test modules are packaged.
-
-### Two locations for tests
+## Where Test Models Live
 
 | Where | When |
 |---|---|
 | **Test aspect** of the language (`testAspect` model under `<lang>/`) | Quick, language-local checks; cannot run in a fresh MPS instance from outside the language. |
 | **Dedicated test Solution** with `@tests` model | Recommended for anything serious. Runs out-of-process; can be wired into the build/CI. |
 
-Examples in this repo:
-- `testbench/testsolutions/quotation.test/` — full set: nodes, editor, generator, migration test models.
-- `testbench/testsolutions/test.test/` — self-tests of `lang.test`.
-- `testbench/testsolutions/bl.test/` — `MigrationTestCase` examples for `baseLanguage`.
-- `testbench/testsolutions/jetbrains.mps.baseLanguage.methodReferences.test/` — `NodesTestCase` typesystem tests.
-- `testbench/testsolutions/collections_unittest/` — pure `BTestCase` JUnit-style tests.
-
----
-
-## 2 — Test type cheat sheet
-
-| Concept | Concept ref | What it tests |
-|---|---|---|
-| `NodesTestCase` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1216913645126` | Typesystem, constraints, scope, dataflow, ad-hoc checks on AST nodes |
-| `EditorTestCase` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1229187653856` | Editor behaviour: intentions, actions, side transforms, keystrokes, caret/selection |
-| `MigrationTestCase` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/5476670926298696679` | Migration scripts: input → output equivalence + clean `check()` |
-| `BTestCase` | `c:f61473f9-130f-42f6-b98d-6c438812c2f6/...` | Plain JUnit-style test class with `@Test` methods, assertions, setup |
-| Generator tests | (use `NodesTestCase` + assertions over generated models) | Validate generator output, mapping labels, semantic preservation |
-
-`NodesTestCase` is the workhorse. `EditorTestCase` is for UI interactions. `BTestCase` is for runtime/library code. Generator and migration tests get dedicated concepts.
-
----
-
-## 3 — `NodesTestCase`
-
-The root node has three editable sections:
-
-```
-Test case <Name>
-nodes
-  ( <test snippet 1> )
-  ( <test snippet 2> )
-test methods
-  test <name> { ... statements ... }
-  ...
-  <beforeTests> / <afterTests>      // optional @BeforeTest / @AfterTest hooks
-utility methods
-  <helper methods>
-```
-
-- **`nodes`** (role `nodesToCheck`, children of type `TestNode`) — wrapper nodes holding *snippets of the language under test*. Each `TestNode` contains one root from the target language (e.g. a `ClassConcept`, a `Module`, etc.). The snippet does not have to be syntactically perfect — the point is to assert structural/semantic properties about it.
-- **`test methods`** (role `testMethods`, concrete concept **`SimpleNodeTest`**) — BaseLanguage methods. Each becomes one JUnit test method. Inside they can use `project`, `model`, smodel queries, and assertions to interrogate the nodes above. The role's declared type is `NodesTestMethod`, but that concept is **abstract** — you must instantiate `SimpleNodeTest` (its only concrete subconcept; concept ref `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225978065297`). Inserting a raw `NodesTestMethod` will fail `check_root_node_problems` with `"Abstract concept instance detected"`.
-- **`utility methods`** — non-test helpers, reused across test methods.
-- **`accessMode`** property — one of `unset`, `none`, `read`, `command` (default). Controls whether the test body runs in a write command, a read action, or without any wrapping.
-
-> **Label namespace.** `TestNodeAnnotation` makes its target referenceable from test-method bodies as `node<label>`. Labels live **only** in that test-binding namespace — they do **not** participate in the snippet's own reference resolution. When wiring an in-snippet reference (e.g. setting `RoutineCall.routine`), use the target node's own `name` property (resolved through the language's scope) or a persistent `r:` node ref — *not* the annotation label.
-
-### Inline assertion annotations
-
-The most idiomatic way to test typesystem/constraints/scope rules is to annotate nodes inside the snippets with intentions from `lang.test`:
-
-| Annotation concept | Intention name | Asserts |
-|---|---|---|
-| `NodeErrorCheckOperation` (`1TM$A`) | "Add Node Operations Test Annotation" → `has error` | The annotated node has the given checking error/quick-fix |
-| `NodeErrorCheckOperation` with `kind=warning` | `has warning` | Warning is reported |
-| `NodeErrorCheckOperation` with `kind=info` | `has info` | Info is reported |
-| `NodeTypeCheckOperation` (`30Omv`) | `has type` | Annotated node has the given inferred type |
-| `NodeTypeCheckOperation` with `expected=true` | `has expected type` | Annotated node has the given *expected* type (context type) |
-| `NodeTypeCheckOperation` with `kind=typeIn` | `has type in` | Inferred type is one of several |
-| `NodeTypeSystemErrorCheckOperation` (`2DdRWr`) | `has typesystem error` | A typesystem-rule error is raised; can reference `RuleReference` |
-| `CheckNodeForErrorMessagesOperation` (`7OXhh`) | (used implicitly by `check ... for error messages`) | Wraps a subtree to check error messages |
-| `TestNodeAnnotation` / `TestNodeReference` (`3xLA65` / `3xONca`) | "Add Test Node Label" | Tag a node with a **label**; reference it from test methods as `node<label>` |
-
-The visual cue in the editor is `<check ... has error IsNotSubtypeOf>` or `<check expression has type int>` wrapping the asserted node.
-
-Scope tests use the **`ScopesTest`** annotation (concept ref `c:8585453e-6bfb-4d80-98de-b16074f1d86c/511191073233700873`, FQN `jetbrains.mps.lang.test.structure.ScopesTest`) — see §3.x below for the JSON blueprint. Inside MPS the same annotation is created via Alt+Enter → *Scope Test Annotation*; list expected items in the inspector panel.
-
-Example — typesystem assertion inside a snippet:
-
-```
-public Consumer<Integer> testBadReturnContext() {
-  return <check ArrayList::set has error IsNotSubtypeOf>;
-}
-public void testWrongUseOfStaticMethod() {
-  AtomicInteger integer = new AtomicInteger();
-  Consumer<Integer> consumer = <check integer::new has error StaticMethodReferenced>;
-}
-```
-
-Source: `testbench/testsolutions/jetbrains.mps.baseLanguage.methodReferences.test/models/jetbrains.mps.baseLanguage.methodReferences.test.typesystem@tests.mps`
-
-### Labelled-node assertions in test methods
-
-When inline annotations are not enough (e.g. comparing the output of a generator-like operation against an expected tree), label nodes in the snippet and write a BaseLanguage assertion:
-
-```basicLanguage
-test compositeConvertDiffTest() {
-  node<> input    = node<inputLabel>;
-  node<> expected = node<expectedLabel>;
-  node<> converted = QuotationConverter.convert(input);
-  assertNodesMatch(converted, expected);   // helper from lang.test
-}
-```
-
-`assertNodesMatch` (`AssertMatch`, `JA50E`) does a structural compare of two nodes, ignoring volatile fields. Apply it via Alt+Enter inside a test method.
-
-### 3.x — Declarative scope assertions (`ScopesTest`)
-
-`ScopesTest` is the declarative way to test a reference's scope. The test runner generates one JUnit method per `ScopesTest` annotation (named `test_ScopeOf_<NodeConcept>_<referenceRole>_<nodeId>`), so you do **not** need a `SimpleNodeTest` body to invoke it — adding the annotation to the snippet is enough.
-
-**Where it lives.** `ScopesTest` extends `AbstractTestNodeAnnotation` and is attached as a `smodelAttribute` child of the **node that holds the reference** being checked (e.g. a `RoutineCall` in Kaja, an `InputFieldReference` in Calculator, etc.). It commonly sits next to a `TestNodeAnnotation` on the same target node — both children of the same `smodelAttribute` slot.
-
-**Children / refs.**
-
-| Role | Concept | Card. | Purpose |
-|---|---|---|---|
-| `checkingReference` (ref) | `BaseConcept` | 0..1 | Points at the **resolved target** of the reference whose scope is being checked. The runner uses it to disambiguate when the node has more than one outgoing reference. For a `RoutineCall` (one `routine` ref) you can omit it; setting it to the call's current target makes the intent explicit and the generated test name stable. |
-| `nodes` (child) | `ScopesExpectedNode` | 0..n | One entry per **expected** scope member. Semantics is *exact set* — if the actual scope contains anything else, or omits one of these, the test fails. |
-| `ScopesExpectedNode.ref` (ref) | `BaseConcept` | 1 | The expected node (must be a persistent `r:` node ref — these are not scope-resolved like routine names). |
-
-**Minimal JSON blueprint** — attach this as a `smodelAttribute` child of the node holding the reference:
-
-```json
-{
-  "concept": "jetbrains.mps.lang.test.structure.ScopesTest",
-  "references": [
-    { "role": "checkingReference", "target": "<resolved-target-node-ref>" }
-  ],
-  "children": [{
-    "role": "nodes",
-    "nodes": [
-      { "concept": "jetbrains.mps.lang.test.structure.ScopesExpectedNode",
-        "references": [{ "role": "ref", "target": "<expected-node-ref-1>" }] },
-      { "concept": "jetbrains.mps.lang.test.structure.ScopesExpectedNode",
-        "references": [{ "role": "ref", "target": "<expected-node-ref-2>" }] }
-    ]
-  }]
-}
-```
-
-**Authoring tip — stage construction.** `ScopesExpectedNode.ref` is not scope-resolved, so plain names won't auto-resolve. Insert the snippet's structure first (Script, routines, the call with a plain-name `routine` target), then `mps_mcp_print_node_json` to harvest the persistent refs of the routines and the call's resolved target, then add the `ScopesTest` annotation as a second-stage `add_node_child` with those refs.
-
-**Why prefer it over imperative assertions.** Declarative `ScopesTest` annotations:
-- generate a separate JUnit test per scope site (better isolation, clearer failure reporting),
-- check the scope **exactly** (catches over-broad scopes that the resolved reference can't detect),
-- need no `SimpleNodeTest` body, no `assertTrue`/`:eq:` boilerplate.
-
-Use a `SimpleNodeTest` only when the property under test isn't expressible as "the scope of *this* reference equals *this* set" — e.g. when you need to compute something across multiple snippets.
-
----
-
-## 4 — `EditorTestCase`
-
-Root has:
-
-```
-Editor test case <Name>
-description: ...
-before:  <Test case with sample nodes>      // role 25YQCW (testNodeBefore)
-result:  <Test case with expected nodes>    // role 25YQFr (testNodeResult)
-code:    <statements that drive the editor> // role LjaKd (code)
-```
-
-The `before` and `result` are themselves `TestNode`s wrapping a `NodesTestCase`-shaped block with `nodes` + `test methods`. Caret position is marked by an **`AnonymousCellAnnotation`** (`LIFWc`) on the node where the caret should sit; the inspector lets you fine-tune the exact cell (`cellId`, `useLabelSelection`, `selectionStart/End`, `isLastPosition`). The `result` section typically also carries an `AnonymousCellAnnotation` to verify *where the caret ended up* after the action.
-
-### Cell IDs in auto-generated editors
-
-Cell IDs come from the generated `..._EditorBuilder_a.java`. Common patterns for declarative editor cells:
-
-| Editor cell | Generated cellId |
-|---|---|
-| `{ name }` property cell for `name` | `property_name` (i.e. `property_<propertyName>`) |
-| `%role%` RefNodeList (populated) | `refNodeList_<role>` |
-| `%role%` RefNodeList (empty placeholder shown when the list is empty) | `empty_<role>` |
-| `(role)` RefNode (single child) | `refNode_<role>` / `empty_<role>` when null |
-| Constant cell `"text"` | `Constant_<rand>_<letter><digit>` (auto, e.g. `Constant_qpt50r_a0`) |
-| Collection cell wrapping the whole concept | `Collection_<rand>_<letter>` (auto) |
-
-When in doubt, open the generated `<Concept>_EditorBuilder_a.java` and grep for `setCellId(`. The empty-list placeholder (`empty_<role>`) is a *different* cell from the populated `refNodeList_<role>` wrapper — to drive a substitution into an empty list, point the caret at `empty_<role>`.
-
-### Editor-driving statements (in the `code` block)
-
-| Concept | Editor syntax | Effect |
-|---|---|---|
-| `TypeKeyStatement` (`2TK7Tu`) | `type "abc"` | Type the literal text at the caret |
-| `PressKeyStatement` (`yd1bK`) | `press <chord>` | Simulate a key chord (Enter, Tab, Ctrl+Space, Alt+Enter…) |
-| `InvokeActionStatement` (`2HxZob`) with `MPSActionReference` (`1iFQzN`) | `invoke action <ActionId>` | Invoke a registered MPS/IDEA action |
-| `InvokeIntentionStatement` (`1MFPAf`) | `invoke intention <IntentionName>` | Invoke a specific intention; may have a parameter |
-| `ApplyQuickFix` (`1MTqDA`) | `invoke quick-fix [<id>]` | Apply a quick-fix (named or first applicable) |
-
-**Prefer `invoke action` over raw `press` for editor commands.** `PressKeyStatement` simulates a key chord but does not always reach the named-action dispatcher used by the production editor. For Enter-driven insertion, completion, etc., use `InvokeActionStatement` referencing the registered action by its `MPSActionReference`. Common targets live in the `jetbrains.mps.ide.editor.actions` model — e.g. `Insert` (the action behind Enter in list/collection cells). The model reference is `r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)`.
-
-The inspector panel also exposes expressions usable inside `code`:
-
-- `EditorComponentExpression` (`369mXd`) — `editor component`, the active editor.
-- `IsIntentionApplicableExpression` (`2bRw2S`) — `is intention <Name> applicable`.
-- `ProjectExpression` (`1jxXqW`) / `ModelExpression` (`1jGwE1`) — `project`, `model`.
-
-After the `code` runs, MPS compares the resulting editor state to the `result` section. Caret/selection must match too.
-
-Example — intention test on quotation:
-
-```
-Editor test case ConvertToLightQuotation
-before:  (some `<concept Foo>` quotation, caret on `Foo`)
-result:  (the same expression rewritten as light quotation)
-code:
-  invoke intention "Convert to Light Quotation"
-```
-
-Source: `testbench/testsolutions/quotation.test/models/editorTest@tests.mps`
-
-### Side-transform / completion tests
-
-`EditorTestCase` is also the right container for side-transform menus, substitute menus, and completion items: type characters with `type "..."` or press `Tab`/`Enter` to commit a completion, and the `result` section verifies the resulting tree.
-
-Examples: `testbench/testsolutions/editor.menus.sideTransform.tests/models/tests@tests.mps`,
-`testbench/testsolutions/editor.test/selection/jetbrains.mps.lang.editor.completion.test.mps`,
-`testbench/testsolutions/editor.test/selection/jetbrains.mps.lang.editor.intentions.test.mps`.
-
----
-
-## 5 — Generator tests
-
-Generator tests use `NodesTestCase` plus the `AssertMatch` helper. Pattern:
-
-1. Two labelled snippets in the `nodes` section: an `input` root in the source language and an `expected` root in the target language.
-2. A `NodesTestMethod` that drives generation (or in unit-style cases calls a specific generator utility) and feeds the produced root to `assertNodesMatch(produced, node<expectedLabel>)`.
-
-For end-to-end generation, the helper `GenerationTest.generateAndCompare(...)` from the test runtime is the typical entry point — there is no dedicated `GeneratorTestCase` concept; it is `NodesTestCase` plus convention.
-
-Examples in `testbench/testsolutions/quotation.test/models/generationTest@tests.mps`:
-- `QuotationConverterTest` — single test method comparing two snippets.
-- `QuotationConverterPreservesSemantics` — many test methods, one per scenario (test1…test10).
-- `LightQuotationFinal` — one test per property/link kind covered.
-
----
-
-## 6 — `MigrationTestCase`
-
-Root node has four children:
-
-| Role | Type | Cardinality | Meaning |
-|---|---|---|---|
-| `inputNodes` | `TestNode` | 0..n | Roots before migration |
-| `outputNodes` | `TestNode` | 0..n | Expected roots after migration |
-| `migration` | `MigrationReference` | 1..n | The migration script(s) to run, in order |
-| `option` | `MigrationTestOption` | 0..n | Switches like `including node id` (use `StableIdOption`) |
-
-Execution flow performed by the test runner:
-
-1. Copy `inputNodes` into a fresh module.
-2. Run the listed `migration` scripts.
-3. Compare resulting roots to `outputNodes`. By default node ids are ignored unless `StableIdOption` (`including node id`) is set.
-4. Call each migration's `check()`; the test fails if `check()` reports problems.
-
-A handy editor intention — **"Generate Output from Input"** — runs the listed migrations once and pastes the result into `outputNodes` so you can author the expected tree quickly. Re-run it after migration changes only after you've verified the diff is correct.
-
-Example: `testbench/testsolutions/bl.test/jetbrains/jetbrains.mps.migrationTest@tests.mps` — `MigrateTryStatement_Test`.
-
-Other examples: `testbench/testsolutions/quotation.test/models/jetbrains.mps.lang.quotation.test.migrationTest@tests.mps`, `testbench/testsolutions/jetbrains.mps.tests.sraMigration/`.
-
----
-
-## 7 — `BTestCase` (plain JUnit)
-
-For testing hand-written runtime/library code, write a regular `ClassConcept` and **annotate it with `BTestCase`** (intention: *Make Test Case* on a class). Inside, methods marked `TestMethod` (or `BeforeTest`/`AfterTest`) compile to JUnit `@Test` / `@Before` / `@After` methods.
-
-Assertion concepts live in `jetbrains.mps.baseLanguage.unitTest.structure`:
-
-- `AssertTrue`, `AssertFalse`
-- `AssertEquals`, `AssertSame`
-- `AssertIsNull`, `AssertIsNotNull`
-- `AssertThrows`
-- `Fail`, `Message`
-
-Examples: `testbench/testsolutions/collections_unittest/models/*.mps`.
-
-These tests run as ordinary JUnit; they do **not** need a `@tests` model stereotype, but most projects keep them in one for consistency.
-
----
-
-## 8 — Running tests
-
-### Inside MPS
-
-- Right-click a `@tests` model or test root → **Run tests**. Results appear in the Run tool window.
-- The default runner spawns a **separate MPS instance** so the test model is loaded against a clean classloader; the run configuration option **"Execute in the same process"** runs in-process (faster but riskier for editor tests).
-- For a single `EditorTestCase`/`NodesTestCase` root, right-click the root in the Project view.
-
-### From the command line / build
-
-Tests are launched through the Ant pipeline generated by `jetbrains.mps.build.mps.tests` build scripts. See `mps-build-language` and `mps-distribution-build` for how test modules are declared (`module-tests` plugin, `mps.macro.*` parameters). For ad-hoc IDE runs from the agent's side, use the `execute_run_configuration` MCP tool against a configured run config; if no such config exists yet for an `ITestCase` root, first call `mps_mcp_create_run_configuration` with the root's reference to register a `JUnit Tests` configuration (the tool mirrors the IDE producer's `inProcess` flag and works for `NodesTestCase` / `EditorTestCase` / `MigrationTestCase` / `BTestCase` / BaseLanguage `TestCase`). Never edit generated test class files in `test_gen/`.
-
-### Verifying via MCP
-
-- After editing a test root, run `mps_mcp_check_root_node_problems` on the test root to surface broken references or unresolved types in the snippet.
-- For typesystem/constraint changes that *should* turn a previously-failing snippet into a passing one (or vice-versa), expect the test's inline `has error` annotation to need updating.
-
----
-
-## 9 — Authoring workflow
-
-When asked to "write tests" for an MPS language feature:
-
-1. **Decide the test type.** Typesystem/scope/constraint → `NodesTestCase`. Intention/action/keystroke → `EditorTestCase`. Migration → `MigrationTestCase`. Runtime helper → `BTestCase`. Generator output equivalence → `NodesTestCase` + `assertNodesMatch`.
-2. **Find or create the test model.** Prefer extending an existing `@tests` model in the language's adjacent test Solution; only create a new one if no suitable Solution exists.
-3. **Add the test root** with `mps_mcp_create_root_node` using the concept ref from §2, then populate `nodes` / `code` / etc. with `mps_mcp_add_node_child`. Use `mps_mcp_parse_java_and_insert` to drop a Java/BaseLanguage snippet into a `TestNode`.
-4. **Mark assertions** using the appropriate annotation concept. For prototypes, save the model, open it in MPS, and use the Alt+Enter intentions ("Add Node Operations Test Annotation", "Add Test Node Label", "Mark Caret Position") — they create the right annotations without hand-building blueprints.
-5. **Validate** with `mps_mcp_check_root_node_problems` on the new root, then run the test: register a `JUnit Tests` config via `mps_mcp_create_run_configuration` (pass the test root's reference) and launch it with `execute_run_configuration`, or ask the user to run it in MPS.
-6. **Never edit `test_gen/`** or `classes_gen/` — those are regenerated.
-
----
-
-## 10 — Pitfalls
-
-- **Wrong stereotype.** A model without the `tests` stereotype will compile but its roots won't be discovered as JUnit tests.
-- **Missing `jetbrains.mps.baseLanguage.unitTest`.** Without it, `NodesTestMethod` and assertion concepts are unavailable.
-- **Solution kind not `Other`.** Languages and Generators don't build the test classes you need.
-- **Snippet relies on missing imports.** A `TestNode` snippet behaves like a tiny model — add the same `<use>` languages and `<import>` model references that the snippet would need standalone, or it will fail to resolve.
-- **Out-of-process vs in-process.** Editor tests typically run in-process; setting "execute in same process = false" for an `EditorTestCase` works but tends to be slower and can mask classloader bugs. Use whatever the existing test module uses.
-- **Migration test `outputNodes` regenerated from broken script.** "Generate Output from Input" *bakes in current behaviour*. If the script is wrong, the test will encode that. Diff before accepting.
-- **Caret position in EditorTestCase.** A test that types text or invokes an intention is sensitive to which cell currently owns the caret; if the test mysteriously fails, inspect the `AnonymousCellAnnotation` on the `before` node (cell id, `useLabelSelection`, `isLastPosition`). For an empty list role, target `empty_<role>` — *not* `refNodeList_<role>`.
-- **`press VK_ENTER` is not the same as `invoke action Insert`.** Raw key dispatch via `PressKeyStatement` may bypass the action infrastructure that actually creates new children in a collection. When testing what Enter "does" in a cell, invoke the named action (`Insert`, `Delete`, `MoveUp`, `MoveDown` from `jetbrains.mps.ide.editor.actions`, etc.) rather than the keystroke.
-- **Labels collide with names.** `node<label>` references look like identifiers but bind to the label, not a Java variable — pick distinct label names per test method.
-- **`NodesTestMethod` is abstract.** The role `testMethods` declares `NodesTestMethod` as its child type, but that concept is abstract — use the concrete subtype `SimpleNodeTest`. Validation reports `"Abstract concept instance detected. Use one of sub-concepts instead."` if you instantiate the abstract type directly.
-- **`TestNodeAnnotation` labels don't drive in-snippet reference resolution.** Labels are only resolvable through `TestNodeReference` inside test-method bodies. When the JSON insert needs to set a reference *inside the snippet* (e.g. `RoutineCall.routine`), use the target node's `name` (resolved via the language's own scope) or a persistent `r:` node ref — not the annotation label name.
-- **`mps_mcp_replace_node_child` mints a new persistent ref for the replacement.** The old ref is invalidated by the call, and the tool's response returns the *parent's* ref, not the new child's. If you need to act on the replacement again (e.g. add children to it), re-print the parent via `mps_mcp_print_node_json` and harvest the new child's ref from there.
-- **`ScopesExpectedNode.ref` is not scope-resolved.** Auto-resolution of plain names works only where MPS has a scope for the reference (e.g. `RoutineCall.routine` which uses Kaja's scope). `ScopesExpectedNode.ref` targets `BaseConcept` generically — supply a persistent `r:` node ref. The stage-construction recipe in §3.x covers this.
-
----
-
-## Quick Reference: Concept Identifiers
-
-### `jetbrains.mps.lang.test`
-
-| Concept | Concept Ref |
-|---|---|
-| `NodesTestCase` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1216913645126` |
-| `NodesTestMethod` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1216913689992` |
-| `EditorTestCase` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1229187653856` |
-| `MigrationTestCase` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/5476670926298696679` |
-| `MigrationReference` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/6626913010124185481` |
-| `MigrationTestOption` (abstract) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/6109541130559846558` |
-| `StableIdOption` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/6410786926916602977` |
-| `TestNode` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1216989428737` |
-| `TestNodeAnnotation` (label decl) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1210673684636` |
-| `TestNodeReference` (label use) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1210674524691` |
-| `AnonymousCellAnnotation` (caret marker) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1229194968594` |
-| `NodeErrorCheckOperation` (`has error/warning/info`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1215507671101` |
-| `NodeTypeCheckOperation` (`has type / has expected type`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1215526290564` |
-| `NodeTypeSystemErrorCheckOperation` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/428590876651279930` |
-| `CheckNodeForErrorMessagesOperation` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1215607067978` |
-| `AssertMatch` (assertNodesMatch) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1211979288880` |
-| `SimpleNodeTest` (concrete subconcept of `NodesTestMethod`; the test-method body inside a `NodesTestCase.testMethods`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225978065297` |
-| `ScopesTest` (declarative scope assertion on a node holding a reference) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/511191073233700873` |
-| `ScopesExpectedNode` (one expected member in a `ScopesTest.nodes`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/3655334166513314291` |
-| `ScopeEntry` (named scope partition; used by `MockScopeProvider` and similar) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/2153278993333648098` |
-| `TypeKeyStatement` (`type "..."`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1227182079811` |
-| `PressKeyStatement` (`press ...`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1228934484974` |
-| `InvokeActionStatement` (`invoke action ...`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/7011073693661765739` |
-| `MPSActionReference` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/4239542196496927193` |
-| `InvokeIntentionStatement` (`invoke intention ...`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225989773458` |
-| `ApplyQuickFix` (`invoke quick-fix ...`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/5266358701722203952` |
-| `IsIntentionApplicableExpression` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/592868908271422361` |
-| `EditorComponentExpression` (`editor component`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/5773579205429866751` |
-| `ProjectExpression` (`project`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225467090849` |
-| `ModelExpression` (`model`) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225469856668` |
-| `IRuleReference` (interface) | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/7691029917083872157` |
-| `TypesystemEquationReference` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/4649457259824807647` |
-| `ReportErrorStatementReference` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/4531408400484511853` |
-| `LogEvent` | `c:8585453e-6bfb-4d80-98de-b16074f1d86c/5219531754069546544` |
-
-Language id: `jetbrains.mps.lang.test` → `8585453e-6bfb-4d80-98de-b16074f1d86c`
-
-### `jetbrains.mps.baseLanguage.unitTest`
-
-| Concept | Purpose |
-|---|---|
-| `BTestCase` | Annotation that turns a `ClassConcept` into a JUnit test class |
-| `TestMethod` | `@Test`-equivalent method |
-| `BeforeTest` | `@Before` setup |
-| `AssertTrue` / `AssertFalse` | Boolean assertions |
-| `AssertEquals` / `AssertSame` | Equality assertions (with optional `Message`) |
-| `AssertIsNull` / `AssertIsNotNull` | Nullability assertions |
-| `AssertThrows` | Expected-exception block |
-| `Fail` | Unconditional failure |
-
-Language id: `jetbrains.mps.baseLanguage.unitTest` → `f61473f9-130f-42f6-b98d-6c438812c2f6`
+If the only goal is plain JUnit on hand-written Java/Kotlin (no MPS-specific assertions), prefer a regular module test source root rather than a `@tests` model — see `mps-distribution-build` for how `BTestCase`-based MPS test modules are packaged.
+
+## Related Skills
+
+- `mps-model-code` — the smodel / closures / collections reference for assertion bodies.
+- `mps-node-editing` — MCP recipes for inserting children and harvesting persistent refs (used heavily by the `ScopesTest` staged-construction recipe).
+- `mps-aspect-typesystem` — when the system-under-test is the typesystem; `has error/type` annotations here verify those rules.
+- `mps-aspect-constraints` — when validating `can-be` / scope / validator rules from the constraints aspect.
+- `mps-aspect-migrations` — for migration scripts being exercised by `MigrationTestCase`.
+- `mps-aspect-intentions` and `mps-aspect-editor-menus-and-keymaps` — when an `EditorTestCase` exercises intentions, side transforms, or keymapped actions.
+- `mps-build-language` and `mps-distribution-build` — when wiring a `@tests` Solution into the build pipeline (test-only `BuildProject`).
+- `mps-quotations` — for tests that use quotation snippets.
+
+## Reference Index
+
+- Open `references/test-model-setup.md` when bootstrapping a new `@tests` model — required stereotype, used languages, Solution kind, optional `TestInfo` root, and the choice between the language's `testAspect` and a dedicated test Solution. Includes the canonical example test Solutions in this repo.
+- Open `references/test-types.md` for the test-type cheat sheet (concept refs and what each tests). Use to decide which root concept to instantiate.
+- Open `references/nodes-test-case.md` when authoring or modifying a `NodesTestCase` — section layout (`nodes`, `test methods`, `utility methods`, `accessMode`), inline assertion annotations (`has error`, `has type`, `has typesystem error`, `has expected type`, `has type in`), labelled-node assertions inside test methods, and the namespace separation between labels and scope-resolved references.
+- Open `references/scopes-test.md` when writing **declarative** scope assertions (`ScopesTest` + `ScopesExpectedNode`) — where to attach the annotation, the exact-set semantics, the JSON blueprint, the stage-construction recipe for resolving expected refs, and why declarative scope tests beat imperative ones.
+- Open `references/editor-test-case.md` when writing an `EditorTestCase` — root layout (`before` / `result` / `code`), the `AnonymousCellAnnotation` caret marker, the cell-ID convention for auto-generated editors (`property_<name>`, `refNodeList_<role>`, `empty_<role>`, `refNode_<role>`, constant/collection cells), the editor-driving statements (`type "..."`, `press`, `invoke action`, `invoke intention`, `invoke quick-fix`), and the side-transform / completion testing pattern.
+- Open `references/generator-and-migration-tests.md` when validating generator output (`NodesTestCase` + `assertNodesMatch`) or testing a migration script (`MigrationTestCase` — `inputNodes`, `outputNodes`, `migration` refs, `option`s including `StableIdOption`). Lists the four-child structure of `MigrationTestCase` and the "Generate Output from Input" intention.
+- Open `references/btestcase.md` when writing plain JUnit-style tests against hand-written Java/Kotlin — the `BTestCase` annotation, `TestMethod` / `BeforeTest` / `AfterTest`, and the available assertion concepts.
+- Open `references/running-tests.md` when launching tests — inside MPS (right-click → Run tests), from the command line via the Ant pipeline, or from an agent via `mps_mcp_create_run_configuration` + `execute_run_configuration`. Covers in-process vs separate-MPS-instance, and `mps_mcp_check_root_node_problems` as a fast pre-run gate.
+- Open `references/common-failures.md` when a test won't run, runs but doesn't fail when expected, fails for the wrong reason, or generates a misleading `outputNodes`. Includes the abstract-concept gotcha, label-vs-name confusion, `press VK_ENTER` vs `invoke action Insert`, `replace_node_child` ref invalidation, and `ScopesExpectedNode.ref` not being scope-resolved.
+- Open `references/concept-identifiers.md` for the validated FQN+concept-ref table covering `jetbrains.mps.lang.test` (every concept used by the skill — `NodesTestCase`, `SimpleNodeTest`, `TestNode`, `TestNodeAnnotation`, `AnonymousCellAnnotation`, the annotation/check operations, the editor-driving statements, `ScopesTest`/`ScopesExpectedNode`, etc.) and `jetbrains.mps.baseLanguage.unitTest`.
