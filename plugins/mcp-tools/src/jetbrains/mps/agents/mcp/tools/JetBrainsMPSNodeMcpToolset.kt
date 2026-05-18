@@ -683,7 +683,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     ): String {
         return withMpsProject(if (deep) "Deep printing MPS node" else "Shallow printing MPS node") { mpsProject ->
             executeShortReadOnEdt(mpsProject) {
-                val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+                val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                    ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$nodeRef'")
                 val node = sNodeRef.resolve(mpsProject.repository)
                     ?: return@executeShortReadOnEdt errJson("Node '$nodeRef' not found", McpErrorCode.NOT_FOUND)
                 saveToTempFileResult(nodeHierarchyToJson(node, deep))

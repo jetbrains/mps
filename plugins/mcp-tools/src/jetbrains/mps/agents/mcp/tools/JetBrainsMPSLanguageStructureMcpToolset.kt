@@ -976,7 +976,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         propertyName: String
     ): String = withMpsProject("Getting MPS enumeration literals for '$propertyName'") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val sNodeRef = PersistenceFacade.getInstance().createNodeReference(nodeRef)
+            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
+                ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$nodeRef'")
             val node = sNodeRef.resolve(mpsProject.repository)
                 ?: return@executeShortReadOnEdt errJson("Node '$nodeRef' not found", McpErrorCode.NOT_FOUND)
             val sProperty = node.concept.properties.find { it.name == propertyName }
