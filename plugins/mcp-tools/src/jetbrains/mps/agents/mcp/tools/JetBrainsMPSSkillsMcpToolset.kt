@@ -1,12 +1,7 @@
 package jetbrains.mps.agents.mcp.tools
 
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
-import org.yaml.snakeyaml.LoaderOptions
-import org.yaml.snakeyaml.Yaml
-import org.yaml.snakeyaml.constructor.SafeConstructor
 import java.net.URI
 import java.nio.file.FileSystem
 import java.nio.file.FileSystemNotFoundException
@@ -31,19 +26,20 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
         Behavior:
         - Copies the bundled skill catalog (skills that teach agents how to manipulate MPS nodes,
-          models, modules, and languages through MPS MCP tools) into `<projectPath>/.agents/skills/`.
+          models, modules, and languages through MPS MCP tools) into `<projectPath>/.agents/skills/`
+          and `<projectPath>/.claude/skills/`.
           Each skill is copied as a subfolder named after the skill, containing `SKILL.md` and
           any auxiliary files the skill ships with.
-        - Creates `<projectPath>/.agents/` and `<projectPath>/.agents/skills/` if they do not exist.
+        - Creates `<projectPath>/.agents/skills/` and `<projectPath>/.claude/skills/` if they do not exist.
         - Returns, in the `data` field, the recommended text to place in the project's `AGENTS.md`
           (and `CLAUDE.md`, which typically just references `AGENTS.md`). The tool itself does NOT
           write `AGENTS.md` — the caller decides where and how to use the returned text.
 
         Collision policy:
-        - Before copying anything, the tool scans the existing `<projectPath>/.agents/skills/`
-          directory. If any existing entry has the same name as a skill that would be copied, the
-          tool reports an error listing the colliding names and makes no changes on disk. Other
-          unrelated subfolders are left untouched.
+        - Before copying anything, the tool scans the existing `<projectPath>/.agents/skills/` and
+          `<projectPath>/.claude/skills/` directories. If any existing entry has the same name as a
+          skill that would be copied, the tool reports an error listing the colliding names and makes
+          no changes on disk. Other unrelated subfolders are left untouched.
 
         Call this tool once when initializing AI support for an MPS project. It is safe to re-run
         only after resolving any collisions reported by a previous run.
@@ -55,10 +51,11 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
     suspend fun mps_mcp_initialize_project_for_agents(
         @McpDescription(
             "Absolute path to the root of the target MPS project. " +
-                    "Skills are installed into `<projectPath>/.agents/skills/`; the `.agents` and " +
-                    "`.agents/skills` directories are created if missing. The project directory itself " +
-                    "must exist. If any subfolder of `<projectPath>/.agents/skills/` already has the same " +
-                    "name as a skill that would be copied, the tool errors out without writing anything."
+                    "Skills are installed into `<projectPath>/.agents/skills/` and " +
+                    "`<projectPath>/.claude/skills/`; the target directories are created if missing. " +
+                    "The project directory itself must exist. If any subfolder of either target skills " +
+                    "directory already has the same name as a skill that would be copied, the tool errors " +
+                    "out without writing anything."
         )
         projectPath: String
     ): String {
@@ -94,33 +91,44 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
                     )
                 }
 
-                val targetSkillsDir = projectDir.resolve(".agents").resolve("skills")
-                if (Files.exists(targetSkillsDir)) {
-                    val incomingNames = skillFolders.map { it.name }.toSet()
+                val targetSkillsDirs = listOf(
+                    projectDir.resolve(".agents").resolve("skills"),
+                    projectDir.resolve(".claude").resolve("skills"),
+                )
+                val incomingNames = skillFolders.map { it.name }.toSet()
+                val collisionsByDir: List<String> = targetSkillsDirs.mapNotNull { targetSkillsDir ->
+                    if (!Files.exists(targetSkillsDir)) {
+                        return@mapNotNull null
+                    }
                     val collisions: List<String> = Files.list(targetSkillsDir).use { stream ->
                         stream.filter { it.name in incomingNames }.map { it.name }.sorted().toList()
                     }
-                    if (collisions.isNotEmpty()) {
-                        return@withSkillsResourceFs errJson(
-                            "Cannot install MPS skills into '$targetSkillsDir': the following skill " +
-                                    "folder name(s) already exist and would be overwritten: " +
-                                    collisions.joinToString(", ") +
-                                    ". Remove or rename the existing folder(s) and re-run this tool."
-                        )
-                    }
+                    if (collisions.isEmpty()) null else "'$targetSkillsDir': ${collisions.joinToString(", ")}"
                 }
-                Files.createDirectories(targetSkillsDir)
+                if (collisionsByDir.isNotEmpty()) {
+                    return@withSkillsResourceFs errJson(
+                        "Cannot install MPS skills: the following skill folder name(s) already exist " +
+                                "and would be overwritten: " + collisionsByDir.joinToString("; ") +
+                                ". Remove or rename the existing folder(s) and re-run this tool."
+                    )
+                }
+                for (targetSkillsDir in targetSkillsDirs) {
+                    Files.createDirectories(targetSkillsDir)
+                }
 
                 // No rollback: if copying skill #N fails after #1..N-1 already landed on disk, the
                 // project is left half-installed. The collision check above prevents the common
                 // case of clobbering user content, so the remaining failure modes are I/O errors
                 // (full disk, permission denied) where the user fixes the underlying problem and
-                // re-runs after deleting the partially-installed `.agents/skills/` directory.
+                // re-runs after deleting any partially-installed target skills directories, which
+                // may include both `.agents/skills/` and `.claude/skills/`.
                 // We deliberately don't try to undo successful copies because deletion can itself
                 // fail and would mask the original error.
-                for (skillFolder in skillFolders) {
-                    val target = targetSkillsDir.resolve(skillFolder.name)
-                    copyDirectoryRecursively(skillFolder, target)
+                for (targetSkillsDir in targetSkillsDirs) {
+                    for (skillFolder in skillFolders) {
+                        val target = targetSkillsDir.resolve(skillFolder.name)
+                        copyDirectoryRecursively(skillFolder, target)
+                    }
                 }
 
                 okJsonString(agentsMdText)

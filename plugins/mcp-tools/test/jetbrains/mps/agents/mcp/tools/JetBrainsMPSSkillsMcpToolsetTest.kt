@@ -9,6 +9,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Assert.fail
 import org.junit.Before
 import org.junit.Test
+import java.net.URI
 import java.net.URL
 import java.net.URLConnection
 import java.net.URLStreamHandler
@@ -60,15 +61,16 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         // Sample one real bundled skill: any change to the catalog should keep at least this
         // one in place. If it ever stops shipping, swap the assertion for another concrete
         // skill rather than weakening it to "any skill exists".
-        val skillsDir = tmpProjectRoot.resolve(".agents").resolve("skills")
-        assertTrue("skills dir must exist after init", Files.isDirectory(skillsDir))
-        val sampleSkill = skillsDir.resolve(REAL_SKILL_NAME).resolve("SKILL.md")
-        assertTrue("$REAL_SKILL_NAME/SKILL.md must be copied", Files.isRegularFile(sampleSkill))
-        val skillText = Files.readString(sampleSkill)
-        assertTrue(
-            "copied SKILL.md must carry its frontmatter name",
-            skillText.contains("name: $REAL_SKILL_NAME")
-        )
+        for (skillsDir in targetSkillsDirs()) {
+            assertTrue("skills dir must exist after init: $skillsDir", Files.isDirectory(skillsDir))
+            val sampleSkill = skillsDir.resolve(REAL_SKILL_NAME).resolve("SKILL.md")
+            assertTrue("$REAL_SKILL_NAME/SKILL.md must be copied into $skillsDir", Files.isRegularFile(sampleSkill))
+            val skillText = Files.readString(sampleSkill)
+            assertTrue(
+                "copied SKILL.md must carry its frontmatter name",
+                skillText.contains("name: $REAL_SKILL_NAME")
+            )
+        }
     }
 
     @Test
@@ -79,15 +81,16 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
 
-        val nestedFile = tmpProjectRoot
-            .resolve(".agents").resolve("skills")
-            .resolve(NESTED_SKILL_NAME)
-            .resolve(NESTED_SKILL_SUBDIR)
-            .resolve(NESTED_SKILL_FILE)
-        assertTrue(
-            "nested file '$NESTED_SKILL_SUBDIR/$NESTED_SKILL_FILE' must be copied recursively",
-            Files.isRegularFile(nestedFile)
-        )
+        for (skillsDir in targetSkillsDirs()) {
+            val nestedFile = skillsDir
+                .resolve(NESTED_SKILL_NAME)
+                .resolve(NESTED_SKILL_SUBDIR)
+                .resolve(NESTED_SKILL_FILE)
+            assertTrue(
+                "nested file '$NESTED_SKILL_SUBDIR/$NESTED_SKILL_FILE' must be copied recursively into $skillsDir",
+                Files.isRegularFile(nestedFile)
+            )
+        }
     }
 
     @Test
@@ -108,6 +111,28 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         assertTrue(
             "unrelated user-owned skill must be left intact on error",
             Files.readString(unrelated.resolve("SKILL.md")) == "stay"
+        )
+        assertFalse(
+            "no second target directory should be created after preflight collision failure",
+            Files.exists(tmpProjectRoot.resolve(".claude"))
+        )
+    }
+
+    @Test
+    fun `mps_mcp_initialize_project_for_agents fails when a claude target skill folder already exists`() {
+        val skillsDir = tmpProjectRoot.resolve(".claude").resolve("skills")
+        Files.createDirectories(skillsDir.resolve(REAL_SKILL_NAME))
+
+        val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(tmpProjectRoot.toString()) }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope on collision: $response", obj.get("ok").asBoolean)
+        val error = obj.get("error").asString
+        assertTrue("error must name the colliding skill: $error", error.contains(REAL_SKILL_NAME))
+        assertTrue("error must name the colliding target: $error", error.contains(".claude"))
+
+        assertFalse(
+            "no first target directory should be created after preflight collision failure",
+            Files.exists(tmpProjectRoot.resolve(".agents"))
         )
     }
 
@@ -171,7 +196,7 @@ class JetBrainsMPSSkillsMcpToolsetTest {
 
     @Test
     fun `withSkillsResourceFs rejects unsupported URL protocols`() {
-        val unsupported = URL(null, "memory:/skills", object : URLStreamHandler() {
+        val unsupported = URL.of(URI.create("memory:/skills"), object : URLStreamHandler() {
             override fun openConnection(url: URL): URLConnection {
                 throw UnsupportedOperationException("not used in this test")
             }
@@ -215,7 +240,14 @@ class JetBrainsMPSSkillsMcpToolsetTest {
     }
 
     private fun <T> withSkillsResourceFsForTest(resourceUrl: String, block: (Path) -> T): T {
-        return withSkillsResourceFsForTest(URL(resourceUrl), block)
+        return withSkillsResourceFsForTest(URI.create(resourceUrl).toURL(), block)
+    }
+
+    private fun targetSkillsDirs(): List<Path> {
+        return listOf(
+            tmpProjectRoot.resolve(".agents").resolve("skills"),
+            tmpProjectRoot.resolve(".claude").resolve("skills"),
+        )
     }
 
     private fun createJarWithEntry(jarFile: Path, entryName: String, content: String) {
