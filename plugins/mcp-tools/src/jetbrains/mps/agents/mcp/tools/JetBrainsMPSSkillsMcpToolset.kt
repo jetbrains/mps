@@ -186,6 +186,6 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
     companion object {
         private const val SKILLS_RESOURCE_PATH = "jetbrains/mps/agents/mcp/skills"
-        private const val AGENTS_TEMPLATE_RESOURCE_PATH = "jetbrains/mps/agents/mcp/templates/AGENTS.md"
+        private const val AGENTS_TEMPLATE_RESOURCE_PATH = "jetbrains/mps/agents/mcp/templates/AGENTS_template.md"
     }
 }
