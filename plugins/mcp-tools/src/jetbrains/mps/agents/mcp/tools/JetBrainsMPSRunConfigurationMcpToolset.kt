@@ -6,9 +6,14 @@ import com.intellij.execution.configurations.ConfigurationType
 import com.intellij.execution.configurations.ConfigurationTypeUtil
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import jetbrains.mps.classloading.ClassLoaderManager
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SModelOperations
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
+import org.jetbrains.mps.openapi.language.SConcept
 import org.jetbrains.mps.openapi.language.SInterfaceConcept
+import org.jetbrains.mps.openapi.language.SProperty
 import org.jetbrains.mps.openapi.model.SNode
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
@@ -31,11 +36,50 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
             "jetbrains.mps.baseLanguage.unitTest.structure.ITestCase"
         )
 
+        // jetbrains.mps.baseLanguage.structure.ClassConcept — covered by Java_Producer's
+        // ProducerPart_NodeClassConcept_d1i8dk_a producer in execution-configurations: it fires
+        // for plain BaseLanguage classes whose ClassConcept.getMainMethod() resolves to a
+        // public-static-void-main(String[]) method, and yields the same node-aware
+        // Java_Configuration as the IMainClass path.
+        private val CLASS_CONCEPT: SConcept = MetaAdapterFactory.getConcept(
+            0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0xf8c108ca66L,
+            "jetbrains.mps.baseLanguage.structure.ClassConcept"
+        )
+
+        // jetbrains.mps.lang.module.ModuleDescriptor.compileInMPS — read from the SModule's
+        // descriptor stub. Java_Producer skips configuration creation when this property is
+        // false because the module's source_gen is compiled externally (JPS) and the launch
+        // would fail with "Could not find or load main class". Mirror that gate here so the
+        // tool doesn't register a configuration that immediately fails at launch.
+        private val COMPILE_IN_MPS: SProperty = MetaAdapterFactory.getProperty(
+            0x86ef829012bb4ca7uL.toLong(), 0x947f093788f263a9uL.toLong(),
+            0x5869770da61dfe1eL, 0x5869770da61dfe24L,
+            "compileInMPS"
+        )
+
         // The MPS execution-configurations plugin registers the Java run configuration type
         // as a ConfigTypeEnvoy whose id is "Java Application". The inner factory has id "Java",
         // but ConfigurationTypeUtil.findConfigurationType matches on type.id, not factory id.
         private const val JAVA_TYPE_ID = "Java Application"
         private const val JUNIT_TYPE_ID = "JUnit Tests"
+    }
+
+    /**
+     * Discriminator for the three run-configuration dispatch paths the tool supports.
+     * Mirrors the three [ProducerPart_*] entries Java_Producer / JUnitTests_Producer register.
+     */
+    private enum class ConfigKind {
+        TEST_CASE,      // ITestCase → JUnit Tests
+        MAIN_CLASS,     // IMainClass → Java Application, name "Node <n>"
+        CLASS_CONCEPT;  // ClassConcept w/ main → Java Application, name "Class <n>"
+
+        /**
+         * True for the two paths that produce a `JAVA_TYPE_ID` "Java Application" configuration
+         * via [configureAsMain]; the [TEST_CASE] path uses `JUNIT_TYPE_ID` and [configureAsTestCase]
+         * instead. Enumerated positively (rather than `this != TEST_CASE`) so adding a fourth
+         * kind in the future does not silently fall into the Java App branch.
+         */
+        val isJavaApp: Boolean get() = this == MAIN_CLASS || this == CLASS_CONCEPT
     }
 
     @McpTool
@@ -45,16 +89,25 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
         IDEA project. The new configuration becomes immediately runnable via the IDEA MCP
         `execute_run_configuration` tool by its name.
 
-        Scope: this tool ONLY supports root nodes whose concept implements one of the two
-        interfaces below. It does NOT handle arbitrary runnable roots, file-level launchers,
-        Ant scripts, or other MPS execution producers — for those, build a configuration in
-        the IDE or extend this tool.
+        Scope: this tool supports the three dispatch paths the standard MPS Java_Producer and
+        JUnitTests_Producer register; it does NOT handle arbitrary runnable roots, file-level
+        launchers, Ant scripts, or other MPS execution producers — for those, build a
+        configuration in the IDE or extend this tool.
           - jetbrains.mps.execution.util.structure.IMainClass — yields a "Java Application"
-            run config that runs the node's main method (or unit equivalent). Examples are DSL roots
-            that declare an IMainClass implementation (e.g. samples.shapes.Canvas). Note
-            that a plain BaseLanguage ClassConcept does NOT implement IMainClass; the
-            standard MPS gutter routes those through a different producer that this tool
-            intentionally does not replicate.
+            run config that runs the node's main method (or unit equivalent). Examples are DSL
+            roots that declare an IMainClass implementation (e.g. samples.shapes.Canvas). The
+            configuration is named `Node <node-name>` to match the gutter producer.
+          - jetbrains.mps.baseLanguage.structure.ClassConcept whose `getMainMethod()` returns a
+            non-null `static main(<String[]-subtype> args)` method — yields the same node-aware
+            "Java Application" config the IDE's right-click → Run / gutter creates. The
+            configuration is named `Class <ClassName>`. The underlying
+            `StaticMethodDeclaration.isMainMethod` predicate checks exactly: method name is
+            `main`, has a single parameter, and that parameter's type is a typesystem
+            strong-subtype of `String[]`. Visibility is NOT enforced (package-private and
+            protected `main` methods both qualify), and the return type is not explicitly
+            checked either (a `static int main(String[])` would qualify — the runtime will
+            ignore the returned value). This intentionally matches the standard MPS gutter
+            producer; do not narrow it here.
           - jetbrains.mps.baseLanguage.unitTest.structure.ITestCase — yields a "JUnit Tests"
             run config that runs the test case. This single dispatch covers lang.test
             NodesTestCase / EditorTestCase / MigrationTestCase / BTestCase as well as the
@@ -62,12 +115,17 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
             whose `canRunInProcess` behavior returns false, the configuration is created
             with the in-process flag cleared, mirroring the standard JUnit producer.
 
-        If `configurationName` is omitted, a name is derived from the node ("Node <name>" or
-        the test case's name). The new configuration is registered via
-        `RunManager.addConfiguration`, whose uniqueID is `<typeId>.<name>`; calling this tool
-        twice with the same effective name therefore replaces the previously registered
-        configuration of the same type rather than creating a duplicate. Pass a distinct
-        `configurationName` to keep both.
+        Java Application paths additionally require the owning module to have
+        `compileInMPS=true` on its descriptor. The producer skips JPS-compiled modules because
+        launching them would fail at runtime with "Could not find or load main class"; this
+        tool refuses the same way, returning INVALID_REQUEST with a clear message.
+
+        If `configurationName` is omitted, a name is derived from the node (`Node <name>` for
+        IMainClass, `Class <name>` for ClassConcept, the test case's own name for ITestCase).
+        The new configuration is registered via `RunManager.addConfiguration`, whose uniqueID
+        is `<typeId>.<name>`; calling this tool twice with the same effective name therefore
+        replaces the previously registered configuration of the same type rather than creating
+        a duplicate. Pass a distinct `configurationName` to keep both.
 
         Returns `{"ok":true,"data":{"name":"...","type":"Java Application"|"JUnit Tests","uniqueId":"..."}}`
         on success.
@@ -93,55 +151,117 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
                 )
             }
 
-            val isMain = SNodeOperations.isInstanceOf(node, IMAIN_CLASS)
-            val isTest = SNodeOperations.isInstanceOf(node, ITEST_CASE)
-            if (!isMain && !isTest) {
-                return@executeShortReadOnEdt errJson(
-                    "Concept '${node.concept.name}' implements neither IMainClass " +
-                            "nor ITestCase; cannot create a run configuration for it",
+            // Kind dispatch wraps reflective probing (ClassConcept.getMainMethod) so a missing
+            // baseLanguage behavior descriptor surfaces as a structured INTERNAL_ERROR rather
+            // than escaping the executor and trashing the caller's response envelope. The
+            // configureAs* reflection later in the same try-block surfaces under the same
+            // catch — they share the same failure mode, no need for two separate catches.
+            try {
+                val kind = determineKind(node) ?: return@executeShortReadOnEdt errJson(
+                    "Concept '${node.concept.name}' is not runnable through this tool: " +
+                            "the root must implement IMainClass or ITestCase, or be a " +
+                            "ClassConcept whose getMainMethod() resolves a static " +
+                            "main(<String[]-subtype>) method (visibility is not checked)",
                     McpErrorCode.INVALID_REQUEST
                 )
-            }
-            // Prefer test dispatch when both are applicable (rare): tests are more specific.
-            val createTest = isTest
 
-            val typeId = if (createTest) JUNIT_TYPE_ID else JAVA_TYPE_ID
-            val configurationType = findConfigurationType(typeId)
-                ?: return@executeShortReadOnEdt errJson(
-                    "Run configuration type '$typeId' is not registered; the corresponding MPS plugin may be disabled",
-                    McpErrorCode.NOT_FOUND
-                )
-            val factory = primaryFactory(configurationType)
+                // Producer parity: skip modules whose Java is compiled outside MPS. The IDE
+                // producers (Java_Producer.ProducerPart_*) refuse the same way; replicating
+                // it here keeps the tool from registering a configuration that will fail at
+                // launch with ClassNotFoundException because classes_gen is empty.
+                if (kind.isJavaApp && !isCompileInMps(node)) {
+                    val moduleName = SNodeOperations.getModel(node)?.module?.moduleName ?: "?"
+                    val nodeLabel = node.name ?: node.nodeId.toString()
+                    return@executeShortReadOnEdt errJson(
+                        "Module '$moduleName' (owner of node '$nodeLabel') has " +
+                                "compileInMPS=false; the standard MPS Java producer skips such " +
+                                "modules because their classes_gen is empty at launch. Either " +
+                                "flip the module's JavaModuleFacet compile setting to MPS, or " +
+                                "launch via the JPS-built classpath using the IDEA MCP " +
+                                "execute_run_configuration tool on the generated .java file.",
+                        McpErrorCode.INVALID_REQUEST
+                    )
+                }
 
-            val ideaProject = mpsProject.project
-            val runManager = RunManager.getInstance(ideaProject)
+                val typeId = if (kind == ConfigKind.TEST_CASE) JUNIT_TYPE_ID else JAVA_TYPE_ID
+                val configurationType = findConfigurationType(typeId)
+                    ?: return@executeShortReadOnEdt errJson(
+                        "Run configuration type '$typeId' is not registered; the corresponding MPS plugin may be disabled",
+                        McpErrorCode.NOT_FOUND
+                    )
+                val factory = primaryFactory(configurationType)
 
-            val effectiveName = configurationName?.takeIf { it.isNotBlank() }
-                ?: deriveName(node, createTest)
-            val settings = runManager.createConfiguration(effectiveName, factory)
-            val cfg = settings.configuration
+                val ideaProject = mpsProject.project
+                val runManager = RunManager.getInstance(ideaProject)
 
-            try {
-                if (createTest) {
+                val effectiveName = configurationName?.takeIf { it.isNotBlank() }
+                    ?: deriveName(node, kind)
+                val settings = runManager.createConfiguration(effectiveName, factory)
+                val cfg = settings.configuration
+
+                if (kind == ConfigKind.TEST_CASE) {
                     configureAsTestCase(cfg, node)
                 } else {
                     configureAsMain(cfg, node)
                 }
+
+                runManager.addConfiguration(settings)
+
+                okJson(jsonObject {
+                    addProperty("name", settings.name)
+                    addProperty("type", typeId)
+                    addProperty("uniqueId", settings.uniqueID)
+                })
             } catch (e: ReflectiveOperationException) {
-                return@executeShortReadOnEdt errJson(
-                    "Failed to populate ${cfg.javaClass.simpleName}: ${e.message}",
+                errJson(
+                    "Failed to populate run configuration: ${e.message}",
                     McpErrorCode.INTERNAL_ERROR
                 )
             }
-
-            runManager.addConfiguration(settings)
-
-            okJson(jsonObject {
-                addProperty("name", settings.name)
-                addProperty("type", typeId)
-                addProperty("uniqueId", settings.uniqueID)
-            })
         }
+    }
+
+    /**
+     * Resolves which producer path applies to [node]. Returns null when none does — the caller
+     * surfaces that as INVALID_REQUEST. Test dispatch wins over MAIN_CLASS when both are
+     * applicable (tests are the more specific producer); MAIN_CLASS in turn wins over
+     * CLASS_CONCEPT for the same reason.
+     *
+     * The MAIN_CLASS-over-CLASS_CONCEPT case is defensive only: in stock baseLanguage, no
+     * `ClassConcept` (or its sibling Classifiers) implements `IMainClass`, and `IMainClass`
+     * lives in `jetbrains.mps.execution.util` — a language whose role is precisely to expose
+     * runnable DSL roots that are NOT baseLanguage classes. A downstream language could in
+     * theory subclass `ClassConcept` and also mix in `IMainClass`; the precedence here makes
+     * sure such a hybrid is routed through the IMainClass producer to match the gutter's
+     * `Node <name>` naming, rather than the `Class <name>` ClassConcept naming.
+     *
+     * The ClassConcept branch uses `ClassConcept.getMainMethod()` from baseLanguage's behavior
+     * descriptor; that method walks `staticMethods` and returns the first one whose
+     * `StaticMethodDeclaration.isMainMethod` accepts it (name == "main", single parameter that
+     * is a strong subtype of `String[]`). That single call captures the whole producer
+     * predicate — we do not need to re-check shape here.
+     */
+    private fun determineKind(node: SNode): ConfigKind? {
+        if (SNodeOperations.isInstanceOf(node, ITEST_CASE)) return ConfigKind.TEST_CASE
+        if (SNodeOperations.isInstanceOf(node, IMAIN_CLASS)) return ConfigKind.MAIN_CLASS
+        if (SNodeOperations.isInstanceOf(node, CLASS_CONCEPT) &&
+            invokeGetMainMethod(node) != null
+        ) {
+            return ConfigKind.CLASS_CONCEPT
+        }
+        return null
+    }
+
+    /**
+     * Reads the `compileInMPS` boolean off the module-descriptor stub that backs the model's
+     * owning module. Returns false when either the model or the stub is unavailable; that
+     * matches Java_Producer's effective behavior — it calls `getBoolean(getModuleStub(...))`,
+     * which returns false for a missing stub and so the producer refuses to fire.
+     */
+    private fun isCompileInMps(node: SNode): Boolean {
+        val model = SNodeOperations.getModel(node) ?: return false
+        val moduleStub = SModelOperations.getModuleStub(model) ?: return false
+        return SPropertyOperations.getBoolean(moduleStub, COMPILE_IN_MPS)
     }
 
     private fun configureAsMain(cfg: Any, node: SNode) {
@@ -236,9 +356,74 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
         return result as? Boolean ?: true
     }
 
-    private fun deriveName(node: SNode, isTest: Boolean): String {
+    /**
+     * Invokes `ClassConcept.getMainMethod` via baseLanguage's behavior descriptor and returns
+     * the resolved main-method node, or null if the class has no qualifying main. Mirrors the
+     * SMethod-field reflection pattern in [invokeCanRunInProcess] so mcp-tools stays free of a
+     * hard compile-time dependency on `jetbrains.mps.baseLanguage.behavior`.
+     *
+     * The descriptor is generated into the `jetbrains.mps.baseLanguage` module's runtime jar,
+     * which the mcp-tools plugin classloader does **not** see directly. (The IMainClass test
+     * path reaches its own descriptor through `cfg.javaClass.classLoader`, but we run this
+     * probe **before** the configuration exists, so that handle isn't available yet.) Resolve
+     * the baseLanguage module via the node's repository and load through
+     * `ClassLoaderManager.getClassLoader(module)` — the same fallback
+     * `JetBrainsMPSJavaMcpToolset.fixMethodReferences` uses for `MethodResolveUtil`.
+     */
+    private fun invokeGetMainMethod(node: SNode): SNode? {
+        val descriptorClass = loadBaseLanguageClass(
+            node, "jetbrains.mps.baseLanguage.behavior.ClassConcept__BehaviorDescriptor"
+        )
+        val sMethod = descriptorClass.getField("getMainMethod_idhEwIClG").get(null)
+        val invoke = sMethod.javaClass.methods.firstOrNull {
+            it.name == "invoke" && it.parameterCount == 2 &&
+                    it.parameterTypes[0] == SNode::class.java &&
+                    it.parameterTypes[1].isArray
+        } ?: throw NoSuchMethodException("SMethod#invoke(SNode, Object[]) not found")
+        return invoke.invoke(sMethod, node, arrayOfNulls<Any>(0)) as? SNode
+    }
+
+    /**
+     * Locates a class shipped with the baseLanguage runtime by routing through MPS's per-module
+     * classloader. The first `Class.forName` attempt covers environments where the toolset's
+     * own classloader happens to see baseLanguage (e.g. some test harnesses). On a ClassNotFound,
+     * fall back to the baseLanguage module's own classloader via `ClassLoaderManager`.
+     *
+     * The `NoSuchMethodException` produced when the module is missing flows back through the
+     * tool's `ReflectiveOperationException` catch, converting to a structured INTERNAL_ERROR
+     * envelope instead of a raw stack trace.
+     */
+    // `ClassLoaderManager.getInstance()` is deprecated in favor of a ComponentHost lookup that
+    // requires an MPS Environment handle not currently plumbed into mcp-tools. JavaMcpToolset
+    // suppresses the same warning for the same reason — track migration there.
+    @Suppress("DEPRECATION")
+    private fun loadBaseLanguageClass(node: SNode, fqn: String): Class<*> {
+        try {
+            return Class.forName(fqn)
+        } catch (e: ClassNotFoundException) {
+            val repo = SNodeOperations.getModel(node)?.repository
+                ?: throw NoSuchMethodException(
+                    "Cannot resolve baseLanguage classloader: node has no model/repository (looking up $fqn)"
+                )
+            val module = repo.modules.firstOrNull { it.moduleName == "jetbrains.mps.baseLanguage" }
+                ?: throw NoSuchMethodException(
+                    "jetbrains.mps.baseLanguage module is not loaded; cannot resolve $fqn"
+                )
+            val cl = ClassLoaderManager.getInstance().getClassLoader(module)
+                ?: throw NoSuchMethodException(
+                    "No classloader for jetbrains.mps.baseLanguage; cannot resolve $fqn"
+                )
+            return cl.loadClass(fqn)
+        }
+    }
+
+    private fun deriveName(node: SNode, kind: ConfigKind): String {
         val baseName = node.name ?: node.nodeId.toString()
-        return if (isTest) baseName else "Node $baseName"
+        return when (kind) {
+            ConfigKind.TEST_CASE -> baseName
+            ConfigKind.MAIN_CLASS -> "Node $baseName"
+            ConfigKind.CLASS_CONCEPT -> "Class $baseName"
+        }
     }
 
     private fun findConfigurationType(id: String): ConfigurationType? =
