@@ -6,10 +6,11 @@ type: reference
 
 # Running MPS Root Nodes
 
-This skill covers the path from "an MPS root node exists in a model" to "a green IDE run / red stack trace in my hand," using only MCP tools. It targets user-level artifacts (DSL `main`-like roots, plain `ClassConcept` mains, test cases) — **not** launching MPS itself (the `MPS` / `MPS (2nd inst.)` configs are a different topic, see `CLAUDE.md`).
+This skill covers the path from "an MPS root node exists in a model" to "a green IDE run / red stack trace in my hand," using only MCP tools. It targets user-level artifacts (DSL `main`-like roots, plain `ClassConcept` mains, test cases) — **not** launching MPS itself (the `MPS` / `MPS (2nd inst.)` configs are a different topic, see `AGENTS.md` or `CLAUDE.md`).
 
 ## Critical Directives
 
+- `execute_run_configuration` and `get_run_configurations` are provided both by MPS and IDEA. Use the ones provided by MPS for running MPS nodes/tests.
 - **`mps_mcp_create_run_configuration` accepts root nodes only**, and only three shapes: implements `IMainClass`, implements `ITestCase`, or is a `ClassConcept` with a qualifying static `main`. Pointing it at a method body or other non-root yields the non-root rejection. See `references/runnable-shapes.md` for the exact predicate and producer precedence.
 - **MAKE the *module*, not just the model, before running.** Model MAKE regenerates `source_gen` but does not always compile into `classes_gen`; running launches bytecode, so a stale `classes_gen` silently runs old code. See `references/compile-before-run.md`.
 - **Keep `configurationName` stable across iterations.** The tool replaces the existing config of the same `<type>.<name>` rather than creating duplicates — idempotent setup is the goal. Use distinct names only when you actually want parallel configs.
@@ -24,7 +25,7 @@ End-to-end pattern for "I changed a DSL root, run it":
 
 1. `mps_mcp_perform_operation MAKE` on the **module** of the DSL root, `rebuild: true`.
 2. `mps_mcp_create_run_configuration` on the DSL root with a stable `configurationName` (the generated class FQN is a good default for IMainClass; leave blank for `ClassConcept` to match the IDE gutter's `Class <ClassName>` default).
-3. `execute_run_configuration` by name with `waitForExit: true` and a generous `timeout`.
+3. `execute_run_configuration` (of MPS MCP, not IDEA's) by name with `waitForExit: true` and a generous `timeout`.
 4. On `Could not find or load main class`, step 1 didn't reach `classes_gen` — re-run it.
 
 Keep the configuration name stable across iterations so step 2 idempotently overwrites itself rather than littering the IDE with duplicates.
