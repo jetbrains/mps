@@ -8,7 +8,16 @@ A test model must have:
   - `jetbrains.mps.baseLanguage.unitTest` — provides `BTestCase`, `TestMethod`, assertions, `BeforeTest`.
   - The language(s) under test, so you can write valid sample code in `TestNode` snippets.
   - `jetbrains.mps.baseLanguage`, `jetbrains.mps.baseLanguage.collections`, `jetbrains.mps.lang.smodel`, `jetbrains.mps.lang.text` as needed for assertion code.
-- **Containing module**: a Solution with kind `Other` (`solutionKind = OTHER`) so it gets compiled and runs JUnit. Place it under `<lang>/tests/` or `<lang>.test/` next to the language module.
+- **Containing module**: a Solution carrying the **`tests` facet** so it gets compiled and runs JUnit. Place it under `<lang>/tests/` or `<lang>.test/` next to the language module.
+  - Create through MCP: `mps_mcp_create_module(type="solution", name="…", directory="…", facets=["tests"])`. The response is self-describing:
+    ```json
+    {"ok": true,
+     "data": {"name": "…", "reference": "…", "kind": "Solution",
+              "facets": ["java", "tests"], "loadExtensions": "NotAvailable",
+              "present": true}}
+    ```
+    `kind`, `facets`, and `loadExtensions` together confirm "this is a test-container Solution" — no follow-up call needed.
+  - Convert an existing Solution: `mps_mcp_update_module_facet(moduleName="…", facetType="tests", enabled=true)`, then read back with `mps_mcp_get_module` (whose `data.facets` array will now include `"tests"`).
 - **Module dependency**: depend on the language module and any runtime needed by sample code.
 - Optional **`TestInfo` root node**: a single `TestInfo` per model that records the project path. Used by out-of-process test runners. The `mps.test.project.path` system property overrides it.
 

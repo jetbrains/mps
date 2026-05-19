@@ -25,6 +25,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
 import jetbrains.mps.project.MPSProject
+import jetbrains.mps.project.facets.JavaModuleFacet
 import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.project.structure.modules.ModuleDescriptor
 import jetbrains.mps.smodel.Language
@@ -1054,9 +1055,13 @@ abstract class AbstractOps : McpToolset {
             obj.addProperty("virtualFolder", vf)
         }
 
+        // Always report a high-level kind for every module - the combination of attached facets (e.g. `tests`)
+        // and JavaModuleFacet.LoadExtensions. Surfacing kind + facets + loadExtensions here
+        // lets callers verify "this is a test solution" without a follow-up tool call.
         val descriptor = (m as? AbstractModule)?.moduleDescriptor
+        obj.addProperty("kind", moduleKindLabel(m, descriptor))
+
         if (descriptor is DevkitDescriptor) {
-            obj.addProperty("kind", "DevKit")
             obj.add("extendedDevkits", devkitExtendedDevkitsJsonArray(descriptor))
             obj.add("exportedLanguages", devkitExportedLanguagesJsonArray(descriptor))
             obj.add("exportedSolutions", devkitExportedSolutionsJsonArray(descriptor))
@@ -1065,8 +1070,45 @@ abstract class AbstractOps : McpToolset {
             }
         }
 
+        val facetsArray = JsonArray()
+        // Defensive read action around the facets traversal: all current callers happen to
+        // already hold one (executeCommand / executeShortReadOnEdt), but `m.facets` is a
+        // model-accessed collection on most module impls, so a future caller invoking
+        // moduleInfoJsonObject from a bare thread would otherwise race. `runReadAction` is
+        // re-entrant, so wrapping here is safe even when a caller is already inside one.
+        project.modelAccess.runReadAction {
+            for (facet in m.facets) {
+                facetsArray.add(JsonPrimitive(facet.facetType))
+            }
+            obj.add("facets", facetsArray)
+
+            val javaFacet = m.getFacet(JavaModuleFacet::class.java)
+            if (javaFacet != null) {
+                obj.addProperty("loadExtensions", javaFacet.loadExtensions.name)
+            }
+        }
         obj.addProperty("present", true)
         return obj
+    }
+
+    /**
+     * Maps an MPS module to a short, stable label used by `moduleInfoJsonObject`'s `kind`
+     * field. Returns one of the four documented values, or the sentinel `"Unknown"` for
+     * third-party `SModule` implementations that don't extend any of `Solution`, `Language`,
+     * `Generator`, or `DevKit` (custom modules from external plugins or test scaffolding).
+     * The four standard subclasses cover every module produced through the MCP create tool
+     * and every module typical projects contain, so "Unknown" is a signal to investigate
+     * rather than a normal value; callers that switch on the documented set won't silently
+     * mis-classify a standard module.
+     */
+    private fun moduleKindLabel(m: SModule, descriptor: ModuleDescriptor?): String {
+        return when {
+            descriptor is DevkitDescriptor -> "DevKit"
+            m is jetbrains.mps.smodel.Generator -> "Generator"
+            m is jetbrains.mps.smodel.Language -> "Language"
+            m is jetbrains.mps.project.Solution -> "Solution"
+            else -> "Unknown"
+        }
     }
 
     protected suspend fun <T> executeShortReadOnEdt(mpsProject: MPSProject, action: () -> T): T {

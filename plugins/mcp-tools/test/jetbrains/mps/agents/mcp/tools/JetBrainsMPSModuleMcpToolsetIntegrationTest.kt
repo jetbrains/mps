@@ -44,11 +44,278 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val data = parseDataObject(obj.get("data"))
         assertEquals(solutionName, data.get("name").asString)
         assertNotNull("response must echo a moduleRef/reference: $response", data.get("reference"))
+        // Self-describing create response: kind + facets + loadExtensions remove the need for
+        // a follow-up mps_mcp_get_module_facets call just to verify what was produced.
+        assertEquals("Solution", data.get("kind").asString)
+        val facets = data.getAsJsonArray("facets").map { it.asString }.toSet()
+        assertTrue("Producer must install the default `java` facet: $response", facets.contains("java"))
+        assertFalse("A plain solution must not carry the `tests` facet: $response", facets.contains("tests"))
+        assertEquals("NotAvailable", data.get("loadExtensions").asString)
 
         readOnRepo {
             val match = myProject.projectModules.singleOrNull { it.moduleName == solutionName }
             assertNotNull("created solution must be registered with the project: $response", match)
         }
+    }
+
+    @Test
+    fun `solution with facets=tests becomes a test-container solution`() {
+        // Modern equivalent of the legacy `solutionKind = OTHER`: the `tests` facet marks the
+        // solution as the container for an `@tests` model. Loading extensions stays
+        // `NotAvailable` (test solutions don't contribute plugin extensions to MPS itself).
+        val solutionName = "test.test.solution${System.nanoTime()}"
+        val directory = freshPathInProject(solutionName)
+
+        val response = runTool(JetBrainsMPSModuleMcpToolset()) {
+            it.mps_mcp_create_module(
+                /* type = */ "solution",
+                /* name = */ solutionName,
+                /* directory = */ directory,
+                /* virtualFolder = */ null,
+                /* parentLanguage = */ null,
+                /* withGenerator = */ false,
+                /* withSandbox = */ false,
+                /* withRuntime = */ false,
+                /* facets = */ listOf("tests"),
+            )
+        }
+
+        val data = expectOk(response)
+        assertEquals("Solution", data.get("kind").asString)
+        val facets = data.getAsJsonArray("facets").map { it.asString }.toSet()
+        assertTrue("Expected `tests` facet to be attached: $response", facets.contains("tests"))
+        assertTrue("Expected default `java` facet alongside `tests`: $response", facets.contains("java"))
+        assertEquals("NotAvailable", data.get("loadExtensions").asString)
+
+        readOnRepo {
+            val match = myProject.projectModules.singleOrNull { it.moduleName == solutionName }
+            assertNotNull("created test solution must be registered: $response", match)
+            val live = match!!.facets.map { it.facetType }.toSet()
+            assertTrue("`tests` facet must be live on the module too: $live", live.contains("tests"))
+        }
+    }
+
+    @Test
+    fun `facets are rejected for devkit and generator module types`() {
+        // DevKits carry no JavaModuleFacet by default and Generators inherit their facet
+        // shape from the parent Language — neither has a canonical use case for layering
+        // extra facets, so the tool refuses upfront rather than silently producing a
+        // module with a meaningless facet attached.
+        val devkitName = "test.facet.dk${System.nanoTime()}"
+        val devkitDir = freshPathInProject(devkitName)
+        val devkitResp = runTool(JetBrainsMPSModuleMcpToolset()) {
+            it.mps_mcp_create_module(
+                "devkit", devkitName, devkitDir,
+                null, null, false, false, false,
+                /* facets = */ listOf("tests"),
+            )
+        }
+        val devkitErr = expectErr(devkitResp)
+        assertTrue("devkit + facets must be rejected: $devkitErr",
+            devkitErr.contains("not supported for module type 'devkit'"))
+        readOnRepo {
+            assertNull("rejected devkit must not be registered",
+                myProject.projectModules.firstOrNull { it.moduleName == devkitName })
+        }
+
+        val parentName = language.moduleName!!
+        val genResp = runTool(JetBrainsMPSModuleMcpToolset()) {
+            it.mps_mcp_create_module(
+                "generator", "ignored", "",
+                null, parentName, false, false, false,
+                /* facets = */ listOf("tests"),
+            )
+        }
+        val genErr = expectErr(genResp)
+        assertTrue("generator + facets must be rejected: $genErr",
+            genErr.contains("not supported for module type 'generator'"))
+    }
+
+    @Test
+    fun `unknown facet type is rejected before any module is created`() {
+        val solutionName = "test.bogusFacet${System.nanoTime()}"
+        val directory = freshPathInProject(solutionName)
+
+        val response = runTool(JetBrainsMPSModuleMcpToolset()) {
+            it.mps_mcp_create_module(
+                "solution", solutionName, directory,
+                null, null, false, false, false,
+                /* facets = */ listOf("no-such-facet-type"),
+            )
+        }
+
+        assertTrue(
+            "error should mention the unknown facet type: ${expectErr(response)}",
+            expectErr(response).contains("Unknown facet type")
+        )
+        readOnRepo {
+            val match = myProject.projectModules.firstOrNull { it.moduleName == solutionName }
+            assertEquals("invalid facet must not leave a partial module behind", null, match)
+        }
+    }
+
+    @Test
+    fun `solution with multiple facets attaches all of them`() {
+        val solutionName = "test.multi.facet${System.nanoTime()}"
+        val directory = freshPathInProject(solutionName)
+
+        val response = runTool(JetBrainsMPSModuleMcpToolset()) {
+            it.mps_mcp_create_module(
+                "solution", solutionName, directory,
+                null, null, false, false, false,
+                /* facets = */ listOf("tests", "documentation"),
+            )
+        }
+        val data = expectOk(response)
+        val facets = data.getAsJsonArray("facets").map { it.asString }.toSet()
+        assertTrue("expected `tests` facet attached: $response", facets.contains("tests"))
+        assertTrue("expected `documentation` facet attached: $response", facets.contains("documentation"))
+        assertTrue("default `java` facet must still be present: $response", facets.contains("java"))
+    }
+
+    @Test
+    fun `rollbackPartialCreation un-registers a solution and removes its descriptor file`() {
+        // Regression cover for the "producer succeeded, post-producer step failed" path.
+        // The throwable-from-setModuleDescriptor scenario is hard to drive through the
+        // public surface (pre-validation filters the easy cases and the descriptor mutation
+        // does not surface user-influenced failure modes today), so this test invokes the
+        // helper directly on a real producer-created solution to lock in:
+        //   - the project registration is undone
+        //   - the on-disk .msd is removed so a retry with the same name+directory works
+        val solutionName = "test.rollback.sol${System.nanoTime()}"
+        val directory = freshPathInProject(solutionName)
+        expectOk(runTool(toolset) {
+            it.mps_mcp_create_module("solution", solutionName, directory,
+                null, null, false, false, false)
+        })
+
+        val createdSolution = readOnRepo {
+            myProject.projectModules.single { it.moduleName == solutionName }
+        }
+        val descriptorFile = readOnRepo { (createdSolution as AbstractModule).descriptorFile }
+        assertNotNull("test precondition: solution must have a descriptor file", descriptorFile)
+        assertTrue("test precondition: descriptor file must exist on disk before rollback",
+            descriptorFile!!.exists())
+
+        executeCommand { toolset.rollbackPartialCreation(myProject, createdSolution) }
+
+        readOnRepo {
+            val match = myProject.projectModules.firstOrNull { it.moduleName == solutionName }
+            assertNull("solution must be un-registered from the project after rollback", match)
+        }
+        assertFalse("descriptor file must be removed from disk so a retry can succeed: $descriptorFile",
+            descriptorFile.exists())
+    }
+
+    @Test
+    fun `rollbackPartialCreation un-registers a generator from its parent language`() {
+        // The post-producer facet-attachment failure path calls rollbackPartialCreation;
+        // the cast/null-descriptor scenarios that trigger it are hard to reach through the
+        // public tool surface (pre-validation already filters the easy cases). Drive the
+        // helper directly here so the Generator branch — which differs structurally from
+        // the Solution/Language/DevKit branches — is exercised end-to-end.
+        val parentName = language.moduleName!!
+        val createdName = expectOk(runTool(toolset) {
+            it.mps_mcp_create_module("generator", "ignored", "", null, parentName, false, false, false)
+        }).get("name").asString
+
+        val toRollback = readOnRepo {
+            language.generators.singleOrNull { (it as? Generator)?.moduleName == createdName }
+        }
+        assertNotNull("test precondition: generator must be registered before rollback", toRollback)
+
+        // Capture parent-language descriptor file BEFORE rollback so we can assert it
+        // survives. A naive rollback that deletes `(generator as AbstractModule).descriptorFile`
+        // would actually delete the parent Language's `.mpl` (Generators share their
+        // parent's descriptor file — see `Language.revalidateGenerators`), corrupting
+        // the parent on disk.
+        val parentDescriptorFile = readOnRepo { (language as AbstractModule).descriptorFile!! }
+        assertTrue("test precondition: parent language's .mpl must exist before rollback",
+            parentDescriptorFile.exists())
+
+        executeCommand { toolset.rollbackPartialCreation(myProject, toRollback!!) }
+
+        readOnRepo {
+            val stillUnderParent = language.generators
+                .firstOrNull { (it as? Generator)?.moduleName == createdName }
+            assertNull("generator must be detached from parent language's `generators`: $stillUnderParent",
+                stillUnderParent)
+            val stillInRepo = myProject.repository.getModule(toRollback!!.moduleReference.moduleId)
+            assertNull("generator must be unregistered from the project repository", stillInRepo)
+            // Data-loss guard: deleting the generator must NOT collateral-damage the parent.
+            assertNotNull("parent language must remain registered with the project",
+                myProject.projectModules.firstOrNull { it.moduleName == language.moduleName })
+        }
+        assertTrue("parent language's descriptor file must survive generator rollback: $parentDescriptorFile",
+            parentDescriptorFile.exists())
+    }
+
+    @Test
+    fun `rollbackPartialCreation with companions un-registers a language and its generator runtime sandbox`() {
+        // Locks in the create-call's "no partial state is left behind" guarantee for the
+        // Language + withGenerator/withRuntime/withSandbox path. Without companions support
+        // in rollback, a facet-attach failure on the primary Language would leave the
+        // generator and runtime/sandbox solutions registered.
+        val langName = "test.rollback.lang${System.nanoTime()}"
+        val directory = freshPathInProject(langName)
+        expectOk(runTool(toolset) {
+            it.mps_mcp_create_module("language", langName, directory,
+                null, null, /* withGenerator = */ true, /* withSandbox = */ true,
+                /* withRuntime = */ true)
+        })
+
+        val (lang, companions) = readOnRepo {
+            val l = myProject.projectModules.single { it.moduleName == langName } as Language
+            val cs = mutableListOf<org.jetbrains.mps.openapi.module.SModule>()
+            cs.addAll(l.generators)
+            myProject.projectModules.firstOrNull { it.moduleName == "${langName}.runtime" }?.let { cs.add(it) }
+            myProject.projectModules.firstOrNull { it.moduleName == "${langName}.sandbox" }?.let { cs.add(it) }
+            l to cs
+        }
+        assertTrue("test precondition: language must have at least one generator", companions.any { it is Generator })
+
+        executeCommand { toolset.rollbackPartialCreation(myProject, lang, companions) }
+
+        readOnRepo {
+            assertNull("language must be un-registered",
+                myProject.projectModules.firstOrNull { it.moduleName == langName })
+            assertNull("runtime companion must be un-registered",
+                myProject.projectModules.firstOrNull { it.moduleName == "${langName}.runtime" })
+            assertNull("sandbox companion must be un-registered",
+                myProject.projectModules.firstOrNull { it.moduleName == "${langName}.sandbox" })
+            for (c in companions.filterIsInstance<Generator>()) {
+                assertNull("generator companion must be detached from project repository: ${c.moduleName}",
+                    myProject.repository.getModule(c.moduleReference.moduleId))
+            }
+        }
+    }
+
+    @Test
+    fun `listing an already-attached facet is silently deduplicated`() {
+        // The producer installs `java` with default settings; listing it again must NOT
+        // wipe those settings or add a second descriptor entry. Asserting `loadExtensions`
+        // stays `NotAvailable` is the visible proof: an empty-memento overwrite would
+        // leave the field unset.
+        val solutionName = "test.dedup.facet${System.nanoTime()}"
+        val directory = freshPathInProject(solutionName)
+
+        val response = runTool(JetBrainsMPSModuleMcpToolset()) {
+            it.mps_mcp_create_module(
+                "solution", solutionName, directory,
+                null, null, false, false, false,
+                /* facets = */ listOf("java"),
+            )
+        }
+        val data = expectOk(response)
+        val facets = data.getAsJsonArray("facets").map { it.asString }
+        assertEquals(
+            "dedup must yield exactly one `java` facet, not two: $response",
+            1, facets.count { it == "java" },
+        )
+        assertEquals(
+            "producer-installed `java` settings must survive the redundant facet listing: $response",
+            "NotAvailable", data.get("loadExtensions").asString,
+        )
     }
 
     @Test

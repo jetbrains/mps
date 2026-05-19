@@ -8,7 +8,7 @@ type: reference
 
 MPS ships a dedicated **test language** — `jetbrains.mps.lang.test` — for testing language artefacts (typesystem, scopes, constraints, dataflow, editor, generator, migrations). Plain JUnit-style tests against runtime classes use `jetbrains.mps.baseLanguage.unitTest` (the `BTestCase` concept).
 
-A test is a **root node** living in a model whose **stereotype is `tests`** (the model file name ends in `@tests.mps`). The test model lives in a Solution module (kind `Other`), not in the language module itself, so it can depend on the language under test plus arbitrary runtime libraries.
+A test is a **root node** living in a model whose **stereotype is `tests`** (the model file name ends in `@tests.mps`). The test model lives in a Solution module carrying the **`tests` facet**, not in the language module itself, so it can depend on the language under test plus arbitrary runtime libraries.
 
 This skill is the reference for *what to put in a test model* and *what each test type means*. For the mechanics of creating/modifying nodes via MCP, see `mps-model-manipulation` and the `mps_mcp_*` tool docs. Documentation: <https://www.jetbrains.com/help/mps/testing-languages.html>. Source: `plugins/mps-testing/languages/lang.test/`.
 
@@ -16,7 +16,7 @@ This skill is the reference for *what to put in a test model* and *what each tes
 
 - The test model **must** carry stereotype `tests` (file name `…@tests.mps`). Without it, roots compile but are not discovered as JUnit tests.
 - Used languages on a test model: `jetbrains.mps.lang.test`, `jetbrains.mps.baseLanguage.unitTest`, the language(s) under test, plus `jetbrains.mps.baseLanguage`, `jetbrains.mps.baseLanguage.collections`, `jetbrains.mps.lang.smodel`, `jetbrains.mps.lang.text` as needed by assertion code.
-- The containing Solution must be kind `Other` (`solutionKind = OTHER`) — Languages and Generators don't compile the test classes.
+- The containing Solution must carry the **`tests` facet**. Languages and Generators don't compile the test classes, so the test root must live in this dedicated Solution. Create it via `mps_mcp_create_module(type="solution", …, facets=["tests"])`; the response is self-describing — `{"data":{"kind":"Solution","facets":["java","tests"],"loadExtensions":"NotAvailable",…}}` confirms the kind without a follow-up call. For an existing Solution, attach the facet via `mps_mcp_update_module_facet(facetType="tests", enabled=true)` and verify with `mps_mcp_get_module` (its `facets` array will include `"tests"`).
 - The `testMethods` role declares `NodesTestMethod`, which is **abstract** — instantiate `SimpleNodeTest` (`c:8585453e-6bfb-4d80-98de-b16074f1d86c/1225978065297`). Inserting raw `NodesTestMethod` fails with `"Abstract concept instance detected"`.
 - Inside snippets, `TestNodeAnnotation` labels are **only** resolvable via `TestNodeReference` from test-method bodies. For *in-snippet* references (e.g. setting `RoutineCall.routine`) use the target node's own `name` property (resolved through the language's scope) or a persistent `r:` node ref, never the label name.
 - Prefer `invoke action <ActionId>` over raw `press <chord>` for Enter/Tab/etc. in `EditorTestCase` — `PressKeyStatement` may bypass the named-action dispatcher used by the production editor. Editor actions live in `r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)`.

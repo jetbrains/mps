@@ -231,7 +231,7 @@ abstract class McpIntegrationTestBase : ModuleInProjectTest() {
         generatedTempFiles.clear()
     }
 
-    private fun executeCommand(action: () -> Unit) {
+    protected fun executeCommand(action: () -> Unit) {
         val modelAccess = myProject.repository.modelAccess
         val error = arrayOfNulls<Throwable>(1)
         ApplicationManager.getApplication().invokeAndWait(

@@ -158,8 +158,23 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         If a precise match is not found, a partial match by name is used.
         If more than one partial match is found, returns an error containing the found full module names.
 
-        Returns a JSON object with 'ok':true and 'data':{ name, reference, virtualFolder?, readOnly, present:true, ... } on success.
-        For DevKits, the data also includes: kind: "DevKit", extendedDevkits: [...], exportedLanguages: [...], exportedSolutions: [...], associatedGenPlan?: {...}.
+        Returns a JSON object with 'ok':true and 'data':{ name, reference, virtualFolder?,
+        readOnly, present:true, kind, facets, loadExtensions?, ... } on success. `kind` is
+        one of "Solution" | "Language" | "Generator" | "DevKit". The four standard MPS
+        module types cover every module produced by `mps_mcp_create_module` and every
+        module typically present in a project; the sentinel "Unknown" is reserved for
+        third-party `SModule` implementations that don't extend any of those four
+        classes (e.g. custom modules injected by external plugins or test scaffolding).
+        Treat "Unknown" as a signal to investigate, not a normal value. `facets` lists the
+        active facet types (e.g. ["java","tests"] for a test-container Solution). The order
+        of entries is unspecified — match on set membership, not position.
+        `loadExtensions` is present whenever the module has a JavaModuleFacet. The default for every module type
+        (solutions, languages, generators) is "NotAvailable"; "Plugin" is reported only
+        when the descriptor explicitly persists `loadExtensions = yes` (plugin/contributor
+        modules). A freshly created Language will therefore surface "NotAvailable", not
+        "Plugin".
+        For DevKits, the data also includes: extendedDevkits: [...], exportedLanguages: [...],
+        exportedSolutions: [...], associatedGenPlan?: {...}.
     """
     )
     suspend fun mps_mcp_get_module(
@@ -207,8 +222,29 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
           - withGenerator: for language: also create a generator (false by default)
           - withSandbox: for language: also create a sandbox solution (false by default)
           - withRuntime: for language: also create a runtime solution (false by default)
+          - facets: optional list of additional facet types to attach after creation (e.g.
+            ["tests"] to mark a solution as the container for a `@tests` model). Each entry
+            is treated as an opaque facet-type identifier and must match a registered facet
+            factory. The "java" facet is created automatically by the producer for
+            solution/language/generator modules and does not need to be listed; if it (or
+            any other already-attached facet) appears in this list it is silently skipped
+            so the producer's default settings (e.g. `JavaModuleFacet.LoadExtensions`) are
+            preserved. To override those settings, follow the create call with
+            `mps_mcp_update_module_facet`. Unknown facet types fail the call before the
+            module is produced, so no partial state is left behind. Only "solution" and
+            "language" accept additional facets: passing `facets` together with
+            `type="devkit"` or `type="generator"` is rejected upfront because those module
+            kinds carry no useful facet beyond what the producer already installs.
 
-        Returns a JSON object with 'ok':true and 'data':{ name, moduleRef, virtualFolder?, readOnly, present:true } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ name, moduleRef, virtualFolder?,
+        readOnly, present:true, kind, facets, loadExtensions? } on success, or 'ok':false and
+        'error':"..." on failure. `kind` reports the module type ("Solution" | "Language" |
+        "Generator" | "DevKit", or the sentinel "Unknown"). `facets` lists the active facet
+        types (e.g. ["java","tests"]); the order of entries is unspecified.
+        `loadExtensions` reports the JavaModuleFacet's load-extensions setting when present.
+        The default is "NotAvailable" for every module type (solutions, languages,
+        generators); "Plugin" is reported only when the descriptor explicitly persists
+        `loadExtensions = yes`. Freshly created Languages/Generators surface "NotAvailable".
     """
     )
     suspend fun mps_mcp_create_module(
@@ -219,11 +255,56 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Required for generator: parent language name") @Nullable parentLanguage: String?,
         @McpDescription("For language: also create a generator") withGenerator: Boolean = false,
         @McpDescription("For language: also create a sandbox solution") withSandbox: Boolean = false,
-        @McpDescription("For language: also create a runtime solution") withRuntime: Boolean = false
+        @McpDescription("For language: also create a runtime solution") withRuntime: Boolean = false,
+        @McpDescription("Optional list of additional facet types to attach (e.g. [\"tests\"] for a test-container Solution). See the tool description for dedup, unknown-type, and module-type-restriction rules.") @Nullable facets: List<String>? = null
     ): String = withMpsProject("Create MPS module") { mpsProject ->
         // Holds either the created module or an error string. The block sets exactly one.
         var created: SModule? = null
         var error: String? = null
+        // Companion modules registered alongside `created` by the producer (e.g. a
+        // Language's generator/runtime/sandbox sub-modules). Rollback must un-register
+        // these too, otherwise a failure to attach facets on the primary leaves
+        // orphan companions in the project while the caller sees an error envelope.
+        // The Language branch fills this in; other branches leave it empty.
+        var companionsForRollback: List<SModule> = emptyList()
+
+        // Pre-validate `facets` BEFORE entering the write command: an unknown facet type
+        // discovered mid-command would otherwise leave a partially-created module on disk
+        // and registered with the project — easier on the caller to refuse upfront.
+        val requestedFacets: List<String> = facets
+            ?.map { it.trim() }
+            ?.filter { it.isNotEmpty() }
+            ?: emptyList()
+        if (requestedFacets.isNotEmpty()) {
+            // Reject facets paired with module kinds that have no use for them. DevKits
+            // carry no JavaModuleFacet by default and have no test/runtime semantics;
+            // Generators inherit their facet shape from the parent Language and the tool
+            // surface offers no canonical use case for layering extra facets on top.
+            // Failing upfront beats producing a module with a meaningless facet attached.
+            val normalizedTypeForFacetCheck = type.lowercase()
+            if (normalizedTypeForFacetCheck == "devkit" || normalizedTypeForFacetCheck == "generator") {
+                return@withMpsProject errJson(
+                    "Parameter 'facets' is not supported for module type '$type'; only 'solution' and 'language' accept additional facets",
+                    McpErrorCode.INVALID_REQUEST,
+                )
+            }
+            // `FacetsFacade` is a static registry and lookups are not documented to require
+            // model access, but neighboring toolset code (e.g. mps_mcp_list_facet_types)
+            // already wraps facet-registry reads in a read action — do the same here to
+            // stay safe if a future MPS revision starts checking for one.
+            val unknown = executeShortReadOnEdt(mpsProject) {
+                @Suppress("DEPRECATION")
+                val ff = FacetsFacade.getInstance()
+                requestedFacets.filter { ff.getFacetFactory(it) == null }
+            }
+            if (unknown.isNotEmpty()) {
+                return@withMpsProject errJson(
+                    "Unknown facet type(s): ${unknown.joinToString(", ")}",
+                    McpErrorCode.INVALID_REQUEST,
+                )
+            }
+        }
+
         withContext(Dispatchers.EDT) {
                 mpsProject.repository.modelAccess.executeCommand {
                     val fs: jetbrains.mps.vfs.openapi.FileSystem = mpsProject.fileSystem
@@ -273,6 +354,15 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                             lp.sandboxSolution.ifPresent { it.save() }
                             lang.generators.forEach { it.save() }
                             created = lang
+                            // Record companions so a later facet-attachment failure can
+                            // unregister them alongside the Language. Without this, the
+                            // create-call's "no partial state is left behind" guarantee
+                            // would not hold for `withGenerator`/`withRuntime`/`withSandbox`.
+                            val companions = mutableListOf<SModule>()
+                            lp.runtimeSolution.ifPresent { companions.add(it) }
+                            lp.sandboxSolution.ifPresent { companions.add(it) }
+                            lang.generators.forEach { companions.add(it) }
+                            companionsForRollback = companions
                         }
                         "generator" -> {
                             val parentLangName = parentLanguage
@@ -344,17 +434,94 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                             error = "Unsupported module type '$type'"
                         }
                     }
+
+                    // Attach any extra facets requested by the caller AFTER the producer ran:
+                    // producers install the default `java` facet themselves, but anything
+                    // language-specific (e.g. `tests` for `@tests` model containers) is the
+                    // caller's responsibility. Facet types were pre-validated above.
+                    //
+                    // If this fails after the producer has already registered the module, we
+                    // must un-register it before returning the error — otherwise the caller
+                    // sees a failure envelope while a partial module lingers in the project.
+                    val createdModule = created
+                    if (createdModule != null && requestedFacets.isNotEmpty()) {
+                        val abstractModule = createdModule as? AbstractModule
+                        val descriptor = abstractModule?.moduleDescriptor
+                        if (abstractModule == null || descriptor == null) {
+                            error = if (abstractModule == null) {
+                                "Cannot attach facets to module '${createdModule.moduleName}': not an AbstractModule"
+                            } else {
+                                "Cannot attach facets to module '${createdModule.moduleName}': descriptor is null"
+                            }
+                            // Roll back the producer's registration: the user asked for a module
+                            // with these facets and is going to see an error, so leaving the
+                            // half-built module behind would be worse than the failure itself.
+                            rollbackPartialCreation(mpsProject, createdModule, companionsForRollback)
+                            created = null
+                            return@executeCommand
+                        }
+                        // Mutate `descriptor.moduleFacetDescriptors` in-place, then call
+                        // `setModuleDescriptor(descriptor)`. This is the canonical pattern
+                        // MPS itself uses for facet installation — see how `JavaModuleFacetImpl`
+                        // and `TestsFacetImpl` install themselves via `moduleFacetDescriptors`
+                        // + `setModuleDescriptor` — and matches what `mps_mcp_update_module_facet`
+                        // does in this same file. There is no public `addFacet(type)` API on
+                        // `AbstractModule`; the descriptor route is the supported way to attach
+                        // a facet by type identifier.
+                        //
+                        // Wrap the loop + setModuleDescriptor + save in try/catch: pre-validation
+                        // already filtered unknown facet types, but a future MPS revision could
+                        // validate the descriptor more strictly, a facet factory could surface
+                        // an unexpected side-effect, or `save()` could fail with an IO error.
+                        // Any such throwable here would otherwise escape `executeCommand` with
+                        // the producer-registered module still in the project — exactly the
+                        // half-built state the rollback machinery exists to prevent.
+                        try {
+                            var added = false
+                            for (facetType in requestedFacets) {
+                                // Skip if an equivalent facet is already attached by the producer (e.g. `java`)
+                                // or by a previous iteration of this loop. Overwriting would wipe any
+                                // default settings the producer configured (e.g. JavaModuleFacet's
+                                // `LoadExtensions`/source-root layout). Callers who need non-default
+                                // settings should follow up with `mps_mcp_update_module_facet`.
+                                if (descriptor.moduleFacetDescriptors.any { it.type == facetType }) {
+                                    continue
+                                }
+                                descriptor.moduleFacetDescriptors.add(ModuleFacetDescriptor(facetType, MementoImpl()))
+                                added = true
+                            }
+                            // Skip `setModuleDescriptor`/`save` when every requested facet was
+                            // already attached. Otherwise we'd force a descriptor reload and an
+                            // on-disk write for a module that didn't logically change — wasteful
+                            // and a small risk surface if a future `setModuleDescriptor` change
+                            // introduces a side-effect on transient module state.
+                            if (added) {
+                                abstractModule.setModuleDescriptor(descriptor)
+                                abstractModule.save()
+                            }
+                        } catch (t: Throwable) {
+                            rethrowIfCancellation(t)
+                            if (t is Error) throw t
+                            error = "Failed to attach facets to module '${createdModule.moduleName}': ${t.message ?: t.toString()}"
+                            rollbackPartialCreation(mpsProject, createdModule, companionsForRollback)
+                            created = null
+                            mpsProject.save()
+                            return@executeCommand
+                        }
+                    }
                 }
-                if (created != null) {
+                if (created != null && error == null) {
                     // Producers register solution/devkit/language with the project themselves; the
                     // generator branch already calls addModule() inside the executeCommand block.
                     // Just persist project state here.
                     mpsProject.save()
                 }
             }
+        val finalError = error
+        val finalCreated = created
         when {
-            created != null -> okJson(moduleInfoJson(mpsProject, created))
-            error != null -> errJson(error)
+            finalError != null -> errJson(finalError)
+            finalCreated != null -> okJson(moduleInfoJson(mpsProject, finalCreated))
             else -> errJson("Module creation failed for unknown reason")
         }
     }
@@ -765,6 +932,129 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     private fun applyVirtualFolder(mpsProject: MPSProject, module: SModule, virtualFolder: String?) {
         if (virtualFolder != null) {
             mpsProject.setVirtualFolder(module, virtualFolder)
+        }
+    }
+
+    /**
+     * Best-effort un-registration of a module the producer has just registered with the
+     * project, used when a follow-up step (e.g. facet attachment) fails before the create
+     * call returns. Any throwable during rollback is swallowed: the primary error has
+     * already been recorded and is more useful to the caller than a cleanup failure.
+     *
+     * Strategy by module kind:
+     * - Generator: registration in the create path happens via
+     *   `parentLang.setModuleDescriptor(...)` → `Language.revalidateGenerators` (the
+     *   create path does NOT call `mpsProject.addModule(...)` separately; see the
+     *   comment in the "generator" branch of `mps_mcp_create_module`). So the symmetric
+     *   rollback is to drop the entry from the parent's `generators` and re-set the
+     *   descriptor, which causes `revalidateGenerators` to unregister the orphan. As a
+     *   safety belt we also call `removeModule` if the generator is somehow still
+     *   attached to the project repository after that.
+     * - Everything else (Solution, DevKit, Language): the producer registered the module
+     *   directly with the project, so `removeModule` is the matching reversal.
+     *
+     * After un-registration we also best-effort-delete the module's on-disk descriptor
+     * file (`.msd` / `.mpl` / `.devkit`). Otherwise a caller retrying
+     * `mps_mcp_create_module` with the same `name`+`directory` would trip over the
+     * leftover descriptor and either fail to create or re-load stale module state.
+     *
+     * [companions] lets the create call hand in sibling modules the producer registered
+     * alongside [module] (e.g. a Language's generator/runtime/sandbox sub-modules).
+     * Each companion is rolled back via the same single-module logic before the primary,
+     * so dependent companions (generators referencing the language) are dropped first.
+     *
+     * What is NOT cleaned up (intentionally, to keep this conservative):
+     * - Model files / module sub-directories the producer may have laid out next to the
+     *   descriptor. The descriptor is the binding piece for "is this module loadable";
+     *   stale model files alone won't block a retry.
+     *
+     * Threading / write-access contract: this helper MUST be invoked inside
+     * `mpsProject.repository.modelAccess.executeCommand { ... }`. It calls
+     * `mpsProject.removeModule(...)`, `parent.setModuleDescriptor(...)`,
+     * `abstractModule.save()`, and `descriptorFile.delete()`, all of which require an
+     * active write/command context. Production callers in `mps_mcp_create_module` are
+     * already inside `executeCommand`; integration tests wrap each direct invocation in
+     * `executeCommand { ... }` for the same reason. Calling this outside a command will
+     * throw from the model-access layer.
+     *
+     * Visible to integration tests so the Generator branch can be exercised directly.
+     */
+    internal fun rollbackPartialCreation(
+        mpsProject: MPSProject,
+        module: SModule,
+        companions: List<SModule> = emptyList(),
+    ) {
+        // Roll back companions first. Generators reference their parent Language via
+        // `sourceModuleReference`, so dropping them before the language keeps that lookup
+        // valid during their own rollback. Solutions (runtime/sandbox) are independent
+        // and order is immaterial for them.
+        for (companion in companions) {
+            rollbackSingleModule(mpsProject, companion)
+        }
+        rollbackSingleModule(mpsProject, module)
+    }
+
+    private fun rollbackSingleModule(mpsProject: MPSProject, module: SModule) {
+        try {
+            // Capture the descriptor file before un-registration: `removeModule` /
+            // `setModuleDescriptor` may tear down descriptor wiring so `descriptorFile`
+            // returns null afterwards.
+            val descriptorFile: IFile? = (module as? AbstractModule)?.descriptorFile
+
+            if (module is Generator) {
+                // `Generator.sourceLanguage()` reads `mySourceLanguage0` directly and can
+                // return null for a partially constructed generator (e.g. a Language whose
+                // `revalidateGenerators` failed mid-flight). NPE-ing here would abort the
+                // rollback walk and strand the remaining companions plus the primary —
+                // exactly the partial state this helper exists to prevent. Fall through to
+                // the `removeModule` safety belt below when the parent link is missing.
+                val parentRef = runCatching { module.sourceLanguage()?.sourceModuleReference }.getOrNull()
+                val parent = parentRef?.let { mpsProject.repository.getModule(it.moduleId) as? Language }
+                val parentDescriptor = parent?.moduleDescriptor
+                if (parent != null && parentDescriptor != null) {
+                    parentDescriptor.generators.removeIf { it.moduleReference == module.moduleReference }
+                    parent.setModuleDescriptor(parentDescriptor)
+                    parent.save()
+                }
+                // Safety belt: if revalidateGenerators didn't fully detach the generator
+                // from the project repository, drop it explicitly. Idempotent on a
+                // module that is no longer registered.
+                if (mpsProject.repository.getModule(module.moduleReference.moduleId) != null) {
+                    runCatching { mpsProject.removeModule(module) }
+                }
+            } else {
+                // Idempotent: a Language whose generator companions were already rolled
+                // back may still be registered; removing a module not in the repo throws
+                // in some MPS revisions, so check first.
+                if (mpsProject.repository.getModule(module.moduleReference.moduleId) != null) {
+                    mpsProject.removeModule(module)
+                }
+            }
+
+            // Best-effort: remove the descriptor file so a retry with the same
+            // name+directory can succeed. Failure here is swallowed — the file may
+            // be locked, missing, or unreadable, none of which warrant overriding
+            // the primary error the caller is about to see.
+            //
+            // CRITICAL: skip this for Generator modules. `Language.revalidateGenerators`
+            // constructs `Generator` with the parent Language's `.mpl` as its descriptor
+            // file (see `new Generator(..., getDescriptorFile(), ...)`), so
+            // `(generator as AbstractModule).descriptorFile` returns the parent's `.mpl`,
+            // NOT a generator-specific file. Deleting it here would corrupt the parent
+            // Language on disk — exactly the kind of data-loss this helper must not
+            // cause. Generators have no separate descriptor to clean up; the parent's
+            // descriptor was already re-saved above with the generator entry removed.
+            if (module !is Generator) {
+                runCatching {
+                    if (descriptorFile != null && descriptorFile.exists()) {
+                        descriptorFile.delete()
+                    }
+                }
+            }
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            if (e is Error) throw e
+            // Swallow: the original failure is what the caller needs to see.
         }
     }
 
