@@ -7,6 +7,7 @@ import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.smodel.language.LanguageRegistry
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import org.jetbrains.mps.openapi.language.SAbstractConcept
+import jetbrains.mps.smodel.adapter.structure.types.SPrimitiveTypes
 import org.jetbrains.mps.openapi.language.SEnumeration
 import org.jetbrains.mps.openapi.language.SNamedElement
 import org.jetbrains.mps.openapi.language.SLanguage
@@ -335,7 +336,16 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             val obj = JsonObject()
             obj.addProperty("name", prop.name)
             val type = prop.type
-            val typeName = (type as? SNamedElement)?.name ?: "unknown"
+            // Built-in primitives (string/integer/boolean) are reference-equal to the
+            // SPrimitiveTypes constants but do not implement SNamedElement. Custom
+            // constrained data types and enumerations do implement SNamedElement.
+            val typeName = when (type) {
+                SPrimitiveTypes.STRING -> "string"
+                SPrimitiveTypes.INTEGER -> "integer"
+                SPrimitiveTypes.BOOLEAN -> "boolean"
+                is SNamedElement -> type.name ?: "unknown"
+                else -> "unknown"
+            }
             obj.addProperty("type", typeName)
             val declarationNode = prop.sourceNode?.resolve(repository)
             addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
