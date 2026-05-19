@@ -24,6 +24,8 @@ Implicit parameters inside the body:
 | `link` | `jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_link` | Containment link role |
 | `childConcept` | `jetbrains.mps.lang.constraints.structure.ConstraintFunctionParameter_childConcept` | Concept of `node` |
 
+> **⚠ Watch out — naming inconsistency**: the `node` parameter uses `Constraint**s**FunctionParameter_node` (plural), while every other parameter in this family uses `ConstraintFunctionParameter_*` (singular). Copy the FQNs exactly — a missing or extra `s` silently fails to resolve and the blueprint will be rejected.
+
 ### canBeChild with grandparent traversal (Kaja)
 
 The `parentNode` parameter supports normal smodel operations such as `.parent` to reach the grandparent. Kaja uses this for two concepts:

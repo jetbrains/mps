@@ -8,6 +8,8 @@ type: reference
 
 **TextGen** turns a model (usually the output of generation) into plain text files. It is how BaseLanguage becomes `.java` on disk, and how any text-targeting language serialises its models. Lives in `<lang>/languageModels/textGen.mps`, language `jetbrains.mps.lang.textGen`. Rule bodies are BaseLanguage + smodel + textgen-specific statements (`append`, `indent buffer`, `with indent`).
 
+**Prerequisite for any insert:** the textGen model must exist (`mps_mcp_create_model`) and must import `jetbrains.mps.lang.textGen`, `jetbrains.mps.baseLanguage`, and `jetbrains.mps.lang.smodel` as used languages **before** the first `mps_mcp_insert_root_node_from_json`. Missing any of these three causes node inserts to fail with unresolved-concept errors. See step 1 of the Common-Path Workflow.
+
 ## Critical Directives
 
 - One `ConceptTextGenDeclaration` root per concept you want to serialise. Only the **file-generating root concept** needs `extension` / `filename` / `encoding`; structural concepts inside the file need only `textGenBlock`.
@@ -23,7 +25,7 @@ type: reference
 
 ## Common-Path Workflow
 
-1. Create a `textGen` model (`mps_mcp_create_model`) if absent. Add used languages: `jetbrains.mps.lang.textGen`, `jetbrains.mps.baseLanguage` (and `collections` if you use maps/lists), plus the structure language whose concepts you serialise.
+1. Create a `textGen` model (`mps_mcp_create_model`) if absent, then **before any insert** add the three required used languages: `jetbrains.mps.lang.textGen` (for `ConceptTextGenDeclaration`, `AppendOperation`, parts, `NodeParameter`, etc.), `jetbrains.mps.baseLanguage` (for `StatementList`, `DotExpression`, control flow, returns), and `jetbrains.mps.lang.smodel` (for `SPropertyAccess`, `SLinkAccess`, `SLinkListAccess` used to read node data). Also add the structure language whose concepts you serialise (referenced by `conceptDeclaration` and inside smodel accesses), and `jetbrains.mps.baseLanguage.collections` if you use maps/lists. Skipping any of the three core languages causes `mps_mcp_insert_root_node_from_json` to fail with unresolved-concept errors — don't add them piecemeal after a failure.
 2. For each concept to serialise, insert a `ConceptTextGenDeclaration` root via `mps_mcp_insert_root_node_from_json`. The file-generating concept also needs `extension`, optionally `encoding` / `filename` / `filePath` / `layout` / `contextObjects`.
 3. Fill the `textGenBlock` body — a `StatementList` of `append`s, `indent buffer`, `with indent { ... }`, and standard BaseLanguage control flow. See `references/statements-and-appends.md` for the part vocabulary and `references/json-blueprints.md` for AST shapes.
 4. Push formatting heuristics ("should this go on a new line?") into the behavior aspect and call them back from textgen (`node.hasNewLineAfter()` pattern). See `references/delegating-to-behavior.md`.
