@@ -41,5 +41,5 @@ Use `mps_mcp_perform_structure_operation` with `LIST_CONCEPT_ASPECTS` to find as
 ## Related Skills
 
 - **`mps-language-inheritance`** — load when you need extended-language / superconcept / subconcept analysis.
-- **`mps-structure-concepts`** — load when defining or modifying concepts (not just reading them).
+- **`mps-aspect-structure-concepts`** — load when defining or modifying concepts (not just reading them).
 - **`mps-language-aspects-overview`** — overview of which aspects exist and what each owns.

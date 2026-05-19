@@ -45,9 +45,9 @@ Pick the right authoring tool before you start:
 ## Related Skills
 
 - **`mps-node-editing`** — general node mutation tools (`mps_mcp_add_node_child`, `mps_mcp_set_node_properties`, etc.). Load first if you have not seen them.
-- **`mps-structure-concepts`** — defines what concepts exist and what roles they expose. Read when authoring a brand-new language whose concepts extend BaseLanguage.
+- **`mps-aspect-structure-concepts`** — defines what concepts exist and what roles they expose. Read when authoring a brand-new language whose concepts extend BaseLanguage.
 - **`mps-quotations`** — light/quoted SNode literals embedded in BaseLanguage code (e.g. inside behavior or generator bodies).
-- **`mps-model-code`** — `smodel` + `collections` + `closures` patterns layered on top of BaseLanguage; load when manipulating MPS nodes from BaseLanguage.
+- **`mps-model-manipulation`** — `smodel` + `collections` + `closures` patterns layered on top of BaseLanguage; load when manipulating MPS nodes from BaseLanguage.
 - **`mps-aspect-behavior`**, **`mps-aspect-typesystem`**, **`mps-aspect-constraints`** — each owns a language whose function bodies are BaseLanguage; reach for those skills when the surrounding aspect matters.
 
 ## Reference Index

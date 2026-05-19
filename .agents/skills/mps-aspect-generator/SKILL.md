@@ -39,7 +39,7 @@ If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unles
 - `mps-aspect-generation-plan` — priorities, checkpoints, plan contributions; pair this with priority-ordering questions.
 - `mps-aspect-textgen` — converting the final model to plain text (last pipeline stage).
 - `mps-aspect-behavior` — put non-trivial per-concept logic in behavior methods called from macros.
-- `mps-model-code` — smodel-access idioms (`SPropertyAccess`, `SLinkAccess`, `Node_GetChildrenOperation`) inside query bodies.
+- `mps-model-manipulation` — smodel-access idioms (`SPropertyAccess`, `SLinkAccess`, `Node_GetChildrenOperation`) inside query bodies.
 - `mps-quotations` — quotation/anti-quotation syntax for building nodes inside `$INSERT$` and `$MAP_SRC$.mapperFunction`.
 - `mps-baselanguage` — host language for macro query bodies and `RulesFunctions_*` helpers.
 

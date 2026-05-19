@@ -23,7 +23,7 @@ Lives in `<lang>/languageModels/typesystem.mps`, language `jetbrains.mps.lang.ty
 - `when concrete (typeof(expr) as v) { ... }` defers a block until the type is fully resolved — use it before deciding whether to report an error or assign a result type.
 - Quick fixes (`TypesystemQuickFix`) are roots, **not** executed automatically — the user triggers them via the UI. Wire them into a report through the `helginsIntention` slot (`TypesystemIntention` wrapper with `quickFix` ref + `actualArgument`s). See `references/quick-fixes.md`.
 - Reusable helper code (utility classes, shared algorithms) can live as a plain BaseLanguage `ClassConcept` root **directly in the typesystem model**. No separate utility module is required.
-- For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`) the Java parser gives back `List<SNode>` — fix per `mps-model-code/references/variable-declarations.md`.
+- For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`) the Java parser gives back `List<SNode>` — fix per `mps-model-manipulation/references/variable-declarations.md`.
 - Edit typesystem models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_parse_java_and_insert`). Do not hand-edit `.mps` files.
 - After edits run `mps_mcp_check_root_node_problems`, compile the language, and test on sample models.
 
@@ -43,9 +43,9 @@ Lives in `<lang>/languageModels/typesystem.mps`, language `jetbrains.mps.lang.ty
 - `mps-aspect-behavior` — behavior methods called from rule bodies via `node.method()`; common host for `getType` / `isAssignableFrom`-style helpers callable from typesystem.
 - `mps-aspect-constraints` — non-type validation often lives in constraints; consider whether a check belongs there before adding a `NonTypesystemRule`.
 - `mps-aspect-intentions` — distinct from `TypesystemQuickFix` (intentions are user-invoked from caret; quick fixes attach to a report).
-- `mps-model-code` — full BaseLanguage / smodel / collections reference used inside rule bodies (`StatementList`, `DotExpression`, smodel operations, the `List<SNode>` → `sequence<node<X>>` return-type fix).
+- `mps-model-manipulation` — full BaseLanguage / smodel / collections reference used inside rule bodies (`StatementList`, `DotExpression`, smodel operations, the `List<SNode>` → `sequence<node<X>>` return-type fix).
 - `mps-quotations` — `<type>` literals in rule bodies are heavy quotations; `%(expr)%` splices use the `Antiquotation` family. The typesystem model usually uses `jetbrains.mps.lang.quotation` as a used language.
-- `mps-structure-concepts` — when introducing the type concept(s) the rules target.
+- `mps-aspect-structure-concepts` — when introducing the type concept(s) the rules target.
 
 ## Reference Index
 

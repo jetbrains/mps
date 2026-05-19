@@ -29,7 +29,7 @@ The `jetbrains.mps.lang.editor` language defines projectional editors as trees o
 ## Related Skills
 
 - **`mps-aspect-editor-menus-and-keymaps`** — for action maps, cell keymaps, transformation menus, substitute menus, side transforms, paste wrappers, copy-paste handlers, completion styling, and reference presentation. Use this skill alongside that one when authoring an editor end-to-end.
-- **`mps-structure-concepts`** — concept declarations supply the relations (properties / children / references) the editor wires up.
+- **`mps-aspect-structure-concepts`** — concept declarations supply the relations (properties / children / references) the editor wires up.
 - **`mps-language-aspects-overview`** — for the broader authoring order around editors.
 
 ## Reference Index

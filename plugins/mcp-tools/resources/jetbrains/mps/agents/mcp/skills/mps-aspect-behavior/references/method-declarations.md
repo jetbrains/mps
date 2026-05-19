@@ -37,7 +37,7 @@ Inside a method body:
 - all concept properties/children/references are in scope via smodel syntax (`this.prop`, `this.childRole`, etc.)
 - call other behavior methods with `this.otherMethod(...)` / `someNode.otherMethod(...)` (instance) or `OwningConcept.otherMethod(...)` (static)
 
-For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`) the Java parser caveats from the `mps-model-code` skill apply — construct or replace `returnType` with the correct MPS blueprint after parsing.
+For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`) the Java parser caveats from the `mps-model-manipulation` skill apply — construct or replace `returnType` with the correct MPS blueprint after parsing.
 
 ## Implicit-return rule
 

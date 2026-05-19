@@ -21,7 +21,7 @@ For the **layout** side (concept editors, cell models, style sheets, editor comp
 - **Use action maps for `DELETE`/`BACKSPACE` instead of keymaps bound to `VK_DELETE`.** They integrate with two-step deletion and action inheritance.
 - **`TransformationMenu` field name is `conceptDeclaration`, not `applicableConcept`.** Real role names: `sections`, `parts`, `locations`, `textFunction`. Older docs lie.
 - **Contributions must live in a different language from the menu they extend.** `TransformationMenuContribution` / `SubstituteMenu_Contribution` are cross-language only.
-- **Write bodies with `mps-model-code` idioms.** `node.replace with(...)`, `node.parent.<role>.set(...)`, `node.children<X>.add new(...)`. Implicit params: `node`, `editorContext` (+ `model`, `scope`, `operationContext` depending on function kind).
+- **Write bodies with `mps-model-manipulation` idioms.** `node.replace with(...)`, `node.parent.<role>.set(...)`, `node.children<X>.add new(...)`. Implicit params: `node`, `editorContext` (+ `model`, `scope`, `operationContext` depending on function kind).
 - After edits run `mps_mcp_check_root_node_problems` and rebuild the language.
 - **Trace missing completion items** with `Ctrl+Alt+B` on the offending item — MPS shows the menu → menu-part → action chain.
 
@@ -58,7 +58,7 @@ For a typical "let the user invoke action X when they do Y" task:
 - `mps-aspect-editor` — overall workflow for creating and changing MPS editor definitions; cell models, layout styles, style inheritance.
 - `mps-aspect-actions` — `NodeFactory` initialisation of new nodes (in the actions language, often referenced from menus).
 - `mps-aspect-intentions` — Alt+Enter context actions. Intentions can be surfaced inside a transformation menu via the `intention` adapter.
-- `mps-model-code` — smodel operations used in execute/text/condition bodies.
+- `mps-model-manipulation` — smodel operations used in execute/text/condition bodies.
 - `mps-baselanguage` — BaseLanguage JSON mechanics.
 - `mps-node-editing`, `mps-mcp-workflow` — concept identification / blueprint hygiene.
 

@@ -1,5 +1,5 @@
 ---
-name: mps-model-code
+name: mps-model-manipulation
 description: Use when writing or editing MPS BaseLanguage code that lives inside a model — behavior methods, typesystem rules, checking rules, generator queries, constraints, intentions, scope/canBe callbacks, dataflow builders — and combines the `smodel`, `collections`, and `closures` language extensions. Covers querying nodes (`.descendants<C>`, `.ancestor<C>`, `.children`, `.parent`, `containingRoot`), filtering sequences (`.where`, `.select`, `.translate`, `.ofConcept<C>`), building closures (`{ it => ... }`, `yield`, recursion), creating and mutating nodes (`new node<C>()`, `add new(C)`, `set new(C)`, `replace with new(C)`, `.detach`, `.copy`), property and link access (`SPropertyAccess`, `SLinkAccess`, `SLinkListAccess`), reference operations (`.reference/C : role/`, `.target`), null-safe node equality (`:eq:` / `:ne:`), smodel/Java type casts (`node:C`, `node as C`, `/`, `downcast`), foreach choice, the `command` / `read action` lock wrappers, and JSON blueprints for every shape the Java parser cannot produce.
 type: reference
 ---

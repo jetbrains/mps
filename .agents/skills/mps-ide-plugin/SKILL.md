@@ -66,7 +66,7 @@ Seed `mps_mcp_print_node_json` / `mps_mcp_perform_structure_operation: FIND_USAG
 - `mps-aspect-intentions` — Alt+Enter context actions *inside* the projectional editor.
 - `mps-aspect-editor-menus-and-keymaps` — editor cell actions, substitute menus, side transforms (a different layer from the IDE shell).
 - `mps-build-language` — packaging a plugin solution into a distributable MPS/IDEA plugin (the build script must copy `startup.properties` from the solution's resources).
-- `mps-quotations` / `mps-model-code` — writing the base-language bodies inside `execute`/`isApplicable`/`init`/`dispose` blocks.
+- `mps-quotations` / `mps-model-manipulation` — writing the base-language bodies inside `execute`/`isApplicable`/`init`/`dispose` blocks.
 - `mps-baselanguage` — mechanics of building BaseLanguage JSON.
 
 ## Reference Index

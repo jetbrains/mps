@@ -1,5 +1,5 @@
 ---
-name: mps-structure-concepts
+name: mps-aspect-structure-concepts
 description: Define concepts, interface concepts, enumerations, and constrained data types in an MPS language's `structure` aspect. Covers smart-reference detection, alias rules, cardinality, INamedConcept usage, bulk creation, and the full `mps_mcp_perform_structure_operation` reference. Use when authoring or modifying a language's structure model.
 type: reference
 ---

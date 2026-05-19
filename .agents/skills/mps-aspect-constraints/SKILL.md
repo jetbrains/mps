@@ -34,17 +34,17 @@ Constraints are enforced at edit time and also consulted by the typesystem/edito
 2. Add `jetbrains.mps.lang.constraints` to the model's used languages. For scope bodies also add `jetbrains.mps.lang.smodel`, `jetbrains.mps.lang.scopes`, `jetbrains.mps.lang.behavior`, `jetbrains.mps.baseLanguage`; import models `jetbrains.mps.scope` and `jetbrains.mps.lang.core.behavior`.
 3. For each concept to constrain, create one `ConceptConstraints` root (`mps_mcp_create_root_node`); set `concept` ref. Minimal blueprint and validated FQN/c-ref in `references/concept-roots.md`.
 4. Add `NodePropertyConstraint` / `NodeReferentConstraint` / `canBe*` children as needed. For inherited scopes, also add a `getScope` method to the owning ancestor's `ConceptBehavior` (see `mps-aspect-behavior`).
-5. Write bodies in BaseLanguage + smodel — follow the `mps-model-code` skill for smodel / collections / closures syntax. Prefer `mps_mcp_parse_java_and_insert` for the BaseLanguage skeleton, then drop in scope / constraint-specific concepts via MCP.
+5. Write bodies in BaseLanguage + smodel — follow the `mps-model-manipulation` skill for smodel / collections / closures syntax. Prefer `mps_mcp_parse_java_and_insert` for the BaseLanguage skeleton, then drop in scope / constraint-specific concepts via MCP.
 6. Validate with `mps_mcp_check_root_node_problems` and rebuild the language.
 
 ## Related Skills
 
 - `mps-aspect-behavior` — `ScopeProvider.getScope` lives in the behavior aspect; this is the partner of every `InheritedNodeScopeFactory` constraint. Behavior is also where most validator/getter delegation lands.
-- `mps-structure-concepts` — structural cardinalities belong in `structure`, not here. Add `INamedConcept` / `IResolveInfo` / `ScopeProvider` interfaces on the concept declaration before writing the matching constraint or scope.
+- `mps-aspect-structure-concepts` — structural cardinalities belong in `structure`, not here. Add `INamedConcept` / `IResolveInfo` / `ScopeProvider` interfaces on the concept declaration before writing the matching constraint or scope.
 - `mps-aspect-editor-menus-and-keymaps` — completion menus consume the scope built here; substitute / transformation menus are the place for actions that go *beyond* picking an existing target.
 - `mps-aspect-actions` — when a constructor-style initialization is needed, use `NodeFactory` (actions aspect), not a constraint.
 - `mps-aspect-intentions` — when a *suggested fix* belongs on a node, write an intention; constraints only accept or reject.
-- `mps-model-code` — full BaseLanguage / smodel / collections / closures reference for constraint and scope bodies. Indispensable for `ancestor<concept = X, +>`, `selectMany`, `siblings.ofConcept<X>.all(...)`, anonymous-class scopes, and the smodel operation FQNs.
+- `mps-model-manipulation` — full BaseLanguage / smodel / collections / closures reference for constraint and scope bodies. Indispensable for `ancestor<concept = X, +>`, `selectMany`, `siblings.ofConcept<X>.all(...)`, anonymous-class scopes, and the smodel operation FQNs.
 - `mps-aspect-typesystem` — type checks belong in typesystem; constraints are about value/scope/placement.
 - `mps-aspect-textgen` and `mps-aspect-constraints`-co-located utility classes — see `references/concept-roots.md` for the BaseLanguage `ClassConcept` co-location pattern (used by `XmlNameUtil`).
 

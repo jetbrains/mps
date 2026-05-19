@@ -38,7 +38,7 @@ The core workflow for mutating MPS nodes through MCP tools. JSON blueprints desc
 
 ## Related Skills
 
-- **`mps-structure-concepts`** — defines what concepts exist and what roles they expose.
+- **`mps-aspect-structure-concepts`** — defines what concepts exist and what roles they expose.
 - **`mps-baselanguage`** — when the nodes you edit are BaseLanguage / Java.
 - **`mps-quotations`** — embedding inline node literals inside model code.
 - **`mps-language-analysis`** — exploring an unfamiliar language before editing.

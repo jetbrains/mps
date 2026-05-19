@@ -28,4 +28,4 @@
 - `jetbrains.mps.lang.smodel.structure.SPropertyAccess`
 - `jetbrains.mps.lang.smodel.structure.SLinkAccess`
 
-See `mps-model-code` for the full smodel / baseLanguage reference.
+See `mps-model-manipulation` for the full smodel / baseLanguage reference.

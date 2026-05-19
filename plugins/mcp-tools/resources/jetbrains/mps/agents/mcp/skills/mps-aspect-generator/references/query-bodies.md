@@ -50,4 +50,4 @@ All of them have a single `body` child of concept `jetbrains.mps.baseLanguage.st
 }
 ```
 
-See `mps-model-code` for general smodel-access idioms (`SLinkAccess`, `Node_GetChildrenOperation`, `SConceptSwitchExpression`) that commonly appear in these bodies.
+See `mps-model-manipulation` for general smodel-access idioms (`SLinkAccess`, `Node_GetChildrenOperation`, `SConceptSwitchExpression`) that commonly appear in these bodies.

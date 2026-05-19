@@ -18,7 +18,7 @@ The **behavior** aspect attaches methods and a constructor to a concept, much li
 - Behavior calls on a `null` node do **not** NPE — MPS returns `null` for reference/String returns and the default for primitives. Still handle the `null` return for reference types.
 - Hoist shared methods to an abstract super-concept rather than duplicating per-sub-concept `ConceptBehavior` roots — virtual dispatch covers all non-abstract sub-concepts. (See `references/inheritance-and-dispatch.md`.)
 - Edit behavior models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_parse_java_and_insert`). Do not hand-edit `.mps` files.
-- For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`), `mps_mcp_parse_java_and_insert` produces Java `List<SNode>` — replace `returnType` afterwards with the correct MPS blueprint (see `mps-model-code/references/variable-declarations.md`).
+- For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`), `mps_mcp_parse_java_and_insert` produces Java `List<SNode>` — replace `returnType` afterwards with the correct MPS blueprint (see `mps-model-manipulation/references/variable-declarations.md`).
 - After edits run `mps_mcp_check_root_node_problems` and rebuild the language.
 
 ## Common-Path Workflow
@@ -42,9 +42,9 @@ The **behavior** aspect attaches methods and a constructor to a concept, much li
 
 - `mps-aspect-actions` — `NodeFactory` is the right place for initialization that needs parent/model context (constructors run before the node is attached).
 - `mps-aspect-intentions`, `mps-aspect-constraints`, `mps-aspect-generator`, `mps-aspect-typesystem` — call behavior methods via `node.m(...)`; behavior is one of the most-used aspects from these.
-- `mps-model-code` — full BaseLanguage / smodel / collections reference. Covers the `LinkList_AddNewChildOperation` family and the `List<SNode>` → `sequence<node<X>>` return-type fix.
+- `mps-model-manipulation` — full BaseLanguage / smodel / collections reference. Covers the `LinkList_AddNewChildOperation` family and the `List<SNode>` → `sequence<node<X>>` return-type fix.
 - `mps-aspect-constraints` — `ScopeProvider.getScope` is most often overridden in a behavior; constraints describe where the reference lives.
-- `mps-structure-concepts` — when introducing the concept that the behavior attaches to.
+- `mps-aspect-structure-concepts` — when introducing the concept that the behavior attaches to.
 - `mps-language-inheritance` — to design the abstract-super-concept refactors discussed in `references/inheritance-and-dispatch.md`.
 - `mps-quotations` — quotations bypass behavior constructors; document the workaround in the generator.
 

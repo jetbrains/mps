@@ -10,7 +10,7 @@ MPS ships a dedicated **test language** — `jetbrains.mps.lang.test` — for te
 
 A test is a **root node** living in a model whose **stereotype is `tests`** (the model file name ends in `@tests.mps`). The test model lives in a Solution module (kind `Other`), not in the language module itself, so it can depend on the language under test plus arbitrary runtime libraries.
 
-This skill is the reference for *what to put in a test model* and *what each test type means*. For the mechanics of creating/modifying nodes via MCP, see `mps-model-code` and the `mps_mcp_*` tool docs. Documentation: <https://www.jetbrains.com/help/mps/testing-languages.html>. Source: `plugins/mps-testing/languages/lang.test/`.
+This skill is the reference for *what to put in a test model* and *what each test type means*. For the mechanics of creating/modifying nodes via MCP, see `mps-model-manipulation` and the `mps_mcp_*` tool docs. Documentation: <https://www.jetbrains.com/help/mps/testing-languages.html>. Source: `plugins/mps-testing/languages/lang.test/`.
 
 ## Critical Directives
 
@@ -45,7 +45,7 @@ If the only goal is plain JUnit on hand-written Java/Kotlin (no MPS-specific ass
 
 ## Related Skills
 
-- `mps-model-code` — the smodel / closures / collections reference for assertion bodies.
+- `mps-model-manipulation` — the smodel / closures / collections reference for assertion bodies.
 - `mps-node-editing` — MCP recipes for inserting children and harvesting persistent refs (used heavily by the `ScopesTest` staged-construction recipe).
 - `mps-aspect-typesystem` — when the system-under-test is the typesystem; `has error/type` annotations here verify those rules.
 - `mps-aspect-constraints` — when validating `can-be` / scope / validator rules from the constraints aspect.

@@ -45,7 +45,7 @@ A useful idiom — make an additive intention self-disable after applying:
 node.onEntry.operations.isEmpty;
 ```
 
-This uses the **collections** `IsEmptyOperation` (`jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation`) on a containment role access. Distinct from the BaseLanguage (string) `IsEmptyOperation` — see `mps-model-code/references/collections-catalog.md`.
+This uses the **collections** `IsEmptyOperation` (`jetbrains.mps.baseLanguage.collections.structure.IsEmptyOperation`) on a containment role access. Distinct from the BaseLanguage (string) `IsEmptyOperation` — see `mps-model-manipulation/references/collections-catalog.md`.
 
 ## Execute block (`ExecuteBlock`)
 

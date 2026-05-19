@@ -41,9 +41,9 @@ Intentions are user-invoked transformations shown in the Alt+Enter popup on a no
 - `mps-aspect-actions` — when the intention needs factory-initialized children, the NodeFactories live there.
 - `mps-aspect-constraints` — for gating that should apply everywhere (not just Alt+Enter), prefer can-be rules over `isApplicable`.
 - `mps-aspect-editor-menus-and-keymaps` — when the action belongs on a substitute/transformation menu or a keystroke, not in the Alt+Enter popup.
-- `mps-model-code` — full smodel/baseLanguage/collections reference; covers the `NF_*` family and the dual `IsEmptyOperation`.
+- `mps-model-manipulation` — full smodel/baseLanguage/collections reference; covers the `NF_*` family and the dual `IsEmptyOperation`.
 - `mps-node-editing` — MCP recipes for inserting children, updating references, and staged construction.
-- `mps-structure-concepts` — when adding the concept that `forConcept` targets.
+- `mps-aspect-structure-concepts` — when adding the concept that `forConcept` targets.
 - `mps-quotations` — when the execute body builds a complex subtree literal.
 - `mps-tests` → `EditorTestCase` — for testing that an intention is offered and produces the expected tree.
 

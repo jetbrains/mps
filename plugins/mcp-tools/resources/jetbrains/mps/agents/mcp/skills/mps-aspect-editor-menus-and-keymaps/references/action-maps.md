@@ -56,7 +56,7 @@ From `jetbrains.mps.samples.Kaja`:
 }
 ```
 
-Write the function body with `mps-model-code` idioms. Typical body: `node.replace with(node.expression);` or `node.parent.<role>.set(node.expression);`. Return type of an `ExecuteFunction` is `void`; of a `CanExecuteFunction` it is `boolean`.
+Write the function body with `mps-model-manipulation` idioms. Typical body: `node.replace with(node.expression);` or `node.parent.<role>.set(node.expression);`. Return type of an `ExecuteFunction` is `void`; of a `CanExecuteFunction` it is `boolean`.
 
 ## DELETE / BACKSPACE Default
 

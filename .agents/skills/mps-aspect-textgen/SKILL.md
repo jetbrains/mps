@@ -43,9 +43,9 @@ A custom language usually has both: a generator rewrites into BaseLanguage + run
 
 - `mps-aspect-generator` — model-to-model step that usually precedes TextGen; emits the AST you serialise.
 - `mps-aspect-behavior` — host for layout-heuristic helper methods called from textgen bodies.
-- `mps-model-code` — BaseLanguage + smodel + collections used inside textgen bodies (`StatementList`, `DotExpression`, `SLinkAccess`, `SLinkListAccess`, `StaticMethodCall`).
+- `mps-model-manipulation` — BaseLanguage + smodel + collections used inside textgen bodies (`StatementList`, `DotExpression`, `SLinkAccess`, `SLinkListAccess`, `StaticMethodCall`).
 - `mps-quotations` — anti-quotations may appear inside `Quotation`s used as `${...}` expression values.
-- `mps-structure-concepts` — when introducing the concepts a textgen will serialise.
+- `mps-aspect-structure-concepts` — when introducing the concepts a textgen will serialise.
 
 ## Reference Index
 

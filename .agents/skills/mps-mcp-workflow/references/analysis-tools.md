@@ -16,7 +16,7 @@
 
 - Browse `.agents/skills/` for available companion skills, or consult the table at the top of `SKILL.md`.
 - Load the `mps-baselanguage` skill (`.agents/skills/mps-baselanguage/SKILL.md`) as soon as you need to write any code in BaseLanguage or Java.
-- Load the `mps-structure-concepts` skill as soon as you need to define or change a language or its concepts.
+- Load the `mps-aspect-structure-concepts` skill as soon as you need to define or change a language or its concepts.
 - If `MEMORY.md` exists in the project root, **read it before starting any DSL task** — it records concept structure, node refs, and JSON blueprints from prior sessions. After a session where you discovered new facts about the DSL, load the `mps-dsl-memory` skill to update it.
 
 ## Workflow and Best Practices

@@ -50,5 +50,5 @@ Identify extension points by first checking high-level `extendedLanguages` via `
 ## Related Skills
 
 - **`mps-language-analysis`** — start here when you need general language inspection, not just inheritance.
-- **`mps-structure-concepts`** — when you intend to define new concepts (with their own super/interface lists).
+- **`mps-aspect-structure-concepts`** — when you intend to define new concepts (with their own super/interface lists).
 - **`mps-aspect-accessories`** — for `extendedLanguages` vs `usedLanguages` semantics at module level.

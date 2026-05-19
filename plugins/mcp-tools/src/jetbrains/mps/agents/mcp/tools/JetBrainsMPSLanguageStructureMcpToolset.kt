@@ -56,7 +56,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Performs a structure-related operation in an MPS model (create concepts/enums, find instances, query inheritance, manage and rename properties/children/references, list concept aspects, resolve assignable references, check smart-reference status). Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-structure-concepts` skill in `.agents/skills/`.
+        Performs a structure-related operation in an MPS model (create concepts/enums, find instances, query inheritance, manage and rename properties/children/references, list concept aspects, resolve assignable references, check smart-reference status). Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill in `.agents/skills/`.
     """
     )
     suspend fun mps_mcp_perform_structure_operation(

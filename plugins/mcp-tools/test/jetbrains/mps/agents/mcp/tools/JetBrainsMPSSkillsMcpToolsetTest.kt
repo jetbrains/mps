@@ -223,7 +223,7 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         // A real bundled skill that ships an auxiliary subdirectory. Used to verify that
         // copyDirectoryRecursively walks into nested folders rather than just copying the
         // top-level `SKILL.md`.
-        private const val NESTED_SKILL_NAME = "mps-structure-concepts"
+        private const val NESTED_SKILL_NAME = "mps-aspect-structure-concepts"
         private const val NESTED_SKILL_SUBDIR = "references"
         private const val NESTED_SKILL_FILE = "structure-operation-api.md"
     }

@@ -119,7 +119,7 @@ new ListScope(allEventsInPath) {
 ```
 
 Three things make this idiom work:
-- `ancestors<concept = Stateful, +>` — the `+` after the concept filter means **include self**. It is a second child in the `parameter` role, concept `jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion` (a leaf with no properties/children), sitting next to the `OperationParm_Concept`. Without `+` the starting node is excluded. See the mps-model-code skill for the full smodel reference.
+- `ancestors<concept = Stateful, +>` — the `+` after the concept filter means **include self**. It is a second child in the `parameter` role, concept `jetbrains.mps.lang.smodel.structure.OperationParm_Inclusion` (a leaf with no properties/children), sitting next to the `OperationParm_Concept`. Without `+` the starting node is excluded. See the mps-model-manipulation skill for the full smodel reference.
 - `.selectMany({it => it.availableTriggers;})` — flattens a `sequence<Stateful>` into a `sequence<Event>` by concatenating each ancestor's `availableTriggers` children. The child-role access (`SLinkListAccess`) returns a sequence directly, so `selectMany` is the right combinator (not `select`, which would yield a sequence-of-sequences).
 - The anonymous subclass — `AnonymousClassCreator` wrapping an `AnonymousClass` whose `classifier` ref targets `ListScope` and whose `baseMethodDeclaration` targets the `ListScope(sequence<node<>>)` constructor; its single `member` is an `InstanceMethodDeclaration` named `getName` returning a `string` and casting `child:Event` to read `.name`. (`child:C` is an `SNodeTypeCastExpression` with `asCast=false`.)
 

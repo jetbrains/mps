@@ -52,8 +52,8 @@ A **quotation** is a node literal — a concise expression that evaluates to an 
 - `mps-aspect-generator` — template macros are a different mechanism for building target trees; quotations are used in non-template code (filters, mapping scripts, conditions) within the generator model.
 - `mps-aspect-migrations` — `<NewConcept>` plus `^(oldNode.target)^` is the canonical shape inside migration rewrite scripts (`references/antiquotation-reference.md` includes the verbatim example).
 - `mps-aspect-intentions` — the `replace_invokeOperation_with_compactInvoke` example shipping with the closures language uses `<%(...)%>` + `*(...)*` to rebuild an expression tree.
-- `mps-structure-concepts` — when the quoted concept's link/property metadata is needed; `propertyId` / `linkId` encode the persistent form of those declarations.
-- `mps-model-code` — the smodel operations and BaseLanguage expressions used inside antiquotation `expression` slots.
+- `mps-aspect-structure-concepts` — when the quoted concept's link/property metadata is needed; `propertyId` / `linkId` encode the persistent form of those declarations.
+- `mps-model-manipulation` — the smodel operations and BaseLanguage expressions used inside antiquotation `expression` slots.
 
 ## Reference Index
 

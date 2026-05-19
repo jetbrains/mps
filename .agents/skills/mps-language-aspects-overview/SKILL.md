@@ -18,7 +18,7 @@ An MPS language is a collection of **aspects**, each a separate model inside the
 
 | Aspect | Model file | Language DSL | Detailed skill |
 |---|---|---|---|
-| **Structure** | `structure.mps` | `jetbrains.mps.lang.structure` | [`mps-structure-concepts`](../mps-structure-concepts/SKILL.md) |
+| **Structure** | `structure.mps` | `jetbrains.mps.lang.structure` | [`mps-aspect-structure-concepts`](../mps-aspect-structure-concepts/SKILL.md) |
 | **Editor** | `editor.mps` | `jetbrains.mps.lang.editor` | [`mps-aspect-editor`](../mps-aspect-editor/SKILL.md), [`mps-aspect-editor-menus-and-keymaps`](../mps-aspect-editor-menus-and-keymaps/SKILL.md) |
 | **Constraints** | `constraints.mps` | `jetbrains.mps.lang.constraints` | [`mps-aspect-constraints`](../mps-aspect-constraints/SKILL.md) |
 | **Behavior** | `behavior.mps` | `jetbrains.mps.lang.behavior` | [`mps-aspect-behavior`](../mps-aspect-behavior/SKILL.md) |
@@ -30,7 +30,7 @@ An MPS language is a collection of **aspects**, each a separate model inside the
 | **Dataflow** | `dataflow.mps` | `jetbrains.mps.lang.dataFlow` | [`mps-aspect-dataflow`](../mps-aspect-dataflow/SKILL.md) |
 | **Migrations** | `migration/*.mps` | `jetbrains.mps.lang.migration` | [`mps-aspect-migrations`](../mps-aspect-migrations/SKILL.md) |
 | **Accessories / Dependencies** | `.mpl` and per-model | — | [`mps-aspect-accessories`](../mps-aspect-accessories/SKILL.md) |
-| **Code inside bodies** | any aspect that holds BL | `baseLanguage`, `smodel`, `collections`, `closures` | [`mps-model-code`](../mps-model-code/SKILL.md) |
+| **Code inside bodies** | any aspect that holds BL | `baseLanguage`, `smodel`, `collections`, `closures` | [`mps-model-manipulation`](../mps-model-manipulation/SKILL.md) |
 | **Inline node literals** | any aspect using quotations | `jetbrains.mps.lang.quotation` | [`mps-quotations`](../mps-quotations/SKILL.md) |
 
 Additional aspects exist (Find Usages, Refactorings, Scopes Provider, Plugin). They follow the same "per-concept rule root + body" pattern — consult companion skills in `.agents/skills/` or the MPS user guide when needed.
