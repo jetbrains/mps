@@ -2,6 +2,8 @@ package jetbrains.mps.agents.mcp.tools
 
 import com.google.gson.JsonParser
 import jetbrains.mps.project.AbstractModule
+import jetbrains.mps.project.modules.LanguageProducer
+import jetbrains.mps.project.structure.modules.LanguageDescriptor
 import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import org.jetbrains.mps.openapi.module.SDependencyScope
@@ -667,6 +669,167 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             it.mps_mcp_add_module_dependency(solution.moduleName!!, "no.such.target", null, false)
         }
         assertTrue(expectErr(response).contains("not found"))
+    }
+
+    // ── dependencies: Extends scope ────────────────────────────────────────────────────────
+    // The Extends scope is persisted via a separate descriptor field per module kind, not as
+    // a `<dependency scope="extend">` element. These tests pin that contract.
+
+    /** Creates a fresh Language module registered with the test project. */
+    private fun createLanguage(name: String = "test.lang.extra${System.nanoTime()}"): Language {
+        val dir = createDirInProject(name)
+        var lang: Language? = null
+        executeCommand { lang = LanguageProducer(myProject).withGenerator(false).create(name, dir) }
+        return checkNotNull(lang) { "LanguageProducer returned null" }
+    }
+
+    @Test
+    fun `add_module_dependency with Extends writes to extendedLanguages, not to dependencies`() {
+        // Regression: previously the tool appended a `Dependency(scope=EXTENDS)` to
+        // `descriptor.dependencies`, which serializes as `<dependency scope="extend">` —
+        // a form no real .mpl uses, and which MPS's language-extension mechanism ignores.
+        // The proper persistence target is LanguageDescriptor.extendedLanguages.
+        val target = createLanguage()
+        val response = runTool(toolset) {
+            it.mps_mcp_add_module_dependency(
+                language.moduleName!!, target.moduleName!!,
+                /* scope = */ "Extends", /* reexport = */ false,
+            )
+        }
+        assertTrue("expected ok envelope: $response",
+            JsonParser.parseString(response).asJsonObject.get("ok").asBoolean)
+
+        readOnRepo {
+            val descriptor = (language as AbstractModule).moduleDescriptor as LanguageDescriptor
+            assertTrue("target must appear in extendedLanguages: ${descriptor.extendedLanguages}",
+                descriptor.extendedLanguages.contains(target.moduleReference))
+            val strayDep = descriptor.dependencies.firstOrNull { it.moduleRef == target.moduleReference }
+            assertNull("Extends must NOT be persisted as a regular <dependency> entry: $strayDep",
+                strayDep)
+        }
+    }
+
+    @Test
+    fun `add_module_dependency with Extends accepts the JVM enum spelling EXTENDS`() {
+        // The scope parameter is parsed by both presentation ("Extends") and JVM-enum name
+        // ("EXTENDS"); the latter is what the tool's response shape reports back.
+        val target = createLanguage()
+        val response = runTool(toolset) {
+            it.mps_mcp_add_module_dependency(
+                language.moduleName!!, target.moduleName!!, "EXTENDS", false,
+            )
+        }
+        assertTrue(JsonParser.parseString(response).asJsonObject.get("ok").asBoolean)
+        readOnRepo {
+            val descriptor = (language as AbstractModule).moduleDescriptor as LanguageDescriptor
+            assertTrue(descriptor.extendedLanguages.contains(target.moduleReference))
+        }
+    }
+
+    @Test
+    fun `add_module_dependency with Extends is idempotent on repeated calls`() {
+        val target = createLanguage()
+        val source = language.moduleName!!
+        val targetName = target.moduleName!!
+        repeat(2) {
+            val resp = runTool(toolset) {
+                it.mps_mcp_add_module_dependency(source, targetName, "Extends", false)
+            }
+            assertTrue(JsonParser.parseString(resp).asJsonObject.get("ok").asBoolean)
+        }
+        readOnRepo {
+            val descriptor = (language as AbstractModule).moduleDescriptor as LanguageDescriptor
+            val count = descriptor.extendedLanguages.count { it == target.moduleReference }
+            assertEquals("extendedLanguages must contain exactly one entry per target", 1, count)
+        }
+    }
+
+    @Test
+    fun `add_module_dependency with Extends rejects a Solution source`() {
+        // Solutions have no extension semantics; the call must fail explicitly rather than
+        // silently write a meaningless `<dependency scope="extend">` entry.
+        val source = createSolution("test.ext.sol.src${System.nanoTime()}")
+        val target = createLanguage()
+        val response = runTool(toolset) {
+            it.mps_mcp_add_module_dependency(source.moduleName!!, target.moduleName!!, "Extends", false)
+        }
+        val err = expectErr(response)
+        assertTrue("error must mention Solution: $err", err.contains("Solution"))
+    }
+
+    @Test
+    fun `add_module_dependency with Extends rejects a kind-mismatched target`() {
+        // Language can only extend Language. Asking it to extend a Solution is meaningless.
+        val target = createSolution("test.ext.sol.tgt${System.nanoTime()}")
+        val response = runTool(toolset) {
+            it.mps_mcp_add_module_dependency(
+                language.moduleName!!, target.moduleName!!, "Extends", false,
+            )
+        }
+        val err = expectErr(response)
+        assertTrue("error must mention the kind mismatch: $err",
+            err.contains("Extends") && err.contains("Language") && err.contains("Solution"))
+    }
+
+    @Test
+    fun `remove_module_dependency drops an Extends entry from extendedLanguages`() {
+        // Symmetric reversibility: an Extends added via the tool must be removable via the
+        // same tool. The remove path probes both `<dependencies>` and the Extends-side
+        // collections, so callers don't need a separate API for the two cases.
+        val target = createLanguage()
+        val source = language.moduleName!!
+        val targetName = target.moduleName!!
+
+        expectOk(runTool(toolset) {
+            it.mps_mcp_add_module_dependency(source, targetName, "Extends", false)
+        })
+        readOnRepo {
+            val descriptor = (language as AbstractModule).moduleDescriptor as LanguageDescriptor
+            assertTrue("test precondition: extension must be in place",
+                descriptor.extendedLanguages.contains(target.moduleReference))
+        }
+
+        val resp = runTool(toolset) {
+            it.mps_mcp_remove_module_dependency(source, targetName)
+        }
+        assertTrue("expected ok envelope: $resp",
+            JsonParser.parseString(resp).asJsonObject.get("ok").asBoolean)
+
+        readOnRepo {
+            val descriptor = (language as AbstractModule).moduleDescriptor as LanguageDescriptor
+            assertFalse("extendedLanguages must no longer contain the target",
+                descriptor.extendedLanguages.contains(target.moduleReference))
+        }
+    }
+
+    @Test
+    fun `remove_module_dependency drops Extends entry even when target module is gone`() {
+        // After the target is deleted from the project, resolveModule() can't find it. The
+        // remove path falls back to a name/serialized-reference scan that must include the
+        // Extends collections, otherwise the user is stuck with an orphan extendedLanguage entry.
+        val target = createLanguage()
+        val source = language.moduleName!!
+        val targetName = target.moduleName!!
+        val targetRef = target.moduleReference
+
+        expectOk(runTool(toolset) {
+            it.mps_mcp_add_module_dependency(source, targetName, "Extends", false)
+        })
+
+        // Remove the target module from the project so resolveModule(...) fails for it.
+        expectOk(runTool(toolset) { it.mps_mcp_delete_module(targetName, /* deleteFiles = */ false) })
+
+        val resp = runTool(toolset) {
+            it.mps_mcp_remove_module_dependency(source, targetName)
+        }
+        assertTrue("expected ok envelope: $resp",
+            JsonParser.parseString(resp).asJsonObject.get("ok").asBoolean)
+
+        readOnRepo {
+            val descriptor = (language as AbstractModule).moduleDescriptor as LanguageDescriptor
+            assertFalse("extendedLanguages must no longer contain the (now-deleted) target",
+                descriptor.extendedLanguages.contains(targetRef))
+        }
     }
 
     @Test

@@ -17,6 +17,9 @@ import jetbrains.mps.project.modules.LanguageAndSolutionsProducer
 import jetbrains.mps.project.modules.LanguageProducer
 import jetbrains.mps.project.modules.SolutionProducer
 import jetbrains.mps.project.structure.modules.Dependency
+import jetbrains.mps.project.structure.modules.DevkitDescriptor
+import jetbrains.mps.project.structure.modules.GeneratorDescriptor
+import jetbrains.mps.project.structure.modules.LanguageDescriptor
 import jetbrains.mps.project.structure.modules.ModuleFacetDescriptor
 import jetbrains.mps.refactoring.Renamer
 import jetbrains.mps.smodel.Generator
@@ -46,6 +49,22 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpDescription("""
         Adds a dependency to an MPS module.
         Scope can be: Default, Design, Compile, Runtime, Provided, Extends, Generation Target.
+
+        Scope dispatch:
+        - Default / Design / Compile / Runtime / Provided / Generation Target: regular `<dependency>` entry.
+        - Extends: persisted in a separate descriptor field, NOT as `<dependency scope="extend">` (MPS's own
+          UI and persistence do not put the extension target in `<dependencies>`). The field depends on the
+          source module kind:
+            * Language extending a Language → written to `<extendedLanguages>`
+            * Generator extending a Generator → written to the generator's `<external-templates>` list
+              (`GeneratorDescriptor.depGenerators`)
+            * DevKit extending a DevKit → written to `<extendedDevkits>`
+            * Solution + Extends, or any other source/target combination → rejected with INVALID_REQUEST
+              (Solutions do not support extension; cross-kind Extends is meaningless).
+          Note: language extension also typically needs a regular `Default` dependency on the same target
+          so the extended language's classes are on the compile classpath. This tool intentionally does NOT
+          add that automatically (it mirrors what the Module Dependencies dialog persists). Call the tool
+          a second time with scope=Default if you want both.
 
         Returns a JSON object with 'ok':true and 'data':{ "added":true } when the dependency was added or updated,
         or 'data':{ "added":false, "reason":"providedByDevKit" } when the dependency is already provided by a used DevKit
@@ -84,6 +103,32 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 SDependencyScope.entries.find { it.toString().equals(s, ignoreCase = true) || it.name.equals(s, ignoreCase = true) }
             } ?: SDependencyScope.DEFAULT
 
+            if (depScope == SDependencyScope.EXTENDS) {
+                // EXTENDS is NOT persisted as a `<dependency scope="extend">` entry. MPS keeps the extension
+                // target in a separate descriptor field per module kind, and the regular `<dependencies>`
+                // list is only used for non-EXTENDS scopes (see ModuleDependTableModel.getDependencies()
+                // / .apply() in workbench/mps-ui). Dispatch accordingly; reject combinations that have no
+                // meaning (Solution source, or source/target kind mismatch).
+                when {
+                    descriptor is LanguageDescriptor && target is Language ->
+                        descriptor.extendedLanguages.add(targetRef)
+                    descriptor is GeneratorDescriptor && target is Generator ->
+                        descriptor.depGenerators.add(targetRef)
+                    descriptor is DevkitDescriptor && targetIsDevkit(target) ->
+                        descriptor.extendedDevkits.add(targetRef)
+                    else -> return@executeShortCommandOnEdt errJson(
+                        extendsRejectMessage(descriptor, target),
+                        McpErrorCode.INVALID_REQUEST,
+                    )
+                }
+                // Set.add returns false when the entry was already present — the call is still
+                // idempotently successful for the caller, so we report added=true either way
+                // (matches the behavior of the non-EXTENDS branch when scope/reexport are unchanged).
+                abstractModule.setChanged()
+                abstractModule.save()
+                return@executeShortCommandOnEdt okJson(jsonObject { addProperty("added", true) })
+            }
+
             val existing = descriptor.dependencies.find { it.moduleRef == targetRef }
             if (existing != null) {
                 existing.scope = depScope
@@ -108,9 +153,41 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         }
     }
 
+    private fun targetIsDevkit(target: SModule): Boolean =
+        target is jetbrains.mps.project.DevKit
+
+    private fun extendsRejectMessage(
+        descriptor: jetbrains.mps.project.structure.modules.ModuleDescriptor,
+        target: SModule,
+    ): String {
+        val srcKind = when (descriptor) {
+            is LanguageDescriptor -> "Language"
+            is GeneratorDescriptor -> "Generator"
+            is DevkitDescriptor -> "DevKit"
+            else -> "Solution"
+        }
+        val tgtKind = when {
+            target is Language -> "Language"
+            target is Generator -> "Generator"
+            targetIsDevkit(target) -> "DevKit"
+            else -> "Solution"
+        }
+        return when (srcKind) {
+            "Solution" ->
+                "Scope 'Extends' is not applicable to Solution modules (Solutions do not extend other modules)"
+            else ->
+                "Scope 'Extends' for a $srcKind source requires a $srcKind target, got $tgtKind"
+        }
+    }
+
     @McpTool
     @McpDescription("""
         Removes a dependency from an MPS module.
+
+        Also removes the target from the module's `Extends`-side collection if it lives there
+        (LanguageDescriptor.extendedLanguages, GeneratorDescriptor.depGenerators,
+        DevkitDescriptor.extendedDevkits). The regular `<dependencies>` list and the
+        Extends collection are both probed, and any removal counts as success.
 
         Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
     """
@@ -128,19 +205,32 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             }
             val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
 
-            // Resolve target first for consistency with mps_mcp_add_module_dependency.
+            // Resolve target first for consistency with mps_mcp_add_module_dependency. Fall back to
+            // a name/serialized-reference match against any of the descriptor's reference collections
+            // (regular deps, extendedLanguages, depGenerators, extendedDevkits) so the user can still
+            // remove an entry whose target module is no longer in the project.
+            val persistence = PersistenceFacade.getInstance()
             val resolvedTargetRef = resolveModule(mpsProject, targetModule, projectOnly = false)?.moduleReference
-            val targetRef = resolvedTargetRef ?: descriptor.dependencies.find {
-                it.moduleRef.moduleName == targetModule ||
-                        PersistenceFacade.getInstance().asString(it.moduleRef) == targetModule
-            }?.moduleRef
+            val targetRef = resolvedTargetRef
+                ?: descriptor.dependencies.find {
+                    it.moduleRef.moduleName == targetModule ||
+                            persistence.asString(it.moduleRef) == targetModule
+                }?.moduleRef
+                ?: extendsCollections(descriptor)
+                    .flatMap { it.asSequence() }
+                    .firstOrNull {
+                        it.moduleName == targetModule || persistence.asString(it) == targetModule
+                    }
                 ?: return@executeShortCommandOnEdt errJson(
                     "Dependency to $targetModule not found in $moduleName",
                     McpErrorCode.NOT_FOUND,
                 )
 
-            val removed = descriptor.dependencies.removeIf { it.moduleRef == targetRef }
-            if (!removed) {
+            val removedFromDeps = descriptor.dependencies.removeIf { it.moduleRef == targetRef }
+            val removedFromExtends = extendsCollections(descriptor)
+                .map { it.remove(targetRef) }
+                .fold(false) { acc, r -> acc || r }
+            if (!removedFromDeps && !removedFromExtends) {
                 return@executeShortCommandOnEdt errJson(
                     "Dependency to $targetModule not found in $moduleName",
                     McpErrorCode.NOT_FOUND,
@@ -150,6 +240,20 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             abstractModule.save()
             okJson("true")
         }
+    }
+
+    /**
+     * Returns the Extends-side reference collections that the given descriptor exposes
+     * (empty list for descriptors that have none, e.g. SolutionDescriptor). The returned
+     * collections are live and mutable.
+     */
+    private fun extendsCollections(
+        descriptor: jetbrains.mps.project.structure.modules.ModuleDescriptor
+    ): List<MutableSet<org.jetbrains.mps.openapi.module.SModuleReference>> = when (descriptor) {
+        is LanguageDescriptor -> listOf(descriptor.extendedLanguages)
+        is GeneratorDescriptor -> listOf(descriptor.depGenerators)
+        is DevkitDescriptor -> listOf(descriptor.extendedDevkits)
+        else -> emptyList()
     }
 
     @McpTool
