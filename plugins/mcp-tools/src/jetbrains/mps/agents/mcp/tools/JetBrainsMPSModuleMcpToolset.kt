@@ -77,7 +77,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Target module name or reference")
         targetModule: String,
         @McpDescription("Dependency scope (Default by default)")
-        @Nullable scope: String?,
+        @Nullable scope: String? = null,
         @McpDescription("Whether to reexport the dependency (false by default)")
         reexport: Boolean = false
     ): String = withMpsProject("Adding MPS module dependency") { mpsProject ->
@@ -355,8 +355,8 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Module type: solution|language|devkit|generator") type: String,
         @McpDescription("Module name or namespace") name: String,
         @McpDescription("Directory to place the module in (absolute), the directory will be created by the tool. For 'generator' type, may be empty to default to '<parent-language-dir>/generator'.") directory: String,
-        @McpDescription("Optional Project View virtual folder") @Nullable virtualFolder: String?,
-        @McpDescription("Required for generator: parent language name") @Nullable parentLanguage: String?,
+        @McpDescription("Optional Project View virtual folder") @Nullable virtualFolder: String? = null,
+        @McpDescription("Required only when type='generator'; ignored otherwise") @Nullable parentLanguage: String? = null,
         @McpDescription("For language: also create a generator") withGenerator: Boolean = false,
         @McpDescription("For language: also create a sandbox solution") withSandbox: Boolean = false,
         @McpDescription("For language: also create a runtime solution") withRuntime: Boolean = false,
@@ -664,8 +664,8 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     )
     suspend fun mps_mcp_update_module(
         @McpDescription("Existing module name or reference") moduleName: String,
-        @McpDescription("New module name (valid Java-package qualified name). Null or blank skips the rename. Generator modules are not renameable through this tool.") @Nullable newName: String?,
-        @McpDescription("New virtual folder. Applied to the renamed module when both rename and virtualFolder are supplied.") @Nullable virtualFolder: String?
+        @McpDescription("New module name (valid Java-package qualified name). Null or blank skips the rename. Generator modules are not renameable through this tool.") @Nullable newName: String? = null,
+        @McpDescription("New virtual folder. Applied to the renamed module when both rename and virtualFolder are supplied.") @Nullable virtualFolder: String? = null
     ): String = withMpsProject("Update MPS module") { mpsProject ->
         val trimmedNewName = newName?.trim()?.takeIf { it.isNotEmpty() }
         val rename = trimmedNewName != null
@@ -883,7 +883,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     // into the MCP toolsets. Tracked under phase 6 as a deferred architectural change.
     @Suppress("DEPRECATION")
     suspend fun mps_mcp_list_facet_types(
-        @McpDescription("Optional module name or reference to check applicability") @Nullable moduleName: String?
+        @McpDescription("Optional module name or reference to check applicability") @Nullable moduleName: String? = null
     ): String = withMpsProject("Listing module facet types") { mpsProject ->
         var result: String? = null
         mpsProject.repository.modelAccess.runReadAction {
@@ -983,8 +983,8 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     suspend fun mps_mcp_update_module_facet(
         @McpDescription("Module name or reference") moduleName: String,
         @McpDescription("Facet type to update") facetType: String,
-        @McpDescription("Whether to enable or disable the facet") @Nullable enabled: Boolean?,
-        @McpDescription("JSON representation of the facet settings (Memento structure)") @Nullable settingsJson: String?
+        @McpDescription("Whether to enable or disable the facet") @Nullable enabled: Boolean? = null,
+        @McpDescription("JSON representation of the facet settings (Memento structure)") @Nullable settingsJson: String? = null
     ): String = withMpsProject("Updating module facet") { mpsProject ->
         withContext(Dispatchers.EDT) {
             mpsProject.repository.modelAccess.executeCommand {
