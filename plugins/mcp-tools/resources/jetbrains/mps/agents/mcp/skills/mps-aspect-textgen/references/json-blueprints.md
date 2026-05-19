@@ -12,7 +12,7 @@
   "children": [
     { "role": "part", "nodes": [
       { "concept": "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart",
-        "properties": [{ "name": "string", "value": "<" }] },
+        "properties": [{ "name": "value", "value": "<" }] },
       { "concept": "jetbrains.mps.lang.textGen.structure.NodeAppendPart",
         "children": [
           { "role": "value", "nodes": [
@@ -56,7 +56,7 @@
   "children": [
     { "role": "part", "nodes": [
       { "concept": "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart",
-        "properties": [{ "name": "string", "value": "&" }] },
+        "properties": [{ "name": "value", "value": "&" }] },
       { "concept": "jetbrains.mps.lang.textGen.structure.NodeAppendPart",
         "children": [
           { "role": "value", "nodes": [
@@ -78,7 +78,7 @@
         ]
       },
       { "concept": "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart",
-        "properties": [{ "name": "string", "value": ";" }] }
+        "properties": [{ "name": "value", "value": ";" }] }
     ]}
   ]
 }
@@ -209,7 +209,7 @@ Placed inside the parent `StatementList` of a `GenerateTextDeclaration.body`:
           { "role": "part", "nodes": [
             { "concept": "jetbrains.mps.lang.textGen.structure.NewLineAppendPart" },
             { "concept": "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart",
-              "properties": [{ "name": "string", "value": "{" }] }
+              "properties": [{ "name": "value", "value": "{" }] }
           ]}
         ]
       }
@@ -229,7 +229,7 @@ Placed inside the parent `StatementList` of a `GenerateTextDeclaration.body`:
           { "role": "part", "nodes": [
             { "concept": "jetbrains.mps.lang.textGen.structure.NewLineAppendPart" },
             { "concept": "jetbrains.mps.lang.textGen.structure.ConstantStringAppendPart",
-              "properties": [{ "name": "string", "value": "}" }] }
+              "properties": [{ "name": "value", "value": "}" }] }
           ]}
         ]
       }
@@ -288,7 +288,7 @@ The flag is a property `withIndent` directly on `NodeAppendPart`:
 
 **Statements / parts:**
 - `AppendOperation` — child role `part` (0..n, ordered)
-- `ConstantStringAppendPart` — property `string`
+- `ConstantStringAppendPart` — property `value`
 - `NodeAppendPart` — property `withIndent` (boolean); child `value` (any Expression; common: `DotExpression`, `StaticMethodCall`, `SPropertyAccess`)
 - `CollectionAppendPart` — properties `withSeparator` (boolean), `separator` (string when inline); child `list` (Expression yielding list<node<>>), optional child `separator` (Expression)
 - `NewLineAppendPart` — no children

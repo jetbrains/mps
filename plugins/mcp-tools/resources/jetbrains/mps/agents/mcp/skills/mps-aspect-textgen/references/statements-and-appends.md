@@ -8,7 +8,7 @@ The canonical output primitive. One `AppendOperation` statement owns an ordered 
 
 | Part concept | Surface syntax | Meaning |
 |---|---|---|
-| `ConstantStringAppendPart` (property `string`) | `{literal text}` | Emit literal text verbatim |
+| `ConstantStringAppendPart` (property `value`) | `{literal text}` | Emit literal text verbatim |
 | `NodeAppendPart` (child `value`) | `${expression}` | Evaluate a string expression and emit it |
 | `CollectionAppendPart` (child `list`, optional child `separator`) | `$list{expr}` or `$list{expr with <sep>}` | Iterate a list of nodes, dispatch to each one's own textgen rule, optionally joined by a separator |
 | `NewLineAppendPart` | `\n` | Emit a newline |
