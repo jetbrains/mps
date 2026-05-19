@@ -57,6 +57,8 @@ If you add `jetbrains.mps.devkit.templates`, most generator authoring languages 
 
 **Rule of thumb:** a concept used **in a template body** (output) must be importable by the *model*; a class referenced from a generated Java helper must be reachable via the *module* classpath.
 
+> **Do not add the *source* language as a used-language on the generator's `templates@generator` model.** Source-concept references in macro bodies and `applicableConcept` resolve via the generator's **model dependencies**, not via used-languages. Adding the source language as a used-language causes misleading `Can't find language: <source-lang>` errors as soon as that language becomes unloadable (e.g. during a rebuild or while the language module is being regenerated).
+
 ## MappingConfiguration child roles
 
 The **`MappingConfiguration`** is the generator's top-level root. It hosts the rule lists:
