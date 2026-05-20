@@ -481,13 +481,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Returns a representation of the specified MPS node as displayed in the MPS editor and saves it to a local text file.
-        Returns JSON format with the path to the local file:
-        {
-          "ok": true,
-          "data": "/path/to/local/file.json"
-        }
-        The file contains either HTML or plain text, depending on the 'asHtml' parameter.
+        Saves the editor-projected representation of the specified node to a temp file (path returned in `data`). Pass `asHtml=true` for HTML; otherwise plain text.
     """
     )
     suspend fun mps_mcp_show_node_representation(
@@ -519,41 +513,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Checks the specified MPS node (and its descendants) or the specified MPS model for errors, warnings, and infos. 
-        If any problems are found it saves the result to a local text file.
-        Alternatively, if 'onlyNodesWithProblems' is true, it returns a concise collection of only those nodes in the subtree that have problems.
-        Returns JSON format with the path to the local file:
-        {
-          "ok": true,
-          "data": "/path/to/local/file.json | no problems found"
-          "format of data in the file for node errors": {
-            "name": "NodeName",
-            "reference": "PersistentNodeReference",
-            "concept": "ConceptName",
-            "conceptReference": "PersistentConceptReference",
-            "problems": [
-              { "severity": "error|warning|info", "message": "..." }
-            ],
-            "properties": [
-              { "name": "propertyName", "type": "propertyType", "value": "propertyValue", "problems": [ { "severity": "error|warning|info", "message": "..." } ] }
-            ],
-            "references": [
-              { "role": "linkRole", "type": "targetConcept", "typeReference": "PersistentConceptReference", "cardinality": "0..1|1", "target": "TargetNodeName", "targetReference": "PersistentTargetReference", "problems": [ { "severity": "error|warning|info", "message": "..." } ] }
-            ],
-            "children": [
-              {
-                "role": "linkRole",
-                "type": "targetConcept",
-                "typeReference": "PersistentConceptReference",
-                "cardinality": "0..1|1|0..n|1..n",
-                "problems": [ { "severity": "error|warning|info", "message": "..." } ],
-                "nodes": [
-                   { "name": "...", "reference": "...", "concept": "...", "conceptReference": "...", "problems": [...], "properties": [...], "references": [...], "children": [...] }
-                ]
-              }
-            ]
-          }
-        }
+        Validates an MPS node (and its descendants) or an MPS model. Accepts either an SNodeReference or SModelReference. Returns `data:"no problems found"` when clean, or a path to a temp file containing the problem tree. `onlyNodesWithProblems=true` (default) yields a flat list of nodes with problems; `onlyNodesWithProblems=false` returns the full subtree with `problems` arrays attached to every level. See `mps-mcp-workflow/references/analysis-tools.md` for the output schema.
     """
     )
     suspend fun mps_mcp_check_root_node_problems(
@@ -639,42 +599,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Performs a json-formatted printout of the specified MPS node and saves it to a local text file.
-        If 'deep' is true, recursively prints all descendants.
-        If 'deep' is false (shallow), lists properties, children roles (with references), and reference roles.
-        The saved file contains the full MCP response envelope; its 'data' field contains the node JSON object shown below.
-        Node JSON mutation tools accept either that full envelope file or a file containing only the raw 'data' object.
-        Returns JSON format with the path to the local file:
-        {
-          "ok": true,
-          "data": "/path/to/local/file.json"
-          "format of data in the files": {
-            "name": "NodeName",
-            "concept": "FullyQualifiedConceptName",  // Use this value as the 'concept' field when rebuilding node blueprints
-            "conceptReference": "PersistentConceptReference",  // Informational; optional in blueprints
-            "reference": "PersistentNodeReference",
-            "properties": [
-              { "name": "propertyName", "type": "propertyType", "value": "propertyValue" }
-            ],
-            "references": [
-              { "role": "linkRole", "type": "roleConcept", "typeReference": "PersistentRoleConceptReference", "cardinality": "0..1|1", "target": "TargetNodeName", "targetReference": "PersistentTargetReference" }
-            ],
-            "children": [
-              { 
-                "role": "linkRole", 
-                "type": "roleConcept", 
-                "typeReference": "PersistentRoleConceptReference",
-                "cardinality": "0..1|1|0..n|1..n",
-                "children": [ (if deep is false)
-                   { "name": "ChildNodeName", "reference": "..." }
-                ],
-                "nodes": [ (if deep is true)
-                   { "name": "ChildNodeName", "concept": "...", "conceptReference": "...", "reference": "...", "properties": [...], "references": [...], "children": [...] }
-                ]
-              }
-            ]
-          }
-        }
+        Saves a JSON printout of the specified node to a temp file (path returned in `data`). `deep=true` inlines all descendants; `deep=false` (default) lists direct children's refs only. The saved envelope is consumable by every node-mutation tool (`mps_mcp_add_node_child`, `mps_mcp_update_root_node_from_json`, etc.). See `mps-mcp-workflow/references/analysis-tools.md` for the output schema and `mps-node-editing/references/json-format.md` for the matching blueprint shape.
     """
     )
     suspend fun mps_mcp_print_node_json(
@@ -709,10 +634,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Sets multiple target nodes to specified reference roles of the given MPS nodes.
-        Receives a collection of triplets (nodeRef, referenceRole, targetNodeRefOrName) and sets the specified reference individually for each triplet. Each triplet is represented as a list of three strings.
-        The 'targetNodeRefOrName' can be either a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs copied from .mps files — they are an internal encoding and will fail with an error.
-        Returns JSON format of the results for all triplets.
+        Sets references on a batch of nodes. Each triplet is `[nodeRef, referenceRole, targetNodeRefOrName]`. `targetNodeRefOrName` accepts a persistent node reference (`r:...`) or a plain name for auto-resolution; do NOT use MPS XML short IDs copied from `.mps` files. Returns a JSON array with one result per triplet. See `mps-mcp-workflow/references/reference-formats.md` for the reference-format protocol.
     """
     )
     suspend fun mps_mcp_set_node_references(
@@ -733,9 +655,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Sets multiple values to specified properties of the given MPS nodes.
-        Receives a collection of triplets (nodeRef, propertyName, propertyValue) and sets the specified properties individually for each triplet. Each triplet is represented as a list of three strings.
-        Returns JSON format of the results for all triplets.
+        Sets properties on a batch of nodes. Each triplet is `[nodeRef, propertyName, propertyValue]`. Returns a JSON array with one result per triplet.
     """
     )
     suspend fun mps_mcp_set_node_properties(
@@ -770,52 +690,14 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Adds a child node described by a JSON blueprint to a specified containment role of the given MPS node.
-        For multi-cardinality roles the new child is appended at the end by default; pass 'position' to
-        insert at a specific 0-based index instead. For single-cardinality roles the new child replaces
-        the previous child; 'position' is allowed only if null, -1, or 0 (any other value is rejected).
-        The concept of the child node must be assignable to the role's concept.
-        Updates the dependencies and used languages of the containing model.
-        The 'childJson' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local file containing it.
-        The file may contain either the raw node blueprint or the full MCP response envelope produced by mps_mcp_print_node_json;
-        in the latter case the 'data' field is used.
-        Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-        
-        ### Unified JSON Format
-        {
-          "concept": "fully.qualified.ConceptName",
-          "properties": [{ "name": "propName", "value": "propValue" }],
-          "children": [{ "role": "childRole", "nodes": [...] }],
-          "references": [{ "role": "refRole", "target": "targetRefOrName" }]
-        }
-        - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
-        - Properties, children, and references are optional.
-        - Prefer this tool for staged construction when a large root-node JSON would be too big or gets truncated. Insert the parent first, then add child subtrees over multiple calls.
-
-        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
-        On success 'data' describes the newly inserted child node; the parent's persistent reference is available as 'data.parentReference'.
+        Adds a child node described by a JSON blueprint to a containment role of the given parent node. Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. Single-cardinality roles accept only null/-1/0 for `position` and replace the existing child. The child's concept must be assignable to the role's concept; model dependencies and used languages are updated automatically. Returns the inserted node's info envelope (`data.parentReference` carries the parent ref). See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md` for the blueprint shape, `references/staged-construction.md` for the parent-first staged pattern).
     """
     )
     suspend fun mps_mcp_add_node_child(
         @McpDescription("Persistent form of the parent SNodeReference") nodeRef: String,
         @McpDescription("The role name of the child") childRole: String,
-        @McpDescription(
-            """
-            The JSON description of the child node's deep printout (max 4KB) OR an absolute path to a local file containing it.
-            Files may contain either a raw node blueprint or a full MCP response envelope from mps_mcp_print_node_json; envelope 'data' is used.
-            Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-            Use the unified JSON format.
-        """
-        ) childJson: String,
-        @McpDescription(
-            """
-            Optional 0-based index at which to insert the new child in a multi-cardinality role.
-            Omit (or pass null, -1, or the current child count N) to append at the end (default).
-            Values outside [-1, N] are rejected. For single-cardinality (0..1 / 1) roles only null, -1, or 0
-            are accepted; any other value is rejected. Default: null (append).
-        """
-        ) position: Int? = null,
+        @McpDescription("JSON blueprint of the new child (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") childJson: String,
+        @McpDescription("Optional 0-based insert index for multi-cardinality roles; null/-1 = append. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
         @McpDescription("Optional: if true, only validate JSON, concept-role assignability, and position without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
         return update_node_child(nodeRef, childRole, childJson, null, position, dryRun)
@@ -824,40 +706,12 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Replaces a child node with a new node described by a JSON blueprint.
-        The position of the original child node in a child collection is preserved.
-        The concept of the child node must be assignable to the role's concept.
-        Updates the dependencies and used languages of the containing model.
-        The 'childJson' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local file containing it.
-        The file may contain either the raw node blueprint or the full MCP response envelope produced by mps_mcp_print_node_json;
-        in the latter case the 'data' field is used.
-        Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-        
-        ### Unified JSON Format
-        {
-          "concept": "fully.qualified.ConceptName",
-          "properties": [{ "name": "propName", "value": "propValue" }],
-          "children": [{ "role": "childRole", "nodes": [...] }],
-          "references": [{ "role": "refRole", "target": "targetRefOrName" }]
-        }
-        - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
-        - Properties, children, and references are optional.
-        - Prefer this tool for staged construction when a large root-node JSON would be too big or gets truncated. Insert or keep the parent first, then replace one child subtree at a time over multiple calls.
-
-        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
+        Replaces an existing child node with a new node described by a JSON blueprint. The original child's position in its role is preserved. The new child's concept must be assignable to the role's concept; model dependencies and used languages are updated automatically. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md` for the blueprint shape).
     """
     )
     suspend fun mps_mcp_replace_node_child(
         @McpDescription("Persistent form of the SNodeReference of the child to replace") childNodeRef: String,
-        @McpDescription(
-            """
-            The JSON description of the new child node's deep printout (max 4KB) OR an absolute path to a local file containing it.
-            Files may contain either a raw node blueprint or a full MCP response envelope from mps_mcp_print_node_json; envelope 'data' is used.
-            Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-            Use the unified JSON format.
-        """
-        ) childJson: String,
+        @McpDescription("JSON blueprint of the replacement child (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") childJson: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
         return update_node_child(null, null, childJson, childNodeRef, null, dryRun)

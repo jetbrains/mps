@@ -24,15 +24,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Adds one or more dependencies (imports) to an MPS model.
-        Also adds a "Default" dependency of the containing module on each target model's module.
-        Skips targets that are already imported (no duplicates).
-
-        The 'targetModels' parameter can be a single model name/reference string, or a JSON array:
-        ["javax.swing@java_stub", "java.awt@java_stub"]
-
-        Returns a JSON object with 'ok':true and 'data':{"added":N,"alreadyPresent":M} on success,
-        or 'ok':false and 'error':"..." on failure.
+        Adds one or more imports to an MPS model and ensures the containing module has a `Default` dependency on each target's module. Already-imported targets are skipped. `targetModels` accepts a single name/reference or a JSON array. Returns `{ "added": N, "alreadyPresent": M }`.
     """
     )
     suspend fun mps_mcp_add_model_dependency(
@@ -137,11 +129,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Removes a dependency (import) from an MPS model.
-
-        Returns a JSON object with 'ok':true and 'data':{"removed": true} when the import was present
-        and removed, or 'data':{"removed": false} when the target wasn't imported (idempotent).
-        On invalid input, returns 'ok':false and 'error':"...".
+        Removes an import from an MPS model. Idempotent — returns `{ "removed": true }` if the import was present, `{ "removed": false }` otherwise.
     """
     )
     suspend fun mps_mcp_remove_model_dependency(
@@ -180,9 +168,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Adds a used language or devkit to an MPS model.
-
-        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
+        Adds a used language or devkit to an MPS model (`kind` = `"language"` or `"devkit"`). If the language is already provided by an imported DevKit, the call is a no-op and `providedByDevKit` reports the supplying DevKit.
     """
     )
     suspend fun mps_mcp_add_model_used_language(
@@ -257,9 +243,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Removes a used language or devkit from an MPS model.
-
-        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
+        Removes a used language or devkit from an MPS model (`kind` = `"language"` or `"devkit"`).
     """
     )
     suspend fun mps_mcp_remove_model_used_language(
@@ -311,9 +295,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Creates a new, empty MPS model in the given module.
-
-        Returns a JSON object with 'ok':true and 'data':{ name, reference, moduleReference, isReadOnly, present:true } on success, or 'ok':false and 'error':"..." on failure.
+        Creates a new, empty MPS model in the given module. Returns the model info envelope (`name`, `reference`, `moduleReference`, `isReadOnly`).
     """
     )
     suspend fun mps_mcp_create_model(
@@ -339,9 +321,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Updates an MPS model. Currently supports renaming.
-
-        Returns a JSON object with 'ok':true and 'data':{ name, reference, moduleReference, isReadOnly, present:true } on success, or 'ok':false and 'error':"..." on failure.
+        Updates an MPS model. Currently supports renaming. Returns the updated model info envelope.
     """
     )
     suspend fun mps_mcp_update_model(
@@ -366,9 +346,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Deletes an MPS model. Returns JSON.
-
-        Returns a JSON object with 'ok':true and 'data':{"name":"...", "deleted":true} on success, or 'ok':false and 'error':"..." on failure.
+        Deletes an MPS model, including its underlying data source (e.g. the .mps file on disk).
     """
     )
     suspend fun mps_mcp_delete_model(

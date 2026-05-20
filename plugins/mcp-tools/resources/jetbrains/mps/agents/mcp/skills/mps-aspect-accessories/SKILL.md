@@ -41,9 +41,12 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 
 ## Reference Index
 
-- Open `references/module-level-deps.md` for the full list of `.mpl` declarations (dependencies, usedLanguages, usedDevKits, extendedLanguages, runtimeModules, generators, accessoryModels, version stamps) and their scopes.
+- Open `references/module-level-deps.md` for the full list of `.mpl` declarations (dependencies, usedLanguages, usedDevKits, extendedLanguages, runtimeModules, generators, accessoryModels, version stamps), their scopes, and the `mps_mcp_add_module_dependency` / `mps_mcp_remove_module_dependency` scope-dispatch table.
 - Open `references/model-level-imports.md` for per-model `dependencies`, used languages, used devkits, and the auto-import behavior of node-insertion tools.
 - Open `references/accessory-models.md` when shipping a model that should be available to every consumer of the language without an explicit import — including the `.mpl` `<accessoryModels>` XML shape and the hand-edit caveat.
 - Open `references/runtime-solutions.md` for shipping Java code that generated programs need at runtime.
 - Open `references/extends-vs-uses.md` for the semantic difference between `extendedLanguages` and `usedLanguages` with examples.
 - Open `references/pitfalls.md` when you need to diagnose a symptom ("Cannot resolve concept X", "ClassNotFoundException", version mismatch, generator can't find target-language concept, devkit changes not picked up).
+- Open `references/module-creation.md` for `mps_mcp_create_module` — supported types, language-only companions (`withGenerator`/`withSandbox`/`withRuntime`), and the `facets` policy.
+- Open `references/module-rename.md` for `mps_mcp_update_module` — what the rename cascades into, the "generator modules are not renameable" rule, and the `renameWarnings`/`renameCriticalProblems` semantics.
+- Open `references/module-info-fields.md` for the shared info envelope returned by `mps_mcp_get_module` / `mps_mcp_create_module` / `mps_mcp_update_module_facet` — `kind`, `facets`, `loadExtensions`, DevKit-only fields.

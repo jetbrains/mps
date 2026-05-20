@@ -43,3 +43,8 @@ Use `mps_mcp_perform_structure_operation` with `LIST_CONCEPT_ASPECTS` to find as
 - **`mps-language-inheritance`** — load when you need extended-language / superconcept / subconcept analysis.
 - **`mps-aspect-structure-concepts`** — load when defining or modifying concepts (not just reading them).
 - **`mps-language-aspects-overview`** — overview of which aspects exist and what each owns.
+
+## Reference Index
+
+- Open `references/search-concepts.md` for the `mps_mcp_search_concepts` matching algorithm — haystack composition, subtoken splitting, fallback ranking, `modelReference` scoping, and the sub-2-char failure mode.
+- Open `references/concept-details.md` for the `mps_mcp_get_concept_details` result schema and the unresolved-ref policy (all-failed vs partial-success envelopes and the suggestion heuristic).

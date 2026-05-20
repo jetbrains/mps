@@ -50,8 +50,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Gets the root node that is currently open in the MPS editor. Optionally also provides the currently selected node or the node with the cursor on it.
-        Returns a JSON object with 'ok':true and 'data':{ name, concept, conceptReference, reference, parentReference, rootReference, modelReference, moduleReference, virtualFolder, selectedNodeReference, present:true } on success, or 'ok':false and 'error':"..." on failure.
+        Returns the root node currently open in the MPS editor as a node info envelope (see `mps-mcp-workflow/references/reference-formats.md`); when an editor selection is active, the envelope also carries `selectedNodeReference`. Use this to anchor on the user's focus before editing.
     """)
     suspend fun mps_mcp_get_current_editor_root_node(): String {
         currentCoroutineContext().reportToolActivity("Getting current editor root node")
@@ -121,9 +120,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Searches for root nodes with the specified name(s) in all models of the project.
-        The 'names' parameter can be a single name string or a JSON array of names: ["ClassName1", "ClassName2"].
-        Returns a JSON object with 'ok':true and 'data':[nodeInfo, ...] on success, or a path to a temporary JSON file if the data is large, or 'ok':false and 'error':"..." on failure.
+        Searches all project models for root nodes whose name matches any of the given names. `names` accepts a single name or a JSON array of names. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String
@@ -165,43 +162,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Bulk creation of one or more MPS root nodes from a JSON description.
-        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local file containing it.
-        The file may contain either the raw node blueprint or the full MCP response envelope produced by mps_mcp_print_node_json;
-        in the latter case the 'data' field is used.
-        Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-
-        ### Unified JSON Format — single node
-        {
-          "concept": "fully.qualified.ConceptName",
-          "properties": [{ "name": "propName", "value": "propValue" }],
-          "children": [{ "role": "childRole", "nodes": [...] }],
-          "references": [{ "role": "refRole", "target": "targetRefOrName" }]
-        }
-
-        ### Unified JSON Format — multiple nodes (array)
-        To insert several root nodes in a single atomic call, wrap them in a top-level JSON array:
-        [ { "concept": "...", ... }, { "concept": "...", ... } ]
-        All nodes are inserted inside one command; if any node fails the entire batch is rolled back.
-
-        - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
-        - Properties, children, and references are optional.
-        - Very large JSON inputs may be truncated before the tool reads them. If that happens, insert a smaller root first and then add children in follow-up calls with 'mps_mcp_add_node_child' or 'mps_mcp_replace_node_child' instead of sending the whole subtree at once.
-
-        Returns 'ok':true and 'data':{...nodeInfo...} for a single node, or 'data':[...nodeInfos...] for an array.
-        Returns 'ok':false and 'error':"..." on failure.
+        Bulk-creates one or more MPS root nodes from a JSON blueprint (a single object or a top-level array; arrays insert atomically with batch rollback on failure). Returns the new node's info envelope, or an array of envelopes when the input was an array. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`) and `mps-mcp-workflow/references/bulk-creation.md` for the array contract and large-input strategies.
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Persistent form of SModelReference") modelRef: String,
-        @McpDescription(
-            """
-            The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local file containing it.
-            Files may contain either a raw node blueprint or a full MCP response envelope from mps_mcp_print_node_json; envelope 'data' is used.
-            Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-            Use the unified JSON format.
-        """
-        ) json: String,
+        @McpDescription("JSON blueprint, single object or top-level array (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the model. Default: false.") dryRun: Boolean = false
     ): String {
         return withMpsProject("Inserting MPS root node from JSON") { mpsProject ->
@@ -346,37 +311,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Updates an MPS root node from a JSON description.
-        The root node itself is preserved, but its properties, references and children are re-set according to the provided JSON blueprint.
-        The 'json' parameter can be either the actual JSON description (max 4KB) OR an absolute path to a local file containing it.
-        The file may contain either the raw node blueprint or the full MCP response envelope produced by mps_mcp_print_node_json;
-        in the latter case the 'data' field is used.
-        Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-        
-        ### Unified JSON Format
-        {
-          "concept": "fully.qualified.ConceptName",
-          "properties": [{ "name": "propName", "value": "propValue" }],
-          "children": [{ "role": "childRole", "nodes": [...] }],
-          "references": [{ "role": "refRole", "target": "targetRefOrName" }]
-        }
-        - 'concept' is the fully qualified concept name (preferred).
-        - 'target' can be a persistent node reference (from mps_mcp_print_node_json, e.g. 'r:<modelId>/<nodeId>') or a plain name for auto-resolution. Do NOT use MPS XML short IDs from .mps files — they are an internal encoding and will fail with an error.
-        - Properties, children, and references are optional.
-        - Very large JSON inputs may be truncated before the tool reads them. This tool is intended for full-root blueprints: it resets the root's properties, children, and references to match the provided JSON. For partial updates of an existing root, prefer 'mps_mcp_add_node_child' or 'mps_mcp_replace_node_child' instead of sending an incomplete root JSON.
-
-        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
+        Updates an MPS root node from a JSON blueprint. The root node itself (and its persistent ID) is preserved; its properties, references, and children are re-set to match the blueprint. This is a **full-root rewrite** — for partial updates prefer surgical tools (`mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_set_node_properties`, `mps_mcp_set_node_references`). See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`).
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeRef: String,
-        @McpDescription(
-            """
-            The JSON description of a node's deep printout (max 4KB) OR an absolute path to a local file containing it.
-            Files may contain either a raw node blueprint or a full MCP response envelope from mps_mcp_print_node_json; envelope 'data' is used.
-            Ordinary input files are never deleted; only temporary JSON files created by this toolset may be cleaned up after reading (unless 'dryRun' is true).
-            Use the unified JSON format.
-        """
-        ) json: String,
+        @McpDescription("JSON blueprint of the root (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
     ): String {
         return withMpsProject("Updating MPS root node from JSON") { mpsProject ->

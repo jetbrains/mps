@@ -705,35 +705,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Parses Java code using jetbrains.mps.java.core.newparser.JavaParser in the context of an optional node and inserts the resulting MPS nodes
-        either as roots or as children at the specified position.
-        
-        Parameters (JSON object string):
-        {
-          "code": string,                                 // required, Java snippet to parse (max 50_000 characters)
-          "featureKind": string,                          // required, one of: CLASS, NESTED_CLASS, FIELD, METHOD, STATEMENTS, CLASS_CONTENT, EXPRESSION
-          "recovery": boolean,                            // optional, default true
-          "contextNodeRef": string,                       // optional SNodeReference (r:...) used as parser context (required for FIELD, METHOD, NESTED_CLASS, CLASS_CONTENT)
-          "insert": {                                     // required
-            "mode": "root" | "child" | "replace",       // required
-            "modelRef": string,                          // required if mode == "root" (SModelReference)
-            "parentRef": string,                         // required if mode == "child" (SNodeReference)
-            "targetRef": string,                         // required if mode == "replace" (SNodeReference)
-            "role": string,                              // required if mode == "child" (containment role name)
-            "position": int,                             // optional, 0-based index, -1 or absent = append; ignored for roots
-            "virtualPackage": string                     // optional, for roots only
-          },
-          "postProcess": {                                // optional
-            "importUsedLanguages": boolean,              // default true
-            "resolveReferences": boolean                 // default true
-          }
-        }
-        
-        Notes:
-        - CLASS_STUB is not supported and will be rejected.
-        - Root insertion always appends; root index is ignored.
-        - For child insertion, the role name must exist on the parent concept; otherwise the call fails.
-        - For replace mode, the target node is replaced by the first parsed node.
+        Parses Java code with the MPS `JavaParser` and inserts the result as MPS nodes — either as root(s), as a child in a given role, or as a replacement of an existing node. `CLASS_STUB` is rejected; root insertion always appends. See `mps-baselanguage/references/parse-java-tips.md` for the `parameters` JSON schema (`code`, `featureKind`, `insert.mode`, `postProcess`) and the per-mode required fields.
         """
     )
     suspend fun mps_mcp_parse_java_and_insert(

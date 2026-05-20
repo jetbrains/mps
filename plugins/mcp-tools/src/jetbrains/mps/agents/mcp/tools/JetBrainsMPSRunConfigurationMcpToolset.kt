@@ -85,50 +85,7 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Creates and registers an MPS run configuration for the given root node in the current
-        IDEA project. The new configuration becomes immediately runnable via the IDEA MCP
-        `execute_run_configuration` tool by its name.
-
-        Scope: this tool supports the three dispatch paths the standard MPS Java_Producer and
-        JUnitTests_Producer register; it does NOT handle arbitrary runnable roots, file-level
-        launchers, Ant scripts, or other MPS execution producers — for those, build a
-        configuration in the IDE or extend this tool.
-          - jetbrains.mps.execution.util.structure.IMainClass — yields a "Java Application"
-            run config that runs the node's main method (or unit equivalent). Examples are DSL
-            roots that declare an IMainClass implementation (e.g. samples.shapes.Canvas). The
-            configuration is named `Node <node-name>` to match the gutter producer.
-          - jetbrains.mps.baseLanguage.structure.ClassConcept whose `getMainMethod()` returns a
-            non-null `static main(<String[]-subtype> args)` method — yields the same node-aware
-            "Java Application" config the IDE's right-click → Run / gutter creates. The
-            configuration is named `Class <ClassName>`. The underlying
-            `StaticMethodDeclaration.isMainMethod` predicate checks exactly: method name is
-            `main`, has a single parameter, and that parameter's type is a typesystem
-            strong-subtype of `String[]`. Visibility is NOT enforced (package-private and
-            protected `main` methods both qualify), and the return type is not explicitly
-            checked either (a `static int main(String[])` would qualify — the runtime will
-            ignore the returned value). This intentionally matches the standard MPS gutter
-            producer; do not narrow it here.
-          - jetbrains.mps.baseLanguage.unitTest.structure.ITestCase — yields a "JUnit Tests"
-            run config that runs the test case. This single dispatch covers lang.test
-            NodesTestCase / EditorTestCase / MigrationTestCase / BTestCase as well as the
-            BaseLanguage unitTest TestCase, because they all implement ITestCase. For tests
-            whose `canRunInProcess` behavior returns false, the configuration is created
-            with the in-process flag cleared, mirroring the standard JUnit producer.
-
-        Java Application paths additionally require the owning module to have
-        `compileInMPS=true` on its descriptor. The producer skips JPS-compiled modules because
-        launching them would fail at runtime with "Could not find or load main class"; this
-        tool refuses the same way, returning INVALID_REQUEST with a clear message.
-
-        If `configurationName` is omitted, a name is derived from the node (`Node <name>` for
-        IMainClass, `Class <name>` for ClassConcept, the test case's own name for ITestCase).
-        The new configuration is registered via `RunManager.addConfiguration`, whose uniqueID
-        is `<typeId>.<name>`; calling this tool twice with the same effective name therefore
-        replaces the previously registered configuration of the same type rather than creating
-        a duplicate. Pass a distinct `configurationName` to keep both.
-
-        Returns `{"ok":true,"data":{"name":"...","type":"Java Application"|"JUnit Tests","uniqueId":"..."}}`
-        on success.
+        Creates and registers an MPS run configuration targeting a root node (IMainClass / ClassConcept-with-main → "Java Application"; ITestCase → "JUnit Tests"). Java Application paths require the owning module's `compileInMPS=true`; otherwise the call is refused with INVALID_REQUEST. Re-invoking with the same effective name replaces the existing config of that type rather than creating a duplicate. Returns `{"name", "type", "uniqueId"}` on success. See the `mps-run-configurations` skill (`references/runnable-shapes.md` for the dispatch predicates and `compileInMPS` gate; `references/create-and-execute.md` for naming, replacement semantics, and `execute_run_configuration` follow-up).
         """
     )
     suspend fun mps_mcp_create_run_configuration(

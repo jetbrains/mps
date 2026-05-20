@@ -59,17 +59,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Gets detailed information about a list of MPS concepts, including their properties, references and children. Saves the result to a local JSON file.
-        Concepts can be specified either individually or by providing entire languages.
-
-        Unresolved refs are never silently dropped:
-        - When EVERY conceptRef and languageRef fails to resolve, the tool returns an error envelope ('ok':false, code NOT_FOUND) whose 'details.unresolved' lists each unresolved ref together with up to $MAX_SUGGESTIONS_PER_UNRESOLVED "did you mean" candidates (qualified names and persistent references).
-        - When SOME refs fail but at least one resolves, the tool returns a success envelope ('ok':true) carrying the resolved data in 'data', plus a 'warnings' array naming each unresolved ref and the same 'details.unresolved' suggestions.
-        Suggestions are computed by subtoken-matching the input (camelCase- and underscore-aware). If the input is FQN-shaped (e.g. "jetbrains.mps.lang.smodel.structure.X") and the implied language resolves, suggestions are scoped to that language first; otherwise the search runs project-wide. Treat the suggestion list as a candidate set, not a ranked answer — for free-form lookup, use mps_mcp_search_concepts.
-
-        Returns a JSON object with 'ok':true and 'data':"/path/to/local/file.json" on success, or 'ok':false and 'error':"..." on failure.
-        Format of data in the file: [{ name, qualifiedName, conceptAlias, shortDescription, conceptReference, languageReference, superConcept, superInterfaces: ["ref1", "ref2", ...], sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true, properties: [...], references: [...], children: [...], sampleNode: { concept, properties: [...], references: [...], children: [...] } }, ...]
-        Use the 'qualifiedName' field (e.g. "jetbrains.mps.baseLanguage.structure.ClassConcept") as the 'concept' field in JSON node blueprints. It is unambiguous and does not require a conceptReference.
+        Returns detailed info for the listed concepts and/or for every concept of the listed languages. Saves the result to a temp file (path returned in `data`). Unresolved refs are surfaced in `warnings` (partial success) or in an error envelope with `details.unresolved` suggestions (everything failed); use `mps_mcp_search_concepts` for free-form lookup. The `qualifiedName` field is the unambiguous form to use as `concept` in JSON blueprints. See `mps-language-analysis/references/concept-details.md` for the result schema and the unresolved-ref policy.
     """
     )
     suspend fun mps_mcp_get_concept_details(
@@ -181,19 +171,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Searches for concepts and interface concepts by case-insensitive substring match against a per-concept haystack: name, alias, short description, documentation, and the last segment of the owning language qualified name (e.g. "collections" for jetbrains.mps.baseLanguage.collections, "smodel" for jetbrains.mps.lang.smodel). Common namespace prefixes such as "jetbrains", "mps", or "lang" are NOT part of the haystack on purpose, since they would otherwise act as near-universal wildcards.
-        Multiple words in a single search string are treated as required terms; the concept matches when EVERY word matches. Multiple search strings are OR-combined.
-        Each query word is also split on camelCase, underscore, and digit/letter boundaries; subtokens shorter than 2 characters are discarded. A word then matches a concept when every one of its remaining subtokens is a substring of the haystack — so "PropertyAccess" requires both "Property" and "Access" to appear (possibly in a different order, or across underscores), and "Node_GetPropertyOperation" requires "Node", "Get", "Property", and "Operation". Note that substring matching is permissive: "Property" will also be found inside unrelated words like "PropertyDescriptor".
-        If ANY query word has no subtokens of length >= 2 (e.g. a single-character word like "x"), the tool fails the whole call with an explicit error that names the offending words ("Search words must have at least 2 characters; the following are too short and would never match: 'x'. Remove or extend them and retry."). This catches typos symmetrically across all search strings — the tool never silently drops part of the query. Use words of at least two characters in every search string to avoid the error.
-        Strict matches are returned in full and are NOT capped — a common single-word query like "node" or "type" can therefore return many concepts; rely on the temp-file fallback for large payloads.
-        If no concept strictly matches all words of any search string, the tool falls back to ranking concepts by the number of matching words and returns up to $MAX_FALLBACK_RESULTS best candidates instead of an empty result. Within the fallback, equal-score candidates are admitted in the order they are encountered while the heap is filling, so the effective tie-break is registry iteration order — deterministic for a given MPS session and language load order, but not guaranteed to be stable across sessions. Treat the fallback result as a candidate set rather than a ranked list.
-
-        If modelReference is provided, only searches in languages used by that model. This is faster than searching all languages. Concepts in already used languages are more likely to be suitable than concepts from other languages. A syntactically invalid modelReference returns an error of the form "Invalid model reference: ..."; a syntactically valid reference that does not resolve to a model in the current project returns "Model '...' not found".
-
-        Try with a model first, if no concept is found, try a general search without a model.
-
-        Returns a JSON object with 'ok':true and 'data':[{ name, qualifiedName, conceptAlias, shortDescription, doc, deprecated, conceptReference, languageReference, superConcept, superInterfaces, sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder, present:true }, ...] on success, or a path to a temporary JSON file if the data is large, or 'ok':false and 'error':"..." on failure.
-        Use the 'qualifiedName' field (e.g. "jetbrains.mps.baseLanguage.structure.ClassConcept") as the 'concept' field in JSON node blueprints. It is unambiguous and does not require a conceptReference.
+        Searches for concepts and interface concepts by free-form text. Multi-word search strings are AND-combined; multiple search strings are OR-combined. Each word is split on camelCase / underscore / digit boundaries; subtokens shorter than 2 characters are rejected with an explicit error naming the offending words. Pass `modelReference` to restrict to languages used by that model (recommended first attempt); fall back to a global search if nothing is found. Returns a list of concept info records inline, or a path to a temp file when the payload is large. The `qualifiedName` field is the unambiguous form to use as `concept` in JSON blueprints. See `mps-language-analysis/references/search-concepts.md` for the matching algorithm, fallback ranking, result schema, and `modelReference` error strings.
     """
     )
     suspend fun mps_mcp_search_concepts(

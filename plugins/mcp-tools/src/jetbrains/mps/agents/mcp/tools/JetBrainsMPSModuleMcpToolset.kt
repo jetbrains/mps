@@ -47,28 +47,7 @@ import javax.lang.model.SourceVersion
 class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
-        Adds a dependency to an MPS module.
-        Scope can be: Default, Design, Compile, Runtime, Provided, Extends, Generation Target.
-
-        Scope dispatch:
-        - Default / Design / Compile / Runtime / Provided / Generation Target: regular `<dependency>` entry.
-        - Extends: persisted in a separate descriptor field, NOT as `<dependency scope="extend">` (MPS's own
-          UI and persistence do not put the extension target in `<dependencies>`). The field depends on the
-          source module kind:
-            * Language extending a Language → written to `<extendedLanguages>`
-            * Generator extending a Generator → written to the generator's `<external-templates>` list
-              (`GeneratorDescriptor.depGenerators`)
-            * DevKit extending a DevKit → written to `<extendedDevkits>`
-            * Solution + Extends, or any other source/target combination → rejected with INVALID_REQUEST
-              (Solutions do not support extension; cross-kind Extends is meaningless).
-          Note: language extension also typically needs a regular `Default` dependency on the same target
-          so the extended language's classes are on the compile classpath. This tool intentionally does NOT
-          add that automatically (it mirrors what the Module Dependencies dialog persists). Call the tool
-          a second time with scope=Default if you want both.
-
-        Returns a JSON object with 'ok':true and 'data':{ "added":true } when the dependency was added or updated,
-        or 'data':{ "added":false, "reason":"providedByDevKit" } when the dependency is already provided by a used DevKit
-        and no descriptor change was needed. On failure returns 'ok':false and 'error':"...".
+        Adds a dependency to an MPS module. Supported scopes: Default, Design, Compile, Runtime, Provided, Generation Target, Extends. `Extends` is routed per source kind (Language→extendedLanguages, Generator→depGenerators, DevKit→extendedDevkits; Solution and cross-kind combinations are rejected). Returns `{ "added":true }` on change, or `{ "added":false, "reason":"providedByDevKit" }` when the dependency is already supplied by a used DevKit. See `mps-aspect-accessories/references/module-level-deps.md` for the scope-dispatch table and the "Extends typically needs a Default companion" note.
     """
     )
     suspend fun mps_mcp_add_module_dependency(
@@ -182,14 +161,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Removes a dependency from an MPS module.
-
-        Also removes the target from the module's `Extends`-side collection if it lives there
-        (LanguageDescriptor.extendedLanguages, GeneratorDescriptor.depGenerators,
-        DevkitDescriptor.extendedDevkits). The regular `<dependencies>` list and the
-        Extends collection are both probed, and any removal counts as success.
-
-        Returns a JSON object with 'ok':true and 'data':true on success, or 'ok':false and 'error':"..." on failure.
+        Removes a dependency from an MPS module. Both the regular `<dependencies>` list and the per-kind `Extends` collection are probed; any removal counts as success. See `mps-aspect-accessories/references/module-level-deps.md` for the dispatch details.
     """
     )
     suspend fun mps_mcp_remove_module_dependency(
@@ -258,27 +230,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Gets information about a single MPS module by its name or reference.
-        If a precise match is not found, a partial match by name is used.
-        If more than one partial match is found, returns an error containing the found full module names.
-
-        Returns a JSON object with 'ok':true and 'data':{ name, reference, virtualFolder?,
-        readOnly, present:true, kind, facets, loadExtensions?, ... } on success. `kind` is
-        one of "Solution" | "Language" | "Generator" | "DevKit". The four standard MPS
-        module types cover every module produced by `mps_mcp_create_module` and every
-        module typically present in a project; the sentinel "Unknown" is reserved for
-        third-party `SModule` implementations that don't extend any of those four
-        classes (e.g. custom modules injected by external plugins or test scaffolding).
-        Treat "Unknown" as a signal to investigate, not a normal value. `facets` lists the
-        active facet types (e.g. ["java","tests"] for a test-container Solution). The order
-        of entries is unspecified — match on set membership, not position.
-        `loadExtensions` is present whenever the module has a JavaModuleFacet. The default for every module type
-        (solutions, languages, generators) is "NotAvailable"; "Plugin" is reported only
-        when the descriptor explicitly persists `loadExtensions = yes` (plugin/contributor
-        modules). A freshly created Language will therefore surface "NotAvailable", not
-        "Plugin".
-        For DevKits, the data also includes: extendedDevkits: [...], exportedLanguages: [...],
-        exportedSolutions: [...], associatedGenPlan?: {...}.
+        Gets information about a single MPS module by name or reference. If a precise match is not found, a case-insensitive partial name match is attempted; ambiguous partial matches return an error listing the candidates. Returns the module info envelope (`name`, `reference`, `kind`, `facets`, optional `loadExtensions`, plus DevKit-only fields). See `mps-aspect-accessories/references/module-info-fields.md` for the field semantics.
     """
     )
     suspend fun mps_mcp_get_module(
@@ -314,41 +266,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Creates a new, empty MPS module of the given type at the specified directory (The directory gets created, if needed).
-        Types supported: solution | language | devkit | generator.
-        For type = generator, provide parentLanguage (the fully qualified language name).
-        Params:
-          - type: one of the supported types
-          - name: module name (namespace for language; solution/devkit name otherwise)
-          - directory: absolute or project-relative folder to place the module descriptor in
-          - virtualFolder: optional Project View virtual folder to assign
-          - parentLanguage: required for generator (the existing language name)
-          - withGenerator: for language: also create a generator (false by default)
-          - withSandbox: for language: also create a sandbox solution (false by default)
-          - withRuntime: for language: also create a runtime solution (false by default)
-          - facets: optional list of additional facet types to attach after creation (e.g.
-            ["tests"] to mark a solution as the container for a `@tests` model). Each entry
-            is treated as an opaque facet-type identifier and must match a registered facet
-            factory. The "java" facet is created automatically by the producer for
-            solution/language/generator modules and does not need to be listed; if it (or
-            any other already-attached facet) appears in this list it is silently skipped
-            so the producer's default settings (e.g. `JavaModuleFacet.LoadExtensions`) are
-            preserved. To override those settings, follow the create call with
-            `mps_mcp_update_module_facet`. Unknown facet types fail the call before the
-            module is produced, so no partial state is left behind. Only "solution" and
-            "language" accept additional facets: passing `facets` together with
-            `type="devkit"` or `type="generator"` is rejected upfront because those module
-            kinds carry no useful facet beyond what the producer already installs.
-
-        Returns a JSON object with 'ok':true and 'data':{ name, moduleRef, virtualFolder?,
-        readOnly, present:true, kind, facets, loadExtensions? } on success, or 'ok':false and
-        'error':"..." on failure. `kind` reports the module type ("Solution" | "Language" |
-        "Generator" | "DevKit", or the sentinel "Unknown"). `facets` lists the active facet
-        types (e.g. ["java","tests"]); the order of entries is unspecified.
-        `loadExtensions` reports the JavaModuleFacet's load-extensions setting when present.
-        The default is "NotAvailable" for every module type (solutions, languages,
-        generators); "Plugin" is reported only when the descriptor explicitly persists
-        `loadExtensions = yes`. Freshly created Languages/Generators surface "NotAvailable".
+        Creates a new, empty MPS module of the given type at the specified directory (created if missing). Types: `solution` | `language` | `devkit` | `generator`. `type=generator` requires `parentLanguage` and may default the directory to `<parent-language-dir>/generator` when empty. `type=language` accepts the `withGenerator`/`withSandbox`/`withRuntime` companion flags. The optional `facets` list is allowed only for `solution`/`language` (rejected upfront for `devkit`/`generator`); unknown facet types fail before the module is produced. Returns the new module's info envelope (same shape as `mps_mcp_get_module`). See `mps-aspect-accessories/references/module-creation.md` for the facets policy and `module-info-fields.md` for the return-envelope fields.
     """
     )
     suspend fun mps_mcp_create_module(
@@ -632,34 +550,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Updates an MPS module.
-        Supports: renaming the module (Solution / Language / DevKit) and/or changing the
-        Project View virtual folder. When both are supplied, the rename runs first and the
-        virtual folder is then applied to the renamed module.
-
-        Generator modules cannot be renamed through this tool — rename the parent Language
-        instead, which cascade-renames its owned generators.
-
-        The rename delegates to the same `Renamer` refactoring the IDE's Rename Module
-        action uses, so it also: renames the module's descriptor file, renames the module
-        directory when it matches the module name, renames models whose qualified name is
-        prefixed by the module name, cascades into nested submodules (e.g. a Language's
-        generator), and updates references inside other modules of the current project.
-        References from modules outside the open project are NOT rewritten — there is no
-        practical way to reach them. Any such cases are reported as `renameWarnings`.
-
-        Params:
-          - moduleName: existing module name or reference
-          - newName: optional new name (must be a valid Java-package-style qualified name).
-            Pass null or blank to skip the rename. The trimmed name must not already be in
-            use by another module in the repository.
-          - virtualFolder: optional new virtual folder. Applied to the (possibly renamed)
-            module.
-
-        Returns `{"ok":true,"data":{ name, reference, virtualFolder?, readOnly, present:true,
-        renameWarnings?, renameCriticalProblems? }}` on success, or `{"ok":false,"error":"..."}`
-        on failure. `renameWarnings` (and the rarer `renameCriticalProblems`) carry messages
-        emitted by the underlying refactoring; their absence means the rename ran cleanly.
+        Updates an MPS module — supports renaming (Solution / Language / DevKit) and/or changing the Project View virtual folder. When both are supplied, the rename runs first. Generator modules cannot be renamed through this tool; rename the parent Language instead (the rename cascades into owned generators). Returns the module info envelope plus optional `renameWarnings` / `renameCriticalProblems` arrays. See `mps-aspect-accessories/references/module-rename.md` for the cascade behavior, in-project-only reference rewrites, and the warnings semantics.
     """
     )
     suspend fun mps_mcp_update_module(
@@ -811,12 +702,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Deletes an MPS module by name or reference.
-        Params:
-          - moduleName: name or reference of the module to delete
-          - deleteFiles: if true, attempts to delete module files from disk after removing from project
-
-        Returns a JSON object with 'ok':true and 'data':{"name":"...", "deleted":true} on success, or 'ok':false and 'error':"..." on failure.
+        Deletes an MPS module from the project. Pass `deleteFiles=true` to also remove module files from disk after removing it from the project.
     """
     )
     suspend fun mps_mcp_delete_module(

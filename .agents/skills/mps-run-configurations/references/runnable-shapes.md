@@ -12,6 +12,10 @@ The tool dispatches to one of **three** producer paths, matching the three `Prod
 
 The ClassConcept path checks `ClassConcept.getMainMethod() != null`, which expands to `StaticMethodDeclaration.isMainMethod`: name equals `main`, exactly one parameter, parameter type is a typesystem strong-subtype of `String[]`. Both `String[] args` and BaseLanguage `string[] args` qualify. **Visibility is not checked** (a package-private or protected `main` qualifies just as a public one does), and the return type is not explicitly checked either (`static int main(String[])` would qualify — the launcher ignores the return value). This intentionally matches the standard producer; do not file bugs against the tool for accepting these shapes.
 
+## ITestCase `canRunInProcess` flag
+
+When the test case's `canRunInProcess` behavior returns `false` (e.g. tests that need a separate JVM), the registered configuration is created with the in-process flag **cleared**, mirroring the standard `JUnitTests_Producer.ProducerPart_NlistITestCase`. Tests whose `canRunInProcess` returns `true` (the default) keep the in-process flag at its factory default. The MCP tool replicates this transparently; the caller cannot override it.
+
 ## `compileInMPS` gate (Java Application paths only)
 
 Both Java Application paths additionally require the owning module's descriptor to report `compileInMPS=true`. The IDE producers skip JPS-compiled modules because their `classes_gen` is empty at launch; this tool refuses for the same reason. When that gate fires, the error reads:

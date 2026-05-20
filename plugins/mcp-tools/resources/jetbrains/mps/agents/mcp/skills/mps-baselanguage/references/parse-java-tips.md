@@ -2,6 +2,44 @@
 
 The Java parser is the fastest path when the code is plain Java with no BaseLanguage extension. Use it for skeletons, method bodies, expressions, and statements.
 
+## `parameters` JSON Schema
+
+The tool takes a single JSON-encoded `parameters` argument. Shape:
+
+```
+{
+  "code": string,                            // required, Java snippet to parse (max 50 000 chars)
+  "featureKind": string,                     // required, one of:
+                                             //   CLASS, NESTED_CLASS, FIELD, METHOD,
+                                             //   STATEMENTS, CLASS_CONTENT, EXPRESSION
+  "recovery": boolean,                       // optional, default true
+  "contextNodeRef": string,                  // optional SNodeReference (r:...) used as parser
+                                             //   context. REQUIRED for FIELD, METHOD,
+                                             //   NESTED_CLASS, CLASS_CONTENT.
+  "insert": {                                // required
+    "mode": "root" | "child" | "replace",   // required
+    "modelRef": string,                      // required when mode=="root" (SModelReference)
+    "parentRef": string,                     // required when mode=="child" (SNodeReference)
+    "targetRef": string,                     // required when mode=="replace" (SNodeReference)
+    "role": string,                          // required when mode=="child" (containment role)
+    "position": int,                         // optional, 0-based; -1 or absent = append.
+                                             //   Ignored for roots.
+    "virtualPackage": string                 // optional, root insertions only
+  },
+  "postProcess": {                           // optional
+    "importUsedLanguages": boolean,          // default true
+    "resolveReferences": boolean             // default true
+  }
+}
+```
+
+### Rules
+
+- `CLASS_STUB` is not supported and will be rejected.
+- Root insertion always **appends**; the root `position` is ignored.
+- For child insertion, the `role` name must exist on the parent concept; otherwise the call fails.
+- For `replace` mode, the target node is replaced by the **first** parsed node.
+
 ## Editing Strategy
 
 * **New class / method**: use `mps_mcp_parse_java_and_insert` for rapid skeleton / body creation.

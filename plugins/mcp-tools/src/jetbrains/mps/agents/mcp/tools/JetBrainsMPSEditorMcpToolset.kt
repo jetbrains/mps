@@ -97,8 +97,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Generates a default ConceptEditorDeclaration or EditorComponentDeclaration for a specified concept, automatically wiring relation declarations properties, children, references to default cell models.
-        Returns a JSON object with 'ok':true and 'data':{"editorNodeRef": "...", "message": "..."} on success, or 'ok':false and 'error':"..." on failure.
+        Generates a default `ConceptEditorDeclaration` (or `EditorComponentDeclaration` when `type="component"`) for a concept, wiring properties/children/references to default cell models. Requires the concept to have been compiled before use.
     """
     )
     suspend fun mps_mcp_scaffold_editor(

@@ -27,18 +27,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Explores the MPS project structure and returns a JSON file path.
-        Primary tool for project discovery, name-based searching, and dependency analysis.
-        Result is saved to a local file to bypass MCP response size limits.
-
-        - Use 'startingPoint' (ID) to explore a specific module, model, or node.
-        - Use 'include...' flags to control traversal depth and detail levels.
-        - Eagerly filter (keep 'include' flags false) for fast project-wide discovery.
-        - Useful for expanding shortened names (e.g., 'j.m.l.core' -> 'jetbrains.mps.lang.core').
-        - Includes names, persistent references, kind, virtual folder, dependencies, used languages, etc.
-        - For DevKits, it includes extended devkits, exported languages, and exported solutions.
-
-        Returns a JSON object with 'ok':true and 'data':"/absolute/path/to/result.json" on success, or 'ok':false and 'error':"..." on failure.
+        Primary tool for project discovery, name-based searching, dependency analysis, and shortened-name expansion (e.g. `j.m.l.core` → `jetbrains.mps.lang.core`). Saves the result to a temp file to bypass MCP response-size limits (path returned in `data`). Use `startingPoint` (a module/model/node reference) to scope the dump; use the `include...` flags to control depth. Keep `include...` flags false for fast project-wide discovery. See `mps-mcp-workflow/references/finding-things.md` for the name-resolution protocol.
     """
     )
     suspend fun mps_mcp_get_project_structure(

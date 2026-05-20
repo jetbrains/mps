@@ -21,42 +21,11 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Prepares an MPS project for AI coding agents by installing the bundled MPS skills and
-        returning the recommended text for the project's `AGENTS.md` / `CLAUDE.md`.
-
-        Behavior:
-        - Copies the bundled skill catalog (skills that teach agents how to manipulate MPS nodes,
-          models, modules, and languages through MPS MCP tools) into `<projectPath>/.agents/skills/`
-          and `<projectPath>/.claude/skills/`.
-          Each skill is copied as a subfolder named after the skill, containing `SKILL.md` and
-          any auxiliary files the skill ships with.
-        - Creates `<projectPath>/.agents/skills/` and `<projectPath>/.claude/skills/` if they do not exist.
-        - Returns, in the `data` field, the recommended text to place in the project's `AGENTS.md`
-          (and `CLAUDE.md`, which typically just references `AGENTS.md`). The tool itself does NOT
-          write `AGENTS.md` — the caller decides where and how to use the returned text.
-
-        Collision policy:
-        - Before copying anything, the tool scans the existing `<projectPath>/.agents/skills/` and
-          `<projectPath>/.claude/skills/` directories. If any existing entry has the same name as a
-          skill that would be copied, the tool reports an error listing the colliding names and makes
-          no changes on disk. Other unrelated subfolders are left untouched.
-
-        Call this tool once when initializing AI support for an MPS project. It is safe to re-run
-        only after resolving any collisions reported by a previous run.
-
-        Returns a JSON object with 'ok':true and 'data':"<AGENTS.md content>" on success, or
-        'ok':false and 'error':"..." on failure.
+        Installs the bundled MPS skill catalog into `<projectPath>/.agents/skills/` and `<projectPath>/.claude/skills/` (each skill as a subfolder containing `SKILL.md` and its references) and returns the recommended `AGENTS.md` text in `data` — the caller writes the file. Aborts upfront with an error listing colliding names if any skill name already exists in either target directory; unrelated subfolders are left untouched. Safe to re-run once collisions are resolved. Use once when initializing AI support for an MPS project.
     """
     )
     suspend fun mps_mcp_initialize_project_for_agents(
-        @McpDescription(
-            "Absolute path to the root of the target MPS project. " +
-                    "Skills are installed into `<projectPath>/.agents/skills/` and " +
-                    "`<projectPath>/.claude/skills/`; the target directories are created if missing. " +
-                    "The project directory itself must exist. If any subfolder of either target skills " +
-                    "directory already has the same name as a skill that would be copied, the tool errors " +
-                    "out without writing anything."
-        )
+        @McpDescription("Absolute path to the target MPS project root. The directory must exist; target skills directories are created if missing.")
         projectPath: String
     ): String {
         val projectDir = try {

@@ -4,7 +4,7 @@ description: Complete JetBrains MPS workflow guide for DSL projects — models, 
 type: reference
 ---
 
-# JetBrains MPS for Agents
+# Projectional Agent Toolkit – JetBrains MPS for Agents
 
 Entry point for working with JetBrains MPS (Meta Programming System) models, languages, generators, and the MPS MCP tools.
 
