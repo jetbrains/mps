@@ -32,7 +32,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val response = runTool(toolset) {
             it.mps_mcp_scaffold_editor(
                 conceptRef = "jetbrains.mps.lang.core.structure.BaseConcept",
-                modelRef = structureModelRef,
+                modelReference = structureModelRef,
                 type = "not-a-valid-type",
             )
         }
@@ -45,11 +45,11 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
     @Test
     fun `unknown concept yields a clear NOT_FOUND-style error`() {
-        // type is valid and modelRef resolves, so the failure must come from concept resolution.
+        // type is valid and modelReference resolves, so the failure must come from concept resolution.
         val response = runTool(toolset) {
             it.mps_mcp_scaffold_editor(
                 conceptRef = "totally.unknown.concept.Reference",
-                modelRef = structureModelRef,
+                modelReference = structureModelRef,
                 type = "editor",
             )
         }
@@ -78,7 +78,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val response = runTool(toolset) {
             it.mps_mcp_scaffold_editor(
                 conceptRef = "jetbrains.mps.lang.core.structure.BaseConcept",
-                modelRef = "r:00000000-0000-0000-0000-000000000000(no.such.model)",
+                modelReference = "r:00000000-0000-0000-0000-000000000000(no.such.model)",
                 type = "editor",
             )
         }
@@ -95,7 +95,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val response = runTool(toolset) {
             it.mps_mcp_scaffold_editor(
                 conceptRef = "totally.unknown.concept.Reference",
-                modelRef = structureModelRef,
+                modelReference = structureModelRef,
                 type = "component",
             )
         }
@@ -548,7 +548,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val response = runTool(toolset) {
             it.mps_mcp_scaffold_editor(
                 conceptRef = customConcept,
-                modelRef = structureModelRef,
+                modelReference = structureModelRef,
                 type = "editor",
             )
         }
@@ -779,7 +779,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val response = runTool(toolset) {
             it.mps_mcp_scaffold_editor(
                 conceptRef = customConcept,
-                modelRef = structureModelRef,
+                modelReference = structureModelRef,
                 type = "editor",
             )
         }
@@ -1114,7 +1114,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     private fun scaffoldFor(conceptFqn: String, type: String): String = runTool(toolset) {
         it.mps_mcp_scaffold_editor(
             conceptRef = conceptFqn,
-            modelRef = structureModelRef,
+            modelReference = structureModelRef,
             type = type,
         )
     }
@@ -1132,7 +1132,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     ): String = runTool(toolset) {
         it.mps_mcp_scaffold_editor(
             conceptRef = conceptFqn,
-            modelRef = structureModelRef,
+            modelReference = structureModelRef,
             type = type,
             keywordStyle = keywordStyle,
             referenceStyle = referenceStyle,

@@ -258,10 +258,10 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val knownLang = "jetbrains.mps.lang.core"
         val solution = createSolution()
         val targetModel = createModel(solution, "test.usedlang${System.nanoTime()}")
-        val modelRef = modelRefOf(targetModel)
+        val modelReference = modelRefOf(targetModel)
 
         val response = runTool(toolset) {
-            it.mps_mcp_add_model_used_language(modelRef, knownLang, "language")
+            it.mps_mcp_add_model_used_language(modelReference, knownLang, "language")
         }
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
@@ -299,10 +299,10 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val knownLang = "jetbrains.mps.lang.core"
         val solution = createSolution()
         val model = createModel(solution, "test.usedlang.remove${System.nanoTime()}")
-        val modelRef = modelRefOf(model)
+        val modelReference = modelRefOf(model)
 
         // Seed by adding the language; capture the serialized SLanguage form used by the model.
-        val addResp = runTool(toolset) { it.mps_mcp_add_model_used_language(modelRef, knownLang, "language") }
+        val addResp = runTool(toolset) { it.mps_mcp_add_model_used_language(modelReference, knownLang, "language") }
         assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
 
         val langRef = readOnRepo {
@@ -311,7 +311,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
 
         val removeResp = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelRef, langRef, "language")
+            it.mps_mcp_remove_model_used_language(modelReference, langRef, "language")
         }
         val data = expectOk(removeResp)
         assertTrue("expected removed=true: $removeResp", data.get("removed").asBoolean)
@@ -332,13 +332,13 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val knownLang = "jetbrains.mps.lang.core"
         val solution = createSolution()
         val model = createModel(solution, "test.usedlang.removebyname${System.nanoTime()}")
-        val modelRef = modelRefOf(model)
+        val modelReference = modelRefOf(model)
 
-        val addResp = runTool(toolset) { it.mps_mcp_add_model_used_language(modelRef, knownLang, "language") }
+        val addResp = runTool(toolset) { it.mps_mcp_add_model_used_language(modelReference, knownLang, "language") }
         assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
 
         val removeResp = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelRef, knownLang, "language")
+            it.mps_mcp_remove_model_used_language(modelReference, knownLang, "language")
         }
         val data = expectOk(removeResp)
         assertTrue("expected removed=true: $removeResp", data.get("removed").asBoolean)
@@ -358,9 +358,9 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val knownLang = "jetbrains.mps.lang.core"
         val solution = createSolution()
         val model = createModel(solution, "test.usedlang.removetwice${System.nanoTime()}")
-        val modelRef = modelRefOf(model)
+        val modelReference = modelRefOf(model)
 
-        runTool(toolset) { it.mps_mcp_add_model_used_language(modelRef, knownLang, "language") }
+        runTool(toolset) { it.mps_mcp_add_model_used_language(modelReference, knownLang, "language") }
 
         val langRef = readOnRepo {
             val match = (model as SModelInternal).importedLanguageIds().single { it.qualifiedName == knownLang }
@@ -368,13 +368,13 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
 
         val firstRemove = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelRef, langRef, "language")
+            it.mps_mcp_remove_model_used_language(modelReference, langRef, "language")
         }
         assertTrue("first remove must report removed=true: $firstRemove",
             expectOk(firstRemove).get("removed").asBoolean)
 
         val secondRemove = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelRef, langRef, "language")
+            it.mps_mcp_remove_model_used_language(modelReference, langRef, "language")
         }
         assertFalse("second remove must report removed=false: $secondRemove",
             expectOk(secondRemove).get("removed").asBoolean)

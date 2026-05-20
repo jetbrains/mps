@@ -50,10 +50,12 @@ This catches typos symmetrically across all search strings — the tool never si
 
 If `modelReference` is provided, the search is restricted to languages used by that model — faster than searching all languages, and concepts in already-used languages are more likely to be suitable. Recommended workflow: try with a model first, then fall back to a global search if nothing turns up.
 
+Accepts a persistent model reference (preferred) or a model's long/short name as a fallback; names matching more than one model resolve to the first match in repository iteration order.
+
 Error strings:
 
-- Syntactically invalid `modelReference` → `"Invalid model reference: ..."`.
-- Syntactically valid reference that does not resolve to a project model → `"Model '...' not found"`.
+- Model not found by reference or name → `"Model not found: ..."`.
+
 
 ## Result schema
 

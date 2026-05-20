@@ -64,7 +64,7 @@ mps_mcp_replace_node_child(
 ### Step 6 — Validate
 
 ```json
-mps_mcp_check_root_node_problems(nodeRef = "<parent-class-node-ref>", onlyNodesWithProblems = true)
+mps_mcp_check_root_node_problems(nodeReference = "<parent-class-node-ref>", onlyNodesWithProblems = true)
 ```
 
 If there are errors in the new method, check:

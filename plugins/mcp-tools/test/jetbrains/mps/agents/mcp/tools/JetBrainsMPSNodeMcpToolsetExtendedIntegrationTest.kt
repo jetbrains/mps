@@ -207,7 +207,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         }
 
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.GET_PARENT, """{ "nodeRef": "$childRef" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.GET_PARENT, """{ "nodeReference": "$childRef" }""")
         }
         val data = expectOk(response)
         assertEquals(parentRef, data.get("reference").asString)
@@ -223,7 +223,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         }
 
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.GET_ROOT, """{ "nodeRef": "$childRef" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.GET_ROOT, """{ "nodeReference": "$childRef" }""")
         }
         val data = expectOk(response)
         assertEquals(rootRef, data.get("reference").asString)
@@ -233,7 +233,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     fun `perform_operation GET_MODEL_FOR_NODE returns the containing model reference`() {
         val ref = createConceptRoot("ModelHost")
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.GET_MODEL_FOR_NODE, """{ "nodeRef": "$ref" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.GET_MODEL_FOR_NODE, """{ "nodeReference": "$ref" }""")
         }
         val data = parseDataObject(JsonParser.parseString(response).asJsonObject.get("data"))
         // modelReferenceJson serialises both reference and a name; assert at least the reference is correct.
@@ -252,7 +252,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
             PersistenceFacade.getInstance().asString(second.reference)
         }
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.NODE_INDEX, """{ "nodeRef": "$secondRef" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.NODE_INDEX, """{ "nodeReference": "$secondRef" }""")
         }
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
@@ -264,7 +264,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     fun `perform_operation NODE_INDEX on a root node is rejected`() {
         val ref = createConceptRoot("RootIndex")
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.NODE_INDEX, """{ "nodeRef": "$ref" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.NODE_INDEX, """{ "nodeReference": "$ref" }""")
         }
         assertTrue(expectErr(response).contains("root node"))
     }
@@ -281,7 +281,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
             PersistenceFacade.getInstance().asString(a.reference)
         }
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.SIBLINGS, """{ "nodeRef": "$aRef" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.SIBLINGS, """{ "nodeReference": "$aRef" }""")
         }
         val arr = parseDataArray(response)
         val names = arr.map { it.asJsonObject.get("name").asString }.toSet()
@@ -297,18 +297,18 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
             PersistenceFacade.getInstance().asString(p.reference)
         }
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.GET_CHILD_ROLE, """{ "nodeRef": "$pRef" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.GET_CHILD_ROLE, """{ "nodeReference": "$pRef" }""")
         }
         val data = parseDataObject(JsonParser.parseString(response).asJsonObject.get("data"))
         assertEquals("propertyDeclaration", data.get("role").asString)
     }
 
     @Test
-    fun `perform_operation with missing nodeRef parameter is rejected`() {
+    fun `perform_operation with missing nodeReference parameter is rejected`() {
         val response = runTool(toolset) {
             it.mps_mcp_perform_operation(MPSNodeOperation.GET_PARENT, "{}")
         }
-        assertTrue(expectErr(response).contains("nodeRef"))
+        assertTrue(expectErr(response).contains("nodeReference"))
     }
 
     @Test
@@ -339,7 +339,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         // Move 'y' (index 1) to index 0
         val params = """
             {
-              "nodeRef": "$parentRef",
+              "nodeReference": "$parentRef",
               "childRole": "propertyDeclaration",
               "childNodeRef": "$yRef",
               "position": 0
@@ -372,7 +372,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
 
         val params = """
             {
-              "nodeRef": "$moveeRef",
+              "nodeReference": "$moveeRef",
               "newParentRef": "$parentBRef",
               "role": "propertyDeclaration"
             }
@@ -402,10 +402,10 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         val response = runTool(toolset) {
             it.mps_mcp_perform_operation(
                 MPSNodeOperation.MOVE_NODE_TO_PARENT,
-                """{ "nodeRef": "$ref" }""",
+                """{ "nodeReference": "$ref" }""",
             )
         }
-        assertTrue(expectErr(response).contains("Either 'newParentRef' or 'modelRef'"))
+        assertTrue(expectErr(response).contains("Either 'newParentRef' or 'modelReference'"))
     }
 
     // ── perform_operation: MAKE input validation ─────────────────────────────────────────
@@ -520,7 +520,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     fun `perform_operation FIX_REFERENCES on a clean root returns counts payload`() {
         val ref = createConceptRoot("FixHost")
         val response = runTool(toolset) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.FIX_REFERENCES, """{ "nodeRef": "$ref" }""")
+            it.mps_mcp_perform_operation(MPSNodeOperation.FIX_REFERENCES, """{ "nodeReference": "$ref" }""")
         }
         // ok envelope; data is a JSON string with `fixed` and `repointed` keys.
         val obj = JsonParser.parseString(response).asJsonObject

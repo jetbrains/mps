@@ -102,7 +102,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
     )
     suspend fun mps_mcp_scaffold_editor(
         @McpDescription("The persistent reference c:... or r:... of the declaration of the concept that needs an editor, or its fully qualified name.") conceptRef: String,
-        @McpDescription("The persistent reference of the target editor model where the editor node should be created.") modelRef: String,
+        @McpDescription("Target editor model where the editor node should be created: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,
         @McpDescription("Optional: A persistent reference to a StyleClass to automatically apply to constant cells like the concept alias.") keywordStyle: String? = null,
         @McpDescription("Optional: A persistent reference to a StyleClass to apply to reference cells.") referenceStyle: String? = null,
         @McpDescription("Whether to automatically detect and include existing suitable editor components.") detectComponents: Boolean = false,
@@ -119,7 +119,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
             scaffoldEditorImpl(
                 mpsProject = mpsProject,
                 conceptRef = conceptRef,
-                modelRef = modelRef,
+                modelReference = modelReference,
                 keywordStyle = keywordStyle,
                 referenceStyle = referenceStyle,
                 detectComponents = detectComponents,
@@ -135,7 +135,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
     private suspend fun scaffoldEditorImpl(
         mpsProject: jetbrains.mps.project.MPSProject,
         conceptRef: String,
-        modelRef: String,
+        modelReference: String,
         keywordStyle: String?,
         referenceStyle: String?,
         detectComponents: Boolean,
@@ -265,10 +265,12 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         return@executeShortCommandOnEdt
                     }
 
-                    val sModelRef = PersistenceFacade.getInstance().createModelReference(modelRef)
-                    val model = sModelRef.resolve(repo) as? EditableSModel ?: run {
-                        error = "Model '$modelRef' not found or not editable"
-                        return@executeShortCommandOnEdt
+                    val model = when (val r = resolveEditableModel(repo, modelReference)) {
+                        is EditableModelResolution.Ok -> r.model
+                        is EditableModelResolution.Err -> {
+                            error = "Model '$modelReference' not found or not editable"
+                            return@executeShortCommandOnEdt
+                        }
                     }
 
                     // Resolve editor concepts and links
@@ -396,8 +398,8 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
                     // 1. Resolve explicitly included components
                     includeComponents?.forEach { ref ->
-                        val nodeRef = resolveNodeReference(repo, ref)
-                        val node = nodeRef?.resolve(repo)
+                        val nodeReference = resolveNodeReference(repo, ref)
+                        val node = nodeReference?.resolve(repo)
                         if (node != null && structureQualifiedName(node.concept) == "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration") {
                             availableComponents.add(node)
                             explicitComponents.add(node)

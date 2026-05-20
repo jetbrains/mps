@@ -4,7 +4,7 @@
 
 ```
 mps_mcp_create_run_configuration
-  nodeReference: r:<modelId>(<modelName>)/<nodeId>     # the source root node
+  nodeReference: r:<modelId>(<modelName>)/<nodeId> or 'ModelName.RootName')          # the source root node
   configurationName: "<stable name>"                   # optional; see below
 ```
 

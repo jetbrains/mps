@@ -99,9 +99,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             }
 
             MPSStructureOperation.GET_ENUMERATION_LITERALS -> {
-                val nodeRef = params.get("nodeRef")?.asString ?: return@withMpsProject errJson("Parameter 'nodeRef' is missing")
+                val nodeReference = params.get("nodeReference")?.asString ?: return@withMpsProject errJson("Parameter 'nodeReference' is missing")
                 val propertyName = params.get("propertyName")?.asString ?: return@withMpsProject errJson("Parameter 'propertyName' is missing")
-                mps_mcp_get_enumeration_literals(nodeRef, propertyName)
+                mps_mcp_get_enumeration_literals(nodeReference, propertyName)
             }
 
             MPSStructureOperation.FIND_INSTANCES -> {
@@ -582,9 +582,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
 
             // If make is requested, run make on the structure model
             if (make) {
-                val modelRef = PersistenceFacade.getInstance().createModelReference(structureModelRef)
                 val model = executeBackgroundRead(mpsProject) {
-                    modelRef.resolve(mpsProject.repository)
+                    resolveModel(mpsProject.repository, structureModelRef)
                 }
 
                 if (model == null) {
@@ -972,14 +971,14 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
     }
 
     private suspend fun mps_mcp_get_enumeration_literals(
-        nodeRef: String,
+        nodeReference: String,
         propertyName: String
     ): String = withMpsProject("Getting MPS enumeration literals for '$propertyName'") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
-                ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$nodeRef'")
+            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
+                ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
             val node = sNodeRef.resolve(mpsProject.repository)
-                ?: return@executeShortReadOnEdt errJson("Node '$nodeRef' not found", McpErrorCode.NOT_FOUND)
+                ?: return@executeShortReadOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
             val sProperty = node.concept.properties.find { it.name == propertyName }
                 ?: return@executeShortReadOnEdt errJson("Property '$propertyName' not found in concept '${node.concept.name}'", McpErrorCode.NOT_FOUND)
             val type = sProperty.type

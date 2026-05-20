@@ -239,7 +239,7 @@ Simplified representation of the actual builder's core logic:
 6. BL `foreach` over `node.elsifClauses` → `code for elseIf`
 7. BL `if (node.ifFalseStatement != null)` → `code for node.ifFalseStatement`
 
-Key observed nodes (verified, from nodeRef `r:.../1206454554507`):
+Key observed nodes (verified, from nodeReference `r:.../1206454554507`):
 
 ```json
 [

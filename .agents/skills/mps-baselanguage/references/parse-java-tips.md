@@ -18,7 +18,7 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
                                              //   NESTED_CLASS, CLASS_CONTENT.
   "insert": {                                // required
     "mode": "root" | "child" | "replace",   // required
-    "modelRef": string,                      // required when mode=="root" (SModelReference)
+    "modelReference": string,                      // required when mode=="root" (SModelReference)
     "parentRef": string,                     // required when mode=="child" (SNodeReference)
     "targetRef": string,                     // required when mode=="replace" (SNodeReference)
     "role": string,                          // required when mode=="child" (containment role)

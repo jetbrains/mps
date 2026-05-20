@@ -2,7 +2,7 @@
 
 Builders in `r:00000000-0000-4000-0000-011c895902c2(jetbrains.mps.baseLanguage.dataFlow)`. Use `mps_mcp_print_node_json` with `deep: true` on any of these nodeRefs to inspect the exact structure.
 
-| Builder | nodeRef (decimal) | What to learn |
+| Builder | nodeReference (decimal) | What to learn |
 |---|---|---|
 | `IfStatement_DataFlow` | `/1206454554507` | condition → ifjump → then → elsifClauses loop → else; `LabelPosition`; `EmitMayBeUnreachable` on the skip jump |
 | `WhileStatement_DataFlow` | `/1206455216234` | `ConditionUtil.getConditionConstant`; `BeforePosition` loop-back; `EmitMayBeUnreachable` on loop-back |

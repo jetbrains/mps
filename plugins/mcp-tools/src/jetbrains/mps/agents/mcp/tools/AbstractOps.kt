@@ -249,7 +249,7 @@ abstract class AbstractOps : McpToolset {
     protected fun saveOrRollback(
         model: EditableSModel,
         createdNodes: List<SNode>,
-        modelRef: String,
+        modelReference: String,
     ): String? {
         return try {
             model.save()
@@ -259,10 +259,10 @@ abstract class AbstractOps : McpToolset {
             if (e is Error) throw e
             // Log before rollback: the stack trace is the only diagnostic surface for a real
             // I/O failure (the returned errJson only carries the message).
-            logger.warn("save() failed for model '$modelRef'", e)
+            logger.warn("save() failed for model '$modelReference'", e)
             safelyRollbackNodes(createdNodes)
             errJson(
-                "Failed to save model '$modelRef': ${e.message ?: e.javaClass.name}. " +
+                "Failed to save model '$modelReference': ${e.message ?: e.javaClass.name}. " +
                         "On-disk state may be partially written; check VCS to restore a known-good baseline.",
                 McpErrorCode.INTERNAL_ERROR,
             )
@@ -309,23 +309,20 @@ abstract class AbstractOps : McpToolset {
     }
 
     /**
-     * Resolves the given persistent model reference and validates that the resolved
-     * model is an [EditableSModel]. Returns [EditableModelResolution.Ok] on success
-     * or [EditableModelResolution.Err] (with a pre-formatted errJson) on any failure.
+     * Resolves the given model reference and validates that the resolved model is an
+     * [EditableSModel]. Accepts the persistent form of an `SModelReference` (preferred)
+     * or the model's long/short name as a fallback — mirrors [resolveModel]. Returns
+     * [EditableModelResolution.Ok] on success or [EditableModelResolution.Err] (with a
+     * pre-formatted errJson) on any failure.
      *
      * Use this from inside a model-access action (e.g. executeShortCommandOnEdt { ... }) so the
      * resolution and the subsequent mutations happen under the same lock.
      */
-    protected fun resolveEditableModel(repository: SRepository, modelRef: String): EditableModelResolution {
-        val sModelRef = try {
-            PersistenceFacade.getInstance().createModelReference(modelRef)
-        } catch (e: Exception) {
-            return EditableModelResolution.Err(invalidReference("Invalid model reference '$modelRef': ${e.message}"))
-        }
-        val model = sModelRef.resolve(repository)
-            ?: return EditableModelResolution.Err(errJson("Model '$modelRef' not found", McpErrorCode.NOT_FOUND))
+    protected fun resolveEditableModel(repository: SRepository, modelReference: String): EditableModelResolution {
+        val model = resolveModel(repository, modelReference)
+            ?: return EditableModelResolution.Err(errJson("Model '$modelReference' not found", McpErrorCode.NOT_FOUND))
         if (model !is EditableSModel) {
-            return EditableModelResolution.Err(errJson("Model '$modelRef' is not editable", McpErrorCode.NOT_EDITABLE))
+            return EditableModelResolution.Err(errJson("Model '$modelReference' is not editable", McpErrorCode.NOT_EDITABLE))
         }
         return EditableModelResolution.Ok(model)
     }
@@ -350,13 +347,13 @@ abstract class AbstractOps : McpToolset {
      */
     protected fun resolveEditableNodeAndModel(
         repository: SRepository,
-        nodeRef: String,
+        nodeReference: String,
         missingMessageBuilder: (String) -> String = { "Node '$it' not found" },
         nonEditableMessage: String = "Model containing the node is not editable"
     ): EditableNodeResolution {
-        val sNodeRef = resolveNodeReference(repository, nodeRef)
+        val sNodeRef = resolveNodeReference(repository, nodeReference)
         val node = sNodeRef?.resolve(repository)
-            ?: return EditableNodeResolution.Err(errJson(missingMessageBuilder(nodeRef), McpErrorCode.NOT_FOUND))
+            ?: return EditableNodeResolution.Err(errJson(missingMessageBuilder(nodeReference), McpErrorCode.NOT_FOUND))
         val model = node.model
         if (model !is EditableSModel) {
             return EditableNodeResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
@@ -1254,8 +1251,8 @@ abstract class AbstractOps : McpToolset {
     protected fun resolveConceptNode(repository: SRepository, conceptRef: String): SNode? {
         // 1. Try as a node reference
         try {
-            val nodeRef = PersistenceFacade.getInstance().createNodeReference(conceptRef)
-            nodeRef.resolve(repository)?.let { return it }
+            val nodeReference = PersistenceFacade.getInstance().createNodeReference(conceptRef)
+            nodeReference.resolve(repository)?.let { return it }
         } catch (ignore: Exception) {
             // Fall back to other options
         }
@@ -1342,10 +1339,10 @@ abstract class AbstractOps : McpToolset {
         return null
     }
 
-    protected fun resolveModel(repository: SRepository, modelRef: String): SModel? {
+    protected fun resolveModel(repository: SRepository, modelReference: String): SModel? {
         // 1. Try as a model reference
         try {
-            val ref = PersistenceFacade.getInstance().createModelReference(modelRef)
+            val ref = PersistenceFacade.getInstance().createModelReference(modelReference)
             ref.resolve(repository)?.let { return it }
         } catch (ignore: Exception) {
             // Fall back to the other options
@@ -1354,7 +1351,7 @@ abstract class AbstractOps : McpToolset {
         // 2. Try searching by long name
         for (module in repository.modules) {
             for (model in module.models) {
-                if (model.name.longName == modelRef || model.name.value == modelRef) {
+                if (model.name.longName == modelReference || model.name.value == modelReference) {
                     return model
                 }
             }

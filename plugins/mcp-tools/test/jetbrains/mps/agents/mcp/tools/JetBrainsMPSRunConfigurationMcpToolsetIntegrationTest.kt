@@ -390,7 +390,7 @@ class JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest : McpIntegrationTest
         val model = createModel(solution, "${solution.moduleName}.code")
         val response = runTool(JetBrainsMPSRootNodeMcpToolset()) {
             it.mps_mcp_create_root_node(
-                modelRef = modelRefOf(model),
+                modelReference = modelRefOf(model),
                 concept = concept,
                 conceptReference = null,
                 name = name,

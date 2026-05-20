@@ -2,7 +2,7 @@
 
 Builders in `r:38e64454-bd7a-45b9-8394-d534cb1010ca(org.jetbrains.mps.samples.IfAndUnless.dataFlow)`.
 
-| Builder | nodeRef (decimal) | What to learn |
+| Builder | nodeReference (decimal) | What to learn |
 |---|---|---|
 | `UnlessStatement_DataFlow` | `/3446179501564629101` | Complete simple builder for an inverted-condition statement; good entry point for a custom language |
 

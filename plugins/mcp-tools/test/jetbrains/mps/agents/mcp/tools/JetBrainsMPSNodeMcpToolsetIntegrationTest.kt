@@ -48,7 +48,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         val findParams = """
             {
-              "nodeRef": "$baseRef",
+              "nodeReference": "$baseRef",
               "scope": "editable"
             }
         """.trimIndent()

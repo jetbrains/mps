@@ -176,19 +176,14 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
     )
     suspend fun mps_mcp_search_concepts(
         @McpDescription("The list of strings to search for. Multiple words in a string are treated as multiple required terms.") searchTexts: List<String>,
-        @McpDescription("Optional persistent model reference to limit search to languages used by this model") modelReference: String? = null
+        @McpDescription("Optional model reference (preferred) or model name to limit search to languages used by this model") modelReference: String? = null
     ): String = withMpsProject("Searching for MPS concepts") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
             val repo = mpsProject.repository
             val registry = LanguageRegistry.getInstance(repo)
             val languages: Iterable<SLanguage> = if (modelReference != null) {
-                val modelRef = try {
-                    PersistenceFacade.getInstance().createModelReference(modelReference)
-                } catch (e: Exception) {
-                    return@executeShortReadOnEdt errJson("Invalid model reference: $modelReference")
-                }
-                val model = modelRef.resolve(repo)
-                    ?: return@executeShortReadOnEdt errJson("Model '$modelReference' not found")
+                val model = resolveModel(repo, modelReference)
+                    ?: return@executeShortReadOnEdt errJson("Model not found: $modelReference")
                 val mdr = ModelDependencyResolver(registry, repo)
                 mdr.usedLanguages(model)
             } else {

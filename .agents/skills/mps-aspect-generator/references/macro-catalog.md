@@ -6,7 +6,7 @@ Read this when: attaching a macro to a template node, choosing between similar m
 
 Macros attach to target nodes **via the `smodelAttribute` child role** (well-known role id `lGtFl`). Multiple macros can coexist on the same target node as sibling `smodelAttribute` children (e.g. `LoopMacro` + `CopySrcNodeMacro` together = "iterate source children and copy each, running reductions").
 
-All macro concepts live in `jetbrains.mps.lang.generator.structure`. Attach any of them via `mps_mcp_add_node_child(nodeRef = <target-node>, childRole = "smodelAttribute", childJson = ...)`.
+All macro concepts live in `jetbrains.mps.lang.generator.structure`. Attach any of them via `mps_mcp_add_node_child(nodeReference = <target-node>, childRole = "smodelAttribute", childJson = ...)`.
 
 ## Macro table
 

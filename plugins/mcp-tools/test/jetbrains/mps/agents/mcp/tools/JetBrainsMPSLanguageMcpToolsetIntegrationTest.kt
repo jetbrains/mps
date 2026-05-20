@@ -509,7 +509,7 @@ class JetBrainsMPSLanguageMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
     @Test
     fun `search-concepts scoped to a well-formed but unresolved model reference returns Model not found wording`() {
-        // Distinct from the Invalid-model-reference branch: this reference parses cleanly but
+        // This reference parses cleanly but
         // does not resolve to any model in the test project. The toolset must surface that
         // specific error rather than collapsing it into a generic failure or silently falling
         // back to the all-languages search.
@@ -531,10 +531,7 @@ class JetBrainsMPSLanguageMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
     @Test
     fun `search-concepts scoped to an invalid model reference returns Invalid model reference wording`() {
-        // The toolset distinguishes a malformed model reference from a missing one. Pin the
-        // malformed branch so a future refactor that swallows the exception into an "all
-        // languages" fallback can't go unnoticed. The call site uses bare `errJson(...)` with
-        // no explicit McpErrorCode, so only the message is pinned here.
+        // This reference does not parse, so it is treated as a model name, which does not resolve.
         val response = runTool(JetBrainsMPSLanguageMcpToolset()) {
             it.mps_mcp_search_concepts(
                 searchTexts = listOf("ConceptDeclaration"),
@@ -546,7 +543,7 @@ class JetBrainsMPSLanguageMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
         assertTrue(
             "error should call out the invalid model reference: ${obj.get("error").asString}",
-            obj.get("error").asString.contains("Invalid model reference")
+            obj.get("error").asString.contains("not found")
         )
     }
 

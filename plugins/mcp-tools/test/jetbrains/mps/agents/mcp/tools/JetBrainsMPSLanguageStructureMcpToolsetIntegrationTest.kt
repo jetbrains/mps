@@ -827,7 +827,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val response = runTool {
             it.mps_mcp_perform_structure_operation(
                 MPSStructureOperation.GET_ENUMERATION_LITERALS,
-                """{"nodeRef":"$linkRef","propertyName":"metaClass"}"""
+                """{"nodeReference":"$linkRef","propertyName":"metaClass"}"""
             )
         }
         val arr = parseDataArray(response)
@@ -844,7 +844,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val response = runTool {
             it.mps_mcp_perform_structure_operation(
                 MPSStructureOperation.GET_ENUMERATION_LITERALS,
-                """{"nodeRef":"$conceptRef","propertyName":"name"}"""
+                """{"nodeReference":"$conceptRef","propertyName":"name"}"""
             )
         }
         assertTrue(expectErr(response).contains("not an enumeration"))
@@ -855,7 +855,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val response = runTool {
             it.mps_mcp_perform_structure_operation(
                 MPSStructureOperation.GET_ENUMERATION_LITERALS,
-                """{"nodeRef":"$unresolvableNodeRef","propertyName":"name"}"""
+                """{"nodeReference":"$unresolvableNodeRef","propertyName":"name"}"""
             )
         }
         assertTrue(expectErr(response).contains("not found"))

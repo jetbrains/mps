@@ -32,7 +32,7 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `create_root_node creates a named concept declaration in the target model`() {
         val response = runTool(toolset) {
             it.mps_mcp_create_root_node(
-                modelRef = structureModelRef,
+                modelReference = structureModelRef,
                 concept = conceptDeclarationFqn,
                 conceptReference = null,
                 name = "MyConcept",
@@ -52,7 +52,7 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `create_root_node rejects unknown model with NOT_FOUND envelope`() {
         val response = runTool(toolset) {
             it.mps_mcp_create_root_node(
-                modelRef = "r:00000000-0000-0000-0000-000000000000(no.such.model)",
+                modelReference = "r:00000000-0000-0000-0000-000000000000(no.such.model)",
                 concept = conceptDeclarationFqn,
                 conceptReference = null,
                 name = "X",
@@ -65,7 +65,7 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `create_root_node rejects unknown concept`() {
         val response = runTool(toolset) {
             it.mps_mcp_create_root_node(
-                modelRef = structureModelRef,
+                modelReference = structureModelRef,
                 concept = "totally.unknown.concept.X",
                 conceptReference = null,
                 name = "Y",

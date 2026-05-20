@@ -471,7 +471,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
     }
 
-    protected suspend fun update_node_child(mpsProject: MPSProject, nodeRef: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?, position: Int? = null, dryRun: Boolean = false): String {
+    protected suspend fun update_node_child(mpsProject: MPSProject, nodeReference: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?, position: Int? = null, dryRun: Boolean = false): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node child")
         return executeShortCommandOnEdt(mpsProject) {
             val repo = mpsProject.repository
@@ -538,10 +538,10 @@ abstract class AbstractNodeOps : AbstractOps() {
                         })
                     }
                 }
-            } else if (nodeRef != null && childRole != null && childJson != null) {
+            } else if (nodeReference != null && childRole != null && childJson != null) {
                 // Addition
-                val sNodeRef = resolveNodeReference(repo, nodeRef)
-                val parent = sNodeRef?.resolve(repo) ?: return@executeShortCommandOnEdt errJson("Parent node '$nodeRef' not found", McpErrorCode.NOT_FOUND)
+                val sNodeRef = resolveNodeReference(repo, nodeReference)
+                val parent = sNodeRef?.resolve(repo) ?: return@executeShortCommandOnEdt errJson("Parent node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
                 val model = parent.model
                 if (model !is EditableSModel) return@executeShortCommandOnEdt errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
@@ -623,11 +623,11 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
     }
 
-    protected suspend fun update_node_reference(mpsProject: MPSProject, nodeRef: String, referenceRole: String, targetNodeRefStr: String?): String {
+    protected suspend fun update_node_reference(mpsProject: MPSProject, nodeReference: String, referenceRole: String, targetNodeRefStr: String?): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node reference '$referenceRole'")
         return executeShortCommandOnEdt(mpsProject) {
-            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeRef)
-            val node = sNodeRef?.resolve(mpsProject.repository) ?: return@executeShortCommandOnEdt errJson("Node '$nodeRef' not found", McpErrorCode.NOT_FOUND)
+            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
+            val node = sNodeRef?.resolve(mpsProject.repository) ?: return@executeShortCommandOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
             val model = node.model
             if (model !is EditableSModel) return@executeShortCommandOnEdt errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)

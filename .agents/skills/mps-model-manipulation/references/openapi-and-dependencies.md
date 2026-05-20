@@ -43,8 +43,8 @@ MPS distinguishes two dependency layers. Get this right before assuming a concep
 - Live on an individual model (`.mps` file).
 - Control which **models** (and therefore which concepts, root nodes, and references) are visible inside this model's nodes.
 - Two sub-kinds:
-    - **Imported models** — needed whenever you reference a node (including a concept declaration) from another model. Add with `mps_mcp_add_model_dependency(modelRefStr, targetModels)`. The tool also adds a `Default` module dependency on each target model's owning module — you do **not** need to add that manually.
-    - **Used languages** — every concept used in the model must come from a language imported here. Add with `mps_mcp_add_model_used_language(modelRef, usedLanguage, kind)` where `kind` is `language` or `devkit`.
+    - **Imported models** — needed whenever you reference a node (including a concept declaration) from another model. Add with `mps_mcp_add_model_dependency(modelReference, targetModels)`. The tool also adds a `Default` module dependency on each target model's owning module — you do **not** need to add that manually.
+    - **Used languages** — every concept used in the model must come from a language imported here. Add with `mps_mcp_add_model_used_language(modelReference, usedLanguage, kind)` where `kind` is `language` or `devkit`.
 
 ### Typical failure modes
 

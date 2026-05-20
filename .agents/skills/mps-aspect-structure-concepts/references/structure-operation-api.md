@@ -21,7 +21,7 @@ Note: the structure response intentionally does **not** include a separate `runt
 Parameters:
 ```
 {
-  "structureModelRef": "Persistent reference of the structure model (SModelReference)",
+  "structureModelRef": "Structure model: persistent model reference (preferred) or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.",
   "make": "Optional: boolean, whether to make the structure model after creation (default: false)",
   "dryRun": "Optional: if true, only validate input without mutating the model. Default: false.",
   "conceptsJson": "Optional: the actual JSON array of concepts to create (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).",
@@ -98,7 +98,7 @@ In a single call creates a new `EnumerationDeclaration` with a provided set of e
 Parameters:
 ```
 {
-  "structureModelRef": "Persistent reference of the structure model (SModelReference)",
+  "structureModelRef": "Structure model: persistent model reference (preferred) or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.",
   "enumName": "Name of the enumeration",
   "valuesJson": "The JSON array of enum values (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Format: [{\"enumName\": \"val1\", \"enumPresentation\": \"Val 1\"}, ...]",
   "defaultEnumName": "The enumName that should be used as default (optional)",
@@ -113,7 +113,7 @@ Returns a JSON array of objects, each having `"value"` and `"presentation"` keys
 Parameters:
 ```
 {
-  "nodeRef": "Persistent reference of the node (SNodeReference)",
+  "nodeReference": "Persistent reference of the node (SNodeReference)",
   "propertyName": "The name of the enumeration property"
 }
 ```
