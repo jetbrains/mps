@@ -1,68 +1,70 @@
 ---
 name: mps-dsl-memory
-description: Explore a live MPS DSL project and write a project-local MEMORY.md for future sessions.
+description: Create or refresh project-local DSL skills under `.agents/skills/<dsl-skill-name>/` for one or more MPS languages after discovering concepts, sandbox examples, JSON blueprints, references, or gotchas.
 type: reference
 ---
 
-### When to Use
-* A new MPS sample or DSL project has no `MEMORY.md`, or the existing one is outdated.
-* The user says "bootstrap memory", "create MEMORY.md", or "document this DSL".
-* You have just explored a DSL and want to persist your findings for future sessions.
-
 ### Prerequisites
-* MPS MCP tools must be available (e.g. `mps_mcp_get_project_structure` returns results).
-* At least one sandbox, example solution, or user model must exercise the DSL.
+* MPS MCP tools are available.
+* The project has one or more language modules and at least one sandbox, example solution, or editable model that exercises the DSLs.
+* Use MPS MCP tools for discovery and model edits. Do not hand-edit serialized `.mps` XML.
 
-### Phase 1 — Identify the Language and Sandbox
-1. Call `mps_mcp_get_project_structure` with `includeModels: false`. Identify:
-    * The **language module** (kind: `Language`) that defines the DSL.
-    * The **sandbox solution** (kind: `Solution`) — usually named `*.sandbox`.
-2. Call `mps_mcp_get_project_structure` with `startingPoint` set to the sandbox reference and `includeRootNodes: true`. Record the **model reference** and all **root node references**.
+### Workflow
+1. **Discover languages**: Call `mps_mcp_get_project_structure` with `includeModels: false`. Identify all editable DSL language modules and derive each concept-tools language ref as `l:<uuid>:<languageName>`.
+2. **Choose skill scope**: Prefer one generated skill per language. Use one combined skill only when the project languages are tightly coupled and users normally edit them together.
+3. **Find examples**: For each language or language group, call `mps_mcp_get_project_structure` with the relevant sandbox/example solution as `startingPoint` and `includeRootNodes: true`. Record editable model refs and representative root refs.
+4. **Read concepts**: Call `mps_mcp_get_concept_details` with the relevant `l:<uuid>:<languageName>` refs. Capture rootable concepts, concrete children, properties, child roles, references, and useful `shortDescription` text.
+5. **Sample sparingly**: Use `mps_mcp_print_node_json` only on representative roots or subtrees needed for reference targets, required roles, or reusable blueprints. Avoid dumping every root.
+6. **Generate DSL skills**: Create or update `.agents/skills/<dsl-skill-name>/` for each selected scope. Preserve user-added notes unless they are stale or wrong.
+7. **Cross-link related skills**: When generated skills cover languages that extend, depend on, or are commonly used inside each other, add short links and usage notes between them.
+8. **Verify**: Confirm linked reference files exist, blueprint JSON parses, no `.DS_Store` or editor artifacts were added, and one or two recorded node refs still resolve if the sandbox may have changed.
 
-### Phase 2 — Understand the DSL Semantically
-4. Call `mps_mcp_get_concept_details` with `languageRefs` set to the language module reference.
-5. For each concept collect: name, qualified name, `shortDescription`, `isRootable`, properties, children, and references.
-6. Classify concepts:
-    * **Rootable** — document fully.
-    * **Concrete children** — document key ones.
-    * **Abstract/interface** — one-line summary.
-    * **Configuration/enum** — list instances from sandbox.
-
-### Phase 3 — Capture Sandbox Data
-7. For each rootable concept, call `mps_mcp_perform_structure_operation` with `FIND_INSTANCES` (scope: `editable`). Collect all returned node refs — these supplement the root node refs from Phase 1.
-8. For each node ref collected in Phase 1 **and** Phase 3 step 7, call `mps_mcp_print_node_json` with `deep: true`. Record all configuration items, node refs, and reference fields with their target ref format.
-
-### Phase 4 — Derive Usage Patterns
-9. From the deep JSON, determine: which references point where, which roles are required vs. optional, and the `target` ref format for cross-node references.
-10. Extract one complete JSON blueprint for the most common "add a new X" operation:
-
-```json
-{
-  "concept": "<fully.qualified.Concept>",
-  "properties": [{ "name": "<propName>", "value": "<value>" }],
-  "references": [{ "role": "<refRole>", "target": "<target-node-ref>" }],
-  "children": [
-    {
-      "role": "<childRole>",
-      "nodes": [{ "concept": "<fully.qualified.ChildConcept>", "properties": [{ "name": "<propName>", "value": "<value>" }] }]
-    }
-  ]
-}
+### Generated Skill Layout
+```text
+.agents/skills/<dsl-skill-name>/
+|-- SKILL.md
+`-- references/
+    |-- concepts.md
+    |-- sandbox.md
+    |-- workflows.md
+    |-- gotchas.md
+    `-- blueprints/
+        |-- <operation>-skeleton.json
+        `-- <operation>-subtree.json
 ```
 
-### Phase 5 — Write MEMORY.md
-11. If `MEMORY.md` already exists, read it first. Overwrite only sections that are stale; preserve any user-added annotations.
-12. Write `MEMORY.md` to the **project root** (same directory as `AGENTS.md`). Include these sections:
-    * **What This DSL Is About** — 2–4 sentences: domain, purpose, and target users.
-    * **DSL Concept Hierarchy** — one bullet per concept with description, children (role, cardinality), and properties.
-    * **Sandbox Model** — module name, model ref, and a node ref table for each config collection.
-    * **How to Add a New \<Item\>** — the JSON blueprint from Phase 4.
-    * **DSL-Specific Gotchas** — non-obvious constraints, reference formats, or ordering requirements.
-13. Verify the file exists with a quick Read.
+Use stable lowercase slugs derived from the language namespace. Split camel case and separators into words. Prefer the namespace's final meaningful segment unless the project consistently names the DSL differently.
 
-### Rules
-* **In future sessions, read MEMORY.md before exploring** — it may already have the node refs and JSON templates you need.
-* **Node refs are stable** — they do not change unless the node is deleted and recreated.
-* **Verify before acting** — spot-check one or two node refs with `mps_mcp_print_node_json` if the sandbox may have changed.
-* **`shortDescription` is the primary semantic source** — infer from name and sandbox usage if absent.
-* **Completeness over brevity** — missing context is worse than a longer file.
+### Generated `SKILL.md` Requirements
+* Frontmatter:
+    * `name: <dsl-skill-name>`
+    * `description:` Use when creating, editing, validating, or inspecting this DSL's models.
+* Short domain summary: two to four sentences. For combined skills, name each covered language and when to use the combined workflow.
+* Critical rules:
+    * Use MPS MCP tools; do not hand-edit `.mps` XML.
+    * Use `mps_mcp_get_concept_details` with `l:<uuid>:<languageName>`, not `<uuid>(<languageName>)`.
+    * Prefer skeleton-plus-subtree insertion for large or uncertain roots.
+    * Validate changed roots with `mps_mcp_check_root_node_problems`.
+* Quick start:
+    * Use the recorded sandbox model for examples or new sample roots.
+    * Start from `references/blueprints/` for known shapes.
+    * Dry-run root JSON with `mps_mcp_insert_root_node_from_json`.
+    * Insert roots with `mps_mcp_insert_root_node_from_json`.
+    * Add child-role subtrees incrementally for large roots.
+    * Run `mps_mcp_check_root_node_problems` and any task-required build/generation checks.
+* Project references:
+    * Concept-tools language ref for each covered language.
+    * Sandbox/example model refs.
+    * Primary editable modules.
+    * Dependencies or extension relationships between covered project languages, if relevant.
+* Related DSL skills:
+    * Link sibling generated skills when another project language supplies child concepts, expressions, commands, reference targets, or extensions used by this language.
+    * Explain when to load each related skill.
+* Reference directory links.
+
+### Reference Files
+* `references/concepts.md`: concept hierarchy, rootable concepts, properties, child roles, references, and semantic notes.
+* `references/sandbox.md`: sandbox model refs, representative roots, configuration nodes, reference targets, and stable node refs.
+* `references/workflows.md`: creation/editing recipes, including when to use full-root JSON versus skeleton-plus-subtrees.
+* `references/gotchas.md`: reference formats, ordering constraints, required roles, expression precedence issues, extension-language dependencies, and known validation failures.
+* `references/blueprints/`: valid compact JSON skeletons and subtree templates.

@@ -46,7 +46,7 @@ All MPS skills live in a per-harness directory loaded by the agent host (e.g. `.
 | `mps-language-analysis`             | Analyze MPS language definitions — discover concepts, metadata, aspects, sample nodes. |
 | `mps-language-inheritance`          | Investigate inheritance between MPS languages and concepts — extends, super, sub, assignable. |
 | `mps-node-editing`                  | Modify MPS nodes using JSON blueprints — the canonical workflow for any node mutation. |
-| `mps-dsl-memory`                    | Explore a live MPS DSL project and write (or update) a project-local `MEMORY.md` for future sessions. |
+| `mps-dsl-memory`                    | Explore a live MPS DSL project and create or refresh generated project-local DSL skills under `.agents/skills/<dsl-skill-name>/`. |
 | `mps-lang-core-xml`                 | `jetbrains.mps.core.xml` language for authoring XML documents and XML-generating generator templates. |
 | `mps-quotations`                    | MPS quotations and anti-quotations — node literals creating SNode trees inline in behavior/generator/model code. |
 | `mps-build-language`                | MPS Build Language — declarative DSL generating Ant `build.xml` files for packaging plugins, Java modules, standalone IDEs. |
@@ -73,7 +73,7 @@ MPS is a projectional editor and a language workbench. Unlike text-based IDEs, M
 
 ## Common Workflow — Initialize a Session
 
-1. **Read `MEMORY.md`** if present in the project root — it records concept structure, node refs, and JSON blueprints from prior sessions.
+1. **Check generated DSL skills** under `.agents/skills/*-dsl/` before starting unfamiliar DSL work. Use the relevant project-local DSL skill when it exists; if it is missing or stale, load `mps-dsl-memory` to create or refresh it.
 2. **Anchor on the user's focus** — call `mps_mcp_get_current_editor_root_node` so you know which root the user is looking at.
 3. **Identify the task family**: defining a language → load `mps-language-aspects-overview`. Editing user code → load `mps-node-editing` and (often) `mps-baselanguage`. Investigating an unfamiliar language → load `mps-language-analysis`.
 4. **Follow the matching aspect skill** for the specific aspect you're touching.

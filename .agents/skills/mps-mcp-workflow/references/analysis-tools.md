@@ -17,7 +17,7 @@
 - Browse `.agents/skills/` for available companion skills, or consult the table at the top of `SKILL.md`.
 - Load the `mps-baselanguage` skill (`.agents/skills/mps-baselanguage/SKILL.md`) as soon as you need to write any code in BaseLanguage or Java.
 - Load the `mps-aspect-structure-concepts` skill as soon as you need to define or change a language or its concepts.
-- If `MEMORY.md` exists in the project root, **read it before starting any DSL task** — it records concept structure, node refs, and JSON blueprints from prior sessions. After a session where you discovered new facts about the DSL, load the `mps-dsl-memory` skill to update it.
+- Before starting unfamiliar DSL work, check `.agents/skills/*-dsl/` for a generated project-local DSL skill and use it before re-exploring the language. After a session where you discovered new DSL facts, load `mps-dsl-memory` to create or refresh the relevant generated DSL skill.
 
 ## `mps_mcp_print_node_json` — Output Format
 
@@ -101,7 +101,7 @@ Each entry has the shape:
 
 ## Workflow and Best Practices
 
-1.  **Initialize a session**: read `MEMORY.md` (if present in the project root) and this skill before any MPS work. If the user opens a specific concept/model, also call `mps_mcp_get_current_editor_root_node` to anchor on what they are looking at.
+1.  **Initialize a session**: check `.agents/skills/*-dsl/` for generated project-local DSL skills and read this skill before any MPS work. If the user opens a specific concept/model, also call `mps_mcp_get_current_editor_root_node` to anchor on what they are looking at.
 2.  **Navigate with precision**: prefer using `startingPoint` and `reference` (ID) over names to avoid ambiguity.
 3.  **Respect the AST**: remember that you are editing a tree. When writing Java (`BaseLanguage`), use `ParenthesizedExpression` if you are unsure about operation priorities in the tree structure.
 4.  **Learn from samples**: study existing code to understand how to perform common tasks. Use `mps_mcp_perform_structure_operation` (`FIND_INSTANCES`) to find existing nodes of a given concept.

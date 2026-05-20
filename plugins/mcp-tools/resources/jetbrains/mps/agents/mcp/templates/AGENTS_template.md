@@ -57,13 +57,31 @@ Inspection of generated code is allowed when:
 
 Use the `mps-mcp-workflow` skill for complete guidance on MPS workflows, skills, available tools, and best practices.
 
-## DSL Memory
+## Project-Local DSL Skills
 
-If `MEMORY.md` exists in the project root, **read it before starting any task** — it captures DSL concept structure, sandbox node refs, JSON blueprints, and gotchas discovered in prior sessions, saving you from re-exploring the same ground.
+When the user asks to initialize this MPS DSL project for agents, first complete
+the bundled MPS skills setup and create or update the root agent guide files.
+After that initialization work is done, check whether generated DSL skills
+already exist under `.agents/skills/<dsl-name>-dsl/`.
 
-After completing a task where you learned something new about the DSL (new concept details, node refs, usage patterns, or non-obvious constraints not already in `MEMORY.md`), use the `mps-dsl-memory` skill to update it:
-- Read `.agents/skills/mps-dsl-memory/SKILL.md` and follow its phases.
-- If no `MEMORY.md` exists yet, the skill will create one from scratch.
+If one or more generated DSL skills are missing or stale, ask for explicit
+permission before ending the initialization turn. Use wording like:
+
+> I can also create project-local DSL skill(s) for `<language-name-or-scope>`
+> under `.agents/skills/<dsl-name>-dsl/` so future agents can use the language(s)
+> without re-exploring them. This will add generated skill/reference files.
+> Should I create them?
+
+Only after the user agrees, use the `mps-dsl-memory` skill to create or refresh
+the DSL skill(s). If the user declines, finish initialization by noting that the
+bundled MPS skills are installed and no project-local DSL skills were created.
+
+Before creating or editing models in a language, use the relevant generated DSL
+skill. It contains the language reference, sandbox refs, JSON blueprint locations,
+and known gotchas for this project.
+
+Refresh generated DSL skills with `mps-dsl-memory` after discovering new concept
+details, sandbox examples, JSON blueprints, or non-obvious constraints.
 
 ## Skills
 
