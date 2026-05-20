@@ -46,7 +46,7 @@ All MPS skills live in a per-harness directory loaded by the agent host (e.g. `.
 | `mps-language-analysis`             | Analyze MPS language definitions — discover concepts, metadata, aspects, sample nodes. |
 | `mps-language-inheritance`          | Investigate inheritance between MPS languages and concepts — extends, super, sub, assignable. |
 | `mps-node-editing`                  | Modify MPS nodes using JSON blueprints — the canonical workflow for any node mutation. |
-| `mps-dsl-memory`                    | Explore a live MPS DSL project and create or refresh generated project-local DSL skills under `.agents/skills/<dsl-skill-name>/`. |
+| `mps-dsl-memory`                    | Explore a live MPS DSL project and create or refresh generated project-local DSL skills under `.agents/skills/<dsl-name>-dsl/`. |
 | `mps-lang-core-xml`                 | `jetbrains.mps.core.xml` language for authoring XML documents and XML-generating generator templates. |
 | `mps-quotations`                    | MPS quotations and anti-quotations — node literals creating SNode trees inline in behavior/generator/model code. |
 | `mps-build-language`                | MPS Build Language — declarative DSL generating Ant `build.xml` files for packaging plugins, Java modules, standalone IDEs. |
