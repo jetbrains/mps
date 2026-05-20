@@ -41,6 +41,8 @@ Each entry in the result file has the shape:
   isRootable,
   virtualFolder,
   present: true,
+  descriptorStatus,         // only present when "hollow" — see below
+  descriptorRecoveryAction, // only present when descriptorStatus == "hollow"
   properties: [...],
   references: [...],
   children: [...],
@@ -54,3 +56,13 @@ Each entry in the result file has the shape:
 ```
 
 Use the `qualifiedName` field (e.g. `"jetbrains.mps.baseLanguage.structure.ClassConcept"`) as the `concept` field in JSON node blueprints. It is unambiguous and does not require a `conceptReference`.
+
+## Stale runtime descriptors (`descriptorStatus: "hollow"`)
+
+A concept can have a *hollow* runtime descriptor: the runtime entry exists but reports `sourceNode == null`, no properties, no references, no children, and `isAbstract: true`. This shape is the fingerprint of an MPS language runtime that is out of sync with the structure model — typically after `CREATE_CONCEPTS` where an incremental make did not regenerate the language aspect descriptor classes.
+
+When `mps_mcp_get_concept_details` detects this shape it adds `descriptorStatus: "hollow"` and a `descriptorRecoveryAction` string to the entry. **Treat the entry as untrustworthy: empty `properties`/`references`/`children` here mean "unknown", not "the concept has none".**
+
+Recovery: call `mps_mcp_perform_operation` with operation `MAKE` and `rebuild = true` on the language's structure model, then re-call `mps_mcp_get_concept_details`. `mps_mcp_reload_all` alone is **not** sufficient — it reloads classes from their current on-disk form, but the disk content is stale until a clean rebuild has regenerated the aspect descriptor classes.
+
+Note that `CREATE_CONCEPTS` with `make: true` already performs a clean rebuild, so a hollow descriptor immediately after that path indicates a deeper problem (build failure, language module not in the project scope, …) — inspect `makeStatus` and `makeDetails` on the create response first.

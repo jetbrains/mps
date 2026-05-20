@@ -1537,7 +1537,36 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("isRootable", isRootable)
         obj.addProperty("virtualFolder", virtualFolder)
         obj.addProperty("present", true)
+        // Surface staleness so downstream callers (get_concept_details, search_concepts, …) do
+        // not silently treat a hollow runtime descriptor as a real one. The check matches the
+        // up-front gate in scaffold_editor: a runtime concept with no sourceNode and empty
+        // properties/references/children is a stale descriptor produced by an incremental
+        // make that did not regenerate the language aspect descriptor. The recovery is a
+        // clean rebuild via `mps_mcp_perform_operation` MAKE with `rebuild = true`;
+        // `mps_mcp_reload_all` alone is not sufficient because the StructureAspectDescriptor
+        // class files on disk are still stale.
+        if (isHollowDescriptor(concept)) {
+            obj.addProperty("descriptorStatus", "hollow")
+            obj.addProperty(
+                "descriptorRecoveryAction",
+                "Run mps_mcp_perform_operation with operation=MAKE and rebuild=true on the language's structure model, then retry."
+            )
+        }
         return obj
+    }
+
+    /**
+     * Heuristic used to detect a stale language runtime descriptor produced by an incremental
+     * make that did not regenerate the language aspect descriptor. A real concept has either a
+     * resolvable `sourceNode` or some non-empty properties/links; the all-null/all-empty shape
+     * only appears when the runtime is out of sync with the structure model. See the comment in
+     * [conceptInfoJsonObject] and the gate in `mps_mcp_scaffold_editor` for the recovery path.
+     */
+    protected fun isHollowDescriptor(concept: SAbstractConcept): Boolean {
+        return concept.sourceNode == null &&
+            concept.properties.isEmpty() &&
+            concept.referenceLinks.isEmpty() &&
+            concept.containmentLinks.isEmpty()
     }
 
     protected fun saveToTempFile(json: String): File {
@@ -1868,7 +1897,9 @@ abstract class AbstractOps : McpToolset {
                                     MakeMessage(
                                         "WARNING",
                                         "Explicit ClassLoaderManager.reload failed: ${e.message}. " +
-                                                "Concept descriptors may be stale; try `mps_mcp_reload_all`."
+                                                "Concept descriptors may be stale; retry the build with " +
+                                                "`rebuild = true` (mps_mcp_reload_all alone reloads from " +
+                                                "disk and cannot fix stale aspect descriptor classes)."
                                     )
                                 )
                             }
@@ -1889,7 +1920,9 @@ abstract class AbstractOps : McpToolset {
                                     "Language runtime did not reload within $LANGUAGE_RELOAD_TIMEOUT_SECONDS s after the build " +
                                             "(languages: ${targetLanguageIds.joinToString()}). " +
                                             "Concept descriptors (properties, references, children) may " +
-                                            "be stale. Try `mps_mcp_reload_all` or restart MPS, then retry."
+                                            "be stale. Retry the build with `rebuild = true` " +
+                                            "(`mps_mcp_reload_all` alone reloads from disk and cannot fix " +
+                                            "stale aspect descriptor classes); restart MPS as a last resort."
                                 )
                             )
                         }

@@ -184,7 +184,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
             else model
         }
         if (structureModelForMake != null) {
-            val makeResult = performMake(mpsProject, listOf(structureModelForMake), emptyList(), false)
+            val makeResult = performMake(mpsProject, listOf(structureModelForMake), emptyList(), true)
             if (!makeResult.success) {
                 return errJson("Failed to make the structure model for concept '$conceptRef': ${makeResult.message}")
             }
@@ -247,21 +247,19 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
                     // Detect a hollow runtime descriptor up-front. When the runtime concept reports
                     // no sourceNode AND empty properties/references/children, the MPS language
-                    // runtime is out of sync with the structure model — typically because the
-                    // language was not reloaded after a make. Scaffolding from this state would
-                    // silently produce an empty CellModel_Collection. Bail out with a clear
-                    // message instead of writing a useless editor.
-                    if (sConcept.sourceNode == null &&
-                        sConcept.properties.isEmpty() &&
-                        sConcept.referenceLinks.isEmpty() &&
-                        sConcept.containmentLinks.isEmpty()
-                    ) {
+                    // runtime is out of sync with the structure model — typically because an
+                    // incremental make after CREATE_CONCEPTS did not regenerate the language
+                    // aspect descriptor classes. Scaffolding from this state would silently
+                    // produce an empty CellModel_Collection. Bail out with a clear message
+                    // instead of writing a useless editor.
+                    if (isHollowDescriptor(sConcept)) {
                         error = "Concept '${structureQualifiedName(sConcept)}' has a hollow runtime descriptor " +
                                 "(null sourceNode and no properties, references, or children). " +
-                                "The MPS language runtime is out of sync with the structure model — " +
-                                "the language was likely not reloaded after a make. Try " +
-                                "`mps_mcp_reload_all`, or rebuild the structure module and restart MPS, " +
-                                "then retry."
+                                "The MPS language runtime is out of sync with the structure model. " +
+                                "Run `mps_mcp_perform_operation` with operation=MAKE and rebuild=true " +
+                                "on the language's structure model, then retry. " +
+                                "(`mps_mcp_reload_all` alone is not sufficient — the language aspect " +
+                                "descriptor classes on disk are still stale until a clean rebuild.)"
                         return@executeShortCommandOnEdt
                     }
 

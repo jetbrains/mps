@@ -590,7 +590,16 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     result["makeStatus"] = "skipped"
                     result["makeMessage"] = "Model not found for make operation"
                 } else {
-                    val makeResult = performMake(mpsProject, listOf(model), emptyList(), false)
+                    // Force `rebuild = true`. Adding concepts changes the structure aspect, but an
+                    // incremental make often produces no class-file deltas for
+                    // StructureAspectDescriptor — the subsequent ClassLoaderManager.reload then
+                    // re-publishes the *previously* compiled, hollow descriptor and downstream
+                    // tools (get_concept_details, scaffold_editor) read empty
+                    // properties/references/children. A clean make regenerates the aspect
+                    // descriptor classes so the reload picks up the new concepts. The caller asked
+                    // for `make = true` specifically to consume the freshly built concepts; an
+                    // incremental make here defeats that purpose.
+                    val makeResult = performMake(mpsProject, listOf(model), emptyList(), true)
                     // `makeStatus` is the sole signal here; no companion `runtimeReady` boolean
                     // (it would duplicate "runtime_stale" and risk drifting out of sync).
                     result["makeStatus"] = when {

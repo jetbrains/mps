@@ -11,8 +11,10 @@ Parameters are passed as a JSON object string.
 Creates concepts with the given names and full specification in the specified structure model.
 Returns a JSON object mapping concept names to their persistent node references on success.
 
-When the `make` flag is true, the response also reports:
-- `makeStatus`: one of `"success"`, `"runtime_stale"`, `"failed"`, or `"skipped"`. **`"runtime_stale"` means the build succeeded but the MPS language runtime did not reload within the post-make safety-net window** (currently 10 s; see `AbstractOps.LANGUAGE_RELOAD_TIMEOUT_SECONDS`), so concept descriptors are likely hollow downstream. The agent should call `mps_mcp_reload_all` and retry the build with `rebuild = true` before invoking any tool that consumes the freshly-built concepts (e.g., `mps_mcp_scaffold_editor`, `mps_mcp_get_concept_details`).
+When the `make` flag is true, `CREATE_CONCEPTS` performs a **clean** make of the structure model's language module (equivalent to `mps_mcp_perform_operation MAKE` with `rebuild = true`). An incremental make would often leave the language aspect descriptor classes unchanged on disk, so the post-make `ClassLoaderManager.reload` would re-publish the previously compiled — now stale — `StructureAspectDescriptor` and downstream tools (`mps_mcp_get_concept_details`, `mps_mcp_scaffold_editor`) would read empty properties/references/children. The clean make avoids that whole class of problems.
+
+The response reports:
+- `makeStatus`: one of `"success"`, `"runtime_stale"`, `"failed"`, or `"skipped"`. **`"runtime_stale"` means the build succeeded but the MPS language runtime did not reload within the post-make safety-net window** (currently 10 s; see `AbstractOps.LANGUAGE_RELOAD_TIMEOUT_SECONDS`), so concept descriptors are likely hollow downstream. Recovery: call `mps_mcp_perform_operation` with operation `MAKE` and `rebuild = true` on the same model, then retry. `mps_mcp_reload_all` alone is **not** sufficient — it reloads classes from disk, but the disk content is stale until a clean rebuild regenerates the aspect descriptor classes.
 - `makeMessage`: human-readable summary of the make outcome.
 - `makeDetails`: list of warnings/errors emitted during the build.
 
