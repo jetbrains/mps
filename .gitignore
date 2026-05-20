@@ -5,6 +5,10 @@
 /build/system/
 /build/config/
 
+# Local agent memory and setup
+/.claude
+.mcp.json
+
 # Test results from local test run (ant)
 /TEST-*
 
