@@ -313,8 +313,8 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val removeResp = runTool(toolset) {
             it.mps_mcp_remove_model_used_language(modelRef, langRef, "language")
         }
-        val obj = JsonParser.parseString(removeResp).asJsonObject
-        assertTrue("expected ok envelope: $removeResp", obj.get("ok").asBoolean)
+        val data = expectOk(removeResp)
+        assertTrue("expected removed=true: $removeResp", data.get("removed").asBoolean)
 
         readOnRepo {
             val used = (model as SModelInternal).importedLanguageIds()
@@ -322,6 +322,76 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             assertFalse("language must be gone after removal: $used",
                 used.contains(knownLang))
         }
+    }
+
+    @Test
+    fun `remove_model_used_language accepts plain qualified name`() {
+        // Symmetric with add_model_used_language: a bare qualified name (no l:UUID:name form)
+        // must resolve against the model's existing used-language list. Regression for the
+        // asymmetry where remove only accepted the persistent reference form.
+        val knownLang = "jetbrains.mps.lang.core"
+        val solution = createSolution()
+        val model = createModel(solution, "test.usedlang.removebyname${System.nanoTime()}")
+        val modelRef = modelRefOf(model)
+
+        val addResp = runTool(toolset) { it.mps_mcp_add_model_used_language(modelRef, knownLang, "language") }
+        assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
+
+        val removeResp = runTool(toolset) {
+            it.mps_mcp_remove_model_used_language(modelRef, knownLang, "language")
+        }
+        val data = expectOk(removeResp)
+        assertTrue("expected removed=true: $removeResp", data.get("removed").asBoolean)
+
+        readOnRepo {
+            val used = (model as SModelInternal).importedLanguageIds().map { it.qualifiedName }
+            assertFalse("language must be gone after name-based removal: $used", used.contains(knownLang))
+        }
+    }
+
+    @Test
+    fun `remove_model_used_language is idempotent on second removal`() {
+        // deleteLanguageId is silently idempotent at the MPS level; the tool surfaces the
+        // distinction via `removed` so callers can tell a real removal apart from a no-op.
+        // We exercise this by removing twice via the persistent-reference path, which is
+        // robust to whichever way PersistenceFacade.createLanguage handles bare names.
+        val knownLang = "jetbrains.mps.lang.core"
+        val solution = createSolution()
+        val model = createModel(solution, "test.usedlang.removetwice${System.nanoTime()}")
+        val modelRef = modelRefOf(model)
+
+        runTool(toolset) { it.mps_mcp_add_model_used_language(modelRef, knownLang, "language") }
+
+        val langRef = readOnRepo {
+            val match = (model as SModelInternal).importedLanguageIds().single { it.qualifiedName == knownLang }
+            PersistenceFacade.getInstance().asString(match)
+        }
+
+        val firstRemove = runTool(toolset) {
+            it.mps_mcp_remove_model_used_language(modelRef, langRef, "language")
+        }
+        assertTrue("first remove must report removed=true: $firstRemove",
+            expectOk(firstRemove).get("removed").asBoolean)
+
+        val secondRemove = runTool(toolset) {
+            it.mps_mcp_remove_model_used_language(modelRef, langRef, "language")
+        }
+        assertFalse("second remove must report removed=false: $secondRemove",
+            expectOk(secondRemove).get("removed").asBoolean)
+    }
+
+    @Test
+    fun `remove_model_used_language rejects unknown language name`() {
+        // Bare name that doesn't match any imported language of the model is a hard error,
+        // distinguishing typos from legitimately-absent-but-known imports.
+        val solution = createSolution()
+        val model = createModel(solution, "test.usedlang.removeunknown${System.nanoTime()}")
+        val response = runTool(toolset) {
+            it.mps_mcp_remove_model_used_language(modelRefOf(model), "totally.unknown.lang", "language")
+        }
+        val err = expectErr(response)
+        assertTrue("error should mention the missing language: $err",
+            err.contains("totally.unknown.lang"))
     }
 
     @Test

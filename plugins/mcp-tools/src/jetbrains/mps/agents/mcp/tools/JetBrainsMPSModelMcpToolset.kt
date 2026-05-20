@@ -249,7 +249,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     suspend fun mps_mcp_remove_model_used_language(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
         modelRef: String,
-        @McpDescription("Language or devkit reference")
+        @McpDescription("Language or devkit name or reference")
         usedLanguageRef: String,
         @McpDescription("Kind: 'language' or 'devkit'")
         kind: String
@@ -263,27 +263,52 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
 
             when (kind) {
                 "language" -> {
-                    val lang = try {
+                    // Symmetric with mps_mcp_add_model_used_language: accept either a persistent
+                    // l:UUID:name reference OR a bare qualified name. For the bare-name fallback we
+                    // search the model's OWN imported languages rather than the global
+                    // LanguageRegistry — that locates the exact SLanguage instance the model
+                    // currently holds, which is what deleteLanguageId compares against, and avoids
+                    // picking up an unrelated SLanguage that happens to share the qualifiedName.
+                    val lang = (try {
                         PersistenceFacade.getInstance().createLanguage(usedLanguageRef)
                     } catch (_: Exception) {
                         null
-                    } ?: return@executeShortCommandOnEdt errJson("Invalid language reference: $usedLanguageRef")
+                    })
+                        ?: model.importedLanguageIds().find { it.qualifiedName == usedLanguageRef }
+                        ?: return@executeShortCommandOnEdt errJson(
+                            "Language not found in model's used languages: $usedLanguageRef")
 
-                    model.deleteLanguageId(lang)
-                    model.save()
-                    okJson("true")
+                    // deleteLanguageId is silently idempotent, so precompute membership to give the
+                    // caller a meaningful `removed` flag (matches mps_mcp_remove_model_dependency).
+                    val wasPresent = model.importedLanguageIds().any { it == lang }
+                    if (wasPresent) {
+                        model.deleteLanguageId(lang)
+                        model.save()
+                    }
+                    okJson(jsonObject { addProperty("removed", wasPresent) })
                 }
 
                 "devkit" -> {
-                    val devkitRef = try {
+                    val devkitRef = (try {
                         PersistenceFacade.getInstance().createModuleReference(usedLanguageRef)
                     } catch (_: Exception) {
                         null
-                    } ?: return@executeShortCommandOnEdt errJson("Invalid devkit reference: $usedLanguageRef")
+                    })
+                        // Same name-fallback strategy as the language branch: search the model's
+                        // OWN imported devkits, resolving each through the repository so we can
+                        // compare by moduleName.
+                        ?: model.importedDevkits().firstOrNull { dkRef ->
+                            (dkRef.resolve(mpsProject.repository) as? DevKit)?.moduleName == usedLanguageRef
+                        }
+                        ?: return@executeShortCommandOnEdt errJson(
+                            "Devkit not found in model's used devkits: $usedLanguageRef")
 
-                    model.deleteDevKit(devkitRef)
-                    model.save()
-                    okJson("true")
+                    val wasPresent = model.importedDevkits().any { it == devkitRef }
+                    if (wasPresent) {
+                        model.deleteDevKit(devkitRef)
+                        model.save()
+                    }
+                    okJson(jsonObject { addProperty("removed", wasPresent) })
                 }
 
                 else -> errJson("Invalid kind: $kind. Must be 'language' or 'devkit'.")
