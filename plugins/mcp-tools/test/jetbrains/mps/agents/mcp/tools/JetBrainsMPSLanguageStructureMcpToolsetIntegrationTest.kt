@@ -861,6 +861,52 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         assertTrue(expectErr(response).contains("not found"))
     }
 
+    @Test
+    fun `GET_ENUMERATION_LITERALS via enum declaration ref succeeds`() {
+        // Build a fresh enum and look up its literals by passing the enum declaration node directly,
+        // without needing an instance node that uses the enum as a property type.
+        val enumParams = """
+            {
+              "structureModelRef": "$structureModelRef",
+              "enumName": "EnumLitDirect",
+              "valuesJson": [
+                { "enumName": "RED",   "enumPresentation": "Red"   },
+                { "enumName": "GREEN", "enumPresentation": "Green" },
+                { "enumName": "BLUE",  "enumPresentation": "Blue"  }
+              ]
+            }
+        """.trimIndent()
+        assertOk(runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, enumParams) })
+
+        val enumRef = readOnRepo {
+            PersistenceFacade.getInstance().asString(expectSingleRoot("EnumLitDirect").reference)
+        }
+
+        val response = runTool {
+            it.mps_mcp_perform_structure_operation(
+                MPSStructureOperation.GET_ENUMERATION_LITERALS,
+                """{"enumerationRef":"$enumRef"}"""
+            )
+        }
+        val arr = parseDataArray(response)
+        val values = arr.map { it.asJsonObject.get("value").asString }
+        val presentations = arr.map { it.asJsonObject.get("presentation").asString }
+        assertEquals(listOf("RED", "GREEN", "BLUE"), values)
+        assertEquals(listOf("Red", "Green", "Blue"), presentations)
+    }
+
+    @Test
+    fun `GET_ENUMERATION_LITERALS rejects an enumerationRef pointing at a non-enum declaration`() {
+        val conceptRef = createConceptRoot("EnumLitNotEnum")
+        val response = runTool {
+            it.mps_mcp_perform_structure_operation(
+                MPSStructureOperation.GET_ENUMERATION_LITERALS,
+                """{"enumerationRef":"$conceptRef"}"""
+            )
+        }
+        assertTrue(expectErr(response).contains("not an EnumerationDeclaration"))
+    }
+
     // ── LIST_CONCEPT_ASPECTS ──────────────────────────────────────────────────────────
 
     @Test

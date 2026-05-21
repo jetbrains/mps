@@ -99,9 +99,22 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             }
 
             MPSStructureOperation.GET_ENUMERATION_LITERALS -> {
-                val nodeReference = params.get("nodeReference")?.asString ?: return@withMpsProject errJson("Parameter 'nodeReference' is missing")
-                val propertyName = params.get("propertyName")?.asString ?: return@withMpsProject errJson("Parameter 'propertyName' is missing")
-                mps_mcp_get_enumeration_literals(nodeReference, propertyName)
+                val enumerationRef = params.get("enumerationRef")?.asString
+                val nodeReference = params.get("nodeReference")?.asString
+                val propertyName = params.get("propertyName")?.asString
+                if (enumerationRef != null) {
+                    if (nodeReference != null || propertyName != null) {
+                        return@withMpsProject errJson(
+                            "Pass either 'enumerationRef' or both 'nodeReference' and 'propertyName', not both forms",
+                            McpErrorCode.INVALID_REQUEST,
+                        )
+                    }
+                    mps_mcp_get_enumeration_literals_by_declaration(enumerationRef)
+                } else {
+                    if (nodeReference == null) return@withMpsProject errJson("Parameter 'nodeReference' is missing")
+                    if (propertyName == null) return@withMpsProject errJson("Parameter 'propertyName' is missing")
+                    mps_mcp_get_enumeration_literals(nodeReference, propertyName)
+                }
             }
 
             MPSStructureOperation.FIND_INSTANCES -> {
@@ -1000,6 +1013,31 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             } else {
                 errJson("Property '$propertyName' is not an enumeration", McpErrorCode.INVALID_REQUEST)
             }
+        }
+    }
+
+    private suspend fun mps_mcp_get_enumeration_literals_by_declaration(
+        enumerationRef: String
+    ): String = withMpsProject("Getting MPS enumeration literals from '$enumerationRef'") { mpsProject ->
+        executeShortReadOnEdt(mpsProject) {
+            val sNodeRef = resolveNodeReference(mpsProject.repository, enumerationRef)
+                ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$enumerationRef'")
+            val node = sNodeRef.resolve(mpsProject.repository)
+                ?: return@executeShortReadOnEdt errJson("Node '$enumerationRef' not found", McpErrorCode.NOT_FOUND)
+            if (!node.concept.isSubConceptOf(CONCEPT_EnumerationDeclaration)) {
+                return@executeShortReadOnEdt errJson(
+                    "Node '$enumerationRef' is not an EnumerationDeclaration (was '${node.concept.name}')",
+                    McpErrorCode.INVALID_REQUEST,
+                )
+            }
+            val list = node.getChildren(LINK_Members).map { member ->
+                mapOf(
+                    "value" to (member.getProperty(PROP_Name) ?: ""),
+                    "presentation" to (member.getProperty(PROP_Presentation) ?: ""),
+                    "doc" to getDoc(member),
+                )
+            }
+            okJson(Gson().toJson(list))
         }
     }
 

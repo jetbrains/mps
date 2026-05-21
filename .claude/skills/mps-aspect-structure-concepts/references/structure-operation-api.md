@@ -109,14 +109,20 @@ Parameters:
 ```
 
 #### `GET_ENUMERATION_LITERALS`
-Returns the list of possible value-presentation pairs for an enumeration property of a node.
-Returns a JSON array of objects, each having `"value"` and `"presentation"` keys.
+Returns the list of possible value-presentation pairs for an enumeration.
+Returns a JSON array of objects, each having `"value"`, `"presentation"`, and `"doc"` keys.
+
+Accepts two mutually-exclusive forms:
+
+- **By enumeration declaration** — pass `enumerationRef` pointing at an `EnumerationDeclaration` node. Use this when you know the enum directly.
+- **By property on a host node** — pass `nodeReference` (a node whose concept has an enum-typed property) plus `propertyName`. Use this when you only have an instance.
 
 Parameters:
 ```
 {
-  "nodeReference": "Persistent reference of the node (SNodeReference)",
-  "propertyName": "The name of the enumeration property"
+  "enumerationRef": "Persistent reference of an EnumerationDeclaration node. Use this OR (nodeReference + propertyName), not both.",
+  "nodeReference": "Persistent reference of a node whose concept has an enumeration-typed property (SNodeReference). Pair with 'propertyName'.",
+  "propertyName": "The name of the enumeration property on the concept of 'nodeReference'."
 }
 ```
 
