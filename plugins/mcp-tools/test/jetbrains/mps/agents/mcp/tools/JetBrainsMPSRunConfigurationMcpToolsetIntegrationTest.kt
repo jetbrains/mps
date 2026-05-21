@@ -26,9 +26,13 @@ import org.junit.Test
  *    configuration. This exercises the reflective JUnitSettings_Configuration plumbing
  *    (`setJUnitRunType` / `setTestCases`) together with the `canRunInProcess` behavior lookup.
  *
- * The happy paths require [McpToolsIntegrationTestSuite] to bootstrap the platform with
- * `withExecutionPlugins()`, otherwise the "Java Application" / "JUnit Tests" ConfigurationType
- * extensions are not registered and the toolset short-circuits to NOT_FOUND.
+ * The happy paths require [McpToolsIntegrationTestSuite] to bootstrap the platform with the
+ * debugger-api / debugger-java / execution-api / execution-languages / execution-configurations
+ * plugins. Without them the "Java Application" / "JUnit Tests" ConfigurationType extensions are
+ * not registered and the toolset short-circuits to NOT_FOUND. The suite adds them by their
+ * source-layout folder names rather than via `EnvironmentConfig.withExecutionPlugins()`, which
+ * picks the wrong folder names whenever `PathManager.isFromSources()` mis-detects the layout
+ * (e.g. on TeamCity, where lib/mps-core.jar precedes startup/classes/ on the classpath).
  */
 class JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 

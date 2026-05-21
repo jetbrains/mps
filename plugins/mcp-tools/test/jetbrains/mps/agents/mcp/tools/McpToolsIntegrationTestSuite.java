@@ -57,11 +57,27 @@ public class McpToolsIntegrationTestSuite extends BaseMpsSuite {
     // private cache field to bypass that assertion. The check expects the user.dir to be
     // an MPS checkout root.
     seedMpsHome();
-    // withExecutionPlugins() loads execution-languages and execution-configurations so that the
-    // "Java" and "JUnit Tests" ConfigurationType extensions register in the test environment.
-    // The run-configuration toolset's happy paths need this; tests in other toolsets do not
-    // depend on it but tolerate the extra plugins fine.
-    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig().withExecutionPlugins().withTestModeOn();
+    // We need the same plugins as EnvironmentConfig#withExecutionPlugins() — debugger-api,
+    // debugger-java, execution-api, execution-languages, execution-configurations — so that
+    // the "Java Application" / "JUnit Tests" ConfigurationType extensions register and the
+    // jetbrains.mps.execution.demo language (used by the IMainClass happy-path test) is loaded.
+    // We can't just call withExecutionPlugins() though: it picks the plugin folder names by
+    // branching on PathManager.isFromSources(), and that helper returns `false` whenever
+    // lib/mps-core.jar appears earlier on the classpath than startup/classes/ — which is what
+    // TeamCity's "Tests from IDEA Project" runner does. The "not from sources" branch looks for
+    // plugins/mps-execution-languages/, plugins/mps-debugger-api/, etc., but our checkout layout
+    // ships those under their unprefixed source names. Add them by their actual folder names so
+    // the test environment is correct in both layouts.
+    EnvironmentConfig cfg = EnvironmentConfig.defaultConfig()
+        .withTestingPlugin()
+        .withBuildPlugin()
+        .withTestModeOn();
+    String pluginsDir = PathManager.getPreInstalledPluginsPath();
+    cfg.addPlugin(new File(pluginsDir, "debugger-api").getAbsolutePath(), "jetbrains.mps.debugger.api");
+    cfg.addPlugin(new File(pluginsDir, "debugger-java").getAbsolutePath(), "jetbrains.mps.debugger.java");
+    cfg.addPlugin(new File(pluginsDir, "execution-api").getAbsolutePath(), "jetbrains.mps.execution.api");
+    cfg.addPlugin(new File(pluginsDir, "execution-languages").getAbsolutePath(), "jetbrains.mps.execution.languages");
+    cfg.addPlugin(new File(pluginsDir, "execution-configurations").getAbsolutePath(), "jetbrains.mps.execution.configurations");
     ourEnvironment = new IdeaEnvironment(cfg);
     ourEnvironment.init();
   }
