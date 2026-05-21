@@ -115,12 +115,14 @@ Current environment uses:
 ---
 ## Platform sources
 
-This project builds on top of the IntelliJ platform. It is bundled with the project as jar files. The platform Java and Kotlin classes are typically organized into `com.intellij...` packages, while MPS code is in `jetbrains.mps...`.
-When the sources of the platform are required for understanding an MPS feature/code/problem, the platform sources can be read in the source code form.
-The sources of the IntelliJ platform used by this project are located in `../intellij-community` or a similar location. Ask the user for exact location of the platform sources and convert it to an absolute path.
-The user can open the platform project in an IntelliJ IDEA instance making them available for coding agents through the IDE mcp tools. Ask the user to open the platform project in IDEA, if you need to access the sources.
-The IDEA mcp tools will be serving code from two projects, each in its own directory - one in the platform and one is the MPS project.
-IMPORTANT: To access the platform sources via MCP tools, you must use the **absolute path** for the `projectPath` parameter (e.g., `/Users/vaclav/work/MPS/intellij-community/`).
+
+**When the sources of the platform are required for understanding an MPS feature/code/problem**:
+- Get the location of the IntelliJ platform sources - typically it is a folder nearby (`../intellij-community` or a similar location).
+- Ask the user for exact location of the platform sources.
+- Convert it to an absolute path. To access the platform sources via MCP tools, you must use the **absolute path** for the `projectPath` parameter (e.g., `/Users/user-name/work/MPS/intellij-community/`).
+- Ask the user to open the platform project in an IntelliJ IDEA instance. This makes the platform sources available through IDEA's mcp tools.
+- The IDEA mcp tools will be serving code from two projects, each in its own directory - one in the platform and one is the MPS project.
+
 Do not make changes to the code of the platform, do not compile or run the platform code. Use the Git branch of the platform that has been set by the user, do not switch branches of the platform project.
 To verify that platform sources are accessible via MCP, use `search_symbol` (e.g., query `org.jetbrains.kotlin.jsr223.KotlinJsr223StandardScriptEngineFactory4Idea`) rather than `list_directory_tree` — the latter may return an empty tree even when the project is fully loaded, and should not be used as an availability check.
 
@@ -128,7 +130,7 @@ To verify that platform sources are accessible via MCP, use `search_symbol` (e.g
 
 The primary way for agents to build the project is through the IntelliJ IDEA MCP tools:
 - Use `build_project` to compile the entire project.
-- Verified to use **JDK 21** (`JB JDK 21` in `.idea/misc.xml`).
+- Verified to use **JDK 25**.
 - Run configurations such as `CoreTestSuite` or `MPS` can be found via `get_run_configurations`.
 
 ## Docs

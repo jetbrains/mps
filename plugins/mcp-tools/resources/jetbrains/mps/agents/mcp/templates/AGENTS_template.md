@@ -49,7 +49,7 @@ Inspection of generated code is allowed when:
 
 ## Rules for MPS Work
 
-- Load the `mps-mcp-workflow` skill (`.agents/skills/mps-mcp-workflow/SKILL.md`) at the start of an MPS session. If MPS MCP tools are unavailable, apply the fallback described in the Tool Selection section above.
+- Load the `mps-mcp-workflow` skill at the start of an MPS session. If MPS MCP tools are unavailable, apply the fallback described in the Tool Selection section above.
 - Use MPS MCP tools whenever available; do not hand-edit `.mps` files as plain XML.
 - Resolve nodes, concepts, models, and modules precisely before editing.
 - Validate after structural changes using `mps_mcp_check_root_node_problems`.
@@ -62,7 +62,7 @@ Use the `mps-mcp-workflow` skill for complete guidance on MPS workflows, skills,
 When the user asks to initialize this MPS DSL project for agents, first complete
 the bundled MPS skills setup and create or update the root agent guide files.
 After that initialization work is done, check whether generated DSL skills
-already exist under `.agents/skills/<dsl-name>-dsl/`.
+already exist under `.agents/skills/<dsl-name>-dsl/` or `.claude/skills/<dsl-name>-dsl/`.
 
 If one or more generated DSL skills are missing or stale, ask for explicit
 permission before ending the initialization turn. Use wording like:
@@ -85,7 +85,7 @@ details, sandbox examples, JSON blueprints, or non-obvious constraints.
 
 ## Skills
 
-A skill is a set of local instructions stored in a `SKILL.md` file under `.agents/skills/<skill-name>/`. Start with `mps-mcp-workflow` for the overview and a directory of every other skill.
+A skill is a set of local instructions stored in a `SKILL.md` file under `.agents/skills/<skill-name>/` or `.claude/skills/<skill-name>/`. Start with `mps-mcp-workflow` for the overview and a directory of every other skill.
 
 ---
 

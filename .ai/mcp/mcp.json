@@ -1,15 +1,15 @@
 {
   "mcpServers": {
-    "jb-youtrack-mcp-server (project ai folder)": {
+    "youtrack-mcp": {
       "url": "https://youtrack.jetbrains.com/mcp",
       "headers": {
         "Authorization": "Bearer ${YOUTRACK_TOKEN}"
       }
     },
-    "mps-mcp-server (project ai folder)": {
+    "mps-mcp": {
       "url": "http://localhost:64343/stream"
     },
-    "idea-mcp-serve (project ai folder)": {
+    "idea-mcp": {
       "url": "http://localhost:64342/stream"
     }
   }
