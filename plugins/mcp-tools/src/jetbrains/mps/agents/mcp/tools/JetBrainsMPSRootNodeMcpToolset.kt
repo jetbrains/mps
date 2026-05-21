@@ -120,7 +120,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Searches all project models for root nodes whose name matches any of the given names. `names` accepts a single name or a JSON array of names. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
+        Searches editable project models (excludes platform/library stubs — use `mps_mcp_get_project_structure` with `includeStubModules=true` to enumerate those) for root nodes whose name matches any of the given names. `names` accepts a single name or a JSON array of names. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String
