@@ -30,7 +30,6 @@
     <orderEntry type="module" module-name="typesystemEngine" />
     <orderEntry type="module" module-name="make-runtime" />
     <orderEntry type="module" module-name="typechecking" />
-    <orderEntry type="module" module-name="gensources" />
     <orderEntry type="module" module-name="testbench" scope="TEST" />
     <orderEntry type="module" module-name="environment" scope="TEST" />
     <orderEntry type="module" module-name="startup" scope="TEST" />
