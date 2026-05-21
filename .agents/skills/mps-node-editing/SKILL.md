@@ -42,6 +42,7 @@ The core workflow for mutating MPS nodes through MCP tools. JSON blueprints desc
 - **`mps-baselanguage`** — when the nodes you edit are BaseLanguage / Java.
 - **`mps-quotations`** — embedding inline node literals inside model code.
 - **`mps-language-analysis`** — exploring an unfamiliar language before editing.
+- **`mps-model-manipulation`** — when the edit also requires navigating the tree from model code (`.ancestor<C>`, `.descendants<C>`, siblings, containingRoot).
 
 ## JSON Input — File-Path Semantics
 

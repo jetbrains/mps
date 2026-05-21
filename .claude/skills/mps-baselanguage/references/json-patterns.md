@@ -102,6 +102,24 @@ Paste-able JSON blueprints for the constructs that appear most often when author
 }
 ```
 
+## Static Method Call (`ClassName.method(arg)`)
+
+```json
+{
+  "concept": "jetbrains.mps.baseLanguage.structure.StaticMethodCall",
+  "references": [
+    { "role": "classConcept", "target": "r:.../<ClassName>" },
+    { "role": "baseMethodDeclaration", "target": "r:.../<ClassName>.<methodName>(...)" }
+  ],
+  "children": [
+    { "role": "actualArgument", "nodes": [
+      { "concept": "jetbrains.mps.baseLanguage.structure.VariableReference",
+        "references": [{ "role": "variableDeclaration", "target": "argName" }] }
+    ]}
+  ]
+}
+```
+
 ## JSON Template (Empty Class)
 
 ```json

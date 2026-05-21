@@ -6,7 +6,7 @@
 /build/config/
 
 # Local agent memory and setup
-/.claude
+/.claude/settings.local.json
 .mcp.json
 
 # Test results from local test run (ant)
