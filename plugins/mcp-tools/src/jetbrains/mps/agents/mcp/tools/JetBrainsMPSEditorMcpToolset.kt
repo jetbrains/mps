@@ -245,22 +245,20 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         return@executeShortCommandOnEdt
                     }
 
-                    // Detect a hollow runtime descriptor up-front. When the runtime concept reports
-                    // no sourceNode AND empty properties/references/children, the MPS language
-                    // runtime is out of sync with the structure model — typically because an
-                    // incremental make after CREATE_CONCEPTS did not regenerate the language
-                    // aspect descriptor classes. Scaffolding from this state would silently
-                    // produce an empty CellModel_Collection. Bail out with a clear message
-                    // instead of writing a useless editor.
-                    if (isHollowDescriptor(sConcept)) {
-                        error = "Concept '${structureQualifiedName(sConcept)}' has a hollow runtime descriptor " +
-                                "(null sourceNode and no properties, references, or children). " +
-                                "The MPS language runtime is out of sync with the structure model. " +
-                                "Run `mps_mcp_perform_operation` with operation=MAKE and rebuild=true " +
-                                "on the language's structure model, then retry. " +
-                                "(`mps_mcp_reload_all` alone is not sufficient — the language aspect " +
-                                "descriptor classes on disk are still stale until a clean rebuild.)"
-                        return@executeShortCommandOnEdt
+                    // Model-level staleness gate. Delegates to MPS's canonical
+                    // `ModelGenerationStatusManager.generationRequired` (the same predicate the
+                    // project view's outdated indicator uses) plus a LanguageRegistry presence
+                    // check. Accepts the false positive that any unbuilt edit anywhere in the
+                    // structure model blocks scaffolding for every concept in that model — the
+                    // cost is one extra idempotent rebuild, which is what the user would do
+                    // anyway. See `checkScaffoldingStaleness` for the tradeoff rationale.
+                    when (val staleness = checkScaffoldingStaleness(sConcept, mpsProject)) {
+                        ScaffoldingStaleness.Fresh -> Unit
+                        is ScaffoldingStaleness.Stale -> {
+                            error = "Cannot scaffold editor for '${structureQualifiedName(sConcept)}': " +
+                                    "${staleness.reason}. ${staleness.recoveryHint}"
+                            return@executeShortCommandOnEdt
+                        }
                     }
 
                     val model = when (val r = resolveEditableModel(repo, modelReference)) {
@@ -288,7 +286,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     // classes are loaded into the ConceptRegistry.  performMake now waits for
                     // afterLanguagesLoaded before returning, so this should be non-null after a
                     // successful build.  The resolveConceptNode fallback is kept as a safety net
-                    // for the edge case where the 30-second registry-wait times out.
+                    // for the edge case where the 10-second registry-wait times out.
                     val sourceNode = sConcept.sourceNode
                         ?: resolveConceptNode(repo, conceptRef)?.reference
                         ?: run {

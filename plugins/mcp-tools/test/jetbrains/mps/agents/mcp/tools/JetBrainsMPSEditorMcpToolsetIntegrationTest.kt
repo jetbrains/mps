@@ -559,7 +559,7 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         // *does* fail is that the dedicated diagnostic surfaces.
         if (!obj.get("ok").asBoolean) {
             val msg = obj.get("error").asString
-            // The make path can route through three closely related failure wordings in this
+            // The make path can route through several closely related failure wordings in this
             // integration harness:
             //  - "Failed to make the structure model for concept ..." (make returned success=false)
             //  - "... has a hollow runtime descriptor ..."             (make ran but the concept
@@ -568,13 +568,20 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             //    written for)
             //  - "Concept '...' has no source node"                    (the sourceNode/registry
             //    lookup raced past the make's afterLanguagesLoaded latch)
-            // Any of the three counts as the make-required path having been exercised. What we
+            //  - "... has no loaded runtime"                           (the staleness gate's
+            //    no-loaded-runtime branch — the test language was not registered into
+            //    LanguageRegistry by the time scaffolding ran)
+            //  - "... has unbuilt changes"                             (the staleness gate's
+            //    dirty-model branch — generationRequired returned true)
+            // Any of these counts as the make-required path having been exercised. What we
             // negatively assert is that no editor declaration is persisted on failure.
             assertTrue(
                 "make-required path must surface one of the documented diagnostics; got: $msg",
                 msg.contains("Failed to make the structure model for concept") ||
                     msg.contains("hollow runtime descriptor") ||
-                    msg.contains("has no source node"),
+                    msg.contains("has no source node") ||
+                    msg.contains("has no loaded runtime") ||
+                    msg.contains("has unbuilt changes"),
             )
             readOnRepo {
                 val polluted = structureModel.rootNodes.any { root ->
@@ -772,9 +779,12 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         // descriptor doesn't yet exist. In environments where make is unavailable the response
         // will be an error envelope; we treat that as "branch not exercised" and skip, but
         // ONLY when the error matches one of the make-related wordings the existing make-
-        // failure regression test documents (lines 555–585). Any other error (e.g. NPE on a
-        // missing concept lookup) must surface as a test failure — otherwise a regression in
-        // the BaseConcept-super marker path would slip through unobserved.
+        // failure regression test documents (the `make failure surfaces ...` test below).
+        // That set includes the three staleness-gate branches (no-loaded-runtime, hollow-
+        // descriptor, dirty-model) and the legacy make / no-source-node wordings. Any other
+        // error (e.g. NPE on a missing concept lookup) must surface as a test failure —
+        // otherwise a regression in the BaseConcept-super marker path would slip through
+        // unobserved.
         val customConcept = createConceptRoot("ContentlessBaseSuper_${System.nanoTime()}")
         val response = runTool(toolset) {
             it.mps_mcp_scaffold_editor(
@@ -790,7 +800,9 @@ class JetBrainsMPSEditorMcpToolsetIntegrationTest : McpIntegrationTestBase() {
                 "BaseConcept-super marker scaffolding must only fall through on make-related wordings; got: $msg",
                 msg.contains("Failed to make the structure model for concept") ||
                     msg.contains("hollow runtime descriptor") ||
-                    msg.contains("has no source node"),
+                    msg.contains("has no source node") ||
+                    msg.contains("has no loaded runtime") ||
+                    msg.contains("has unbuilt changes"),
             )
             readOnRepo {
                 val polluted = structureModel.rootNodes.any { root ->

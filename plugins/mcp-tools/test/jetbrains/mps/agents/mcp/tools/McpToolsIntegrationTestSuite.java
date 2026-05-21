@@ -37,6 +37,7 @@ import java.lang.reflect.Field;
     JetBrainsMPSModelMcpToolsetIntegrationTest.class,
     JetBrainsMPSModuleMcpToolsetIntegrationTest.class,
     JetBrainsMPSEditorMcpToolsetIntegrationTest.class,
+    ScaffoldEditorStalenessTest.class,
     JetBrainsMPSNodeMcpToolsetIntegrationTest.class,
     JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest.class,
     JetBrainsMPSRootNodeMcpToolsetIntegrationTest.class,

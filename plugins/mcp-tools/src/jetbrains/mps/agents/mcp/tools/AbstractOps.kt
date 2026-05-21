@@ -105,6 +105,29 @@ abstract class AbstractOps : McpToolset {
          * `implement-mps-language-structure-concepts.md` so the skill doc stays in sync.
          */
         internal const val LANGUAGE_RELOAD_TIMEOUT_SECONDS: Long = 10L
+
+        /**
+         * Recovery hint for the dirty-source-model branch of [checkScaffoldingStaleness] —
+         * the structure model has unbuilt edits, so a plain `MAKE` regenerates the descriptors.
+         * `rebuild=true` is the heavier hammer reserved for the on-disk corruption case
+         * (see [DESCRIPTOR_REBUILD_INSTRUCTION_HOLLOW]).
+         */
+        internal const val DESCRIPTOR_REBUILD_INSTRUCTION: String =
+            "Run `mps_mcp_perform_operation` with operation=MAKE on the language's structure model, then retry."
+
+        /**
+         * Recovery hint for the hollow-descriptor branch of [checkScaffoldingStaleness] — the
+         * language runtime is loaded but its concept descriptor has no source node and no
+         * properties/links. This shape only appears when an incremental make has left stale
+         * language-aspect descriptor classes on disk; `mps_mcp_reload_all` alone is not
+         * sufficient because the on-disk class files are still stale. Use `rebuild=true` to
+         * force a clean regeneration.
+         */
+        internal const val DESCRIPTOR_REBUILD_INSTRUCTION_HOLLOW: String =
+            "Run `mps_mcp_perform_operation` with operation=MAKE and rebuild=true on the " +
+                "language's structure model, then retry. (`mps_mcp_reload_all` alone is not " +
+                "sufficient — the language-aspect descriptor classes on disk are still stale " +
+                "until a clean rebuild.)"
         private val GSON = Gson()
         private val PRETTY_GSON = GsonBuilder().setPrettyPrinting().create()
 
@@ -1567,6 +1590,136 @@ abstract class AbstractOps : McpToolset {
             concept.properties.isEmpty() &&
             concept.referenceLinks.isEmpty() &&
             concept.containmentLinks.isEmpty()
+    }
+
+    /**
+     * Sealed result so the caller can distinguish "no usable runtime at all" from
+     * "runtime loaded but source model has unbuilt changes" — different recovery
+     * stories deserve different error wording.
+     */
+    internal sealed class ScaffoldingStaleness {
+        data object Fresh : ScaffoldingStaleness()
+        data class Stale(val reason: String, val recoveryHint: String) : ScaffoldingStaleness()
+    }
+
+    /**
+     * Coarser-but-canonical staleness gate for scaffold-editor.
+     *
+     * Tradeoff vs. per-concept structural comparison: when the structure model is
+     * dirty for *any* reason, every concept in it is flagged. The false positive
+     * costs at most one extra rebuild of the structure aspect, which is idempotent
+     * and what the user would have to do anyway. In return we delegate to MPS's
+     * own `ModelGenerationStatusManager.generationRequired`, the same predicate the
+     * project view's "outdated" indicator uses, and we automatically cover every
+     * concept-declaration change kind (cardinality, target concept, abstract,
+     * alias, ConceptKind, behavior/constraints/...) without metamodel-specific code.
+     *
+     * Known limitation: cross-model dependencies are not tracked. Editing language Y's
+     * concept does not dirty language X's structure model even when X references Y.
+     */
+    internal fun checkScaffoldingStaleness(
+        concept: SAbstractConcept,
+        project: MPSProject,
+    ): ScaffoldingStaleness {
+        // 1) Language registry — clearer error than the model-level check when the
+        //    language has not been loaded at all (e.g. missing dependency, never-built).
+        val repository = project.repository
+        if (LanguageRegistry.getInstance(repository).getLanguage(concept.language) == null) {
+            return ScaffoldingStaleness.Stale(
+                reason = "Language '${concept.language.qualifiedName}' has no loaded runtime",
+                recoveryHint = "Build the language module (or check that it is listed in the project's " +
+                    "module dependencies), then retry.",
+            )
+        }
+
+        // 2) Hollow descriptor — null sourceNode plus empty properties/links is the
+        //    sentinel for an on-disk language-aspect descriptor that survived an
+        //    incremental make in a stale shape. `generationRequired` does NOT catch
+        //    this case (the source model can be clean while the on-disk descriptor
+        //    classes are corrupt), so we keep the dedicated check here. Recovery
+        //    requires `MAKE rebuild=true`, not the plain MAKE that the dirty-model
+        //    branch recommends, hence the distinct recovery hint.
+        if (isHollowDescriptor(concept)) {
+            return ScaffoldingStaleness.Stale(
+                reason = "hollow runtime descriptor (null sourceNode and no properties, references, " +
+                    "or children); the language runtime is out of sync with the structure model",
+                recoveryHint = DESCRIPTOR_REBUILD_INSTRUCTION_HOLLOW,
+            )
+        }
+
+        // 3) Structure-model generation status — true when the source model has been
+        //    edited since the last successful generation (covers both in-memory dirty
+        //    edits and saved-but-not-regenerated states). Accessed reflectively to
+        //    avoid a hard dependency on the optional generator-engine module — same
+        //    pattern as the pre-make gate elsewhere in this plugin.
+        //
+        // sourceNode can still be null here when the descriptor is *not* hollow (has
+        // properties/links but no resolvable source). This shape only appears in
+        // unusual states (e.g. partial reload after structure-model removal); without
+        // a structure model to probe, we can't run the dirty-model check, so we
+        // degrade open but log so a real regression is observable in idea.log.
+        val sourceNode = concept.sourceNode?.resolve(repository) ?: run {
+            logger.warn(
+                "checkScaffoldingStaleness: concept '${concept.language.qualifiedName}.${concept.name}' " +
+                    "has non-empty descriptor but unresolvable sourceNode; treating as Fresh and " +
+                    "letting scaffolding proceed (cannot probe generation status without a source model)."
+            )
+            return ScaffoldingStaleness.Fresh
+        }
+        val structureModel = sourceNode.model ?: run {
+            logger.warn(
+                "checkScaffoldingStaleness: source node for concept " +
+                    "'${concept.language.qualifiedName}.${concept.name}' resolved but has no enclosing " +
+                    "model; treating as Fresh. This is an anomalous repository state that should not " +
+                    "normally occur — investigate if seen in production."
+            )
+            return ScaffoldingStaleness.Fresh
+        }
+        // Catch only the reflective lookup/invocation exceptions that signal the optional
+        // generator-engine module is absent or shaped differently than expected. Anything
+        // broader (ProcessCanceledException, Error, plain RuntimeException from inside
+        // generationRequired itself) must propagate so the EDT command honors cancellation
+        // and does not mask real failures as "model fresh".
+        val generationRequired = try {
+            val mgsmClass = Class.forName("jetbrains.mps.generator.ModelGenerationStatusManager")
+            val mgsm = project.getComponent(mgsmClass) ?: return ScaffoldingStaleness.Fresh
+            val method = mgsmClass.getMethod("generationRequired", SModel::class.java)
+            ((method.invoke(mgsm, structureModel) as? Boolean) ?: false)
+        } catch (_: ClassNotFoundException) {
+            // Optional generator-engine module not on the classpath; deterministic, structural.
+            false
+        } catch (_: NoSuchMethodException) {
+            // generationRequired() shape changed in this build; deterministic, structural.
+            false
+        } catch (e: java.lang.reflect.InvocationTargetException) {
+            // The target call itself threw. Unwrap and rethrow cancellation/Error so the EDT
+            // command terminates correctly; degrade open for anything else, but log it —
+            // generationRequired() is supposed to be a cheap, deterministic hash lookup, so
+            // any failure here represents a real regression worth surfacing in idea.log.
+            val cause = e.cause ?: e
+            rethrowIfCancellation(cause)
+            if (cause is Error) throw cause
+            if (cause is RuntimeException) throw cause
+            logger.warn(
+                "ModelGenerationStatusManager.generationRequired threw for model '${structureModel.name}'; " +
+                    "treating as Fresh (scaffolding will proceed). A stale descriptor may slip through " +
+                    "this branch; this should not happen in normal operation.",
+                cause,
+            )
+            false
+        } catch (_: IllegalAccessException) {
+            // JVM module / accessibility issue; deterministic for the running JDK + module setup.
+            false
+        }
+        if (generationRequired) {
+            return ScaffoldingStaleness.Stale(
+                reason = "structure model '${structureModel.name}' has unbuilt changes; the language " +
+                    "runtime is out of sync with the source model and scaffolding would produce a " +
+                    "stale editor",
+                recoveryHint = DESCRIPTOR_REBUILD_INSTRUCTION,
+            )
+        }
+        return ScaffoldingStaleness.Fresh
     }
 
     protected fun saveToTempFile(json: String): File {
