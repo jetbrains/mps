@@ -1726,6 +1726,7 @@ abstract class AbstractOps : McpToolset {
         val session: MakeSession,
         val targetLanguageIds: Set<SLanguageId>,
         val targetLanguageModuleRefs: Set<SModuleReference>,
+        val targetLanguageNamespaces: Set<String>,
     )
 
     /**
@@ -1766,17 +1767,21 @@ abstract class AbstractOps : McpToolset {
                 // explicit/expanded modules list.
                 val ids = mutableSetOf<SLanguageId>()
                 val refs = mutableSetOf<SModuleReference>()
+                val namespaces = mutableSetOf<String>()
                 for (model in models) {
                     val m = model.module
                     if (m is Language) {
                         ids.add(MetaIdByDeclaration.getLanguageId(m))
                         refs.add(m.moduleReference)
+                        // Module name (aka namespace) is stable across runtime ID shape changes
+                        m.moduleName?.let { namespaces.add(it) }
                     }
                 }
                 for (m in expandedModules) {
                     if (m is Language) {
                         ids.add(MetaIdByDeclaration.getLanguageId(m))
                         refs.add(m.moduleReference)
+                        m.moduleName?.let { namespaces.add(it) }
                     }
                 }
 
@@ -1807,12 +1812,13 @@ abstract class AbstractOps : McpToolset {
                 }
 
                 val s = MakeSession(mpsProject, handler, rebuild)
-                MakePreparation(list, s, ids, refs)
+                MakePreparation(list, s, ids, refs, namespaces)
             }
             val resourcesList = preparation.resourcesList
             val session = preparation.session
             val targetLanguageIds = preparation.targetLanguageIds
             val targetLanguageModuleRefs = preparation.targetLanguageModuleRefs
+            val targetLanguageNamespaces = preparation.targetLanguageNamespaces
 
             // Open the make session OUTSIDE the model read action. WorkbenchMakeService.openNewSession
             // calls DumbService.waitForSmartMode() on non-EDT threads, and the platform asserts that
@@ -1839,7 +1845,18 @@ abstract class AbstractOps : McpToolset {
                     // that would let concept-detail tools read a stale StructureAspectDescriptor.
                     // When targetLanguageIds is empty (e.g. solution modules with no language
                     // runtime) we fall back to accepting any reload to avoid an unnecessary wait.
-                    if (targetLanguageIds.isEmpty() || languages.any { it.getId() in targetLanguageIds }) {
+                    val noTargets = targetLanguageIds.isEmpty() && targetLanguageNamespaces.isEmpty()
+                    if (noTargets || languages.any { lr ->
+                            // Be tolerant to ID shape changes and classloader nuances.
+                            val idMatch = try {
+                                val id = lr.id
+                                (id is SLanguageId) && targetLanguageIds.contains(id)
+                            } catch (_: Throwable) { false }
+                            val nsMatch = try {
+                                targetLanguageNamespaces.contains(lr.namespace)
+                            } catch (_: Throwable) { false }
+                            idMatch || nsMatch
+                        }) {
                         languageReloadLatch.countDown()
                     }
                 }
@@ -1888,6 +1905,7 @@ abstract class AbstractOps : McpToolset {
                             try {
                                 val classLoaderManager = mpsProject.getComponent(ClassLoaderManager::class.java)
                                 classLoaderManager?.reload(targetLanguageModuleRefs, EmptyProgressMonitor())
+                                languageReloadLatch.countDown() // Treat explicit reload completion as definitive
                             } catch (e: CancellationException) {
                                 throw e
                             } catch (e: ProcessCanceledException) {
