@@ -177,7 +177,7 @@
       </classpath>
     </javac2>
     <copy todir="${build.tmp}/java/out/mcp-tools">
-      <fileset dir="${plugin_home}/META-INF" />
+      <fileset dir="${plugin_home}" includes="META-INF/plugin.xml" />
       <fileset dir="${plugin_home}/resources" />
       <fileset dir="${plugin_home}/src" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.md" />
     </copy>

@@ -3,6 +3,7 @@
   <name>Projectional Agent Toolkit</name>
   <vendor>JetBrains</vendor>
   <description>A plugin enabling MPS mcp tools to AI coding agents.</description>
+  <vendor url="http://www.jetbrains.com/mps/">JetBrains</vendor>
 
   <depends>com.intellij.mcpServer</depends>
   <depends>jetbrains.mps.core</depends>

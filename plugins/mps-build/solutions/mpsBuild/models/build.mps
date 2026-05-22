@@ -66775,9 +66775,9 @@
         <node concept="3LXTmp" id="X5qzrNTSzK" role="3_5H9R">
           <node concept="398BVA" id="X5qzrNTOOo" role="3LXTmr">
             <ref role="398BVh" node="X5qzrNTLMo" resolve="plugin_home" />
-            <node concept="2Ry0Ak" id="X5qzrNTSAm" role="iGT6I">
-              <property role="2Ry0Am" value="META-INF" />
-            </node>
+          </node>
+          <node concept="3qWCbU" id="1l8_x5YjDv7" role="3LXTna">
+            <property role="3qWCbO" value="META-INF/plugin.xml" />
           </node>
         </node>
       </node>
