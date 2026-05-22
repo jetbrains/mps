@@ -22,6 +22,7 @@ import jetbrains.mps.vcs.platform.util.MergeBackupUtil;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.vcspersistence.ModelSack;
+import jetbrains.mps.baseLanguage.closures.runtime.Wrappers;
 import jetbrains.mps.vcs.util.MergeConstants;
 import jetbrains.mps.vcs.diff.merge.MergeTemporaryModel;
 import jetbrains.mps.smodel.ModelImports;
@@ -39,6 +40,7 @@ import com.intellij.diff.merge.MergeUtil;
 import javax.swing.AbstractAction;
 import java.awt.event.ActionEvent;
 import com.intellij.openapi.diff.DiffBundle;
+import com.intellij.diff.DiffVcsDataKeys;
 import com.intellij.openapi.editor.Document;
 import java.nio.charset.Charset;
 import com.intellij.openapi.vfs.CharsetToolkit;
@@ -71,36 +73,40 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
 
       final MPSProject mpsProject = ProjectHelper.fromIdeaProjectOrFail(context.getProject());
       final ModelSack ms = ModelSack.discover(mpsProject.getPlatform(), file.getName());
-      final SModel baseModel = ms.load(byteContents[MergeConstants.ORIGINAL]);
+      final Wrappers._T<SModel> baseModel = new Wrappers._T<SModel>((byteContents[MergeConstants.ORIGINAL].length == 0 ? null : ms.load(byteContents[MergeConstants.ORIGINAL])));
       SModel mineModel = (byteContents[MergeConstants.CURRENT].length == 0 ? null : ms.load(byteContents[MergeConstants.CURRENT]));
       SModel newModel = (byteContents[MergeConstants.LAST_REVISION].length == 0 ? null : ms.load(byteContents[MergeConstants.LAST_REVISION]));
       // Allow to resolve conflict change/delete root for per-root persistence
       if (ms.isPerRootPersistenceRoot()) {
+        if (baseModel.value == null) {
+          // create an empty base model if necessary (add/add conflict)
+          baseModel.value = new MergeTemporaryModel(mineModel.getReference(), true);
+        }
         // create an empty model if the root was deleted
         if (mineModel == null) {
-          mineModel = new MergeTemporaryModel(baseModel.getReference(), true);
+          mineModel = new MergeTemporaryModel(baseModel.value.getReference(), true);
         }
         if (newModel == null) {
-          newModel = new MergeTemporaryModel(baseModel.getReference(), true);
+          newModel = new MergeTemporaryModel(baseModel.value.getReference(), true);
         }
 
       }
-      if (baseModel != null && mineModel != null && newModel != null) {
+      if (baseModel.value != null && mineModel != null && newModel != null) {
         if (ms.isPerRootPersistenceRoot()) {
           // fix imports and languages for per-root persistence root file to allow completion
-          final ModelImports mi = new ModelImports(baseModel);
+          final ModelImports mi = new ModelImports(baseModel.value);
           // FIXME there's a very odd code, `model repoModel = baseModel/.getReference().resolve(null);`!!!
           //      and (a) it's wrong to use null as a repo; (b) wrong to assume actual model is there and got the same identity
           //      However, as it's relatively fresh fix which seems to address in-IDE merge with actual model present, keep it, with the only fix for context repo
           final SRepository repo = mpsProject.getRepository();
           repo.getModelAccess().runReadAction(() -> {
-            SModel repoModel = baseModel.getReference().resolve(repo);
+            SModel repoModel = baseModel.value.getReference().resolve(repo);
             mi.copyImportedModelsFrom(repoModel);
             mi.copyUsedLanguagesFrom(repoModel);
             mi.copyEmployedDevKitsFrom(repoModel);
           });
         }
-        final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel, mineModel, newModel, ms.isPerRootPersistenceRoot(), ms.isPerRootPersistence());
+        final ModelMergeViewer viewer = new ModelMergeViewer(context, textRequest, baseModel.value, mineModel, newModel, ms.isPerRootPersistenceRoot(), ms.isPerRootPersistence());
 
         ISaveMergedModel saver = new ISaveMergedModel() {
           public boolean save(MergeModelsPanel parent, final SModel resultModel) {
@@ -220,6 +226,10 @@ public class ModelMergeViewer implements MergeTool.MergeViewer {
 
   @NotNull
   private static byte[] getContentBytes(@NotNull DocumentContent content) {
+    // we do not get "" content for MPS merge if the file was deleted in one of the branches, we use an empty model instead
+    if (content.getUserData(DiffVcsDataKeys.REVISION_INFO) == null) {
+      return new byte[0];
+    }
     Document document = content.getDocument();
     Charset charset = content.getCharset();
     if (charset == null) {
