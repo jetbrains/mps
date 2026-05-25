@@ -782,6 +782,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         var result: String? = null
         mpsProject.repository.modelAccess.runReadAction {
             val ff = FacetsFacade.getInstance()
+                ?: throw McpUserException(McpErrorCode.INTERNAL_ERROR, "FacetsFacade service is not available")
             val module = moduleName?.let { resolveModule(mpsProject, it, projectOnly = false) }
             val recommendedTypes = module?.let { ff.getApplicableFacetTypes(it.usedLanguages) } ?: emptySet()
 
@@ -801,7 +802,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             resObj.add("facetTypes", jsonArray)
             result = okJson(resObj.toString())
         }
-        result ?: errJson("Failed to list facet types")
+        result ?: error("Internal error: runReadAction completed without a result in mps_mcp_list_facet_types")
     }
 
     @McpTool
@@ -824,6 +825,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             }
 
                 val ff = FacetsFacade.getInstance()
+                    ?: throw McpUserException(McpErrorCode.INTERNAL_ERROR, "FacetsFacade service is not available")
                 val abstractModule = module as? AbstractModule
                 val persistenceContext = if (abstractModule != null) PersistenceContextImpl.forModule(abstractModule) else PersistenceContextImpl.empty()
 
@@ -863,7 +865,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             resObj.add("discrepancies", discrepancies)
             result = okJson(resObj.toString())
         }
-        result ?: errJson("Failed to get module facets")
+        result ?: error("Internal error: runReadAction completed without a result in mps_mcp_get_module_facets")
     }
 
     @McpTool

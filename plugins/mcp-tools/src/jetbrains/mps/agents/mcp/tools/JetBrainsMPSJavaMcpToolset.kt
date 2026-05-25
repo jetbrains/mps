@@ -517,32 +517,14 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     }
 
     private fun removeJavaImports(roots: Iterable<SNode>) {
-        val toRemove = mutableListOf<SNode>()
         for (root in roots) {
-            for (desc in SNodeOperations.getNodeDescendants(root, JAVA_IMPORTS, true, emptyArray())) {
-                toRemove.add(desc)
-            }
             for (desc in SNodeOperations.getNodeDescendants(root, JAVA_IMPORT, true, emptyArray())) {
-                toRemove.add(desc)
+                SNodeOperations.deleteNode(desc)
+            }
+            for (desc in SNodeOperations.getNodeDescendants(root, JAVA_IMPORTS, true, emptyArray())) {
+                SNodeOperations.deleteNode(desc)
             }
         }
-        val rootSet = roots.toSet()
-        // Delete children before parents to avoid operating on detached nodes; also guard against
-        // any already-detached entries (defensive against nested JAVA_IMPORTS).
-        toRemove.asReversed().forEach {
-            if (isParentChainIntact(it, rootSet)) {
-                SNodeOperations.deleteNode(it)
-            }
-        }
-    }
-
-    private fun isParentChainIntact(node: SNode, roots: Set<SNode>): Boolean {
-        var curr: SNode? = node
-        while (curr != null) {
-            if (curr in roots) return true
-            curr = curr.parent
-        }
-        return false
     }
 
     // c2: Deferred dependency finalization. Runs after the resolution loop on the success path,

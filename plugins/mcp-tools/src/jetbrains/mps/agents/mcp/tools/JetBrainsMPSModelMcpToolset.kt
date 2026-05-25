@@ -150,10 +150,8 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 return@executeShortCommandOnEdt errJson("Model is not editable or doesn't support imports: ${model.name}")
             }
 
-            val targetRef = try {
+            val targetRef = tryCreateReference {
                 PersistenceFacade.getInstance().createModelReference(targetModelRef)
-            } catch (_: Exception) {
-                null
             } ?: return@executeShortCommandOnEdt errJson("Invalid target model reference: $targetModelRef")
 
             // Precheck so the response can tell the caller whether anything actually changed.
@@ -193,13 +191,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
 
             when (kind) {
                 "language" -> {
-                    val lang = try {
+                    val lang = tryCreateReference {
                         PersistenceFacade.getInstance().createLanguage(usedLanguage)
-                    } catch (_: Exception) {
-                        // Try to find by name
-                        jetbrains.mps.smodel.language.LanguageRegistry.getInstance(mpsProject.repository).allLanguages
-                            .find { it.qualifiedName == usedLanguage }
-                    } ?: return@executeShortCommandOnEdt errJson("Language not found: $usedLanguage")
+                    } ?: jetbrains.mps.smodel.language.LanguageRegistry.getInstance(mpsProject.repository).allLanguages
+                        .find { it.qualifiedName == usedLanguage }
+                    ?: return@executeShortCommandOnEdt errJson("Language not found: $usedLanguage")
 
                     // k: when the language is already supplied by an imported DevKit, addLanguage
                     // would be a no-op (DevKit-exported languages are already in scope), so we
@@ -227,13 +223,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 }
 
                 "devkit" -> {
-                    val devkitRef = try {
+                    val devkitRef = tryCreateReference {
                         PersistenceFacade.getInstance().createModuleReference(usedLanguage)
-                    } catch (_: Exception) {
-                        // Try to find by name
-                        mpsProject.repository.modules.filterIsInstance<DevKit>()
-                            .find { it.moduleName == usedLanguage }?.moduleReference
-                    } ?: return@executeShortCommandOnEdt errJson("Devkit not found: $usedLanguage")
+                    } ?: mpsProject.repository.modules.filterIsInstance<DevKit>()
+                        .find { it.moduleName == usedLanguage }?.moduleReference
+                    ?: return@executeShortCommandOnEdt errJson("Devkit not found: $usedLanguage")
 
                     if (model.importedDevkits().contains(devkitRef)) {
                         val payload = JsonObject().apply {
@@ -286,11 +280,9 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                     // LanguageRegistry — that locates the exact SLanguage instance the model
                     // currently holds, which is what deleteLanguageId compares against, and avoids
                     // picking up an unrelated SLanguage that happens to share the qualifiedName.
-                    val lang = (try {
+                    val lang = tryCreateReference {
                         PersistenceFacade.getInstance().createLanguage(usedLanguageRef)
-                    } catch (_: Exception) {
-                        null
-                    })
+                    }
                         ?: model.importedLanguageIds().find { it.qualifiedName == usedLanguageRef }
                         ?: return@executeShortCommandOnEdt errJson(
                             "Language not found in model's used languages: $usedLanguageRef")
@@ -306,11 +298,9 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 }
 
                 "devkit" -> {
-                    val devkitRef = (try {
+                    val devkitRef = tryCreateReference {
                         PersistenceFacade.getInstance().createModuleReference(usedLanguageRef)
-                    } catch (_: Exception) {
-                        null
-                    })
+                    }
                         // Same name-fallback strategy as the language branch: search the model's
                         // OWN imported devkits, resolving each through the repository so we can
                         // compare by moduleName.

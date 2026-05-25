@@ -230,6 +230,16 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
+    protected inline fun <T : Any> tryCreateReference(block: () -> T?): T? {
+        return try {
+            block()
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            if (e is Error) throw e
+            null
+        }
+    }
+
     /**
      * Deletes the given nodes, swallowing non-cancellation throwables. Intended for the rollback
      * arm of a save-failure branch: a delete that throws would propagate past
