@@ -150,12 +150,16 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
         val structureModelForMake = mpsProject.modelAccess.computeReadAction {
             val c = try {
                 resolveConcept(mpsProject.repository, conceptRef)
-            } catch (_: Exception) {
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
+                logger.warn("Failed to resolve concept '$conceptRef'", e)
                 null
             }
             val model = try {
                 resolveConceptNode(mpsProject.repository, conceptRef)?.model
-            } catch (_: Exception) {
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
+                logger.warn("Failed to resolve concept node '$conceptRef'", e)
                 null
             }
 
@@ -169,7 +173,9 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         val method = mgsmClass.getMethod("generationRequired", org.jetbrains.mps.openapi.model.SModel::class.java)
                         generationRequired = method.invoke(mgsm, model) as Boolean
                     }
-                } catch (_: Exception) {
+                } catch (e: Exception) {
+                    rethrowIfCancellation(e)
+                    logger.warn("Reflection failure checking generation status for model '${model.name}' via ModelGenerationStatusManager", e)
                     if (model is EditableSModel && model.isChanged) {
                         generationRequired = true
                     }
@@ -372,6 +378,10 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     val newLineChildrenConcept =
                         resolveConcept(repo, "jetbrains.mps.lang.editor.structure.IndentLayoutNewLineChildrenStyleClassItem") as? SConcept
 
+                    // Helper to determine if a concept element (property, reference, or child) should be included.
+                    // CONTRACT: If the caller explicitly requested a subset of elements via `includeNames`, we respect that
+                    // subset exclusively (shadowing/ignoring `excludedNames`). If `includeNames` is null (default),
+                    // we include all elements except those explicitly marked in `excludedNames`.
                     fun includeElement(name: String, includeNames: List<String>?, excludedNames: Set<String> = emptySet()): Boolean {
                         return includeNames?.contains(name) ?: (name !in excludedNames)
                     }
@@ -853,18 +863,39 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
     }
 
     private fun applyStyle(node: SNode, styleRef: String, repo: SRepository) {
-        val sStyleRef = resolveNodeReference(repo, styleRef) ?: return
-        val styleNode = sStyleRef.resolve(repo) ?: return
+        val sStyleRef = resolveNodeReference(repo, styleRef) ?: run {
+            logger.debug("applyStyle: failed to resolve node reference for styleRef '$styleRef'")
+            return
+        }
+        val styleNode = sStyleRef.resolve(repo) ?: run {
+            logger.debug("applyStyle: failed to resolve styleNode for reference '$sStyleRef'")
+            return
+        }
 
-        val styleItemLink = node.concept.containmentLinks.find { it.name == "styleItem" } ?: return
+        val styleItemLink = node.concept.containmentLinks.find { it.name == "styleItem" } ?: run {
+            logger.debug("applyStyle: styleItem link not found in concept '${node.concept.name}'")
+            return
+        }
         // ApplyStyleClass holds a `target` containment of type StyleReference; the actual
         // styleClass reference lives on the StyleClassReference subtype. Wiring it directly on
         // ApplyStyleClass would silently no-op because that concept has no `styleClass` ref
         // link of its own.
-        val applyStyleConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.ApplyStyleClass") as? SConcept ?: return
-        val targetLink = applyStyleConcept.containmentLinks.find { it.name == "target" } ?: return
-        val styleClassReferenceConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.StyleClassReference") as? SConcept ?: return
-        val styleClassLink = styleClassReferenceConcept.referenceLinks.find { it.name == "styleClass" } ?: return
+        val applyStyleConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.ApplyStyleClass") as? SConcept ?: run {
+            logger.debug("applyStyle: failed to resolve ApplyStyleClass concept")
+            return
+        }
+        val targetLink = applyStyleConcept.containmentLinks.find { it.name == "target" } ?: run {
+            logger.debug("applyStyle: target link not found in ApplyStyleClass")
+            return
+        }
+        val styleClassReferenceConcept = resolveConcept(repo, "jetbrains.mps.lang.editor.structure.StyleClassReference") as? SConcept ?: run {
+            logger.debug("applyStyle: failed to resolve StyleClassReference concept")
+            return
+        }
+        val styleClassLink = styleClassReferenceConcept.referenceLinks.find { it.name == "styleClass" } ?: run {
+            logger.debug("applyStyle: styleClass link not found in StyleClassReference")
+            return
+        }
 
         val applyStyle = SNodeFactoryOperations.addNewChild(node, styleItemLink, applyStyleConcept)
         val styleClassRef = SNodeFactoryOperations.setNewChild(applyStyle, targetLink, styleClassReferenceConcept)
