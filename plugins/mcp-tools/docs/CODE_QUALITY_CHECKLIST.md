@@ -9,23 +9,11 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 ## Clarity / smells
 
-### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/AbstractOps.kt`
 
-- [x] **line 157 (`okJson(payload: String)`)** — ~~Builds JSON via string concatenation with no validation.~~ Contract comment added above the overload; use `okJson(JsonElement)` for unvalidated values.
+### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/AbstractNodeOps.kt`
 
-- [x] **line 219, ~504** — ~~`AssignabilityException : IllegalArgumentException` is special-cased to map to `INVALID_REFERENCE`.~~ `AssignabilityException` now extends `McpUserException(McpErrorCode.INVALID_REFERENCE, ...)` directly; special case in `toolFailure` removed.
+- [ ] **line 474-622 (`update_node_child`)** — ~148-line function with three intertwined branches (replace / delete / add) and many early returns. Extract per-mode helpers.
 
-- [x] **`resolveConceptNode` ~line 1284-1370** — ~~Has 5 phases.~~ Phases 4 (numeric node ID) and 5 (by-name) collapsed into a single structure-model scan (Phase 4) with a comment explaining both match criteria.
-
-- [x] **`expandModules`** — Comment added explaining that only `Language` modules own generators; `DevKit`/`Solution` are passed through unchanged.
-
-- [x] **`it`/`concept` mix (line 1267)** — **Already fixed prior to this review**; current code uses `it` throughout the `find { }` lambda — no action needed.
-
-- [x] **misleading comment (line 1289/1299)** — Comment updated to clarify the prefix belongs to the concept-reference string format, not to general MPS module persistence.
-
-- [x] **line 2040, 2107 (`isSucessful`)** — Comments added at both call sites pointing to `jetbrains.mps.make.script.IResult` as the source of the API typo.
-
-- [ ] **`readJsonOrFile` path traversal** — Partially fixed: the path is now validated to be inside `java.io.tmpdir` (the expected use case). Allowing project-root paths still requires threading the project root through the API.
 
 
 ---

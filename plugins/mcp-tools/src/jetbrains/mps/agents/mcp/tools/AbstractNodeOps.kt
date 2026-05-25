@@ -566,7 +566,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                     } else {
                         if (position != -1 && position != 0) {
                             return@executeShortCommandOnEdt errJson(
-                                "position $position not applicable to single-cardinality role '$childRole' (only null, -1, or 0 are allowed)",
+                                "position $position not applicable to single-cardinality role '$childRole' (only -1 or 0 are allowed)",
                                 McpErrorCode.INVALID_REQUEST
                             )
                         }
@@ -713,7 +713,7 @@ abstract class AbstractNodeOps : AbstractOps() {
 
         // Attempt scope-based re-resolution on every reference
         val resolver = mpsProject.getComponent(ResolverComponent::class.java)
-        resolver?.resolveScopesOnly(allRefs as Iterable<SReference>, repo)
+        resolver?.resolveScopesOnly(allRefs, repo)
 
         // Auto-add model imports and module dependencies for newly-resolved references
         val sourceModel = node.model
