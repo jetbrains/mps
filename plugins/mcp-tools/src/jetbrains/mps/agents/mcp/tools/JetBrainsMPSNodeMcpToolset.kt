@@ -708,7 +708,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         @McpDescription("The role name of the child") childRole: String,
         @McpDescription("JSON blueprint of the new child (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") childJson: String,
         @McpDescription("Optional 0-based insert index for multi-cardinality roles; null/-1 = append. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
-        @McpDescription("Optional: if true, only validate JSON, concept-role assignability, and position without mutating the node. Default: false.") dryRun: Boolean = false
+        @McpDescription("Optional: if true, only validate JSON, concept-role assignability, and position without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
     ): String {
         return update_node_child(nodeReference, childRole, childJson, null, position, dryRun)
     }
@@ -722,7 +722,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_replace_node_child(
         @McpDescription("Persistent form of the SNodeReference of the child to replace") childNodeRef: String,
         @McpDescription("JSON blueprint of the replacement child (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") childJson: String,
-        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
+        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
     ): String {
         return update_node_child(null, null, childJson, childNodeRef, null, dryRun)
     }

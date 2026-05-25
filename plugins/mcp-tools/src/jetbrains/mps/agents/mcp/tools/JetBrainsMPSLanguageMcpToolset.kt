@@ -2,6 +2,7 @@ package jetbrains.mps.agents.mcp.tools
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.smodel.language.LanguageRegistry
@@ -600,20 +601,13 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         } catch (e: Exception) {
             return errJson("Failed to save result to a temporary file: ${e.message}")
         }
-        val envelope = JsonObject()
-        envelope.addProperty("ok", true)
-        envelope.addProperty("data", tempPath)
-        val warnings = JsonArray()
-        for (ref in unresolvedConceptRefs) {
-            warnings.add("Could not resolve conceptRef '$ref' — see details.unresolved for suggestions")
-        }
-        for (ref in unresolvedLanguageRefs) {
-            warnings.add("Could not resolve languageRef '$ref' — see details.unresolved for suggestions")
-        }
-        envelope.add("warnings", warnings)
-        val details = JsonObject()
-        details.add("unresolved", unresolvedDetails)
-        envelope.add("details", details)
-        return envelope.toString()
+        val warnings = mutableListOf<String>()
+        for (ref in unresolvedConceptRefs) warnings.add("Could not resolve conceptRef '$ref' — see details.unresolved for suggestions")
+        for (ref in unresolvedLanguageRefs) warnings.add("Could not resolve languageRef '$ref' — see details.unresolved for suggestions")
+        return okJson(
+            JsonPrimitive(tempPath),
+            warnings = warnings,
+            details = mapOf("unresolved" to unresolvedDetails)
+        )
     }
 }

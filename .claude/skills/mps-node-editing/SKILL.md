@@ -32,7 +32,7 @@ The core workflow for mutating MPS nodes through MCP tools. JSON blueprints desc
 1. **Identify** the target node (existing) or parent model (new root).
 2. **Choose the right tool**: `mps_mcp_create_root_node` / `mps_mcp_insert_root_node_from_json` for new roots; `mps_mcp_add_node_child` or `mps_mcp_replace_node_child` for surgical edits; `mps_mcp_update_root_node_from_json` only for full-root rewrites; `mps_mcp_set_node_properties` / `mps_mcp_set_node_references` for property/ref-only changes.
 3. **Author the JSON** following the unified blueprint format.
-4. **Insert** with `dryRun: true` first if the blueprint is large.
+4. **Insert** with `dryRun: true` first if the blueprint is large. Check the response: an empty `warnings` array means staging was clean; a non-empty list means the production write will produce dynamic (unresolved) references for the listed targets — resolve those first or expect broken refs.
 5. **Validate** with `mps_mcp_check_root_node_problems`.
 6. **Repair** broken refs with `mps_mcp_perform_operation FIX_REFERENCES` if validation surfaces resolvable-but-unresolved targets.
 

@@ -167,7 +167,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,
         @McpDescription("JSON blueprint, single object or top-level array (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
-        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the model. Default: false.") dryRun: Boolean = false
+        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the model. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
     ): String {
         return withMpsProject("Inserting MPS root node from JSON") { mpsProject ->
             val actualJson = readNodeJsonOrFile(json, dryRun)
@@ -195,6 +195,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
                 // Two-pass: validate-then-attach, so a late failure can't leave earlier roots committed.
                 val preparedNodes = mutableListOf<org.jetbrains.mps.openapi.model.SNode>()
+                val batchWarnings = if (dryRun) mutableListOf<String>() else null
                 for ((index, jsonObject) in jsonObjects.withIndex()) {
                     val indexLabel = if (jsonObjects.size > 1) " [$index]" else ""
                     when (val r = resolveRootableConcept(
@@ -208,7 +209,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     }
 
                     val newNode = try {
-                        instantiateNode(jsonObject, model, dryRun)
+                        instantiateNode(jsonObject, model, dryRun, warnings = batchWarnings)
                     } catch (e: Exception) {
                         return@executeShortCommandOnEdt errJson("Failed to instantiate node$indexLabel from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
                     }
@@ -240,7 +241,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     okJson(jsonObject {
                         addProperty("dryRun", true)
                         addProperty("message", "Dry run successful for root node insertion")
-                    })
+                    }, warnings = batchWarnings ?: emptyList())
                 } else {
                     model.save()
                     if (jsonObjects.size == 1) {
@@ -316,7 +317,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeReference: String,
         @McpDescription("JSON blueprint of the root (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
-        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Default: false.") dryRun: Boolean = false
+        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
     ): String {
         return withMpsProject("Updating MPS root node from JSON") { mpsProject ->
             val actualJson = readNodeJsonOrFile(json, dryRun)
@@ -346,7 +347,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     return@executeShortCommandOnEdt invalidJson(e.message)
                 }
 
-                updateNodeFromBlueprint(node, jsonObject, dryRun)
+                val updateWarnings = if (dryRun) mutableListOf<String>() else null
+                updateNodeFromBlueprint(node, jsonObject, dryRun, warnings = updateWarnings)
 
                 if (!dryRun) {
                     val fixResult = performFixReferences(mpsProject, node)
@@ -356,7 +358,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     okJson(jsonObject {
                         addProperty("dryRun", true)
                         addProperty("message", "Dry run successful for root node update")
-                    })
+                    }, warnings = updateWarnings ?: emptyList())
                 }
             }
         }

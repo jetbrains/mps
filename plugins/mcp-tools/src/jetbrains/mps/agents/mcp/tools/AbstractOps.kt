@@ -157,10 +157,20 @@ abstract class AbstractOps : McpToolset {
     // CONTRACT: `payload` must already be valid JSON. Use okJson(JsonElement) when the value is
     // not pre-validated — this overload performs no escaping or syntax check.
     fun okJson(payload: String): String = "{" + "\"ok\":true,\"data\":" + payload + "}"
-    fun okJson(payload: JsonElement): String {
+    fun okJson(
+        payload: JsonElement,
+        warnings: List<String> = emptyList(),
+        details: Map<String, Any?> = emptyMap()
+    ): String {
         return jsonObject {
             addProperty("ok", true)
             add("data", payload)
+            if (details.isNotEmpty()) {
+                add("details", GSON.toJsonTree(details))
+            }
+            if (warnings.isNotEmpty()) {
+                add("warnings", GSON.toJsonTree(warnings))
+            }
         }.toString()
     }
 

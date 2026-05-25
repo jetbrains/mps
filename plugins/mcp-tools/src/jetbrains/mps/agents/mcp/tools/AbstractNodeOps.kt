@@ -75,7 +75,13 @@ abstract class AbstractNodeOps : AbstractOps() {
         return data.toString()
     }
 
-    fun instantiateNode(jsonObject: JsonObject, model: SModel, dryRun: Boolean = false, jsonPath: String = "$"): SNode? {
+    fun instantiateNode(
+        jsonObject: JsonObject,
+        model: SModel,
+        dryRun: Boolean = false,
+        jsonPath: String = "$",
+        warnings: MutableList<String>? = null
+    ): SNode? {
         val conceptName = jsonObject.get("concept")?.asString
         val conceptRef = jsonObject.get("conceptReference")?.asString
         
@@ -142,7 +148,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                     )
                 childNodes.forEachIndexed { nodeIndex, nodeElement ->
                     val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
-                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath)
+                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath, warnings)
                     if (childNode != null) {
                         if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
                             throw AssignabilityException(
@@ -186,7 +192,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                         dryRun = dryRun,
                         allowDynamicReference = !dryRun,
                         assignResolvedReferenceOnDryRun = true
-                    )
+                    )?.let { warnings?.add(it) }
                 }
             }
         }
@@ -246,7 +252,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         assignResolvedReferenceOnDryRun: Boolean = false,
         validateXmlReference: Boolean = true,
         persistentReferencesOnly: Boolean = true
-    ) {
+    ): String? {
         if (validateXmlReference) {
             failIfXMLReferenceIsUsed(targetRefStr, xmlReferencePath, xmlReferenceIndex)
         }
@@ -264,7 +270,7 @@ abstract class AbstractNodeOps : AbstractOps() {
             if (!dryRun) {
                 ensureReferenceDependencies(model, targetRef, targetNode)
             }
-            return
+            return null
         }
         if (targetRef != null) {
             if (!dryRun || assignResolvedReferenceOnDryRun) {
@@ -274,13 +280,14 @@ abstract class AbstractNodeOps : AbstractOps() {
             ownerNode.setReference(link, ResolveInfo.of(targetRefStr))
         } else if (dryRun && allowDynamicReference) {
             // Production run would create a dynamic reference here; dry-run reports success
-            // without doing so, leaving a divergence between dry-run validation and the
-            // eventual write. Surface via the log so the discrepancy is at least diagnosable.
-            nodeOpsLogger.warn(
-                "Dry run at $errorPath: target '$targetRefStr' did not resolve; production run " +
-                        "would create a dynamic reference, but dry-run skips this step."
-            )
+            // without doing so. Surface the divergence through the caller's warnings channel
+            // so it is visible in the MCP response, not only in the IDE log.
+            val msg = "Dry run at $errorPath: target '$targetRefStr' did not resolve; " +
+                    "production run would create a dynamic reference, but dry-run skips this step."
+            nodeOpsLogger.warn(msg)
+            return msg
         }
+        return null
     }
 
     private fun resolveReferenceTarget(repository: SRepository, targetRefStr: String): SNodeReference? {
@@ -319,7 +326,13 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
     }
 
-    fun updateNodeFromBlueprint(node: SNode, jsonObject: JsonObject, dryRun: Boolean = false, jsonPath: String = "$") {
+    fun updateNodeFromBlueprint(
+        node: SNode,
+        jsonObject: JsonObject,
+        dryRun: Boolean = false,
+        jsonPath: String = "$",
+        warnings: MutableList<String>? = null
+    ) {
         val model = node.model ?: throw IllegalArgumentException("Node must be in a model")
         val sConcept = node.concept
 
@@ -375,7 +388,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                     )
                 childNodes.forEachIndexed { nodeIndex, nodeElement ->
                     val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
-                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath)
+                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath, warnings)
                         ?: return@forEachIndexed
                     if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
                         throw AssignabilityException(
@@ -513,8 +526,9 @@ abstract class AbstractNodeOps : AbstractOps() {
         } catch (e: Exception) {
             return invalidJson(e.message)
         }
+        val nodeWarnings = if (dryRun) mutableListOf<String>() else null
         val newChild = try {
-            instantiateNode(jsonObject, model, dryRun)
+            instantiateNode(jsonObject, model, dryRun, warnings = nodeWarnings)
         } catch (e: Exception) {
             return errJson("Failed to instantiate new child node from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
         }
@@ -534,7 +548,7 @@ abstract class AbstractNodeOps : AbstractOps() {
             return okJson(jsonObject {
                 addProperty("dryRun", true)
                 addProperty("message", "Dry run successful for node replacement")
-            })
+            }, warnings = nodeWarnings ?: emptyList())
         }
 
         parent.insertChildBefore(role, newChild, childNode)
@@ -603,8 +617,9 @@ abstract class AbstractNodeOps : AbstractOps() {
         } catch (e: Exception) {
             return invalidJson(e.message)
         }
+        val nodeWarnings = if (dryRun) mutableListOf<String>() else null
         val newChild = try {
-            instantiateNode(jsonObject, model, dryRun)
+            instantiateNode(jsonObject, model, dryRun, warnings = nodeWarnings)
         } catch (e: Exception) {
             return errJson("Failed to instantiate child node from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
         }
@@ -628,7 +643,7 @@ abstract class AbstractNodeOps : AbstractOps() {
             return okJson(jsonObject {
                 addProperty("dryRun", true)
                 addProperty("message", "Dry run successful for node addition")
-            })
+            }, warnings = nodeWarnings ?: emptyList())
         }
 
         val appendAtEnd = position == null || position == -1 || !role.isMultiple || position >= existingChildrenInRole.size
