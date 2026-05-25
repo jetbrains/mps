@@ -6,12 +6,12 @@ import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.checkers.ConstraintsChecker
-import jetbrains.mps.checkers.IChecker
 import jetbrains.mps.checkers.RefScopeChecker
 import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.errors.item.ModelReportItem
 import jetbrains.mps.errors.item.NodeReportItem
+import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.GlobalScope
@@ -196,6 +196,17 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     results.add(ref.sourceNode)
                 }
             }, monitor)
+            if (results.isEmpty() && !monitor.isCanceled) {
+                val lookup = NodeUsageLookup(setOf(node)) { ref ->
+                    if (!monitor.isCanceled) {
+                        results.add(ref.sourceNode)
+                    }
+                }
+                for (m in searchScope.models) {
+                    if (monitor.isCanceled) break
+                    lookup.collectUsages(m, monitor)
+                }
+            }
             if (monitor.isCanceled) {
                 errJson("Operation canceled")
             } else {

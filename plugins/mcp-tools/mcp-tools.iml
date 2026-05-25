@@ -23,6 +23,7 @@
     <orderEntry type="module" module-name="kernel-resources" />
     <orderEntry type="library" name="idea.mcpserver" level="project" />
     <orderEntry type="module" module-name="mps-platform" />
+    <orderEntry type="module" module-name="findUsages-runtime" />
     <orderEntry type="module" module-name="actions-runtime" />
     <orderEntry type="module" module-name="editor-api" />
     <orderEntry type="module" module-name="editor-runtime" />

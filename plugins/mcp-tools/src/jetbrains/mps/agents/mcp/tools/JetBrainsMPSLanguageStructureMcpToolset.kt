@@ -7,6 +7,8 @@ import com.google.gson.reflect.TypeToken
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.ide.MPSCoreComponents
+import jetbrains.mps.findUsages.NodeUsageLookup
+import jetbrains.mps.findUsages.InstanceLookup
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.EditableFilteringScope
@@ -166,6 +168,25 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                             }
                         }
                     }, monitor)
+                    if (results.isEmpty() && sample == null && !monitor.isCanceled) {
+                        val lookup = InstanceLookup(setOf(concept)) { node ->
+                            val inScope = !monitor.isCanceled && (rootNodeRefs == null || rootNodeRefs.contains(node.containingRoot.reference))
+                            if (inScope) {
+                                if (sampleOnly) {
+                                    count++
+                                    if (count == 1 || random.nextInt(count) == 0) {
+                                        sample = node
+                                    }
+                                } else {
+                                    results.add(node)
+                                }
+                            }
+                        }
+                        for (m in searchScope.models) {
+                            if (monitor.isCanceled) break
+                            lookup.collectInstances(m, monitor)
+                        }
+                    }
                     if (monitor.isCanceled) {
                         return@executeBackgroundRead errJson("Operation canceled")
                     }
@@ -1264,15 +1285,31 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     override fun getModels(): Iterable<SModel> = aspectModels
                 }
 
+                var hasResults = false
                 FindUsagesFacade.getInstance().findUsages(scope, setOf(conceptNode), { reference ->
                     val root = reference.sourceNode.containingRoot
                     if (root.model != null && aspectModels.contains(root.model)) {
                         synchronized(resultsByModel) {
                             val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
                             rootsInModel.putIfAbsent(root, concept)
+                            hasResults = true
                         }
                     }
                 }, EmptyProgressMonitor())
+                if (!hasResults) {
+                    val lookup = NodeUsageLookup(setOf(conceptNode)) { reference ->
+                        val root = reference.sourceNode.containingRoot
+                        if (root.model != null && aspectModels.contains(root.model)) {
+                            synchronized(resultsByModel) {
+                                val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
+                                rootsInModel.putIfAbsent(root, concept)
+                            }
+                        }
+                    }
+                    for (m in scope.models) {
+                        lookup.collectUsages(m, EmptyProgressMonitor())
+                    }
+                }
             }
 
             val dataArray = JsonArray()
