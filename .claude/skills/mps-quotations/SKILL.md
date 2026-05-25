@@ -1,6 +1,7 @@
 ---
 name: mps-quotations
-description: Use when writing or debugging MPS quotations and anti-quotations — "node literals" that create SNode trees inline in behavior, typesystem, intentions, generator, and other model code. Covers heavy quotations (`Quotation`, `<...>`), light quotations (`NodeBuilder`, constructor-style for bootstrapping), and the four anti-quotation varieties: child (`%(...)%`), list (`*(...)*`), reference (`^(...)^`), property (`$(...)$`). Reach for this skill whenever the task involves splicing runtime values into quoted node trees or choosing between heavy and light quotations.
+description: >-
+  Use when writing or debugging MPS quotations and anti-quotations — "node literals" that create SNode trees inline in behavior, typesystem, intentions, generator, and other model code. Covers heavy quotations (`Quotation`, `<...>`), light quotations (`NodeBuilder`, constructor-style for bootstrapping), and the four anti-quotation varieties: child (`%(...)%`), list (`*(...)*`), reference (`^(...)^`), property (`$(...)$`). Reach for this skill whenever the task involves splicing runtime values into quoted node trees or choosing between heavy and light quotations.
 type: reference
 ---
 

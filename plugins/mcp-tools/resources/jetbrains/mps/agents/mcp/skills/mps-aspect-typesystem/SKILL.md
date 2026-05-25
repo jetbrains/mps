@@ -1,6 +1,7 @@
 ---
 name: mps-aspect-typesystem
-description: Use when authoring or debugging MPS typesystem — inference rules (`typeof :==: / :<=: / :>=:`), `SubtypingRule`, `ComparisonRule`, `InequationReplacementRule`, `SubstituteTypeRule`, `WhenConcreteStatement` blocks, `NonTypesystemRule` checking rules, `TypesystemQuickFix`, error/warning/info reports with `messageTarget` highlighting and quick-fix wiring (`helginsIntention`), and shared BaseLanguage helpers in the typesystem model. Reach for this skill whenever the task involves editing `<lang>/languageModels/typesystem.mps`.
+description: >-
+  Use when authoring or debugging MPS typesystem — inference rules (`typeof :==: / :<=: / :>=:`), `SubtypingRule`, `ComparisonRule`, `InequationReplacementRule`, `SubstituteTypeRule`, `WhenConcreteStatement` blocks, `NonTypesystemRule` checking rules, `TypesystemQuickFix`, error/warning/info reports with `messageTarget` highlighting and quick-fix wiring (`helginsIntention`), and shared BaseLanguage helpers in the typesystem model. Reach for this skill whenever the task involves editing `<lang>/languageModels/typesystem.mps`.
 type: reference
 ---
 

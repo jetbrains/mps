@@ -1,6 +1,7 @@
 ---
 name: mps-build-language
-description: Use when authoring or modifying MPS Build Language scripts (`BuildProject` roots) — the declarative DSL that generates Ant `build.xml` to package MPS language plugins, IDEA plugins, plain Java modules, standalone IDE/RCP distributions, module tests, or `run code from solution` tasks. Covers build solution setup, macros, project/external/Java dependencies, MPS module declarations (`BuildMps_Language` / `_Solution` / `_Generator`), groups, layouts, IDEA-plugin declarations, MPS settings, and the workflow language. Trigger terms: `BuildProject`, `BuildMps_*`, `BuildLayout_*`, `jetbrains.mps.build`, `build.mps` solution, `internalBaseDirectory`, `compactBuildScriptFileName`, Ant target generation, `mps_home`, `idea_home`.
+description: >-
+  Use when authoring or modifying MPS Build Language scripts (`BuildProject` roots) — the declarative DSL that generates Ant `build.xml` to package MPS language plugins, IDEA plugins, plain Java modules, standalone IDE/RCP distributions, module tests, or `run code from solution` tasks. Covers build solution setup, macros, project/external/Java dependencies, MPS module declarations (`BuildMps_Language` / `_Solution` / `_Generator`), groups, layouts, IDEA-plugin declarations, MPS settings, and the workflow language. Trigger terms: `BuildProject`, `BuildMps_*`, `BuildLayout_*`, `jetbrains.mps.build`, `build.mps` solution, `internalBaseDirectory`, `compactBuildScriptFileName`, Ant target generation, `mps_home`, `idea_home`.
 type: reference
 ---
 
