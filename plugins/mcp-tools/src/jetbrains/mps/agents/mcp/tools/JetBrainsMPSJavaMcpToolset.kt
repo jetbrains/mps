@@ -152,8 +152,6 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             val searchScopes = ArrayList<SNode>()
             // current node subtree (receiver subtree is often a sibling, but searching root/ancestors is safe)
             searchScopes.add(source)
-            // containing root
-            searchScopes.add(source.containingRoot)
 
             // 2) Walk upwards and include anonymous/class creator subtrees if present
             var p: SNode? = source.parent
@@ -164,16 +162,13 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
             for (scope in searchScopes) {
                 val it = SNodeOperations.getNodeDescendants(scope, targetConcept, true, emptyArray())
-                var candidate: SNode? = null
                 for (n in it) {
                     val nName = SPropertyOperations.getString(n, NAME_PROPERTY)
                     if (nName == name) {
                         // If multiple, prefer the closest (first found in this ordered traversal)
-                        candidate = n
-                        break
+                        return n
                     }
                 }
-                if (candidate != null) return candidate
             }
             return null
         }
@@ -247,6 +242,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             if (e is Error) {
                 throw e
             }
+            javaToolsetLogger.warn("Failed to find 'replaceFromEditor' method via reflection", e)
             null
         }
 
@@ -275,6 +271,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                         if (e is Error) {
                             throw e
                         }
+                        javaToolsetLogger.warn("Error resolving method references in fixReferences for node $node", e)
                     }
                 }
             }
@@ -680,12 +677,12 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                 // If no more unknowns and no more dynamic refs, we are done
                 if (unknownsAfter == 0 && dynamicAfter == 0) break
 
-                // If no progress in this iteration, maybe stop?
-                // But sometimes one pass resolves something that allows the next pass to resolve something else.
-                // User suggested up to 10 iterations.
+                // If no progress in this iteration, we may stop.
+                // We run at least two complete passes (iteration 0 and 1) because the first pass (iteration 0)
+                // might resolve some class imports or types that unblock subsequent resolutions in the second pass (iteration 1).
+                // If there is still no progress after running at least two passes, we terminate early to save CPU cycles.
                 if (unknownsAfter == unknownsBefore && dynamicAfter == dynamicBefore) {
-                    // Let's try at least twice if there are still unknowns, but if no progress, break to avoid infinite loop (though maxIterations prevents it)
-                    if (iteration > 1) break
+                    if (iteration >= 1) break
                 }
 
                 iteration++

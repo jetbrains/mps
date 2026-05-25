@@ -964,7 +964,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     val member = SNodeFactoryOperations.addNewChild(newEnum, LINK_Members, CONCEPT_EnumerationMemberDeclaration)
                     member.setProperty(PROP_Name, name)
                     member.setProperty(PROP_Presentation, presentation)
-                    // Generate a random long for memberId as it's required by constraints
+                    // Generate a random long for memberId as it's required by constraints, ensure non-negative value
                     member.setProperty(PROP_MemberId, (random.nextLong() and Long.MAX_VALUE).toString())
                     memberNodes[name] = member
                 }
@@ -1231,9 +1231,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     val root = reference.sourceNode.containingRoot
                     if (root.model != null && aspectModels.contains(root.model)) {
                         val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
-                        if (!rootsInModel.containsKey(root)) {
-                            rootsInModel[root] = concept
-                        }
+                        rootsInModel.putIfAbsent(root, concept)
                     }
                 }, EmptyProgressMonitor())
             }
@@ -1354,13 +1352,13 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
         concept: SAbstractConcept,
         allSuperConcepts: MutableSet<SAbstractConcept>
     ) {
-        val queue = mutableListOf<SAbstractConcept>()
+        val queue = ArrayDeque<SAbstractConcept>()
 
         concept.superConcept?.let { queue.add(it) }
         queue.addAll(concept.superInterfaces)
 
         while (queue.isNotEmpty()) {
-            val current = queue.removeAt(0)
+            val current = queue.removeFirst()
             if (allSuperConcepts.add(current)) {
                 current.superConcept?.let { queue.add(it) }
                 queue.addAll(current.superInterfaces)

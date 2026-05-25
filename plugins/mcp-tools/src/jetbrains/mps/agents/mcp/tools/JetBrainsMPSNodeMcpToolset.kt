@@ -6,6 +6,7 @@ import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.checkers.ConstraintsChecker
+import jetbrains.mps.checkers.IChecker
 import jetbrains.mps.checkers.RefScopeChecker
 import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
@@ -20,12 +21,11 @@ import jetbrains.mps.project.validation.StructureChecker
 import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker
 import jetbrains.mps.typesystemEngine.checker.TypesystemChecker
-import org.jetbrains.mps.openapi.model.*
-import org.jetbrains.mps.openapi.module.FindUsagesFacade
-import org.jetbrains.mps.openapi.module.SModule
-import org.jetbrains.mps.openapi.module.SModuleReference
-import org.jetbrains.mps.openapi.module.SRepository
-import org.jetbrains.mps.openapi.module.SearchScope
+import org.jetbrains.mps.openapi.model.EditableSModel
+import org.jetbrains.mps.openapi.model.SModel
+import org.jetbrains.mps.openapi.model.SModelReference
+import org.jetbrains.mps.openapi.model.SNode
+import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.util.Consumer
 
@@ -550,11 +550,13 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                         RefScopeChecker(host).asRootChecker().check(root, repo, collector, monitor)
 
                         // Optional checkers if available
-                        try {
-                            TypesystemChecker().check(root, repo, collector, monitor)
-                            NonTypesystemChecker().check(root, repo, collector, monitor)
-                        } catch (_: Throwable) {
-                            // Ignore if not available or failed
+                        val checkers = arrayOf(TypesystemChecker(), NonTypesystemChecker())
+                        for (checker in checkers) {
+                            try {
+                                checker.check(root, repo, collector, monitor)
+                            } catch (e: Exception) {
+                                rethrowIfCancellation(e)
+                            }
                         }
 
                         // hasAnyProblems / hasLocalProblems live in AbstractOps so this fast-path
@@ -642,14 +644,18 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         references: List<List<String>>
     ): String {
         val results = mutableListOf<String>()
+        var allSucceeded = true
         for (triplet in references) {
-            if (triplet.size >= 3) {
-                results.add(update_node_reference(triplet[0], triplet[1], triplet[2]))
+            val itemResult = if (triplet.size >= 3) {
+                update_node_reference(triplet[0], triplet[1], triplet[2])
             } else {
-                results.add(errJson("Invalid reference triplet: expected at least 3 elements"))
+                allSucceeded = false
+                errJson("Invalid reference triplet: expected at least 3 elements")
             }
+            results.add(itemResult)
         }
-        return okJson("[" + results.joinToString(",") + "]")
+        val array = "[" + results.joinToString(",") + "]"
+        return "{" + "\"ok\":$allSucceeded,\"data\":" + array + "}"
     }
 
     @McpTool
@@ -663,14 +669,18 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         properties: List<List<String>>
     ): String {
         val results = mutableListOf<String>()
+        var allSucceeded = true
         for (triplet in properties) {
-            if (triplet.size >= 3) {
-                results.add(update_node_property(triplet[0], triplet[1], triplet[2]))
+            val itemResult = if (triplet.size >= 3) {
+                update_node_property(triplet[0], triplet[1], triplet[2])
             } else {
-                results.add(errJson("Invalid property triplet: expected at least 3 elements"))
+                errJson("Invalid property triplet: expected at least 3 elements")
             }
+            results.add(itemResult)
+            if (!itemResult.startsWith("{\"ok\":true")) allSucceeded = false
         }
-        return okJson("[" + results.joinToString(",") + "]")
+        val array = "[" + results.joinToString(",") + "]"
+        return "{" + "\"ok\":$allSucceeded,\"data\":" + array + "}"
     }
 
     @McpTool
@@ -816,7 +826,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 val targetIndex = if (position == -1) count - 1 else position
 
                 if (targetIndex !in 0 until count) {
-                    return@executeShortCommandOnEdt errJson("Target index $position is out of bounds (count: $count)", McpErrorCode.INVALID_REQUEST)
+                    return@executeShortCommandOnEdt errJson("Target index $targetIndex is out of bounds (count: $count)", McpErrorCode.INVALID_REQUEST)
                 }
 
                 if (targetIndex == currentIndex) {

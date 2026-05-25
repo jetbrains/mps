@@ -60,8 +60,10 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         val response = runTool(toolset) {
             it.mps_mcp_set_node_properties(listOf(listOf(ref, "name")))
         }
-        // The envelope is ok=true with an array data, where each entry is a per-row envelope.
-        val arr = parseDataArray(response)
+        // The envelope is ok=false due to the row failure.
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected ok=false envelope because of the failure: $response", obj.get("ok").asBoolean)
+        val arr = obj.getAsJsonArray("data")
         assertEquals(1, arr.size())
         val rowObj = parseRowObject(arr.get(0))
         assertFalse("the short-triplet row must be an error envelope: $rowObj", rowObj.get("ok").asBoolean)
@@ -137,6 +139,22 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         val ref = createConceptRoot("NoSuchRole")
         val response = runTool(toolset) { it.mps_mcp_delete_node_reference(ref, "no_such_role") }
         assertTrue(expectErr(response).contains("not found"))
+    }
+
+    @Test
+    fun `set_node_references rejects triplets shorter than 3 elements per-row`() {
+        val ref = createConceptRoot("ShortRefTriplet")
+        val response = runTool(toolset) {
+            it.mps_mcp_set_node_references(listOf(listOf(ref, "extends")))
+        }
+        // The envelope is ok=false due to the row failure.
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected ok=false envelope because of the failure: $response", obj.get("ok").asBoolean)
+        val arr = obj.getAsJsonArray("data")
+        assertEquals(1, arr.size())
+        val rowObj = parseRowObject(arr.get(0))
+        assertFalse("the short-triplet row must be an error envelope: $rowObj", rowObj.get("ok").asBoolean)
+        assertTrue(rowObj.get("error").asString.contains("at least 3"))
     }
 
     // ── child replace / delete ───────────────────────────────────────────────────────────
@@ -356,6 +374,37 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
                 .filter { it.containmentLink?.name == "propertyDeclaration" }
             assertEquals(listOf("y", "x", "z"), kids.mapNotNull { it.name })
         }
+    }
+
+    @Test
+    fun `perform_operation MOVE_CHILD with invalid position returns error with resolved index`() {
+        val parentRef = createConceptRoot("MoveHostInvalid")
+        addPropertyChild(parentRef, "x", "string")
+        addPropertyChild(parentRef, "y", "string")
+
+        val (yRef, _) = readOnRepo {
+            val kids = resolveNode(parentRef).children
+                .filter { it.containmentLink?.name == "propertyDeclaration" }
+            val y = kids.single { it.name == "y" }
+            PersistenceFacade.getInstance().asString(y.reference) to kids.mapNotNull { it.name }
+        }
+
+        // Move 'y' to out of bounds index 5
+        val params = """
+            {
+              "nodeReference": "$parentRef",
+              "childRole": "propertyDeclaration",
+              "childNodeRef": "$yRef",
+              "position": 5
+            }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_perform_operation(MPSNodeOperation.MOVE_CHILD, params)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        val msg = obj.get("error").asString
+        assertTrue("error should mention resolved index: $msg", msg.contains("Target index 5 is out of bounds (count: 2)"))
     }
 
     // ── perform_operation: MOVE_NODE_TO_PARENT ───────────────────────────────────────────
