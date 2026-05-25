@@ -8,7 +8,7 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 ## Probable bugs
 
-### `JetBrainsMPSLanguageStructureMcpToolset.kt`
+### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSLanguageStructureMcpToolset.kt`
 
 - [ ] **line 1178-1200 / line 131** — `FindUsagesFacade.findUsages` callbacks may run on worker threads, but `resultsByModel.getOrPut(...) { mutableMapOf() }` and `rootsInModel[root] = concept` are non-thread-safe `HashMap`/`LinkedHashMap` mutations. Possible lost updates or `ConcurrentModificationException` depending on the facade's parallelism. **Fix**: use `ConcurrentHashMap` or synchronize.
 
@@ -18,7 +18,7 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 - [ ] **line 121-126** — When `scopeParam == "roots"`, unresolved root refs are silently dropped via `mapNotNull`. If every supplied ref fails to resolve, `rootNodeRefs` is empty and the predicate returns false for everything → silent empty result. **Fix**: error when any input root ref does not resolve.
 
-### `JetBrainsMPSRunConfigurationMcpToolset.kt`
+### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSRunConfigurationMcpToolset.kt`
 
 - [ ] **line 97 (block opens) / `runManager.addConfiguration(settings)` at line 165** — The entire body of `mps_mcp_create_run_configuration` runs inside `executeShortReadOnEdt`, but it ultimately calls `RunManager.addConfiguration(...)`, a write/state-mutating operation. Misleading at best; inappropriate for a read-action wrapper at worst. **Fix**: move the mutation into a write/command wrapper.
 
@@ -26,7 +26,7 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 - [ ] **line 391** — `factories.firstOrNull { it.id == type.id } ?: factories.first()` still throws `NoSuchElementException` on a fully empty factory list, propagating outside the surrounding `ReflectiveOperationException` catch. The `firstOrNull { ... }` tie-breaker added during the run-config reorganization helps when factories exist; the underlying "what if the list is empty?" hazard remains. **Fix**: handle the empty case explicitly and return a clean error.
 
-### `JetBrainsMPSLanguageMcpToolset.kt`
+### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSLanguageMcpToolset.kt`
 
 - [ ] **line 244 / line 437** — `"${concept.name} ${concept.conceptAlias} ${concept.shortDescription} $doc"` (and the analogous `"${concept.conceptAlias} ${concept.shortDescription} $doc"` haystack) literally embed `"null"` when alias/description are unset, so a user query containing `null` accidentally matches every concept missing an alias or description. The `.contains("null", ignoreCase = true)` test that motivated the original entry is gone, but the underlying interpolation hazard remains in both haystacks. **Fix**: replace nulls with empty strings before concatenation.
 
@@ -37,7 +37,7 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 ## Clarity / smells
 
-### `AbstractOps.kt`
+### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/AbstractOps.kt`
 
 - [ ] **line 157 (`okJson(payload: String)`)** — Builds JSON via `"{" + "\"ok\":true,\"data\":" + payload + "}"` with no validation that `payload` is valid JSON. Trusts callers; easy to misuse. **Fix**: take `JsonElement` only, or document the contract loudly.
 
@@ -53,7 +53,7 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 - [ ] **line 2040, 2107** — Identifier `isSucessful` (single 's'). If this mirrors an MPS API typo, leave a comment pointing at the source.
 
-### `AbstractNodeOps.kt`
+### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/AbstractNodeOps.kt`
 
 - [ ] **line 49-76 (`unwrapNodeJsonEnvelope`)** — Catches `IllegalStateException` and `UnsupportedOperationException` defensively for `.asBoolean` on a `JsonNull`. Functional but verbose; an explicit `JsonElement.isJsonNull` check would read cleaner.
 
@@ -66,14 +66,6 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 - [ ] **line 700-712** — Only `SRefImpl` references get `resolveInfo` populated; other implementations are silently skipped. The fix-references pipeline depends on this internal MPS type; fragile cast.
 
 - [ ] **line 716** — `resolver?.resolveScopesOnly(allRefs as Iterable<SReference>, repo)` — the cast is redundant since `allRefs : MutableList<SReference>` already satisfies `Iterable<SReference>`. Remove.
-
-### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSEditorMcpToolset.kt`
-
-- [ ] **line 151-160, 162-177** — Two `try { ... } catch (_: Exception) { null }` blocks discard the underlying error; the reflective `ModelGenerationStatusManager` block likewise swallows everything. **Fix**: log.
-
-- [ ] **line 375-377 (`includeElement`)** — Non-obvious contract: `includeNames` shadows `excludedNames`. Combined with the name re-add elsewhere in the surrounding block, the dual-pass logic is hard to follow. Add a small explanatory comment.
-
-- [ ] **line 855-872 (`applyStyle`)** — Seven silent `return` paths when concept/link resolution fails (originally five; two additional `?: return` were introduced when the function was extended to handle `ApplyStyleClass` → `StyleClassReference` indirection). The caller gets no signal that styling was dropped. **Fix**: log at debug level or surface a `warnings` field.
 
 
 ---

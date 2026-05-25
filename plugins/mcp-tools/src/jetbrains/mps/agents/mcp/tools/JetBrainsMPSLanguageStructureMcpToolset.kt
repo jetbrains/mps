@@ -132,10 +132,21 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                             ?: return@executeBackgroundRead scopeError ?: errJson("Failed to resolve search scope")
 
                     val rootNodeRefs: Set<SNodeReference>? = if (scopeParam == "roots") {
-                        params.getAsJsonArray("roots")?.mapNotNull { elem ->
-                            resolveNodeReference(mpsProject.repository, elem.asString)
-                                ?.resolve(mpsProject.repository)?.containingRoot?.reference
-                        }?.toSet()
+                        val rootsArray = params.getAsJsonArray("roots")
+                        if (rootsArray == null) {
+                            return@executeBackgroundRead errJson("Parameter 'roots' is missing for scope 'roots'")
+                        }
+                        val resolved = mutableSetOf<SNodeReference>()
+                        for (elem in rootsArray) {
+                            val refStr = elem.asString
+                            val node = resolveNodeReference(mpsProject.repository, refStr)
+                                ?.resolve(mpsProject.repository)
+                            if (node == null) {
+                                return@executeBackgroundRead errJson("Failed to resolve root reference: '$refStr'")
+                            }
+                            resolved.add(node.containingRoot.reference)
+                        }
+                        resolved
                     } else null
 
                     val results = mutableSetOf<SNode>()
@@ -712,22 +723,31 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             // Not a valid node reference
         }
 
-        // Try as FQN or search in all models
-        val separator = if (type.contains("/")) "/" else if (type.contains(".")) "." else null
-        val modelPart = if (separator != null) type.substringBeforeLast(separator) else null
-        val nodePart = if (separator != null) type.substringAfterLast(separator) else type
+        // Try as FQN (ModelName.DataTypeName) using '.' as a separator, or search in all structure models
+        if (type.contains(".")) {
+            val lastDot = type.lastIndexOf(".")
+            val modelPart = type.substring(0, lastDot)
+            val nodePart = type.substring(lastDot + 1)
 
-        for (module in mpsProject.repository.modules) {
-            for (m in module.models) {
-                // If FQN was provided, check the model name
-                if (modelPart != null && m.name.longName != modelPart && m.name.longName != "$modelPart.structure" && module.moduleName != modelPart) continue
-
-                // For simple names, we prefer structure models
-                if (modelPart == null && !m.name.longName.endsWith(".structure")) continue
-
-                val node = m.rootNodes.find { it.getProperty(PROP_Name) == nodePart }
-                if (node != null && node.concept.isSubConceptOf(CONCEPT_DataTypeDeclaration)) {
-                    return node
+            for (module in mpsProject.repository.modules) {
+                for (m in module.models) {
+                    if (m.name.longName == modelPart || m.name.longName == "$modelPart.structure") {
+                        val node = m.rootNodes.find { it.getProperty(PROP_Name) == nodePart }
+                        if (node != null && node.concept.isSubConceptOf(CONCEPT_DataTypeDeclaration)) {
+                            return node
+                        }
+                    }
+                }
+            }
+        } else {
+            for (module in mpsProject.repository.modules) {
+                for (m in module.models) {
+                    if (m.name.longName.endsWith(".structure")) {
+                        val node = m.rootNodes.find { it.getProperty(PROP_Name) == type }
+                        if (node != null && node.concept.isSubConceptOf(CONCEPT_DataTypeDeclaration)) {
+                            return node
+                        }
+                    }
                 }
             }
         }
@@ -1092,6 +1112,11 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 error = "Concept '$conceptRef' not found"
                 return@executeShortCommandOnEdt
             }
+            val model = conceptNode.model
+            if (model == null) {
+                error = "Concept '$conceptRef' has no model (detached or removed)"
+                return@executeShortCommandOnEdt
+            }
 
             val existingLink = conceptNode.getChildren(LINK_LinkDeclaration).find {
                 it.getProperty(PROP_LinkDeclaration_Role) == role
@@ -1108,7 +1133,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 val linkNode = existingLink ?: SNodeFactoryOperations.addNewChild(conceptNode, LINK_LinkDeclaration, CONCEPT_LinkDeclaration)
                 linkNode.setProperty(PROP_LinkDeclaration_Role, role)
 
-                val targetNode = resolveConceptOrNode(targetConcept, mpsProject, conceptNode.model!!, emptyMap())
+                val targetNode = resolveConceptOrNode(targetConcept, mpsProject, model, emptyMap())
                 if (targetNode == null) {
                     error = "Failed to resolve target concept '$targetConcept'"
                     return@executeShortCommandOnEdt
@@ -1230,8 +1255,10 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 FindUsagesFacade.getInstance().findUsages(scope, setOf(conceptNode), { reference ->
                     val root = reference.sourceNode.containingRoot
                     if (root.model != null && aspectModels.contains(root.model)) {
-                        val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
-                        rootsInModel.putIfAbsent(root, concept)
+                        synchronized(resultsByModel) {
+                            val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
+                            rootsInModel.putIfAbsent(root, concept)
+                        }
                     }
                 }, EmptyProgressMonitor())
             }
@@ -1331,7 +1358,16 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     onError("Parameter 'roots' is missing for scope 'roots'")
                     return null
                 }
-                val rootNodes = rootsArray.mapNotNull { resolveNodeReference(repository, it.asString)?.resolve(repository) }
+                val rootNodes = mutableListOf<SNode>()
+                for (elem in rootsArray) {
+                    val refStr = elem.asString
+                    val node = resolveNodeReference(repository, refStr)?.resolve(repository)
+                    if (node == null) {
+                        onError("Failed to resolve root reference: '$refStr'")
+                        return null
+                    }
+                    rootNodes.add(node)
+                }
                 val modelRefs = rootNodes.mapNotNull { it.model?.reference }.toSet()
                 object : BaseScope() {
                     override fun getModules(): Iterable<SModule> = modelRefs.mapNotNull { it.resolve(repository)?.module }.distinct()
