@@ -29536,6 +29536,9 @@
       <node concept="3LWZYq" id="79wGYVsEuM7" role="2_Ic$A">
         <property role="3LWZYl" value="idea/MPSApplicationInfo.xml" />
       </node>
+      <node concept="3LWZYq" id="5YW05sFbADu" role="2_Ic$A">
+        <property role="3LWZYl" value="**/MPSPlugin.template.xml" />
+      </node>
     </node>
     <node concept="398b33" id="2eDSGe9d1oD" role="3989C9">
       <property role="TrG5h" value="mps-workbench" />

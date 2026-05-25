@@ -774,9 +774,11 @@
     <copy todir="${build.tmp}/java/out/mps-workbench">
       <fileset dir="${mps_home}/workbench/mps-workbench/source" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.json">
         <exclude name="idea/MPSApplicationInfo.xml" />
+        <exclude name="**/MPSPlugin.template.xml" />
       </fileset>
       <fileset dir="${mps_home}/workbench/mps-workbench/jetbrains.mps.ide/source_gen" includes="**/*.properties, **/*.xml, **/*.html, **/*.png, **/*.svg, **/*.txt, **/*.ico, **/*.zip, **/*.info, **/*.json">
         <exclude name="idea/MPSApplicationInfo.xml" />
+        <exclude name="**/MPSPlugin.template.xml" />
       </fileset>
     </copy>
   </target>
