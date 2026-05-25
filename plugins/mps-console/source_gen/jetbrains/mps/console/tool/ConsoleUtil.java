@@ -47,7 +47,7 @@ public class ConsoleUtil {
     if (makeService.openNewSession(session)) {
       Future<IResult> future = makeService.make(session, new ModelsToResources(Sequence.<SModel>singleton(model)).canGenerateCondition((SModel m) -> true).resources(), scr);
       try {
-        return future.get().isSuccessful();
+        return future.get().isSucessful();
       } catch (InterruptedException e) {
         if (LOG.isErrorLevel()) {
           LOG.error("Error on making temporary model", e);

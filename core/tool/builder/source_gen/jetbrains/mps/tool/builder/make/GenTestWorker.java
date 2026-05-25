@@ -150,7 +150,7 @@ public class GenTestWorker extends BaseGeneratorWorker {
       myReporter.finishRun();
       myReporter.startRun(myWhatToDo.getProperty("ant.project.name"));
       Future<IResult> result = bms.make(ms, collectResources(project, modules), null, ctl);
-      if (!(result.get().isSuccessful())) {
+      if (!(result.get().isSucessful())) {
         myErrors.add("Make was not successful " + result.get().output());
       }
     } catch (InterruptedException e) {

@@ -100,7 +100,7 @@ public class Generator_Test extends MockTestCase {
     Assert.assertEquals(new ITarget.Name("jetbrains.mps.make.tests.Maker_.Make"), dt.getName());
     IResult res = scr.execute(mons, null, new EmptyProgressMonitor());
     Assert.assertNotNull(res);
-    Assert.assertFalse(res.isSuccessful());
+    Assert.assertFalse(res.isSucessful());
     Assert.assertTrue(Sequence.fromIterable(res.output()).isEmpty());
   }
   @Before

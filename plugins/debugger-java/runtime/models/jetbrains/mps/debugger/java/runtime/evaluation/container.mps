@@ -3068,7 +3068,7 @@
                       <ref role="3cqZAo" node="6zsZmIC1CHe" resolve="result" />
                     </node>
                     <node concept="liA8E" id="6KqxBER1z5v" role="2OqNvi">
-                      <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSuccessful" />
+                      <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSucessful" />
                     </node>
                   </node>
                 </node>

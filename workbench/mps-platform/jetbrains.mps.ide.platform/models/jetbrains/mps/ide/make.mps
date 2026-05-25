@@ -2224,7 +2224,7 @@
                               <ref role="37wK5l" to="4rvk:6eQ0BhLYKvv" resolve="getResult" />
                             </node>
                             <node concept="liA8E" id="1iVKrxqp2O0" role="2OqNvi">
-                              <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSuccessful" />
+                              <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSucessful" />
                             </node>
                           </node>
                           <node concept="3clFbS" id="1iVKrxqp2O1" role="3eOfB_">

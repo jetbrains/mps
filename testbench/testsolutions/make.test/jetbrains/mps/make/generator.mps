@@ -1220,7 +1220,7 @@
                 <ref role="3cqZAo" node="2dB$GwFJsys" resolve="res" />
               </node>
               <node concept="liA8E" id="2dB$GwFJsKB" role="2OqNvi">
-                <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSuccessful" />
+                <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSucessful" />
               </node>
             </node>
           </node>

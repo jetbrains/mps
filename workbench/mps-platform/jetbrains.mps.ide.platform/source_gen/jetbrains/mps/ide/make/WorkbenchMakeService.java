@@ -247,7 +247,7 @@ public class WorkbenchMakeService extends AbstractMakeService implements IMakeSe
           // I work towards not null result, however, still seems to be possible in case MakeTask didn't start
           String info = scrName + " aborted";
           WorkbenchMakeService.this.displayInfo(info);
-        } else if (getResult().isSuccessful()) {
+        } else if (getResult().isSucessful()) {
           String msg = scrName + " successful";
           if (isNotEmptyString(getResult().message())) {
             msg = msg + ". " + getResult().message();

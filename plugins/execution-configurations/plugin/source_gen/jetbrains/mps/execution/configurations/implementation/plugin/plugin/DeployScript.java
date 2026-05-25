@@ -87,7 +87,7 @@ public class DeployScript {
         result = future.get();
       } catch (CancellationException | InterruptedException | ExecutionException ignore) {
       }
-      if (result == null || !(result.isSuccessful())) {
+      if (result == null || !(result.isSucessful())) {
         if (LOG.isErrorLevel()) {
           LOG.error("Can not generate deploy script");
         }

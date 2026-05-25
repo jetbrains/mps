@@ -28,7 +28,7 @@ public class Mockups {
   };
   private static IResult DefaultResult = new IResult() {
     @Override
-    public boolean isSuccessful() {
+    public boolean isSucessful() {
       return true;
     }
     @Override
@@ -137,7 +137,7 @@ public class Mockups {
     final IResult result = context.mock(IResult.class, name);
     context.checking(new Expectations() {
       {
-        this.atLeast(1).of(result).isSuccessful();
+        this.atLeast(1).of(result).isSucessful();
         this.will(Expectations.returnValue(res));
       }
     });

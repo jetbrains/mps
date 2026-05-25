@@ -3352,7 +3352,7 @@
                       <ref role="3cqZAo" node="2519QBqdPOk" resolve="ires" />
                     </node>
                     <node concept="liA8E" id="KL8Aqll4qp" role="2OqNvi">
-                      <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSuccessful" />
+                      <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSucessful" />
                     </node>
                   </node>
                 </node>
@@ -5048,7 +5048,7 @@
                     </node>
                   </node>
                   <node concept="liA8E" id="6ymVEJTaR6P" role="2OqNvi">
-                    <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSuccessful" />
+                    <ref role="37wK5l" to="i9so:17I1R__cQ6v" resolve="isSucessful" />
                   </node>
                 </node>
               </node>

@@ -2103,7 +2103,7 @@ abstract class AbstractOps : McpToolset {
                 }
                 withContext(Dispatchers.IO) {
                     // isSucessful is a typo in the MPS IResult API (jetbrains.mps.make.script.IResult).
-                    if (r.isSuccessful) {
+                    if (r.isSucessful) {
                         // The make pipeline only refreshes the language runtime indirectly:
                         // Project.reconcileProjectFiles -> markDirtyAndRefresh -> module
                         // events -> ClassLoaderManager.processModuleChanges -> notifyLoad
@@ -2170,7 +2170,7 @@ abstract class AbstractOps : McpToolset {
                 languageRegistry.removeRegistryListener(reloadListener)
             }
 
-            if (result.isSuccessful) { // isSucessful: MPS IResult API typo
+            if (result.isSucessful) { // isSucessful: MPS IResult API typo
                 MakeResult(true, "Make successful", messages, runtimeReady = runtimeReady)
             } else {
                 MakeResult(false, "Make failed: ${result.message()}", messages, runtimeReady = false)

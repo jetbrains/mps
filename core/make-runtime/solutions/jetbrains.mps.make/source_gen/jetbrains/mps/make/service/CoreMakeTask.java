@@ -93,7 +93,7 @@ public class CoreMakeTask {
             MapSequence.fromMap(timeStatistic).put(targetName, ((MapSequence.fromMap(timeStatistic).containsKey(targetName) ? MapSequence.fromMap(timeStatistic).get(targetName) : 0)) + MapSequence.fromMap(currentStatistic).get(targetName));
           }
         }
-        if (!(CoreMakeTask.this.myResult.isSuccessful()) || monitor.isCanceled()) {
+        if (!(CoreMakeTask.this.myResult.isSucessful()) || monitor.isCanceled()) {
           return false;
         }
         idx.value++;
