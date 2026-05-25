@@ -154,6 +154,8 @@ abstract class AbstractOps : McpToolset {
     }
 
     // ---- helpers ----
+    // CONTRACT: `payload` must already be valid JSON. Use okJson(JsonElement) when the value is
+    // not pre-validated — this overload performs no escaping or syntax check.
     fun okJson(payload: String): String = "{" + "\"ok\":true,\"data\":" + payload + "}"
     fun okJson(payload: JsonElement): String {
         return jsonObject {
@@ -216,7 +218,6 @@ abstract class AbstractOps : McpToolset {
         return when (e) {
             is McpUserException -> errJson(e.message, e.errorCode, e.errorDetails)
             is JsonSyntaxException -> invalidJson(e.message)
-            is AssignabilityException -> errJson(e.message, McpErrorCode.INVALID_REFERENCE)
             else -> {
                 logger.warn("Unexpected failure in MCP tool: $activity", e)
                 errJson("Internal error while $activity", McpErrorCode.INTERNAL_ERROR)
@@ -507,7 +508,8 @@ abstract class AbstractOps : McpToolset {
         val expectedConcepts: List<String>,
         val parentConcept: String,
         val role: String
-    ) : IllegalArgumentException(
+    ) : McpUserException(
+        McpErrorCode.INVALID_REFERENCE,
         "Concept assignability error at JSON path '$jsonPath':\n" +
                 " - Actual concept: '$actualConcept'\n" +
                 " - Expected concept(s): ${expectedConcepts.joinToString(", ") { "'$it'" }}\n" +
@@ -1296,8 +1298,9 @@ abstract class AbstractOps : McpToolset {
             if (parts.size == 2) {
                 val langRef = parts[0]
                 val conceptRefOrName = parts[1]
-                // Normalize: strip 'c:' or 'l:' prefix from the language part (concept refs use 'c:', module IDs use 'l:').
-                // Strip ':qualifiedName' suffix from the concept part (full format is 'conceptId:qualifiedName').
+                // Normalize: strip 'c:' or 'l:' prefix from the language part of the concept-reference
+                // string (format: 'c:langId/conceptId:qualifiedName' or 'l:langId/conceptId:qualifiedName').
+                // Strip ':qualifiedName' suffix from the concept part.
                 val langId = langRef.removePrefix("c:").removePrefix("l:")
                 val conceptId = conceptRefOrName.substringBefore(":")
                 for (module in repository.modules) {
@@ -1341,30 +1344,16 @@ abstract class AbstractOps : McpToolset {
             }
         }
 
-        // 4. Try as a concept ID string (without language ID) if it's a long number
-        if (conceptRef.toLongOrNull() != null) {
-            for (module in repository.modules) {
-                if (module !is Language) continue
-                for (model in module.models) {
-                    if (model.name.longName.endsWith(".structure")) {
-                        for (root in model.rootNodes) {
-                            if (root.nodeId.toString() == conceptRef) return root
-                        }
-                    }
-                }
-            }
-        }
-
-        // 5. Try searching by name in all structure models
+        // 4. Scan all structure models: match by numeric node ID (if input is a plain long) or by
+        //    concept name. A single pass over structure models covers both cases.
+        val isNumericId = conceptRef.toLongOrNull() != null
         for (module in repository.modules) {
             if (module !is Language) continue
             for (model in module.models) {
-                if (model.name.longName.endsWith(".structure")) {
-                    for (root in model.rootNodes) {
-                        if (root.name == conceptRef && root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) {
-                            return root
-                        }
-                    }
+                if (!model.name.longName.endsWith(".structure")) continue
+                for (root in model.rootNodes) {
+                    if (isNumericId && root.nodeId.toString() == conceptRef) return root
+                    if (root.name == conceptRef && root.concept.isSubConceptOf(SNodeUtil.concept_AbstractConceptDeclaration)) return root
                 }
             }
         }
@@ -1434,6 +1423,8 @@ abstract class AbstractOps : McpToolset {
         return null
     }
 
+    // Expands each Language module by also including its owned generators. DevKit and Solution
+    // modules are passed through unchanged because they do not own generators.
     protected fun expandModules(modules: Collection<SModule>): Set<SModule> {
         val result = mutableSetOf<SModule>()
         for (module in modules) {
@@ -1798,6 +1789,20 @@ abstract class AbstractOps : McpToolset {
         if (!file.isFile) {
             throw McpInvalidRequestException("Input path is not a regular file: '$jsonOrPath'")
         }
+        // Path-traversal guard: only allow files inside the system temp directory.
+        // Callers are expected to write JSON to a temp file and pass the absolute path; accepting
+        // arbitrary paths would let the AI read any file the MPS process can access (e.g. SSH keys).
+        // TODO: also allow paths inside the project root once the project root is threaded through here.
+        val canonicalFile = try { file.canonicalFile } catch (e: Exception) {
+            throw McpInvalidRequestException("Cannot resolve file path '$jsonOrPath': ${e.message}")
+        }
+        val tempDir = try { File(System.getProperty("java.io.tmpdir")).canonicalFile } catch (e: Exception) { null }
+        if (tempDir != null && !canonicalFile.path.startsWith(tempDir.path + File.separator) && canonicalFile.path != tempDir.path) {
+            throw McpInvalidRequestException(
+                "Input file path '$jsonOrPath' is not inside the system temp directory. " +
+                        "Write the JSON to a temp file (e.g. via File.createTempFile) and pass that path instead."
+            )
+        }
         val sizeBytes = file.length()
         if (sizeBytes > MAX_INPUT_FILE_SIZE_BYTES) {
             throw McpInvalidRequestException(
@@ -2047,6 +2052,7 @@ abstract class AbstractOps : McpToolset {
                     throw e
                 }
                 withContext(Dispatchers.IO) {
+                    // isSucessful is a typo in the MPS IResult API (jetbrains.mps.make.script.IResult).
                     if (r.isSucessful) {
                         // The make pipeline only refreshes the language runtime indirectly:
                         // Project.reconcileProjectFiles -> markDirtyAndRefresh -> module
@@ -2114,7 +2120,7 @@ abstract class AbstractOps : McpToolset {
                 languageRegistry.removeRegistryListener(reloadListener)
             }
 
-            if (result.isSucessful) {
+            if (result.isSucessful) { // isSucessful: MPS IResult API typo
                 MakeResult(true, "Make successful", messages, runtimeReady = runtimeReady)
             } else {
                 MakeResult(false, "Make failed: ${result.message()}", messages, runtimeReady = false)

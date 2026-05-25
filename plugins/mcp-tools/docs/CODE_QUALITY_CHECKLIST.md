@@ -11,35 +11,21 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 ### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/AbstractOps.kt`
 
-- [ ] **line 157 (`okJson(payload: String)`)** — Builds JSON via `"{" + "\"ok\":true,\"data\":" + payload + "}"` with no validation that `payload` is valid JSON. Trusts callers; easy to misuse. **Fix**: take `JsonElement` only, or document the contract loudly.
+- [x] **line 157 (`okJson(payload: String)`)** — ~~Builds JSON via string concatenation with no validation.~~ Contract comment added above the overload; use `okJson(JsonElement)` for unvalidated values.
 
-- [ ] **line 219, 494** — `AssignabilityException : IllegalArgumentException` is special-cased to map to `INVALID_REFERENCE`, even though the stated policy is that only `McpUserException` subclasses get stable error codes. Either re-home it under `McpUserException`, or comment the exception explicitly.
+- [x] **line 219, ~504** — ~~`AssignabilityException : IllegalArgumentException` is special-cased to map to `INVALID_REFERENCE`.~~ `AssignabilityException` now extends `McpUserException(McpErrorCode.INVALID_REFERENCE, ...)` directly; special case in `toolFailure` removed.
 
-- [ ] **`resolveConceptNode` ~line 1274-1360** — Has 5 phases of overlapping fallbacks. Phase 4 (`nodeId.toString() == conceptRef` for numeric refs) and Phase 5 (by-name in all structure models) substantially overlap with Phase 3's "ModelName.ConceptName" search. (`resolveConcept` itself has since been simplified to 3 phases — see ## Fixed.) **Fix**: collapse `resolveConceptNode` to fewer, documented strategies.
+- [x] **`resolveConceptNode` ~line 1284-1370** — ~~Has 5 phases.~~ Phases 4 (numeric node ID) and 5 (by-name) collapsed into a single structure-model scan (Phase 4) with a comment explaining both match criteria.
 
-- [ ] **line 1427-1436 (`expandModules`)** — Only adds generators for `Language` modules; `DevKit` / `Solution` are unchanged. Function name is broad; add a doc comment.
+- [x] **`expandModules`** — Comment added explaining that only `Language` modules own generators; `DevKit`/`Solution` are passed through unchanged.
 
-- [ ] **line 1267** — `concept.name == conceptRef || facade.asString(it) == conceptRef` — `it` and `concept` mix is hard to scan. Rename or restructure.
+- [x] **`it`/`concept` mix (line 1267)** — **Already fixed prior to this review**; current code uses `it` throughout the `find { }` lambda — no action needed.
 
-- [ ] **line 1289** — Comment says "module IDs use 'l:'" but module IDs in MPS persistence may use no prefix or `f:`. Misleading comment.
+- [x] **misleading comment (line 1289/1299)** — Comment updated to clarify the prefix belongs to the concept-reference string format, not to general MPS module persistence.
 
-- [ ] **line 2040, 2107** — Identifier `isSucessful` (single 's'). If this mirrors an MPS API typo, leave a comment pointing at the source.
+- [x] **line 2040, 2107 (`isSucessful`)** — Comments added at both call sites pointing to `jetbrains.mps.make.script.IResult` as the source of the API typo.
 
-- [ ] **line 1770 (`readJsonOrFile`)** — Accepts an arbitrary user-supplied path and reads it via `File(jsonOrPath).readText()` with **no path-traversal validation and no allow-list**. A caller can pass `/etc/passwd`, `~/.ssh/id_rsa`, or any other file the MPS process can read, and the contents are returned verbatim. *(Size cap and explicit UTF-8 charset have been resolved separately — see ## Fixed.)* **Fix**: validate the path is either inside the project root or inside `java.io.tmpdir`. Will require passing the project root through the function's API.
-
-### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/AbstractNodeOps.kt`
-
-- [ ] **line 49-76 (`unwrapNodeJsonEnvelope`)** — Catches `IllegalStateException` and `UnsupportedOperationException` defensively for `.asBoolean` on a `JsonNull`. Functional but verbose; an explicit `JsonElement.isJsonNull` check would read cleaner.
-
-- [ ] **line 474-622 (`update_node_child`)** — ~148-line function with three intertwined branches (replace / delete / add) and many early returns. Extract per-mode helpers.
-
-- [ ] **line 569** — Error message "only null, -1, or 0 are allowed" is slightly inaccurate (the outer guard `if (position != null)` makes the "null" mention redundant in this branch).
-
-- [ ] **line 603-610** — `appendAtEnd = position == null || position == -1 || !role.isMultiple || position >= existingChildrenInRole.size` plus subsequent index math is dense; explicit branches per case would read better.
-
-- [ ] **line 700-712** — Only `SRefImpl` references get `resolveInfo` populated; other implementations are silently skipped. The fix-references pipeline depends on this internal MPS type; fragile cast.
-
-- [ ] **line 716** — `resolver?.resolveScopesOnly(allRefs as Iterable<SReference>, repo)` — the cast is redundant since `allRefs : MutableList<SReference>` already satisfies `Iterable<SReference>`. Remove.
+- [ ] **`readJsonOrFile` path traversal** — Partially fixed: the path is now validated to be inside `java.io.tmpdir` (the expected use case). Allowing project-root paths still requires threading the project root through the API.
 
 
 ---
@@ -56,26 +42,3 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 - [ ] **Persistence inconsistency.** Some mutations call `setChanged()`/`save()` and some don't. The model-deletion (`JetBrainsMPSModelMcpToolset:324`), dependency-only-change (`JetBrainsMPSModelMcpToolset:79-86`), `removeModule` ordering (`JetBrainsMPSModuleMcpToolset:529`) and sub-module creation (`JetBrainsMPSModuleMcpToolset:234-248`) cases listed in earlier passes are all individually resolved (see ## Fixed; original line numbers preserved for traceability). The cross-cutting concern stays open because new MCP entry points are added regularly and there is still no project-wide rule. **Fix**: adopt a single rule — every successful mutation marks containers changed and saves them — and audit each tool method against it.
 
----
-
-## New findings (second verification pass)
-
-Additional defects surfaced while re-validating the entries above. Each is reachable from the public MCP surface; categorised by severity.
-
-### Probable bugs
-
-### Clarity / smells
-
-#### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSModelMcpToolset.kt`
-
-- [ ] **lines 148-152 / 191-197 / 225-231 / 272-279 / 292-303** — Five near-identical `try { createXxx() } catch (_: Exception) { ... }` blocks (a fifth was introduced when the remove-devkit branch was added). Each catches `Exception` (silently swallowing `CancellationException` if it happens to subclass `IllegalStateException` on the JVM, see the existing `AssignableReferenceService.kt:53-58` entry for the same pattern). **Fix**: extract a `tryCreateReference<T>` helper that rethrows `CancellationException` and `Error` and returns `null` for ordinary failures.
-
-#### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSModuleMcpToolset.kt`
-
-- [ ] **line 796 (`mps_mcp_list_facet_types`)** — `result ?: errJson("Failed to list facet types")` collapses every possible failure (missing FacetsFacade, etc.) into one undifferentiated message. The same shape recurs at line 858 in `mps_mcp_get_module_facets`. *(The "modelAccess rejection" sub-case is no longer applicable here — `executeShortCommandOnEdt` now `check(ran)`s and propagates a typed `IllegalStateException` that the surrounding `withMpsProject` converts into an `INTERNAL_ERROR` envelope with a descriptive message, see ## Fixed.)* **Fix**: distinguish the remaining failure modes with specific error messages rather than collapsing them into one.
-
----
-
-## Fixed
-
-Entries here were live defects at review time and have since been resolved. Line numbers are the originals from the review snapshot, not the current source — they're kept so reviewers can trace each item back to the original list.
