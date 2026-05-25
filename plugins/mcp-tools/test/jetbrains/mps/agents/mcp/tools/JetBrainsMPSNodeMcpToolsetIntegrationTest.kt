@@ -222,7 +222,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             msg.contains("not applicable to single-cardinality role"))
         assertTrue("error should mention the role: $msg", msg.contains("helpURL"))
         assertTrue("error should echo the rejected position value: $msg", msg.contains("position 1"))
-        assertTrue("error should list the allowed values: $msg", msg.contains("null, -1, or 0"))
+        assertTrue("error should list the allowed values: $msg", msg.contains("-1 or 0"))
 
         readOnRepo {
             val foo = PersistenceFacade.getInstance().createNodeReference(fooRef).resolve(structureModel.repository)
