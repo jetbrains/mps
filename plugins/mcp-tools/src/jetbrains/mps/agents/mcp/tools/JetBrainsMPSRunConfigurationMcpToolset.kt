@@ -94,15 +94,15 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
         @McpDescription("Optional name for the new run configuration. Defaults to a name derived from the node.")
         configurationName: String? = null,
     ): String = withMpsProject("Creating MPS run configuration") { mpsProject ->
-        executeShortReadOnEdt(mpsProject) {
+        executeShortCommandOnEdt(mpsProject) {
             val node = resolveNodeReference(mpsProject.repository, nodeReference)
                 ?.resolve(mpsProject.repository)
-                ?: return@executeShortReadOnEdt errJson(
+                ?: return@executeShortCommandOnEdt errJson(
                     "Node '$nodeReference' not found", McpErrorCode.NOT_FOUND
                 )
 
             if (node.parent != null) {
-                return@executeShortReadOnEdt errJson(
+                return@executeShortCommandOnEdt errJson(
                     "Node '$nodeReference' is not a root node; run configurations target root nodes only",
                     McpErrorCode.INVALID_REQUEST
                 )
@@ -114,7 +114,7 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
             // configureAs* reflection later in the same try-block surfaces under the same
             // catch — they share the same failure mode, no need for two separate catches.
             try {
-                val kind = determineKind(node) ?: return@executeShortReadOnEdt errJson(
+                val kind = determineKind(node) ?: return@executeShortCommandOnEdt errJson(
                     "Concept '${node.concept.name}' is not runnable through this tool: " +
                             "the root must implement IMainClass or ITestCase, or be a " +
                             "ClassConcept whose getMainMethod() resolves a static " +
@@ -129,7 +129,7 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
                 if (kind.isJavaApp && !isCompileInMps(node)) {
                     val moduleName = SNodeOperations.getModel(node)?.module?.moduleName ?: "?"
                     val nodeLabel = node.name ?: node.nodeId.toString()
-                    return@executeShortReadOnEdt errJson(
+                    return@executeShortCommandOnEdt errJson(
                         "Module '$moduleName' (owner of node '$nodeLabel') has " +
                                 "compileInMPS=false; the standard MPS Java producer skips such " +
                                 "modules because their classes_gen is empty at launch. Either " +
@@ -142,11 +142,15 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
 
                 val typeId = if (kind == ConfigKind.TEST_CASE) JUNIT_TYPE_ID else JAVA_TYPE_ID
                 val configurationType = findConfigurationType(typeId)
-                    ?: return@executeShortReadOnEdt errJson(
+                    ?: return@executeShortCommandOnEdt errJson(
                         "Run configuration type '$typeId' is not registered; the corresponding MPS plugin may be disabled",
                         McpErrorCode.NOT_FOUND
                     )
                 val factory = primaryFactory(configurationType)
+                    ?: return@executeShortCommandOnEdt errJson(
+                        "Run configuration type '$typeId' has no registered factories",
+                        McpErrorCode.NOT_FOUND
+                    )
 
                 val ideaProject = mpsProject.project
                 val runManager = RunManager.getInstance(ideaProject)
@@ -310,7 +314,7 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
                     it.parameterTypes[1].isArray
         } ?: throw NoSuchMethodException("SMethod#invoke(SNode, Object[]) not found")
         val result = invoke.invoke(sMethod, node, arrayOfNulls<Any>(0))
-        return result as? Boolean ?: true
+        return result as? Boolean ?: false
     }
 
     /**
@@ -386,8 +390,9 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
     private fun findConfigurationType(id: String): ConfigurationType? =
         ConfigurationTypeUtil.findConfigurationType(id)
 
-    private fun primaryFactory(type: ConfigurationType): ConfigurationFactory {
+    private fun primaryFactory(type: ConfigurationType): ConfigurationFactory? {
         val factories = type.configurationFactories
+        if (factories.isEmpty()) return null
         return factories.firstOrNull { it.id == type.id } ?: factories.first()
     }
 }

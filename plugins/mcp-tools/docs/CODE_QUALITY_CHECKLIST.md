@@ -8,16 +8,6 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 
 ## Probable bugs
 
-### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSLanguageStructureMcpToolset.kt`
-
-- [ ] **line 1178-1200 / line 131** — `FindUsagesFacade.findUsages` callbacks may run on worker threads, but `resultsByModel.getOrPut(...) { mutableMapOf() }` and `rootsInModel[root] = concept` are non-thread-safe `HashMap`/`LinkedHashMap` mutations. Possible lost updates or `ConcurrentModificationException` depending on the facade's parallelism. **Fix**: use `ConcurrentHashMap` or synchronize.
-
-- [ ] **line 1073** — `conceptNode.model!!` may NPE if the node is detached. Defensive null-check needed for freshly-created nodes that may have been removed.
-
-- [ ] **line 703-710** — `if (type.contains("/")) "/" else if (type.contains(".")) "."` plus the triple-or model match (`m.name.longName == modelPart || ... == "$modelPart.structure" || module.moduleName == modelPart`) is difficult to reason about. The "module name equals modelPart" branch likely never matches in practice. **Fix**: simplify; pick a single canonical resolution strategy.
-
-- [ ] **line 121-126** — When `scopeParam == "roots"`, unresolved root refs are silently dropped via `mapNotNull`. If every supplied ref fails to resolve, `rootNodeRefs` is empty and the predicate returns false for everything → silent empty result. **Fix**: error when any input root ref does not resolve.
-
 ### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSRunConfigurationMcpToolset.kt`
 
 - [ ] **line 97 (block opens) / `runManager.addConfiguration(settings)` at line 165** — The entire body of `mps_mcp_create_run_configuration` runs inside `executeShortReadOnEdt`, but it ultimately calls `RunManager.addConfiguration(...)`, a write/state-mutating operation. Misleading at best; inappropriate for a read-action wrapper at worst. **Fix**: move the mutation into a write/command wrapper.
