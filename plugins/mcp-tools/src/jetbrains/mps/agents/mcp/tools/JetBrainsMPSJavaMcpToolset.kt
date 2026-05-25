@@ -498,10 +498,17 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     ) {
         try {
             resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
+            // d1: stage the JDK dependency addition here (after resolveIteratively succeeds).
+            // ensureJDKDependency now only returns the Dependency (or null) without mutating.
+            // Both add and setChanged() happen exclusively on the success path, immediately
+            // before the saves. On any failure the descriptor remains untouched.
+            val jdkDep = ensureJDKDependency(model)
+            if (jdkDep != null) {
+                val module = model.module as? AbstractModule
+                module?.moduleDescriptor?.dependencies?.add(jdkDep)
+                module?.setChanged()
+            }
             model.save()
-            // d1: persist the module-level JDK dependency exactly once on the success path,
-            // mirroring the model.save() above. ensureJDKDependency only mutates the in-memory
-            // descriptor and calls setChanged(); the actual disk write happens here.
             (model.module as? AbstractModule)?.save()
         } catch (e: Exception) {
             rollbackInsertedNodes()
@@ -511,18 +518,31 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
     private fun removeJavaImports(roots: Iterable<SNode>) {
         val toRemove = mutableListOf<SNode>()
-        fun collect(n: SNode) {
-            if (n.concept == JAVA_IMPORTS || n.concept == JAVA_IMPORT) {
-                toRemove.add(n)
-            }
-            for (child in n.children) {
-                collect(child)
-            }
-        }
         for (root in roots) {
-            collect(root)
+            for (desc in SNodeOperations.getNodeDescendants(root, JAVA_IMPORTS, true, emptyArray())) {
+                toRemove.add(desc)
+            }
+            for (desc in SNodeOperations.getNodeDescendants(root, JAVA_IMPORT, true, emptyArray())) {
+                toRemove.add(desc)
+            }
         }
-        toRemove.forEach { SNodeOperations.deleteNode(it) }
+        val rootSet = roots.toSet()
+        // Delete children before parents to avoid operating on detached nodes; also guard against
+        // any already-detached entries (defensive against nested JAVA_IMPORTS).
+        toRemove.asReversed().forEach {
+            if (isParentChainIntact(it, rootSet)) {
+                SNodeOperations.deleteNode(it)
+            }
+        }
+    }
+
+    private fun isParentChainIntact(node: SNode, roots: Set<SNode>): Boolean {
+        var curr: SNode? = node
+        while (curr != null) {
+            if (curr in roots) return true
+            curr = curr.parent
+        }
+        return false
     }
 
     // c2: Deferred dependency finalization. Runs after the resolution loop on the success path,
@@ -548,18 +568,15 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         }
     }
 
-    private fun ensureJDKDependency(model: SModel) {
-        val module = model.module as? AbstractModule ?: return
+    private fun ensureJDKDependency(model: SModel): Dependency? {
+        val module = model.module as? AbstractModule ?: return null
         val jdkRef = PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)")
-        if (module.getScope().resolve(jdkRef) != null) return
+        if (module.getScope().resolve(jdkRef) != null) return null
 
-        val descriptor = module.moduleDescriptor ?: return
-        descriptor.dependencies.add(Dependency(jdkRef, SDependencyScope.DEFAULT, false))
-        // d1: eager module.save() removed. Persistence of the in-memory JDK dependency happens
-        // on the success path in finalizeInsertedNodes, alongside model.save(). On failure paths,
-        // the module mutation is left in memory but never persisted to disk, preserving the
-        // "rollback the inserted nodes" guarantee for the caller.
-        module.setChanged()
+        val descriptor = module.moduleDescriptor ?: return null
+        // Staged: the actual add + setChanged() is performed by the caller in
+        // finalizeInsertedNodes after resolveIteratively has succeeded.
+        return Dependency(jdkRef, SDependencyScope.DEFAULT, false)
     }
 
     private fun isLanguageProvidedByDevKit(model: SModel, repo: SRepository, lang: org.jetbrains.mps.openapi.language.SLanguage): Boolean {

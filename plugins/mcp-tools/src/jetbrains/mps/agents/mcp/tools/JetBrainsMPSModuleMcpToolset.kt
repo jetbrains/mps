@@ -570,8 +570,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
         // ── Phase 1: rename (if requested) ──────────────────────────────────────────────
         val renameProblems = mutableListOf<Renamer.RenameProblem>()
-        var moduleIdAfterRename: SModuleId? = null
-        if (rename) {
+        val moduleIdAfterRename: SModuleId? = if (rename) {
             validateModuleName(trimmedNewName)?.let {
                 return@withMpsProject errJson(it, McpErrorCode.INVALID_REQUEST)
             }
@@ -612,24 +611,28 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                     preparedOldId = m.moduleReference.moduleId
                     renamer = Renamer(mpsProject, m, Consumer { renameProblems.add(it) }).also { it.collectRenames() }
                 }
-                renamer!!.prepareRename(trimmedNewName)
-                if (renamer.hasPrimaryRename() || renamer.hasDependantRenames()) {
-                    renamer.runRenameCommand()
+                val r = renamer ?: error("Internal error: Renamer was not created by read action")
+                r.prepareRename(trimmedNewName)
+                if (r.hasPrimaryRename() || r.hasDependantRenames()) {
+                    r.runRenameCommand()
                 }
-                moduleIdAfterRename = preparedOldId
+                preparedOldId
             }
-        }
+        } else null
 
         // ── Phase 2: virtual folder + result lookup ─────────────────────────────────────
-        var updated: SModule? = null
         var virtualFolderFailure: String? = null
-        withContext(Dispatchers.EDT) {
+        val updated: SModule = withContext(Dispatchers.EDT) {
+            var result: SModule? = null
+            var ran = false
             mpsProject.repository.modelAccess.executeCommand {
                 val m = if (rename) {
-                    mpsProject.repository.getModule(moduleIdAfterRename!!)
+                    val id = moduleIdAfterRename
+                        ?: error("Internal error: rename path but no module id captured")
+                    mpsProject.repository.getModule(id)
                         ?: throw McpUserException(
                             McpErrorCode.INTERNAL_ERROR,
-                            "Rename completed but the renamed module could not be located by id $moduleIdAfterRename",
+                            "Rename completed but the renamed module could not be located by id $id",
                         )
                 } else {
                     resolveModule(mpsProject, moduleName)
@@ -646,14 +649,19 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                         (m as? AbstractModule)?.setChanged()
                     }
                 }
-                updated = m
+                result = m
+                ran = true
+            }
+            check(ran) {
+                "modelAccess.executeCommand did not invoke the action; another write may be in progress"
             }
             if (setFolder && virtualFolderFailure == null) {
                 mpsProject.save()
             }
+            result ?: error("Internal error: executeCommand completed without producing a module")
         }
 
-        val info = moduleInfoJsonObject(mpsProject, updated!!)
+        val info = moduleInfoJsonObject(mpsProject, updated)
         if (rename) {
             val warnings = JsonArray()
             val critical = JsonArray()

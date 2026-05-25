@@ -241,7 +241,9 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                     // The language-name fragment is kept out of this string so it does not have
                     // to be concatenated for every concept (a language has up to hundreds);
                     // subtoken matching checks it separately below.
-                    val perConceptInfo = "${concept.name} ${concept.conceptAlias} ${concept.shortDescription} $doc"
+                    val alias = concept.conceptAlias ?: ""
+                    val desc = concept.shortDescription ?: ""
+                    val perConceptInfo = "${concept.name} $alias $desc $doc"
 
                     var anyGroupAllMatch = false
                     var bestGroupScore = 0
@@ -343,7 +345,11 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             val obj = JsonObject()
             obj.addProperty("name", ref.name)
             obj.addProperty("targetConcept", structureQualifiedName(ref.targetConcept))
-            obj.addProperty("cardinality", if (ref is SContainmentLink) getCardinality(ref) else getCardinality(ref as SReferenceLink))
+            obj.addProperty("cardinality", when (ref) {
+                is SContainmentLink -> getCardinality(ref)
+                is SReferenceLink -> getCardinality(ref)
+                else -> "0..1"
+            })
             val declarationNode = ref.sourceNode?.resolve(repository)
             addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
             result.add(obj)
@@ -371,8 +377,8 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             val value = when {
                 prop.name == "name" -> concept.name
                 type is SEnumeration -> type.literals.firstOrNull()?.let { it.name ?: it.presentation } ?: "value"
-                type.toString() == "integer" -> "1"
-                type.toString() == "boolean" -> "true"
+                type == SPrimitiveTypes.INTEGER -> "1"
+                type == SPrimitiveTypes.BOOLEAN -> "true"
                 else -> "example"
             }
             propObj.addProperty("value", value)
@@ -434,7 +440,9 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             for (concept in runtime.concepts) {
                 val name = concept.name ?: ""
                 val doc = getDoc(concept.sourceNode?.resolve(repository))
-                val extraHaystack = "${concept.conceptAlias} ${concept.shortDescription} $doc"
+                val alias = concept.conceptAlias ?: ""
+                val desc = concept.shortDescription ?: ""
+                val extraHaystack = "$alias $desc $doc"
                 var nameHits = 0
                 var extraHits = 0
                 var totalHits = 0

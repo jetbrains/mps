@@ -14,6 +14,7 @@ import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SModelName
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import javax.lang.model.SourceVersion
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
 // surface, and they are invoked via reflection by the MCP server framework, so static
@@ -35,7 +36,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     ): String = withMpsProject("Adding MPS model dependency") { mpsProject ->
         val targetList: List<String> = try {
             val elem = JsonParser.parseString(targetModels)
-            if (elem.isJsonArray) elem.asJsonArray.map { it.asString } else listOf(targetModels)
+            when {
+                elem.isJsonArray -> elem.asJsonArray.map { it.asString }
+                elem.isJsonPrimitive && elem.asJsonPrimitive.isString -> listOf(elem.asString)
+                else -> return@withMpsProject errJson("Invalid JSON for targetModels: expected a JSON array or a string")
+            }
         } catch (_: Exception) {
             listOf(targetModels)
         }
@@ -230,9 +235,21 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                             .find { it.moduleName == usedLanguage }?.moduleReference
                     } ?: return@executeShortCommandOnEdt errJson("Devkit not found: $usedLanguage")
 
+                    if (model.importedDevkits().contains(devkitRef)) {
+                        val payload = JsonObject().apply {
+                            addProperty("added", false)
+                            addProperty("alreadyPresent", true)
+                        }
+                        return@executeShortCommandOnEdt okJson(payload.toString())
+                    }
+
                     model.addDevKit(devkitRef)
                     model.save()
-                    okJson("true")
+                    val payload = JsonObject().apply {
+                        addProperty("added", true)
+                        addProperty("alreadyPresent", false)
+                    }
+                    okJson(payload.toString())
                 }
 
                 else -> errJson("Invalid kind: $kind. Must be 'language' or 'devkit'.")
@@ -330,6 +347,9 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         executeShortCommandOnEdt(mpsProject) {
             val module = mpsProject.projectModules.find { it.moduleName == moduleName }
                 ?: return@executeShortCommandOnEdt errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
+            validateModelName(modelName)?.let {
+                return@executeShortCommandOnEdt errJson(it, McpErrorCode.INVALID_REQUEST)
+            }
             val modelNameObj = SModelName(modelName)
             val root = module.modelRoots.find { it.canCreateModel(modelNameObj) }
                 ?: return@executeShortCommandOnEdt errJson("No suitable model root found in module '$moduleName' to create model '$modelName'", McpErrorCode.INVALID_REQUEST)
@@ -360,6 +380,9 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference", McpErrorCode.NOT_FOUND)
             if (model !is EditableSModel) {
                 return@executeShortCommandOnEdt errJson("Model '${model.name}' is not editable", McpErrorCode.NOT_EDITABLE)
+            }
+            validateModelName(newModelName)?.let {
+                return@executeShortCommandOnEdt errJson(it, McpErrorCode.INVALID_REQUEST)
             }
             model.rename(newModelName, true)
             model.save()
@@ -414,6 +437,46 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 errJson("Deletion not supported for this module type", McpErrorCode.INVALID_REQUEST)
             }
         }
+    }
+
+    /**
+     * Validates a model name the same way [JetBrainsMPSModuleMcpToolset.validateModuleName]
+     * validates module names (Java-package qualified name rules) plus an extra prohibition
+     * on '/'. Returns a user-facing error message when invalid, or null when valid.
+     */
+    private fun validateModelName(name: String): String? {
+        if (name.isEmpty()) {
+            return "Model name must not be empty"
+        }
+        val atIndex = name.lastIndexOf('@')
+        val longName = if (atIndex == -1) name else name.substring(0, atIndex)
+        val stereotype = if (atIndex == -1) "" else name.substring(atIndex + 1)
+
+        if (longName.isEmpty()) {
+            return "Model name must not be empty"
+        }
+        if (!Character.isJavaIdentifierStart(longName[0])) {
+            return "Model name can't start with '${longName[0]}'"
+        }
+        val lastChar = name[name.length - 1]
+        if (!Character.isJavaIdentifierPart(lastChar)) {
+            return "Model name can't end with '$lastChar'"
+        }
+        if (!SourceVersion.isName(longName)) {
+            return "Model name should be a valid Java package qualified name"
+        }
+        if (name.contains('/')) {
+            return "Model name must not contain '/'"
+        }
+        if (atIndex != -1) {
+            if (stereotype.isEmpty()) {
+                return "Stereotype must not be empty if '@' is present"
+            }
+            if (stereotype.contains('@')) {
+                return "Stereotype must not contain '@'"
+            }
+        }
+        return null
     }
 
 }

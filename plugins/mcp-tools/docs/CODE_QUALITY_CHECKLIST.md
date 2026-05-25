@@ -6,24 +6,6 @@ Line numbers reflect the state at the time of review; small drifts are possible 
 
 Items that have since been resolved are listed in **## Fixed** near the bottom (with the commit-time line numbers); their entries are removed from the per-file lists above so the remaining `- [ ]` lines describe only live defects.
 
-## Probable bugs
-
-### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSRunConfigurationMcpToolset.kt`
-
-- [ ] **line 97 (block opens) / `runManager.addConfiguration(settings)` at line 165** — The entire body of `mps_mcp_create_run_configuration` runs inside `executeShortReadOnEdt`, but it ultimately calls `RunManager.addConfiguration(...)`, a write/state-mutating operation. Misleading at best; inappropriate for a read-action wrapper at worst. **Fix**: move the mutation into a write/command wrapper.
-
-- [ ] **line 313** — `result as? Boolean ?: true` defaults to `true` ("can run in process") when the reflective invocation returns null or a non-Boolean. The unsafe default — should be `false` (safer behavior) or throw on unexpected return type.
-
-- [ ] **line 391** — `factories.firstOrNull { it.id == type.id } ?: factories.first()` still throws `NoSuchElementException` on a fully empty factory list, propagating outside the surrounding `ReflectiveOperationException` catch. The `firstOrNull { ... }` tie-breaker added during the run-config reorganization helps when factories exist; the underlying "what if the list is empty?" hazard remains. **Fix**: handle the empty case explicitly and return a clean error.
-
-### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSLanguageMcpToolset.kt`
-
-- [ ] **line 244 / line 437** — `"${concept.name} ${concept.conceptAlias} ${concept.shortDescription} $doc"` (and the analogous `"${concept.conceptAlias} ${concept.shortDescription} $doc"` haystack) literally embed `"null"` when alias/description are unset, so a user query containing `null` accidentally matches every concept missing an alias or description. The `.contains("null", ignoreCase = true)` test that motivated the original entry is gone, but the underlying interpolation hazard remains in both haystacks. **Fix**: replace nulls with empty strings before concatenation.
-
-- [ ] **line 346** — `if (ref is SContainmentLink) ... else ref as SReferenceLink` is safe today because MPS only has those two `SAbstractLink` subtypes, but it relies on that being effectively a closed hierarchy. A defensive `else` branch or explicit type check would future-proof the dispatch. *(Clarity smell rather than an active bug.)*
-
-- [ ] **line 374-375** — `type.toString() == "integer"` / `"boolean"` relies on the `toString()` contract of `SDataType` returning these exact strings. **Fix**: compare against the canonical primitive data type instances, or use the data type's name API.
-
 
 ## Clarity / smells
 
@@ -42,6 +24,8 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
 - [ ] **line 1289** — Comment says "module IDs use 'l:'" but module IDs in MPS persistence may use no prefix or `f:`. Misleading comment.
 
 - [ ] **line 2040, 2107** — Identifier `isSucessful` (single 's'). If this mirrors an MPS API typo, leave a comment pointing at the source.
+
+- [ ] **line 1770 (`readJsonOrFile`)** — Accepts an arbitrary user-supplied path and reads it via `File(jsonOrPath).readText()` with **no path-traversal validation and no allow-list**. A caller can pass `/etc/passwd`, `~/.ssh/id_rsa`, or any other file the MPS process can read, and the contents are returned verbatim. *(Size cap and explicit UTF-8 charset have been resolved separately — see ## Fixed.)* **Fix**: validate the path is either inside the project root or inside `java.io.tmpdir`. Will require passing the project root through the function's API.
 
 ### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/AbstractNodeOps.kt`
 
@@ -80,43 +64,13 @@ Additional defects surfaced while re-validating the entries above. Each is reach
 
 ### Probable bugs
 
-#### `AbstractOps.kt`
-
-- [ ] **line 1770 (`readJsonOrFile`)** — Accepts an arbitrary user-supplied path and reads it via `File(jsonOrPath).readText()` with **no path-traversal validation and no allow-list**. A caller can pass `/etc/passwd`, `~/.ssh/id_rsa`, or any other file the MPS process can read, and the contents are returned verbatim. *(Size cap and explicit UTF-8 charset have been resolved separately — see ## Fixed.)* **Fix**: validate the path is either inside the project root or inside `java.io.tmpdir`. Will require passing the project root through the function's API.
-
-#### `JetBrainsMPSJavaMcpToolset.kt`
-
-- [ ] **line 554-566 (`ensureJDKDependency`)** — Mutates `descriptor.dependencies` and calls `module.setChanged()` **before** any success signal. The accompanying comment (current lines 561-564) acknowledges the design — persistence is deferred to `finalizeInsertedNodes` — but on a failure path the in-memory descriptor still carries the added `Dependency(jdkRef, …)` entry and the dirty flag. A subsequent unrelated `save()` (e.g. an IDE-driven auto-save, or another MCP call on the same module) will then write the half-rolled-back state to disk. **Fix**: stage the dependency add in a local variable and apply both `dependencies.add` and `setChanged()` only inside `finalizeInsertedNodes` after `resolveIteratively` succeeds.
-
-- [ ] **line 515-528 (`removeJavaImports`)** — `collect(n)` recurses through every descendant. A deeply nested Java AST (parser-generated, can easily reach hundreds of levels for long method chains, anonymous classes, or generated code) will overflow the JVM stack. **Fix**: convert to an iterative worklist over `SNodeOperations.getNodeDescendants(...)` — the same pattern is already used elsewhere in the file.
-
-#### `JetBrainsMPSModuleMcpToolset.kt`
-
-- [ ] **line 656 / line 629** — `moduleInfoJsonObject(mpsProject, updated!!)` (line 656) and `mpsProject.repository.getModule(moduleIdAfterRename!!)` (line 629) unwrap lambda-captured `var`s with `!!`. Same hazard as the existing entry at `JetBrainsMPSModuleMcpToolset:615`. **Fix**: route the EDT block through a value-returning wrapper or default-and-assert.
-
-#### `JetBrainsMPSModelMcpToolset.kt`
-
-- [ ] **line 224-236 (`mps_mcp_add_model_used_language`, devkit branch)** — Adds the devkit unconditionally via `model.addDevKit(devkitRef)`. The language branch (lines 190-222) deliberately checks "is this language already provided by an imported DevKit?" and short-circuits when it is, returning a structured `{ added: false, providedByDevKit: true }` payload. The devkit branch has no analogous "already-imported" check and no "redundant DevKit" check (e.g. another imported DevKit already exports everything this one does). Asymmetric API surface and unnecessary writes. **Fix**: check `model.importedDevkits().contains(devkitRef)` up front, return `{ added: false, alreadyPresent: true }`; consider rejecting redundant DevKits.
-
-- [ ] **line 352-367 (`mps_mcp_update_model`)** — `model.rename(newModelName, true)` (line 364) accepts the new name without validation. A blank string, invalid Java-package qualified name, or name with `/` is passed straight through to `EditableSModel.rename`, which throws an opaque `IllegalArgumentException` later (or accepts it and produces a broken model name). Contrast with `JetBrainsMPSModuleMcpToolset.validateModuleName`, which enforces `SourceVersion.isName(...)` and per-character `isJavaIdentifierPart`. **Fix**: call an analogous `validateModelName` helper before `rename`.
-
-- [ ] **line 36-41 (`mps_mcp_add_model_dependency`)** — Malformed JSON in the `targetModels` parameter silently falls through to `listOf(targetModels)` (i.e., the raw string is treated as a single model name). A caller meaning to send `["model1", "model2"]` who instead sends `[model1, model2]` (no quotes) gets `"Target model not found: [model1, model2]"` rather than `"Invalid JSON for targetModels"`. **Fix**: distinguish "input is not JSON" from "input is JSON but not an array"; only the latter should fall back to the single-string interpretation.
-
 ### Clarity / smells
 
-#### `JetBrainsMPSJavaMcpToolset.kt`
-
-- [ ] **line 515-528 (`removeJavaImports`)** — Even after switching to an iterative descent (see the bug entry above), the function flattens the result via `for (root in roots) { collect(root) }` and then iterates `toRemove.forEach { SNodeOperations.deleteNode(it) }`. The first deletion can change the parent chain seen by subsequent deletions; for nested `JAVA_IMPORTS` (unusual but legal) the second `deleteNode` then operates on a detached node. **Fix**: filter `toRemove` to only nodes whose parent chain is still intact before each delete.
-
-#### `JetBrainsMPSModelMcpToolset.kt`
+#### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSModelMcpToolset.kt`
 
 - [ ] **lines 148-152 / 191-197 / 225-231 / 272-279 / 292-303** — Five near-identical `try { createXxx() } catch (_: Exception) { ... }` blocks (a fifth was introduced when the remove-devkit branch was added). Each catches `Exception` (silently swallowing `CancellationException` if it happens to subclass `IllegalStateException` on the JVM, see the existing `AssignableReferenceService.kt:53-58` entry for the same pattern). **Fix**: extract a `tryCreateReference<T>` helper that rethrows `CancellationException` and `Error` and returns `null` for ordinary failures.
 
-#### `JetBrainsMPSEditorMcpToolset.kt`
-
-- [ ] **line 852 (`return if (error != null) errJson(error) else okJson(result!!)`)** — `result!!` will NPE if the EDT block exits without setting either `error` or `result`. The new `succeeded` flag covers the rollback path, but the response path still has the same hazard the earlier `reply!!` pattern was supposed to retire. **Fix**: default `result` to a sentinel ("internal error" envelope) or fall back to `errJson("scaffolding produced no result")` when both are null.
-
-#### `JetBrainsMPSModuleMcpToolset.kt`
+#### `/Users/vaclav/work/MPS/myMPS/plugins/mcp-tools/JetBrainsMPSModuleMcpToolset.kt`
 
 - [ ] **line 796 (`mps_mcp_list_facet_types`)** — `result ?: errJson("Failed to list facet types")` collapses every possible failure (missing FacetsFacade, etc.) into one undifferentiated message. The same shape recurs at line 858 in `mps_mcp_get_module_facets`. *(The "modelAccess rejection" sub-case is no longer applicable here — `executeShortCommandOnEdt` now `check(ran)`s and propagates a typed `IllegalStateException` that the surrounding `withMpsProject` converts into an `INTERNAL_ERROR` envelope with a descriptive message, see ## Fixed.)* **Fix**: distinguish the remaining failure modes with specific error messages rather than collapsing them into one.
 

@@ -859,7 +859,13 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     }
                 }
             }
-        return if (error != null) errJson(error) else okJson(result!!)
+        return if (error != null) {
+            errJson(error)
+        } else if (result != null) {
+            okJson(result)
+        } else {
+            errJson("scaffolding produced no result")
+        }
     }
 
     private fun applyStyle(node: SNode, styleRef: String, repo: SRepository) {
