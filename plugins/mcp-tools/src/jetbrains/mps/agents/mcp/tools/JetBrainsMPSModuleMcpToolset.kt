@@ -580,38 +580,36 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             //   3. runRenameCommand() — opens its own write command internally
             // The phases share state on the Renamer instance and must run in order on the
             // same instance, so we cannot fold them into a single executeCommand block.
-            withContext(Dispatchers.EDT) {
-                var renamer: Renamer? = null
-                var preparedOldId: SModuleId? = null
-                mpsProject.repository.modelAccess.runReadAction {
-                    val m = resolveModule(mpsProject, moduleName)
-                        ?: throw McpNotFoundException("Module '$moduleName' not found")
-                    if (m !is AbstractModule) {
-                        throw McpInvalidRequestException("Module '$moduleName' is not renameable (not an AbstractModule)")
-                    }
-                    if (m.isReadOnly) {
-                        throw McpNotEditableException("Module '$moduleName' is read-only")
-                    }
-                    if (m is Generator) {
-                        throw McpInvalidRequestException(
-                            "Generator modules cannot be renamed through this tool — rename the parent Language instead, which cascade-renames its owned generators."
-                        )
-                    }
-                    if (m.descriptorFile == null) {
-                        throw McpInvalidRequestException("Module '$moduleName' has no descriptor file and cannot be renamed")
-                    }
-                    if (trimmedNewName != m.moduleName) {
-                        val clash = mpsProject.repository.modules.firstOrNull {
-                            it != m && trimmedNewName == it.moduleName
-                        }
-                        if (clash != null) {
-                            throw McpInvalidRequestException("Module name '$trimmedNewName' is already in use in the repository")
-                        }
-                    }
-                    preparedOldId = m.moduleReference.moduleId
-                    renamer = Renamer(mpsProject, m, Consumer { renameProblems.add(it) }).also { it.collectRenames() }
+            val (r, preparedOldId) = executeShortReadOnEdt(mpsProject) {
+                val m = resolveModule(mpsProject, moduleName)
+                    ?: throw McpNotFoundException("Module '$moduleName' not found")
+                if (m !is AbstractModule) {
+                    throw McpInvalidRequestException("Module '$moduleName' is not renameable (not an AbstractModule)")
                 }
-                val r = renamer ?: error("Internal error: Renamer was not created by read action")
+                if (m.isReadOnly) {
+                    throw McpNotEditableException("Module '$moduleName' is read-only")
+                }
+                if (m is Generator) {
+                    throw McpInvalidRequestException(
+                        "Generator modules cannot be renamed through this tool — rename the parent Language instead, which cascade-renames its owned generators."
+                    )
+                }
+                if (m.descriptorFile == null) {
+                    throw McpInvalidRequestException("Module '$moduleName' has no descriptor file and cannot be renamed")
+                }
+                if (trimmedNewName != m.moduleName) {
+                    val clash = mpsProject.repository.modules.firstOrNull {
+                        it != m && trimmedNewName == it.moduleName
+                    }
+                    if (clash != null) {
+                        throw McpInvalidRequestException("Module name '$trimmedNewName' is already in use in the repository")
+                    }
+                }
+                val oldId = m.moduleReference.moduleId
+                val renamer = Renamer(mpsProject, m, Consumer { renameProblems.add(it) }).also { it.collectRenames() }
+                renamer to oldId
+            }
+            withContext(Dispatchers.EDT) {
                 r.prepareRename(trimmedNewName)
                 if (r.hasPrimaryRename() || r.hasDependantRenames()) {
                     r.runRenameCommand()
@@ -621,44 +619,41 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         } else null
 
         // ── Phase 2: virtual folder + result lookup ─────────────────────────────────────
-        var virtualFolderFailure: String? = null
-        val updated: SModule = withContext(Dispatchers.EDT) {
-            var result: SModule? = null
-            var ran = false
-            mpsProject.repository.modelAccess.executeCommand {
-                val m = if (rename) {
-                    val id = moduleIdAfterRename
-                        ?: error("Internal error: rename path but no module id captured")
-                    mpsProject.repository.getModule(id)
-                        ?: throw McpUserException(
-                            McpErrorCode.INTERNAL_ERROR,
-                            "Rename completed but the renamed module could not be located by id $id",
-                        )
-                } else {
-                    resolveModule(mpsProject, moduleName)
-                        ?: throw McpNotFoundException("Module '$moduleName' not found")
-                }
-                if (setFolder) {
-                    // n1: virtual folder is metadata layered on top of the (already-committed)
-                    // rename. If setVirtualFolder fails, the rename has still succeeded and is
-                    // visible to the user, so throwing here would force them to chase a
-                    // misleading "rename failed" error. Surface the failure as a structured
-                    // renameWarnings entry instead and continue with the post-rename payload.
-                    virtualFolderFailure = warningMessageOrRethrow {
-                        mpsProject.setVirtualFolder(m, virtualFolder)
-                        (m as? AbstractModule)?.setChanged()
-                    }
-                }
-                result = m
-                ran = true
+        val (updated, virtualFolderFailure) = executeShortCommandOnEdt(mpsProject) {
+            val m = if (rename) {
+                val id = moduleIdAfterRename
+                    ?: throw McpUserException(
+                        McpErrorCode.INTERNAL_ERROR,
+                        "Internal error: rename path but no module id captured",
+                    )
+                mpsProject.repository.getModule(id)
+                    ?: throw McpUserException(
+                        McpErrorCode.INTERNAL_ERROR,
+                        "Rename completed but the renamed module could not be located by id $id",
+                    )
+            } else {
+                resolveModule(mpsProject, moduleName)
+                    ?: throw McpNotFoundException("Module '$moduleName' not found")
             }
-            check(ran) {
-                "modelAccess.executeCommand did not invoke the action; another write may be in progress"
+            var folderFailure: String? = null
+            if (setFolder) {
+                // n1: virtual folder is metadata layered on top of the (already-committed)
+                // rename. If setVirtualFolder fails, the rename has still succeeded and is
+                // visible to the user, so throwing here would force them to chase a
+                // misleading "rename failed" error. Surface the failure as a structured
+                // renameWarnings entry instead and continue with the post-rename payload.
+                folderFailure = warningMessageOrRethrow {
+                    mpsProject.setVirtualFolder(m, virtualFolder)
+                    (m as? AbstractModule)?.setChanged()
+                }
             }
-            if (setFolder && virtualFolderFailure == null) {
+            m to folderFailure
+        }
+
+        if (setFolder && virtualFolderFailure == null) {
+            withContext(Dispatchers.EDT) {
                 mpsProject.save()
             }
-            result ?: error("Internal error: executeCommand completed without producing a module")
         }
 
         val info = moduleInfoJsonObject(mpsProject, updated)
@@ -779,8 +774,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     suspend fun mps_mcp_list_facet_types(
         @McpDescription("Optional module name or reference to check applicability") @Nullable moduleName: String? = null
     ): String = withMpsProject("Listing module facet types") { mpsProject ->
-        var result: String? = null
-        mpsProject.repository.modelAccess.runReadAction {
+        executeShortReadOnEdt(mpsProject) {
             val ff = FacetsFacade.getInstance()
                 ?: throw McpUserException(McpErrorCode.INTERNAL_ERROR, "FacetsFacade service is not available")
             val module = moduleName?.let { resolveModule(mpsProject, it, projectOnly = false) }
@@ -800,9 +794,8 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             }
             val resObj = JsonObject()
             resObj.add("facetTypes", jsonArray)
-            result = okJson(resObj.toString())
+            okJson(resObj)
         }
-        result ?: error("Internal error: runReadAction completed without a result in mps_mcp_list_facet_types")
     }
 
     @McpTool
@@ -816,14 +809,11 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     suspend fun mps_mcp_get_module_facets(
         @McpDescription("Module name or reference") moduleName: String
     ): String = withMpsProject("Getting module facets") { mpsProject ->
-        var result: String? = null
-        mpsProject.repository.modelAccess.runReadAction {
+        executeShortReadOnEdt(mpsProject) {
             val module = resolveModule(mpsProject, moduleName, projectOnly = false)
             if (module == null) {
-                result = errJson("Module $moduleName not found", McpErrorCode.NOT_FOUND)
-                return@runReadAction
-            }
-
+                errJson("Module $moduleName not found", McpErrorCode.NOT_FOUND)
+            } else {
                 val ff = FacetsFacade.getInstance()
                     ?: throw McpUserException(McpErrorCode.INTERNAL_ERROR, "FacetsFacade service is not available")
                 val abstractModule = module as? AbstractModule
@@ -859,13 +849,13 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                     }
                 }
 
-            val resObj = JsonObject()
-            resObj.add("activeFacets", activeFacets)
-            resObj.add("persistedFacets", persistedFacets)
-            resObj.add("discrepancies", discrepancies)
-            result = okJson(resObj.toString())
+                val resObj = JsonObject()
+                resObj.add("activeFacets", activeFacets)
+                resObj.add("persistedFacets", persistedFacets)
+                resObj.add("discrepancies", discrepancies)
+                okJson(resObj)
+            }
         }
-        result ?: error("Internal error: runReadAction completed without a result in mps_mcp_get_module_facets")
     }
 
     @McpTool

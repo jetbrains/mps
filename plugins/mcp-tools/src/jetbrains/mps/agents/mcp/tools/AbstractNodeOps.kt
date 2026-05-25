@@ -333,11 +333,15 @@ abstract class AbstractNodeOps : AbstractOps() {
         val stagedProperties = mutableListOf<Pair<SProperty, String?>>()
         val properties = jsonObject.getAsJsonArray("properties")
         if (properties != null) {
-            for (propElement in properties) {
+            properties.forEachIndexed { propIndex, propElement ->
                 val propObject = propElement.asJsonObject
-                val propName = propObject.get("name")?.asString ?: continue
+                val propName = propObject.get("name")?.asString ?: return@forEachIndexed
                 val propValue = propObject.get("value")?.asString
-                val sProperty = sConcept.properties.find { it.name == propName } ?: continue
+                val sProperty = sConcept.properties.find { it.name == propName }
+                    ?: throw McpInvalidRequestException(
+                        "Unknown property '$propName' at $jsonPath.properties[$propIndex]: " +
+                                "concept '${sConcept.name}' has no such property"
+                    )
                 if (sProperty == SNodeUtil.property_INamedConcept_name) {
                     val currentName = node.getProperty(sProperty)
                     if (propValue != currentName) {
@@ -348,7 +352,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                                     "(e.g. mps_mcp_set_node_properties or a rename refactoring)."
                         )
                     }
-                    continue
+                    return@forEachIndexed
                 }
                 stagedProperties += sProperty to propValue
             }
@@ -364,7 +368,11 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val childRoleObject = childRoleElement.asJsonObject
                 val roleName = childRoleObject.get("role")?.asString ?: return@forEachIndexed
                 val childNodes = childRoleObject.getAsJsonArray("nodes") ?: return@forEachIndexed
-                val link = sConcept.containmentLinks.find { it.name == roleName } ?: return@forEachIndexed
+                val link = sConcept.containmentLinks.find { it.name == roleName }
+                    ?: throw McpInvalidRequestException(
+                        "Unknown child role '$roleName' at $jsonPath.children[$roleIndex]: " +
+                                "concept '${sConcept.name}' has no such containment link"
+                    )
                 childNodes.forEachIndexed { nodeIndex, nodeElement ->
                     val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
                     val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath)
@@ -392,7 +400,11 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val refObject = refElement.asJsonObject
                 val roleName = refObject.get("role")?.asString ?: return@forEachIndexed
                 val targetRefStr = (refObject.get("targetReference") ?: refObject.get("target"))?.asString
-                val link = sConcept.referenceLinks.find { it.name == roleName } ?: return@forEachIndexed
+                val link = sConcept.referenceLinks.find { it.name == roleName }
+                    ?: throw McpInvalidRequestException(
+                        "Unknown reference role '$roleName' at $jsonPath.references[$index]: " +
+                                "concept '${sConcept.name}' has no such reference link"
+                    )
                 if (targetRefStr.isNullOrEmpty()) return@forEachIndexed
 
                 failIfXMLReferenceIsUsed(targetRefStr, jsonPath, index)
