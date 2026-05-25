@@ -454,45 +454,9 @@
       <node concept="3Tm1VV" id="6xxD4C$B90b" role="1B3o_S" />
       <node concept="17QB3L" id="6xxD4C$B90n" role="3clF45" />
       <node concept="3clFbS" id="6xxD4C$B90d" role="3clF47">
-        <node concept="3cpWs8" id="5bxGBx9Vx1f" role="3cqZAp">
-          <node concept="3cpWsn" id="5bxGBx9Vx1g" role="3cpWs9">
-            <property role="TrG5h" value="name" />
-            <node concept="3uibUv" id="5bxGBx9Vx1e" role="1tU5fm">
-              <ref role="3uigEE" to="wyt6:~String" resolve="String" />
-            </node>
-            <node concept="1rXfSq" id="5bxGBx9Vx1h" role="33vP2m">
-              <ref role="37wK5l" to="dj99:~RunConfigurationBase.getName()" resolve="getName" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbJ" id="5bxGBxaoODe" role="3cqZAp">
-          <node concept="3clFbS" id="5bxGBxaoODh" role="3clFbx">
-            <node concept="3cpWs6" id="5bxGBxaoRzk" role="3cqZAp">
-              <node concept="2OqwBi" id="5bxGBxaoVrf" role="3cqZAk">
-                <node concept="2OqwBi" id="5bxGBxaoRLP" role="2Oq$k0">
-                  <node concept="Xjq3P" id="5bxGBxaoRzF" role="2Oq$k0" />
-                  <node concept="liA8E" id="5bxGBxaoV6L" role="2OqNvi">
-                    <ref role="37wK5l" to="wyt6:~Object.getClass()" resolve="getClass" />
-                  </node>
-                </node>
-                <node concept="liA8E" id="5bxGBxap1NV" role="2OqNvi">
-                  <ref role="37wK5l" to="wyt6:~Class.toString()" resolve="toString" />
-                </node>
-              </node>
-            </node>
-          </node>
-          <node concept="2OqwBi" id="BmqKuK_nRB" role="3clFbw">
-            <node concept="37vLTw" id="5bxGBxaoOE4" role="2Oq$k0">
-              <ref role="3cqZAo" node="5bxGBx9Vx1g" resolve="name" />
-            </node>
-            <node concept="liA8E" id="BmqKuK_oTL" role="2OqNvi">
-              <ref role="37wK5l" to="wyt6:~String.isEmpty()" resolve="isEmpty" />
-            </node>
-          </node>
-        </node>
-        <node concept="3clFbF" id="6xxD4C$B90o" role="3cqZAp">
-          <node concept="37vLTw" id="5bxGBx9Vx1i" role="3clFbG">
-            <ref role="3cqZAo" node="5bxGBx9Vx1g" resolve="name" />
+        <node concept="3clFbF" id="6Q6FT4kjpEr" role="3cqZAp">
+          <node concept="1rXfSq" id="6Q6FT4kjpEt" role="3clFbG">
+            <ref role="37wK5l" to="dj99:~RunConfigurationBase.getName()" resolve="getName" />
           </node>
         </node>
       </node>

@@ -22,28 +22,25 @@
       <node id="3908032508224771140" at="21,94,22,34" concept="14" />
       <node id="3908032508224771129" at="24,48,25,61" concept="10" />
       <node id="7521473491034214420" at="28,36,29,16" concept="10" />
-      <node id="5972250810576146511" at="32,33,33,28" concept="9" />
-      <node id="5972250810583840980" at="34,25,35,40" concept="10" />
-      <node id="7521473491034214424" at="36,5,37,16" concept="10" />
-      <node id="479872435238927585" at="41,73,42,97" concept="9" />
-      <node id="479872435238874290" at="42,97,43,41" concept="3" />
-      <node id="738510297333385745" at="51,37,52,48" concept="9" />
-      <node id="738510297333389521" at="53,48,54,54" concept="10" />
-      <node id="738510297333390937" at="55,5,56,16" concept="10" />
+      <node id="7892188434659121819" at="32,33,33,21" concept="10" />
+      <node id="479872435238927585" at="37,73,38,97" concept="9" />
+      <node id="479872435238874290" at="38,97,39,41" concept="3" />
+      <node id="738510297333385745" at="47,37,48,48" concept="9" />
+      <node id="738510297333389521" at="49,48,50,54" concept="10" />
+      <node id="738510297333390937" at="51,5,52,16" concept="10" />
       <node id="3908032508224771136" at="21,0,24,0" concept="2" trace="BaseMpsRunConfiguration#(Lcom/intellij/openapi/project/Project;Lcom/intellij/execution/configurations/ConfigurationFactory;Ljava/lang/String;)V" />
       <node id="3908032508224771123" at="24,0,27,0" concept="8" trace="canExecute#(Ljava/lang/String;)Z" />
-      <node id="5972250810583829070" at="33,28,36,5" concept="7" />
-      <node id="738510297333386834" at="52,48,55,5" concept="7" />
+      <node id="738510297333386834" at="48,48,51,5" concept="7" />
       <node id="7521473491034214414" at="27,0,31,0" concept="8" trace="isGeneratedName#()Z" />
-      <node id="479872435238792167" at="40,0,45,0" concept="8" trace="checkConfiguration#()V" />
-      <node id="738510297333382888" at="51,0,58,0" concept="8" trace="isValid#()Z" />
-      <node id="7521473491034214410" at="31,0,39,0" concept="8" trace="suggestedName#()Ljava/lang/String;" />
+      <node id="7521473491034214410" at="31,0,35,0" concept="8" trace="suggestedName#()Ljava/lang/String;" />
+      <node id="479872435238792167" at="36,0,41,0" concept="8" trace="checkConfiguration#()V" />
+      <node id="738510297333382888" at="47,0,54,0" concept="8" trace="isValid#()Z" />
       <scope id="3908032508224771139" at="21,94,22,34" />
       <scope id="3908032508224771128" at="24,48,25,61" />
       <scope id="7521473491034214417" at="28,36,29,16" />
-      <scope id="5972250810583829073" at="34,25,35,40" />
-      <scope id="738510297333386836" at="53,48,54,54" />
-      <scope id="479872435238792182" at="41,73,43,41">
+      <scope id="7521473491034214413" at="32,33,33,21" />
+      <scope id="738510297333386836" at="49,48,50,54" />
+      <scope id="479872435238792182" at="37,73,39,41">
         <var name="mpsProject" id="479872435238927586" />
       </scope>
       <scope id="3908032508224771136" at="21,0,24,0">
@@ -55,16 +52,13 @@
         <var name="executorId" id="3908032508224771124" />
       </scope>
       <scope id="7521473491034214414" at="27,0,31,0" />
-      <scope id="7521473491034214413" at="32,33,37,16">
-        <var name="name" id="5972250810576146512" />
-      </scope>
-      <scope id="479872435238792167" at="40,0,45,0" />
-      <scope id="738510297333382891" at="51,37,56,16">
+      <scope id="7521473491034214410" at="31,0,35,0" />
+      <scope id="479872435238792167" at="36,0,41,0" />
+      <scope id="738510297333382891" at="47,37,52,16">
         <var name="factory" id="738510297333385746" />
       </scope>
-      <scope id="738510297333382888" at="51,0,58,0" />
-      <scope id="7521473491034214410" at="31,0,39,0" />
-      <unit id="3908032508224771122" at="19,0,59,0" name="jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration" />
+      <scope id="738510297333382888" at="47,0,54,0" />
+      <unit id="3908032508224771122" at="19,0,55,0" name="jetbrains.mps.execution.api.configurations.BaseMpsRunConfiguration" />
     </file>
   </root>
   <root nodeRef="r:49e72ff8-8ace-42fd-8f9f-5961eed9792e(jetbrains.mps.execution.api.configurations)/3908032508224771150">

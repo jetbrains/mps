@@ -30,11 +30,7 @@ public abstract class BaseMpsRunConfiguration extends RunConfigurationBase<BaseS
   }
   @Override
   public String suggestedName() {
-    String name = getName();
-    if (name.isEmpty()) {
-      return this.getClass().toString();
-    }
-    return name;
+    return getName();
   }
 
   @Override
