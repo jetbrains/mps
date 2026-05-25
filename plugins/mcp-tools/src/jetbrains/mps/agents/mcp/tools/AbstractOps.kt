@@ -278,6 +278,18 @@ abstract class AbstractOps : McpToolset {
     }
 
     /**
+     * Saves [model] and marks the owning module as changed, then flushes the module descriptor.
+     * Call this instead of bare [EditableSModel.save] from every node-mutation tool so that the
+     * module-level dirty flag and descriptor stay consistent with the saved model content.
+     */
+    protected fun saveModelAndModule(model: EditableSModel) {
+        val module = model.module as? AbstractModule
+        module?.setChanged()
+        model.save()
+        module?.save()
+    }
+
+    /**
      * Persists [model] under the write command that created [createdNodes], rolling back the
      * in-memory state via [safelyRollbackNodes] if `save()` throws. Returns a pre-formatted
      * [errJson] on failure, or `null` on success.
@@ -296,7 +308,7 @@ abstract class AbstractOps : McpToolset {
         modelReference: String,
     ): String? {
         return try {
-            model.save()
+            saveModelAndModule(model)
             null
         } catch (e: Throwable) {
             rethrowIfCancellation(e)

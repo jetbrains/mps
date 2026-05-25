@@ -7,8 +7,6 @@ Line numbers reflect the state at the time of review; small drifts are possible 
 Items that have since been resolved are listed in **## Fixed** near the bottom (with the commit-time line numbers); their entries are removed from the per-file lists above so the remaining `- [ ]` lines describe only live defects.
 
 
-
-
 ## Cross-cutting patterns
 
 - [ ] **Broad `catch (Exception)` with no logging.** Remaining live sites after the Editor/Java/AssignableReferenceService cleanups (see `## Fixed`):
@@ -22,16 +20,13 @@ Items that have since been resolved are listed in **## Fixed** near the bottom (
   
   `rethrowIfCancellation` (defined at `AbstractOps.kt:228`) is used at ~18 sites but not the silent ones above. `warningMessageOrRethrow` exists only as a `private inline` in `JetBrainsMPSModuleMcpToolset.kt:1067` and is reused only within that file. **Fix**: promote `warningMessageOrRethrow` (or an equivalent) to the shared base, mandate `logger.warn` + `rethrowIfCancellation` in every non-`ignore` catch, and audit the `catch (ignore: ...)` sites in `AbstractOps` for whether the swallow is actually intentional.
 
-- [ ] **Persistence inconsistency.** Two distinct live problems remain after the earlier targeted fixes:
-  - **Concept structure mutations in `JetBrainsMPSLanguageStructureMcpToolset.kt` never persist.** `mps_mcp_update_concept_property` (1064-1098), `mps_mcp_update_concept_link` (1100-1163), `mps_mcp_rename_concept_property` (1165-1187), `mps_mcp_rename_concept_link` (1189-1215) mutate concept nodes but call neither `model.save()` nor `module.setChanged()`. Changes are visible in-memory but not flushed to disk on a successful return.
-  - **Node mutations save the model but never `setChanged()` the owning module.** `JetBrainsMPSNodeMcpToolset`, `JetBrainsMPSRootNodeMcpToolset`, `JetBrainsMPSEditorMcpToolset`, and the generic `AbstractNodeOps` paths (`addChild`, `replaceChild`, `deleteChild`, `update_node_reference`, `update_node_property`, `moveNodeChild`, `moveNodeToParent`, `opFixReferences`) all call `model.save()` but not `module.setChanged()`/`module.save()`. The only node-mutating tool that does both is `JetBrainsMPSJavaMcpToolset.parse_java_and_insert` (509-512).
-  
-  There is no shared helper that enforces the rule — `saveOrRollback` (`AbstractOps.kt:283-304`) handles `model.save()` with rollback but only in structure-creation paths, and does nothing about the module side. **Fix**: introduce a single helper that, given a mutated `SModel`, marks the owning `SModule` changed and saves both; replace ad-hoc `model.save()` calls in tool methods with it; add a regression test that opens each mutation tool and asserts both `model` and `module` are persisted.
-
 
 ## Fixed
 
-- [x] **Dry-run silently skips dynamic-reference creation.** `AbstractNodeOps.kt` (previously 273-282). `applyReferenceUpdate` now returns `String?` — non-null is a warning message for the `dryRun && allowDynamicReference` branch. `instantiateNode` and `updateNodeFromBlueprint` accept a `MutableList<String>? warnings` accumulator; every dry-run `okJson` response site threads collected warnings through to the caller via the new `warnings` parameter on `okJson(JsonElement)`.
+- [x] **Persistence inconsistency.** Two distinct live problems remain after the earlier targeted fixes:
+  - **Concept structure mutations in `JetBrainsMPSLanguageStructureMcpToolset.kt` never persist.** `mps_mcp_update_concept_property` (1064-1098), `mps_mcp_update_concept_link` (1100-1163), `mps_mcp_rename_concept_property` (1165-1187), `mps_mcp_rename_concept_link` (1189-1215) mutate concept nodes but call neither `model.save()` nor `module.setChanged()`. Changes are visible in-memory but not flushed to disk on a successful return.
+  - **Node mutations save the model but never `setChanged()` the owning module.** `JetBrainsMPSNodeMcpToolset`, `JetBrainsMPSRootNodeMcpToolset`, `JetBrainsMPSEditorMcpToolset`, and the generic `AbstractNodeOps` paths (`addChild`, `replaceChild`, `deleteChild`, `update_node_reference`, `update_node_property`, `moveNodeChild`, `moveNodeToParent`, `opFixReferences`) all call `model.save()` but not `module.setChanged()`/`module.save()`. The only node-mutating tool that does both is `JetBrainsMPSJavaMcpToolset.parse_java_and_insert` (509-512).
 
-- [x] **`okJson(JsonElement)` had no `warnings` slot.** `AbstractOps.kt:160`. `okJson(JsonElement)` now accepts `warnings: List<String> = emptyList()` and `details: Map<String, Any?> = emptyMap()`, mirroring the shape of `errJson`. `buildPartialSuccessResult` in `JetBrainsMPSLanguageMcpToolset.kt` was rewritten to use `okJson(JsonPrimitive(tempPath), warnings, details)` instead of hand-rolling the envelope.
+  There is no shared helper that enforces the rule — `saveOrRollback` (`AbstractOps.kt:283-304`) handles `model.save()` with rollback but only in structure-creation paths, and does nothing about the module side. **Fix**: introduce a single helper that, given a mutated `SModel`, marks the owning `SModule` changed and saves both; replace ad-hoc `model.save()` calls in tool methods with it; add a regression test that opens each mutation tool and asserts both `model` and `module` are persisted.
+
 

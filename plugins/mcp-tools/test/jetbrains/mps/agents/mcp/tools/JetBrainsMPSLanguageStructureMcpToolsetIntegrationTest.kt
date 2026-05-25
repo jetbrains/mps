@@ -935,6 +935,58 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         assertTrue(expectErr(response).contains("this.does.not.exist"))
     }
 
+    // ── Persistence: concept-mutation methods flush to disk ───────────────────────────
+    //
+    // These tests read the structure-model .mps file from disk after calling a mutation
+    // tool to prove that save() was actually invoked and the changes were written.
+    // Checking file content is a direct proxy for "persisted" that no in-memory assertion
+    // can substitute.
+
+    @Test
+    fun `UPDATE_CONCEPT_PROPERTY persists the added property to the structure model file`() {
+        val conceptRef = createConceptRoot("DiskPersistProp")
+        assertOk(runTool {
+            it.mps_mcp_perform_structure_operation(
+                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+                """{"conceptRef":"$conceptRef","propertyName":"diskVerified","dataType":"string"}"""
+            )
+        })
+
+        val structureFile = structureModelFile()
+        assertTrue("structure model file must exist at $structureFile", structureFile.exists())
+        assertTrue(
+            "structure model file must contain 'diskVerified' — model.save() was not called",
+            structureFile.readText().contains("diskVerified"),
+        )
+    }
+
+    @Test
+    fun `RENAME_CONCEPT_PROPERTY persists the renamed property to the structure model file`() {
+        val conceptRef = createConceptRoot("DiskPersistRename")
+        assertOk(runTool {
+            it.mps_mcp_perform_structure_operation(
+                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+                """{"conceptRef":"$conceptRef","propertyName":"beforeRename","dataType":"string"}"""
+            )
+        })
+        assertOk(runTool {
+            it.mps_mcp_perform_structure_operation(
+                MPSStructureOperation.RENAME_CONCEPT_PROPERTY,
+                """{"conceptRef":"$conceptRef","oldName":"beforeRename","newName":"afterRename"}"""
+            )
+        })
+
+        val content = structureModelFile().readText()
+        assertTrue(
+            "structure model file must contain 'afterRename' — model.save() was not called",
+            content.contains("afterRename"),
+        )
+        assertFalse(
+            "structure model file must not contain 'beforeRename' after the rename",
+            content.contains("beforeRename"),
+        )
+    }
+
     // ── IS_SMART_REFERENCE ────────────────────────────────────────────────────────────
 
     @Test
@@ -975,6 +1027,15 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
             )
         }
         assertTrue(expectErr(response).contains("contextNode"))
+    }
+
+    /**
+     * Returns the java.io.File for the test language's structure model on disk.
+     * The path follows the MPS convention: `<moduleDir>/languageModels/<longModelName>.mps`.
+     */
+    private fun structureModelFile(): java.io.File {
+        val moduleRoot = java.io.File(myProject.projectFile.canonicalFile, language.moduleName!!)
+        return java.io.File(java.io.File(moduleRoot, "models"), "${structureModel.name.longName}.mps")
     }
 
     private fun assertOk(response: String) {

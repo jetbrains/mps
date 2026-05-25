@@ -467,7 +467,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             }
             val result = performFixReferences(mpsProject, node)
             if (result.fixed > 0 || result.repointed > 0) {
-                model.save()
+                saveModelAndModule(model)
             }
             okJson(jsonObject {
                 addProperty("fixed", result.fixed)
@@ -776,7 +776,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     ?: return@executeShortCommandOnEdt errJson("Property '$propertyName' not found in concept '${node.concept.name}'", McpErrorCode.NOT_FOUND)
 
                 setProperty(node, sProperty, propertyValue)
-                model.save()
+                saveModelAndModule(model)
                 okJson(nodeInfoJson(node))
             }
         }
@@ -848,7 +848,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     parent.insertChildBefore(role, childNode, anchor)
                 }
 
-                model.save()
+                saveModelAndModule(model)
                 okJson(nodeInfoJson(parent))
             }
         }
@@ -912,9 +912,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                         val anchor = if (position < childrenInRole.size) childrenInRole[position] else null
                         newParent.insertChildBefore(containmentLink, node, anchor)
                     }
-                    targetModel.save()
+                    saveModelAndModule(targetModel)
                     if (sourceModel != null && sourceModel != targetModel) {
-                        sourceModel.save()
+                        saveModelAndModule(sourceModel)
                     }
                     okJson(nodeInfoJson(node))
 
@@ -928,9 +928,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
                     // Add as root
                     targetModel.addRootNode(node)
-                    targetModel.save()
+                    saveModelAndModule(targetModel)
                     if (sourceModel != null && sourceModel != targetModel) {
-                        sourceModel.save()
+                        saveModelAndModule(sourceModel)
                     }
                     okJson(nodeInfoJson(node))
                 } else {

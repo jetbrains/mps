@@ -1073,6 +1073,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 error = "Concept '$conceptRef' not found"
                 return@executeShortCommandOnEdt
             }
+            val model = conceptNode.model as? EditableSModel
 
             val existingProp = conceptNode.getChildren(LINK_PropertyDeclaration).find { it.getProperty(PROP_Name) == propertyName }
 
@@ -1082,6 +1083,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     existingProp.delete()
                 } else {
                     error = "Property '$propertyName' not found in concept '${conceptNode.name}'"
+                    return@executeShortCommandOnEdt
                 }
             } else {
                 val propNode = existingProp ?: SNodeFactoryOperations.addNewChild(conceptNode, LINK_PropertyDeclaration, CONCEPT_PropertyDeclaration)
@@ -1091,8 +1093,10 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     propNode.setReferenceTarget(LINK_PropertyDeclaration_DataType, dataTypeNode)
                 } else {
                     error = "Failed to resolve data type '$dataType'"
+                    return@executeShortCommandOnEdt
                 }
             }
+            model?.let { saveModelAndModule(it) }
         }
         error?.let { errJson(it) } ?: okJson("true")
     }
@@ -1117,6 +1121,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 error = "Concept '$conceptRef' has no model (detached or removed)"
                 return@executeShortCommandOnEdt
             }
+            val editableModel = model as? EditableSModel
 
             val existingLink = conceptNode.getChildren(LINK_LinkDeclaration).find {
                 it.getProperty(PROP_LinkDeclaration_Role) == role
@@ -1128,6 +1133,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     existingLink.delete()
                 } else {
                     error = "${if (isChild) "Child" else "Reference"} '$role' not found in concept '${conceptNode.name}'"
+                    return@executeShortCommandOnEdt
                 }
             } else {
                 val linkNode = existingLink ?: SNodeFactoryOperations.addNewChild(conceptNode, LINK_LinkDeclaration, CONCEPT_LinkDeclaration)
@@ -1156,8 +1162,10 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 val cardinalityError = setLinkSourceCardinality(linkNode, cardinalityName)
                 if (cardinalityError != null) {
                     error = cardinalityError
+                    return@executeShortCommandOnEdt
                 }
             }
+            editableModel?.let { saveModelAndModule(it) }
         }
         error?.let { errJson(it) } ?: okJson("true")
     }
@@ -1174,6 +1182,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 error = "Concept '$conceptRef' not found"
                 return@executeShortCommandOnEdt
             }
+            val model = conceptNode.model as? EditableSModel
 
             val existingProp = conceptNode.getChildren(LINK_PropertyDeclaration).find { it.getProperty(PROP_Name) == oldName }
             if (existingProp == null) {
@@ -1182,6 +1191,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             }
 
             existingProp.setProperty(PROP_Name, newName)
+            model?.let { saveModelAndModule(it) }
         }
         error?.let { errJson(it) } ?: okJson("true")
     }
@@ -1199,6 +1209,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 error = "Concept '$conceptRef' not found"
                 return@executeShortCommandOnEdt
             }
+            val model = conceptNode.model as? EditableSModel
 
             val existingLink = conceptNode.getChildren(LINK_LinkDeclaration).find {
                 it.getProperty(PROP_LinkDeclaration_Role) == oldRole
@@ -1210,6 +1221,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             }
 
             existingLink.setProperty(PROP_LinkDeclaration_Role, newRole)
+            model?.let { saveModelAndModule(it) }
         }
         error?.let { errJson(it) } ?: okJson("true")
     }

@@ -554,7 +554,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         parent.insertChildBefore(role, newChild, childNode)
         childNode.delete()
         val fixResult = performFixReferences(mpsProject, newChild)
-        model.save()
+        saveModelAndModule(model)
         return okJson(withFixReferencesInfo(nodeInfoJsonObject(parent), fixResult))
     }
 
@@ -576,7 +576,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         childNode.delete()
-        model.save()
+        saveModelAndModule(model)
         return okJson(nodeInfoJson(parent))
     }
 
@@ -655,7 +655,7 @@ abstract class AbstractNodeOps : AbstractOps() {
             parent.insertChildBefore(role, newChild, anchor)
         }
         val fixResult = performFixReferences(mpsProject, newChild)
-        model.save()
+        saveModelAndModule(model)
         return okJson(withFixReferencesInfo(nodeInfoJsonObject(newChild), fixResult))
     }
 
@@ -692,7 +692,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                 node.dropReference(sReferenceLink)
             }
 
-            model.save()
+            saveModelAndModule(model)
             okJson(nodeInfoJson(node))
         }
     }

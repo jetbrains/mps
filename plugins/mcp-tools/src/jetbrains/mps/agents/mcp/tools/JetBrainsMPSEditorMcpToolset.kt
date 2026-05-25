@@ -356,7 +356,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             repo = repo
                         )
 
-                        model.save()
+                        saveModelAndModule(model)
                         val refStr = PersistenceFacade.getInstance().asString(editor.reference)
                         result = jsonObject {
                             addProperty("editorNodeRef", refStr)
@@ -789,7 +789,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             }
                         }
 
-                        model.save()
+                        saveModelAndModule(model)
                         val refStr = PersistenceFacade.getInstance().asString(editor.reference)
                         val menuRefStr = PersistenceFacade.getInstance().asString(menuRefNode.reference)
                         result = jsonObject {
@@ -802,7 +802,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         return@executeShortCommandOnEdt
                     }
 
-                    model.save()
+                    saveModelAndModule(model)
 
                     val refStr = PersistenceFacade.getInstance().asString(editor.reference)
                     val typeStr = if (type == "component") "editor component" else "editor"

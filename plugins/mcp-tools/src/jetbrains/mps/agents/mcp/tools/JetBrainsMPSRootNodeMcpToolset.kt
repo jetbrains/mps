@@ -243,7 +243,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                         addProperty("message", "Dry run successful for root node insertion")
                     }, warnings = batchWarnings ?: emptyList())
                 } else {
-                    model.save()
+                    saveModelAndModule(model)
                     if (jsonObjects.size == 1) {
                         okJson(nodeInfos.first())
                     } else {
@@ -304,7 +304,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     }
                 }
 
-                model.save()
+                saveModelAndModule(model)
                 okJson(nodeInfoJson(newNode))
             }
         }
@@ -352,7 +352,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
                 if (!dryRun) {
                     val fixResult = performFixReferences(mpsProject, node)
-                    model.save()
+                    saveModelAndModule(model)
                     okJson(withFixReferencesInfo(nodeInfoJsonObject(node), fixResult))
                 } else {
                     okJson(jsonObject {
@@ -380,7 +380,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
                 model.removeRootNode(node)
-                model.save()
+                saveModelAndModule(model)
                 okJson(jsonObject {
                     addProperty("reference", nodeReference)
                     addProperty("deleted", true)
