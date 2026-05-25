@@ -1,5 +1,6 @@
 package jetbrains.mps.agents.mcp.tools
 
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
@@ -75,6 +76,17 @@ abstract class AbstractNodeOps : AbstractOps() {
         return data.toString()
     }
 
+    private fun JsonObject.requireArray(field: String, path: String): JsonArray? {
+        val element = get(field) ?: return null
+        if (!element.isJsonArray) {
+            throw McpInvalidRequestException(
+                "'$field' at $path must be a JSON array, but got ${element.javaClass.simpleName}. " +
+                "Check the JSON blueprint format — see the mps-node-editing skill for reference."
+            )
+        }
+        return element.asJsonArray
+    }
+
     fun instantiateNode(
         jsonObject: JsonObject,
         model: SModel,
@@ -119,7 +131,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         // Properties
-        val properties = jsonObject.getAsJsonArray("properties")
+        val properties = jsonObject.requireArray("properties", jsonPath)
         if (properties != null) {
             properties.forEachIndexed { propIndex, propElement ->
                 val propObject = propElement.asJsonObject
@@ -135,12 +147,12 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         // Children
-        val children = jsonObject.getAsJsonArray("children")
+        val children = jsonObject.requireArray("children", jsonPath)
         if (children != null) {
             children.forEachIndexed { roleIndex, childRoleElement ->
                 val childRoleObject = childRoleElement.asJsonObject
                 val roleName = childRoleObject.get("role")?.asString ?: return@forEachIndexed
-                val childNodes = childRoleObject.getAsJsonArray("nodes") ?: return@forEachIndexed
+                val childNodes = childRoleObject.requireArray("nodes", "$jsonPath.children[$roleIndex]") ?: return@forEachIndexed
                 val link = sConcept.containmentLinks.find { it.name == roleName }
                     ?: throw McpInvalidRequestException(
                         "Unknown child role '$roleName' at $jsonPath.children[$roleIndex]: " +
@@ -166,7 +178,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         // References
-        val references = jsonObject.getAsJsonArray("references")
+        val references = jsonObject.requireArray("references", jsonPath)
         if (references != null) {
             references.forEachIndexed { index, refElement ->
                 val refObject = refElement.asJsonObject
@@ -344,7 +356,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         // dedicated tool). Warn loudly so a caller that supplied a different name is not
         // misled into thinking their rename request was applied.
         val stagedProperties = mutableListOf<Pair<SProperty, String?>>()
-        val properties = jsonObject.getAsJsonArray("properties")
+        val properties = jsonObject.requireArray("properties", jsonPath)
         if (properties != null) {
             properties.forEachIndexed { propIndex, propElement ->
                 val propObject = propElement.asJsonObject
@@ -375,12 +387,12 @@ abstract class AbstractNodeOps : AbstractOps() {
         // that throws here (unknown concept, malformed nested blueprint, assignability mismatch)
         // surfaces before any destructive op.
         val stagedChildren = mutableListOf<Pair<SContainmentLink, SNode>>()
-        val children = jsonObject.getAsJsonArray("children")
+        val children = jsonObject.requireArray("children", jsonPath)
         if (children != null) {
             children.forEachIndexed { roleIndex, childRoleElement ->
                 val childRoleObject = childRoleElement.asJsonObject
                 val roleName = childRoleObject.get("role")?.asString ?: return@forEachIndexed
-                val childNodes = childRoleObject.getAsJsonArray("nodes") ?: return@forEachIndexed
+                val childNodes = childRoleObject.requireArray("nodes", "$jsonPath.children[$roleIndex]") ?: return@forEachIndexed
                 val link = sConcept.containmentLinks.find { it.name == roleName }
                     ?: throw McpInvalidRequestException(
                         "Unknown child role '$roleName' at $jsonPath.children[$roleIndex]: " +
@@ -407,7 +419,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         // Stage references: pre-validate (XML-short-id rejection, target resolution,
         // assignability) without writing. Application uses applyReferenceUpdate in Phase 2.
         val stagedReferences = mutableListOf<StagedReference>()
-        val references = jsonObject.getAsJsonArray("references")
+        val references = jsonObject.requireArray("references", jsonPath)
         if (references != null) {
             references.forEachIndexed { index, refElement ->
                 val refObject = refElement.asJsonObject
