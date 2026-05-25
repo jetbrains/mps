@@ -54,7 +54,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class AbstractOps : McpToolset {
-    private val logger = Logger.getInstance(AbstractOps::class.java)
+    protected val logger = Logger.getInstance(AbstractOps::class.java)
 
     enum class McpErrorCode {
         INVALID_JSON,
@@ -241,6 +241,23 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
+    /**
+     * Runs [block]; on a non-cancellation, non-Error throwable returns the exception's message
+     * (or `toString()`) as a warning string. Cancellation and [Error] propagate. Used by tool
+     * methods that want to surface a secondary failure as a `warnings` payload entry rather than
+     * abort the whole tool invocation.
+     */
+    protected inline fun warningMessageOrRethrow(block: () -> Unit): String? {
+        return try {
+            block()
+            null
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            if (e is Error) throw e
+            e.message ?: e.toString()
+        }
+    }
+
     protected inline fun <T : Any> tryCreateReference(block: () -> T?): T? {
         return try {
             block()
@@ -264,7 +281,8 @@ abstract class AbstractOps : McpToolset {
             // implementations — it can itself throw and mask the original exception.
             val refForLog = try {
                 node.reference.toString()
-            } catch (_: Throwable) {
+            } catch (e: Throwable) {
+                rethrowIfCancellation(e)
                 "<unknown>"
             }
             try {
@@ -1278,8 +1296,8 @@ abstract class AbstractOps : McpToolset {
                 // Language is registered but sourceNode is missing; save as last-resort fallback.
                 registeredConcept = concept
             }
-        } catch (ignore: Exception) {
-            //The attempt failed, fall back to the other options
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
         }
 
         // 2. Try as a node reference or by searching in structure models
@@ -1293,7 +1311,8 @@ abstract class AbstractOps : McpToolset {
         if (registeredConcept != null) return registeredConcept
         return try {
             facade.createConcept(conceptRef)
-        } catch (ignore: Exception) {
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
             // Try searching by name if it's not a reference
             val allLanguages = LanguageRegistry.getInstance(repository).allLanguages
             for (lang in allLanguages) {
@@ -1310,8 +1329,8 @@ abstract class AbstractOps : McpToolset {
         try {
             val nodeReference = PersistenceFacade.getInstance().createNodeReference(conceptRef)
             nodeReference.resolve(repository)?.let { return it }
-        } catch (ignore: Exception) {
-            // Fall back to other options
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
         }
 
         // 2. Try as a concept reference (runtime ID string languageId/conceptId) or languageName/conceptName
@@ -1388,8 +1407,8 @@ abstract class AbstractOps : McpToolset {
         try {
             val ref = PersistenceFacade.getInstance().createModelReference(modelReference)
             ref.resolve(repository)?.let { return it }
-        } catch (ignore: Exception) {
-            // Fall back to the other options
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
         }
 
         // 2. Try searching by long name
@@ -1408,8 +1427,8 @@ abstract class AbstractOps : McpToolset {
         try {
             val ref = PersistenceFacade.getInstance().createModuleReference(moduleRef)
             ref.resolve(repository)?.let { return it }
-        } catch (ignore: Exception) {
-            // Fall back to the other options
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
         }
 
         // 2. Try searching by name
@@ -1431,8 +1450,8 @@ abstract class AbstractOps : McpToolset {
                     return resolved
                 }
             }
-        } catch (ignore: Exception) {
-            // Fall back to the other options
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
         }
 
         // 2. Try searching by name
@@ -1477,7 +1496,8 @@ abstract class AbstractOps : McpToolset {
         if (languageRef.startsWith("l:")) {
             return try {
                 facade.createLanguage(languageRef)
-            } catch (ignore: Exception) {
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
                 null
             }
         }
@@ -1492,7 +1512,8 @@ abstract class AbstractOps : McpToolset {
         val facade = PersistenceFacade.getInstance()
         try {
             return facade.createNodeReference(nodeRefStr)
-        } catch (ignore: Exception) {
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
             // Try searching by name (root nodes)
             // Support "ModelName.RootName" format
             if (nodeRefStr.contains(".")) {
@@ -1750,7 +1771,8 @@ abstract class AbstractOps : McpToolset {
         val prettyResponse = try {
             val jsonElement = JsonParser.parseString(response)
             PRETTY_GSON.toJson(jsonElement)
-        } catch (ignore: Exception) {
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
             response
         }
         val tempFile = File.createTempFile(TEMP_JSON_PREFIX, TEMP_JSON_SUFFIX)
@@ -2041,10 +2063,16 @@ abstract class AbstractOps : McpToolset {
                             val idMatch = try {
                                 val id = lr.id
                                 (id is SLanguageId) && targetLanguageIds.contains(id)
-                            } catch (_: Throwable) { false }
+                            } catch (e: Throwable) {
+                                rethrowIfCancellation(e)
+                                false
+                            }
                             val nsMatch = try {
                                 targetLanguageNamespaces.contains(lr.namespace)
-                            } catch (_: Throwable) { false }
+                            } catch (e: Throwable) {
+                                rethrowIfCancellation(e)
+                                false
+                            }
                             idMatch || nsMatch
                         }) {
                         languageReloadLatch.countDown()

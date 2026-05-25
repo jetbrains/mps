@@ -26,8 +26,6 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 @Suppress("FunctionName", "unused")
 class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
-    private val logger = Logger.getInstance(JetBrainsMPSEditorMcpToolset::class.java)
-
     private companion object {
         // BaseConcept properties that are not user-visible content and would just be noise if
         // scaffolded as cells. Every concept inherits these, so any check that wants to decide

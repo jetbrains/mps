@@ -1048,23 +1048,6 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         }
     }
 
-    /**
-     * Runs [block]; on a non-cancellation, non-Error throwable returns the exception's message
-     * (or `toString()`) as a warning string. Cancellation and `Error` propagate. Used by tool
-     * methods that want to surface a secondary failure as a `warnings`/`fileDeletionWarning`
-     * payload entry rather than abort the whole tool invocation.
-     */
-    private inline fun warningMessageOrRethrow(block: () -> Unit): String? {
-        return try {
-            block()
-            null
-        } catch (e: Throwable) {
-            rethrowIfCancellation(e)
-            if (e is Error) throw e
-            e.message ?: e.toString()
-        }
-    }
-
     private fun getEffectiveKeys(m: Memento, rootType: String? = null): Set<String> {
         return m.keys.filter { key ->
             !(key == "type" && (m.get(key) == m.type || (m.type == null && m.get(key) == rootType)))

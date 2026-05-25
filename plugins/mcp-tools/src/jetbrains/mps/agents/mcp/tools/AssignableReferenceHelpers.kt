@@ -2,6 +2,7 @@ package jetbrains.mps.agents.mcp.tools
 
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.typechecking.TypecheckingFacade
+import kotlinx.coroutines.CancellationException
 import org.jetbrains.mps.openapi.language.SReferenceLink
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
@@ -230,7 +231,8 @@ internal class AssignableReferenceHelpers(
                 try {
                     val type = tc.getTypeOf(arg)
                     type?.let { facade.asString(it.reference) } ?: "unknown"
-                } catch (_: Exception) {
+                } catch (e: Exception) {
+                    if (e is CancellationException) throw e
                     "unknown"
                 }
             }
@@ -240,7 +242,8 @@ internal class AssignableReferenceHelpers(
                 notes.add("Partially inferred argumentTypes from AST (some types unknown)")
             }
             types
-        } catch (_: Exception) {
+        } catch (e: Exception) {
+            if (e is CancellationException) throw e
             notes.add("Could not infer argument types: typechecking context unavailable")
             actualArgs.map { "unknown" }
         }

@@ -41,7 +41,8 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 elem.isJsonPrimitive && elem.asJsonPrimitive.isString -> listOf(elem.asString)
                 else -> return@withMpsProject errJson("Invalid JSON for targetModels: expected a JSON array or a string")
             }
-        } catch (_: Exception) {
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
             listOf(targetModels)
         }
 

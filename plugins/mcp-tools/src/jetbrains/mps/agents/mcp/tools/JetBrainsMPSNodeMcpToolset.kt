@@ -333,7 +333,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             requestedModels.forEach { requestedModel ->
                 val model = try {
                     resolveModel(requestedModel)
-                } catch (_: Exception) {
+                } catch (e: Exception) {
+                    rethrowIfCancellation(e)
                     null
                 }
                 if (model == null) {
@@ -346,7 +347,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             requestedModules.forEach { requestedModule ->
                 val module = try {
                     resolveModule(requestedModule)
-                } catch (_: Exception) {
+                } catch (e: Exception) {
+                    rethrowIfCancellation(e)
                     null
                 }
                 if (module == null) {
@@ -529,7 +531,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     // Try resolving as node reference
                     val sNodeRef = try {
                         PersistenceFacade.getInstance().createNodeReference(nodeReference)
-                    } catch (_: Exception) {
+                    } catch (e: Exception) {
+                        rethrowIfCancellation(e)
                         null
                     }
                     val node = sNodeRef?.resolve(repo)
@@ -556,6 +559,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                                 checker.check(root, repo, collector, monitor)
                             } catch (e: Exception) {
                                 rethrowIfCancellation(e)
+                                logger.warn("Optional checker ${checker::class.simpleName} failed on ${root.reference}", e)
                             }
                         }
 
@@ -577,7 +581,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                         // Try resolving as model reference
                         val sModelRef = try {
                             PersistenceFacade.getInstance().createModelReference(nodeReference)
-                        } catch (_: Exception) {
+                        } catch (e: Exception) {
+                            rethrowIfCancellation(e)
                             null
                         }
                         val model = sModelRef?.resolve(repo)

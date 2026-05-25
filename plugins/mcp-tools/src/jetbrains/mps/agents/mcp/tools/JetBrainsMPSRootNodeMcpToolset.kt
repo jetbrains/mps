@@ -135,7 +135,8 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     elem.isJsonPrimitive && elem.asJsonPrimitive.isString -> setOf(elem.asString)
                     else -> setOf(names)
                 }
-            } catch (_: Exception) {
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
                 setOf(names)
             }
 
