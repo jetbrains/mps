@@ -15,6 +15,10 @@
     <action id="jetbrains.mps.vcs.platform.actions.ShowAffectedFiles_Action" class="jetbrains.mps.vcs.platform.actions.ShowAffectedFiles_Action"></action>
     <action id="jetbrains.mps.vcs.platform.actions.ShowDiffFromAnnotation_Action" class="jetbrains.mps.vcs.platform.actions.ShowDiffFromAnnotation_Action"></action>
     <action id="jetbrains.mps.vcs.platform.actions.ShowDiffFromChanges_Action" class="jetbrains.mps.vcs.platform.actions.ShowDiffFromChanges_Action"></action>
+    <reference ref="Vcs.VcsClone">
+      <add-to-group group-id="NewProjectOrModuleGroup" relative-to-action="NewProject" anchor="after"/>
+      <add-to-group group-id="ProjectWidget.Actions" relative-to-action="OpenProjectGroup" anchor="after"/>
+    </reference>
     <group id="jetbrains.mps.vcs.platform.actions.ChangesStrip_ActionGroup">
       <reference ref="jetbrains.mps.vcs.platform.actions.GoToNextChange_Action" />
       <reference ref="jetbrains.mps.vcs.platform.actions.GoToPreviousChange_Action" />

@@ -42,11 +42,12 @@
       <add-to-group group-id="NewProjectOrModuleGroup"/>
     </group>
 
-    <action id="ProjectFromVersionControl" class="com.intellij.openapi.wm.impl.welcomeScreen.ProjectFromVersionControlAction" text="Checkout from Version Control">
+    <!-- *** moved to MPSVcs.xml as here it doesn't work *** -->
+    <!--action id="ProjectFromVersionControl" class="com.intellij.openapi.wm.impl.welcomeScreen.ProjectFromVersionControlAction" text="Checkout from Version Control">
       <override-text place="ProjectWidgetPopup" text="Get from Version Control..."/>
       <add-to-group group-id="NewProjectOrModuleGroup" relative-to-action="NewProject" anchor="after"/>
       <add-to-group group-id="ProjectWidget.Actions" relative-to-action="OpenProjectGroup" anchor="after"/>
-    </action>
+    </action-->
 
     <action id="ForceSaveAll" class="jetbrains.mps.ide.actions.ForceSaveAll_Action">
       <add-to-group group-id="FileMenu" relative-to-action="SaveAll" anchor="after"/>
