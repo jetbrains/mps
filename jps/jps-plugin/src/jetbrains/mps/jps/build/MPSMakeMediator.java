@@ -99,7 +99,7 @@ public class MPSMakeMediator {
 
     try {
       Future<IResult> res = buildMakeService.make(makeSession, resources, null, scriptCtl);
-      boolean success = res.get().isSucessful();
+      boolean success = res.get().isSuccessful();
 
       final MPSMakeFilesAfterProcessor afterProcessor = new MPSMakeFilesAfterProcessor(myModelToTargetMap, pathsController, myOutputConsumer, myContext);
       // FIXME: need a better idea of how to get MakeSessionFiles

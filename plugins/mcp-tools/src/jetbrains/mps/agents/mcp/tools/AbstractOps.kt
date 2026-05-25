@@ -226,7 +226,7 @@ abstract class AbstractOps : McpToolset {
     }
 
     protected fun rethrowIfCancellation(e: Throwable) {
-        if (e is CancellationException || e is ProcessCanceledException) {
+        if (e is CancellationException) {
             throw e
         }
     }
@@ -1271,7 +1271,7 @@ abstract class AbstractOps : McpToolset {
         if (registeredConcept != null) return registeredConcept
         return try {
             facade.createConcept(conceptRef)
-        } catch (e: Exception) {
+        } catch (ignore: Exception) {
             // Try searching by name if it's not a reference
             val allLanguages = LanguageRegistry.getInstance(repository).allLanguages
             for (lang in allLanguages) {
@@ -2053,7 +2053,7 @@ abstract class AbstractOps : McpToolset {
                 }
                 withContext(Dispatchers.IO) {
                     // isSucessful is a typo in the MPS IResult API (jetbrains.mps.make.script.IResult).
-                    if (r.isSucessful) {
+                    if (r.isSuccessful) {
                         // The make pipeline only refreshes the language runtime indirectly:
                         // Project.reconcileProjectFiles -> markDirtyAndRefresh -> module
                         // events -> ClassLoaderManager.processModuleChanges -> notifyLoad
@@ -2120,7 +2120,7 @@ abstract class AbstractOps : McpToolset {
                 languageRegistry.removeRegistryListener(reloadListener)
             }
 
-            if (result.isSucessful) { // isSucessful: MPS IResult API typo
+            if (result.isSuccessful) { // isSucessful: MPS IResult API typo
                 MakeResult(true, "Make successful", messages, runtimeReady = runtimeReady)
             } else {
                 MakeResult(false, "Make failed: ${result.message()}", messages, runtimeReady = false)

@@ -23,8 +23,8 @@ public class CompositeResult implements IResult {
     return MapSequence.fromMap(results).get(target);
   }
   @Override
-  public boolean isSucessful() {
-    return Sequence.fromIterable(MapSequence.fromMap(results).values()).all((r) -> r.isSucessful());
+  public boolean isSuccessful() {
+    return Sequence.fromIterable(MapSequence.fromMap(results).values()).all((r) -> r.isSuccessful());
   }
   @Override
   public Iterable<IResource> output() {

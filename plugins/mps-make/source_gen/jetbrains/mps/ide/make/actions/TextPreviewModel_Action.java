@@ -156,7 +156,7 @@ public class TextPreviewModel_Action extends BaseAction {
                     message.append(contextNode);
                     message.append("\n");
                   }
-                  if (result.isSucessful()) {
+                  if (result.isSuccessful()) {
                     message.append("Text generation completed successfully\n");
                   } else {
                     message.append("Text generation completed with errors\n");

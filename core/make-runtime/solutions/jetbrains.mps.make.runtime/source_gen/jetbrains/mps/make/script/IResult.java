@@ -11,7 +11,7 @@ public interface IResult {
     // since 2023.2
     return "";
   }
-  boolean isSucessful();
+  boolean isSuccessful();
   Iterable<IResource> output();
 
   class SUCCESS implements IResult {
@@ -26,7 +26,7 @@ public interface IResult {
       this.output = output;
     }
     @Override
-    public boolean isSucessful() {
+    public boolean isSuccessful() {
       return true;
     }
     @Override
@@ -51,7 +51,7 @@ public interface IResult {
       this.output = output;
     }
     @Override
-    public boolean isSucessful() {
+    public boolean isSuccessful() {
       return false;
     }
     @Override

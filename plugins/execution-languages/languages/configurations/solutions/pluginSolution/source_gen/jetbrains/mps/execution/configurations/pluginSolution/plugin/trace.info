@@ -207,8 +207,8 @@
       <node id="8492721726839207584" at="84,48,85,70" concept="6" />
       <node id="5766538065404345132" at="85,70,86,30" concept="6" />
       <node id="5766538065404345140" at="87,13,88,32" concept="2" />
-      <node id="2155705819614935771" at="91,56,92,25" concept="2" />
-      <node id="5766538065404345138" at="93,9,94,54" concept="7" />
+      <node id="2155705819614935771" at="91,57,92,25" concept="2" />
+      <node id="5766538065404345138" at="93,9,94,55" concept="7" />
       <node id="8492721726839207602" at="95,7,96,18" concept="7" />
       <node id="5487985028841950959" at="36,0,39,0" concept="1" trace="MakeNodePointers_BeforeTask#()V" />
       <node id="5487985028841950959" at="40,0,43,0" concept="5" trace="createTaskImpl#()Ljetbrains/mps/execution/configurations/pluginSolution/plugin/MakeNodePointers_BeforeTask/MakeNodePointers_BeforeTask_RunTask;" />
@@ -234,7 +234,7 @@
       <scope id="5766538065404345106" at="89,9,90,9">
         <var name="ignore" id="5766538065404345107" />
       </scope>
-      <scope id="2155705819614919603" at="91,56,92,25" />
+      <scope id="2155705819614919603" at="91,57,92,25" />
       <scope id="5487985028841950959" at="55,65,57,18" />
       <scope id="5336808442711675099" at="64,120,66,51">
         <var name="n" id="5336808442711675101" />
@@ -251,7 +251,7 @@
         <var name="models" id="5336808442711675082" />
         <var name="statusManager" id="3849002751383162481" />
       </scope>
-      <scope id="8492721726839158355" at="84,48,94,54">
+      <scope id="8492721726839158355" at="84,48,94,55">
         <var name="future" id="8492721726839207585" />
         <var name="result" id="5766538065404345133" />
       </scope>

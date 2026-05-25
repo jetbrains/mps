@@ -74,7 +74,7 @@ public abstract class AbstractRefactoringTest extends EnvironmentAwareTestCase {
     // superfluous tool.builder dependency here)
     Future<IResult> res = new BuildMakeService().make(session, inputRes.value);
     try {
-      Assert.assertTrue("Make was not successful", res.get().isSucessful());
+      Assert.assertTrue("Make was not successful", res.get().isSuccessful());
     } catch (InterruptedException e) {
       Assert.fail(e.toString());
     } catch (ExecutionException e) {

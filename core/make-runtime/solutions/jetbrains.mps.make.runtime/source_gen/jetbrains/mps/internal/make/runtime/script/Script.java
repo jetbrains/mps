@@ -213,13 +213,13 @@ __switch__:
 
       monitor.step("Configuring");
       this.configureTargets(ctl, toExecute, pool, results);
-      if (!(results.isSucessful())) {
+      if (!(results.isSuccessful())) {
         return results;
       }
       monitor.advance(1);
 
       this.executeTargets(ctl, toExecute, scriptInput, pool, results, monitor.subTask(17));
-      if (!(results.isSucessful())) {
+      if (!(results.isSuccessful())) {
         return results;
       }
 
@@ -289,9 +289,9 @@ with_targets:
             }
             results.addResult(trg.getName(), jr);
 
-            if (!(jr.isSucessful()) || monit.stopRequested()) {
-              monit.reportFeedback((jr.isSucessful() ? new IFeedback.INFORMATION("Cancelled by user") : new IFeedback.ERROR("Error executing target " + trg.getName())));
-              LOG.debug((jr.isSucessful() ? "Stop requested" : "Execution failed"));
+            if (!(jr.isSuccessful()) || monit.stopRequested()) {
+              monit.reportFeedback((jr.isSuccessful() ? new IFeedback.INFORMATION("Cancelled by user") : new IFeedback.ERROR("Error executing target " + trg.getName())));
+              LOG.debug((jr.isSuccessful() ? "Stop requested" : "Execution failed"));
               return;
             }
 
@@ -474,8 +474,8 @@ with_targets:
       return (Iterable<IResource>) output;
     }
     @Override
-    public boolean isSucessful() {
-      return result.isSucessful();
+    public boolean isSuccessful() {
+      return result.isSuccessful();
     }
   }
 }

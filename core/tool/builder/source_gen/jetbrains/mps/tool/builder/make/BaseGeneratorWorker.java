@@ -95,7 +95,7 @@ public abstract class BaseGeneratorWorker extends CoreWorker {
 
     try {
       IResult ires = res.get();
-      if (ires == null || !(ires.isSucessful())) {
+      if (ires == null || !(ires.isSuccessful())) {
         myErrors.add("Make was not successful");
       }
     } catch (InterruptedException | ExecutionException e) {

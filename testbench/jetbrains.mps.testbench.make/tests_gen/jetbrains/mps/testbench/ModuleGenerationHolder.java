@@ -112,7 +112,7 @@ public class ModuleGenerationHolder {
     GenerateFacetInitializer gfi = new GenerateFacetInitializer().setGenerationOptions(optBuilder);
     IScriptController ctl = new IScriptController.Stub2(session, tgfi, mfi, gfi);
     result = new TestMakeService().make(session, ModuleGenerationHolder.collectResources(project, module), scr, ctl, new EmptyProgressMonitor()).get();
-    isSuccessful = result != null && result.isSucessful();
+    isSuccessful = result != null && result.isSuccessful();
   }
   public boolean isBuildSuccessful() {
     return isSuccessful;

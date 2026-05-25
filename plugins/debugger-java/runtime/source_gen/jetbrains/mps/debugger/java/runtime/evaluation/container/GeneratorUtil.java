@@ -47,7 +47,7 @@ public class GeneratorUtil {
         final ClassLoaderManager clm = project.getComponent(ClassLoaderManager.class);
         Iterable<IResource> resources = new ModelsToResources(Sequence.<SModel>singleton(model)).canGenerateCondition((SModel m) -> true).resources();
         IResult result = makeService.make(makeSession, resources).get();
-        if (result.isSucessful()) {
+        if (result.isSuccessful()) {
           Class<?> rv = new ModelAccessHelper(model.getRepository()).runReadAction(() -> {
             try {
               // although model.getModule doesn't require model read, module classloader deep down there does

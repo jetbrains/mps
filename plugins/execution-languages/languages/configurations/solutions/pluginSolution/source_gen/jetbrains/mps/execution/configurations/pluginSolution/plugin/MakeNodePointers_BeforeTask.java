@@ -88,10 +88,10 @@ public class MakeNodePointers_BeforeTask extends BaseMpsBeforeTaskProvider<MakeN
           result = future.get();
         } catch (CancellationException | InterruptedException | ExecutionException ignore) {
         }
-        if (result == null || !(result.isSucessful())) {
+        if (result == null || !(result.isSuccessful())) {
           handler.wake();
         }
-        return result != null && result.isSucessful();
+        return result != null && result.isSuccessful();
       }
       return true;
     }
