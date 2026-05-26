@@ -33,7 +33,7 @@ The Money generator module at `samples/sampleJavaExtensions/languages/Money/gene
 ## Wiring
 
 1. In the generator module (`.mpl`), add the utility model under the same module — no module dependency changes needed; both models live in the same module.
-2. In `main@generator.mps`, import the utility model via `mps_mcp_add_model_dependency` so templates can reference the class.
+2. In `main@generator.mps`, import the utility model via `mps_mcp_model_dependency` so templates can reference the class.
 3. Invoke the static methods directly from query/macro bodies with `baseLanguage` dot expressions — at generation time the generator's own classpath contains the compiled utility class.
 
 ## Don't confuse with

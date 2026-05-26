@@ -55,6 +55,11 @@ enum class NodeUpdateKind {
     REFERENCE
 }
 
+enum class DependencyOperation {
+    ADD,
+    DELETE
+}
+
 private val MAKE_PARAMETER_SCHEMA: Map<String, String> = linkedMapOf(
     "models" to "Optional: array of persistent model references",
     "modules" to "Optional: array of persistent module references",

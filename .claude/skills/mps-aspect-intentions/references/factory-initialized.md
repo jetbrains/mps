@@ -22,7 +22,7 @@ When `execute` adds a child whose concept has a **NodeFactory** defined in the a
 The `NF_*` concepts live in `jetbrains.mps.lang.actions`. The **intentions model** must list that language in its *used languages* or the `add new initialized(...)` surface syntax won't resolve and blueprints will fail with unresolved-concept errors. Add it with:
 
 ```
-mps_mcp_add_model_used_language(modelReference=<intentions-model>, usedLanguage="jetbrains.mps.lang.actions", kind="language")
+mps_mcp_model_used_language(modelReference=<intentions-model>, usedLanguage="jetbrains.mps.lang.actions", kind="language")
 ```
 
 The plain (non-`NF_`) smodel variants like `parent.listRole.add new(C)` need no extra import.

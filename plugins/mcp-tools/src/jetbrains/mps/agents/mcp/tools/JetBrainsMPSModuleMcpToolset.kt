@@ -57,16 +57,13 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Target module name or reference")
         targetModule: String,
         @McpDescription("Operation to perform: ADD or DELETE")
-        operation: String,
+        operation: DependencyOperation,
         @McpDescription("Dependency scope (Default by default)")
         @Nullable scope: String? = null,
         @McpDescription("Whether to reexport the dependency (false by default)")
         reexport: Boolean = false
     ): String = withMpsProject("Adding MPS module dependency") { mpsProject ->
-        if (operation != "ADD" && operation != "DELETE") {
-            return@withMpsProject errJson("Invalid operation: $operation. Must be 'ADD' or 'DELETE'.", McpErrorCode.INVALID_REQUEST)
-        }
-        if (operation == "DELETE") {
+        if (operation == DependencyOperation.DELETE) {
             return@withMpsProject removeModuleDependency(moduleName, targetModule)
         }
         executeShortCommandOnEdt(mpsProject) {

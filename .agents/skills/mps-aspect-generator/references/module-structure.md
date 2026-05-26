@@ -40,7 +40,7 @@ Additionally, the owning language's `.mpl` declares the **target output language
 
 This tells MPS: "the generator of this language produces nodes in `jetbrains.mps.core.xml`." Add with `mps_mcp_module_dependency(..., scope="Generation Target")`.
 
-**(B) Generator model used-languages** (inside `template/main@generator.mps`, edit with `mps_mcp_add_model_used_language`). These govern what concepts the *template bodies* can contain — the target output language plus the generator-authoring toolkit:
+**(B) Generator model used-languages** (inside `template/main@generator.mps`, edit with `mps_mcp_model_used_language`). These govern what concepts the *template bodies* can contain — the target output language plus the generator-authoring toolkit:
 
 | Typical model used-language | Kind | Purpose |
 |---|---|---|

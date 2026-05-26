@@ -15,9 +15,9 @@ import org.junit.Test
  *
  * Covers:
  *  - Lifecycle: `mps_mcp_create_model`, `mps_mcp_update_model` (rename), `mps_mcp_delete_model`.
- *  - Dependencies: `mps_mcp_add_model_dependency` (single, batch, dedupe, NOT_FOUND target,
- *    unknown source) and `mps_mcp_remove_model_dependency`.
- *  - Used languages: `mps_mcp_add_model_used_language` / `mps_mcp_remove_model_used_language`,
+ *  - Dependencies: `mps_mcp_model_dependency` (single, batch, dedupe, NOT_FOUND target,
+ *    unknown source).
+ *  - Used languages: `mps_mcp_model_used_language`
  *    including the invalid-kind branch.
  */
 class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
@@ -115,7 +115,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val sourceRef = modelRefOf(sourceModel)
         val targetRef = modelRefOf(targetModel)
 
-        val first = runTool(toolset) { it.mps_mcp_add_model_dependency(sourceRef, targetRef) }
+        val first = runTool(toolset) { it.mps_mcp_model_dependency(sourceRef, targetRef) }
         val firstData = parseDataObject(JsonParser.parseString(first).asJsonObject.get("data"))
         assertEquals(1, firstData.get("added").asInt)
         assertEquals(0, firstData.get("alreadyPresent").asInt)
@@ -128,7 +128,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
 
         // Second call must be a no-op and report it.
-        val second = runTool(toolset) { it.mps_mcp_add_model_dependency(sourceRef, targetRef) }
+        val second = runTool(toolset) { it.mps_mcp_model_dependency(sourceRef, targetRef) }
         val secondData = parseDataObject(JsonParser.parseString(second).asJsonObject.get("data"))
         assertEquals(0, secondData.get("added").asInt)
         assertEquals(1, secondData.get("alreadyPresent").asInt)
@@ -147,7 +147,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val targets = listOf(modelRefOf(t1), modelRefOf(t2))
 
         val response = runTool(toolset) {
-            it.mps_mcp_add_model_dependency(
+            it.mps_mcp_model_dependency(
                 sourceRef,
                 "[\"${targets[0]}\",\"${targets[1]}\"]",
             )
@@ -166,7 +166,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
     @Test
     fun `add_model_dependency rejects unknown source model`() {
-        val response = runTool(toolset) { it.mps_mcp_add_model_dependency("no.such.source", "doesnt.matter") }
+        val response = runTool(toolset) { it.mps_mcp_model_dependency("no.such.source", "doesnt.matter") }
         assertTrue(expectErr(response).contains("Source model not found"))
     }
 
@@ -175,7 +175,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val sourceSolution = createSolution()
         val sourceModel = createModel(sourceSolution, "test.dep.unknown.tgt${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_add_model_dependency(modelRefOf(sourceModel), "no.such.target")
+            it.mps_mcp_model_dependency(modelRefOf(sourceModel), "no.such.target")
         }
         assertTrue(expectErr(response).contains("Target model not found"))
     }
@@ -191,16 +191,16 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val targetRef = modelRefOf(targetModel)
 
         // Seed the import.
-        val addResp = runTool(toolset) { it.mps_mcp_add_model_dependency(sourceRef, targetRef) }
+        val addResp = runTool(toolset) { it.mps_mcp_model_dependency(sourceRef, targetRef) }
         assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
 
-        val removeResp = runTool(toolset) { it.mps_mcp_remove_model_dependency(sourceRef, targetRef) }
+        val removeResp = runTool(toolset) { it.mps_mcp_model_dependency(sourceRef, targetRef, "DELETE") }
         val obj = JsonParser.parseString(removeResp).asJsonObject
         assertTrue("expected ok envelope: $removeResp", obj.get("ok").asBoolean)
-        // data is a structured object: { "removed": true } when the import existed and was dropped,
-        // { "removed": false } when the target wasn't imported (idempotent no-op). We just seeded
-        // the import above, so this call must report removed=true.
-        assertTrue("expected data.removed=true: $removeResp", obj.get("data").asJsonObject.get("removed").asBoolean)
+        val dataArr = obj.get("data").asJsonArray
+        val item = dataArr[0].asJsonObject
+        assertTrue(item.get("ok").asBoolean)
+        assertTrue("expected data[0].data.removed=true: $removeResp", item.get("data").asJsonObject.get("removed").asBoolean)
 
         readOnRepo {
             val imports = (sourceModel as SModelInternal).modelImports.map {
@@ -208,6 +208,74 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             }
             assertFalse("import must be gone: $imports", imports.contains(targetRef))
         }
+    }
+
+    @Test
+    fun `delete_model_dependency drops multiple imports successfully`() {
+        val sourceSolution = createSolution("test.dep.bulk.src${System.nanoTime()}")
+        val targetSolution1 = createSolution("test.dep.bulk.tgt1${System.nanoTime()}")
+        val targetSolution2 = createSolution("test.dep.bulk.tgt2${System.nanoTime()}")
+        val sourceModel = createModel(sourceSolution, "test.dep.bulk.src.model${System.nanoTime()}")
+        val targetModel1 = createModel(targetSolution1, "test.dep.bulk.tgt1.model${System.nanoTime()}")
+        val targetModel2 = createModel(targetSolution2, "test.dep.bulk.tgt2.model${System.nanoTime()}")
+
+        val sourceRef = modelRefOf(sourceModel)
+        val targetRef1 = modelRefOf(targetModel1)
+        val targetRef2 = modelRefOf(targetModel2)
+
+        // Seed both imports.
+        val addResp = runTool(toolset) {
+            it.mps_mcp_model_dependency(sourceRef, "[\"$targetRef1\", \"$targetRef2\"]")
+        }
+        assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
+
+        // Delete both imports in batch.
+        val deleteResp = runTool(toolset) {
+            it.mps_mcp_model_dependency(sourceRef, "[\"$targetRef1\", \"$targetRef2\"]", "DELETE")
+        }
+        val obj = JsonParser.parseString(deleteResp).asJsonObject
+        assertTrue("expected ok envelope: $deleteResp", obj.get("ok").asBoolean)
+
+        val dataArr = obj.get("data").asJsonArray
+        assertEquals(2, dataArr.size())
+
+        val item1 = dataArr[0].asJsonObject
+        assertTrue(item1.get("ok").asBoolean)
+        assertTrue(item1.get("data").asJsonObject.get("removed").asBoolean)
+
+        val item2 = dataArr[1].asJsonObject
+        assertTrue(item2.get("ok").asBoolean)
+        assertTrue(item2.get("data").asJsonObject.get("removed").asBoolean)
+
+        readOnRepo {
+            val imports = (sourceModel as SModelInternal).modelImports.map {
+                PersistenceFacade.getInstance().asString(it)
+            }
+            assertFalse("targetRef1 must be gone", imports.contains(targetRef1))
+            assertFalse("targetRef2 must be gone", imports.contains(targetRef2))
+        }
+    }
+
+    @Test
+    fun `delete_model_dependency reports failure if any target reference is malformed`() {
+        val solution = createSolution()
+        val model = createModel(solution, "test.dep.bulk.bad${System.nanoTime()}")
+        val modelRef = modelRefOf(model)
+
+        val deleteResp = runTool(toolset) {
+            it.mps_mcp_model_dependency(modelRef, "[\"r:00000000-0000-4000-0000-011111111111(some.model)\", \"$$$ not a valid reference $$$\"]", "DELETE")
+        }
+        val obj = JsonParser.parseString(deleteResp).asJsonObject
+        assertFalse("expected ok=false since one target was malformed: $deleteResp", obj.get("ok").asBoolean)
+
+        val dataArr = obj.get("data").asJsonArray
+        assertEquals(2, dataArr.size())
+
+        val item1 = dataArr[0].asJsonObject
+        assertTrue(item1.get("ok").asBoolean)
+
+        val item2 = dataArr[1].asJsonObject
+        assertFalse(item2.get("ok").asBoolean)
     }
 
     @Test
@@ -224,12 +292,15 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val sourceRef = modelRefOf(sourceModel)
         val targetRef = modelRefOf(targetModel)
 
-        val response = runTool(toolset) { it.mps_mcp_remove_model_dependency(sourceRef, targetRef) }
+        val response = runTool(toolset) { it.mps_mcp_model_dependency(sourceRef, targetRef, "DELETE") }
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        val dataArr = obj.get("data").asJsonArray
+        val item = dataArr[0].asJsonObject
+        assertTrue(item.get("ok").asBoolean)
         assertFalse(
-            "expected data.removed=false for a no-op call: $response",
-            obj.get("data").asJsonObject.get("removed").asBoolean,
+            "expected data[0].data.removed=false for a no-op call: $response",
+            item.get("data").asJsonObject.get("removed").asBoolean,
         )
 
         readOnRepo {
@@ -245,9 +316,24 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val model = createModel(solution, "test.dep.bad.tgt${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_remove_model_dependency(modelRefOf(model), "$$$ not a valid reference $$$")
+            it.mps_mcp_model_dependency(modelRefOf(model), "$$$ not a valid reference $$$", "DELETE")
         }
-        assertTrue(expectErr(response).contains("Invalid target model reference"))
+        val obj = com.google.gson.JsonParser.parseString(response).asJsonObject
+        assertFalse("expected ok=false: $response", obj.get("ok").asBoolean)
+        val dataArr = obj.get("data").asJsonArray
+        val item = dataArr[0].asJsonObject
+        assertFalse(item.get("ok").asBoolean)
+        assertTrue(item.get("error").asString.contains("Invalid target model reference"))
+    }
+
+    @Test
+    fun `model_dependency rejects invalid operation`() {
+        val solution = createSolution()
+        val model = createModel(solution, "test.dep.bad.op${System.nanoTime()}")
+        val response = runTool(toolset) {
+            it.mps_mcp_model_dependency(modelRefOf(model), "doesnt.matter", "INVALID_OP")
+        }
+        assertTrue(expectErr(response).contains("Invalid operation"))
     }
 
     // ── used languages / devkits ──────────────────────────────────────────────────────────
@@ -261,7 +347,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val modelReference = modelRefOf(targetModel)
 
         val response = runTool(toolset) {
-            it.mps_mcp_add_model_used_language(modelReference, knownLang, "language")
+            it.mps_mcp_model_used_language(modelReference, knownLang, "language")
         }
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
@@ -279,7 +365,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val model = createModel(solution, "test.usedlang.bad${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_add_model_used_language(modelRefOf(model), "totally.unknown.lang", "language")
+            it.mps_mcp_model_used_language(modelRefOf(model), "totally.unknown.lang", "language")
         }
         assertTrue(expectErr(response).contains("Language not found"))
     }
@@ -289,7 +375,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val model = createModel(solution, "test.usedlang.kind${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_add_model_used_language(modelRefOf(model), "jetbrains.mps.lang.core", "not-a-kind")
+            it.mps_mcp_model_used_language(modelRefOf(model), "jetbrains.mps.lang.core", "not-a-kind")
         }
         assertTrue(expectErr(response).contains("Invalid kind"))
     }
@@ -302,7 +388,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val modelReference = modelRefOf(model)
 
         // Seed by adding the language; capture the serialized SLanguage form used by the model.
-        val addResp = runTool(toolset) { it.mps_mcp_add_model_used_language(modelReference, knownLang, "language") }
+        val addResp = runTool(toolset) { it.mps_mcp_model_used_language(modelReference, knownLang, "language") }
         assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
 
         val langRef = readOnRepo {
@@ -311,7 +397,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
 
         val removeResp = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelReference, langRef, "language")
+            it.mps_mcp_model_used_language(modelReference, langRef, "language", "DELETE")
         }
         val data = expectOk(removeResp)
         assertTrue("expected removed=true: $removeResp", data.get("removed").asBoolean)
@@ -334,11 +420,11 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val model = createModel(solution, "test.usedlang.removebyname${System.nanoTime()}")
         val modelReference = modelRefOf(model)
 
-        val addResp = runTool(toolset) { it.mps_mcp_add_model_used_language(modelReference, knownLang, "language") }
+        val addResp = runTool(toolset) { it.mps_mcp_model_used_language(modelReference, knownLang, "language") }
         assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
 
         val removeResp = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelReference, knownLang, "language")
+            it.mps_mcp_model_used_language(modelReference, knownLang, "language", "DELETE")
         }
         val data = expectOk(removeResp)
         assertTrue("expected removed=true: $removeResp", data.get("removed").asBoolean)
@@ -360,7 +446,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val model = createModel(solution, "test.usedlang.removetwice${System.nanoTime()}")
         val modelReference = modelRefOf(model)
 
-        runTool(toolset) { it.mps_mcp_add_model_used_language(modelReference, knownLang, "language") }
+        runTool(toolset) { it.mps_mcp_model_used_language(modelReference, knownLang, "language") }
 
         val langRef = readOnRepo {
             val match = (model as SModelInternal).importedLanguageIds().single { it.qualifiedName == knownLang }
@@ -368,13 +454,13 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
 
         val firstRemove = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelReference, langRef, "language")
+            it.mps_mcp_model_used_language(modelReference, langRef, "language", "DELETE")
         }
         assertTrue("first remove must report removed=true: $firstRemove",
             expectOk(firstRemove).get("removed").asBoolean)
 
         val secondRemove = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelReference, langRef, "language")
+            it.mps_mcp_model_used_language(modelReference, langRef, "language", "DELETE")
         }
         assertFalse("second remove must report removed=false: $secondRemove",
             expectOk(secondRemove).get("removed").asBoolean)
@@ -387,7 +473,7 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val model = createModel(solution, "test.usedlang.removeunknown${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelRefOf(model), "totally.unknown.lang", "language")
+            it.mps_mcp_model_used_language(modelRefOf(model), "totally.unknown.lang", "language", "DELETE")
         }
         val err = expectErr(response)
         assertTrue("error should mention the missing language: $err",
@@ -399,9 +485,19 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val model = createModel(solution, "test.usedlang.removebad${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_remove_model_used_language(modelRefOf(model), "jetbrains.mps.lang.core", "not-a-kind")
+            it.mps_mcp_model_used_language(modelRefOf(model), "jetbrains.mps.lang.core", "not-a-kind", "DELETE")
         }
         assertTrue(expectErr(response).contains("Invalid kind"))
+    }
+
+    @Test
+    fun `model_used_language rejects invalid operation`() {
+        val solution = createSolution()
+        val model = createModel(solution, "test.usedlang.bad.op${System.nanoTime()}")
+        val response = runTool(toolset) {
+            it.mps_mcp_model_used_language(modelRefOf(model), "jetbrains.mps.lang.core", "language", "INVALID_OP")
+        }
+        assertTrue(expectErr(response).contains("Invalid operation"))
     }
 
 }

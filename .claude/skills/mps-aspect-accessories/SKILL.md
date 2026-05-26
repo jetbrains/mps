@@ -23,7 +23,7 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 ## MCP Tools Quick Reference
 
 - Module-level: `mps_mcp_module_dependency`, `mps_mcp_get_project_structure`.
-- Model-level: `mps_mcp_add_model_dependency`, `mps_mcp_remove_model_dependency`, `mps_mcp_add_model_used_language` (kind = `language` or `devkit`), `mps_mcp_remove_model_used_language`.
+- Model-level: `mps_mcp_model_dependency`, `mps_mcp_model_used_language` (kind = `language` or `devkit`).
 - Module creation: `mps_mcp_create_module(type="solution", …)` for a runtime solution.
 
 ## Common Workflow

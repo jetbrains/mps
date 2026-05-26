@@ -200,7 +200,7 @@ Because the NF_* concepts live in `jetbrains.mps.lang.actions`, the *containing 
 Add it via:
 
 ```
-mps_mcp_add_model_used_language(modelReference=<model>, usedLanguage="jetbrains.mps.lang.actions", kind="language")
+mps_mcp_model_used_language(modelReference=<model>, usedLanguage="jetbrains.mps.lang.actions", kind="language")
 ```
 
 The plain (non-`NF_`) smodel variants need no extra import beyond `jetbrains.mps.lang.smodel` which is already present in every code-bearing MPS model.

@@ -36,22 +36,22 @@ MPS distinguishes two dependency layers. Get this right before assuming a concep
 - Live on the owning module (solution, language, generator, devkit).
 - Control which other modules are on the module's **classpath** at generation and runtime.
 - Set with MCP tool `mps_mcp_module_dependency(moduleName, targetModule, scope, reexport)`. Valid scopes: `Default`, `Design`, `Compile`, `Runtime`, `Provided`, `Extends`, `Generation Target`. Most dependencies are `Default`.
-- A "**used language**" (imported separately as module metadata) is required for MPS to load that language's runtime/generator when this module builds — this is different from a plain module dependency. See `mps_mcp_add_model_used_language` for the model-level form.
+- A "**used language**" (imported separately as module metadata) is required for MPS to load that language's runtime/generator when this module builds — this is different from a plain module dependency. See `mps_mcp_model_used_language` for the model-level form.
 
 ### Model dependencies
 
 - Live on an individual model (`.mps` file).
 - Control which **models** (and therefore which concepts, root nodes, and references) are visible inside this model's nodes.
 - Two sub-kinds:
-    - **Imported models** — needed whenever you reference a node (including a concept declaration) from another model. Add with `mps_mcp_add_model_dependency(modelReference, targetModels)`. The tool also adds a `Default` module dependency on each target model's owning module — you do **not** need to add that manually.
-    - **Used languages** — every concept used in the model must come from a language imported here. Add with `mps_mcp_add_model_used_language(modelReference, usedLanguage, kind)` where `kind` is `language` or `devkit`.
+    - **Imported models** — needed whenever you reference a node (including a concept declaration) from another model. Add with `mps_mcp_model_dependency(modelReference, targetModels)`. The tool also adds a `Default` module dependency on each target model's owning module — you do **not** need to add that manually.
+    - **Used languages** — every concept used in the model must come from a language imported here. Add with `mps_mcp_model_used_language(modelReference, usedLanguage, kind)` where `kind` is `language` or `devkit`.
 
 ### Typical failure modes
 
 | Symptom | Likely cause | Fix |
 |---|---|---|
-| "Concept not imported" on a freshly written node | Model does not import the language defining that concept | `mps_mcp_add_model_used_language` with `kind: "language"` |
-| Reference target "cannot be resolved" at generation time | Target model not imported by the source model | `mps_mcp_add_model_dependency` |
+| "Concept not imported" on a freshly written node | Model does not import the language defining that concept | `mps_mcp_model_used_language` with `kind: "language"` |
+| Reference target "cannot be resolved" at generation time | Target model not imported by the source model | `mps_mcp_model_dependency` |
 | Class not found at runtime despite import looking right | Missing module-level classpath dependency | `mps_mcp_module_dependency` with scope `Default` (or `Runtime` for runtime-only jars) |
 | "Generation targets missing" | Language needs a generator dependency declared with scope `Generation Target` | add with that specific scope |
 

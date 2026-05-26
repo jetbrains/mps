@@ -25,14 +25,17 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Adds one or more imports to an MPS model and ensures the containing module has a `Default` dependency on each target's module. Already-imported targets are skipped. `targetModels` accepts a single name/reference or a JSON array. Returns `{ "added": N, "alreadyPresent": M }`.
+        Adds or deletes one or more imports to an MPS model and ensures the containing module has a `Default` dependency on each target's module. Already-imported targets are skipped when adding. `targetModels` accepts a single name/reference or a JSON array. Returns `{ "added": N, "alreadyPresent": M }`.
+        Supported operations: ADD or DELETE. 
     """
     )
-    suspend fun mps_mcp_add_model_dependency(
+    suspend fun mps_mcp_model_dependency(
         @McpDescription("Source model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
         modelReference: String,
         @McpDescription("Target model name(s) or reference(s). Single string or JSON array: [\"model1\", \"model2\"]")
-        targetModels: String
+        targetModels: String,
+        @McpDescription("Operation to perform: ADD or DELETE")
+        operation: DependencyOperation = DependencyOperation.ADD
     ): String = withMpsProject("Adding MPS model dependency") { mpsProject ->
         val targetList: List<String> = try {
             val elem = JsonParser.parseString(targetModels)
@@ -44,6 +47,20 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         } catch (e: Exception) {
             rethrowIfCancellation(e)
             listOf(targetModels)
+        }
+
+        if (operation == DependencyOperation.DELETE) {
+            val results = mutableListOf<String>()
+            var allSucceeded = true
+            for (targetModel in targetList) {
+                val itemResult = removeModelDependency(modelReference, targetModel)
+                results.add(itemResult)
+                if (!itemResult.startsWith("{\"ok\":true")) {
+                    allSucceeded = false
+                }
+            }
+            val array = "[" + results.joinToString(",") + "]"
+            return@withMpsProject "{" + "\"ok\":$allSucceeded,\"data\":" + array + "}"
         }
 
         executeShortCommandOnEdt(mpsProject) {
@@ -132,17 +149,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         }
     }
 
-    @McpTool
-    @McpDescription(
-        """
-        Removes an import from an MPS model. Idempotent — returns `{ "removed": true }` if the import was present, `{ "removed": false }` otherwise.
-    """
-    )
-    suspend fun mps_mcp_remove_model_dependency(
-        @McpDescription("Source model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
-        modelReference: String,
-        @McpDescription("Target model reference. Must be a persistent model reference; names are not accepted here.")
-        targetModelRef: String
+    private suspend fun removeModelDependency(modelReference: String, targetModelRef: String
     ): String = withMpsProject("Removing MPS model dependency") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
             val model = resolveModel(mpsProject.repository, modelReference)
@@ -172,17 +179,24 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Adds a used language or devkit to an MPS model (`kind` = `"language"` or `"devkit"`). If the language is already provided by an imported DevKit, the call is a no-op and `providedByDevKit` reports the supplying DevKit.
+        Adds or deletes a used language or devkit to an MPS model (`kind` = `"language"` or `"devkit"`). If the language being added is already provided by an imported DevKit, the call is a no-op and `providedByDevKit` reports the supplying DevKit.
+        Supported operations: ADD or DELETE. 
     """
     )
-    suspend fun mps_mcp_add_model_used_language(
+    suspend fun mps_mcp_model_used_language(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
         modelReference: String,
         @McpDescription("Language or devkit name or reference")
         usedLanguage: String,
         @McpDescription("Kind: 'language' or 'devkit'")
-        kind: String
+        kind: String,
+        @McpDescription("Operation to perform: ADD or DELETE")
+        operation: DependencyOperation = DependencyOperation.ADD
     ): String = withMpsProject("Adding MPS model used language") { mpsProject ->
+        if (operation == DependencyOperation.DELETE) {
+            return@withMpsProject removeModelUsedLanguage(modelReference, usedLanguage, kind)
+        }
+
         executeShortCommandOnEdt(mpsProject) {
             val model = resolveModel(mpsProject.repository, modelReference)
                 ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference")
@@ -252,19 +266,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         }
     }
 
-    @McpTool
-    @McpDescription(
-        """
-        Removes a used language or devkit from an MPS model (`kind` = `"language"` or `"devkit"`).
-    """
-    )
-    suspend fun mps_mcp_remove_model_used_language(
-        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
-        modelReference: String,
-        @McpDescription("Language or devkit name or reference")
-        usedLanguageRef: String,
-        @McpDescription("Kind: 'language' or 'devkit'")
-        kind: String
+    private suspend fun removeModelUsedLanguage(modelReference: String, usedLanguageRef: String, kind: String
     ): String = withMpsProject("Removing MPS model used language") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
             val model = resolveModel(mpsProject.repository, modelReference)
@@ -275,7 +277,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
 
             when (kind) {
                 "language" -> {
-                    // Symmetric with mps_mcp_add_model_used_language: accept either a persistent
+                    // Symmetric with mps_mcp_model_used_language: accept either a persistent
                     // l:UUID:name reference OR a bare qualified name. For the bare-name fallback we
                     // search the model's OWN imported languages rather than the global
                     // LanguageRegistry — that locates the exact SLanguage instance the model
@@ -289,7 +291,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                             "Language not found in model's used languages: $usedLanguageRef")
 
                     // deleteLanguageId is silently idempotent, so precompute membership to give the
-                    // caller a meaningful `removed` flag (matches mps_mcp_remove_model_dependency).
+                    // caller a meaningful `removed` flag (matches mps_mcp_model_dependency).
                     val wasPresent = model.importedLanguageIds().any { it == lang }
                     if (wasPresent) {
                         model.deleteLanguageId(lang)

@@ -30,7 +30,7 @@ Use this skill when authoring code inside an MPS model where BaseLanguage is mix
    - `references/references-and-queries.md` — `.ancestor<C>`, `.descendants<C>`, `.reference/C:role/`, `.target`, `.isInstanceOf`, sibling queries.
 4. **For variable declarations and method return types** of MPS collection / smodel types, build the type child explicitly — `parse_java_and_insert` produces a wrong `ClassifierType` for these in return-type position. See `references/variable-declarations.md`.
 5. **Validate** with `mps_mcp_check_root_node_problems(nodeReference, onlyNodesWithProblems=true)`. Re-read generated `source_gen/...java` only to confirm runtime shape — never to apply fixes. See `references/workflows.md`.
-6. **If imports/dependencies break**, add a used language or model dependency via `mps_mcp_add_model_used_language` / `mps_mcp_add_model_dependency` / `mps_mcp_module_dependency`. See `references/openapi-and-dependencies.md`.
+6. **If imports/dependencies break**, add a used language or model dependency via `mps_mcp_model_used_language` / `mps_mcp_model_dependency` / `mps_mcp_module_dependency`. See `references/openapi-and-dependencies.md`.
 
 If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unless explicitly requested — inspect only and report.
 

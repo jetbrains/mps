@@ -66,7 +66,7 @@ Keep logic in behavior methods; keep aspect rules thin and declarative.
 - **Exploration**: `mps_mcp_get_project_structure`, `mps_mcp_search_concepts`, `mps_mcp_get_concept_details`, `mps_mcp_print_node`.
 - **Authoring**: `mps_mcp_create_root_node`, `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`, `mps_mcp_parse_java_and_insert`.
 - **Structure-specific**: `mps_mcp_perform_structure_operation` (CREATE_CONCEPTS, CREATE_ENUM, FIND_INSTANCES, UPDATE_CONCEPT_*).
-- **Modules/models**: `mps_mcp_create_module`, `mps_mcp_create_model`, `mps_mcp_add_model_dependency`, `mps_mcp_add_model_used_language`, `mps_mcp_module_dependency`.
+- **Modules/models**: `mps_mcp_create_module`, `mps_mcp_create_model`, `mps_mcp_model_dependency`, `mps_mcp_model_used_language`, `mps_mcp_module_dependency`.
 - **Validation**: `mps_mcp_check_root_node_problems`, language/module build via IDE MCP.
 
 ## Dependencies and Rebuilds

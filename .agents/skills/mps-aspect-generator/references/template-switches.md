@@ -96,6 +96,6 @@ If you set `extends` on a `TemplateSwitch`, the parent's cases are tried first (
 **Cross-generator inheritance.** When the parent switch lives in another generator module (the common case for extension languages), you must wire up both sides before the `extends` reference will resolve:
 
 1. On the extending generator *module* (`.mpl`): add an `extends` dependency on the parent generator module (in MPS project view → generator node → module properties → Dependencies, scope `extends`).
-2. In the extending generator *model* (`template/main@generator.mps`): import the parent's `templates` model so the child can reference its `TemplateSwitch` node. Use `mps_mcp_add_model_dependency` with the parent generator's templates model as target.
+2. In the extending generator *model* (`template/main@generator.mps`): import the parent's `templates` model so the child can reference its `TemplateSwitch` node. Use `mps_mcp_model_dependency` with the parent generator's templates model as target.
 
 Without both, the child switch will look syntactically correct but the `extends` reference will be broken at generation time.
