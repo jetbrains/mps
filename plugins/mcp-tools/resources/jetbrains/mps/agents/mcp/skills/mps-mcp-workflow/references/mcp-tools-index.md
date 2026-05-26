@@ -13,7 +13,7 @@
 
 ## Root Nodes and Nodes
 
-- `mps_mcp_open_root_node`: opens a root node in the editor.
+- `mps_mcp_open_node`: opens a node in the editor; non-root references open the containing root and select the target.
 - `mps_mcp_get_current_editor_root_node`: identifies the node the user is currently looking at.
 - `mps_mcp_create_root_node`, `mps_mcp_update_root_node_from_json`
 - `mps_mcp_perform_operation`: general node navigation, search, transformation and code generation/compilation.

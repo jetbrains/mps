@@ -30,12 +30,12 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Opens the specified root node in the MPS editor.
+        Opens the specified node in the MPS editor. If the reference points to a non-root node, MPS opens the editor of its containing root and selects/focuses the target node.
         Returns a JSON object with 'ok':true and 'data':{"present":true} on success, or 'ok':false and 'error':"..." on failure.
     """)
-    suspend fun mps_mcp_open_root_node(
-        @McpDescription("Persistent form of SNodeReference") nodeReference: String
-    ): String = withMpsProject("Opening MPS root node") { mpsProject ->
+    suspend fun mps_mcp_open_node(
+        @McpDescription("Persistent form of SNodeReference; may point to any node — non-root references open the containing root and focus the target.") nodeReference: String
+    ): String = withMpsProject("Opening MPS node in editor") { mpsProject ->
         // resolveNodeReference handles invalid persistent refs gracefully (null instead of
         // IllegalArgumentException) and additionally accepts "ModelName.RootName" form.
         val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
@@ -330,6 +330,13 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
 
+                if (node.parent != null) {
+                    return@executeShortCommandOnEdt errJson(
+                        "Node '$nodeReference' is not a root node; this tool operates on root nodes only",
+                        McpErrorCode.INVALID_REQUEST
+                    )
+                }
+
                 val jsonObject = try {
                     val elem = JsonParser.parseString(actualJson)
                     when {
@@ -375,6 +382,12 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject.repository, nodeReference)) {
                     is EditableNodeResolution.Ok -> r.node to r.model
                     is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                }
+                if (node.parent != null) {
+                    return@executeShortCommandOnEdt errJson(
+                        "Node '$nodeReference' is not a root node; this tool operates on root nodes only",
+                        McpErrorCode.INVALID_REQUEST
+                    )
                 }
                 model.removeRootNode(node)
                 saveModelAndModule(model)

@@ -38,4 +38,4 @@ The step repeats micro-steps until a fixed point (no new transformations).
 
 ## Inspecting a real run
 
-Use `mps_mcp_open_root_node` to open the MappingConfiguration; the MPS UI has "Show Generation Plan" which displays the priority partition. Enable "Save transient models" to keep intermediate models after generation — then read them to confirm what each step actually produces.
+Use `mps_mcp_open_node` to open the MappingConfiguration; the MPS UI has "Show Generation Plan" which displays the priority partition. Enable "Save transient models" to keep intermediate models after generation — then read them to confirm what each step actually produces.

@@ -32,7 +32,7 @@ If the bug is in `source_gen/`, the fix is almost always upstream — in the tem
 ## Debugging a failing step
 
 1. Enable "Save transient models" (Preferences → Build, Execution, Deployment → Generator, or project-level setting).
-2. Regenerate. Intermediate models appear under the project; open them via `mps_mcp_open_root_node` or the Project View.
+2. Regenerate. Intermediate models appear under the project; open them via `mps_mcp_open_node` or the Project View.
 3. Use the Generator Tracer tool (UI) to walk forward from an input node or backward from an output node and see which rules fired.
 4. Validate the MappingConfiguration + templates with `mps_mcp_check_root_node_problems` to catch structure-level errors before runtime.
 
