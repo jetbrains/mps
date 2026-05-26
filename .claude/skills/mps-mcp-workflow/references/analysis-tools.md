@@ -1,7 +1,6 @@
 # Analyzing MPS Code and Languages
 
-- Use `mps_mcp_show_node_representation` for a textual or HTML projection.
-- Use `mps_mcp_print_node_json` for the structural JSON form.
+- Use `mps_mcp_print_node` for the structural JSON form or for a textual or HTML projection.
 - Use `mps_mcp_check_root_node_problems` to find errors in the code.
 - Use `mps_mcp_perform_operation` for navigation and usage search.
 - Use `mps_mcp_perform_structure_operation` to investigate the relationships between concepts and their assignability.
@@ -19,7 +18,7 @@
 - Load the `mps-aspect-structure-concepts` skill as soon as you need to define or change a language or its concepts.
 - Before starting unfamiliar DSL work, check `.agents/skills/*-dsl/` for a generated project-local DSL skill and use it before re-exploring the language. After a session where you discovered new DSL facts, load `mps-dsl-memory` to create or refresh the relevant generated DSL skill.
 
-## `mps_mcp_print_node_json` — Output Format
+## `mps_mcp_print_node` — Output Format
 
 Saves the node JSON to a local text file (path returned in `data`). Behaviour depends on `deep`:
 

@@ -491,15 +491,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         }
     }
 
-    @McpTool
-    @McpDescription(
-        """
-        Saves the editor-projected representation of the specified node to a temp file (path returned in `data`). Pass `asHtml=true` for HTML; otherwise plain text.
-    """
-    )
-    suspend fun mps_mcp_show_node_representation(
-        @McpDescription("Persistent form of SNodeReference") nodeReference: String,
-        @McpDescription("Whether to return HTML (true) or plain text (false). Defaults to false.") asHtml: Boolean = false
+    suspend private fun showNodeAppearance(nodeReference: String, asHtml: Boolean = false
     ): String {
         return withMpsProject("Getting MPS node ${if (asHtml) "HTML" else "text"} representation") { mpsProject ->
             executeShortReadOnEdt(mpsProject) {
@@ -618,12 +610,18 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpDescription(
         """
         Saves a JSON printout of the specified node to a temp file (path returned in `data`). `deep=true` inlines all descendants; `deep=false` (default) lists direct children's refs only. The saved envelope is consumable by every node-mutation tool (`mps_mcp_add_node_child`, `mps_mcp_update_root_node_from_json`, etc.). See `mps-mcp-workflow/references/analysis-tools.md` for the output schema and `mps-node-editing/references/json-format.md` for the matching blueprint shape.
+        Alternatively, if HTML or PLAIN TEXT format is required, it saves the editor-projected representation of the specified node to a temp file (path returned in `data`).
     """
     )
-    suspend fun mps_mcp_print_node_json(
+    suspend fun mps_mcp_print_node(
         @McpDescription("Persistent form of SNodeReference") nodeReference: String,
-        @McpDescription("Whether to perform a deep (true) or shallow (false) printout. Defaults to false.") deep: Boolean = false
+        @McpDescription("Whether to return a JSON blueprint(default), HTML or PLAIN TEXT. Defaults to JSON.") format: String = "JSON",
+        @McpDescription("Whether to perform a deep (true) or shallow (false) printout. Only relevant for JSON format. Defaults to false.") deep: Boolean = false
     ): String {
+        val normalizedFormat = format.uppercase().trim()
+        if (normalizedFormat == "HTML") return showNodeAppearance(nodeReference, asHtml = true)
+        if (normalizedFormat == "PLAIN TEXT") return showNodeAppearance(nodeReference, asHtml = false)
+        if (normalizedFormat != "JSON") return errJson("Invalid format '$format'. Allowed values: JSON, HTML, PLAIN TEXT", McpErrorCode.INVALID_REQUEST)
         return withMpsProject(if (deep) "Deep printing MPS node" else "Shallow printing MPS node") { mpsProject ->
             executeShortReadOnEdt(mpsProject) {
                 val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)

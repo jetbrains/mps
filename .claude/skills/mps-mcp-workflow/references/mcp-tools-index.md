@@ -17,8 +17,7 @@
 - `mps_mcp_get_current_editor_root_node`: identifies the node the user is currently looking at.
 - `mps_mcp_create_root_node`, `mps_mcp_update_root_node_from_json`, `mps_mcp_delete_root_node`
 - `mps_mcp_perform_operation`: general node navigation, search, transformation and code generation/compilation.
-- `mps_mcp_show_node_representation`: shows the "visual" projection of a node.
-- `mps_mcp_print_node_json`: shows the underlying JSON structure.
+- `mps_mcp_print_node`: shows the underlying JSON structure or the "visual" projection of a node.
 - `mps_mcp_insert_root_node_from_json`: bulk node creation. Leave the references empty if target nodes do not exist. Remember to set them later with `mps_mcp_set_node_references`.
 - `mps_mcp_set_node_properties`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_delete_node_child`, `mps_mcp_set_node_references`
 - `mps_mcp_check_root_node_problems`: validation tool. Use this frequently to ensure your changes are correct.

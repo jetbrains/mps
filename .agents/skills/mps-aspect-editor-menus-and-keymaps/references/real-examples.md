@@ -16,4 +16,4 @@ Path: `languages/baseLanguage/languageModels/`.
 
 ## Discovery Workflow
 
-To study the exact JSON of a real example, open the root in MPS and call `mps_mcp_print_node_json` — the output is the canonical shape that `mps_mcp_insert_root_node_from_json` will accept on the way back. Always cross-check concept and role names against a live print-out before building a large blueprint.
+To study the exact JSON of a real example, open the root in MPS and call `mps_mcp_print_node` — the output is the canonical shape that `mps_mcp_insert_root_node_from_json` will accept on the way back. Always cross-check concept and role names against a live print-out before building a large blueprint.

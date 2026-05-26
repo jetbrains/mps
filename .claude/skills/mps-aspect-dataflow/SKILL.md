@@ -33,7 +33,7 @@ The MPS dataflow engine builds a control-flow graph from the emitted instruction
 3. Add a `BuilderBlock` child with a `body` (BL `StatementList`).
 4. Emit instructions: delegate to children with `EmitCodeForStatement`; model branches with `EmitIfJumpStatement` + `EmitLabelStatement`; record variable use with `EmitReadStatement` / `EmitWriteStatement`; mark exits with `EmitRetStatement`.
 5. For loops, use `BeforePosition`/`AfterPosition` to encode loop-back/exit edges; wrap potentially-unreachable instructions in `EmitMayBeUnreachable`.
-6. Validate with `mps_mcp_check_root_node_problems`. For tricky cases, inspect an existing baseLanguage builder via `mps_mcp_print_node_json` with `deep: true`.
+6. Validate with `mps_mcp_check_root_node_problems`. For tricky cases, inspect an existing baseLanguage builder via `mps_mcp_print_node` with `deep: true`.
 
 ## Related Skills
 

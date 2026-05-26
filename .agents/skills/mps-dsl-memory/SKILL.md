@@ -19,7 +19,7 @@ type: reference
 2. **Choose skill scope**: Prefer one generated skill per language. Use one combined skill only when the project languages are tightly coupled and users normally edit them together.
 3. **Find examples**: For each language or language group, call `mps_mcp_get_project_structure` with the relevant sandbox/example solution as `startingPoint` and `includeRootNodes: true`. Record editable model refs and representative root refs.
 4. **Read concepts**: Call `mps_mcp_get_concept_details` with the relevant `l:<uuid>:<languageName>` refs. Capture rootable concepts, concrete children, properties, child roles, references, and useful `shortDescription` text.
-5. **Sample sparingly**: Use `mps_mcp_print_node_json` only on representative roots or subtrees needed for reference targets, required roles, or reusable blueprints. Avoid dumping every root.
+5. **Sample sparingly**: Use `mps_mcp_print_node` only on representative roots or subtrees needed for reference targets, required roles, or reusable blueprints. Avoid dumping every root.
 6. **Generate DSL skills**: Create or update `.agents/skills/<dsl-name>-dsl/` for each selected scope. Preserve user-added notes unless they are stale or wrong.
 7. **Cross-link related skills**: When generated skills cover languages that extend, depend on, or are commonly used inside each other, add short links and usage notes between them.
 8. **Verify**: Confirm linked reference files exist, blueprint JSON parses, no `.DS_Store` or editor artifacts were added, and one or two recorded node refs still resolve if the sandbox may have changed.

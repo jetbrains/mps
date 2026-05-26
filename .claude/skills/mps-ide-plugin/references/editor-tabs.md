@@ -68,7 +68,7 @@
 }
 ```
 
-Real sources to inspect with `mps_mcp_print_node_json`: the `Actions`, `Behavior`, `Constraints`, `Data Flow`, `Editor`, `Feedback`, `Find Usages`, `Generator`, `Intentions`, `Refactorings`, `Structure`, `Textgen`, `Typesystem` roots in the `jetbrains.mps.ide.devkit.editor` model.
+Real sources to inspect with `mps_mcp_print_node`: the `Actions`, `Behavior`, `Constraints`, `Data Flow`, `Editor`, `Feedback`, `Find Usages`, `Generator`, `Intentions`, `Refactorings`, `Structure`, `Textgen`, `Typesystem` roots in the `jetbrains.mps.ide.devkit.editor` model.
 
 ## `Order` — Sequence Tabs Across the Strip
 

@@ -1,6 +1,6 @@
 # TextGen JSON Blueprints and Validated Concept Reference
 
-> Verified via `mps_mcp_get_concept_details` and `mps_mcp_print_node_json` against a running MPS. Re-verify with the MCP before inserting if your MPS version differs.
+> Verified via `mps_mcp_get_concept_details` and `mps_mcp_print_node` against a running MPS. Re-verify with the MCP before inserting if your MPS version differs.
 
 ## `append {<} ${XmlCharEscape.escapeIdentifier(node.tagName)} ;` — constant + expression
 

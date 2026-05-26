@@ -228,7 +228,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                         "'$targetRefStr' looks like an MPS XML short ID (from a .mps file). " +
                         "These cannot be used as target references — they are an internal encoding " +
                         "that differs from the persistent references used by the MCP API. " +
-                        "Use the persistent reference from mps_mcp_print_node_json output instead " +
+                        "Use the persistent reference from mps_mcp_print_node output instead " +
                         "(e.g. 'r:<modelId>/<nodeId>'). " +
                         "If the input is actually a legitimate name that happens to match this " +
                         "heuristic (8–20 chars containing '${'$'}' or leading digit, e.g. '_my_var${'$'}'), " +

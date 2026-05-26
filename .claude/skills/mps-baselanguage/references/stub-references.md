@@ -23,7 +23,7 @@ Once you have the class ref, construct the member ref by appending:
 * `(` → `%28`
 * `)` → `%29`
 * Always use fully-qualified parameter types (e.g. `java.lang.String`, not `String`).
-* Omit return type suffixes (e.g. `:void`) unless confirmed via `mps_mcp_print_node_json`.
+* Omit return type suffixes (e.g. `:void`) unless confirmed via `mps_mcp_print_node`.
 
 ## 2. Auto-Resolve by Name
 
@@ -37,6 +37,6 @@ For ambiguous overloads or when the declaring class in the hierarchy is unclear.
 
 If a few refs remain broken after applying the JSON, run `mps_mcp_perform_operation(FIX_REFERENCES)` as surgical repair rather than pre-harvesting every ref.
 
-## 5. `mps_mcp_print_node_json` on the Stub (last resort)
+## 5. `mps_mcp_print_node` on the Stub (last resort)
 
 Justified only when all above strategies fail. Do not print entire stub classes to scan for a signature you can derive.

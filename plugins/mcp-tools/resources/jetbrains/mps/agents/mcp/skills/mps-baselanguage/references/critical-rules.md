@@ -50,4 +50,4 @@ Rules that, if violated, make the AST fail structural / assignability / typesyst
 ## Preflight for Large JSON ASTs
 * Validate JSON syntax locally before calling the insert tool.
 * If insertion fails with an assignability error, check the exact role path — the provided concept may not be assignable there.
-* When in doubt, print an existing instance of the target construct (`mps_mcp_print_node_json`) before hand-authoring the subtree.
+* When in doubt, print an existing instance of the target construct (`mps_mcp_print_node`) before hand-authoring the subtree.

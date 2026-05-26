@@ -38,7 +38,7 @@ Attach this as a `smodelAttribute` child of the node holding the reference:
 
 ## Authoring tip — stage construction
 
-`ScopesExpectedNode.ref` is not scope-resolved, so plain names won't auto-resolve. Insert the snippet's structure first (Script, routines, the call with a plain-name `routine` target), then `mps_mcp_print_node_json` to harvest the persistent refs of the routines and the call's resolved target, then add the `ScopesTest` annotation as a second-stage `add_node_child` with those refs.
+`ScopesExpectedNode.ref` is not scope-resolved, so plain names won't auto-resolve. Insert the snippet's structure first (Script, routines, the call with a plain-name `routine` target), then `mps_mcp_print_node` to harvest the persistent refs of the routines and the call's resolved target, then add the `ScopesTest` annotation as a second-stage `add_node_child` with those refs.
 
 ## Why prefer it over imperative assertions
 

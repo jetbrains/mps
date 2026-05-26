@@ -42,7 +42,7 @@ An `InterfaceGroup` is a **handle** to an action group that lives somewhere else
 }
 ```
 
-Real sources: `IDEAWindows`, `IDEAGoTo`, `IDEAEdit`, `IDEAFile`, `IDEAView`, `IDEATools`, `IDEAVCS` in `jetbrains.mps.ide.actions`. Inspect them with `mps_mcp_print_node_json` to see canonical expressions.
+Real sources: `IDEAWindows`, `IDEAGoTo`, `IDEAEdit`, `IDEAFile`, `IDEAView`, `IDEATools`, `IDEAVCS` in `jetbrains.mps.ide.actions`. Inspect them with `mps_mcp_print_node` to see canonical expressions.
 
 ## Using `InterfaceExtentionPoint` (`bootstrap ->`) Inside a Group
 

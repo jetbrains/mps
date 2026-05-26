@@ -22,7 +22,7 @@ Use this skill when authoring code inside an MPS model where BaseLanguage is mix
 
 ## Common-path workflow
 
-1. **Identify the source-of-truth layer**. If the change is to existing logic in a rule/method body, inspect the current node (shallow `mps_mcp_print_node_json`) before editing.
+1. **Identify the source-of-truth layer**. If the change is to existing logic in a rule/method body, inspect the current node (shallow `mps_mcp_print_node`) before editing.
 2. **Prefer `parse_java_and_insert`** for plain Java method bodies, expression replacements, and field declarations on `LINKS`/`CONCEPTS` inner classes. See `references/java-parser-capabilities.md`.
 3. **For smodel/collections/closures constructs not parseable as Java**, build the node blueprint by hand. See:
    - `references/dot-expression-basics.md` — the universal `DotExpression(operand, operation)` chaining pattern, closure literal blueprint, type-cast wrapping rules.

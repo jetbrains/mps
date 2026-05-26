@@ -23,7 +23,7 @@ The `jetbrains.mps.lang.editor` language defines projectional editors as trees o
 1. **Scaffold first** — `mps_mcp_scaffold_editor` builds a default editor that wires properties/children/references to sensible cell models.
 2. **Componentize** reusable pieces into `EditorComponentDeclaration`.
 3. **Refine cell choice and layout** using the catalog below.
-4. **Inspect** with `mps_mcp_print_node_json` (structural) and `mps_mcp_show_node_representation` (textual / HTML projection).
+4. **Inspect** with `mps_mcp_print_node` (structural, textual or HTML projection).
 5. **Validate** with `mps_mcp_check_root_node_problems`.
 
 ## Related Skills

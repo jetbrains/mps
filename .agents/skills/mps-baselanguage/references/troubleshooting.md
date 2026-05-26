@@ -20,5 +20,5 @@ Common error messages and their root cause. Read this when validation fails and 
 ## Practical Tips
 
 * If insertion fails with an assignability error, check the exact role path — the provided concept may not be assignable there.
-* When in doubt, print an existing instance of the target construct (`mps_mcp_print_node_json`) before hand-authoring the subtree.
+* When in doubt, print an existing instance of the target construct (`mps_mcp_print_node`) before hand-authoring the subtree.
 * Large blueprints fail in two stages: first malformed JSON prevents insertion, then structurally valid JSON can still fail concept assignability. Debug them separately.

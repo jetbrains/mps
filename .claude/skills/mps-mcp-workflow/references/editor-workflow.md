@@ -6,7 +6,7 @@ Designing, scaffolding, and refining MPS concept editors:
 2. **Compile**: rebuild the structure model (via `MAKE` operation in `mps_mcp_perform_operation`) to enable scaffolding.
 3. **Scaffold**: call `mps_mcp_scaffold_editor` with `detectComponents: true`.
 4. **Componentize**: extract reusable parts into `EditorComponentDeclaration`.
-5. **Inspect**: verify AST and layout via `mps_mcp_print_node_json` and `mps_mcp_show_node_representation`.
+5. **Inspect**: verify AST and layout via `mps_mcp_print_node`.
 6. **Refine**: customize cells/styles using the `mps-aspect-editor` skill.
 7. **Verify**: check for errors via `mps_mcp_check_root_node_problems`.
 

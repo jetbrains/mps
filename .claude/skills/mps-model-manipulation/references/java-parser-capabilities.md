@@ -172,7 +172,7 @@ Node blueprints for common MPS types (use in `mps_mcp_replace_node_child`):
 
 The `target` of the `concept` reference must be the persistent node ref of the concept declaration
 (obtainable via `mps_mcp_search_concepts` or from the type of an existing `sequence<node<X>>`
-variable — print it with `mps_mcp_print_node_json` to get the exact ref).
+variable — print it with `mps_mcp_print_node` to get the exact ref).
 
 ### smodel language expressions
 

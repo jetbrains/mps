@@ -15,7 +15,7 @@ Prefer **staged construction** over one giant blueprint when a subtree is large 
 The pattern is:
 
 1. Insert (or create) the **outer node** with a minimal blueprint — concept, properties, and just enough children/references to make the node valid.
-2. Call `mps_mcp_print_node_json` with `deep=false` (shallow) on the outer node to learn the **persistent refs** of its direct children and roles.
+2. Call `mps_mcp_print_node` with `deep=false` (shallow) on the outer node to learn the **persistent refs** of its direct children and roles.
 3. Fill or extend each child role with `mps_mcp_add_node_child` (append a new child in a role) or `mps_mcp_replace_node_child` (swap an existing placeholder child for a real subtree).
 4. Repeat the print-shallow step on any newly inserted child to drill further down — every staged call returns its own node ref.
 

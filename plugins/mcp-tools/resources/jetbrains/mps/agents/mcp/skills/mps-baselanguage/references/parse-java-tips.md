@@ -48,7 +48,7 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
 
 ## After Insertion
 
-* **Reference resolution**: after insertion, call `mps_mcp_print_node_json` to verify references resolved correctly.
+* **Reference resolution**: after insertion, call `mps_mcp_print_node` to verify references resolved correctly.
 * **Dependencies**: ensure the containing models and modules of all referenced nodes are imported.
 
 ## Direct AST Editing Tips
@@ -65,7 +65,7 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
   * Method: `<classRef>.doClick%28%29`
   * **Inherited methods**: use the **declaring class** ref (e.g. `AbstractButton` for `addActionListener`).
 * **URL encoding**: `(` → `%28`, `)` → `%29`. Use fully-qualified parameter types (e.g. `java.lang.String`).
-* **Signature**: omit return type suffixes (e.g. `:void`) unless confirmed via `mps_mcp_print_node_json`.
+* **Signature**: omit return type suffixes (e.g. `:void`) unless confirmed via `mps_mcp_print_node`.
 * **Ambiguity**: use `GET_ASSIGNABLE_REFERENCES` (mode: `completion`) for ambiguous overloads.
 * For the full stub-ref decision tree, see `stub-references.md`.
 

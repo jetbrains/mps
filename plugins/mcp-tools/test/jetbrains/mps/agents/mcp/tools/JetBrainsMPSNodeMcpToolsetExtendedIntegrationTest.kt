@@ -585,7 +585,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     @Test
     fun `print_node_json shallow returns a path that contains the expected content`() {
         val ref = createConceptRoot("PrintTarget")
-        val response = runTool(toolset) { it.mps_mcp_print_node_json(ref, deep = false) }
+        val response = runTool(toolset) { it.mps_mcp_print_node(ref, deep = false) }
         val path = extractFilePathFromData(response)
         val text = java.io.File(path).readText()
         assertTrue("file must contain the printed concept: $text", text.contains("PrintTarget"))
@@ -596,7 +596,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     fun `print_node_json deep includes descendant property names`() {
         val ref = createConceptRoot("DeepPrintHost")
         addPropertyChild(ref, "deepKid", "string")
-        val response = runTool(toolset) { it.mps_mcp_print_node_json(ref, deep = true) }
+        val response = runTool(toolset) { it.mps_mcp_print_node(ref, deep = true) }
         val path = extractFilePathFromData(response)
         val text = java.io.File(path).readText()
         assertTrue("deep print must include the child property name: $text", text.contains("deepKid"))
@@ -605,7 +605,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     @Test
     fun `print_node_json returns NOT_FOUND envelope for unknown reference`() {
         val response = runTool(toolset) {
-            it.mps_mcp_print_node_json("r:00000000-0000-0000-0000-000000000000(ghost)/0", deep = false)
+            it.mps_mcp_print_node("r:00000000-0000-0000-0000-000000000000(ghost)/0", deep = false)
         }
         assertTrue(expectErr(response).contains("not found"))
     }
@@ -618,9 +618,10 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         // which loads the editor language at runtime; the failure path is independent and is
         // the only assertion that does not depend on that runtime.
         val response = runTool(toolset) {
-            it.mps_mcp_show_node_representation(
+            it.mps_mcp_print_node(
                 "r:00000000-0000-0000-0000-000000000000(ghost)/0",
-                asHtml = false,
+                format = "HTML",
+                deep = false,
             )
         }
         assertTrue(expectErr(response).contains("not found"))
