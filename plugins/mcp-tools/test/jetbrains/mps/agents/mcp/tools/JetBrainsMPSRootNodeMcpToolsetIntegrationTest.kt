@@ -394,7 +394,7 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `delete_root_node removes the root from its model`() {
         val rootRef = createConceptRoot("ToDelete")
 
-        val response = runTool(toolset) { it.mps_mcp_delete_root_node(rootRef) }
+        val response = runTool(toolset) { it.mps_mcp_update_root_node_from_json(rootRef, operation = RootNodeOperation.DELETE) }
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
         val data = parseDataObject(obj.get("data"))
@@ -412,7 +412,7 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     @Test
     fun `delete_root_node returns NOT_FOUND envelope for unknown node`() {
         val response = runTool(toolset) {
-            it.mps_mcp_delete_root_node("r:00000000-0000-0000-0000-000000000000(ghost)/1")
+            it.mps_mcp_update_root_node_from_json("r:00000000-0000-0000-0000-000000000000(ghost)/1", operation = RootNodeOperation.DELETE)
         }
         assertTrue(expectErr(response).contains("not found"))
     }

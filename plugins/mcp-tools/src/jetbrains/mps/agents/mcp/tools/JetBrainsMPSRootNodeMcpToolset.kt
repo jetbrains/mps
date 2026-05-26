@@ -313,14 +313,15 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Updates an MPS root node from a JSON blueprint. The root node itself (and its persistent ID) is preserved; its properties, references, and children are re-set to match the blueprint. This is a **full-root rewrite** — for partial updates prefer surgical tools if `mps_mcp_update_node`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`).
+        Updates or deletes an MPS root node from a JSON blueprint. The root node itself (and its persistent ID) is preserved; its properties, references, and children are re-set to match the blueprint. This is a **full-root rewrite** — for partial updates prefer surgical tools if `mps_mcp_update_node`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`).
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeReference: String,
-        @McpDescription("JSON blueprint of the root (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
-        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
-    ): String {
-        return withMpsProject("Updating MPS root node from JSON") { mpsProject ->
+        @McpDescription("JSON blueprint of the root (max 4KB) OR an absolute path to a file containing it. Ignored for DELETE. See `mps-node-editing` for the format and file-input semantics.") json: String = "",
+        @McpDescription("Optional, ignored for DELETE - if true, only validate JSON and concept-role assignability without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false,
+        @McpDescription("Operation to perform: UPDATE or DELETE") operation: RootNodeOperation = RootNodeOperation.UPDATE
+    ): String = when (operation) {
+        RootNodeOperation.UPDATE -> withMpsProject("Updating MPS root node from JSON") { mpsProject ->
             val actualJson = readNodeJsonOrFile(json, dryRun)
                 ?: return@withMpsProject invalidJson("JSON input is null or empty")
             executeShortCommandOnEdt(mpsProject) {
@@ -363,16 +364,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 }
             }
         }
+        RootNodeOperation.DELETE -> deleteRootNode(nodeReference)
     }
 
-    @McpTool
-    @McpDescription("""
-        Deletes a root node.
-
-        Returns a JSON object with 'ok':true and 'data':{"reference":"...", "deleted":true} on success, or 'ok':false and 'error':"..." on failure.
-    """)
-    suspend fun mps_mcp_delete_root_node(
-        @McpDescription("Persistent form of SNodeReference") nodeReference: String
+    private suspend fun deleteRootNode(
+        nodeReference: String
     ): String {
         return withMpsProject("Deleting MPS root node") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {
@@ -389,4 +385,9 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             }
         }
     }
+}
+
+enum class RootNodeOperation {
+    UPDATE,
+    DELETE
 }
