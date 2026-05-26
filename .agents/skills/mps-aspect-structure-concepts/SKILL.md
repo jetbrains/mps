@@ -14,7 +14,7 @@ Concepts (`ConceptDeclaration`), interface concepts (`InterfaceConceptDeclaratio
 - **Smart reference check (CRITICAL)**: before setting a `conceptAlias`, determine whether the concept is an "Implicit Smart Reference". If it has exactly one mandatory reference and no properties or children of its own, **do NOT set a `conceptAlias`** — the concept should be transparent in the editor and completion menu so the user types the target's name directly. Examples: variable references, method calls, routine calls.
 - **Leave alias empty on transparent collections too** (e.g. `StatementList`).
 - **Set alias on concepts that can be root** — that's how the user reaches them through the new-root menu.
-- **Always rebuild the language** with `mps_mcp_perform_operation MAKE` and `rebuild="true"` after structural changes, so the new concepts are discoverable by runtime tools.
+- **Always rebuild the language** with `mps_mcp_alter_nodes MAKE` and `rebuild="true"` after structural changes, so the new concepts are discoverable by runtime tools.
 
 ## Prerequisites
 
@@ -42,7 +42,7 @@ Concepts (`ConceptDeclaration`), interface concepts (`InterfaceConceptDeclaratio
 9. **Proper cardinality**: make sure intended child collections have the cardinality of `0..n` or `1..n`.
 10. **Bulk operations**: use `mps_mcp_perform_structure_operation` for creating multiple concepts or enums efficiently.
     * Local references within the same JSON blueprint can use names for resolution.
-11. **Reload runtime**: always rebuild the language (via `mps_mcp_perform_operation` with `MAKE` and `rebuild="true"`) after structural changes to make concepts discoverable.
+11. **Reload runtime**: always rebuild the language (via `mps_mcp_alter_nodes` with `MAKE` and `rebuild="true"`) after structural changes to make concepts discoverable.
 
 ## Related Skills
 

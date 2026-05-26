@@ -10,5 +10,5 @@
 | Paste wrapper not triggered | `sourceConcept` must be the concept of the *copied* node (or a super-concept). Also check for a conflicting handler on a more specific pair. |
 | Transformation menu action appears in completion but not in Context Assistant | Different **location** required — context-assistant items need their own `TransformationLocation_ContextAssistant` location in the section. |
 | Wrong role name in JSON (`section`, `part`, `location`, `matchingTextFunction`, `applicableConcept` on a menu) | The real names are `sections`, `parts`, `locations`, `textFunction`; on menus the concept is referenced via `conceptDeclaration`. |
-| "Reference to wrong overridden method" or stale references after a refactor | Not a menu issue — run `mps_mcp_perform_operation` with `FIX_REFERENCES` on the affected root. |
+| "Reference to wrong overridden method" or stale references after a refactor | Not a menu issue — run `mps_mcp_alter_nodes` with `FIX_REFERENCES` on the affected root. |
 | Default transformation menu exists but items from an extending language do not show | The extending language must use `TransformationMenuContribution` — contributions can **only** be defined from another language, not the same language as the menu. |

@@ -23,7 +23,7 @@ This skill covers the path from "an MPS root node exists in a model" to "a green
 
 End-to-end pattern for "I changed a DSL root, run it":
 
-1. `mps_mcp_perform_operation MAKE` on the **module** of the DSL root, `rebuild: true`.
+1. `mps_mcp_alter_nodes MAKE` on the **module** of the DSL root, `rebuild: true`.
 2. `mps_mcp_create_run_configuration` on the DSL root with a stable `configurationName` (the generated class FQN is a good default for IMainClass; leave blank for `ClassConcept` to match the IDE gutter's `Class <ClassName>` default).
 3. `execute_run_configuration` (of MPS MCP, not IDEA's) by name with `waitForExit: true` and a generous `timeout`.
 4. On `Could not find or load main class`, step 1 didn't reach `classes_gen` — re-run it.

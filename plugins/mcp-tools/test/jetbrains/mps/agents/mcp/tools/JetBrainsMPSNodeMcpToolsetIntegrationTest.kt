@@ -16,7 +16,7 @@ import org.junit.Test
  * End-to-end integration tests for [JetBrainsMPSNodeMcpToolset].
  *
  * Covers:
- *  - `mps_mcp_perform_operation(FIND_USAGES)`: a `Base`/`Derived` concept pair routed through
+ *  - `mps_mcp_query_nodes(FIND_USAGES)`: a `Base`/`Derived` concept pair routed through
  *    the structure toolset so the `extends` reference is wired by the same code paths users
  *    hit at runtime; we then ask find-usages for `Base` and assert that `Derived` shows up.
  */
@@ -52,7 +52,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         """.trimIndent()
 
         val findResponse = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_perform_operation(MPSNodeOperation.FIND_USAGES, findParams)
+            it.mps_mcp_query_nodes(MPSQueryOperation.FIND_USAGES, findParams)
         }
 
         val obj = JsonParser.parseString(findResponse).asJsonObject

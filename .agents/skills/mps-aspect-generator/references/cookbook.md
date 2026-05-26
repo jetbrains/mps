@@ -67,7 +67,7 @@ When a root template grows unwieldy (everything inlined under one big node tree)
 4. **Add macros inside the fragment** (`PropertyMacro` for attribute values, etc.) exactly as you would inline.
 5. **Add a `Reduction_MappingRule`** to the `MappingConfiguration.reductionMappingRule` role. Set `applicableConcept` (structure-model node ref again) and a `ruleConsequence` child of concept `TemplateDeclarationReference` whose `template` ref points at the new declaration.
 6. **Replace the inline subtree at the call site** with a delegation placeholder — a target node of the same type (e.g. an empty `XmlElement` with the same `tagName`) carrying two `smodelAttribute` siblings: `LoopMacro` (body: source sequence, e.g. `node.transitions`) and `CopySrcNodeMacro` (no query). The LOOP replicates the placeholder per source element; COPY_SRC copies that element through reductions, so your new rule fires.
-7. **Validate then MAKE.** Run `mps_mcp_check_root_node_problems` on the `MappingConfiguration` *and* the new template, then `mps_mcp_perform_operation MAKE` over the generator + sandbox models. Diff `source_gen/` to confirm the output is identical to before.
+7. **Validate then MAKE.** Run `mps_mcp_check_root_node_problems` on the `MappingConfiguration` *and* the new template, then `mps_mcp_alter_nodes MAKE` over the generator + sandbox models. Diff `source_gen/` to confirm the output is identical to before.
 
 ### Common refactor pitfalls (in order of frequency I've seen)
 

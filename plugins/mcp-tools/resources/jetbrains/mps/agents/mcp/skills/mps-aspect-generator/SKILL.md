@@ -30,7 +30,7 @@ A **generator** transforms models written in the source language into models of 
 5. Author target-language templates; attach macros as `smodelAttribute` children. Mark the produced subtree with `TemplateFragment` (or `RootTemplateAnnotation` on a target root).
 6. Declare any mapping labels on the `MappingConfiguration`; tag writers (`labelDeclaration` ref or `$LABEL$` macro); read with `genContext.get/pick output <label> for (<input>)` inside `$REF$` or other queries.
 7. Validate with `mps_mcp_check_root_node_problems` on the `MappingConfiguration` and every template (re-run with `onlyNodesWithProblems = false` if siblings look "missing").
-8. `mps_mcp_perform_operation MAKE` over the generator and a sample model; inspect `source_gen/`. Use the Generator Tracer / `$TRACE$` macros to bisect misgenerated fragments.
+8. `mps_mcp_alter_nodes MAKE` over the generator and a sample model; inspect `source_gen/`. Use the Generator Tracer / `$TRACE$` macros to bisect misgenerated fragments.
 
 If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unless explicitly asked — inspect only and report.
 

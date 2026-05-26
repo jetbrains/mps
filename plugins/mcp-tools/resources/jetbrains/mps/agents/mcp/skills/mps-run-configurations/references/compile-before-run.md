@@ -10,7 +10,7 @@ Caused by: java.lang.ClassNotFoundException: <fqn>
 That always means the owning module wasn't built (or was built but a later regeneration invalidated the `classes_gen`). Fix it with the IDE MAKE operation **on the module**, not just the model:
 
 ```
-mps_mcp_perform_operation
+mps_mcp_alter_nodes
   operation: MAKE
   parameters: { "modules": ["<moduleRef>"], "rebuild": true }
 ```

@@ -63,6 +63,6 @@ A concept can have a *hollow* runtime descriptor: the runtime entry exists but r
 
 When `mps_mcp_get_concept_details` detects this shape it adds `descriptorStatus: "hollow"` and a `descriptorRecoveryAction` string to the entry. **Treat the entry as untrustworthy: empty `properties`/`references`/`children` here mean "unknown", not "the concept has none".**
 
-Recovery: call `mps_mcp_perform_operation` with operation `MAKE` and `rebuild = true` on the language's structure model, then re-call `mps_mcp_get_concept_details`. `mps_mcp_reload_all` alone is **not** sufficient — it reloads classes from their current on-disk form, but the disk content is stale until a clean rebuild has regenerated the aspect descriptor classes.
+Recovery: call `mps_mcp_alter_nodes` with operation `MAKE` and `rebuild = true` on the language's structure model, then re-call `mps_mcp_get_concept_details`. `mps_mcp_reload_all` alone is **not** sufficient — it reloads classes from their current on-disk form, but the disk content is stale until a clean rebuild has regenerated the aspect descriptor classes.
 
 Note that `CREATE_CONCEPTS` with `make: true` already performs a clean rebuild, so a hollow descriptor immediately after that path indicates a deeper problem (build failure, language module not in the project scope, …) — inspect `makeStatus` and `makeDetails` on the create response first.

@@ -30,18 +30,21 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.util.Consumer
 
 
-enum class MPSNodeOperation {
+enum class MPSQueryOperation {
     GET_PARENT,
     GET_ROOT,
-    MOVE_CHILD,
     GET_MODEL_FOR_NODE,
-    FIND_USAGES,
-    MOVE_NODE_TO_PARENT,
     NODE_INDEX,
     SIBLINGS,
     GET_CHILD_ROLE,
+    FIND_USAGES,
+}
+
+enum class MPSAlterOperation {
+    MOVE_CHILD,
+    MOVE_NODE_TO_PARENT,
     MAKE,
-    FIX_REFERENCES
+    FIX_REFERENCES,
 }
 
 enum class NodeUpdateOperation {
@@ -109,13 +112,13 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Performs a node-related operation in an MPS model (get parent/root, get model for node, find usages, move a child, move a node to a new parent or make it a root, query node index/siblings/child role, make or rebuild models/modules/whole project, fix references). Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. The exact 'data' shape depends on the operation. Parameters are passed as a JSON object string. MAKE parameters: {"modules":[<moduleRef>,...]} | {"models":[<modelRef>,...]} | {"wholeProject":true}, plus optional "rebuild":bool; node references are not accepted — resolve the node's module or model first. For all other operations and the full parameter formats, see the `mps-node-editing` and `mps-mcp-workflow` skills.
+        Read-only node queries: get parent/root, get containing model, find usages, query node index/siblings/child role. All operations require `nodeReference` in the parameters JSON. FIND_USAGES also accepts optional `scope` (all, editable, models, modules) and `models`/`modules` arrays. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
-    suspend fun mps_mcp_perform_operation(
-        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, MOVE_CHILD, GET_MODEL_FOR_NODE, FIND_USAGES, MOVE_NODE_TO_PARENT, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE, MAKE, FIX_REFERENCES)") operation: MPSNodeOperation,
+    suspend fun mps_mcp_query_nodes(
+        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE, FIND_USAGES)") operation: MPSQueryOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
-        return withMpsProject("Performing MPS operation: $operation") { mpsProject ->
+        return withMpsProject("Querying MPS nodes: $operation") { mpsProject ->
             val params = try {
                 Gson().fromJson(parameters, JsonObject::class.java)
             } catch (e: Exception) {
@@ -123,15 +126,35 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             }
 
             when (operation) {
-                MPSNodeOperation.GET_PARENT, MPSNodeOperation.GET_ROOT, MPSNodeOperation.GET_MODEL_FOR_NODE,
-                MPSNodeOperation.NODE_INDEX, MPSNodeOperation.SIBLINGS, MPSNodeOperation.GET_CHILD_ROLE ->
+                MPSQueryOperation.GET_PARENT, MPSQueryOperation.GET_ROOT, MPSQueryOperation.GET_MODEL_FOR_NODE,
+                MPSQueryOperation.NODE_INDEX, MPSQueryOperation.SIBLINGS, MPSQueryOperation.GET_CHILD_ROLE ->
                     opNodeInfoRead(mpsProject, operation, params)
 
-                MPSNodeOperation.FIND_USAGES -> opFindUsages(mpsProject, params)
-                MPSNodeOperation.MOVE_CHILD -> opMoveChild(params)
-                MPSNodeOperation.MOVE_NODE_TO_PARENT -> opMoveNodeToParent(params)
-                MPSNodeOperation.MAKE -> opMake(mpsProject, params)
-                MPSNodeOperation.FIX_REFERENCES -> opFixReferences(mpsProject, params)
+                MPSQueryOperation.FIND_USAGES -> opFindUsages(mpsProject, params)
+            }
+        }
+    }
+
+    @McpTool
+    @McpDescription("""
+        Structural node mutations and code generation: move a child within its role, move a node to a new parent or make it a root, make/rebuild models/modules/whole project, fix broken references. Parameters are a JSON object string. MAKE parameters: {"modules":[<moduleRef>,...]} | {"models":[<modelRef>,...]} | {"wholeProject":true}, plus optional "rebuild":bool; node references are not accepted — resolve the node's module or model first. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
+    """)
+    suspend fun mps_mcp_alter_nodes(
+        @McpDescription("The operation to perform (MOVE_CHILD, MOVE_NODE_TO_PARENT, MAKE, FIX_REFERENCES)") operation: MPSAlterOperation,
+        @McpDescription("JSON string representing the parameters for the operation") parameters: String
+    ): String {
+        return withMpsProject("Altering MPS nodes: $operation") { mpsProject ->
+            val params = try {
+                Gson().fromJson(parameters, JsonObject::class.java)
+            } catch (e: Exception) {
+                return@withMpsProject invalidJson("Invalid JSON parameters: ${e.message}")
+            }
+
+            when (operation) {
+                MPSAlterOperation.MOVE_CHILD -> opMoveChild(params)
+                MPSAlterOperation.MOVE_NODE_TO_PARENT -> opMoveNodeToParent(params)
+                MPSAlterOperation.MAKE -> opMake(mpsProject, params)
+                MPSAlterOperation.FIX_REFERENCES -> opFixReferences(mpsProject, params)
             }
         }
     }
@@ -144,7 +167,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
      */
     private suspend fun opNodeInfoRead(
         mpsProject: MPSProject,
-        operation: MPSNodeOperation,
+        operation: MPSQueryOperation,
         params: JsonObject
     ): String {
         val nodeReference = params.get("nodeReference")?.asString ?: return errJson("Parameter 'nodeReference' is missing")
@@ -154,20 +177,20 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 ?: return@executeShortReadOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
             when (operation) {
-                MPSNodeOperation.GET_PARENT -> {
+                MPSQueryOperation.GET_PARENT -> {
                     val parent = node.parent
                     if (parent != null) okJson(nodeInfoJson(parent)) else okJson("null")
                 }
-                MPSNodeOperation.GET_ROOT -> okJson(nodeInfoJson(node.containingRoot))
-                MPSNodeOperation.GET_MODEL_FOR_NODE -> {
+                MPSQueryOperation.GET_ROOT -> okJson(nodeInfoJson(node.containingRoot))
+                MPSQueryOperation.GET_MODEL_FOR_NODE -> {
                     val model = node.model
                     if (model != null) okJson(modelReferenceJson(model.reference))
                     else errJson("Node '$nodeReference' is not in a model")
                 }
-                MPSNodeOperation.NODE_INDEX -> opNodeIndex(node)
-                MPSNodeOperation.SIBLINGS -> opSiblings(node)
-                MPSNodeOperation.GET_CHILD_ROLE -> opGetChildRole(node, mpsProject)
-                else -> errJson("Unsupported operation: $operation")
+                MPSQueryOperation.NODE_INDEX -> opNodeIndex(node)
+                MPSQueryOperation.SIBLINGS -> opSiblings(node)
+                MPSQueryOperation.GET_CHILD_ROLE -> opGetChildRole(node, mpsProject)
+                MPSQueryOperation.FIND_USAGES -> errJson("Unsupported operation: $operation")
             }
         }
     }

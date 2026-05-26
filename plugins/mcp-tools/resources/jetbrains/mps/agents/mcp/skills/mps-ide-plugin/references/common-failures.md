@@ -7,7 +7,7 @@
 - **`TabbedTool` has no `getComponentBlock`**: that's by design — the tab container is provided. Add tabs from `toolInitBlock`.
 - **Shortcut works on Windows but not Mac**: the `Default` keymap translates ctrl→cmd on Mac. Add a `Mac_OS_X` `KeymapChangesDeclaration` with the literal ctrl keystroke if you really want ctrl.
 - **`constructionParameter` without `toString()`**: when using non-primitive construction parameters, implement `toString()` so MPS can produce stable generated action IDs; otherwise multiple `ActionInstance`s collide.
-- **Editing a plugin model but the IDE doesn't see changes**: rebuild the module (`mps_mcp_perform_operation` make) so the Java generator produces fresh classes, then trigger `Reload All` in MPS.
+- **Editing a plugin model but the IDE doesn't see changes**: rebuild the module (`mps_mcp_alter_nodes` MAKE) so the Java generator produces fresh classes, then trigger `Reload All` in MPS.
 
 ## Discovery Workflow
 

@@ -35,7 +35,7 @@ For ambiguous overloads or when the declaring class in the hierarchy is unclear.
 
 ## 4. `FIX_REFERENCES` After Insertion
 
-If a few refs remain broken after applying the JSON, run `mps_mcp_perform_operation(FIX_REFERENCES)` as surgical repair rather than pre-harvesting every ref.
+If a few refs remain broken after applying the JSON, run `mps_mcp_alter_nodes(FIX_REFERENCES)` as surgical repair rather than pre-harvesting every ref.
 
 ## 5. `mps_mcp_print_node` on the Stub (last resort)
 

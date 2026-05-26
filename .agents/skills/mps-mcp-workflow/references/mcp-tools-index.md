@@ -16,7 +16,8 @@
 - `mps_mcp_open_node`: opens a node in the editor; non-root references open the containing root and select the target.
 - `mps_mcp_get_current_editor_root_node`: identifies the node the user is currently looking at.
 - `mps_mcp_create_root_node`, `mps_mcp_update_root_node_from_json`
-- `mps_mcp_perform_operation`: general node navigation, search, transformation and code generation/compilation.
+- `mps_mcp_query_nodes`: read-only node queries — GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE, FIND_USAGES.
+- `mps_mcp_alter_nodes`: structural node mutations and code generation — MOVE_CHILD, MOVE_NODE_TO_PARENT, MAKE, FIX_REFERENCES.
 - `mps_mcp_print_node`: shows the underlying JSON structure or it shows the "visual" projection of a node.
 - `mps_mcp_insert_root_node_from_json`: bulk node creation. Leave the references empty if target nodes do not exist. Remember to set them later with `mps_mcp_update_node` (`SET`/`REFERENCE`).
 - `mps_mcp_update_node`: unified node-mutation tool. One call covers add/set/delete on child, property, and reference roles. Selected via `operation` (`ADD`/`SET`/`DELETE`) × `kind` (`CHILD`/`PROPERTY`/`REFERENCE`). Valid combinations:
@@ -33,7 +34,7 @@
 
 ## Language Definition
 
-- `mps_mcp_get_concept_details`: provides properties, children, and references for a list of concepts and/or concepts of specified languages. Make/rebuild languages with `mps_mcp_perform_operation` for `mps_mcp_get_concept_details` to see their concepts.
+- `mps_mcp_get_concept_details`: provides properties, children, and references for a list of concepts and/or concepts of specified languages. Make/rebuild languages with `mps_mcp_alter_nodes` (`MAKE`) for `mps_mcp_get_concept_details` to see their concepts.
 - `mps_mcp_search_concepts`: global search for concepts by name, alias or description using a list of search strings.
 - `mps_mcp_perform_structure_operation`: advanced language-aware operations like `CREATE_CONCEPTS`, `CREATE_ENUM`, `FIND_INSTANCES`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ASSIGNABLE_REFERENCES`, and related concept-analysis operations exposed by the current API.
 - `mps_mcp_scaffold_editor`: generates a default `ConceptEditorDeclaration` for a specified concept, automatically wiring relation declarations properties, children, references to default cell models. The concept must have been compiled before using this operation.

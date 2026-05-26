@@ -113,7 +113,7 @@ abstract class AbstractOps : McpToolset {
          * (see [DESCRIPTOR_REBUILD_INSTRUCTION_HOLLOW]).
          */
         internal const val DESCRIPTOR_REBUILD_INSTRUCTION: String =
-            "Run `mps_mcp_perform_operation` with operation=MAKE on the language's structure model, then retry."
+            "Run `mps_mcp_alter_nodes` with operation=MAKE on the language's structure model, then retry."
 
         /**
          * Recovery hint for the hollow-descriptor branch of [checkScaffoldingStaleness] — the
@@ -124,7 +124,7 @@ abstract class AbstractOps : McpToolset {
          * force a clean regeneration.
          */
         internal const val DESCRIPTOR_REBUILD_INSTRUCTION_HOLLOW: String =
-            "Run `mps_mcp_perform_operation` with operation=MAKE and rebuild=true on the " +
+            "Run `mps_mcp_alter_nodes` with operation=MAKE and rebuild=true on the " +
                 "language's structure model, then retry. (`mps_mcp_reload_all` alone is not " +
                 "sufficient — the language-aspect descriptor classes on disk are still stale " +
                 "until a clean rebuild.)"
@@ -1609,14 +1609,14 @@ abstract class AbstractOps : McpToolset {
         // up-front gate in scaffold_editor: a runtime concept with no sourceNode and empty
         // properties/references/children is a stale descriptor produced by an incremental
         // make that did not regenerate the language aspect descriptor. The recovery is a
-        // clean rebuild via `mps_mcp_perform_operation` MAKE with `rebuild = true`;
+        // clean rebuild via `mps_mcp_alter_nodes` MAKE with `rebuild = true`;
         // `mps_mcp_reload_all` alone is not sufficient because the StructureAspectDescriptor
         // class files on disk are still stale.
         if (isHollowDescriptor(concept)) {
             obj.addProperty("descriptorStatus", "hollow")
             obj.addProperty(
                 "descriptorRecoveryAction",
-                "Run mps_mcp_perform_operation with operation=MAKE and rebuild=true on the language's structure model, then retry."
+                "Run mps_mcp_alter_nodes with operation=MAKE and rebuild=true on the language's structure model, then retry."
             )
         }
         return obj

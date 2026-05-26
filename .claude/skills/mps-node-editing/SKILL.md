@@ -52,7 +52,7 @@ All child, property, and reference operations on existing nodes go through `mps_
 3. **Author the JSON** following the unified blueprint format.
 4. **Insert** with `dryRun: true` first if the blueprint is large. Check the response: an empty `warnings` array means staging was clean; a non-empty list means the production write will produce dynamic (unresolved) references for the listed targets — resolve those first or expect broken refs.
 5. **Validate** with `mps_mcp_check_root_node_problems`.
-6. **Repair** broken refs with `mps_mcp_perform_operation FIX_REFERENCES` if validation surfaces resolvable-but-unresolved targets.
+6. **Repair** broken refs with `mps_mcp_alter_nodes FIX_REFERENCES` if validation surfaces resolvable-but-unresolved targets.
 
 ## Related Skills
 

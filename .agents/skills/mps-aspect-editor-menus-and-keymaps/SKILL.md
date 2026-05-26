@@ -35,7 +35,7 @@ For a typical "let the user invoke action X when they do Y" task:
 3. **Name by convention** so MPS discovers the root automatically. Otherwise wire it explicitly from the cell (`actionMap`, `keyMap`, `transformationMenu`, `substituteMenu`, legacy `menu`).
 4. **Draft JSON** using a blueprint from `references/json-blueprints.md`. Use `mps_mcp_insert_root_node_from_json`.
 5. **Write the function body** with smodel + BaseLanguage. For "select the new node afterwards", use the editor selection API (`references/selection-and-deletion.md`).
-6. **Rebuild the language** (`mps_mcp_perform_operation` MAKE) so the editor sees the new concepts.
+6. **Rebuild the language** (`mps_mcp_alter_nodes` MAKE) so the editor sees the new concepts.
 7. **Validate** with `mps_mcp_check_root_node_problems` on every touched root. Common error: unresolved action IDs (`delete_action_id` etc.) or missing imports for shared-concept parameters.
 8. **Test interactively** in a sample model. For side transforms, verify the item also appears in completion (if intended).
 9. **Diagnose missing items** with `Ctrl+Alt+B` on the popup item — that prints the menu chain.

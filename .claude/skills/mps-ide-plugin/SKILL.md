@@ -20,7 +20,7 @@ This skill covers **IDE plugins**: code that integrates with the MPS/IntelliJ ho
 - **Pick `requiredAccess` deliberately:** `none` (no model touch), `read` (safe traversal), `command` (mutates with undo + write lock — **never open modal dialogs from here**), `editorCommand` (correct undo scope for editor-driven edits).
 - **Don't call `project.tool<…>` from `dispose`.** The lookup can fail during teardown.
 - **Mac keymap trap:** with `Keymap = Default`, MPS translates `ctrl` → `cmd` on macOS. If you specifically want `ctrl` on Mac, add a separate `Mac_OS_X` `KeymapChangesDeclaration`.
-- After edits, rebuild the module (`mps_mcp_perform_operation` MAKE) so generated Java is current, then **Reload All** in MPS for hot-load.
+- After edits, rebuild the module (`mps_mcp_alter_nodes` MAKE) so generated Java is current, then **Reload All** in MPS for hot-load.
 - Validate every new root with `mps_mcp_check_root_node_problems`.
 
 ## Required Used Languages (on the Model)
@@ -41,7 +41,7 @@ For a typical "add a menu item that does X on the selected node":
 4. **Author an `ActionDeclaration`** — see `references/actions.md`. Set name, caption, parameters (`MPSCommonDataKeys.MPS_PROJECT` / `.NODE` etc.), `requiredAccess`, isApplicable, execute body.
 5. **Author an `ActionGroupDeclaration`** — see `references/action-groups.md`. Owns your action(s) via `ElementListContents` → `ActionInstance`. Add a `ModificationStatement` under `modifier` targeting the existing group + an anchor.
 6. **Add a keybinding** (optional) — new `KeymapChangesDeclaration` referencing the action — see `references/keymaps.md`.
-7. **Rebuild** the solution via `mps_mcp_perform_operation` MAKE; reload MPS.
+7. **Rebuild** the solution via `mps_mcp_alter_nodes` MAKE; reload MPS.
 8. **Validate** with `mps_mcp_check_root_node_problems` on each new root.
 
 For other task families: tool window → `references/tools.md`; settings page → `references/preferences.md`; editor tabs → `references/editor-tabs.md`; bespoke startup → `references/lifecycle-plugins.md`.

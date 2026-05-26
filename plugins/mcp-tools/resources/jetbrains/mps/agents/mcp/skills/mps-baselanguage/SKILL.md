@@ -39,8 +39,8 @@ Pick the right authoring tool before you start:
 7. **Validate in three gates**:
    - `dryRun: true` on insert tools — catches structural / assignability errors before mutation
    - `mps_mcp_check_root_node_problems` — semantic checking
-   - `mps_mcp_perform_operation MAKE` — generation + compilation
-8. **Repair**: if a few refs are broken after insert, run `mps_mcp_perform_operation FIX_REFERENCES` rather than re-harvesting all of them.
+   - `mps_mcp_alter_nodes MAKE` — generation + compilation
+8. **Repair**: if a few refs are broken after insert, run `mps_mcp_alter_nodes FIX_REFERENCES` rather than re-harvesting all of them.
 
 ## Related Skills
 
