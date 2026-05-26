@@ -94,6 +94,22 @@ class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     }
 
     @Test
+    fun `get-project-structure with a module starting point returns module JSON with facets`() {
+        val solution = createSolution("test.proj.modulesp${System.nanoTime()}")
+
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(startingPoint = solution.moduleName!!)
+        }
+
+        val payload = readJsonObjectFromOkPath(response)
+        assertEquals(solution.moduleName, payload.get("name").asString)
+        assertTrue("response must echo the module reference", payload.has("reference"))
+        assertTrue("response must include facets array", payload.has("facets"))
+        val facets = payload.getAsJsonArray("facets").map { it.asString }.toSet()
+        assertTrue("a plain solution must carry the default `java` facet; got=$facets", facets.contains("java"))
+    }
+
+    @Test
     fun `get-project-structure filtered by moduleKind keeps only matching modules`() {
         // Adding a Solution next to the existing test Language module gives the kind filter
         // something non-trivial to discriminate. With moduleKind=Solution we must see only

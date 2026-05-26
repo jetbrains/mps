@@ -1,6 +1,6 @@
 # Module Info Envelope Fields
 
-`mps_mcp_get_module`, `mps_mcp_create_module`, and `mps_mcp_update_module_facet` all return a JSON envelope of roughly the same shape. This file documents the fields shared across those responses so the tool descriptions can stay short.
+`mps_mcp_get_project_structure(startingPoint=<module>)`, `mps_mcp_create_module`, and `mps_mcp_update_module` all return a JSON envelope of roughly the same shape. This file documents the fields shared across those responses so the tool descriptions can stay short.
 
 ## Common fields
 

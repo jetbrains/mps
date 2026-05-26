@@ -22,13 +22,13 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 
 ## MCP Tools Quick Reference
 
-- Module-level: `mps_mcp_add_module_dependency`, `mps_mcp_remove_module_dependency`, `mps_mcp_get_module`, `mps_mcp_get_project_structure`.
+- Module-level: `mps_mcp_add_module_dependency`, `mps_mcp_remove_module_dependency`, `mps_mcp_get_project_structure`.
 - Model-level: `mps_mcp_add_model_dependency`, `mps_mcp_remove_model_dependency`, `mps_mcp_add_model_used_language` (kind = `language` or `devkit`), `mps_mcp_remove_model_used_language`.
 - Module creation: `mps_mcp_create_module(type="solution", …)` for a runtime solution.
 
 ## Common Workflow
 
-1. **Inspect** existing wiring: `mps_mcp_get_module` for the `.mpl`, `mps_mcp_get_project_structure` for traversal.
+1. **Inspect** existing wiring: `mps_mcp_get_project_structure(startingPoint=<module>)` for the module descriptor, `mps_mcp_get_project_structure` for traversal.
 2. **Diagnose** the symptom against the pitfalls table (`references/pitfalls.md`).
 3. **Apply** the right MCP tool at the right layer (module vs. model vs. accessory).
 4. **Rebuild** the module so MPS re-reads the descriptor.
@@ -49,4 +49,4 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 - Open `references/pitfalls.md` when you need to diagnose a symptom ("Cannot resolve concept X", "ClassNotFoundException", version mismatch, generator can't find target-language concept, devkit changes not picked up).
 - Open `references/module-creation.md` for `mps_mcp_create_module` — supported types, language-only companions (`withGenerator`/`withSandbox`/`withRuntime`), and the `facets` policy.
 - Open `references/module-rename.md` for `mps_mcp_update_module` — what the rename cascades into, the "generator modules are not renameable" rule, and the `renameWarnings`/`renameCriticalProblems` semantics.
-- Open `references/module-info-fields.md` for the shared info envelope returned by `mps_mcp_get_module` / `mps_mcp_create_module` / `mps_mcp_update_module_facet` — `kind`, `facets`, `loadExtensions`, DevKit-only fields.
+- Open `references/module-info-fields.md` for the shared info envelope returned by `mps_mcp_get_project_structure(startingPoint=<module>)` / `mps_mcp_create_module` / `mps_mcp_update_module` — `kind`, `facets`, `loadExtensions`, DevKit-only fields.

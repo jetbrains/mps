@@ -13,7 +13,7 @@ A language module declares:
 
 Helpful MCP tools:
 - `mps_mcp_add_module_dependency` / `mps_mcp_remove_module_dependency`
-- `mps_mcp_get_module` / `mps_mcp_get_project_structure` to inspect existing wiring
+- `mps_mcp_get_project_structure(startingPoint=<module>)` to inspect existing wiring
 
 **Rule of thumb**: if a concept is *used in your language definition* → add a `usedLanguage`. If a Java class is *referenced in hand-written code* → add a `dependency` with the right scope. Generator modules need their own dependency list (they compile independently).
 

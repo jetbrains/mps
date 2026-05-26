@@ -230,43 +230,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Gets information about a single MPS module by name or reference. If a precise match is not found, a case-insensitive partial name match is attempted; ambiguous partial matches return an error listing the candidates. Returns the module info envelope (`name`, `reference`, `kind`, `facets`, optional `loadExtensions`, plus DevKit-only fields). See `mps-aspect-accessories/references/module-info-fields.md` for the field semantics.
-    """
-    )
-    suspend fun mps_mcp_get_module(
-        @McpDescription("Module name or reference")
-        moduleName: String
-    ): String = withMpsProject("Get MPS module") { mpsProject ->
-        executeShortReadOnEdt(mpsProject) {
-            val exactMatch = resolveModule(mpsProject, moduleName)
-            if (exactMatch != null) {
-                okJson(moduleInfoJson(mpsProject, exactMatch))
-            } else {
-                // l: case-insensitive partial match. Module names follow Java-package style
-                // and are conventionally lowercase, but the user-typed query often differs
-                // (e.g. "FinCalculator" against "fincalculator"). Matching case-sensitively
-                // there used to surface a misleading "module not found" for a query that
-                // unambiguously identified one module.
-                val partialMatches = mpsProject.projectModulesWithGenerators
-                    .filter { it.moduleName?.contains(moduleName, ignoreCase = true) == true }
-                when (partialMatches.size) {
-                    0 -> errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
-                    1 -> okJson(moduleInfoJson(mpsProject, partialMatches[0]))
-                    else -> {
-                        val names = partialMatches.mapNotNull { it.moduleName }.joinToString(", ")
-                        errJson(
-                            "Module '$moduleName' not found. Multiple partial matches found: $names",
-                            McpErrorCode.INVALID_REQUEST,
-                        )
-                    }
-                }
-            }
-        }
-    }
-
-    @McpTool
-    @McpDescription("""
-        Creates a new, empty MPS module of the given type at the specified directory (created if missing). Types: `solution` | `language` | `devkit` | `generator`. `type=generator` requires `parentLanguage` and may default the directory to `<parent-language-dir>/generator` when empty. `type=language` accepts the `withGenerator`/`withSandbox`/`withRuntime` companion flags. The optional `facets` list is allowed only for `solution`/`language` (rejected upfront for `devkit`/`generator`); unknown facet types fail before the module is produced. Returns the new module's info envelope (same shape as `mps_mcp_get_module`). See `mps-aspect-accessories/references/module-creation.md` for the facets policy and `module-info-fields.md` for the return-envelope fields.
+        Creates a new, empty MPS module of the given type at the specified directory (created if missing). Types: `solution` | `language` | `devkit` | `generator`. `type=generator` requires `parentLanguage` and may default the directory to `<parent-language-dir>/generator` when empty. `type=language` accepts the `withGenerator`/`withSandbox`/`withRuntime` companion flags. The optional `facets` list is allowed only for `solution`/`language` (rejected upfront for `devkit`/`generator`); unknown facet types fail before the module is produced. Returns the new module's info envelope (same shape as `mps_mcp_get_project_structure(startingPoint=<module>)`). See `mps-aspect-accessories/references/module-creation.md` for the facets policy and `module-info-fields.md` for the return-envelope fields.
     """
     )
     suspend fun mps_mcp_create_module(

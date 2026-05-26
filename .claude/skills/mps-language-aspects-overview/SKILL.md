@@ -63,7 +63,7 @@ Keep logic in behavior methods; keep aspect rules thin and declarative.
 
 ## MCP Tools You'll Use Often
 
-- **Exploration**: `mps_mcp_get_project_structure`, `mps_mcp_get_module`, `mps_mcp_search_concepts`, `mps_mcp_get_concept_details`, `mps_mcp_print_node`.
+- **Exploration**: `mps_mcp_get_project_structure`, `mps_mcp_search_concepts`, `mps_mcp_get_concept_details`, `mps_mcp_print_node`.
 - **Authoring**: `mps_mcp_create_root_node`, `mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_set_node_properties`, `mps_mcp_set_node_references`, `mps_mcp_parse_java_and_insert`.
 - **Structure-specific**: `mps_mcp_perform_structure_operation` (CREATE_CONCEPTS, CREATE_ENUM, FIND_INSTANCES, UPDATE_CONCEPT_*).
 - **Modules/models**: `mps_mcp_create_module`, `mps_mcp_create_model`, `mps_mcp_add_model_dependency`, `mps_mcp_add_model_used_language`, `mps_mcp_add_module_dependency`.

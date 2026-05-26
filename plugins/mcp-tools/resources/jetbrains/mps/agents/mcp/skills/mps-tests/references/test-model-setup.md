@@ -17,7 +17,7 @@ A test model must have:
               "present": true}}
     ```
     `kind`, `facets`, and `loadExtensions` together confirm "this is a test-container Solution" — no follow-up call needed.
-  - Convert an existing Solution: `mps_mcp_update_module_facet(moduleName="…", facetType="tests", enabled=true)`, then read back with `mps_mcp_get_module` (whose `data.facets` array will now include `"tests"`).
+  - Convert an existing Solution: `mps_mcp_update_module_facet(moduleName="…", facetType="tests", enabled=true)`, then read back with `mps_mcp_get_project_structure(startingPoint="…")` (whose `data.facets` array will now include `"tests"`).
 - **Module dependency**: depend on the language module and any runtime needed by sample code.
 - Optional **`TestInfo` root node**: a single `TestInfo` per model that records the project path. Used by out-of-process test runners. The `mps.test.project.path` system property overrides it.
 

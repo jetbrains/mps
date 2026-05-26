@@ -2,12 +2,14 @@ package jetbrains.mps.agents.mcp.tools
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.Solution
+import jetbrains.mps.project.facets.JavaModuleFacet
 import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor
 import jetbrains.mps.project.structure.modules.LanguageDescriptor
@@ -232,6 +234,18 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                 descriptor.associatedGenPlan?.let {
                     obj.add("associatedGenPlan", modelReferenceJsonObject(it))
                 }
+            }
+        }
+
+        val facetsArray = JsonArray()
+        project.modelAccess.runReadAction {
+            for (facet in m.facets) {
+                facetsArray.add(JsonPrimitive(facet.facetType))
+            }
+            obj.add("facets", facetsArray)
+            val javaFacet = m.getFacet(JavaModuleFacet::class.java)
+            if (javaFacet != null) {
+                obj.addProperty("loadExtensions", javaFacet.loadExtensions.name)
             }
         }
 

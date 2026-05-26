@@ -451,22 +451,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
     }
 
-    // ── lifecycle: get / update / delete ──────────────────────────────────────────────────
-
-    @Test
-    fun `get_module returns information about an existing module`() {
-        val solution = createSolution()
-        val response = runTool(toolset) { it.mps_mcp_get_module(solution.moduleName!!) }
-        val data = expectOk(response)
-        assertEquals(solution.moduleName, data.get("name").asString)
-        assertTrue("response must echo the module reference", data.has("reference"))
-    }
-
-    @Test
-    fun `get_module reports NOT_FOUND for unknown name`() {
-        val response = runTool(toolset) { it.mps_mcp_get_module("totally-unknown-module-name") }
-        assertTrue(expectErr(response).contains("not found"))
-    }
+    // ── lifecycle: update / delete ────────────────────────────────────────────────────────
 
     @Test
     fun `update_module sets the virtual folder when only that is requested`() {
