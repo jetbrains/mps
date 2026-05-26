@@ -11,6 +11,6 @@
 
 ## Discovery Workflow
 
-1. `mps_mcp_perform_structure_operation` with `operation: FIND_INSTANCES` on the concept FQN to enumerate all instances.
+1. `mps_mcp_query_structure` with `operation: FIND_INSTANCES` on the concept FQN to enumerate all instances.
 2. Pick one instance and call `mps_mcp_print_node` with `deep: true` to get the full JSON blueprint.
 3. Adapt the JSON for the new root/child. Copy the `references.target` strings verbatim when pointing at the same external concepts.

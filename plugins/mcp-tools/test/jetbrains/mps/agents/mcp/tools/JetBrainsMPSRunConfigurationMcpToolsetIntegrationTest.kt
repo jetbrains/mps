@@ -51,7 +51,7 @@ class JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest : McpIntegrationTest
               ]
             }
         """.trimIndent()
-        val seedResponse = runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, seedParams) }
+        val seedResponse = runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, seedParams) }
         assertOk(seedResponse)
 
         val childRef = readOnRepo {
@@ -90,7 +90,7 @@ class JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest : McpIntegrationTest
               "conceptsJson": [ { "name": "Bar" } ]
             }
         """.trimIndent()
-        val seedResponse = runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, seedParams) }
+        val seedResponse = runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, seedParams) }
         assertOk(seedResponse)
 
         val rootRef = readOnRepo {

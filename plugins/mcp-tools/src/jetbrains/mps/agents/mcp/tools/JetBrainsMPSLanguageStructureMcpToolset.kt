@@ -29,24 +29,27 @@ import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.*
 
-enum class MPSStructureOperation {
-    CREATE_CONCEPTS,
-    CREATE_ENUM,
+enum class MPSStructureQueryOperation {
     GET_ENUMERATION_LITERALS,
     FIND_INSTANCES,
     IS_SUBCONCEPT_OF,
     GET_SUB_CONCEPTS,
     GET_ASSIGNABLE_CONCEPTS,
     GET_ALL_SUPERCONCEPTS,
+    LIST_CONCEPT_ASPECTS,
+    GET_ASSIGNABLE_REFERENCES,
+    IS_SMART_REFERENCE
+}
+
+enum class MPSStructureAlterOperation {
+    CREATE_CONCEPTS,
+    CREATE_ENUM,
     UPDATE_CONCEPT_PROPERTY,
     UPDATE_CONCEPT_CHILD,
     UPDATE_CONCEPT_REFERENCE,
     RENAME_CONCEPT_PROPERTY,
     RENAME_CONCEPT_CHILD,
-    RENAME_CONCEPT_REFERENCE,
-    LIST_CONCEPT_ASPECTS,
-    GET_ASSIGNABLE_REFERENCES,
-    IS_SMART_REFERENCE
+    RENAME_CONCEPT_REFERENCE
 }
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
@@ -58,49 +61,22 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Performs a structure-related operation in an MPS model (create concepts/enums, find instances, query inheritance, manage and rename properties/children/references, list concept aspects, resolve assignable references, check smart-reference status). Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill in `.agents/skills/`.
+        Queries MPS language structure (read-only): find concept instances, check inheritance, list aspects, resolve references, query enumeration literals, check smart-reference status. Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill.
     """
     )
-    suspend fun mps_mcp_perform_structure_operation(
-        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES, IS_SMART_REFERENCE)") operation: MPSStructureOperation,
+    suspend fun mps_mcp_query_structure(
+        @McpDescription("The operation to perform (GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES, IS_SMART_REFERENCE)") operation: MPSStructureQueryOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
-    ): String = withMpsProject("Performing MPS structure operation: $operation") { mpsProject ->
+    ): String = withMpsProject("Performing MPS structure query: $operation") { mpsProject ->
         val gson = Gson()
         val params = try {
             gson.fromJson(parameters, JsonObject::class.java)
         } catch (e: Exception) {
             return@withMpsProject invalidJson("Invalid JSON parameters: ${e.message}")
         }
-        val dryRun = params.get("dryRun")?.asBoolean ?: false
-
 
         when (operation) {
-            MPSStructureOperation.CREATE_CONCEPTS -> {
-                val structureModelRef = params.get("structureModelRef")?.asString ?: return@withMpsProject errJson("Parameter 'structureModelRef' is missing")
-                val make = params.get("make")?.asBoolean ?: false
-                val conceptsJsonPath = readStringOrInlineJsonParam(params, "conceptsJson")
-                val interfaceConceptsJsonPath = readStringOrInlineJsonParam(params, "interfaceConceptsJson")
-                if (conceptsJsonPath != null || interfaceConceptsJsonPath != null) {
-                    createConceptsFull(conceptsJsonPath, interfaceConceptsJsonPath, structureModelRef, make, dryRun)
-                } else {
-                    val conceptNamesElement =
-                        params.get("conceptNames")
-                            ?: return@withMpsProject errJson("Parameter 'conceptsJson', 'interfaceConceptsJson' or 'conceptNames' is missing")
-                    val conceptNames: Collection<String> = gson.fromJson(conceptNamesElement, object : TypeToken<Collection<String>>() {}.type)
-                    if (dryRun) return@withMpsProject okJson("{}")
-                    createConcepts(conceptNames, structureModelRef)
-                }
-            }
-
-            MPSStructureOperation.CREATE_ENUM -> {
-                val structureModelRef = params.get("structureModelRef")?.asString ?: return@withMpsProject errJson("Parameter 'structureModelRef' is missing")
-                val enumName = params.get("enumName")?.asString ?: return@withMpsProject errJson("Parameter 'enumName' is missing")
-                val valuesJson = readStringOrInlineJsonParam(params, "valuesJson") ?: return@withMpsProject errJson("Parameter 'valuesJson' is missing")
-                val defaultEnumName = params.get("defaultEnumName")?.asString
-                mps_mcp_create_enum(structureModelRef, enumName, valuesJson, defaultEnumName, dryRun)
-            }
-
-            MPSStructureOperation.GET_ENUMERATION_LITERALS -> {
+            MPSStructureQueryOperation.GET_ENUMERATION_LITERALS -> {
                 val enumerationRef = params.get("enumerationRef")?.asString
                 val nodeReference = params.get("nodeReference")?.asString
                 val propertyName = params.get("propertyName")?.asString
@@ -119,7 +95,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 }
             }
 
-            MPSStructureOperation.FIND_INSTANCES -> {
+            MPSStructureQueryOperation.FIND_INSTANCES -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 val scopeParam = params.get("scope")?.asString ?: "editable"
                 val exact = params.get("exact")?.asBoolean ?: false
@@ -198,7 +174,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 }
             }
 
-            MPSStructureOperation.IS_SUBCONCEPT_OF -> {
+            MPSStructureQueryOperation.IS_SUBCONCEPT_OF -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 val superConceptRef = params.get("superConceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'superConceptRef' is missing")
                 executeShortReadOnEdt(mpsProject) {
@@ -210,8 +186,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 }
             }
 
-            MPSStructureOperation.GET_SUB_CONCEPTS,
-            MPSStructureOperation.GET_ASSIGNABLE_CONCEPTS -> {
+            MPSStructureQueryOperation.GET_SUB_CONCEPTS,
+            MPSStructureQueryOperation.GET_ASSIGNABLE_CONCEPTS -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 val languageRefsElement = params.get("languageRefs")
                 executeShortReadOnEdt(mpsProject) {
@@ -231,7 +207,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                         languageRegistry.allLanguages
                     }
 
-                    val onlyAssignable = operation == MPSStructureOperation.GET_ASSIGNABLE_CONCEPTS
+                    val onlyAssignable = operation == MPSStructureQueryOperation.GET_ASSIGNABLE_CONCEPTS
                     for (lang in languages) {
                         val runtime = languageRegistry.getLanguage(lang) ?: continue
                         for (concept in runtime.concepts) {
@@ -251,7 +227,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 }
             }
 
-            MPSStructureOperation.GET_ASSIGNABLE_REFERENCES -> {
+            MPSStructureQueryOperation.GET_ASSIGNABLE_REFERENCES -> {
                 val request = try {
                     Gson().fromJson(parameters, GetAssignableReferencesRequest::class.java)
                 } catch (e: Exception) {
@@ -268,7 +244,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 }
             }
 
-            MPSStructureOperation.GET_ALL_SUPERCONCEPTS -> {
+            MPSStructureQueryOperation.GET_ALL_SUPERCONCEPTS -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 executeShortReadOnEdt(mpsProject) {
                     val concept = resolveConcept(mpsProject.repository, conceptRef)
@@ -280,58 +256,13 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 }
             }
 
-            MPSStructureOperation.UPDATE_CONCEPT_PROPERTY -> {
-                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
-                val propertyName = params.get("propertyName")?.asString ?: return@withMpsProject errJson("Parameter 'propertyName' is missing")
-                val dataType = params.get("dataType")?.asString
-                mps_mcp_update_concept_property(conceptRef, propertyName, dataType)
-            }
-
-            MPSStructureOperation.UPDATE_CONCEPT_CHILD -> {
-                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
-                val role = params.get("role")?.asString ?: return@withMpsProject errJson("Parameter 'role' is missing")
-                val targetConcept = params.get("targetConcept")?.asString
-                val multiple = params.get("multiple")?.asBoolean ?: false
-                val optional = params.get("optional")?.asBoolean ?: true
-                mps_mcp_update_concept_link(conceptRef, role, targetConcept, true, multiple, optional)
-            }
-
-            MPSStructureOperation.UPDATE_CONCEPT_REFERENCE -> {
-                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
-                val role = params.get("role")?.asString ?: return@withMpsProject errJson("Parameter 'role' is missing")
-                val targetConcept = params.get("targetConcept")?.asString
-                val optional = params.get("optional")?.asBoolean ?: true
-                mps_mcp_update_concept_link(conceptRef, role, targetConcept, false, false, optional)
-            }
-
-            MPSStructureOperation.RENAME_CONCEPT_PROPERTY -> {
-                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
-                val oldName = params.get("oldName")?.asString ?: return@withMpsProject errJson("Parameter 'oldName' is missing")
-                val newName = params.get("newName")?.asString ?: return@withMpsProject errJson("Parameter 'newName' is missing")
-                mps_mcp_rename_concept_property(conceptRef, oldName, newName)
-            }
-
-            MPSStructureOperation.RENAME_CONCEPT_CHILD -> {
-                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
-                val oldRole = params.get("oldRole")?.asString ?: return@withMpsProject errJson("Parameter 'oldRole' is missing")
-                val newRole = params.get("newRole")?.asString ?: return@withMpsProject errJson("Parameter 'newRole' is missing")
-                mps_mcp_rename_concept_link(conceptRef, oldRole, newRole, true)
-            }
-
-            MPSStructureOperation.RENAME_CONCEPT_REFERENCE -> {
-                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
-                val oldRole = params.get("oldRole")?.asString ?: return@withMpsProject errJson("Parameter 'oldRole' is missing")
-                val newRole = params.get("newRole")?.asString ?: return@withMpsProject errJson("Parameter 'newRole' is missing")
-                mps_mcp_rename_concept_link(conceptRef, oldRole, newRole, false)
-            }
-
-            MPSStructureOperation.LIST_CONCEPT_ASPECTS -> {
+            MPSStructureQueryOperation.LIST_CONCEPT_ASPECTS -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 val includeInherited = params.get("includeInherited")?.asBoolean ?: false
                 mps_mcp_list_concept_aspects(conceptRef, includeInherited)
             }
 
-            MPSStructureOperation.IS_SMART_REFERENCE -> {
+            MPSStructureQueryOperation.IS_SMART_REFERENCE -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 executeShortReadOnEdt(mpsProject) {
                     val concept = resolveConcept(mpsProject.repository, conceptRef)
@@ -344,6 +275,97 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     }
                     okJson(gson.toJson(result))
                 }
+            }
+        }
+    }
+
+    @McpTool
+    @McpDescription(
+        """
+        Alters MPS language structure: create concepts/enums, manage and rename properties/children/references. Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill.
+    """
+    )
+    suspend fun mps_mcp_alter_structure(
+        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE)") operation: MPSStructureAlterOperation,
+        @McpDescription("JSON string representing the parameters for the operation") parameters: String
+    ): String = withMpsProject("Performing MPS structure alteration: $operation") { mpsProject ->
+        val gson = Gson()
+        val params = try {
+            gson.fromJson(parameters, JsonObject::class.java)
+        } catch (e: Exception) {
+            return@withMpsProject invalidJson("Invalid JSON parameters: ${e.message}")
+        }
+        val dryRun = params.get("dryRun")?.asBoolean ?: false
+
+        when (operation) {
+            MPSStructureAlterOperation.CREATE_CONCEPTS -> {
+                val structureModelRef = params.get("structureModelRef")?.asString ?: return@withMpsProject errJson("Parameter 'structureModelRef' is missing")
+                val make = params.get("make")?.asBoolean ?: false
+                val conceptsJsonPath = readStringOrInlineJsonParam(params, "conceptsJson")
+                val interfaceConceptsJsonPath = readStringOrInlineJsonParam(params, "interfaceConceptsJson")
+                if (conceptsJsonPath != null || interfaceConceptsJsonPath != null) {
+                    createConceptsFull(conceptsJsonPath, interfaceConceptsJsonPath, structureModelRef, make, dryRun)
+                } else {
+                    val conceptNamesElement =
+                        params.get("conceptNames")
+                            ?: return@withMpsProject errJson("Parameter 'conceptsJson', 'interfaceConceptsJson' or 'conceptNames' is missing")
+                    val conceptNames: Collection<String> = gson.fromJson(conceptNamesElement, object : TypeToken<Collection<String>>() {}.type)
+                    if (dryRun) return@withMpsProject okJson("{}")
+                    createConcepts(conceptNames, structureModelRef)
+                }
+            }
+
+            MPSStructureAlterOperation.CREATE_ENUM -> {
+                val structureModelRef = params.get("structureModelRef")?.asString ?: return@withMpsProject errJson("Parameter 'structureModelRef' is missing")
+                val enumName = params.get("enumName")?.asString ?: return@withMpsProject errJson("Parameter 'enumName' is missing")
+                val valuesJson = readStringOrInlineJsonParam(params, "valuesJson") ?: return@withMpsProject errJson("Parameter 'valuesJson' is missing")
+                val defaultEnumName = params.get("defaultEnumName")?.asString
+                mps_mcp_create_enum(structureModelRef, enumName, valuesJson, defaultEnumName, dryRun)
+            }
+
+            MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY -> {
+                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
+                val propertyName = params.get("propertyName")?.asString ?: return@withMpsProject errJson("Parameter 'propertyName' is missing")
+                val dataType = params.get("dataType")?.asString
+                mps_mcp_update_concept_property(conceptRef, propertyName, dataType)
+            }
+
+            MPSStructureAlterOperation.UPDATE_CONCEPT_CHILD -> {
+                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
+                val role = params.get("role")?.asString ?: return@withMpsProject errJson("Parameter 'role' is missing")
+                val targetConcept = params.get("targetConcept")?.asString
+                val multiple = params.get("multiple")?.asBoolean ?: false
+                val optional = params.get("optional")?.asBoolean ?: true
+                mps_mcp_update_concept_link(conceptRef, role, targetConcept, true, multiple, optional)
+            }
+
+            MPSStructureAlterOperation.UPDATE_CONCEPT_REFERENCE -> {
+                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
+                val role = params.get("role")?.asString ?: return@withMpsProject errJson("Parameter 'role' is missing")
+                val targetConcept = params.get("targetConcept")?.asString
+                val optional = params.get("optional")?.asBoolean ?: true
+                mps_mcp_update_concept_link(conceptRef, role, targetConcept, false, false, optional)
+            }
+
+            MPSStructureAlterOperation.RENAME_CONCEPT_PROPERTY -> {
+                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
+                val oldName = params.get("oldName")?.asString ?: return@withMpsProject errJson("Parameter 'oldName' is missing")
+                val newName = params.get("newName")?.asString ?: return@withMpsProject errJson("Parameter 'newName' is missing")
+                mps_mcp_rename_concept_property(conceptRef, oldName, newName)
+            }
+
+            MPSStructureAlterOperation.RENAME_CONCEPT_CHILD -> {
+                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
+                val oldRole = params.get("oldRole")?.asString ?: return@withMpsProject errJson("Parameter 'oldRole' is missing")
+                val newRole = params.get("newRole")?.asString ?: return@withMpsProject errJson("Parameter 'newRole' is missing")
+                mps_mcp_rename_concept_link(conceptRef, oldRole, newRole, true)
+            }
+
+            MPSStructureAlterOperation.RENAME_CONCEPT_REFERENCE -> {
+                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
+                val oldRole = params.get("oldRole")?.asString ?: return@withMpsProject errJson("Parameter 'oldRole' is missing")
+                val newRole = params.get("newRole")?.asString ?: return@withMpsProject errJson("Parameter 'newRole' is missing")
+                mps_mcp_rename_concept_link(conceptRef, oldRole, newRole, false)
             }
         }
     }

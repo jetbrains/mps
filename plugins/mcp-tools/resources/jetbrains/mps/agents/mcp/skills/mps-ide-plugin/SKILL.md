@@ -48,7 +48,7 @@ For other task families: tool window â†’ `references/tools.md`; settings page â†
 
 ## Reference Examples in This Repository
 
-Seed `mps_mcp_print_node` / `mps_mcp_perform_structure_operation: FIND_USAGES` with these:
+Seed `mps_mcp_print_node` / `mps_mcp_query_nodes` (FIND_USAGES) with these:
 
 | Concept | Example nodes | Model |
 |---|---|---|

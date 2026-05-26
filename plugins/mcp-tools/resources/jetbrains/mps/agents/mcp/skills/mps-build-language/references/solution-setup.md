@@ -42,7 +42,7 @@ Create one model inside the solution (conventionally `<project>.build`). Its **u
 ## Finding Existing Build Scripts in This Repo
 
 - Glob: `**/*.build/models/**/*.mps`, or grep for `BuildProject` concept.
-- `mps_mcp_perform_structure_operation` (`FIND_INSTANCES`) with `conceptRef` for `jetbrains.mps.build.structure.BuildProject`.
+- `mps_mcp_query_structure` (`FIND_INSTANCES`) with `conceptRef` for `jetbrains.mps.build.structure.BuildProject`.
 - Representative samples:
   - `samples/customAspect/solutions/SampleCustomAspect.build/models/SampleCustomAspect.build.mps` — small MPS-language-plugin build (language + solution + plugin + auto layout).
   - `plugins/mps-build/solutions/jetbrains.mps.build.sandbox/models/build1.mps` — plain-Java multi-module build with inter-script dependencies.

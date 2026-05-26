@@ -36,5 +36,6 @@
 
 - `mps_mcp_get_concept_details`: provides properties, children, and references for a list of concepts and/or concepts of specified languages. Make/rebuild languages with `mps_mcp_alter_nodes` (`MAKE`) for `mps_mcp_get_concept_details` to see their concepts.
 - `mps_mcp_search_concepts`: global search for concepts by name, alias or description using a list of search strings.
-- `mps_mcp_perform_structure_operation`: advanced language-aware operations like `CREATE_CONCEPTS`, `CREATE_ENUM`, `FIND_INSTANCES`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ASSIGNABLE_REFERENCES`, and related concept-analysis operations exposed by the current API.
+- `mps_mcp_alter_structure`: write operations on language structure — `CREATE_CONCEPTS`, `CREATE_ENUM`, `UPDATE_CONCEPT_PROPERTY`, `UPDATE_CONCEPT_CHILD`, `UPDATE_CONCEPT_REFERENCE`, `RENAME_CONCEPT_PROPERTY`, `RENAME_CONCEPT_CHILD`, `RENAME_CONCEPT_REFERENCE`.
+- `mps_mcp_query_structure`: read-only structure queries — `FIND_INSTANCES`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ALL_SUPERCONCEPTS`, `IS_SUBCONCEPT_OF`, `GET_ENUMERATION_LITERALS`, `LIST_CONCEPT_ASPECTS`, `GET_ASSIGNABLE_REFERENCES`, `IS_SMART_REFERENCE`.
 - `mps_mcp_scaffold_editor`: generates a default `ConceptEditorDeclaration` for a specified concept, automatically wiring relation declarations properties, children, references to default cell models. The concept must have been compiled before using this operation.

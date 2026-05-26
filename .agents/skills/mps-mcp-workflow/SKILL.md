@@ -27,7 +27,7 @@ All MPS skills live in a per-harness directory loaded by the agent host (e.g. `.
 | Skill | What it covers |
 |-------|---------------|
 | `mps-language-aspects-overview`     | Entry point for defining an MPS language — lists the aspects, what each owns, and the typical authoring order. Start here. |
-| `mps-aspect-structure-concepts`            | Define concepts, interface concepts, enumerations, and constrained data types. Includes the full `mps_mcp_perform_structure_operation` reference. |
+| `mps-aspect-structure-concepts`            | Define concepts, interface concepts, enumerations, and constrained data types. Includes the full `mps_mcp_alter_structure` / `mps_mcp_query_structure` reference. |
 | `mps-baselanguage`                  | Author and edit `jetbrains.mps.baseLanguage` (Java) nodes — parser vs. JSON AST, concept mapping, reference harvesting, validation. Load when writing any Java/BaseLanguage code in MPS. |
 | `mps-model-manipulation`                    | Write and edit MPS BaseLanguage code that uses smodel, closures, and collections — manipulating nodes, lists, and queries. Use when editing checking rules, behavior methods, typesystem rules, or any model code that manipulates nodes. |
 | `mps-aspect-accessories`            | Module/model dependencies, used languages, runtime solutions, accessory models. |

@@ -9,7 +9,7 @@
 - The ids of nodes, concepts, models and modules never change. When used in JSON blueprints, be sure they are 100% accurate.
 - Role names (properties, children, references) must match the concept definition exactly.
 - When setting a property value on a node, make sure the type of the value matches the expected type of the property defined in the concept.
-- When setting a property typed to an enumeration, use `mps_mcp_perform_structure_operation` (GET_ENUMERATION_LITERALS) to get the list of allowed values.
+- When setting a property typed to an enumeration, use `mps_mcp_query_structure` (GET_ENUMERATION_LITERALS) to get the list of allowed values.
 - MPS stores the **default** enum member implicitly (as absent in the model). A newly created node that has never had its enum property explicitly set will still resolve to the default value at runtime. Only set an enum property explicitly when you need a non-default value. Do not treat an unset enum property as an error if the enum has a defined default member.
 - Concepts extend other concepts and implement interface concepts. These are transitive relationships. Both extended concepts and implemented interfaces have an effect on assignability.
 - When setting a reference to a target node, make sure the concept of the target node is assignable to the required concept of the reference role.
@@ -17,8 +17,8 @@
 - Child roles as well as reference roles may be optional or required. Optional roles may be null. Required roles must have a value.
 - Child roles may be single-valued or multivalued. Single-valued roles can only have one child node. Multivalued roles can have multiple child nodes.
 - You must not create nodes of concept interfaces and abstract concepts.
-- Use `mps_mcp_perform_structure_operation` (GET_ASSIGNABLE_CONCEPTS) to find which concept types are structurally compatible with a child or reference role. This answers concept-level assignability only — it does not account for scope or visibility. A concept appearing in the result does not guarantee that every node of that concept is a valid or in-scope target for a specific reference role.
-- Use `mps_mcp_perform_structure_operation` (GET_ASSIGNABLE_REFERENCES) to find existing nodes that are valid targets for a specific reference role on a given node. Unlike GET_ASSIGNABLE_CONCEPTS, the results are drawn from the actual project and reflect scope. `GET_ASSIGNABLE_REFERENCES` can also be used with a `conceptRef` instead of a `nodeReference` to query potential targets for a reference role on a node that has not been created yet (e.g. when building a JSON blueprint).
+- Use `mps_mcp_query_structure` (GET_ASSIGNABLE_CONCEPTS) to find which concept types are structurally compatible with a child or reference role. This answers concept-level assignability only — it does not account for scope or visibility. A concept appearing in the result does not guarantee that every node of that concept is a valid or in-scope target for a specific reference role.
+- Use `mps_mcp_query_structure` (GET_ASSIGNABLE_REFERENCES) to find existing nodes that are valid targets for a specific reference role on a given node. Unlike GET_ASSIGNABLE_CONCEPTS, the results are drawn from the actual project and reflect scope. `GET_ASSIGNABLE_REFERENCES` can also be used with a `conceptRef` instead of a `nodeReference` to query potential targets for a reference role on a node that has not been created yet (e.g. when building a JSON blueprint).
 - Do not add used languages explicitly up front. When a node is added to a model a dependency on the node's concept is added automatically.
 - Only add dependencies on models when a problem with a reference being out of scope is reported.
 - WHEN selecting a concept for node creation THEN verify it is concrete; avoid interface/abstract.

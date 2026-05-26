@@ -11,9 +11,8 @@ import org.junit.Assert.assertTrue
 import org.junit.Test
 
 /**
- * End-to-end integration tests for the mutating operations in
- * [JetBrainsMPSLanguageStructureMcpToolset]: concept/interface creation, enum creation, and
- * the rollback path on errors.
+ * End-to-end integration tests for [JetBrainsMPSLanguageStructureMcpToolset]: concept/interface
+ * creation, enum creation, rollback on errors, and read-only structure queries.
  *
  * These complement the schema-only / reflection-stub tests by running the toolset against a
  * real [jetbrains.mps.project.MPSProject] with a real `structure` model produced by
@@ -44,7 +43,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, parameters)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, parameters)
         }
 
         assertOk(response)
@@ -75,7 +74,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, parameters)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, parameters)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -102,7 +101,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, parameters)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, parameters)
         }
 
         assertOk(response)
@@ -139,7 +138,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, parameters)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, parameters)
         }
         val data = expectOk(response)
 
@@ -171,7 +170,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, parameters)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, parameters)
         }
         val data = expectOk(response)
 
@@ -200,7 +199,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, parameters)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_ENUM, parameters)
         }
 
         assertOk(response)
@@ -222,8 +221,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         // 'Foo' must not be creatable alongside an existing concept 'Foo'.
         val sharedName = "Shared_${System.nanoTime()}"
         assertOk(runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.CREATE_CONCEPTS,
+            toolset.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.CREATE_CONCEPTS,
                 """{ "structureModelRef": "$structureModelRef", "conceptsJson": [ { "name": "$sharedName" } ] }""",
             )
         })
@@ -236,7 +235,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
             }
         """.trimIndent()
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, enumParams)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_ENUM, enumParams)
         }
         val err = expectErr(response)
         assertTrue(
@@ -263,8 +262,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         // Symmetric to the previous test.
         val sharedName = "Shared_${System.nanoTime()}"
         assertOk(runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.CREATE_ENUM,
+            toolset.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.CREATE_ENUM,
                 """
                 {
                   "structureModelRef": "$structureModelRef",
@@ -279,7 +278,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
             { "structureModelRef": "$structureModelRef", "conceptsJson": [ { "name": "$sharedName" } ] }
         """.trimIndent()
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, conceptParams)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, conceptParams)
         }
         val err = expectErr(response)
         assertTrue(
@@ -301,8 +300,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `enum with invalid name is rejected before any node is created`() {
         // Enum creation must run through the same validateRootNodeName pipeline as concepts.
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.CREATE_ENUM,
+            toolset.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.CREATE_ENUM,
                 """
                 {
                   "structureModelRef": "$structureModelRef",
@@ -341,7 +340,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
             }
         """.trimIndent()
         assertOk(runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, firstParams)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_ENUM, firstParams)
         })
 
         // Now try again with the same name.
@@ -354,7 +353,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, secondParams)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_ENUM, secondParams)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -387,7 +386,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
               ]
             }
         """.trimIndent()
-        assertOk(runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, createParams) })
+        assertOk(runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, createParams) })
 
         val findParams = """
             {
@@ -398,7 +397,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         """.trimIndent()
 
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(MPSStructureOperation.FIND_INSTANCES, findParams)
+            it.mps_mcp_query_structure(MPSStructureQueryOperation.FIND_INSTANCES, findParams)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -421,7 +420,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `UPDATE_CONCEPT_PROPERTY adds a new property on a concept that had none`() {
         val conceptRef = createConceptRoot("HostA")
         val params = """{"conceptRef":"$conceptRef","propertyName":"title","dataType":"string"}"""
-        val response = runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.UPDATE_CONCEPT_PROPERTY, params) }
+        val response = runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY, params) }
         assertOk(response)
 
         val host = expectSingleRoot("HostA")
@@ -437,15 +436,15 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val conceptRef = createConceptRoot("HostB")
         // Seed a property.
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"toRemove","dataType":"integer"}"""
             )
         })
         // Now delete it by passing an empty dataType.
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"toRemove","dataType":""}"""
             )
         })
@@ -460,8 +459,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val conceptRef = createConceptRoot("HostUpd")
         // Seed with dataType=string.
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"flexible","dataType":"string"}"""
             )
         })
@@ -475,8 +474,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         // Re-run with a different dataType — the existing property must be reused (same node
         // identity) and its dataType reference must now point at `integer`.
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"flexible","dataType":"integer"}"""
             )
         })
@@ -493,8 +492,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `UPDATE_CONCEPT_PROPERTY on unknown concept returns error envelope`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$unresolvableNodeRef","propertyName":"x","dataType":"string"}"""
             )
         }
@@ -505,8 +504,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `UPDATE_CONCEPT_PROPERTY delete of unknown property returns error envelope`() {
         val conceptRef = createConceptRoot("HostC")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"missing","dataType":""}"""
             )
         }
@@ -522,7 +521,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val params = """
             {"conceptRef":"$ownerRef","role":"kids","targetConcept":"$targetRef","multiple":true,"optional":true}
         """.trimIndent()
-        assertOk(runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.UPDATE_CONCEPT_CHILD, params) })
+        assertOk(runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.UPDATE_CONCEPT_CHILD, params) })
 
         val owner = expectSingleRoot("Owner1")
         readOnRepo {
@@ -546,14 +545,14 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val ownerRef = createConceptRoot("Owner2")
         val targetRef = createConceptRoot("Target2")
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_CHILD,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_CHILD,
                 """{"conceptRef":"$ownerRef","role":"kid","targetConcept":"$targetRef","multiple":false,"optional":true}"""
             )
         })
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_CHILD,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_CHILD,
                 """{"conceptRef":"$ownerRef","role":"kid","targetConcept":""}"""
             )
         })
@@ -572,7 +571,7 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val params = """
             {"conceptRef":"$ownerRef","role":"ref","targetConcept":"$targetRef","optional":false}
         """.trimIndent()
-        assertOk(runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.UPDATE_CONCEPT_REFERENCE, params) })
+        assertOk(runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.UPDATE_CONCEPT_REFERENCE, params) })
 
         val owner = expectSingleRoot("Owner3")
         readOnRepo {
@@ -594,8 +593,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `UPDATE_CONCEPT_REFERENCE delete of unknown role returns error envelope`() {
         val ownerRef = createConceptRoot("Owner4")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_REFERENCE,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_REFERENCE,
                 """{"conceptRef":"$ownerRef","role":"missing","targetConcept":""}"""
             )
         }
@@ -608,14 +607,14 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `RENAME_CONCEPT_PROPERTY renames the existing property`() {
         val conceptRef = createConceptRoot("RenameP1")
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"oldName","dataType":"string"}"""
             )
         })
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.RENAME_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.RENAME_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","oldName":"oldName","newName":"newName"}"""
             )
         })
@@ -631,8 +630,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `RENAME_CONCEPT_PROPERTY on unknown property returns error envelope`() {
         val conceptRef = createConceptRoot("RenameP2")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.RENAME_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.RENAME_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","oldName":"nope","newName":"other"}"""
             )
         }
@@ -646,14 +645,14 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val ownerRef = createConceptRoot("RenameC1")
         val targetRef = createConceptRoot("RenameC1Target")
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_CHILD,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_CHILD,
                 """{"conceptRef":"$ownerRef","role":"oldRole","targetConcept":"$targetRef","multiple":true,"optional":true}"""
             )
         })
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.RENAME_CONCEPT_CHILD,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.RENAME_CONCEPT_CHILD,
                 """{"conceptRef":"$ownerRef","oldRole":"oldRole","newRole":"newRole"}"""
             )
         })
@@ -669,8 +668,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `RENAME_CONCEPT_CHILD on unknown role returns error envelope`() {
         val ownerRef = createConceptRoot("RenameC2")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.RENAME_CONCEPT_CHILD,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.RENAME_CONCEPT_CHILD,
                 """{"conceptRef":"$ownerRef","oldRole":"absent","newRole":"other"}"""
             )
         }
@@ -684,14 +683,14 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val ownerRef = createConceptRoot("RenameR1")
         val targetRef = createConceptRoot("RenameR1Target")
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_REFERENCE,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_REFERENCE,
                 """{"conceptRef":"$ownerRef","role":"oldRef","targetConcept":"$targetRef","optional":true}"""
             )
         })
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.RENAME_CONCEPT_REFERENCE,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.RENAME_CONCEPT_REFERENCE,
                 """{"conceptRef":"$ownerRef","oldRole":"oldRef","newRole":"newRef"}"""
             )
         })
@@ -708,8 +707,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `IS_SUBCONCEPT_OF returns true for ConceptDeclaration ⇒ AbstractConceptDeclaration`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.IS_SUBCONCEPT_OF,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.IS_SUBCONCEPT_OF,
                 """{"conceptRef":"jetbrains.mps.lang.structure.structure.ConceptDeclaration","superConceptRef":"jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration"}"""
             )
         }
@@ -720,8 +719,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `IS_SUBCONCEPT_OF returns false for unrelated concepts`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.IS_SUBCONCEPT_OF,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.IS_SUBCONCEPT_OF,
                 """{"conceptRef":"jetbrains.mps.lang.structure.structure.PropertyDeclaration","superConceptRef":"jetbrains.mps.lang.structure.structure.LinkDeclaration"}"""
             )
         }
@@ -731,8 +730,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `IS_SUBCONCEPT_OF returns error envelope when the concept is unknown`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.IS_SUBCONCEPT_OF,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.IS_SUBCONCEPT_OF,
                 """{"conceptRef":"this.does.not.exist","superConceptRef":"jetbrains.mps.lang.core.structure.BaseConcept"}"""
             )
         }
@@ -744,8 +743,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `GET_SUB_CONCEPTS of AbstractConceptDeclaration includes ConceptDeclaration and InterfaceConceptDeclaration`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_SUB_CONCEPTS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_SUB_CONCEPTS,
                 """
                 {
                   "conceptRef":"jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration",
@@ -763,8 +762,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `GET_ASSIGNABLE_CONCEPTS of AbstractConceptDeclaration omits the abstract root itself`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ASSIGNABLE_CONCEPTS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ASSIGNABLE_CONCEPTS,
                 """
                 {
                   "conceptRef":"jetbrains.mps.lang.structure.structure.AbstractConceptDeclaration",
@@ -782,8 +781,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `GET_ALL_SUPERCONCEPTS of ConceptDeclaration includes AbstractConceptDeclaration and BaseConcept`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ALL_SUPERCONCEPTS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ALL_SUPERCONCEPTS,
                 """{"conceptRef":"jetbrains.mps.lang.structure.structure.ConceptDeclaration"}"""
             )
         }
@@ -796,8 +795,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `GET_ALL_SUPERCONCEPTS returns error envelope when concept is unknown`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ALL_SUPERCONCEPTS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ALL_SUPERCONCEPTS,
                 """{"conceptRef":"this.does.not.exist"}"""
             )
         }
@@ -812,8 +811,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         val ownerRef = createConceptRoot("EnumLitOwner")
         val targetRef = createConceptRoot("EnumLitTarget")
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_CHILD,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_CHILD,
                 """{"conceptRef":"$ownerRef","role":"kid","targetConcept":"$targetRef","multiple":false,"optional":true}"""
             )
         })
@@ -825,8 +824,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         }
 
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ENUMERATION_LITERALS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ENUMERATION_LITERALS,
                 """{"nodeReference":"$linkRef","propertyName":"metaClass"}"""
             )
         }
@@ -842,8 +841,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `GET_ENUMERATION_LITERALS rejects a non-enum property`() {
         val conceptRef = createConceptRoot("EnumLitMiss")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ENUMERATION_LITERALS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ENUMERATION_LITERALS,
                 """{"nodeReference":"$conceptRef","propertyName":"name"}"""
             )
         }
@@ -853,8 +852,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `GET_ENUMERATION_LITERALS returns NOT_FOUND for an unknown node`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ENUMERATION_LITERALS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ENUMERATION_LITERALS,
                 """{"nodeReference":"$unresolvableNodeRef","propertyName":"name"}"""
             )
         }
@@ -876,15 +875,15 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
               ]
             }
         """.trimIndent()
-        assertOk(runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, enumParams) })
+        assertOk(runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_ENUM, enumParams) })
 
         val enumRef = readOnRepo {
             PersistenceFacade.getInstance().asString(expectSingleRoot("EnumLitDirect").reference)
         }
 
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ENUMERATION_LITERALS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ENUMERATION_LITERALS,
                 """{"enumerationRef":"$enumRef"}"""
             )
         }
@@ -899,8 +898,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `GET_ENUMERATION_LITERALS rejects an enumerationRef pointing at a non-enum declaration`() {
         val conceptRef = createConceptRoot("EnumLitNotEnum")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ENUMERATION_LITERALS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ENUMERATION_LITERALS,
                 """{"enumerationRef":"$conceptRef"}"""
             )
         }
@@ -915,8 +914,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         // aspect model — the result must be an empty JSON array.
         val conceptRef = createConceptRoot("AspectFree")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.LIST_CONCEPT_ASPECTS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.LIST_CONCEPT_ASPECTS,
                 """{"conceptRef":"$conceptRef"}"""
             )
         }
@@ -927,8 +926,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `LIST_CONCEPT_ASPECTS on an unknown concept returns error envelope`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.LIST_CONCEPT_ASPECTS,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.LIST_CONCEPT_ASPECTS,
                 """{"conceptRef":"this.does.not.exist"}"""
             )
         }
@@ -946,8 +945,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `UPDATE_CONCEPT_PROPERTY persists the added property to the structure model file`() {
         val conceptRef = createConceptRoot("DiskPersistProp")
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"diskVerified","dataType":"string"}"""
             )
         })
@@ -964,14 +963,14 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `RENAME_CONCEPT_PROPERTY persists the renamed property to the structure model file`() {
         val conceptRef = createConceptRoot("DiskPersistRename")
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.UPDATE_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.UPDATE_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","propertyName":"beforeRename","dataType":"string"}"""
             )
         })
         assertOk(runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.RENAME_CONCEPT_PROPERTY,
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.RENAME_CONCEPT_PROPERTY,
                 """{"conceptRef":"$conceptRef","oldName":"beforeRename","newName":"afterRename"}"""
             )
         })
@@ -993,8 +992,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     fun `IS_SMART_REFERENCE returns false for a concept without references`() {
         val conceptRef = createConceptRoot("NoRefs")
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.IS_SMART_REFERENCE,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.IS_SMART_REFERENCE,
                 """{"conceptRef":"$conceptRef"}"""
             )
         }
@@ -1005,8 +1004,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     @Test
     fun `IS_SMART_REFERENCE returns error envelope for an unknown concept`() {
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.IS_SMART_REFERENCE,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.IS_SMART_REFERENCE,
                 """{"conceptRef":"this.does.not.exist"}"""
             )
         }
@@ -1021,8 +1020,8 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         // first guard. Test only the dispatcher → service plumbing here; the rest of the service
         // is covered by AssignableReferenceServiceTest at the unit level.
         val response = runTool {
-            it.mps_mcp_perform_structure_operation(
-                MPSStructureOperation.GET_ASSIGNABLE_REFERENCES,
+            it.mps_mcp_query_structure(
+                MPSStructureQueryOperation.GET_ASSIGNABLE_REFERENCES,
                 """{"referenceRole":"someRef"}"""
             )
         }

@@ -1,6 +1,6 @@
 ---
 name: mps-aspect-structure-concepts
-description: Define concepts, interface concepts, enumerations, and constrained data types in an MPS language's `structure` aspect. Covers smart-reference detection, alias rules, cardinality, INamedConcept usage, bulk creation, and the full `mps_mcp_perform_structure_operation` reference. Use when authoring or modifying a language's structure model.
+description: Define concepts, interface concepts, enumerations, and constrained data types in an MPS language's `structure` aspect. Covers smart-reference detection, alias rules, cardinality, INamedConcept usage, bulk creation, and the full `mps_mcp_alter_structure` / `mps_mcp_query_structure` reference. Use when authoring or modifying a language's structure model.
 type: reference
 ---
 
@@ -40,7 +40,7 @@ Concepts (`ConceptDeclaration`), interface concepts (`InterfaceConceptDeclaratio
 8. **Property definition**:
     * For enum properties: create the `EnumerationDeclaration` first, then set the property `dataType` to reference it.
 9. **Proper cardinality**: make sure intended child collections have the cardinality of `0..n` or `1..n`.
-10. **Bulk operations**: use `mps_mcp_perform_structure_operation` for creating multiple concepts or enums efficiently.
+10. **Bulk operations**: use `mps_mcp_alter_structure` for creating multiple concepts or enums efficiently.
     * Local references within the same JSON blueprint can use names for resolution.
 11. **Reload runtime**: always rebuild the language (via `mps_mcp_alter_nodes` with `MAKE` and `rebuild="true"`) after structural changes to make concepts discoverable.
 
@@ -54,4 +54,4 @@ Concepts (`ConceptDeclaration`), interface concepts (`InterfaceConceptDeclaratio
 
 ## Reference Index
 
-- Open `references/structure-operation-api.md` for exact `mps_mcp_perform_structure_operation` operation names, JSON parameter formats, structure blueprint schemas, `make` flag handling, and `makeStatus` semantics (success / runtime_stale / failed / skipped).
+- Open `references/structure-operation-api.md` for exact `mps_mcp_alter_structure` and `mps_mcp_query_structure` operation names, JSON parameter formats, structure blueprint schemas, `make` flag handling, and `makeStatus` semantics (success / runtime_stale / failed / skipped).

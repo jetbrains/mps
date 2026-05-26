@@ -35,7 +35,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         """.trimIndent()
 
         val createResponse = runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, createParams)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, createParams)
         }
         assertOk(createResponse)
 
@@ -464,7 +464,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             }
         """.trimIndent()
         assertOk(runTool { toolset ->
-            toolset.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_ENUM, params)
+            toolset.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_ENUM, params)
         })
         return readOnRepo {
             val enumNode = structureModel.rootNodes.single { it.name == "Color" }
@@ -482,7 +482,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
               ]
             }
         """.trimIndent()
-        assertOk(runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, params) })
+        assertOk(runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, params) })
         return readOnRepo {
             val foo = structureModel.rootNodes.single { it.name == "Foo" }
             PersistenceFacade.getInstance().asString(foo.reference)

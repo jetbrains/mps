@@ -193,7 +193,7 @@ abstract class McpIntegrationTestBase : ModuleInProjectTest() {
               "conceptsJson": [ { "name": "$name" } ]
             }
         """.trimIndent()
-        val resp = runTool { it.mps_mcp_perform_structure_operation(MPSStructureOperation.CREATE_CONCEPTS, params) }
+        val resp = runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, params) }
         val obj = JsonParser.parseString(resp).asJsonObject
         assertTrue("expected ok envelope from CREATE_CONCEPTS: $resp", obj.get("ok").asBoolean)
         return readOnRepo {
