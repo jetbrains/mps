@@ -7,7 +7,7 @@
 ## Modules and Models
 
 - `mps_mcp_create_module`, `mps_mcp_update_module`, `mps_mcp_delete_module`
-- `mps_mcp_create_model`, `mps_mcp_update_model`, `mps_mcp_delete_model`
+- `mps_mcp_create_model`, `mps_mcp_update_model`
 - `mps_mcp_module_dependency`, `mps_mcp_model_dependency`, `mps_mcp_model_used_language`
 - `mps_mcp_list_facet_types`, `mps_mcp_get_module_facets`, `mps_mcp_update_module_facet`: inspect and modify module facets (e.g. attach the `tests` facet to a Solution that hosts a `@tests` model). `mps_mcp_create_module` accepts an initial `facets=[…]` list for `solution`/`language` modules.
 

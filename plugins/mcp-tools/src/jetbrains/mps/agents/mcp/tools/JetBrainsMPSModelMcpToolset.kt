@@ -355,43 +355,41 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         }
     }
 
-    // ---- UPDATE ----
+    // ---- UPDATE / DELETE ----
     @McpTool
     @McpDescription(
         """
         Updates an MPS model. Currently supports renaming. Returns the updated model info envelope.
+        Deletes an MPS model, including its underlying data source (e.g. the .mps file on disk).
     """
     )
     suspend fun mps_mcp_update_model(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
         modelReference: String,
         @McpDescription("New model name")
-        newModelName: String
-    ): String = withMpsProject("Update MPS model") { mpsProject ->
-        executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, modelReference)
-                ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference", McpErrorCode.NOT_FOUND)
-            if (model !is EditableSModel) {
-                return@executeShortCommandOnEdt errJson("Model '${model.name}' is not editable", McpErrorCode.NOT_EDITABLE)
+        newModelName: String = "",
+        @McpDescription("Operation to perform: RENAME or DELETE")
+        operation: ModelOperation = ModelOperation.RENAME
+    ): String = when (operation) {
+        ModelOperation.RENAME -> withMpsProject("Update MPS model") { mpsProject ->
+            executeShortCommandOnEdt(mpsProject) {
+                val model = resolveModel(mpsProject.repository, modelReference)
+                    ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference", McpErrorCode.NOT_FOUND)
+                if (model !is EditableSModel) {
+                    return@executeShortCommandOnEdt errJson("Model '${model.name}' is not editable", McpErrorCode.NOT_EDITABLE)
+                }
+                validateModelName(newModelName)?.let {
+                    return@executeShortCommandOnEdt errJson(it, McpErrorCode.INVALID_REQUEST)
+                }
+                model.rename(newModelName, true)
+                model.save()
+                okJson(modelInfoJson(model))
             }
-            validateModelName(newModelName)?.let {
-                return@executeShortCommandOnEdt errJson(it, McpErrorCode.INVALID_REQUEST)
-            }
-            model.rename(newModelName, true)
-            model.save()
-            okJson(modelInfoJson(model))
         }
+        ModelOperation.DELETE -> deleteModel(modelReference)
     }
 
-    // ---- DELETE ----
-    @McpTool
-    @McpDescription(
-        """
-        Deletes an MPS model, including its underlying data source (e.g. the .mps file on disk).
-    """
-    )
-    suspend fun mps_mcp_delete_model(
-        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
+    private suspend fun deleteModel(
         modelReference: String
     ): String = withMpsProject("Delete MPS model") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
@@ -472,4 +470,9 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         return null
     }
 
+}
+
+enum class ModelOperation {
+    RENAME,
+    DELETE
 }
