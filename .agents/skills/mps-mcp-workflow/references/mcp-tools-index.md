@@ -18,8 +18,17 @@
 - `mps_mcp_create_root_node`, `mps_mcp_update_root_node_from_json`, `mps_mcp_delete_root_node`
 - `mps_mcp_perform_operation`: general node navigation, search, transformation and code generation/compilation.
 - `mps_mcp_print_node`: shows the underlying JSON structure or it shows the "visual" projection of a node.
-- `mps_mcp_insert_root_node_from_json`: bulk node creation. Leave the references empty if target nodes do not exist. Remember to set them later with `mps_mcp_set_node_references`.
-- `mps_mcp_set_node_properties`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_delete_node_child`, `mps_mcp_set_node_references`
+- `mps_mcp_insert_root_node_from_json`: bulk node creation. Leave the references empty if target nodes do not exist. Remember to set them later with `mps_mcp_update_node` (`SET`/`REFERENCE`).
+- `mps_mcp_update_node`: unified node-mutation tool. One call covers add/set/delete on child, property, and reference roles. Selected via `operation` (`ADD`/`SET`/`DELETE`) × `kind` (`CHILD`/`PROPERTY`/`REFERENCE`). Valid combinations:
+  - `ADD`/`CHILD` — append a new child described by a JSON blueprint (`childJson`); supports optional `position` and `dryRun`.
+  - `SET`/`CHILD` — replace an existing child (`childNodeRef` + `childJson`); supports `dryRun`. Preserves the original child's position in its role.
+  - `DELETE`/`CHILD` — delete a child by `childNodeRef`.
+  - `SET`/`PROPERTY` — batch-set properties (`properties = [[nodeRef, propertyName, value], …]`).
+  - `DELETE`/`PROPERTY` — clear a property (`nodeReference` + `propertyName`).
+  - `SET`/`REFERENCE` — batch-set references (`references = [[nodeRef, role, targetRefOrName], …]`).
+  - `DELETE`/`REFERENCE` — clear a reference (`nodeReference` + `referenceRole`).
+  - `ADD`/`PROPERTY` and `ADD`/`REFERENCE` are not valid combinations and return an error.
+  - `childJson` accepts either an inline JSON string (max 4 KB) **or** an absolute path to a file containing the JSON blueprint — use the file form for large blueprints to avoid MCP-transport truncation.
 - `mps_mcp_check_root_node_problems`: validation tool. Use this frequently to ensure your changes are correct.
 
 ## Language Definition

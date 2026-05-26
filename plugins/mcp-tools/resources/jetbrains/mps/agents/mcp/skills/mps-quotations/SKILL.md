@@ -20,7 +20,7 @@ A **quotation** is a node literal — a concise expression that evaluates to an 
 - `PropertyAntiquotation.propertyId` and `ReferenceAntiquotation.linkId` are filled in **automatically by MPS** when you type `$` / `^` in a property/reference cell. Do not construct these encoded ids manually unless you have already verified the exact `language-uuid/concept-id/property-or-link-id` form against the running MPS. See `references/property-and-reference-ids.md`.
 - Prefer **heavy quotation** (`<...>`) for readability; switch to **light quotation** (`NodeBuilder`) only for bootstrapping (the target language can't be a `used language`), for generators-of-generators, or when nesting depth makes embedded syntax unreadable. See `references/heavy-vs-light.md`.
 - The deprecated `NodeBuilderInitLink.expression` (cardinality 0..1) was removed in 2019.2. Use `initValue` with a `NodeBuilderExpression` instead.
-- Edit quotation-bearing models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`). Do not hand-edit `.mps` files.
+- Edit quotation-bearing models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`). Do not hand-edit `.mps` files.
 - Validate with `mps_mcp_check_root_node_problems`; quotations frequently expose missing used-languages on the host model (the quoted concept's language must be a *used language*, not just a dependency).
 
 ## Common-Path Workflow

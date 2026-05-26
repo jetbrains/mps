@@ -15,7 +15,7 @@ For the **layout** side (concept editors, cell models, style sheets, editor comp
 
 - **Pick the right artefact for the user-visible behaviour.** "Change what `Delete` does" → action map. "Add `Ctrl+Shift+I`" → keymap. "Offer `+` after a number" → side transform in a transformation menu. "Hide / reorder completion" → substitute menu. "Wrap pasted node" → paste wrapper. See `references/landscape.md` for the full mapping.
 - **Author by convention.** Name roots `<Concept>_ActionMap`, `<Concept>_KeyMap`, `<Concept>_TransformationMenu`, `<Concept>_<Position>_SubstituteMenu`, `<Concept>_Factory`, `<Concept>Styling` for automatic discovery. MPS walks the super-concept chain to find them.
-- **Use MPS MCP tools for edits.** `mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`. Resolve concept names with `mps_mcp_search_concepts` / `mps_mcp_get_concept_details` — never guess concept IDs.
+- **Use MPS MCP tools for edits.** `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`. Resolve concept names with `mps_mcp_search_concepts` / `mps_mcp_get_concept_details` — never guess concept IDs.
 - **Define a substitute menu before a transformation menu.** The default `BaseConcept_TransformationMenu` already includes the substitute menu; for most "make my concept completable" tasks, only a substitute menu is required.
 - **An empty default substitute menu HIDES the concept from completion.** Either remove it or fill it. See `references/substitute-menus.md` §"Empty default suppresses".
 - **Side-transform items are NOT automatically in `Ctrl+Space`.** Either list `TransformationLocation_Completion` alongside `TransformationLocation_SideTransform`, or add a separate completion section.

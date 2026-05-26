@@ -15,7 +15,7 @@ Use `mps_mcp_insert_root_node_from_json` targeting the actions model:
 
 ## Single `NodeFactory` child matching the ChemMastery `ElementRef` factory
 
-Insert via `mps_mcp_add_node_child` on the `NodeFactories` root, role `nodeFactory`. Replace `<ElementRef-concept-node-ref>` with the persistent reference of the target concept's declaration root (from the structure model).
+Insert via `mps_mcp_update_node` on the `NodeFactories` root, role `nodeFactory`. Replace `<ElementRef-concept-node-ref>` with the persistent reference of the target concept's declaration root (from the structure model).
 
 ```json
 {

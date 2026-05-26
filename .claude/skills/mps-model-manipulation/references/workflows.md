@@ -55,7 +55,9 @@ Print the method node (shallow) and replace any type child that should be an MPS
 
 ```json
 // Replace returnType child
-mps_mcp_replace_node_child(
+mps_mcp_update_node(
+  operation = SET,
+  kind = CHILD,
   childNodeRef = "<returnType-child-ref>",
   childJson = { "concept": "...SequenceType", "children": [...] }
 )

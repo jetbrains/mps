@@ -6,7 +6,7 @@ type: reference
 
 # MPS BaseLanguage (Java) Authoring
 
-`jetbrains.mps.baseLanguage` is MPS's Java-equivalent language. You edit it as an AST, not as text. Two authoring paths exist: the Java parser (`mps_mcp_parse_java_and_insert`) for plain Java, and JSON AST blueprints (`mps_mcp_insert_root_node_from_json` / `mps_mcp_update_root_node_from_json` / `mps_mcp_add_node_child` / `mps_mcp_replace_node_child`) for everything else — especially code that uses BaseLanguage extensions (`jetbrains.mps.lang.smodel`, `jetbrains.mps.baseLanguage.closures`, `jetbrains.mps.baseLanguage.collections`) or needs stable persistent member references.
+`jetbrains.mps.baseLanguage` is MPS's Java-equivalent language. You edit it as an AST, not as text. Two authoring paths exist: the Java parser (`mps_mcp_parse_java_and_insert`) for plain Java, and JSON AST blueprints (`mps_mcp_insert_root_node_from_json` / `mps_mcp_update_root_node_from_json` / `mps_mcp_update_node`) for everything else — especially code that uses BaseLanguage extensions (`jetbrains.mps.lang.smodel`, `jetbrains.mps.baseLanguage.closures`, `jetbrains.mps.baseLanguage.collections`) or needs stable persistent member references.
 
 ## Critical Directives
 
@@ -18,7 +18,7 @@ type: reference
 - **Variable declarations**: in method bodies wrap `LocalVariableDeclaration` in `LocalVariableDeclarationStatement`. In `ForStatement.variable` use `LocalVariableDeclaration` directly, no wrapper.
 - **Prefer primitives**: use `string` (`StringType`) over `String` (`ClassifierType`) where possible; same for `int`, `boolean`, etc.
 - **Compatibility**: BaseLanguage supports Java 7 (including generics). Avoid Java 8+ features like lambdas or records.
-- **Surgical edits**: when a single child changes prefer `mps_mcp_add_node_child` / `mps_mcp_replace_node_child` over rewriting the whole root — full-root rewrites churn persistent IDs and break incoming refs.
+- **Surgical edits**: when a single child changes prefer `mps_mcp_update_node` over rewriting the whole root — full-root rewrites churn persistent IDs and break incoming refs.
 
 ## Choose Your Path
 
@@ -34,7 +34,7 @@ Pick the right authoring tool before you start:
 2. **Resolve dependencies**: confirm the containing model imports the right languages (`jetbrains.mps.baseLanguage` plus any extensions). Models for referenced nodes must also be imported.
 3. **Skeleton first**: for any non-trivial root, insert a placeholder skeleton (`mps_mcp_create_root_node` + `mps_mcp_update_root_node_from_json` or the parser) before filling member bodies.
 4. **Harvest references**: for own members, run `mps_mcp_print_node` on the skeleton to read persistent refs of constructors, methods, and fields. For JDK / library stubs, derive refs from the class ref using the URL-encoded signature formula (see references).
-5. **Apply bodies**: edit one subtree at a time with `mps_mcp_add_node_child` / `mps_mcp_replace_node_child`, or bulk-rewrite via `mps_mcp_update_root_node_from_json`.
+5. **Apply bodies**: edit one subtree at a time with `mps_mcp_update_node`, or bulk-rewrite via `mps_mcp_update_root_node_from_json`.
 6. **Auto-resolution**: for unambiguous local refs (a parameter, a local variable, a unique method name), pass the plain name as `target` — MPS resolves it after insertion. For overloaded or stub members, use a persistent ref.
 7. **Validate in three gates**:
    - `dryRun: true` on insert tools — catches structural / assignability errors before mutation
@@ -44,7 +44,7 @@ Pick the right authoring tool before you start:
 
 ## Related Skills
 
-- **`mps-node-editing`** — general node mutation tools (`mps_mcp_add_node_child`, `mps_mcp_set_node_properties`, etc.). Load first if you have not seen them.
+- **`mps-node-editing`** — general node mutation tools (`mps_mcp_update_node`, etc.). Load first if you have not seen them.
 - **`mps-aspect-structure-concepts`** — defines what concepts exist and what roles they expose. Read when authoring a brand-new language whose concepts extend BaseLanguage.
 - **`mps-quotations`** — light/quoted SNode literals embedded in BaseLanguage code (e.g. inside behavior or generator bodies).
 - **`mps-model-manipulation`** — `smodel` + `collections` + `closures` patterns layered on top of BaseLanguage; load when manipulating MPS nodes from BaseLanguage.

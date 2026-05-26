@@ -41,5 +41,5 @@ Use this lookup when constructing JSON blueprints for BaseLanguage code. Every J
 3. **Hierarchy**: wrap `Expression` in `ExpressionStatement` for `StatementList`.
 4. **Types**: use primitive types (e.g., `IntegerType`) or `ClassifierType` for classes.
 5. **Operations**: use `DotExpression` for instance calls; `StaticMethodCall` for static.
-6. **Insertion**: use `mps_mcp_add_node_child` or `mps_mcp_insert_root_node_from_json`.
+6. **Insertion**: use `mps_mcp_update_node` or `mps_mcp_insert_root_node_from_json`.
 7. **Validation**: check for errors via `mps_mcp_check_root_node_problems` and repair via `FIX_REFERENCES`.

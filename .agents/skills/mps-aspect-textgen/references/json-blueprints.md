@@ -308,7 +308,7 @@ The flag is a property `withIndent` directly on `NodeAppendPart`:
 
 ## Minimal file-generating-concept blueprint
 
-File-generating concept skeleton for `mps_mcp_insert_root_node_from_json`. Add the body via follow-up calls to `mps_mcp_add_node_child` / `mps_mcp_replace_node_child` when the JSON gets large.
+File-generating concept skeleton for `mps_mcp_insert_root_node_from_json`. Add the body via follow-up calls to `mps_mcp_update_node` when the JSON gets large.
 
 ```json
 {

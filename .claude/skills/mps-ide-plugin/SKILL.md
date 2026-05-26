@@ -14,7 +14,7 @@ This skill covers **IDE plugins**: code that integrates with the MPS/IntelliJ ho
 - **Disambiguate the overloaded vocabulary first.** "Plugin", "tool", "action group" each mean two or three different things. See `references/terminology.md` before naming anything.
 - **A plugin solution is NOT an IntelliJ plugin jar.** The solution contains MPS models; the jar is what the MPS Build Language packages from it. Don't conflate.
 - **A `Tool` is a tool window** — a dockable panel — **not** a CLI tool or an action.
-- **Use MPS MCP tools for edits.** `mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_print_node`. Resolve concept names with `mps_mcp_search_concepts` / `mps_mcp_get_concept_details`; never guess.
+- **Use MPS MCP tools for edits.** `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`, `mps_mcp_print_node`. Resolve concept names with `mps_mcp_search_concepts` / `mps_mcp_get_concept_details`; never guess.
 - **`ModificationStatement.modifiedGroup` is a node reference (`r:...`), not a concept reference (`c:...`).** Look up the target group via `mps_mcp_search_root_node_by_name` to obtain the node ref.
 - **Add a model dependency on `jetbrains.mps.ide.actions`** before referencing built-in groups (`MainMenu`, `EditorPopup`, `NodeActions`, `ModelActions`, `ModuleActions`, `MainToolbar`, `ProjectViewPopupMenu`).
 - **Pick `requiredAccess` deliberately:** `none` (no model touch), `read` (safe traversal), `command` (mutates with undo + write lock — **never open modal dialogs from here**), `editorCommand` (correct undo scope for editor-driven edits).

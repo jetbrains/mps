@@ -17,7 +17,7 @@ The **behavior** aspect attaches methods and a constructor to a concept, much li
 - An overriding method must match the signature of the supertype/interface method exactly. When implementing an interface method (e.g. `ScopeProvider.getScope`), set `overriddenMethod` on the new method to the interface declaration — MPS uses it for dispatch and signature validation.
 - Behavior calls on a `null` node do **not** NPE — MPS returns `null` for reference/String returns and the default for primitives. Still handle the `null` return for reference types.
 - Hoist shared methods to an abstract super-concept rather than duplicating per-sub-concept `ConceptBehavior` roots — virtual dispatch covers all non-abstract sub-concepts. (See `references/inheritance-and-dispatch.md`.)
-- Edit behavior models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_parse_java_and_insert`). Do not hand-edit `.mps` files.
+- Edit behavior models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`, `mps_mcp_parse_java_and_insert`). Do not hand-edit `.mps` files.
 - For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`), `mps_mcp_parse_java_and_insert` produces Java `List<SNode>` — replace `returnType` afterwards with the correct MPS blueprint (see `mps-model-manipulation/references/variable-declarations.md`).
 - After edits run `mps_mcp_check_root_node_problems` and rebuild the language.
 

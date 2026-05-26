@@ -12,9 +12,27 @@ The core workflow for mutating MPS nodes through MCP tools. JSON blueprints desc
 
 - **Always use the fully qualified concept name** in the `concept` field — it is unambiguous and does not require a `conceptReference`.
 - **Resolve before editing** — call `mps_mcp_get_current_editor_root_node` (for the user's focus) or `mps_mcp_search_root_node_by_name` (by name) to lock onto the target. Don't guess refs.
-- **Prefer surgical edits** — `mps_mcp_add_node_child` and `mps_mcp_replace_node_child` preserve persistent IDs. `mps_mcp_update_root_node_from_json` rewrites the entire root and is wasteful when only one subtree changed.
+- **Prefer surgical edits** — `mps_mcp_update_node` (`ADD`/`CHILD` or `SET`/`CHILD`) preserves persistent IDs. `mps_mcp_update_root_node_from_json` rewrites the entire root and is wasteful when only one subtree changed.
 - **Don't delete-and-reinsert** to make a small change — deletion destroys persistent IDs and breaks incoming references.
 - **Validate frequently** — call `mps_mcp_check_root_node_problems` immediately after inserting or modifying a complex node. `"ok": true` from insert does not mean the AST is semantically valid.
+
+## `mps_mcp_update_node` — Unified Node-Mutation Tool
+
+All child, property, and reference operations on existing nodes go through `mps_mcp_update_node`. The operation is selected via `operation` (`ADD`/`SET`/`DELETE`) × `kind` (`CHILD`/`PROPERTY`/`REFERENCE`).
+
+| operation × kind        | Required parameters                                           | Notes |
+|-------------------------|---------------------------------------------------------------|-------|
+| `ADD` × `CHILD`         | `nodeReference` (parent), `childRole`, `childJson`            | Optional `position` (0-based; null/-1 = append) and `dryRun`. |
+| `SET` × `CHILD`         | `childNodeRef`, `childJson`                                   | Replaces an existing child; preserves its position in the role. Optional `dryRun`. |
+| `DELETE` × `CHILD`      | `childNodeRef`                                                | Removes the child from its parent. |
+| `SET` × `PROPERTY`      | `properties` = `[[nodeRef, propertyName, value], …]`          | Batch operation; returns per-row results. |
+| `DELETE` × `PROPERTY`   | `nodeReference`, `propertyName`                               | Clears a single property. |
+| `SET` × `REFERENCE`     | `references` = `[[nodeRef, role, targetRefOrName], …]`        | Batch operation; `targetRefOrName` accepts `r:...` refs or a plain name for auto-resolution. |
+| `DELETE` × `REFERENCE`  | `nodeReference`, `referenceRole`                              | Clears a single reference. |
+
+`ADD` × `PROPERTY` and `ADD` × `REFERENCE` are not valid combinations and return an error envelope.
+
+`childJson` accepts either an inline JSON string (max 4 KB) **or** an absolute path to a file containing the JSON blueprint. Use the file form for large blueprints to avoid MCP-transport truncation.
 
 ## Prerequisites
 
@@ -30,7 +48,7 @@ The core workflow for mutating MPS nodes through MCP tools. JSON blueprints desc
 ## Common Workflow
 
 1. **Identify** the target node (existing) or parent model (new root).
-2. **Choose the right tool**: `mps_mcp_create_root_node` / `mps_mcp_insert_root_node_from_json` for new roots; `mps_mcp_add_node_child` or `mps_mcp_replace_node_child` for surgical edits; `mps_mcp_update_root_node_from_json` only for full-root rewrites; `mps_mcp_set_node_properties` / `mps_mcp_set_node_references` for property/ref-only changes.
+2. **Choose the right tool**: `mps_mcp_create_root_node` / `mps_mcp_insert_root_node_from_json` for new roots; `mps_mcp_update_node` (`ADD`/`SET`/`DELETE` × `CHILD`/`PROPERTY`/`REFERENCE`) for surgical edits; `mps_mcp_update_root_node_from_json` only for full-root rewrites.
 3. **Author the JSON** following the unified blueprint format.
 4. **Insert** with `dryRun: true` first if the blueprint is large. Check the response: an empty `warnings` array means staging was clean; a non-empty list means the production write will produce dynamic (unresolved) references for the listed targets — resolve those first or expect broken refs.
 5. **Validate** with `mps_mcp_check_root_node_problems`.
@@ -46,12 +64,12 @@ The core workflow for mutating MPS nodes through MCP tools. JSON blueprints desc
 
 ## JSON Input — File-Path Semantics
 
-The tools that accept a node JSON blueprint (`mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_root_node_from_json`) all use the same `childJson` / `json` parameter convention:
+The tools that accept a node JSON blueprint (`mps_mcp_update_node` for `ADD`/`SET` × `CHILD`, `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_root_node_from_json`) all use the same `childJson` / `json` parameter convention:
 
 - The parameter can be **either** a JSON string (max 4 KB) **or** an absolute path to a local file containing the JSON.
 - Files may contain either a **raw node blueprint** or the **full MCP response envelope** produced by `mps_mcp_print_node`; in the latter case the `data` field is used.
 - **Ordinary input files are never deleted.** Only temporary JSON files created by this toolset may be cleaned up after reading (and only when `dryRun=false`).
-- Very large JSON inputs may be truncated by the MCP transport before the tool reads them. If that happens, insert a smaller blueprint first and add children in follow-up calls with `mps_mcp_add_node_child` or `mps_mcp_replace_node_child` instead of sending the whole subtree at once. See `references/staged-construction.md` for the recommended pattern.
+- Very large JSON inputs may be truncated by the MCP transport before the tool reads them. If that happens, insert a smaller blueprint first and add children in follow-up calls with `mps_mcp_update_node` (`ADD`/`CHILD` or `SET`/`CHILD`), or pass the JSON as a file path instead of an inline string. See `references/staged-construction.md` for the recommended pattern.
 
 ## Reference Index
 

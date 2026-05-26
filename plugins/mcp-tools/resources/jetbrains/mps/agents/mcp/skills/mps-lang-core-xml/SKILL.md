@@ -38,6 +38,6 @@ type: reference
 ## Reference Index
 
 - Concept catalog — open when you need exact concept names, properties, cardinalities, or aliases for any document, prolog, element, attribute, or content node. See [references/concept-catalog.md](references/concept-catalog.md).
-- JSON blueprint patterns — open when constructing or editing concrete XML trees as JSON for `mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, or `mps_mcp_replace_node_child`. Includes minimal files, prolog with declarations, DOCTYPE, comments, attributes, mixed values, CDATA, processing instructions, and a full generator-template example. See [references/json-blueprints.md](references/json-blueprints.md).
+- JSON blueprint patterns — open when constructing or editing concrete XML trees as JSON for `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`. Includes minimal files, prolog with declarations, DOCTYPE, comments, attributes, mixed values, CDATA, processing instructions, and a full generator-template example. See [references/json-blueprints.md](references/json-blueprints.md).
 - Rules and pitfalls — open when a node validates but the rendered XML is wrong, when attribute/value naming feels inconsistent, or before subclassing element/attribute concepts. See [references/rules-and-pitfalls.md](references/rules-and-pitfalls.md).
 - Language dependencies — open when setting up a new model that uses XML concepts, or when wiring generator templates that mix XML with generator macros. See [references/language-dependencies.md](references/language-dependencies.md).

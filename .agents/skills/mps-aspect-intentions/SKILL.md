@@ -10,7 +10,7 @@ Intentions are user-invoked transformations shown in the Alt+Enter popup on a no
 
 ## Critical Directives
 
-- Edit intention roots through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_parse_java_and_insert`). Do not hand-edit serialized `.mps` files.
+- Edit intention roots through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`, `mps_mcp_parse_java_and_insert`). Do not hand-edit serialized `.mps` files.
 - The intentions model must list every language used in any block body as a used language. In particular, the `add new initialized(...)` surface syntax requires `jetbrains.mps.lang.actions` — add it with `mps_mcp_add_model_used_language(kind="language")`. Plain (non-`NF_*`) variants like `parent.role.add new(C)` do not need this import.
 - Use `n as C` (MPS `SNodeTypeCastExpression` with `asCast=true`) — never a Java `(C) n` cast.
 - Use `:eq:` (`NPEEqualsExpression`) instead of `==` whenever either operand might be `null`.

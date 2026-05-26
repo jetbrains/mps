@@ -299,7 +299,9 @@ class JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest : McpIntegrationTest
             name = "OutOfProcessTests",
         )
         val setPropertyResponse = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_set_node_properties(
+            it.mps_mcp_update_node(nodeReference = rootRef,
+                operation = NodeUpdateOperation.SET,
+                kind = NodeUpdateKind.PROPERTY,
                 properties = listOf(listOf(rootRef, "canNotRunInProcess", "true"))
             )
         }

@@ -20,7 +20,7 @@ type: reference
 - Use TextGen only when the final artifact is text. If your pipeline ends in a model-to-model transformation targeting another MPS language (e.g. BaseLanguage), you don't need TextGen — that language's own TextGen handles the final step.
 - `BinaryWriteOperation` (`write`) cannot be mixed with text `append`s in the same `ConceptTextGenDeclaration`. A rule emits either text or bytes, not both.
 - The older `$ref{node.reference<target>}` syntax is **deprecated**. Use a `NodeAppendPart` over a resolved node (or over `.name`).
-- Edit textGen models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`). Do not hand-edit `.mps` files.
+- Edit textGen models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`). Do not hand-edit `.mps` files.
 - After edits run `mps_mcp_check_root_node_problems` and rebuild the language; regenerate consumers.
 
 ## Common-Path Workflow

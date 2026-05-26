@@ -27,7 +27,7 @@ Use this workflow when authoring non-trivial BaseLanguage code via JSON blueprin
     * **Ambiguity**: use `GET_ASSIGNABLE_REFERENCES` (mode: `completion`) for overloaded/inherited members if name auto-resolution fails.
 5. **Patch & Apply**:
     * Replace placeholder targets in your JSON with the harvested/derived persistent refs (especially for `ClassCreator` and `InstanceMethodCallOperation`).
-    * Apply the full AST using `mps_mcp_update_root_node_from_json` or `mps_mcp_add_node_child`.
+    * Apply the full AST using `mps_mcp_update_root_node_from_json` or `mps_mcp_update_node`.
 6. **Final Validation**: `dryRun` → `mps_mcp_check_root_node_problems` → `MAKE`.
 
 ## Reference Rules
@@ -40,7 +40,7 @@ Use this workflow when authoring non-trivial BaseLanguage code via JSON blueprin
 
 * Use fully qualified concept names in JSON.
 * Keep helper JSON-generation scripts outside the model.
-* If only one subtree changes, prefer `mps_mcp_add_node_child` or `mps_mcp_replace_node_child` over a full root rewrite to reduce reference churn.
+* If only one subtree changes, prefer `mps_mcp_update_node` over a full root rewrite to reduce reference churn.
 * Harvest refs from live AST with `mps_mcp_print_node` for own-class members; do not assume constructor or method identities are stable across rewrites.
 * For library stubs, derive persistent refs from the class ref using the URL-encoded signature formula; do not print stubs to harvest refs that can be computed.
 

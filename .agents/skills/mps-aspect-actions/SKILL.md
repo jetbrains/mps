@@ -16,14 +16,14 @@ The **actions** aspect customizes how new nodes of a concept are constructed by 
 - `sampleNode` is typed as `node<BaseConcept>`. Always narrow with `ifInstanceOf (sampleNode is <Concept> original)` before accessing fields — direct dereference will NPE or fail to compile.
 - Use `SPropertyAccess` (ref `property` → `PropertyDeclaration`) for properties; use `SLinkAccess` (ref `link` → `LinkDeclaration`) for **both** containment and reference child roles.
 - Factories do **not** fire for quotations `<C()>`, `model.add root(<C()>)`, `model.add new root(C)`, or pure rendering. If you need factory-initialised nodes in generator code, use `new node<C>()` with explicit property assignments or route creation through an intention that calls `add new initialized`.
-- Edit factories through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, optionally `mps_mcp_parse_java_and_insert` with `featureKind: "STATEMENTS"` for the body). Do not hand-edit `.mps` files.
+- Edit factories through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`, optionally `mps_mcp_parse_java_and_insert` with `featureKind: "STATEMENTS"` for the body). Do not hand-edit `.mps` files.
 - After editing, validate with `mps_mcp_check_root_node_problems` on the `NodeFactories` root and rebuild the language.
 
 ## Common-Path Workflow
 
 1. Ensure an actions model exists (`<lang>/models/<lang>.actions.mps`). Used languages: `jetbrains.mps.lang.actions`, `jetbrains.mps.baseLanguage`, `jetbrains.mps.lang.smodel`. Add `jetbrains.mps.lang.core` as the base. Import the structure model of your language.
 2. Create the `NodeFactories` root via `mps_mcp_insert_root_node_from_json` (blueprint in `references/json-blueprints.md`). Set `name`.
-3. For each concept that needs custom initialization, add a `NodeFactory` child via `mps_mcp_add_node_child`. Set `applicableConcept`; attach a `NodeSetupFunction` with a `StatementList` body.
+3. For each concept that needs custom initialization, add a `NodeFactory` child via `mps_mcp_update_node`. Set `applicableConcept`; attach a `NodeSetupFunction` with a `StatementList` body.
 4. Fill the body. Typical pattern: `ifInstanceOf (sampleNode is <Concept> original) { newNode.<prop> = original.<prop>; ... }`. Cross-type narrowing is allowed — see `references/setup-function-bodies.md`.
 5. Validate with `mps_mcp_check_root_node_problems`, rebuild the language, exercise in a sandbox.
 

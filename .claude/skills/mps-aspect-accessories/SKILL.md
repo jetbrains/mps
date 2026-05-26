@@ -13,7 +13,7 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 - **Prefer MCP wiring tools over hand-editing `.mpl` XML.** Hand-editing can silently corrupt the module descriptor. If you must hand-edit (e.g. for `accessoryModels`, which has no dedicated MCP tool), make a backup, edit only the targeted block, and rebuild the module immediately afterwards so MPS re-reads the descriptor.
 - **Don't hand-edit `languageVersions` / `dependencyVersions`.** MPS maintains these. Use the MPS "Update language/dependency versions" action.
 - **Generator modules have their own dependency list.** Add target-language deps to the generator, not the parent language.
-- **Used languages auto-import** when nodes are inserted via `mps_mcp_insert_root_node_from_json` / `mps_mcp_add_node_child` / `mps_mcp_replace_node_child`. Manually add a used language only for hand-written code or implicit dependencies.
+- **Used languages auto-import** when nodes are inserted via `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`. Manually add a used language only for hand-written code or implicit dependencies.
 
 ## Rule of Thumb — Dependency vs. Used Language
 

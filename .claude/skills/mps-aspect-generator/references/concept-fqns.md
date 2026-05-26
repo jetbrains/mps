@@ -30,4 +30,4 @@ Children are added incrementally after insertion:
 }
 ```
 
-Add rules via `mps_mcp_add_node_child` with the corresponding role (e.g. role `rootMappingRule`, concept `jetbrains.mps.lang.generator.structure.Root_MappingRule`).
+Add rules via `mps_mcp_update_node` with the corresponding role (e.g. role `rootMappingRule`, concept `jetbrains.mps.lang.generator.structure.Root_MappingRule`).

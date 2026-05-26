@@ -43,7 +43,7 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
 ## Editing Strategy
 
 * **New class / method**: use `mps_mcp_parse_java_and_insert` for rapid skeleton / body creation.
-* **Targeted changes**: use node-by-node AST editing (e.g. `mps_mcp_replace_node_child`) to preserve surrounding structure.
+* **Targeted changes**: use node-by-node AST editing (e.g. `mps_mcp_update_node`) to preserve surrounding structure.
 * **Delete-and-recreate**: use only for roots you just created in the current session that have no incoming references.
 
 ## After Insertion

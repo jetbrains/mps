@@ -7,7 +7,7 @@
 - To obtain the node reference (`r:...`) for a concept:
     - Use `mps_mcp_get_concept_details` and check the **`sourceNode`** field in the response.
     - Alternatively, use `mps_mcp_search_concepts` and check the `sourceNode` field for each match.
-- The `mps_mcp_insert_root_node_from_json` and `mps_mcp_set_node_references` tools will reject `c:...` strings in reference roles and will fail if a provided node reference cannot be resolved.
+- The `mps_mcp_insert_root_node_from_json` and `mps_mcp_update_node` tools will reject `c:...` strings in reference roles and will fail if a provided node reference cannot be resolved.
 
 ## MCP Response Envelope
 
@@ -27,7 +27,7 @@ Every MPS MCP tool returns a JSON envelope at the top level:
 **`warnings`** appear in the envelope on a **successful response** (`ok:true`) when the tool completed but found something worth surfacing without treating it as an error. Current producers:
 
 - **`mps_mcp_get_concept_details` partial success**: one warning per unresolved ref, alongside `details.unresolved` with suggestions.
-- **Dry-run validation of node blueprints** (`mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_root_node_from_json`): a warning is added when a reference target did not resolve during staging and the production write *would* create a dynamic (unresolved) reference. The dry-run itself succeeds, but the warning signals that the subsequent write may produce a broken reference.
+- **Dry-run validation of node blueprints** (`mps_mcp_update_node`, `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_root_node_from_json`): a warning is added when a reference target did not resolve during staging and the production write *would* create a dynamic (unresolved) reference. The dry-run itself succeeds, but the warning signals that the subsequent write may produce a broken reference.
 
 **Dry-run response** specifically:
 
@@ -60,4 +60,4 @@ Tools that return a node (e.g. `mps_mcp_get_current_editor_root_node`, `mps_mcp_
 Tool-specific additions:
 
 - `mps_mcp_get_current_editor_root_node` additionally carries `selectedNodeReference` when an editor selection is active.
-- `mps_mcp_add_node_child` carries `parentReference` of the freshly inserted child.
+- `mps_mcp_update_node` carries `parentReference` of the freshly inserted child.

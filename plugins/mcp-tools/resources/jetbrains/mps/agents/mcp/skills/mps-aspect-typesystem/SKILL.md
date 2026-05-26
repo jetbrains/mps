@@ -25,7 +25,7 @@ Lives in `<lang>/languageModels/typesystem.mps`, language `jetbrains.mps.lang.ty
 - Quick fixes (`TypesystemQuickFix`) are roots, **not** executed automatically — the user triggers them via the UI. Wire them into a report through the `helginsIntention` slot (`TypesystemIntention` wrapper with `quickFix` ref + `actualArgument`s). See `references/quick-fixes.md`.
 - Reusable helper code (utility classes, shared algorithms) can live as a plain BaseLanguage `ClassConcept` root **directly in the typesystem model**. No separate utility module is required.
 - For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`) the Java parser gives back `List<SNode>` — fix per `mps-model-manipulation/references/variable-declarations.md`.
-- Edit typesystem models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, `mps_mcp_replace_node_child`, `mps_mcp_parse_java_and_insert`). Do not hand-edit `.mps` files.
+- Edit typesystem models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`, `mps_mcp_parse_java_and_insert`). Do not hand-edit `.mps` files.
 - After edits run `mps_mcp_check_root_node_problems`, compile the language, and test on sample models.
 
 ## Common-Path Workflow

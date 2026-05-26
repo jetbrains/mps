@@ -1,6 +1,6 @@
 # Verified Migration JSON Blueprints
 
-Real, verified examples copied from the codebase. Use as starting templates for `mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, or `mps_mcp_replace_node_child`.
+Real, verified examples copied from the codebase. Use as starting templates for `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`.
 
 ## `MigrationScript` (lang.migration) — `MigrateReferences`
 

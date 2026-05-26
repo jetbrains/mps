@@ -6,7 +6,7 @@ Read this when: attaching a macro to a template node, choosing between similar m
 
 Macros attach to target nodes **via the `smodelAttribute` child role** (well-known role id `lGtFl`). Multiple macros can coexist on the same target node as sibling `smodelAttribute` children (e.g. `LoopMacro` + `CopySrcNodeMacro` together = "iterate source children and copy each, running reductions").
 
-All macro concepts live in `jetbrains.mps.lang.generator.structure`. Attach any of them via `mps_mcp_add_node_child(nodeReference = <target-node>, childRole = "smodelAttribute", childJson = ...)`.
+All macro concepts live in `jetbrains.mps.lang.generator.structure`. Attach any of them via `mps_mcp_update_node(operation = ADD, kind = CHILD, nodeReference = <target-node>, childRole = "smodelAttribute", childJson = ...)`.
 
 ## Macro table
 
@@ -44,7 +44,7 @@ Additionally, **`TemplateFragment`** (`jetbrains.mps.lang.generator.structure.Te
 
 > **A `TemplateDeclaration` used as a reduction target requires at least one `TemplateFragment`.** Without it the rule fires but emits nothing — the matched input simply disappears from the output, which looks identical to "the rule never matched". If a refactor splits inline content into a standalone `TemplateDeclaration` and the output silently loses those elements, the missing `TemplateFragment` on the produced subtree is the first thing to check. The fragment goes on the *exact* node that should replace the input — typically the outermost element of the template's `contentNode`.
 
-> **Multiple sibling macros on the same `smodelAttribute` slot are valid and order-independent.** The canonical example is `LoopMacro` + `CopySrcNodeMacro` together on a single target node ("for each source element, copy it through reductions"). MPS treats the macros as a set, not as a sequence; the order in which children sit under `smodelAttribute` does not change semantics. Add them with separate `mps_mcp_add_node_child` calls — no need to coordinate ordering.
+> **Multiple sibling macros on the same `smodelAttribute` slot are valid and order-independent.** The canonical example is `LoopMacro` + `CopySrcNodeMacro` together on a single target node ("for each source element, copy it through reductions"). MPS treats the macros as a set, not as a sequence; the order in which children sit under `smodelAttribute` does not change semantics. Add them with separate `mps_mcp_update_node` calls — no need to coordinate ordering.
 
 ## CopySrcNodeMacro (minimal, no query)
 

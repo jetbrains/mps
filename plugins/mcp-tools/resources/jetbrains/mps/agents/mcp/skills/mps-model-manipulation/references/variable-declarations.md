@@ -81,7 +81,7 @@ Populate with a `concept/C/` literal (`SConceptTypeLiteral`, id `547244460968453
 }
 ```
 
-## Collection type blueprints (for use with `mps_mcp_replace_node_child`)
+## Collection type blueprints (for use with `mps_mcp_update_node`)
 
 Use these to correct a type that the Java parser produced incorrectly (usually a method return type).
 

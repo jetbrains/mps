@@ -107,7 +107,7 @@ This causes a type mismatch error at the call site when the result is assigned t
 an MPS `sequence<node<Type>>` or `list<node<Type>>` variable.
 
 **Fix**: After parsing the method, replace the `returnType` child using
-`mps_mcp_replace_node_child`:
+`mps_mcp_update_node`:
 
 | Needed MPS return type | Blueprint |
 |---|---|
@@ -134,9 +134,9 @@ For local variable types and `new` expressions, don't use the Java parser —
 construct nodes directly using the blueprints in this file and `variable-declarations.md`.
 
 **After parsing a method**, check its `returnType` and parameter `type` children.
-If they should be MPS collection or smodel types, replace them using `mps_mcp_replace_node_child`.
+If they should be MPS collection or smodel types, replace them using `mps_mcp_update_node`.
 
-Node blueprints for common MPS types (use in `mps_mcp_replace_node_child`):
+Node blueprints for common MPS types (use in `mps_mcp_update_node`):
 
 ```json
 // sequence<node<Type>>

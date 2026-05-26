@@ -44,6 +44,18 @@ enum class MPSNodeOperation {
     FIX_REFERENCES
 }
 
+enum class NodeUpdateOperation {
+    ADD,
+    SET,
+    DELETE
+}
+
+enum class NodeUpdateKind {
+    CHILD,
+    PROPERTY,
+    REFERENCE
+}
+
 private val MAKE_PARAMETER_SCHEMA: Map<String, String> = linkedMapOf(
     "models" to "Optional: array of persistent model references",
     "modules" to "Optional: array of persistent module references",
@@ -609,7 +621,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Saves a JSON printout of the specified node to a temp file (path returned in `data`). `deep=true` inlines all descendants; `deep=false` (default) lists direct children's refs only. The saved envelope is consumable by every node-mutation tool (`mps_mcp_add_node_child`, `mps_mcp_update_root_node_from_json`, etc.). See `mps-mcp-workflow/references/analysis-tools.md` for the output schema and `mps-node-editing/references/json-format.md` for the matching blueprint shape.
+        Saves a JSON printout of the specified node to a temp file (path returned in `data`). `deep=true` inlines all descendants; `deep=false` (default) lists direct children's refs only. The saved envelope is consumable by every node-mutation tool (`mps_mcp_update_node`, `mps_mcp_update_root_node_from_json`, etc.). See `mps-mcp-workflow/references/analysis-tools.md` for the output schema and `mps-node-editing/references/json-format.md` for the matching blueprint shape.
         Alternatively, if HTML or PLAIN TEXT format is required, it saves the editor-projected representation of the specified node to a temp file (path returned in `data`).
     """
     )
@@ -636,126 +648,129 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Deletes the value of a specified property of the given MPS node.
-        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
-    """
-    )
-    suspend fun mps_mcp_delete_node_property(
-        @McpDescription("Persistent form of SNodeReference") nodeReference: String,
-        @McpDescription("The name of the property to delete") propertyName: String
-    ): String {
-        return update_node_property(nodeReference, propertyName, null)
-    }
+        Unified node-mutation tool. Use this for all child, property, and reference operations on MPS nodes.
 
-    @McpTool
-    @McpDescription(
-        """
-        Sets references on a batch of nodes. Each triplet is `[nodeReference, referenceRole, targetNodeRefOrName]`. `targetNodeRefOrName` accepts a persistent node reference (`r:...`) or a plain name for auto-resolution; do NOT use MPS XML short IDs copied from `.mps` files. Returns a JSON array with one result per triplet. See `mps-mcp-workflow/references/reference-formats.md` for the reference-format protocol.
+        operation × kind combinations and required parameters:
+
+        ADD × CHILD — Add a new child node.
+          nodeReference: persistent ref of the parent node.
+          childRole: containment role name.
+          childJson: JSON blueprint as an inline string (max 4 KB) OR an absolute path to a file containing the JSON. For large blueprints prefer the file form to avoid MCP transport truncation. Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. Single-cardinality roles accept only null/-1/0. `dryRun=true` validates without mutating.
+          Returns the inserted node's info envelope (`data.parentReference` carries the parent ref).
+
+        SET × CHILD — Replace an existing child node with a new node described by a JSON blueprint.
+          childNodeRef: persistent ref of the child to replace.
+          childJson: JSON blueprint as an inline string (max 4 KB) OR an absolute path to a file containing the JSON. For large blueprints use the file form. The original child's position in its role is preserved. `dryRun=true` validates without mutating.
+          Returns the inserted node's info envelope.
+
+        DELETE × CHILD — Delete a child node from its parent.
+          childNodeRef: persistent ref of the child to delete.
+          Returns node info on success.
+
+        SET × PROPERTY — Set properties on a batch of nodes.
+          properties: list of triplets [nodeReference, propertyName, propertyValue]. Returns a JSON array with one result per triplet.
+
+        DELETE × PROPERTY — Delete the value of a specified property.
+          nodeReference: persistent ref of the target node.
+          propertyName: name of the property to delete.
+          Returns node info on success.
+
+        SET × REFERENCE — Set references on a batch of nodes.
+          references: list of triplets [nodeReference, referenceRole, targetNodeRefOrName]. `targetNodeRefOrName` accepts a persistent node reference (`r:...`) or a plain name for auto-resolution; do NOT use MPS XML short IDs copied from `.mps` files. Returns a JSON array with one result per triplet. See `mps-mcp-workflow/references/reference-formats.md`.
+
+        DELETE × REFERENCE — Delete the target node from a specified reference role.
+          nodeReference: persistent ref of the target node.
+          referenceRole: role name of the reference to delete.
+          Returns node info on success.
+
+        ADD × PROPERTY and ADD × REFERENCE are not valid combinations and return an error.
+
+        The child's concept must be assignable to the role's concept; model dependencies and used languages are updated automatically on child operations. For `childJson` larger than ~4 KB pass an absolute file path instead of an inline string. See `mps-node-editing` for blueprint format, file-path semantics, and staged-construction patterns. See `mps-mcp-workflow/references/reference-formats.md` for reference formats.
+
+        On success returns `{"ok":true,"data":{...}}`. On failure returns `{"ok":false,"error":"..."}` with optional `code`, `details`, and `warnings` fields.
     """
     )
-    suspend fun mps_mcp_set_node_references(
-        @McpDescription("A collection of triplets (nodeReference, referenceRole, targetNodeRefOrName), each as a list of three strings")
-        references: List<List<String>>
+    suspend fun mps_mcp_update_node(
+        @McpDescription("The operation to perform (ADD, SET, DELETE)") operation: NodeUpdateOperation,
+        @McpDescription("The kind of element to operate on (CHILD, PROPERTY, REFERENCE)") kind: NodeUpdateKind,
+        @McpDescription("Parent node ref for ADD CHILD; node ref for DELETE PROPERTY or DELETE REFERENCE") nodeReference: String? = null,
+        @McpDescription("Containment role name for ADD CHILD") childRole: String? = null,
+        @McpDescription("For ADD CHILD or SET CHILD: JSON blueprint as an inline string (max 4 KB) OR an absolute path to a file containing the JSON. Prefer the file form for blueprints larger than ~4 KB to avoid MCP transport truncation.") childJson: String? = null,
+        @McpDescription("Ref of the child to replace (SET CHILD) or delete (DELETE CHILD)") childNodeRef: String? = null,
+        @McpDescription("0-based insert index for ADD CHILD multi-cardinality roles; null/-1 = append. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
+        @McpDescription("If true, validate without mutating (ADD CHILD, SET CHILD only). Default: false.") dryRun: Boolean = false,
+        @McpDescription("Property name for DELETE PROPERTY") propertyName: String? = null,
+        @McpDescription("Batch triplets [nodeRef, propertyName, value] for SET PROPERTY") properties: List<List<String>>? = null,
+        @McpDescription("Reference role name for DELETE REFERENCE") referenceRole: String? = null,
+        @McpDescription("Batch triplets [nodeRef, referenceRole, targetNodeRefOrName] for SET REFERENCE") references: List<List<String>>? = null,
     ): String {
-        val results = mutableListOf<String>()
-        var allSucceeded = true
-        for (triplet in references) {
-            val itemResult = if (triplet.size >= 3) {
-                update_node_reference(triplet[0], triplet[1], triplet[2])
-            } else {
-                allSucceeded = false
-                errJson("Invalid reference triplet: expected at least 3 elements")
+        return when (kind) {
+            NodeUpdateKind.CHILD -> when (operation) {
+                NodeUpdateOperation.ADD -> {
+                    val parentRef = nodeReference ?: return errJson("nodeReference is required for ADD CHILD")
+                    val role = childRole ?: return errJson("childRole is required for ADD CHILD")
+                    val json = childJson ?: return errJson("childJson is required for ADD CHILD")
+                    update_node_child(parentRef, role, json, null, position, dryRun)
+                }
+                NodeUpdateOperation.SET -> {
+                    val childRef = childNodeRef ?: return errJson("childNodeRef is required for SET CHILD")
+                    val json = childJson ?: return errJson("childJson is required for SET CHILD")
+                    update_node_child(null, null, json, childRef, null, dryRun)
+                }
+                NodeUpdateOperation.DELETE -> {
+                    val childRef = childNodeRef ?: return errJson("childNodeRef is required for DELETE CHILD")
+                    update_node_child(null, null, null, childRef, null)
+                }
             }
-            results.add(itemResult)
-        }
-        val array = "[" + results.joinToString(",") + "]"
-        return "{" + "\"ok\":$allSucceeded,\"data\":" + array + "}"
-    }
-
-    @McpTool
-    @McpDescription(
-        """
-        Sets properties on a batch of nodes. Each triplet is `[nodeReference, propertyName, propertyValue]`. Returns a JSON array with one result per triplet.
-    """
-    )
-    suspend fun mps_mcp_set_node_properties(
-        @McpDescription("A collection of triplets (nodeReference, propertyName, propertyValue), each as a list of three strings")
-        properties: List<List<String>>
-    ): String {
-        val results = mutableListOf<String>()
-        var allSucceeded = true
-        for (triplet in properties) {
-            val itemResult = if (triplet.size >= 3) {
-                update_node_property(triplet[0], triplet[1], triplet[2])
-            } else {
-                errJson("Invalid property triplet: expected at least 3 elements")
+            NodeUpdateKind.PROPERTY -> when (operation) {
+                NodeUpdateOperation.ADD -> errJson("ADD is not a valid operation for PROPERTY")
+                NodeUpdateOperation.SET -> {
+                    val triplets = properties ?: return errJson("properties is required for SET PROPERTY")
+                    val results = mutableListOf<String>()
+                    var allSucceeded = true
+                    for (triplet in triplets) {
+                        val itemResult = if (triplet.size >= 3) {
+                            update_node_property(triplet[0], triplet[1], triplet[2])
+                        } else {
+                            errJson("Invalid property triplet: expected at least 3 elements")
+                        }
+                        results.add(itemResult)
+                        if (!itemResult.startsWith("{\"ok\":true")) allSucceeded = false
+                    }
+                    val array = "[" + results.joinToString(",") + "]"
+                    "{" + "\"ok\":$allSucceeded,\"data\":" + array + "}"
+                }
+                NodeUpdateOperation.DELETE -> {
+                    val nodeRef = nodeReference ?: return errJson("nodeReference is required for DELETE PROPERTY")
+                    val propName = propertyName ?: return errJson("propertyName is required for DELETE PROPERTY")
+                    update_node_property(nodeRef, propName, null)
+                }
             }
-            results.add(itemResult)
-            if (!itemResult.startsWith("{\"ok\":true")) allSucceeded = false
+            NodeUpdateKind.REFERENCE -> when (operation) {
+                NodeUpdateOperation.ADD -> errJson("ADD is not a valid operation for REFERENCE")
+                NodeUpdateOperation.SET -> {
+                    val triplets = references ?: return errJson("references is required for SET REFERENCE")
+                    val results = mutableListOf<String>()
+                    var allSucceeded = true
+                    for (triplet in triplets) {
+                        val itemResult = if (triplet.size >= 3) {
+                            update_node_reference(triplet[0], triplet[1], triplet[2])
+                        } else {
+                            allSucceeded = false
+                            errJson("Invalid reference triplet: expected at least 3 elements")
+                        }
+                        results.add(itemResult)
+                    }
+                    val array = "[" + results.joinToString(",") + "]"
+                    "{" + "\"ok\":$allSucceeded,\"data\":" + array + "}"
+                }
+                NodeUpdateOperation.DELETE -> {
+                    val nodeRef = nodeReference ?: return errJson("nodeReference is required for DELETE REFERENCE")
+                    val refRole = referenceRole ?: return errJson("referenceRole is required for DELETE REFERENCE")
+                    update_node_reference(nodeRef, refRole, null)
+                }
+            }
         }
-        val array = "[" + results.joinToString(",") + "]"
-        return "{" + "\"ok\":$allSucceeded,\"data\":" + array + "}"
-    }
-
-    @McpTool
-    @McpDescription(
-        """
-        Deletes the target node from a specified reference role of the given MPS node.
-        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
-    """
-    )
-    suspend fun mps_mcp_delete_node_reference(
-        @McpDescription("Persistent form of SNodeReference") nodeReference: String,
-        @McpDescription("The role name of the reference") referenceRole: String
-    ): String {
-        return update_node_reference(nodeReference, referenceRole, null)
-    }
-
-    @McpTool
-    @McpDescription(
-        """
-        Adds a child node described by a JSON blueprint to a containment role of the given parent node. Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. Single-cardinality roles accept only null/-1/0 for `position` and replace the existing child. The child's concept must be assignable to the role's concept; model dependencies and used languages are updated automatically. Returns the inserted node's info envelope (`data.parentReference` carries the parent ref). See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md` for the blueprint shape, `references/staged-construction.md` for the parent-first staged pattern).
-    """
-    )
-    suspend fun mps_mcp_add_node_child(
-        @McpDescription("Persistent form of the parent SNodeReference") nodeReference: String,
-        @McpDescription("The role name of the child") childRole: String,
-        @McpDescription("JSON blueprint of the new child (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") childJson: String,
-        @McpDescription("Optional 0-based insert index for multi-cardinality roles; null/-1 = append. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
-        @McpDescription("Optional: if true, only validate JSON, concept-role assignability, and position without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
-    ): String {
-        return update_node_child(nodeReference, childRole, childJson, null, position, dryRun)
-    }
-
-    @McpTool
-    @McpDescription(
-        """
-        Replaces an existing child node with a new node described by a JSON blueprint. The original child's position in its role is preserved. The new child's concept must be assignable to the role's concept; model dependencies and used languages are updated automatically. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md` for the blueprint shape).
-    """
-    )
-    suspend fun mps_mcp_replace_node_child(
-        @McpDescription("Persistent form of the SNodeReference of the child to replace") childNodeRef: String,
-        @McpDescription("JSON blueprint of the replacement child (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") childJson: String,
-        @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
-    ): String {
-        return update_node_child(null, null, childJson, childNodeRef, null, dryRun)
-    }
-
-    @McpTool
-    @McpDescription(
-        """
-        Deletes a specified child node from its parent.
-        Returns a JSON object with 'ok':true and 'data':{...nodeInfo...} on success, or 'ok':false and 'error':"..." on failure.
-    """
-    )
-    suspend fun mps_mcp_delete_node_child(
-        @McpDescription("Persistent form of the SNodeReference of the child to delete") childNodeRef: String
-    ): String {
-        // Route through the same private wrapper used by the add/replace tools so any
-        // future change to the wrapper signature (e.g. additional pre-processing) is
-        // applied consistently here too. Passing childJson=null skips JSON parsing
-        // and the base-class update_node_child() takes the deletion path.
-        return update_node_child(null, null, null, childNodeRef, null)
     }
 
     private suspend fun update_node_child(

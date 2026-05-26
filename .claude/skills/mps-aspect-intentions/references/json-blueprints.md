@@ -1,6 +1,6 @@
 # Intention JSON Blueprints and Validated Concept Reference
 
-Use these blueprints with `mps_mcp_insert_root_node_from_json` (root) and `mps_mcp_add_node_child` (function blocks). Fill function bodies afterwards via `mps_mcp_add_node_child` or `mps_mcp_parse_java_and_insert`.
+Use these blueprints with `mps_mcp_insert_root_node_from_json` (root) and `mps_mcp_update_node` (`ADD`/`CHILD` for function blocks). Fill function bodies afterwards via `mps_mcp_update_node` or `mps_mcp_parse_java_and_insert`.
 
 > Verified against MPS via `mps_mcp_get_concept_details`. Re-verify with the MCP before inserting if your MPS version differs.
 

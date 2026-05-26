@@ -163,7 +163,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
             // 3 existing children; 4 is past the end.
-            it.mps_mcp_add_node_child(enumRef, "members", memberJson("ZETA"), position = 4)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("ZETA"), position = 4)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -184,7 +184,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", memberJson("EPSILON"), position = -2)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("EPSILON"), position = -2)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -212,7 +212,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         """.trimIndent()
 
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(fooRef, "helpURL", helpUrlJson, position = 1)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = fooRef, childRole = "helpURL", childJson = helpUrlJson, position = 1)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -244,7 +244,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         // Seed: add the first HelpURL with no position (today's replace-or-add path).
         val firstAdd = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(fooRef, "helpURL", helpUrlJson(firstUrl))
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = fooRef, childRole = "helpURL", childJson = helpUrlJson(firstUrl))
         }
         assertOk(firstAdd)
         val firstChildRef = parseChildRef(firstAdd)
@@ -260,7 +260,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         // Replace with position=0 — must succeed and swap the child cleanly.
         val secondAdd = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(fooRef, "helpURL", helpUrlJson(secondUrl), position = 0)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = fooRef, childRole = "helpURL", childJson = helpUrlJson(secondUrl), position = 0)
         }
         assertOk(secondAdd)
         val secondChildRef = parseChildRef(secondAdd)
@@ -291,7 +291,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         // counters under data.fixReferences instead of dropping them.
         val enumRef = createColorEnum()
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", memberJson("MAGENTA"))
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("MAGENTA"))
         }
         val data = expectOk(response)
         val fix = data.get("fixReferences")
@@ -320,7 +320,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         """.trimIndent()
 
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", badJson)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = badJson)
         }
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
@@ -354,7 +354,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         """.trimIndent()
 
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", badJson)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = badJson)
         }
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
@@ -384,7 +384,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         """.trimIndent()
 
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", badJson)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = badJson)
         }
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
@@ -406,7 +406,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", memberJson("DRY"), position = 0, dryRun = true)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("DRY"), position = 0, dryRun = true)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -437,7 +437,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", memberJson("DRY"), position = 99, dryRun = true)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("DRY"), position = 99, dryRun = true)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
@@ -525,7 +525,7 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
      */
     private fun addMember(enumRef: String, name: String, position: Int? = null): Pair<String, String> {
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_add_node_child(enumRef, "members", memberJson(name), position = position)
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson(name), position = position)
         }
         assertOk(response)
         val obj = JsonParser.parseString(response).asJsonObject

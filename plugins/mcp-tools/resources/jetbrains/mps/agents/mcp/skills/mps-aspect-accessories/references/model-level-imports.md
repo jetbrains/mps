@@ -16,4 +16,4 @@ Both `add_model_used_language` and `remove_model_used_language` accept either a 
 
 Error vs. `removed: false` — the two input forms diverge intentionally: a persistent `l:UUID:name` reference that parses but isn't imported returns `{ "removed": false }` (no error, treat as idempotent no-op), while a bare qualified name that doesn't match any imported language/devkit returns an error envelope. Pass a persistent reference when "absent" is a normal case; pass a bare name when you want a typo to surface as a failure.
 
-These imports are updated automatically when using `mps_mcp_insert_root_node_from_json` / `mps_mcp_add_node_child` / `mps_mcp_replace_node_child` because those tools auto-import the languages of the concepts they insert. Manual adjustment is usually only needed for used languages of hand-written code or implicit dependencies.
+These imports are updated automatically when using `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node` because those tools auto-import the languages of the concepts they insert. Manual adjustment is usually only needed for used languages of hand-written code or implicit dependencies.

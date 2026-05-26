@@ -1,6 +1,6 @@
 # XML JSON Blueprint Patterns
 
-Copy-paste blueprints for `mps_mcp_insert_root_node_from_json`, `mps_mcp_add_node_child`, or `mps_mcp_replace_node_child`. All concepts qualified under `jetbrains.mps.core.xml.structure` unless noted.
+Copy-paste blueprints for `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`. All concepts qualified under `jetbrains.mps.core.xml.structure` unless noted.
 
 ## Pattern 1 — Minimal XmlFile (no prolog)
 

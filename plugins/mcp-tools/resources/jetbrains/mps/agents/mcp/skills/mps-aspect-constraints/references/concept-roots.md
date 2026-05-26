@@ -33,7 +33,7 @@ Create with `mps_mcp_create_root_node(concept = "jetbrains.mps.lang.constraints.
 - Reference `concept` → `ConceptDeclaration` (cardinality 1)
 - Child roles: `property` (`NodePropertyConstraint`, 0..n), `referent` (`NodeReferentConstraint`, 0..n), `canBeChild` (`ConstraintFunction_CanBeAChild`, 0..1), `canBeParent` (`ConstraintFunction_CanBeAParent`, 0..1), `canBeAncestor` (`ConstraintFunction_CanBeAnAncestor`, 0..1), `canBeRoot` (`ConstraintFunction_CanBeARoot`, 0..1)
 
-Minimal blueprint — start empty, then add child blocks via `mps_mcp_add_node_child`:
+Minimal blueprint — start empty, then add child blocks via `mps_mcp_update_node`:
 
 ```json
 {
