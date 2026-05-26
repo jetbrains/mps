@@ -454,7 +454,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val moduleName = solution.moduleName!!
         val response = runTool(toolset) {
-            it.mps_mcp_update_module(moduleName, /* newName = */ null, /* virtualFolder = */ "Test/Folder")
+            it.mps_mcp_update_module(moduleName, "Test/Folder", ModuleOperation.CHANGE_VIRTUAL_FOLDER)
         }
         val data = expectOk(response)
         assertEquals("Test/Folder", data.get("virtualFolder").asString)
@@ -467,7 +467,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val oldName = solution.moduleName!!
         val newName = "${oldName}.renamed"
 
-        val data = expectOk(runTool(toolset) { it.mps_mcp_update_module(oldName, newName, null) })
+        val data = expectOk(runTool(toolset) { it.mps_mcp_update_module(oldName, newName) })
         assertEquals(newName, data.get("name").asString)
         readOnRepo {
             assertNotNull("renamed solution must be registered under the new name",
@@ -484,7 +484,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val oldName = language.moduleName!!
         val newName = "${oldName}.renamed"
 
-        val data = expectOk(runTool(toolset) { it.mps_mcp_update_module(oldName, newName, null) })
+        val data = expectOk(runTool(toolset) { it.mps_mcp_update_module(oldName, newName) })
         assertEquals(newName, data.get("name").asString)
         readOnRepo {
             val renamed = myProject.projectModules.singleOrNull { it.moduleName == newName } as? Language
@@ -505,7 +505,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         })
         val newName = "$name.renamed"
 
-        val data = expectOk(runTool(toolset) { it.mps_mcp_update_module(name, newName, null) })
+        val data = expectOk(runTool(toolset) { it.mps_mcp_update_module(name, newName) })
         assertEquals(newName, data.get("name").asString)
         readOnRepo {
             assertNotNull(myProject.projectModules.firstOrNull { it.moduleName == newName })
@@ -521,7 +521,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }).get("name").asString
 
         val response = runTool(toolset) {
-            it.mps_mcp_update_module(createdName, "$createdName.renamed", null)
+            it.mps_mcp_update_module(createdName, "$createdName.renamed")
         }
         val err = expectErr(response)
         assertTrue("error should explain generator rename policy: $err",
@@ -538,14 +538,14 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         // First-char failure: leading digit is rejected before the package-shape check runs.
         val leadingDigit = expectErr(runTool(toolset) {
-            it.mps_mcp_update_module(solution.moduleName!!, /* newName = */ "1bad", null)
+            it.mps_mcp_update_module(solution.moduleName!!, "1bad")
         })
         assertTrue("expected leading-char rejection: $leadingDigit",
             leadingDigit.contains("can't start with"))
         // Middle-of-name failure: passes the boundary checks but `SourceVersion.isName` rejects
         // the embedded space, exercising the Java-package validation path.
         val embeddedSpace = expectErr(runTool(toolset) {
-            it.mps_mcp_update_module(solution.moduleName!!, /* newName = */ "bad name", null)
+            it.mps_mcp_update_module(solution.moduleName!!, "bad name")
         })
         assertTrue("expected Java-package rejection: $embeddedSpace",
             embeddedSpace.contains("valid Java package"))
@@ -556,22 +556,26 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val a = createSolution("test.sol.A${System.nanoTime()}")
         val b = createSolution("test.sol.B${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_update_module(a.moduleName!!, b.moduleName!!, null)
+            it.mps_mcp_update_module(a.moduleName!!, b.moduleName!!)
         }
         assertTrue(expectErr(response).contains("already in use"))
     }
 
     @Test
-    fun `update_module applies rename and virtualFolder in a single call`() {
+    fun `update_module rename followed by virtualFolder change`() {
         val solution = createSolution()
         val oldName = solution.moduleName!!
         val newName = "${oldName}.renamed"
 
-        val data = expectOk(runTool(toolset) {
-            it.mps_mcp_update_module(oldName, newName, "Test/Renamed")
+        val renameData = expectOk(runTool(toolset) {
+            it.mps_mcp_update_module(oldName, newName)
         })
-        assertEquals(newName, data.get("name").asString)
-        assertEquals("Test/Renamed", data.get("virtualFolder").asString)
+        assertEquals(newName, renameData.get("name").asString)
+
+        val folderData = expectOk(runTool(toolset) {
+            it.mps_mcp_update_module(newName, "Test/Renamed", ModuleOperation.CHANGE_VIRTUAL_FOLDER)
+        })
+        assertEquals("Test/Renamed", folderData.get("virtualFolder").asString)
         readOnRepo {
             val renamed = myProject.projectModules.singleOrNull { it.moduleName == newName }
             assertNotNull(renamed)
@@ -580,12 +584,12 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     }
 
     @Test
-    fun `update_module is a no-op when called with neither newName nor virtualFolder`() {
+    fun `update_module RENAME fails when newName is not provided`() {
         val solution = createSolution()
         val response = runTool(toolset) {
-            it.mps_mcp_update_module(solution.moduleName!!, null, null)
+            it.mps_mcp_update_module(solution.moduleName!!, null)
         }
-        assertTrue(expectErr(response).contains("Nothing to update"))
+        assertTrue(expectErr(response).contains("Nothing to rename"))
     }
 
     @Test
@@ -593,7 +597,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val moduleName = solution.moduleName!!
 
-        val response = runTool(toolset) { it.mps_mcp_delete_module(moduleName, /* deleteFiles = */ false) }
+        val response = runTool(toolset) { it.mps_mcp_update_module(moduleName, operation = ModuleOperation.DELETE) }
         val data = expectOk(response)
         assertTrue(data.get("deleted").asBoolean)
 
@@ -604,7 +608,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
     @Test
     fun `delete_module returns NOT_FOUND for unknown module`() {
-        val response = runTool(toolset) { it.mps_mcp_delete_module("ghost.module", false) }
+        val response = runTool(toolset) { it.mps_mcp_update_module("ghost.module", operation = ModuleOperation.DELETE) }
         assertTrue(expectErr(response).contains("not found"))
     }
 
@@ -798,7 +802,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         })
 
         // Remove the target module from the project so resolveModule(...) fails for it.
-        expectOk(runTool(toolset) { it.mps_mcp_delete_module(targetName, /* deleteFiles = */ false) })
+        expectOk(runTool(toolset) { it.mps_mcp_update_module(targetName, operation = ModuleOperation.DELETE) })
 
         val resp = runTool(toolset) {
             it.mps_mcp_module_dependency(source, targetName, DependencyOperation.DELETE)

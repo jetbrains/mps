@@ -511,27 +511,21 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Updates an MPS module — supports renaming (Solution / Language / DevKit) and/or changing the Project View virtual folder. When both are supplied, the rename runs first. Generator modules cannot be renamed through this tool; rename the parent Language instead (the rename cascades into owned generators). Returns the module info envelope plus optional `renameWarnings` / `renameCriticalProblems` arrays. See `mps-aspect-accessories/references/module-rename.md` for the cascade behavior, in-project-only reference rewrites, and the warnings semantics.
+        Updates or deletes an MPS module based on the `operation` parameter:
+        - RENAME (default): renames the module (Solution / Language / DevKit). `newName` must be a valid Java-package qualified name. Generator modules cannot be renamed through this tool; rename the parent Language instead (the rename cascades into owned generators). Returns the module info envelope plus optional `renameWarnings` / `renameCriticalProblems` arrays. See `mps-aspect-accessories/references/module-rename.md` for the cascade behavior, in-project-only reference rewrites, and the warnings semantics.
+        - CHANGE_VIRTUAL_FOLDER: changes the Project View virtual folder of the module. `newName` is the new folder path (e.g. "Group/Subgroup").
+        - DELETE: removes the module from the project. Set `deleteFiles=true` to also remove module files from disk.
     """
     )
     suspend fun mps_mcp_update_module(
         @McpDescription("Existing module name or reference") moduleName: String,
-        @McpDescription("New module name (valid Java-package qualified name). Null or blank skips the rename. Generator modules are not renameable through this tool.") @Nullable newName: String? = null,
-        @McpDescription("New virtual folder. Applied to the renamed module when both rename and virtualFolder are supplied.") @Nullable virtualFolder: String? = null
-    ): String = withMpsProject("Update MPS module") { mpsProject ->
-        val trimmedNewName = newName?.trim()?.takeIf { it.isNotEmpty() }
-        val rename = trimmedNewName != null
-        val setFolder = !virtualFolder.isNullOrBlank()
-        if (!rename && !setFolder) {
-            return@withMpsProject errJson(
-                "Nothing to update: provide newName, virtualFolder, or both",
-                McpErrorCode.INVALID_REQUEST,
-            )
-        }
-
-        // ── Phase 1: rename (if requested) ──────────────────────────────────────────────
-        val renameProblems = mutableListOf<Renamer.RenameProblem>()
-        val moduleIdAfterRename: SModuleId? = if (rename) {
+        @McpDescription("New name or value for the operation: new qualified name for RENAME, new folder path for CHANGE_VIRTUAL_FOLDER, or ignored for DELETE.") @Nullable newName: String? = null,
+        @McpDescription("Operation to perform: RENAME, CHANGE_VIRTUAL_FOLDER, or DELETE. Default is RENAME.") operation: ModuleOperation = ModuleOperation.RENAME,
+        @McpDescription("For DELETE only: whether to also delete module files from disk.") deleteFiles: Boolean = false,
+    ): String = when (operation) {
+        ModuleOperation.RENAME -> withMpsProject("Update MPS module") { mpsProject ->
+            val trimmedNewName = newName?.trim()?.takeIf { it.isNotEmpty() }
+                ?: return@withMpsProject errJson("Nothing to rename: provide newName", McpErrorCode.INVALID_REQUEST)
             validateModuleName(trimmedNewName)?.let {
                 return@withMpsProject errJson(it, McpErrorCode.INVALID_REQUEST)
             }
@@ -541,7 +535,8 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             //   3. runRenameCommand() — opens its own write command internally
             // The phases share state on the Renamer instance and must run in order on the
             // same instance, so we cannot fold them into a single executeCommand block.
-            val (r, preparedOldId) = executeShortReadOnEdt(mpsProject) {
+            val renameProblems = mutableListOf<Renamer.RenameProblem>()
+            val (r, oldId) = executeShortReadOnEdt(mpsProject) {
                 val m = resolveModule(mpsProject, moduleName)
                     ?: throw McpNotFoundException("Module '$moduleName' not found")
                 if (m !is AbstractModule) {
@@ -566,59 +561,23 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                         throw McpInvalidRequestException("Module name '$trimmedNewName' is already in use in the repository")
                     }
                 }
-                val oldId = m.moduleReference.moduleId
                 val renamer = Renamer(mpsProject, m, Consumer { renameProblems.add(it) }).also { it.collectRenames() }
-                renamer to oldId
+                renamer to m.moduleReference.moduleId
             }
             withContext(Dispatchers.EDT) {
                 r.prepareRename(trimmedNewName)
                 if (r.hasPrimaryRename() || r.hasDependantRenames()) {
                     r.runRenameCommand()
                 }
-                preparedOldId
             }
-        } else null
-
-        // ── Phase 2: virtual folder + result lookup ─────────────────────────────────────
-        val (updated, virtualFolderFailure) = executeShortCommandOnEdt(mpsProject) {
-            val m = if (rename) {
-                val id = moduleIdAfterRename
+            val updated = executeShortCommandOnEdt(mpsProject) {
+                mpsProject.repository.getModule(oldId)
                     ?: throw McpUserException(
                         McpErrorCode.INTERNAL_ERROR,
-                        "Internal error: rename path but no module id captured",
+                        "Rename completed but the renamed module could not be located by id $oldId",
                     )
-                mpsProject.repository.getModule(id)
-                    ?: throw McpUserException(
-                        McpErrorCode.INTERNAL_ERROR,
-                        "Rename completed but the renamed module could not be located by id $id",
-                    )
-            } else {
-                resolveModule(mpsProject, moduleName)
-                    ?: throw McpNotFoundException("Module '$moduleName' not found")
             }
-            var folderFailure: String? = null
-            if (setFolder) {
-                // n1: virtual folder is metadata layered on top of the (already-committed)
-                // rename. If setVirtualFolder fails, the rename has still succeeded and is
-                // visible to the user, so throwing here would force them to chase a
-                // misleading "rename failed" error. Surface the failure as a structured
-                // renameWarnings entry instead and continue with the post-rename payload.
-                folderFailure = warningMessageOrRethrow {
-                    mpsProject.setVirtualFolder(m, virtualFolder)
-                    (m as? AbstractModule)?.setChanged()
-                }
-            }
-            m to folderFailure
-        }
-
-        if (setFolder && virtualFolderFailure == null) {
-            withContext(Dispatchers.EDT) {
-                mpsProject.save()
-            }
-        }
-
-        val info = moduleInfoJsonObject(mpsProject, updated)
-        if (rename) {
+            val info = moduleInfoJsonObject(mpsProject, updated)
             val warnings = JsonArray()
             val critical = JsonArray()
             for (p in renameProblems) {
@@ -628,19 +587,40 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                     Renamer.RenameProblem.Severity.NO_PROBLEM -> {}
                 }
             }
-            virtualFolderFailure?.let {
-                warnings.add(JsonPrimitive("Rename succeeded; failed to set virtual folder: $it"))
-            }
             if (warnings.size() > 0) info.add("renameWarnings", warnings)
             if (critical.size() > 0) info.add("renameCriticalProblems", critical)
-        } else {
-            virtualFolderFailure?.let {
+            okJson(info)
+        }
+
+        ModuleOperation.CHANGE_VIRTUAL_FOLDER -> withMpsProject("Update MPS module") { mpsProject ->
+            val folder = newName?.trim()?.takeIf { it.isNotEmpty() }
+                ?: return@withMpsProject errJson("Nothing to update: provide newName (virtual folder path)", McpErrorCode.INVALID_REQUEST)
+            val (updated, folderFailure) = executeShortCommandOnEdt(mpsProject) {
+                val m = resolveModule(mpsProject, moduleName)
+                    ?: throw McpNotFoundException("Module '$moduleName' not found")
+                // n1: surface virtual folder failures as warnings rather than errors so the
+                // module info is still returned along with the failure detail.
+                val failure = warningMessageOrRethrow {
+                    mpsProject.setVirtualFolder(m, folder)
+                    (m as? AbstractModule)?.setChanged()
+                }
+                m to failure
+            }
+            if (folderFailure == null) {
+                withContext(Dispatchers.EDT) {
+                    mpsProject.save()
+                }
+            }
+            val info = moduleInfoJsonObject(mpsProject, updated)
+            folderFailure?.let {
                 val warnings = JsonArray()
                 warnings.add(JsonPrimitive("Failed to set virtual folder: $it"))
                 info.add("warnings", warnings)
             }
+            okJson(info)
         }
-        okJson(info)
+
+        ModuleOperation.DELETE -> deleteModule(moduleName, deleteFiles)
     }
 
     /**
@@ -664,14 +644,9 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         return null
     }
 
-    @McpTool
-    @McpDescription("""
-        Deletes an MPS module from the project. Pass `deleteFiles=true` to also remove module files from disk after removing it from the project.
-    """
-    )
-    suspend fun mps_mcp_delete_module(
-        @McpDescription("Module name or reference") moduleName: String,
-        @McpDescription("Whether to delete files from disk as well") deleteFiles: Boolean
+    private suspend fun deleteModule(
+        moduleName: String,
+        deleteFiles: Boolean
     ): String = withMpsProject("Delete MPS module") { mpsProject ->
         var removed: SModule? = null
         var removedName: String? = null
@@ -1104,4 +1079,10 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     }
 
 
+}
+
+enum class ModuleOperation {
+    RENAME,
+    CHANGE_VIRTUAL_FOLDER,
+    DELETE
 }
