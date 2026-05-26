@@ -35,7 +35,7 @@ MPS distinguishes two dependency layers. Get this right before assuming a concep
 
 - Live on the owning module (solution, language, generator, devkit).
 - Control which other modules are on the module's **classpath** at generation and runtime.
-- Set with MCP tool `mps_mcp_add_module_dependency(moduleName, targetModule, scope, reexport)`. Valid scopes: `Default`, `Design`, `Compile`, `Runtime`, `Provided`, `Extends`, `Generation Target`. Most dependencies are `Default`.
+- Set with MCP tool `mps_mcp_module_dependency(moduleName, targetModule, scope, reexport)`. Valid scopes: `Default`, `Design`, `Compile`, `Runtime`, `Provided`, `Extends`, `Generation Target`. Most dependencies are `Default`.
 - A "**used language**" (imported separately as module metadata) is required for MPS to load that language's runtime/generator when this module builds — this is different from a plain module dependency. See `mps_mcp_add_model_used_language` for the model-level form.
 
 ### Model dependencies
@@ -52,7 +52,7 @@ MPS distinguishes two dependency layers. Get this right before assuming a concep
 |---|---|---|
 | "Concept not imported" on a freshly written node | Model does not import the language defining that concept | `mps_mcp_add_model_used_language` with `kind: "language"` |
 | Reference target "cannot be resolved" at generation time | Target model not imported by the source model | `mps_mcp_add_model_dependency` |
-| Class not found at runtime despite import looking right | Missing module-level classpath dependency | `mps_mcp_add_module_dependency` with scope `Default` (or `Runtime` for runtime-only jars) |
+| Class not found at runtime despite import looking right | Missing module-level classpath dependency | `mps_mcp_module_dependency` with scope `Default` (or `Runtime` for runtime-only jars) |
 | "Generation targets missing" | Language needs a generator dependency declared with scope `Generation Target` | add with that specific scope |
 
 ### When to re-inspect dependencies

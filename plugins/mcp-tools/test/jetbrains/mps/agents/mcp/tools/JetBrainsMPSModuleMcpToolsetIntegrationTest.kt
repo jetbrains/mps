@@ -620,9 +620,9 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val target = createSolution("test.dep.module.tgt${System.nanoTime()}")
 
         val response = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(
+            it.mps_mcp_module_dependency(
                 source.moduleName!!, target.moduleName!!,
-                /* scope = */ null, /* reexport = */ false,
+                /* operation = */ "ADD", /* scope = */ null, /* reexport = */ false,
             )
         }
         val obj = JsonParser.parseString(response).asJsonObject
@@ -642,7 +642,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val solution = createSolution()
         val name = solution.moduleName!!
         val response = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(name, name, null, false)
+            it.mps_mcp_module_dependency(name, name, "ADD", null, false)
         }
         assertTrue(expectErr(response).contains("itself"))
     }
@@ -651,7 +651,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `add_module_dependency reports NOT_FOUND on unknown target`() {
         val solution = createSolution()
         val response = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(solution.moduleName!!, "no.such.target", null, false)
+            it.mps_mcp_module_dependency(solution.moduleName!!, "no.such.target", "ADD", null, false)
         }
         assertTrue(expectErr(response).contains("not found"))
     }
@@ -676,9 +676,9 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         // The proper persistence target is LanguageDescriptor.extendedLanguages.
         val target = createLanguage()
         val response = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(
+            it.mps_mcp_module_dependency(
                 language.moduleName!!, target.moduleName!!,
-                /* scope = */ "Extends", /* reexport = */ false,
+                /* operation = */ "ADD", /* scope = */ "Extends", /* reexport = */ false,
             )
         }
         assertTrue("expected ok envelope: $response",
@@ -700,8 +700,8 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         // ("EXTENDS"); the latter is what the tool's response shape reports back.
         val target = createLanguage()
         val response = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(
-                language.moduleName!!, target.moduleName!!, "EXTENDS", false,
+            it.mps_mcp_module_dependency(
+                language.moduleName!!, target.moduleName!!, "ADD", "EXTENDS", false,
             )
         }
         assertTrue(JsonParser.parseString(response).asJsonObject.get("ok").asBoolean)
@@ -718,7 +718,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val targetName = target.moduleName!!
         repeat(2) {
             val resp = runTool(toolset) {
-                it.mps_mcp_add_module_dependency(source, targetName, "Extends", false)
+                it.mps_mcp_module_dependency(source, targetName, "ADD", "Extends", false)
             }
             assertTrue(JsonParser.parseString(resp).asJsonObject.get("ok").asBoolean)
         }
@@ -736,7 +736,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val source = createSolution("test.ext.sol.src${System.nanoTime()}")
         val target = createLanguage()
         val response = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(source.moduleName!!, target.moduleName!!, "Extends", false)
+            it.mps_mcp_module_dependency(source.moduleName!!, target.moduleName!!, "ADD", "Extends", false)
         }
         val err = expectErr(response)
         assertTrue("error must mention Solution: $err", err.contains("Solution"))
@@ -747,8 +747,8 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         // Language can only extend Language. Asking it to extend a Solution is meaningless.
         val target = createSolution("test.ext.sol.tgt${System.nanoTime()}")
         val response = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(
-                language.moduleName!!, target.moduleName!!, "Extends", false,
+            it.mps_mcp_module_dependency(
+                language.moduleName!!, target.moduleName!!, "ADD", "Extends", false,
             )
         }
         val err = expectErr(response)
@@ -766,7 +766,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val targetName = target.moduleName!!
 
         expectOk(runTool(toolset) {
-            it.mps_mcp_add_module_dependency(source, targetName, "Extends", false)
+            it.mps_mcp_module_dependency(source, targetName, "ADD", "Extends", false)
         })
         readOnRepo {
             val descriptor = (language as AbstractModule).moduleDescriptor as LanguageDescriptor
@@ -775,7 +775,7 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
 
         val resp = runTool(toolset) {
-            it.mps_mcp_remove_module_dependency(source, targetName)
+            it.mps_mcp_module_dependency(source, targetName, "DELETE")
         }
         assertTrue("expected ok envelope: $resp",
             JsonParser.parseString(resp).asJsonObject.get("ok").asBoolean)
@@ -798,14 +798,14 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val targetRef = target.moduleReference
 
         expectOk(runTool(toolset) {
-            it.mps_mcp_add_module_dependency(source, targetName, "Extends", false)
+            it.mps_mcp_module_dependency(source, targetName, "ADD", "Extends", false)
         })
 
         // Remove the target module from the project so resolveModule(...) fails for it.
         expectOk(runTool(toolset) { it.mps_mcp_delete_module(targetName, /* deleteFiles = */ false) })
 
         val resp = runTool(toolset) {
-            it.mps_mcp_remove_module_dependency(source, targetName)
+            it.mps_mcp_module_dependency(source, targetName, "DELETE")
         }
         assertTrue("expected ok envelope: $resp",
             JsonParser.parseString(resp).asJsonObject.get("ok").asBoolean)
@@ -826,12 +826,12 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         // Seed the dependency through the tool itself.
         val addResp = runTool(toolset) {
-            it.mps_mcp_add_module_dependency(sourceName, targetName, null, false)
+            it.mps_mcp_module_dependency(sourceName, targetName, "ADD", null, false)
         }
         assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
 
         val removeResp = runTool(toolset) {
-            it.mps_mcp_remove_module_dependency(sourceName, targetName)
+            it.mps_mcp_module_dependency(sourceName, targetName, "DELETE")
         }
         val obj = JsonParser.parseString(removeResp).asJsonObject
         assertTrue("expected ok envelope: $removeResp", obj.get("ok").asBoolean)
@@ -847,9 +847,46 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     fun `remove_module_dependency reports NOT_FOUND when nothing matches`() {
         val source = createSolution()
         val response = runTool(toolset) {
-            it.mps_mcp_remove_module_dependency(source.moduleName!!, "ghost.target")
+            it.mps_mcp_module_dependency(source.moduleName!!, "ghost.target", "DELETE")
         }
         assertTrue(expectErr(response).contains("not found"))
+    }
+
+    @Test
+    fun `add_module_dependency with operation DELETE calls remove_module_dependency and drops the dependency`() {
+        val source = createSolution("test.add.remove.src${System.nanoTime()}")
+        val target = createSolution("test.add.remove.tgt${System.nanoTime()}")
+        val sourceName = source.moduleName!!
+        val targetName = target.moduleName!!
+
+        // Add first
+        val addResp = runTool(toolset) {
+            it.mps_mcp_module_dependency(sourceName, targetName, "ADD", null, false)
+        }
+        assertTrue(JsonParser.parseString(addResp).asJsonObject.get("ok").asBoolean)
+
+        // Then remove via the same method but with "DELETE" operation
+        val removeResp = runTool(toolset) {
+            it.mps_mcp_module_dependency(sourceName, targetName, "DELETE", null, false)
+        }
+        assertTrue(JsonParser.parseString(removeResp).asJsonObject.get("ok").asBoolean)
+
+        val hit = readOnRepo {
+            (source as AbstractModule).moduleDescriptor!!.dependencies
+                .firstOrNull { it.moduleRef == target.moduleReference }
+        }
+        assertNull("dependency must be gone from descriptor", hit)
+    }
+
+    @Test
+    fun `add_module_dependency with invalid operation returns invalid request error`() {
+        val source = createSolution()
+        val target = createSolution()
+        val response = runTool(toolset) {
+            it.mps_mcp_module_dependency(source.moduleName!!, target.moduleName!!, "INVALID_OP", null, false)
+        }
+        val err = expectErr(response)
+        assertTrue("error must mention invalid operation: $err", err.contains("Must be 'ADD' or 'DELETE'"))
     }
 
     // ── facets ─────────────────────────────────────────────────────────────────────────────

@@ -2,7 +2,7 @@
 
 Open this file when picking the right `jetbrains.mps.scope` helper class for a scope body, combining a local `ListScope` with `HidingByNameScope` over `parent scope`, or using the `for model` / `visible roots` / `visible nodes` caches.
 
-> **Module-dependency prerequisite.** Every helper class below is defined in model `jetbrains.mps.scope`, which ships inside solution `jetbrains.mps.kernel` (uuid `2d3c70e9-aab2-4870-8d8d-6036800e4103`). The language module that owns the constraints (or behavior) model must declare a `Default` dependency on `jetbrains.mps.kernel`, otherwise these classes are absent from the compile classpath. `mps_mcp_add_model_dependency` wires the module dependency automatically when it imports `jetbrains.mps.scope`; if you imported the model some other way, add the module dependency explicitly with `mps_mcp_add_module_dependency`. See `scope-fqn-reference.md` → "Required module-level dependency".
+> **Module-dependency prerequisite.** Every helper class below is defined in model `jetbrains.mps.scope`, which ships inside solution `jetbrains.mps.kernel` (uuid `2d3c70e9-aab2-4870-8d8d-6036800e4103`). The language module that owns the constraints (or behavior) model must declare a `Default` dependency on `jetbrains.mps.kernel`, otherwise these classes are absent from the compile classpath. `mps_mcp_add_model_dependency` wires the module dependency automatically when it imports `jetbrains.mps.scope`; if you imported the model some other way, add the module dependency explicitly with `mps_mcp_module_dependency`. See `scope-fqn-reference.md` → "Required module-level dependency".
 
 ## Scope helper classes
 

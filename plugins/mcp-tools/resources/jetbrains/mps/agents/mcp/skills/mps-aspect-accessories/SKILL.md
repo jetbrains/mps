@@ -22,7 +22,7 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 
 ## MCP Tools Quick Reference
 
-- Module-level: `mps_mcp_add_module_dependency`, `mps_mcp_remove_module_dependency`, `mps_mcp_get_project_structure`.
+- Module-level: `mps_mcp_module_dependency`, `mps_mcp_get_project_structure`.
 - Model-level: `mps_mcp_add_model_dependency`, `mps_mcp_remove_model_dependency`, `mps_mcp_add_model_used_language` (kind = `language` or `devkit`), `mps_mcp_remove_model_used_language`.
 - Module creation: `mps_mcp_create_module(type="solution", …)` for a runtime solution.
 
@@ -41,7 +41,7 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 
 ## Reference Index
 
-- Open `references/module-level-deps.md` for the full list of `.mpl` declarations (dependencies, usedLanguages, usedDevKits, extendedLanguages, runtimeModules, generators, accessoryModels, version stamps), their scopes, and the `mps_mcp_add_module_dependency` / `mps_mcp_remove_module_dependency` scope-dispatch table.
+- Open `references/module-level-deps.md` for the full list of `.mpl` declarations (dependencies, usedLanguages, usedDevKits, extendedLanguages, runtimeModules, generators, accessoryModels, version stamps), their scopes, and the `mps_mcp_module_dependency` scope-dispatch table.
 - Open `references/model-level-imports.md` for per-model `dependencies`, used languages, used devkits, and the auto-import behavior of node-insertion tools.
 - Open `references/accessory-models.md` when shipping a model that should be available to every consumer of the language without an explicit import — including the `.mpl` `<accessoryModels>` XML shape and the hand-edit caveat.
 - Open `references/runtime-solutions.md` for shipping Java code that generated programs need at runtime.

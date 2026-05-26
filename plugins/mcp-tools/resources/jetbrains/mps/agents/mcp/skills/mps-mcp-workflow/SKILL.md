@@ -98,5 +98,5 @@ Open `references/mcp-tools-index.md` for the complete inventory of MPS MCP tools
 ## Boundaries
 
 - **Do not** edit serialized `.mps` model files as plain text unless the user explicitly asks for it.
-- **Do not** edit `.mpl` module descriptors manually if an MCP wiring tool (`mps_mcp_add_module_dependency`, `mps_mcp_update_module`, …) covers the change.
+- **Do not** edit `.mpl` module descriptors manually if an MCP wiring tool (`mps_mcp_module_dependency`, `mps_mcp_update_module`, …) covers the change.
 - **Do not** delete-and-reinsert a node to "change" it when surgical tools exist.

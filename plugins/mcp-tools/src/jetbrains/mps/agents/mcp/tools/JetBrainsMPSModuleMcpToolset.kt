@@ -47,19 +47,28 @@ import javax.lang.model.SourceVersion
 class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
-        Adds a dependency to an MPS module. Supported scopes: Default, Design, Compile, Runtime, Provided, Generation Target, Extends. `Extends` is routed per source kind (Language→extendedLanguages, Generator→depGenerators, DevKit→extendedDevkits; Solution and cross-kind combinations are rejected). Returns `{ "added":true }` on change, or `{ "added":false, "reason":"providedByDevKit" }` when the dependency is already supplied by a used DevKit. See `mps-aspect-accessories/references/module-level-deps.md` for the scope-dispatch table and the "Extends typically needs a Default companion" note.
-    """
-    )
-    suspend fun mps_mcp_add_module_dependency(
+        Adds or deletes a dependency of an MPS module based on the operation parameter. Supported operations: ADD or DELETE. 
+        For ADD: Supported scopes: Default, Design, Compile, Runtime, Provided, Generation Target, Extends. `Extends` is routed per source kind (Language→extendedLanguages, Generator→depGenerators, DevKit→extendedDevkits; Solution and cross-kind combinations are rejected). Returns `{ "added":true }` on change, or `{ "added":false, "reason":"providedByDevKit" }` when the dependency is already supplied by a used DevKit. See `mps-aspect-accessories/references/module-level-deps.md` for the scope-dispatch table and the "Extends typically needs a Default companion" note.
+        For DELETE: Both the regular `<dependencies>` list and the per-kind `Extends` collection are probed; any removal counts as success. See `mps-aspect-accessories/references/module-level-deps.md` for the dispatch details.
+    """)
+    suspend fun mps_mcp_module_dependency(
         @McpDescription("Source module name or reference")
         moduleName: String,
         @McpDescription("Target module name or reference")
         targetModule: String,
+        @McpDescription("Operation to perform: ADD or DELETE")
+        operation: String,
         @McpDescription("Dependency scope (Default by default)")
         @Nullable scope: String? = null,
         @McpDescription("Whether to reexport the dependency (false by default)")
         reexport: Boolean = false
     ): String = withMpsProject("Adding MPS module dependency") { mpsProject ->
+        if (operation != "ADD" && operation != "DELETE") {
+            return@withMpsProject errJson("Invalid operation: $operation. Must be 'ADD' or 'DELETE'.", McpErrorCode.INVALID_REQUEST)
+        }
+        if (operation == "DELETE") {
+            return@withMpsProject removeModuleDependency(moduleName, targetModule)
+        }
         executeShortCommandOnEdt(mpsProject) {
             val resolved = resolveAbstractModuleWithDescriptor(mpsProject, moduleName, requireWritable = true)
             if (resolved is AbstractModuleResolution.Err) {
@@ -159,16 +168,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         }
     }
 
-    @McpTool
-    @McpDescription("""
-        Removes a dependency from an MPS module. Both the regular `<dependencies>` list and the per-kind `Extends` collection are probed; any removal counts as success. See `mps-aspect-accessories/references/module-level-deps.md` for the dispatch details.
-    """
-    )
-    suspend fun mps_mcp_remove_module_dependency(
-        @McpDescription("Source module name or reference")
-        moduleName: String,
-        @McpDescription("Target module name or reference")
-        targetModule: String
+    private suspend fun removeModuleDependency(moduleName: String, targetModule: String
     ): String = withMpsProject("Removing MPS module dependency") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
             val resolved = resolveAbstractModuleWithDescriptor(mpsProject, moduleName, requireWritable = true)
@@ -177,7 +177,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             }
             val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
 
-            // Resolve target first for consistency with mps_mcp_add_module_dependency. Fall back to
+            // Resolve target first for consistency with mps_mcp_module_dependency. Fall back to
             // a name/serialized-reference match against any of the descriptor's reference collections
             // (regular deps, extendedLanguages, depGenerators, extendedDevkits) so the user can still
             // remove an entry whose target module is no longer in the project.

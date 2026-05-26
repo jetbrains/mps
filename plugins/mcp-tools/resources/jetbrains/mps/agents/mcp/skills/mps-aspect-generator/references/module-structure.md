@@ -18,7 +18,7 @@ A generator module has its own dependencies — it must depend on the target lan
 
 The generator has **two distinct import layers** that often trip up agents.
 
-**(A) Generator module dependencies** (in the `.mpl` / module descriptor, edit with `mps_mcp_add_module_dependency`). These list *runtime* modules the generator code needs at build/run time:
+**(A) Generator module dependencies** (in the `.mpl` / module descriptor, edit with `mps_mcp_module_dependency`). These list *runtime* modules the generator code needs at build/run time:
 
 | Typical module dep | Scope | Why |
 |---|---|---|
@@ -38,7 +38,7 @@ Additionally, the owning language's `.mpl` declares the **target output language
 </dependency>
 ```
 
-This tells MPS: "the generator of this language produces nodes in `jetbrains.mps.core.xml`." Add with `mps_mcp_add_module_dependency(..., scope="Generation Target")`.
+This tells MPS: "the generator of this language produces nodes in `jetbrains.mps.core.xml`." Add with `mps_mcp_module_dependency(..., scope="Generation Target")`.
 
 **(B) Generator model used-languages** (inside `template/main@generator.mps`, edit with `mps_mcp_add_model_used_language`). These govern what concepts the *template bodies* can contain — the target output language plus the generator-authoring toolkit:
 
