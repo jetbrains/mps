@@ -374,7 +374,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                             "updateNodeFromBlueprint at $jsonPath: blueprint requested rename from " +
                                     "'$currentName' to '$propValue', but the 'name' property is " +
                                     "intentionally skipped here. Use the dedicated rename tool " +
-                                    "(e.g. mps_mcp_set_node_properties or a rename refactoring)."
+                                    "(e.g. mps_mcp_update_node or a rename refactoring)."
                         )
                     }
                     return@forEachIndexed

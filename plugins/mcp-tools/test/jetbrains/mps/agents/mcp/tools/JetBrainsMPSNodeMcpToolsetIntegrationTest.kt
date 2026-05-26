@@ -19,8 +19,6 @@ import org.junit.Test
  *  - `mps_mcp_perform_operation(FIND_USAGES)`: a `Base`/`Derived` concept pair routed through
  *    the structure toolset so the `extends` reference is wired by the same code paths users
  *    hit at runtime; we then ask find-usages for `Base` and assert that `Derived` shows up.
- *  - `mps_mcp_add_node_child` with the new `position` parameter on a multi-cardinality role
- *    (`EnumerationDeclaration.members`) and a single-cardinality role (`AbstractConceptDeclaration.helpURL`).
  */
 class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 

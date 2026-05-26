@@ -12,13 +12,14 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import kotlin.collections.listOf
 
 /**
  * End-to-end integration tests for the JetBrainsMPSNodeMcpToolset operations that the
  * original `JetBrainsMPSNodeMcpToolsetIntegrationTest` does not yet cover:
- *  - property setters/deleter (`set_node_properties`, `delete_node_property`),
- *  - reference setters/deleter (`set_node_references`, `delete_node_reference`),
- *  - child replace/delete (`replace_node_child`, `delete_node_child`),
+ *  - property set/delete
+ *  - reference set/delete
+ *  - child replace/delete
  *  - `perform_operation` ops: `GET_PARENT`, `GET_ROOT`, `GET_MODEL_FOR_NODE`,
  *    `NODE_INDEX`, `SIBLINGS`, `GET_CHILD_ROLE`, `MOVE_CHILD`, `MOVE_NODE_TO_PARENT`,
  *    `MAKE` (input validation only), `FIX_REFERENCES`,
@@ -31,7 +32,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
 
     private val propertyDeclarationFqn = "jetbrains.mps.lang.structure.structure.PropertyDeclaration"
 
-    // ── property setters/deleter ──────────────────────────────────────────────────────────
+    // ── property setters ──────────────────────────────────────────────────────────
 
     @Test
     fun `set_node_properties writes the listed properties in one call`() {
@@ -81,7 +82,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         readOnRepo {
             assertEquals("before", resolveNode(ref).getPropertyByName("virtualPackage"))
         }
-        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.PROPERTY, nodeReference = ref, propertyName = "virtualPackage") }
+        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY, properties = listOf(listOf(ref, "virtualPackage", null))) }
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
         readOnRepo {
@@ -92,11 +93,12 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     @Test
     fun `delete_node_property on unknown property returns NOT_FOUND envelope`() {
         val ref = createConceptRoot("NoSuchProp")
-        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.PROPERTY, nodeReference = ref, propertyName = "no_such_property") }
-        assertTrue(expectErr(response).contains("not found"))
+        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY, properties = listOf(listOf(ref, "no_such_property", null))) }
+        val rowError = expectBatchRowError(response, 0)
+        assertTrue("inner row error must mention 'not found', got: $rowError", rowError.contains("not found"))
     }
 
-    // ── reference setters/deleter ────────────────────────────────────────────────────────
+    // ── reference setters ────────────────────────────────────────────────────────
 
     @Test
     fun `set_node_references and delete_node_reference round-trip on extends`() {
@@ -116,7 +118,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         }
 
         // Delete 'extends'
-        val delResp = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.REFERENCE, nodeReference = derivedRef, referenceRole = "extends") }
+        val delResp = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE, references = listOf(listOf(derivedRef, "extends", null))) }
         val delObj = JsonParser.parseString(delResp).asJsonObject
         assertTrue("expected ok envelope: $delResp", delObj.get("ok").asBoolean)
         readOnRepo {
@@ -127,7 +129,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
             // point to RefBase anymore, which is the user-visible effect.
             if (target != null) {
                 assertNotEquals(
-                    "'extends' must no longer point to RefBase after delete_node_reference",
+                    "'extends' must no longer point to RefBase after deleting a node reference",
                     resolveNode(baseRef).reference,
                     target.reference,
                 )
@@ -138,8 +140,9 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     @Test
     fun `delete_node_reference on unknown role returns NOT_FOUND envelope`() {
         val ref = createConceptRoot("NoSuchRole")
-        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.REFERENCE, nodeReference = ref, referenceRole = "no_such_role") }
-        assertTrue(expectErr(response).contains("not found"))
+        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE, references = listOf(listOf(ref, "no_such_role", null))) }
+        val rowError = expectBatchRowError(response, 0)
+        assertTrue("inner row error must mention 'not found', got: $rowError", rowError.contains("not found"))
     }
 
     @Test
@@ -201,13 +204,13 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
             PersistenceFacade.getInstance().asString(p.reference)
         }
 
-        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.CHILD, childNodeRef = childRef) }
+        val response = runTool(toolset) { it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.CHILD, childNodeRef = childRef) }
         val obj = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
         readOnRepo {
             val parent = resolveNode(parentRef)
             assertTrue(
-                "child must be gone after delete_node_child",
+                "child must be gone after deleting a node child",
                 parent.children.none { it.containmentLink?.name == "propertyDeclaration" },
             )
         }
@@ -697,7 +700,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     fun `update_node ADD PROPERTY is rejected as an invalid combination`() {
         val ref = createConceptRoot("BadCombo1")
         val response = runTool(toolset) {
-            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.PROPERTY, nodeReference = ref, propertyName = "name")
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.PROPERTY, properties = listOf(listOf(ref, "name", "value")))
         }
         val err = expectErr(response)
         assertTrue("error must mention the invalid combination, got: $err", err.contains("ADD") && err.contains("PROPERTY"))
@@ -707,7 +710,7 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     fun `update_node ADD REFERENCE is rejected as an invalid combination`() {
         val ref = createConceptRoot("BadCombo2")
         val response = runTool(toolset) {
-            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.REFERENCE, nodeReference = ref, referenceRole = "extends")
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.REFERENCE, references = listOf(listOf(ref, "extends", null)))
         }
         val err = expectErr(response)
         assertTrue("error must mention the invalid combination, got: $err", err.contains("ADD") && err.contains("REFERENCE"))
@@ -752,26 +755,52 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     }
 
     @Test
-    fun `update_node SET CHILD without childJson is rejected`() {
-        val ref = createConceptRoot("SetChildMissingJson")
-        val childRef = run {
-            addPropertyChild(ref, "p", "string")
-            readOnRepo {
-                val p = resolveNode(ref).children.single { it.containmentLink?.name == "propertyDeclaration" }
-                PersistenceFacade.getInstance().asString(p.reference)
-            }
+    fun `update_node SET CHILD without childJson deletes the child`() {
+        val parentRef = createConceptRoot("SetChildNullJson")
+        addPropertyChild(parentRef, "p", "string")
+        val childRef = readOnRepo {
+            val p = resolveNode(parentRef).children.single { it.containmentLink?.name == "propertyDeclaration" }
+            PersistenceFacade.getInstance().asString(p.reference)
         }
         val response = runTool(toolset) {
             it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.CHILD, childNodeRef = childRef)
         }
-        val err = expectErr(response)
-        assertTrue("error must point at the missing childJson, got: $err", err.contains("childJson"))
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope when SET CHILD with null childJson deletes the child: $response", obj.get("ok").asBoolean)
+        readOnRepo {
+            val parent = resolveNode(parentRef)
+            assertTrue(
+                "child must be gone after SET CHILD with null childJson",
+                parent.children.none { it.containmentLink?.name == "propertyDeclaration" },
+            )
+        }
     }
 
     @Test
-    fun `update_node DELETE CHILD without childNodeRef is rejected`() {
+    fun `update_node SET CHILD without childJson and dryRun does not delete the child`() {
+        val parentRef = createConceptRoot("SetChildNullJsonDryRun")
+        addPropertyChild(parentRef, "survivor", "string")
+        val childRef = readOnRepo {
+            val p = resolveNode(parentRef).children.single { it.containmentLink?.name == "propertyDeclaration" }
+            PersistenceFacade.getInstance().asString(p.reference)
+        }
         val response = runTool(toolset) {
-            it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.CHILD)
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.CHILD, childNodeRef = childRef, dryRun = true)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope for dryRun deletion: $response", obj.get("ok").asBoolean)
+        readOnRepo {
+            val parent = resolveNode(parentRef)
+            val kids = parent.children.filter { it.containmentLink?.name == "propertyDeclaration" }
+            assertEquals("dryRun must not delete the child", 1, kids.size)
+            assertEquals("survivor", kids.single().name)
+        }
+    }
+
+    @Test
+    fun `update_node SET CHILD without childNodeRef and without childJson is rejected`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.CHILD)
         }
         val err = expectErr(response)
         assertTrue("error must point at the missing childNodeRef, got: $err", err.contains("childNodeRef"))
@@ -787,22 +816,22 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     }
 
     @Test
-    fun `update_node DELETE PROPERTY without nodeReference is rejected`() {
+    fun `update_node SET PROPERTY with null nodeReference in a triplet is rejected per-row`() {
         val response = runTool(toolset) {
-            it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.PROPERTY, propertyName = "name")
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY, properties = listOf(listOf(null, "name", "value")))
         }
-        val err = expectErr(response)
-        assertTrue("error must point at the missing nodeReference, got: $err", err.contains("nodeReference"))
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'nodeReference', got: $err", err.contains("nodeReference"))
     }
 
     @Test
-    fun `update_node DELETE PROPERTY without propertyName is rejected`() {
-        val ref = createConceptRoot("DelPropMissingName")
+    fun `update_node SET PROPERTY with null propertyName in a triplet is rejected per-row`() {
+        val ref = createConceptRoot("SetPropMissingName")
         val response = runTool(toolset) {
-            it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.PROPERTY, nodeReference = ref)
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY, properties = listOf(listOf(ref, null, "value")))
         }
-        val err = expectErr(response)
-        assertTrue("error must point at the missing propertyName, got: $err", err.contains("propertyName"))
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'propertyName', got: $err", err.contains("propertyName"))
     }
 
     @Test
@@ -815,21 +844,204 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     }
 
     @Test
-    fun `update_node DELETE REFERENCE without nodeReference is rejected`() {
+    fun `update_node SET REFERENCE with null nodeReference in a triplet is rejected per-row`() {
         val response = runTool(toolset) {
-            it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.REFERENCE, referenceRole = "extends")
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE, references = listOf(listOf(null, "extends", null)))
         }
-        val err = expectErr(response)
-        assertTrue("error must point at the missing nodeReference, got: $err", err.contains("nodeReference"))
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'nodeReference', got: $err", err.contains("nodeReference"))
     }
 
     @Test
-    fun `update_node DELETE REFERENCE without referenceRole is rejected`() {
-        val ref = createConceptRoot("DelRefMissingRole")
+    fun `update_node SET REFERENCE with null referenceRole in a triplet is rejected per-row`() {
+        val ref = createConceptRoot("SetRefMissingRole")
         val response = runTool(toolset) {
-            it.mps_mcp_update_node(NodeUpdateOperation.DELETE, NodeUpdateKind.REFERENCE, nodeReference = ref)
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE, references = listOf(listOf(ref, null, null)))
         }
-        val err = expectErr(response)
-        assertTrue("error must point at the missing referenceRole, got: $err", err.contains("referenceRole"))
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'referenceRole', got: $err", err.contains("referenceRole"))
+    }
+
+    // ── new coverage for the unified SET semantics ───────────────────────────────────────
+
+    @Test
+    fun `update_node SET PROPERTY mixed set-and-delete in one batch applies both`() {
+        val ref = createConceptRoot("MixedPropBatch")
+        // Seed both properties
+        runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY,
+                properties = listOf(
+                    listOf(ref, "name", "OriginalName"),
+                    listOf(ref, "virtualPackage", "test.pkg"),
+                ),
+            )
+        }
+        // Now: rename `name` AND delete `virtualPackage` in one batch
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY,
+                properties = listOf(
+                    listOf(ref, "name", "Renamed"),
+                    listOf(ref, "virtualPackage", null),
+                ),
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        readOnRepo {
+            val node = resolveNode(ref)
+            assertEquals("Renamed", node.name)
+            assertNull("virtualPackage must be deleted", node.getPropertyByName("virtualPackage"))
+        }
+    }
+
+    @Test
+    fun `update_node SET REFERENCE mixed set-and-delete in one batch applies both`() {
+        val baseRef = createConceptRoot("MixedRefBase")
+        val derivedARef = createConceptRoot("MixedRefDerivedA")
+        val derivedBRef = createConceptRoot("MixedRefDerivedB")
+
+        // Seed derivedA.extends = base; derivedB.extends = base
+        runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(
+                    listOf(derivedARef, "extends", baseRef),
+                    listOf(derivedBRef, "extends", baseRef),
+                ),
+            )
+        }
+        // Now: keep derivedA.extends = base; delete derivedB.extends in one batch
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(
+                    listOf(derivedARef, "extends", baseRef),
+                    listOf(derivedBRef, "extends", null),
+                ),
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        readOnRepo {
+            val aTarget = resolveNode(derivedARef).references.firstOrNull { it.link.name == "extends" }?.targetNode
+            assertNotNull("derivedA.extends must still be set", aTarget)
+            assertEquals(resolveNode(baseRef).reference, aTarget!!.reference)
+
+            val bTarget = resolveNode(derivedBRef).references.firstOrNull { it.link.name == "extends" }?.targetNode
+            // Like the round-trip test: if MPS reports an implicit target, just ensure it is not RefBase any more
+            if (bTarget != null) {
+                assertNotEquals(resolveNode(baseRef).reference, bTarget.reference)
+            }
+        }
+    }
+
+    @Test
+    fun `update_node SET PROPERTY batch continues past a per-row failure and applies the good rows`() {
+        val refA = createConceptRoot("BatchContinueA")
+        val refB = createConceptRoot("BatchContinueB")
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY,
+                properties = listOf(
+                    listOf(refA, "name", "RenamedA"),
+                    listOf(null, "name", "shouldFail"),
+                    listOf(refB, "name", "RenamedB"),
+                ),
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("outer envelope must report ok=false because the middle row failed: $response", obj.get("ok").asBoolean)
+        val arr = obj.getAsJsonArray("data")
+        assertEquals(3, arr.size())
+        assertTrue("row 0 must succeed", parseRowObject(arr.get(0)).get("ok").asBoolean)
+        assertFalse("row 1 must fail", parseRowObject(arr.get(1)).get("ok").asBoolean)
+        assertTrue("row 2 must succeed", parseRowObject(arr.get(2)).get("ok").asBoolean)
+        readOnRepo {
+            assertEquals("RenamedA", resolveNode(refA).name)
+            assertEquals("RenamedB", resolveNode(refB).name)
+        }
+    }
+
+    @Test
+    fun `update_node SET REFERENCE batch continues past a per-row failure and applies the good rows`() {
+        val baseRef = createConceptRoot("BatchRefBase")
+        val derivedARef = createConceptRoot("BatchRefDerivedA")
+        val derivedBRef = createConceptRoot("BatchRefDerivedB")
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(
+                    listOf(derivedARef, "extends", baseRef),
+                    listOf(null, "extends", baseRef),
+                    listOf(derivedBRef, "extends", baseRef),
+                ),
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("outer envelope must report ok=false because the middle row failed: $response", obj.get("ok").asBoolean)
+        val arr = obj.getAsJsonArray("data")
+        assertEquals(3, arr.size())
+        assertTrue("row 0 must succeed", parseRowObject(arr.get(0)).get("ok").asBoolean)
+        assertFalse("row 1 must fail", parseRowObject(arr.get(1)).get("ok").asBoolean)
+        assertTrue("row 2 must succeed", parseRowObject(arr.get(2)).get("ok").asBoolean)
+        readOnRepo {
+            val baseNodeRef = resolveNode(baseRef).reference
+            assertEquals(baseNodeRef, resolveNode(derivedARef).references.first { it.link.name == "extends" }.targetNode!!.reference)
+            assertEquals(baseNodeRef, resolveNode(derivedBRef).references.first { it.link.name == "extends" }.targetNode!!.reference)
+        }
+    }
+
+    @Test
+    fun `update_node SET PROPERTY with empty-string nodeReference in a triplet is rejected per-row`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY, properties = listOf(listOf("", "name", "value")))
+        }
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'nodeReference', got: $err", err.contains("nodeReference"))
+    }
+
+    @Test
+    fun `update_node SET PROPERTY with empty-string propertyName in a triplet is rejected per-row`() {
+        val ref = createConceptRoot("EmptyPropName")
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY, properties = listOf(listOf(ref, "", "value")))
+        }
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'propertyName', got: $err", err.contains("propertyName"))
+    }
+
+    @Test
+    fun `update_node SET REFERENCE with empty-string nodeReference in a triplet is rejected per-row`() {
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE, references = listOf(listOf("", "extends", null)))
+        }
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'nodeReference', got: $err", err.contains("nodeReference"))
+    }
+
+    @Test
+    fun `update_node SET REFERENCE with empty-string referenceRole in a triplet is rejected per-row`() {
+        val ref = createConceptRoot("EmptyRefRole")
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE, references = listOf(listOf(ref, "", null)))
+        }
+        val err = expectBatchRowError(response, 0)
+        assertTrue("row error must mention 'referenceRole', got: $err", err.contains("referenceRole"))
+    }
+
+    /**
+     * Extracts the per-row error message from a batch envelope `{"ok":false,"data":[<rows>]}`.
+     * Use for tests that pin per-row failure semantics in SET PROPERTY / SET REFERENCE.
+     */
+    private fun expectBatchRowError(response: String, rowIndex: Int): String {
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected outer ok=false envelope: $response", obj.get("ok").asBoolean)
+        val arr = obj.getAsJsonArray("data")
+        assertTrue("batch must have at least ${rowIndex + 1} row(s): $response", arr.size() > rowIndex)
+        val row = parseRowObject(arr.get(rowIndex))
+        assertFalse("row $rowIndex must be an error envelope: $row", row.get("ok").asBoolean)
+        return row.get("error").asString
     }
 }
