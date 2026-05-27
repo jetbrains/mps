@@ -8,7 +8,9 @@ import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.model.ModelDeleteHelper
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
+import jetbrains.mps.project.ModelsAutoImportsManager
 import jetbrains.mps.smodel.SModelInternal
+import jetbrains.mps.smodel.language.LanguageAspectSupport
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SModelName
@@ -332,6 +334,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         """
         Creates a new, empty MPS model in the given module. Returns the model info envelope (`name`, `reference`, `moduleReference`, `isReadOnly`).
         Language aspect models use the qualified name form `<langModule>.<aspectId>` (case-sensitive, no stereotype, e.g. `myLang.textGen`); generator/genplan/tests/descriptor models use `name@stereotype` (e.g. `myTests@tests`). See the `mps-mcp-workflow` skill's `aspect-model-stereotypes.md` for the full table.
+        For recognized language aspect models, the tool auto-populates the aspect's default used languages, used devkits, and model imports (mirroring the MPS "New Aspect Model" action). Body-specific extras (e.g. `jetbrains.mps.lang.smodel`, `closures`, `collections` used inside method bodies) are NOT added automatically — the caller adds those via `mps_mcp_model_used_language` / `mps_mcp_model_dependency` as needed.
     """
     )
     suspend fun mps_mcp_create_model(
@@ -351,6 +354,20 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 ?: return@executeShortCommandOnEdt errJson("Failed to create model", McpErrorCode.INVALID_REQUEST)
             if (model is EditableSModel) {
                 model.save()
+            }
+            // Mirror NewAspectModelByDescriptor_Action -> LanguageAspectDescriptorBase.create():
+            // if the new model is a recognized language aspect model, populate the aspect's
+            // default used languages / devkits / imports through ModelsAutoImportsManager so
+            // it is immediately usable (just like the MPS "New Aspect Model" GUI action).
+            // isAspectModel returns false for non-aspect models, preserving prior behavior.
+            if (LanguageAspectSupport.isAspectModel(model)) {
+                val autoImports = mpsProject.platform.findComponent(ModelsAutoImportsManager::class.java)
+                if (autoImports != null) {
+                    autoImports.performImports(module, model)
+                    if (model is EditableSModel) {
+                        model.save()
+                    }
+                }
             }
             okJson(modelInfoJson(model))
         }
