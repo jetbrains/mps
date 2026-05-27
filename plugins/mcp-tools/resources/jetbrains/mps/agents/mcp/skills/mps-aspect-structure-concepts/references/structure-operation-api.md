@@ -30,8 +30,8 @@ Parameters:
   "structureModelRef": "Structure model: persistent model reference (preferred) or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.",
   "make": "Optional: boolean, whether to make the structure model after creation (default: false)",
   "dryRun": "Optional: if true, only validate input without mutating the model. Default: false.",
-  "conceptsJson": "Optional: the actual JSON array of concepts to create (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).",
-  "interfaceConceptsJson": "Optional: the actual JSON array of interface concepts to create (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true)."
+  "conceptsJson": "Optional: the actual JSON array of concepts to create (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true).",
+  "interfaceConceptsJson": "Optional: the actual JSON array of interface concepts to create (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true)."
 }
 ```
 
@@ -106,7 +106,7 @@ Parameters:
 {
   "structureModelRef": "Structure model: persistent model reference (preferred) or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.",
   "enumName": "Name of the enumeration",
-  "valuesJson": "The JSON array of enum values (max 4KB) OR an absolute path to a local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Format: [{\"enumName\": \"val1\", \"enumPresentation\": \"Val 1\"}, ...]",
+  "valuesJson": "The JSON array of enum values (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) local temporary file containing it. If a file path is provided, the tool will delete the file after reading it (unless 'dryRun' is true). Format: [{\"enumName\": \"val1\", \"enumPresentation\": \"Val 1\"}, ...]",
   "defaultEnumName": "The enumName that should be used as default (optional)",
   "dryRun": "Optional: if true, only validate input without mutating the model. Default: false."
 }
