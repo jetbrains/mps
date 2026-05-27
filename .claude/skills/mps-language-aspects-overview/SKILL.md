@@ -16,22 +16,29 @@ An MPS language is a collection of **aspects**, each a separate model inside the
 
 ## Aspects and Where to Find Detailed Guidance
 
-| Aspect | Model file | Language DSL | Detailed skill |
-|---|---|---|---|
-| **Structure** | `structure.mps` | `jetbrains.mps.lang.structure` | [`mps-aspect-structure-concepts`](../mps-aspect-structure-concepts/SKILL.md) |
-| **Editor** | `editor.mps` | `jetbrains.mps.lang.editor` | [`mps-aspect-editor`](../mps-aspect-editor/SKILL.md), [`mps-aspect-editor-menus-and-keymaps`](../mps-aspect-editor-menus-and-keymaps/SKILL.md) |
-| **Constraints** | `constraints.mps` | `jetbrains.mps.lang.constraints` | [`mps-aspect-constraints`](../mps-aspect-constraints/SKILL.md) |
-| **Behavior** | `behavior.mps` | `jetbrains.mps.lang.behavior` | [`mps-aspect-behavior`](../mps-aspect-behavior/SKILL.md) |
-| **Typesystem & Checking** | `typesystem.mps` | `jetbrains.mps.lang.typesystem` | [`mps-aspect-typesystem`](../mps-aspect-typesystem/SKILL.md) |
-| **Intentions** | `intentions.mps` | `jetbrains.mps.lang.intentions` | [`mps-aspect-intentions`](../mps-aspect-intentions/SKILL.md) |
-| **Actions** | `actions.mps` | `jetbrains.mps.lang.actions` | [`mps-aspect-actions`](../mps-aspect-actions/SKILL.md) |
-| **Generator** | `generator/template/*.mps` | `jetbrains.mps.lang.generator` | [`mps-aspect-generator`](../mps-aspect-generator/SKILL.md) |
-| **TextGen** | `textGen.mps` | `jetbrains.mps.lang.textGen` | [`mps-aspect-textgen`](../mps-aspect-textgen/SKILL.md) |
-| **Dataflow** | `dataflow.mps` | `jetbrains.mps.lang.dataFlow` | [`mps-aspect-dataflow`](../mps-aspect-dataflow/SKILL.md) |
-| **Migrations** | `migration/*.mps` | `jetbrains.mps.lang.migration` | [`mps-aspect-migrations`](../mps-aspect-migrations/SKILL.md) |
-| **Accessories / Dependencies** | `.mpl` and per-model | — | [`mps-aspect-accessories`](../mps-aspect-accessories/SKILL.md) |
-| **Code inside bodies** | any aspect that holds BL | `baseLanguage`, `smodel`, `collections`, `closures` | [`mps-model-manipulation`](../mps-model-manipulation/SKILL.md) |
-| **Inline node literals** | any aspect using quotations | `jetbrains.mps.lang.quotation` | [`mps-quotations`](../mps-quotations/SKILL.md) |
+| Aspect | Aspect ID / Stereotype | Model file | Language DSL | Detailed skill |
+|---|---|---|---|---|
+| **Structure** | `structure` | `models/structure.mps` | `jetbrains.mps.lang.structure` | [`mps-aspect-structure-concepts`](../mps-aspect-structure-concepts/SKILL.md) |
+| **Editor** | `editor` | `models/editor.mps` | `jetbrains.mps.lang.editor` | [`mps-aspect-editor`](../mps-aspect-editor/SKILL.md), [`mps-aspect-editor-menus-and-keymaps`](../mps-aspect-editor-menus-and-keymaps/SKILL.md) |
+| **Constraints** | `constraints` | `models/constraints.mps` | `jetbrains.mps.lang.constraints` | [`mps-aspect-constraints`](../mps-aspect-constraints/SKILL.md) |
+| **Behavior** | `behavior` | `models/behavior.mps` | `jetbrains.mps.lang.behavior` | [`mps-aspect-behavior`](../mps-aspect-behavior/SKILL.md) |
+| **Typesystem & Checking** | `typesystem` | `models/typesystem.mps` | `jetbrains.mps.lang.typesystem` | [`mps-aspect-typesystem`](../mps-aspect-typesystem/SKILL.md) |
+| **Intentions** | `intentions` | `models/intentions.mps` | `jetbrains.mps.lang.intentions` | [`mps-aspect-intentions`](../mps-aspect-intentions/SKILL.md) |
+| **Actions** | `actions` | `models/actions.mps` | `jetbrains.mps.lang.actions` | [`mps-aspect-actions`](../mps-aspect-actions/SKILL.md) |
+| **Generator** | `@generator` (stereotype) | `generator/template/main@generator.mps` | `jetbrains.mps.lang.generator` | [`mps-aspect-generator`](../mps-aspect-generator/SKILL.md) |
+| **TextGen** | `textGen` | `models/textGen.mps` | `jetbrains.mps.lang.textGen` | [`mps-aspect-textgen`](../mps-aspect-textgen/SKILL.md) |
+| **Dataflow** | `dataFlow` (camelCase) | `models/dataFlow.mps` | `jetbrains.mps.lang.dataFlow` | [`mps-aspect-dataflow`](../mps-aspect-dataflow/SKILL.md) |
+| **Migrations** | `migration` | `models/migration.mps` | `jetbrains.mps.lang.migration` | [`mps-aspect-migrations`](../mps-aspect-migrations/SKILL.md) |
+| **Enhancement scripts** | `scripts` | `models/scripts.mps` | `jetbrains.mps.lang.script` | [`mps-aspect-migrations`](../mps-aspect-migrations/SKILL.md) |
+| **Find Usages** | `findUsages` (camelCase) | `models/findUsages.mps` | `jetbrains.mps.lang.findUsages` | — |
+| **Refactorings** | `refactorings` | `models/refactorings.mps` | `jetbrains.mps.lang.refactoring` | — |
+| **IDE plugin** | `plugin` | `models/plugin.mps` | `jetbrains.mps.lang.plugin` | [`mps-ide-plugin`](../mps-ide-plugin/SKILL.md) |
+| **Feedback** | `feedback` | `models/feedback.mps` | `jetbrains.mps.lang.feedback` | — |
+| **Accessories / Dependencies** | — (no model created) | `.mpl` and per-model | — | [`mps-aspect-accessories`](../mps-aspect-accessories/SKILL.md) |
+| **Code inside bodies** | — | any aspect that holds BL | `baseLanguage`, `smodel`, `collections`, `closures` | [`mps-model-manipulation`](../mps-model-manipulation/SKILL.md) |
+| **Inline node literals** | — | any aspect using quotations | `jetbrains.mps.lang.quotation` | [`mps-quotations`](../mps-quotations/SKILL.md) |
+
+Aspect IDs are **case-sensitive** and create models named `<langModule>.<aspectId>` with **no `@` suffix**. Stereotypes (`@generator`, `@genplan`, `@tests`, `@descriptor`) are a separate mechanism for non-aspect models. Authoritative table with usage notes and pitfalls: [aspect-model-stereotypes.md](../mps-mcp-workflow/references/aspect-model-stereotypes.md).
 
 Additional aspects exist (Find Usages, Refactorings, Scopes Provider, Plugin). They follow the same "per-concept rule root + body" pattern — consult companion skills in `.agents/skills/` or the MPS user guide when needed.
 

@@ -24,7 +24,7 @@ These address the same problem at different abstraction levels: `lang.migration`
 ## Workflow
 
 1. Decide form: `PureMigrationScript` for structural moves/renames/removals; `MigrationScript` for programmatic transforms; Enhancement Script for instance-level updates. See [references/form-selection.md](references/form-selection.md).
-2. Create or locate the migration model: `<language.fqn>.migration` for `lang.migration`; `<language.fqn>.scripts` for Enhancement Scripts. Add the used languages required for that form.
+2. Create or locate the migration model with `mps_mcp_create_model`: `<language.fqn>.migration` for `lang.migration` (aspect ID `migration`); `<language.fqn>.scripts` for Enhancement Scripts (aspect ID `scripts`). Both aspect IDs are case-sensitive and carry no `@` suffix — see [aspect-model-stereotypes.md](../mps-mcp-workflow/references/aspect-model-stereotypes.md). Add the used languages required for that form.
 3. Bump the language `version` integer in the `.mpl` and set `fromVersion` on the new script to the previous version.
 4. Build the script body (declarative parts, BL `execute()` method, or `MigrationScriptPart_Instance` updater) using the JSON blueprints in [references/json-blueprints.md](references/json-blueprints.md).
 5. Wire ordering (`OrderDependency` / `ExecuteAfterDeclaration`) and data flow (`putData` / `getData`) if needed.

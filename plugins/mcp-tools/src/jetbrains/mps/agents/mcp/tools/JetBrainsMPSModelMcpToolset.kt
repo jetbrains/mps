@@ -331,11 +331,12 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpDescription(
         """
         Creates a new, empty MPS model in the given module. Returns the model info envelope (`name`, `reference`, `moduleReference`, `isReadOnly`).
+        Language aspect models use the qualified name form `<langModule>.<aspectId>` (case-sensitive, no stereotype, e.g. `myLang.textGen`); generator/genplan/tests/descriptor models use `name@stereotype` (e.g. `myTests@tests`). See the `mps-mcp-workflow` skill's `aspect-model-stereotypes.md` for the full table.
     """
     )
     suspend fun mps_mcp_create_model(
         @McpDescription("Module name") moduleName: String,
-        @McpDescription("Model name") modelName: String
+        @McpDescription("Model name. For a language aspect model use the case-sensitive aspect id, e.g. `myLang.textGen`. For generator/genplan/tests/descriptor models append `@stereotype`, e.g. `myTests@tests`.") modelName: String
     ): String = withMpsProject("Create MPS model") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
             val module = mpsProject.projectModules.find { it.moduleName == moduleName }

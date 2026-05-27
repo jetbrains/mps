@@ -20,6 +20,7 @@ The `jetbrains.mps.lang.editor` language defines projectional editors as trees o
 
 ## Common Workflow
 
+0. **Ensure the editor model exists.** If the language has no editor model yet, create one with `mps_mcp_create_model` and `modelName: "<lang>.editor"` (aspect ID `editor`, case-sensitive, no `@` suffix; see [aspect-model-stereotypes.md](../mps-mcp-workflow/references/aspect-model-stereotypes.md)). Action maps, keymaps, transformation/substitute menus live in the **same** `editor` model — there is no separate aspect ID for them.
 1. **Scaffold first** — `mps_mcp_scaffold_editor` builds a default editor that wires properties/children/references to sensible cell models.
 2. **Componentize** reusable pieces into `EditorComponentDeclaration`.
 3. **Refine cell choice and layout** using the catalog below.

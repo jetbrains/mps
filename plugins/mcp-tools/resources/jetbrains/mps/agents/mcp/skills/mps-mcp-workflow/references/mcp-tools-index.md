@@ -7,7 +7,7 @@
 ## Modules and Models
 
 - `mps_mcp_create_module`, `mps_mcp_update_module` (operations: RENAME, CHANGE_VIRTUAL_FOLDER, DELETE)
-- `mps_mcp_create_model`, `mps_mcp_update_model` (operations: RENAME, DELETE)
+- `mps_mcp_create_model`, `mps_mcp_update_model` (operations: RENAME, DELETE). Model names are either arbitrary names or `<lang>.<aspectId>` (language aspects, case-sensitive, no stereotype) or `name@stereotype` (`@generator`, `@genplan`, `@tests`, `@descriptor`) — see [`aspect-model-stereotypes.md`](aspect-model-stereotypes.md).
 - `mps_mcp_module_dependency`, `mps_mcp_model_dependency`, `mps_mcp_model_used_language`
 - `mps_mcp_list_facet_types`, `mps_mcp_get_module_facets`, `mps_mcp_update_module_facet`: inspect and modify module facets (e.g. attach the `tests` facet to a Solution that hosts a `@tests` model). `mps_mcp_create_module` accepts an initial `facets=[…]` list for `solution`/`language` modules.
 
