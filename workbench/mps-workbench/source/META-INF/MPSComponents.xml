@@ -76,6 +76,7 @@
     <project.lifecycleListener listenerClass="jetbrains.mps.ide.make.StartupModuleMakerImpl" priority="20"/>
     <project.lifecycleListener listenerClass="jetbrains.mps.ide.generator.index.IndexBasedModelDigest" priority="100"/>
     <project.lifecycleListener listenerClass="jetbrains.mps.plugins.projectplugins.ProjectPluginManager$Activity" priority="50"/>
+    <project.lifecycleListener listenerClass="jetbrains.mps.ide.vfs.ClassesGenPolicy$Plug" priority="30"/>
   </extensions>
 
   <applicationListeners>

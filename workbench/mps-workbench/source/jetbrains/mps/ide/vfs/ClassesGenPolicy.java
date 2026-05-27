@@ -15,38 +15,51 @@
  */
 package jetbrains.mps.ide.vfs;
 
+import com.intellij.openapi.application.ApplicationManager;
+import com.intellij.openapi.application.ModalityState;
+import com.intellij.openapi.application.ReadAction;
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.roots.ex.ProjectRootManagerEx;
+import com.intellij.openapi.roots.impl.DirectoryIndexExcludePolicy;
 import com.intellij.openapi.vfs.VirtualFile;
-import jetbrains.mps.ide.project.ProjectHelper;
+import com.intellij.util.concurrency.AppExecutorUtil;
 import jetbrains.mps.project.AbstractModule;
 import jetbrains.mps.project.MPSProject;
+import jetbrains.mps.project.ProjectLifecycleListener;
 import jetbrains.mps.project.facets.JavaModuleFacet;
-import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.module.SModule;
+import org.jetbrains.mps.openapi.module.SModuleReference;
+import org.jetbrains.mps.openapi.module.SRepositoryListener;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
+
+import static com.intellij.openapi.project.RootsChangeRescanningInfo.RESCAN_DEPENDENCIES_IF_NEEDED;
 
 // XXX Resembles GeneratedFilesExcludePolicy, which deals with generated sources, while this one with artifacts compiled from these sources.
 // XXX there's suspicious DirectoryIndexExcludeUpdater that is interested in BaseDirectoryIndexExcludePolicy subclasses!?
 public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
+  private final AtomicReference<Set<VirtualFile>> myExcludeRootsCache = new AtomicReference<>(Collections.emptySet());
+
   protected ClassesGenPolicy(@NotNull Project project) {
     super(project);
+    // Cache starts empty; Plug wires the listener once MPSProject is ready.
   }
 
   @Override
   @NotNull
   protected Set<VirtualFile> getAllExcludeRoots() {
-    final MPSProject mpsProject = ProjectHelper.fromIdeaProjectIfCreated(getProject());
-    if (mpsProject == null) {
-      return Collections.emptySet();
-    }
+    return myExcludeRootsCache.get();
+  }
 
-    return new ModelAccessHelper(mpsProject.getModelAccess()).runReadAction(() -> {
-      final Set<VirtualFile> roots = new HashSet<>();
+  @NotNull
+  private Set<VirtualFile> calcRoots(@NotNull MPSProject mpsProject) {
+    final Set<VirtualFile> roots = new HashSet<>();
+    mpsProject.getModelAccess().runReadAction(() -> {
       for (SModule module : mpsProject.getProjectModulesWithGenerators()) {
         JavaModuleFacet facet = module.getFacet(JavaModuleFacet.class);
         if (facet == null) {
@@ -73,7 +86,59 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
           }
         }
       }
-      return roots;
     });
+    return Collections.unmodifiableSet(roots);
+  }
+
+  /*package*/ void invalidateCache(@NotNull MPSProject mpsProject) {
+    ReadAction.nonBlocking(() -> calcRoots(mpsProject))
+      .coalesceBy(myExcludeRootsCache)
+      .submit(AppExecutorUtil.getAppExecutorService())
+      .onSuccess(result -> {
+        myExcludeRootsCache.set(result);
+        ApplicationManager.getApplication().invokeLaterOnWriteThread(() ->
+          ApplicationManager.getApplication().runWriteAction(() ->
+            ProjectRootManagerEx.getInstanceEx(getProject()).makeRootsChange(() -> {}, RESCAN_DEPENDENCIES_IF_NEEDED) // or should it be TOTAL_RESCAN? not sure
+          ),
+          ModalityState.defaultModalityState(),
+          getProject().getDisposed()
+        );
+      });
+  }
+
+  public static final class Plug implements ProjectLifecycleListener {
+
+    @Override
+    public void projectReady(@NotNull MPSProject project, @NotNull Context context) {
+      ClassesGenPolicy policy = findPolicy(project.getProject());
+      if (policy == null) return;
+
+      SRepositoryListener listener = new SRepositoryListener() {
+        @Override public void moduleAdded(@NotNull SModule module)         { policy.invalidateCache(project); }
+        @Override public void moduleRemoved(@NotNull SModuleReference ref) { policy.invalidateCache(project); }
+      };
+      context.keep(SRepositoryListener.class, listener);
+      project.getRepository().addRepositoryListener(listener);
+      policy.invalidateCache(project);
+    }
+
+    @Override
+    public void projectDiscarded(@NotNull MPSProject project, @NotNull Context context) {
+      SRepositoryListener listener = context.discard(SRepositoryListener.class);
+      if (listener != null) {
+        project.getRepository().removeRepositoryListener(listener);
+      }
+      ClassesGenPolicy policy = findPolicy(project.getProject());
+      if (policy != null) {
+        policy.myExcludeRootsCache.set(Collections.emptySet());
+      }
+    }
+
+    private static ClassesGenPolicy findPolicy(@NotNull Project project) {
+      for (DirectoryIndexExcludePolicy ep : DirectoryIndexExcludePolicy.getExtensions(project)) {
+        if (ep instanceof ClassesGenPolicy p) return p;
+      }
+      return null;
+    }
   }
 }
