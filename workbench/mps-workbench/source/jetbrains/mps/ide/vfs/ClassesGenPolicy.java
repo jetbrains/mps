@@ -15,12 +15,14 @@
  */
 package jetbrains.mps.ide.vfs;
 
+import com.intellij.openapi.Disposable;
 import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.application.ModalityState;
 import com.intellij.openapi.application.ReadAction;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ex.ProjectRootManagerEx;
 import com.intellij.openapi.roots.impl.DirectoryIndexExcludePolicy;
+import com.intellij.openapi.util.Disposer;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.util.concurrency.AppExecutorUtil;
 import jetbrains.mps.project.AbstractModule;
@@ -90,9 +92,10 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
     return Collections.unmodifiableSet(roots);
   }
 
-  /*package*/ void invalidateCache(@NotNull MPSProject mpsProject) {
+  /*package*/ void invalidateCache(@NotNull MPSProject mpsProject, Disposable disposable) {
     ReadAction.nonBlocking(() -> calcRoots(mpsProject))
       .coalesceBy(myExcludeRootsCache)
+      .expireWith(disposable)
       .submit(AppExecutorUtil.getAppExecutorService())
       .onSuccess(result -> {
         myExcludeRootsCache.set(result);
@@ -113,18 +116,22 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
       ClassesGenPolicy policy = findPolicy(project.getProject());
       if (policy == null) return;
 
-      SRepositoryListener listener = new SRepositoryListener() {
-        @Override public void moduleAdded(@NotNull SModule module)         { policy.invalidateCache(project); }
-        @Override public void moduleRemoved(@NotNull SModuleReference ref) { policy.invalidateCache(project); }
-      };
-      context.keep(SRepositoryListener.class, listener);
+      ExpirationToken disposable = new ExpirationToken();
+      Disposer.register(project, disposable);
+      context.keep(ExpirationToken.class, disposable);
+      RepositoryListener listener = new RepositoryListener(project, policy, disposable);
+      context.keep(RepositoryListener.class, listener);
       project.getRepository().addRepositoryListener(listener);
-      policy.invalidateCache(project);
+      policy.invalidateCache(project, disposable);
     }
 
     @Override
     public void projectDiscarded(@NotNull MPSProject project, @NotNull Context context) {
-      SRepositoryListener listener = context.discard(SRepositoryListener.class);
+      ExpirationToken disposable = context.discard(ExpirationToken.class);
+      if (disposable != null) {
+        Disposer.dispose(disposable);
+      }
+      RepositoryListener listener = context.discard(RepositoryListener.class);
       if (listener != null) {
         project.getRepository().removeRepositoryListener(listener);
       }
@@ -139,6 +146,34 @@ public class ClassesGenPolicy extends BaseDirectoryIndexExcludePolicy {
         if (ep instanceof ClassesGenPolicy p) return p;
       }
       return null;
+    }
+
+    private static final class ExpirationToken implements Disposable {
+      @Override
+      public void dispose() {
+      }
+    }
+
+    private static final class RepositoryListener implements SRepositoryListener {
+      private final MPSProject myProject;
+      private final ClassesGenPolicy myPolicy;
+      private final Disposable myDisposable;
+
+      private RepositoryListener(@NotNull MPSProject project, @NotNull ClassesGenPolicy policy, @NotNull Disposable disposable) {
+        myProject = project;
+        myPolicy = policy;
+        myDisposable = disposable;
+      }
+
+      @Override
+      public void moduleAdded(@NotNull SModule module) {
+        myPolicy.invalidateCache(myProject, myDisposable);
+      }
+
+      @Override
+      public void moduleRemoved(@NotNull SModuleReference ref) {
+        myPolicy.invalidateCache(myProject, myDisposable);
+      }
     }
   }
 }
