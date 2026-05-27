@@ -1,13 +1,15 @@
 ---
 name: mps-ide-plugin
 description: >-
-  Use when authoring or modifying MPS IDE plugins — code that integrates with the MPS / IntelliJ host IDE shell. Covers `ActionDeclaration`, `ActionGroupDeclaration`, `ToolDeclaration` / `TabbedToolDeclaration` (dockable tool windows), `KeymapChangesDeclaration` (shortcuts), `PreferencesComponentDeclaration` (settings pages), `EditorTab` + `Order` (tabs on a concept editor), `InterfaceGroup` (bootstrap wrappers around external groups), `NonDumbAwareActions`, `IdeaConfigurationXml`, and `ApplicationPluginDeclaration` / `ProjectPluginDeclaration` / `StandalonePluginDescriptor` (lifecycle hooks). Uses the languages `jetbrains.mps.lang.plugin` and `jetbrains.mps.lang.plugin.standalone`. Trigger terms: action group, tool window, menu item, `MainMenu`, `EditorPopup`, `NodeActions`, `ModelActions`, `ModuleActions`, `ProjectViewPopupMenu`, MPS plugin solution, `ActionInstance`, `ModificationStatement`, `DataKey`, `MPSCommonDataKeys`, `MPSDataKeys`, dumb-aware, `project.tool<...>`, `project.preferenceComponent<...>`, `application plugin<...>`, `project plugin<...>`. Reference: https://www.jetbrains.com/help/mps/plugin.html
+  Use when authoring or modifying MPS IDE plugins — code that integrates with the MPS / IntelliJ host IDE shell. Covers `ActionDeclaration`, `ActionGroupDeclaration`, `ToolDeclaration` / `TabbedToolDeclaration` (dockable tool windows), `KeymapChangesDeclaration` (shortcuts), `PreferencesComponentDeclaration` (settings pages), `EditorTab` + `Order` (tabs on a concept editor), `InterfaceGroup` (bootstrap wrappers around external groups), `NonDumbAwareActions`, `IdeaConfigurationXml`, and `ApplicationPluginDeclaration` / `ProjectPluginDeclaration` / `StandalonePluginDescriptor` (lifecycle hooks). Uses the languages `jetbrains.mps.lang.plugin` and `jetbrains.mps.lang.plugin.standalone`. Trigger terms: action group, tool window, menu item, `MainMenu`, `EditorPopup`, `NodeActions`, `ModelActions`, `ModuleActions`, `ProjectViewPopupMenu`, MPS plugin solution, `ActionInstance`, `ModificationStatement`, `DataKey`, `MPSCommonDataKeys`, `MPSDataKeys`, dumb-aware, `project.tool<...>`, `project.preferenceComponent<...>`, `application plugin<...>`, `project plugin<...>`.
 type: reference
 ---
 
 # MPS IDE Plugin Language
 
 This skill covers **IDE plugins**: code that integrates with the MPS/IntelliJ host IDE — menu actions, tool windows, shortcuts, settings panels. Plugin code lives in a regular `Solution` module (compilation mode: "Regular MPS module contributing extensions to MPS") with model(s) using `jetbrains.mps.lang.plugin` and `jetbrains.mps.lang.plugin.standalone`. The canonical model name is `<solution_name>.plugin` — MPS auto-registers it on that convention.
+
+Official documentation: <https://www.jetbrains.com/help/mps/plugin.html>
 
 ## Critical Directives
 
