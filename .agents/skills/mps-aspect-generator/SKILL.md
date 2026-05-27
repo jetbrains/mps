@@ -21,7 +21,7 @@ A **generator** transforms models written in the source language into models of 
 ## Common-path workflow
 
 1. Ensure the language declares a generator. If not: `mps_mcp_create_module(type="generator", parentLanguage="<lang>")`.
-2. In `template/main@generator.mps`, add the used languages you target (`jetbrains.mps.devkit.templates` is the quickest umbrella) and ensure the target language is also a *module* `generate-into` dependency on the language `.mpl` (see `references/module-structure.md`).
+2. In `template/main@generator.mps` (the `generator` model stereotype — `name@generator`; see [aspect-model-stereotypes.md](../mps-mcp-workflow/references/aspect-model-stereotypes.md) for all model identifiers), add the used languages you target (`jetbrains.mps.devkit.templates` is the quickest umbrella) and ensure the target language is also a *module* `generate-into` dependency on the language `.mpl` (see `references/module-structure.md`).
 3. Create or edit the `MappingConfiguration` root (`mps_mcp_create_root_node` with the FQN in `references/concept-fqns.md`).
 4. Add the rule(s):
    - `Root_MappingRule` for whole-root mapping;

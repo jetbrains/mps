@@ -9,6 +9,8 @@ type: reference
 
 This skill covers the **non-layout parts** of the MPS editor aspect: everything that controls user interaction (typing, keystrokes, completion, paste, context actions). Most concepts belong to `jetbrains.mps.lang.editor.structure`; paste wrappers / node factories / copy-paste handlers live in `jetbrains.mps.lang.actions.structure`. Roots typically live in `<lang>/languageModels/editor.mps` or `actions.mps`.
 
+**Where these roots go.** Menus / keymaps / action maps live in the **same `editor` aspect model** as the layout cell models — there is no separate aspect ID. Paste wrappers, copy-paste handlers and node factories live in the **`actions` aspect model**. Both aspect IDs (`editor`, `actions`) are case-sensitive and carry no `@` suffix — see [aspect-model-stereotypes.md](../mps-mcp-workflow/references/aspect-model-stereotypes.md).
+
 For the **layout** side (concept editors, cell models, style sheets, editor components) see `mps-mcp-workflow` and `mps-aspect-editor`.
 
 ## Critical Directives

@@ -23,7 +23,7 @@ The **behavior** aspect attaches methods and a constructor to a concept, much li
 
 ## Common-Path Workflow
 
-1. Create a `behavior` model if missing (`mps_mcp_create_model`). Use languages: `jetbrains.mps.lang.behavior`, plus any languages referenced in bodies (`smodel`, `collections`, `closures`, `baseLanguage`).
+1. Create a `behavior` model if missing (`mps_mcp_create_model` with `modelName: "<lang>.behavior"` — aspect ID `behavior`, case-sensitive, no `@` suffix; see [aspect-model-stereotypes.md](../mps-mcp-workflow/references/aspect-model-stereotypes.md)). Use languages: `jetbrains.mps.lang.behavior`, plus any languages referenced in bodies (`smodel`, `collections`, `closures`, `baseLanguage`).
 2. Add a `ConceptBehavior` root for the target concept; set `concept` ref. The minimal blueprint (with the mandatory empty `constructor`) is in `references/json-blueprints.md`.
 3. Add `ConceptConstructorDeclaration` (at most one) and/or `ConceptMethodDeclaration` children.
 4. Write bodies. For non-trivial logic prefer `mps_mcp_parse_java_and_insert` with `featureKind: "STATEMENTS"` or `"METHOD"`, then fix MPS-typed return/parameter types.
