@@ -167,7 +167,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,
-        @McpDescription("JSON blueprint, single object or top-level array (max 4KB) OR an absolute path to a file containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
+        @McpDescription("JSON blueprint, single object or top-level array (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the model. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
     ): String {
         return withMpsProject("Inserting MPS root node from JSON") { mpsProject ->
@@ -317,7 +317,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeReference: String,
-        @McpDescription("JSON blueprint of the root (max 4KB) OR an absolute path to a file containing it. Ignored for DELETE. See `mps-node-editing` for the format and file-input semantics.") json: String = "",
+        @McpDescription("JSON blueprint of the root (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) file containing it. Ignored for DELETE. See `mps-node-editing` for the format and file-input semantics.") json: String = "",
         @McpDescription("Optional, ignored for DELETE - if true, only validate JSON and concept-role assignability without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false,
         @McpDescription("Operation to perform: UPDATE or DELETE") operation: RootNodeOperation = RootNodeOperation.UPDATE
     ): String = when (operation) {
