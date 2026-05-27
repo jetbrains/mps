@@ -2360,7 +2360,7 @@
       <node concept="aVJcg" id="3AMbuf1a7Og" role="aVJcv">
         <node concept="NbPM2" id="3AMbuf1a7Oh" role="aVJcq">
           <node concept="3Mxwew" id="5_GG3tAOKLM" role="3MwsjC">
-            <property role="3MwjfP" value="1" />
+            <property role="3MwjfP" value="2" />
           </node>
         </node>
       </node>
@@ -2374,7 +2374,11 @@
     <node concept="2kB4xC" id="3AMbuf1a7On" role="1l3spd">
       <property role="TrG5h" value="version.eap" />
       <node concept="aVJcg" id="3AMbuf1a7Oo" role="aVJcv">
-        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq" />
+        <node concept="NbPM2" id="3AMbuf1a7Op" role="aVJcq">
+          <node concept="3Mxwew" id="3izZO6oujB" role="3MwsjC">
+            <property role="3MwjfP" value=" EAP" />
+          </node>
+        </node>
       </node>
     </node>
     <node concept="2kB4xC" id="5HVSRHdVf2d" role="1l3spd">
@@ -36558,7 +36562,7 @@
         </node>
         <node concept="NbPM2" id="6Iq8148f_YW" role="HFWMp">
           <node concept="3Mxwew" id="5AfPObSmudR" role="3MwsjC">
-            <property role="3MwjfP" value="MPS261" />
+            <property role="3MwjfP" value="MPS262EAP" />
           </node>
         </node>
       </node>
@@ -36641,7 +36645,11 @@
             <ref role="3Mxwex" node="3AMbuf1N5Oy" resolve="version.bugfixNr" />
           </node>
         </node>
-        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11" />
+        <node concept="NbPM2" id="3AMbuf6qfk7" role="3ZAF11">
+          <node concept="3Mxwey" id="3izZO6oujD" role="3MwsjC">
+            <ref role="3Mxwex" node="3AMbuf1a7On" resolve="version.eap" />
+          </node>
+        </node>
       </node>
       <node concept="2pNNFK" id="4Nc8eEDY$eW" role="27hc03">
         <property role="2pNNFO" value="youtrack" />
