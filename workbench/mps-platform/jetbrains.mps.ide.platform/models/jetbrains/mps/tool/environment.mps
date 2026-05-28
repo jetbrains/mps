@@ -51,6 +51,7 @@
     <import index="82uw" ref="6354ebe7-c22a-4a0f-ac54-50b52ab9b065/java:java.util.function(JDK/)" />
     <import index="qmvx" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.project.impl(MPS.IDEA/)" />
     <import index="jlff" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.openapi.vfs(MPS.IDEA/)" />
+    <import index="8902" ref="498d89d2-c2e9-11e2-ad49-6cf049e62fe5/java:com.intellij.util.indexing(MPS.IDEA/)" />
   </imports>
   <registry>
     <language id="f3061a53-9226-4cc5-a443-f952ceaf5816" name="jetbrains.mps.baseLanguage">
@@ -3137,16 +3138,46 @@
                             <ref role="3cqZAo" node="6qMd1Cr4xOU" resolve="openedProjects" />
                           </node>
                         </node>
-                        <node concept="3clFbF" id="2aedWm2WZF_" role="3cqZAp">
-                          <node concept="2YIFZM" id="2aedWm2X5m4" role="3clFbG">
-                            <ref role="37wK5l" to="anz6:~PlatformTestUtil.dispatchAllEventsInIdeEventQueue()" resolve="dispatchAllEventsInIdeEventQueue" />
-                            <ref role="1Pybhc" to="anz6:~PlatformTestUtil" resolve="PlatformTestUtil" />
+                        <node concept="3clFbJ" id="7DdU2IfcwMX" role="3cqZAp">
+                          <node concept="3clFbS" id="7DdU2IfcwMZ" role="3clFbx">
+                            <node concept="3clFbF" id="2aedWm2WZF_" role="3cqZAp">
+                              <node concept="2YIFZM" id="2aedWm2X5m4" role="3clFbG">
+                                <ref role="37wK5l" to="anz6:~PlatformTestUtil.dispatchAllEventsInIdeEventQueue()" resolve="dispatchAllEventsInIdeEventQueue" />
+                                <ref role="1Pybhc" to="anz6:~PlatformTestUtil" resolve="PlatformTestUtil" />
+                              </node>
+                            </node>
+                            <node concept="3clFbF" id="2aedWm2Xbxx" role="3cqZAp">
+                              <node concept="2YIFZM" id="2aedWm2Xeqc" role="3clFbG">
+                                <ref role="37wK5l" to="cyhs:~JarFileSystemImpl.cleanupForNextTest()" resolve="cleanupForNextTest" />
+                                <ref role="1Pybhc" to="cyhs:~JarFileSystemImpl" resolve="JarFileSystemImpl" />
+                              </node>
+                            </node>
+                            <node concept="3clFbF" id="7DdU2IfbKAZ" role="3cqZAp">
+                              <node concept="2OqwBi" id="7DdU2IfcaC8" role="3clFbG">
+                                <node concept="1eOMI4" id="7DdU2Ifc0mR" role="2Oq$k0">
+                                  <node concept="10QFUN" id="7DdU2Ifc0mQ" role="1eOMHV">
+                                    <node concept="2YIFZM" id="7DdU2Ifc0mP" role="10QFUP">
+                                      <ref role="37wK5l" to="8902:~FileBasedIndex.getInstance()" resolve="getInstance" />
+                                      <ref role="1Pybhc" to="8902:~FileBasedIndexImpl" resolve="FileBasedIndexImpl" />
+                                    </node>
+                                    <node concept="3uibUv" id="7DdU2Ifc4SC" role="10QFUM">
+                                      <ref role="3uigEE" to="8902:~FileBasedIndexImpl" resolve="FileBasedIndexImpl" />
+                                    </node>
+                                  </node>
+                                </node>
+                                <node concept="liA8E" id="7DdU2IfcfpL" role="2OqNvi">
+                                  <ref role="37wK5l" to="8902:~FileBasedIndexImpl.cleanupForNextTest()" resolve="cleanupForNextTest" />
+                                </node>
+                              </node>
+                            </node>
                           </node>
-                        </node>
-                        <node concept="3clFbF" id="2aedWm2Xbxx" role="3cqZAp">
-                          <node concept="2YIFZM" id="2aedWm2Xeqc" role="3clFbG">
-                            <ref role="37wK5l" to="cyhs:~JarFileSystemImpl.cleanupForNextTest()" resolve="cleanupForNextTest" />
-                            <ref role="1Pybhc" to="cyhs:~JarFileSystemImpl" resolve="JarFileSystemImpl" />
+                          <node concept="2OqwBi" id="7DdU2Ifd4$W" role="3clFbw">
+                            <node concept="37vLTw" id="7DdU2IfcYMt" role="2Oq$k0">
+                              <ref role="3cqZAo" to="79ha:3eUNqOk7wUa" resolve="myConfig" />
+                            </node>
+                            <node concept="liA8E" id="7DdU2Ifd9kX" role="2OqNvi">
+                              <ref role="37wK5l" to="79ha:28TMbOSF4Ad" resolve="isTestMode" />
+                            </node>
                           </node>
                         </node>
                         <node concept="3clFbF" id="2LK9TYv$UsL" role="3cqZAp">

@@ -38,6 +38,7 @@ import com.intellij.openapi.application.Application;
 import jetbrains.mps.project.ProjectManager;
 import com.intellij.testFramework.PlatformTestUtil;
 import com.intellij.openapi.vfs.impl.jar.JarFileSystemImpl;
+import com.intellij.util.indexing.FileBasedIndexImpl;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.vfs.VFSManager;
 import java.util.Collections;
@@ -282,8 +283,11 @@ public final class IdeaEnvironment extends EnvironmentBase {
             project.dispose();
           }
         }
-        PlatformTestUtil.dispatchAllEventsInIdeEventQueue();
-        JarFileSystemImpl.cleanupForNextTest();
+        if (myConfig.isTestMode()) {
+          PlatformTestUtil.dispatchAllEventsInIdeEventQueue();
+          JarFileSystemImpl.cleanupForNextTest();
+          ((FileBasedIndexImpl) FileBasedIndexImpl.getInstance()).cleanupForNextTest();
+        }
         application.runWriteAction(new Runnable() {
           public void run() {
             // for IdeaTestApplication case (myUnitTestMode == true) dispose() eventually clears DTA.ourInstance field
