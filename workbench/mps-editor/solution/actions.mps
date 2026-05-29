@@ -81,9 +81,9 @@
     <import index="uddc" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.menus.transformation(MPS.Editor/)" />
     <import index="y4ob" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.nodeEditor.menus(MPS.Editor/)" />
     <import index="clxi" ref="r:1797d8fa-0ead-4018-8649-d2ee4016be0a(jetbrains.mps.datatransfer)" />
+    <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" />
     <import index="tprs" ref="r:00000000-0000-4000-0000-011c895904a4(jetbrains.mps.ide.actions)" implicit="true" />
     <import index="oulx" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.commands(MPS.Editor/)" implicit="true" />
-    <import index="hox0" ref="1ed103c3-3aa6-49b7-9c21-6765ee11f224/java:jetbrains.mps.openapi.editor.style(MPS.Editor/)" implicit="true" />
     <import index="tpcu" ref="r:00000000-0000-4000-0000-011c89590282(jetbrains.mps.lang.core.behavior)" implicit="true" />
   </imports>
   <registry>
@@ -7632,19 +7632,31 @@
                         </node>
                       </node>
                     </node>
-                    <node concept="3y3z36" id="1uYwY98UXAt" role="3clFbw">
-                      <node concept="37vLTw" id="1uYwY98UXrj" role="3uHU7B">
-                        <ref role="3cqZAo" node="1uYwY98UWI8" resolve="wrtNode" />
-                      </node>
-                      <node concept="2OqwBi" id="1uYwY98UXFn" role="3uHU7w">
-                        <node concept="2OqwBi" id="1uYwY98UXFo" role="2Oq$k0">
-                          <node concept="2WthIp" id="1uYwY98UXFp" role="2Oq$k0" />
-                          <node concept="1DTwFV" id="1uYwY98UXFq" role="2OqNvi">
-                            <ref role="2WH_rO" node="2Nd7jcMoufK" resolve="cell" />
+                    <node concept="22lmx$" id="6Vz9thQuD0r" role="3clFbw">
+                      <node concept="3y3z36" id="6Vz9thQuD0u" role="3uHU7B">
+                        <node concept="37vLTw" id="6Vz9thQuD0x" role="3uHU7B">
+                          <ref role="3cqZAo" node="1uYwY98UWI8" resolve="wrtNode" />
+                        </node>
+                        <node concept="2OqwBi" id="6Vz9thQuD0y" role="3uHU7w">
+                          <node concept="2OqwBi" id="6Vz9thQuD0_" role="2Oq$k0">
+                            <node concept="2WthIp" id="6Vz9thQuD0C" role="2Oq$k0" />
+                            <node concept="1DTwFV" id="6Vz9thQuD0D" role="2OqNvi">
+                              <ref role="2WH_rO" node="2Nd7jcMoufK" resolve="cell" />
+                            </node>
+                          </node>
+                          <node concept="liA8E" id="6Vz9thQuD0E" role="2OqNvi">
+                            <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
                           </node>
                         </node>
-                        <node concept="liA8E" id="1uYwY98UXFr" role="2OqNvi">
-                          <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
+                      </node>
+                      <node concept="2YIFZM" id="54PVfKOCq$X" role="3uHU7w">
+                        <ref role="37wK5l" to="g51k:~APICellAdapter.hasExplicitNavigatableNode(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="hasExplicitNavigatableNode" />
+                        <ref role="1Pybhc" to="g51k:~APICellAdapter" resolve="APICellAdapter" />
+                        <node concept="2OqwBi" id="54PVfKOCq$Y" role="37wK5m">
+                          <node concept="2WthIp" id="54PVfKOCq_1" role="2Oq$k0" />
+                          <node concept="1DTwFV" id="54PVfKOCq_2" role="2OqNvi">
+                            <ref role="2WH_rO" node="2Nd7jcMoufK" resolve="cell" />
+                          </node>
                         </node>
                       </node>
                     </node>
@@ -7754,19 +7766,31 @@
               </node>
             </node>
           </node>
-          <node concept="3y3z36" id="1uYwY98UGn3" role="3clFbw">
-            <node concept="37vLTw" id="3GM_nagTARe" role="3uHU7B">
-              <ref role="3cqZAo" node="2Nd7jcMouis" resolve="wrtNode" />
-            </node>
-            <node concept="2OqwBi" id="2Nd7jcMouiJ" role="3uHU7w">
-              <node concept="2OqwBi" id="2Nd7jcMouiK" role="2Oq$k0">
-                <node concept="2WthIp" id="2Nd7jcMouiL" role="2Oq$k0" />
-                <node concept="1DTwFV" id="2Nd7jcMouiM" role="2OqNvi">
-                  <ref role="2WH_rO" node="2Nd7jcMoufK" resolve="cell" />
+          <node concept="22lmx$" id="6Vz9thQtTmm" role="3clFbw">
+            <node concept="3y3z36" id="6Vz9thQtTmp" role="3uHU7B">
+              <node concept="37vLTw" id="6Vz9thQtTms" role="3uHU7B">
+                <ref role="3cqZAo" node="2Nd7jcMouis" resolve="wrtNode" />
+              </node>
+              <node concept="2OqwBi" id="6Vz9thQtTmt" role="3uHU7w">
+                <node concept="2OqwBi" id="6Vz9thQtTmw" role="2Oq$k0">
+                  <node concept="2WthIp" id="6Vz9thQtTmz" role="2Oq$k0" />
+                  <node concept="1DTwFV" id="6Vz9thQtTm$" role="2OqNvi">
+                    <ref role="2WH_rO" node="2Nd7jcMoufK" resolve="cell" />
+                  </node>
+                </node>
+                <node concept="liA8E" id="6Vz9thQtTm_" role="2OqNvi">
+                  <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
                 </node>
               </node>
-              <node concept="liA8E" id="2Nd7jcMouiN" role="2OqNvi">
-                <ref role="37wK5l" to="f4zo:~EditorCell.getSNode()" resolve="getSNode" />
+            </node>
+            <node concept="2YIFZM" id="54PVfKOBv9$" role="3uHU7w">
+              <ref role="37wK5l" to="g51k:~APICellAdapter.hasExplicitNavigatableNode(jetbrains.mps.openapi.editor.cells.EditorCell)" resolve="hasExplicitNavigatableNode" />
+              <ref role="1Pybhc" to="g51k:~APICellAdapter" resolve="APICellAdapter" />
+              <node concept="2OqwBi" id="54PVfKOBv9_" role="37wK5m">
+                <node concept="2WthIp" id="54PVfKOBv9C" role="2Oq$k0" />
+                <node concept="1DTwFV" id="54PVfKOBv9D" role="2OqNvi">
+                  <ref role="2WH_rO" node="2Nd7jcMoufK" resolve="cell" />
+                </node>
               </node>
             </node>
           </node>

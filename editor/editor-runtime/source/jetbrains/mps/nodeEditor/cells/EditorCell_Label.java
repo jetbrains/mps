@@ -166,7 +166,7 @@ public abstract class EditorCell_Label extends EditorCell_Basic implements jetbr
       link = MPSDocumentationUtil.getLinkForUrl(url);
     } else {
       SNode node = APICellAdapter.getSNodeWRTReference(this);
-      if (node != this.getSNode()){
+      if (node != null && (node != this.getSNode() || APICellAdapter.hasExplicitNavigatableNode(this))){
         link = MPSDocumentationUtil.getLinkForSNodeReference(node.getReference());
       }
     }

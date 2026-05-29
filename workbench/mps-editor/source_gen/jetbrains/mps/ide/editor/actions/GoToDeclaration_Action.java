@@ -40,7 +40,7 @@ public class GoToDeclaration_Action extends BaseAction {
       return false;
     }
 
-    if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode()) {
+    if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode() || APICellAdapter.hasExplicitNavigatableNode(((EditorCell) MapSequence.fromMap(_params).get("cell")))) {
       return true;
     }
     for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(wrtNode, null, true))) {
@@ -81,7 +81,7 @@ public class GoToDeclaration_Action extends BaseAction {
 
     ((MPSProject) MapSequence.fromMap(_params).get("project")).getModelAccess().runReadAction(() -> {
       SNode wrtNode = APICellAdapter.getSNodeWRTReference(((EditorCell) MapSequence.fromMap(_params).get("cell")));
-      if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode()) {
+      if (wrtNode != ((EditorCell) MapSequence.fromMap(_params).get("cell")).getSNode() || APICellAdapter.hasExplicitNavigatableNode(((EditorCell) MapSequence.fromMap(_params).get("cell")))) {
         new EditorNavigator(((MPSProject) MapSequence.fromMap(_params).get("project"))).shallFocus(true).selectIfChild().open(SNodeOperations.getPointer(wrtNode));
       } else {
         for (SNode anc : ListSequence.fromList(SNodeOperations.getNodeAncestors(wrtNode, null, true))) {
