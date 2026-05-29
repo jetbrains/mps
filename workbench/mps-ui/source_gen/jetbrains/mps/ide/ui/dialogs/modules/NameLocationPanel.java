@@ -65,6 +65,9 @@ public class NameLocationPanel extends JPanel {
           // sync parent folder name to match module name
           File newLoc = new File(modLoc.getParent(), moduleName);
           updateModuleLocationText(newLoc);
+        } else if (mySelectedModuleName.isEmpty() && !(moduleName.isEmpty())) {
+          File newLoc = new File(modLoc, moduleName);
+          updateModuleLocationText(newLoc);
         }
         mySelectedModuleName = moduleName;
         fireChanged();
@@ -79,10 +82,16 @@ public class NameLocationPanel extends JPanel {
     // want to initialize text of the field here, but don't want to invoke getActualLocation
     myModuleLocation.getDocument().addDocumentListener(new DocumentAdapter() {
       protected void textChanged(DocumentEvent p0) {
-        if (myLocationDocListenerEnabled) {
-          mySelectedLocation = new File(myModuleLocation.getText());
-          fireChanged();
+        if (!(myLocationDocListenerEnabled)) {
+          return;
         }
+        final String moduleLocationText = myModuleLocation.getText();
+        mySelectedLocation = new File(moduleLocationText);
+        int lastSeparatorIndex = moduleLocationText.lastIndexOf(File.separatorChar);
+        if (lastSeparatorIndex >= 0 && lastSeparatorIndex + 1 < moduleLocationText.length()) {
+          updateModuleNameText(moduleLocationText.substring(lastSeparatorIndex + 1));
+        }
+        fireChanged();
       }
     });
     final FileChooserDescriptor descriptor = FileChooserDescriptorFactory.createSingleFolderDescriptor();
