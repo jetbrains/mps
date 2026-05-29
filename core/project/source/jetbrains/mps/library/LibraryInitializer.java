@@ -20,6 +20,7 @@ import jetbrains.mps.extapi.module.SRepositoryExt;
 import jetbrains.mps.library.contributor.LibDescriptor;
 import jetbrains.mps.library.contributor.LibraryContributor;
 import jetbrains.mps.library.contributor.RepositoryContributor;
+import jetbrains.mps.library.ModulesMiner.ModuleHandle;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.io.DescriptorIOFacade;
 import jetbrains.mps.vfs.IFile;
@@ -32,8 +33,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
@@ -108,7 +111,10 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
    */
   private void update(final boolean refreshFiles) {
     final Set<SLibrary> currentLibs = new HashSet<>();
-    myModelAccess.runReadAction(() -> {
+    // Build the set of libraries the contributors currently describe and compute the delta against the
+    // loaded ones. Done under a read action so that myLibraries (mutated only under a write action) is
+    // observed consistently.
+    final Delta<SLibrary> libraryDelta = myModelAccess.computeReadAction(() -> {
       for (LibraryContributor contributor : myContributors) {
         // XXX FWIW, it's only BootstrapLibraryContributor that tells hiddenLanguages==true
         boolean hidden = contributor.hiddenLanguages();
@@ -117,33 +123,52 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
           currentLibs.add(lib);
         }
       }
+      return Delta.construct(myLibraries, currentLibs);
     });
+    if (libraryDelta.isEmpty()) {
+      return;
+    }
+    final List<SLibrary> toUnload = libraryDelta.getRemoved();
+    final List<SLibrary> toLoad = libraryDelta.getAdded();
+    printStatus(toUnload, toLoad);
+
+    // Scan the disk OUTSIDE the write action (MPS-39745): module mining is pure I/O and must not run
+    // under the write lock, where it could re-enter the platform file index and deadlock (see MPS-39737).
+    if (refreshFiles) {
+      refreshLibRoots(toLoad);
+    }
+    final Map<SLibrary, Collection<ModuleHandle>> collected = new LinkedHashMap<>();
+    for (SLibrary loadLib : toLoad) {
+      try {
+        collected.put(loadLib, loadLib.collect());
+      } catch (Exception ex) {
+        LOG.error("Failed to collect modules from library " + loadLib, ex);
+        collected.put(loadLib, Collections.emptyList());
+      }
+    }
+
+    // Take the write action only to mutate the repository and the set of loaded libraries.
     myModelAccess.runWriteAction(() -> {
-      final Delta<SLibrary> libraryDelta = Delta.construct(myLibraries, currentLibs);
-      if (libraryDelta.isEmpty()) return;
-      updateState(refreshFiles, libraryDelta);
+      updateState(toUnload, collected);
       libraryDelta.apply(myLibraries);
     });
   }
 
-  // performed in write action
-  // actual reading from disk happens here
-  private void updateState(final boolean refreshFiles, Delta<SLibrary> libraryDelta) {
+  // performed in write action; mutates the repository and the set of loaded libraries.
+  // The disk scanning has already been done by the caller (see SLibrary#collect), outside the write action.
+  private void updateState(List<SLibrary> toUnload, Map<SLibrary, Collection<ModuleHandle>> toLoad) {
     myModelAccess.checkWriteAccess();
-
-    final List<SLibrary> toUnload = libraryDelta.getRemoved();
-    final List<SLibrary> toLoad = libraryDelta.getAdded();
-
-    printStatus(toUnload, toLoad);
     for (SLibrary unloadLib : toUnload) {
-      unloadLib.dispose();
+      // guard against a concurrent update that has already unloaded this library
+      if (myLibraries.contains(unloadLib)) {
+        unloadLib.dispose();
+      }
     }
-
-    if (refreshFiles) {
-      refreshLibRoots(toLoad);
-    }
-    for (SLibrary loadLib : toLoad) {
-      loadLib.attach();
+    for (Map.Entry<SLibrary, Collection<ModuleHandle>> e : toLoad.entrySet()) {
+      // guard against a concurrent update that has already loaded an equal library
+      if (!myLibraries.contains(e.getKey())) {
+        e.getKey().attach(e.getValue());
+      }
     }
     LOG.info("Library update is finished");
   }

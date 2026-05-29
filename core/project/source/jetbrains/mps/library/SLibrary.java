@@ -110,11 +110,30 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     return myContributorName;
   }
 
-  void attach() {
+  /**
+   * Scans the disk for the modules contributed by this library. This is pure I/O: it performs no
+   * repository mutation and may run with no lock held (or under a read action). The returned handles
+   * are meant to be passed to {@link #attach(Collection)} from within a write action.
+   * <p>
+   * ModulesMiner gives all modules, including those sharing a descriptor file with their source
+   * language. We expect this sequence sorted, with LanguageDescriptors first, as
+   * ModuleRepositoryFacade doesn't tolerate generators coming in front of their languages yet.
+   */
+  @NotNull
+  Collection<ModuleHandle> collect() {
+    return createModuleMiner().collectModules(myFile).getCollectedModules();
+  }
+
+  /**
+   * Registers the modules discovered by {@link #collect()} into the repository and starts listening
+   * to file system changes for this library. Mutates the repository and internal data, hence must be
+   * called within a write action.
+   */
+  void attach(Collection<ModuleHandle> moduleHandles) {
     LOG.debug("Attaching " + this);
     // without this the performance drops because of the heavy idea local filesystem listening mechanism
     myFile.addListener(myPostNotifyDispatch);
-    collectAndRegisterModules();
+    instantiateAndActivateModules(moduleHandles);
   }
 
   void dispose() {
@@ -128,8 +147,11 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
     // Write per jar file is not the best alternative, SLibrary not always a directory, it's a single jar e.g. in Ant::generate.
     // Therefore, we use RedispatchListener and the fact FileProcessor adds up events per FSListener instance that comes through FSE.notify()
     // and expect this method to be invoked only once even if there are a lot of files of this SLibrary have been affected (added/removed/changed)
+    // Scan the disk OUTSIDE the write action (MPS-39745): module mining is pure I/O and must not run
+    // under the write lock, where it could re-enter the platform file index and deadlock (see MPS-39737).
+    final ModulesMiner createdAndChanged = collectFromCreatedAndChanged(event);
     myRepository.getModelAccess().runWriteAction(() -> {
-      final Delta moduleDelta = myFileTracker.buildDeltaFor(event, collectFromCreatedAndChanged(event));
+      final Delta moduleDelta = myFileTracker.buildDeltaFor(event, createdAndChanged);
       // We shall remove our listener for files we no longer care about. If myFile is among removed, do not remove the listener
       for (IFile f : moduleDelta.deletedFiles()) {
         if (!myFile.equals(f)) {
@@ -189,14 +211,6 @@ public class SLibrary implements MPSModuleOwner, Comparable<SLibrary> {
 
   private ModulesMiner createModuleMiner() {
     return new ModulesMiner(Collections.emptySet(), myDescriptorIO);
-  }
-
-  private void collectAndRegisterModules() {
-    final ModulesMiner modulesMiner = createModuleMiner().collectModules(myFile);
-    List<ModuleHandle> moduleHandles = new ArrayList<>(modulesMiner.getCollectedModules());
-    // MM gives all modules, including those sharing descriptor file with their source language
-    // we expect this sequence sorted, with LanguageDescriptors first, as MRF doesn't tolerate generators coming in front of their languages yet.
-    instantiateAndActivateModules(moduleHandles);
   }
 
   private void instantiateAndActivateModules(Collection<ModuleHandle> moduleHandles) {
