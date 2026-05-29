@@ -523,6 +523,7 @@
         <reference id="1143235391024" name="concept" index="I8UWU" />
       </concept>
       <concept id="1145383075378" name="jetbrains.mps.lang.smodel.structure.SNodeListType" flags="in" index="2I9FWS" />
+      <concept id="8329979535468945057" name="jetbrains.mps.lang.smodel.structure.Node_PresentationOperation" flags="ng" index="2Iv5rx" />
       <concept id="1145404486709" name="jetbrains.mps.lang.smodel.structure.SemanticDowncastExpression" flags="nn" index="2JrnkZ">
         <child id="1145404616321" name="leftExpression" index="2JrQYb" />
       </concept>
@@ -7695,22 +7696,23 @@
                             </node>
                           </node>
                         </node>
-                        <node concept="3SKdUt" id="4Mdt1RkW$xd" role="3cqZAp">
-                          <node concept="1PaTwC" id="ATZLwXoqMl" role="1aUNEU">
-                            <node concept="3oM_SD" id="ATZLwXoqMm" role="1PaTwD">
-                              <property role="3oM_SC" value="todo" />
+                        <node concept="3clFbF" id="54PVfKOFCen" role="3cqZAp">
+                          <node concept="2YIFZM" id="54PVfKOFCFL" role="3clFbG">
+                            <ref role="37wK5l" to="jkm4:~Messages.showInfoMessage(java.lang.String,java.lang.String)" resolve="showInfoMessage" />
+                            <ref role="1Pybhc" to="jkm4:~Messages" resolve="Messages" />
+                            <node concept="3cpWs3" id="54PVfKOFGbZ" role="37wK5m">
+                              <node concept="2OqwBi" id="54PVfKOFJM2" role="3uHU7w">
+                                <node concept="37vLTw" id="54PVfKOFGqo" role="2Oq$k0">
+                                  <ref role="3cqZAo" node="1uYwY98UWI8" resolve="wrtNode" />
+                                </node>
+                                <node concept="2Iv5rx" id="54PVfKOFK8q" role="2OqNvi" />
+                              </node>
+                              <node concept="Xl_RD" id="54PVfKOFCSP" role="3uHU7B">
+                                <property role="Xl_RC" value="Cannot navigate to the node " />
+                              </node>
                             </node>
-                            <node concept="3oM_SD" id="ATZLwXoqMn" role="1PaTwD">
-                              <property role="3oM_SC" value="show" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqMo" role="1PaTwD">
-                              <property role="3oM_SC" value="notification:" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqMp" role="1PaTwD">
-                              <property role="3oM_SC" value="can't" />
-                            </node>
-                            <node concept="3oM_SD" id="ATZLwXoqMq" role="1PaTwD">
-                              <property role="3oM_SC" value="navigate" />
+                            <node concept="Xl_RD" id="54PVfKOFDoI" role="37wK5m">
+                              <property role="Xl_RC" value="Go To Declaration Problem" />
                             </node>
                           </node>
                         </node>

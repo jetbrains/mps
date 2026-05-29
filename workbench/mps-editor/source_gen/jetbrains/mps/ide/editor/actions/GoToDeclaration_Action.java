@@ -19,6 +19,7 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
+import com.intellij.openapi.ui.Messages;
 
 @GeneratedClass(nodeId = "3228268613620327405", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class GoToDeclaration_Action extends BaseAction {
@@ -89,7 +90,7 @@ public class GoToDeclaration_Action extends BaseAction {
             return;
           }
         }
-        // todo show notification: can't navigate
+        Messages.showInfoMessage("Cannot navigate to the node " + SNodeOperations.present(wrtNode), "Go To Declaration Problem");
       }
     });
   }
