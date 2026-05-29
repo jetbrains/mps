@@ -110,21 +110,7 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
    *
    */
   private void update(final boolean refreshFiles) {
-    final Set<SLibrary> currentLibs = new HashSet<>();
-    // Build the set of libraries the contributors currently describe and compute the delta against the
-    // loaded ones. Done under a read action so that myLibraries (mutated only under a write action) is
-    // observed consistently.
-    final Delta<SLibrary> libraryDelta = myModelAccess.computeReadAction(() -> {
-      for (LibraryContributor contributor : myContributors) {
-        // XXX FWIW, it's only BootstrapLibraryContributor that tells hiddenLanguages==true
-        boolean hidden = contributor.hiddenLanguages();
-        for (LibDescriptor pathDescriptor : contributor.getPaths()) {
-          SLibrary lib = new SLibrary(myRepository, pathDescriptor, myModuleDescriptorIO, hidden || pathDescriptor.isVisibilityManaged());
-          currentLibs.add(lib);
-        }
-      }
-      return Delta.construct(myLibraries, currentLibs);
-    });
+    final Delta<SLibrary> libraryDelta = buildDelta();
     if (libraryDelta.isEmpty()) {
       return;
     }
@@ -138,19 +124,47 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
       refreshLibRoots(toLoad);
     }
     final Map<SLibrary, Collection<ModuleHandle>> collected = new LinkedHashMap<>();
+    final Set<SLibrary> failedToLoad = new LinkedHashSet<>();
     for (SLibrary loadLib : toLoad) {
       try {
         collected.put(loadLib, loadLib.collect());
       } catch (Exception ex) {
         LOG.error("Failed to collect modules from library " + loadLib, ex);
-        collected.put(loadLib, Collections.emptyList());
+        failedToLoad.add(loadLib);
       }
     }
 
     // Take the write action only to mutate the repository and the set of loaded libraries.
     myModelAccess.runWriteAction(() -> {
+      // Paranoid double-check: if myLibraries or the contributors changed since we computed the
+      // delta (and scanned), skip rather than apply a stale delta. Not auto-rescheduled — safe
+      // because every contributor change (load/unload/update) re-runs update().
+      if (!libraryDelta.equals(buildDelta())) {
+         LOG.info("Library update is skipped: concurrent update detected");
+         return;
+      }
       updateState(toUnload, collected);
       libraryDelta.apply(myLibraries);
+      // Delta is immutable, its "added" set = collected.keySet + failedToLoad
+      myLibraries.removeAll(failedToLoad);
+    });
+  }
+
+  private Delta<SLibrary> buildDelta() {
+    final Set<SLibrary> currentLibs = new HashSet<>();
+    // Build the set of libraries the contributors currently describe and compute the delta against the
+    // loaded ones. Done under a read action so that myLibraries (mutated only under a write action) is
+    // observed consistently.
+    return myModelAccess.computeReadAction(() -> {
+      for (LibraryContributor contributor : myContributors) {
+        // XXX FWIW, it's only BootstrapLibraryContributor that tells hiddenLanguages==true
+        boolean hidden = contributor.hiddenLanguages();
+        for (LibDescriptor pathDescriptor : contributor.getPaths()) {
+          SLibrary lib = new SLibrary(myRepository, pathDescriptor, myModuleDescriptorIO, hidden || pathDescriptor.isVisibilityManaged());
+          currentLibs.add(lib);
+        }
+      }
+      return Delta.construct(myLibraries, currentLibs);
     });
   }
 
@@ -244,6 +258,23 @@ public final class LibraryInitializer implements CoreComponent, RepositoryReader
     public void apply(Collection<T> toChange) {
       toChange.removeAll(myRemoved);
       toChange.addAll(myAdded);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+      if (o == null || getClass() != o.getClass()) {
+        return false;
+      }
+
+      Delta<?> delta = (Delta<?>) o;
+      return myAdded.equals(delta.myAdded) && myRemoved.equals(delta.myRemoved);
+    }
+
+    @Override
+    public int hashCode() {
+      int result = myAdded.hashCode();
+      result = 31 * result + myRemoved.hashCode();
+      return result;
     }
   }
 }
