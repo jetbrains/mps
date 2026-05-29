@@ -49,16 +49,18 @@ public class NodeOpener_RequestHandler extends HttpRequestHandlerBase {
 
   @Override
   public void handle() throws Exception {
-    if (this.project != null) {
-      final SNode node = HandlerUtil.openNode(this.project, this.ref);
+    // The project may be incorrect if the ide.httpsupport.specifyProjectInNodeURL is false
+    Project projectForNode = HandlerUtil.getProjectForNode(this.project, this.ref);
+    if (projectForNode != null) {
+      final SNode node = HandlerUtil.openNode(projectForNode, this.ref);
       if (node != null) {
         final Wrappers._T<String> nodePresentation = new Wrappers._T<String>();
-        this.project.getModelAccess().runReadAction(() -> nodePresentation.value = node.getPresentation());
-        String text = HandlerUtil.HEADER_RESPONCE + "The requested node has been opened in MPS<br><b>Node</b>: " + nodePresentation.value + " <i>(" + node.getConcept() + ")</i><br><b>Project</b>: " + this.project.getName();
+        projectForNode.getModelAccess().runReadAction(() -> nodePresentation.value = node.getPresentation());
+        String text = HandlerUtil.HEADER_RESPONCE + "The requested node has been opened in MPS<br><b>Node</b>: " + nodePresentation.value + " <i>(" + node.getConcept() + ")</i><br><b>Project</b>: " + projectForNode.getName();
         this.request.sendResponse(HttpResponseStatus.OK, "text/html; charset=UTF-8", Unpooled.copiedBuffer(text, CharsetUtil.UTF_8));
       } else {
-        String text = HandlerUtil.HEADER_RESPONCE + "The requested node has not been found<br><b>Node reference</b>: " + this.ref + "<br><b>Project</b>: " + this.project.getName();
-        HandlerUtil.showNodeNotFoundPopup(this.project, this.ref);
+        String text = HandlerUtil.HEADER_RESPONCE + "The requested node has not been found<br><b>Node reference</b>: " + this.ref + "<br><b>Project</b>: " + projectForNode.getName();
+        HandlerUtil.showNodeNotFoundPopup(projectForNode, this.ref);
         this.request.sendResponse(HttpResponseStatus.OK, "text/html; charset=UTF-8", Unpooled.copiedBuffer(text, CharsetUtil.UTF_8));
       }
     } else {
