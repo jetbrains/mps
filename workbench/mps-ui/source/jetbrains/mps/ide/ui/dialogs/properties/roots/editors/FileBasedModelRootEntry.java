@@ -99,13 +99,12 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   }
 
   @Nullable
-  /*package*/ SourceRootKind isFileUnderRoot(VirtualFile file) {
+    /*package*/ SourceRootKind isFileUnderRoot(VirtualFile file) {
     final String filePath = file.getPath();
     for (SourceRootKind kind : myFileBasedModelRoot.getSupportedFileKinds1()) {
       Collection<SourceRoot> sr = myFileBasedModelRoot.getSourceRoots(kind);
       for (SourceRoot r : sr) {
-        @SuppressWarnings("removal")
-        final String srFilePath = r.getAbsolutePath().getPath();
+        @SuppressWarnings("removal") final String srFilePath = r.getAbsolutePath().getPath();
         if (filePath.equals(srFilePath) || filePath.startsWith(srFilePath + IFileSystem.SEPARATOR_CHAR)) {
           return kind;
         }
@@ -119,7 +118,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
   }
 
   @Nullable
-  /*package*/ SourceRoot getSourceRootByPath(SourceRootKind kind, IFile path) {
+    /*package*/ SourceRoot getSourceRootByPath(SourceRootKind kind, IFile path) {
     //noinspection removal
     return myFileBasedModelRoot.getSourceRoots(kind).stream().filter(sourceRoot -> sourceRoot.getAbsolutePath().equals(path)).findAny().orElse(null);
   }
@@ -158,7 +157,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
       if (!sourceRoots.isEmpty()) {
         final JComponent kindComponent = createKindGroupComponent(getKindText(kind), sourceRoots, getKindColor(kind));
-        panel.add(kindComponent, new GridBagConstraints(0, GridBagConstraints.RELATIVE, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL, new JBInsets(0, 0, 10, 0), 0, 0));
+        panel.add(kindComponent, new GridBagConstraints(0, GridBagConstraints.RELATIVE, 1, 1, 1.0, 0.0, GridBagConstraints.NORTH, GridBagConstraints.HORIZONTAL,
+                                                        new JBInsets(0, 0, 10, 0), 0, 0));
       }
     }
     panel.setBackground(UIUtil.isUnderDarcula() ? UIUtil.getPanelBackground() : ModelRootEntryContainer.SELECTED_CONTENT_COLOR);
@@ -187,7 +187,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     return kind.isExcluded() ? Modules.ExcludeRoot : Modules.SourceRoot;
   }
 
-  private JComponent createKindGroupComponent(String title, Collection<SourceRoot> sourceRoots, Color foregroundColor)   {
+  private JComponent createKindGroupComponent(String title, Collection<SourceRoot> sourceRoots, Color foregroundColor) {
     if (sourceRoots.isEmpty()) {
       return new JBPanel<>();
     }
@@ -198,12 +198,13 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     for (SourceRoot sourceRoot : sourceRoots) {
       int verticalPolicy = (idx == (sourceRoots.size() - 1)) ? SIZEPOLICY_CAN_GROW : SIZEPOLICY_FIXED;
       panel.add(createKindFileComponent(sourceRoot, foregroundColor), new GridConstraints(idx, 0, 1, 1, ANCHOR_NORTHWEST, FILL_HORIZONTAL,
-                                                                                          SIZEPOLICY_CAN_GROW | SIZEPOLICY_CAN_SHRINK, verticalPolicy, null, null, null));
+                                                                                          SIZEPOLICY_CAN_GROW | SIZEPOLICY_CAN_SHRINK, verticalPolicy, null,
+                                                                                          null, null));
       int column = 1;
       int colspan = 2;
 
       panel.add(createKindFileDeleteComponent(sourceRoot), new GridConstraints(idx, column, 1, colspan, ANCHOR_EAST, FILL_NONE,
-                                                                                     SIZEPOLICY_FIXED, verticalPolicy, null, null, null));
+                                                                               SIZEPOLICY_FIXED, verticalPolicy, null, null, null));
       idx++;
     }
 
@@ -214,8 +215,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     titleLabel.setBorder(BorderFactory.createEmptyBorder(0, 2, 0, 0));
     registerTextComponent(titleLabel, foregroundColor);
 
-    @SuppressWarnings("rawtypes")
-    final JBPanel<JBPanel> groupPanel = new JBPanel<>(new BorderLayout());
+    @SuppressWarnings("rawtypes") final JBPanel<JBPanel> groupPanel = new JBPanel<>(new BorderLayout());
     groupPanel.setOpaque(false);
     groupPanel.add(titleLabel, BorderLayout.NORTH);
     groupPanel.add(panel, BorderLayout.CENTER);
@@ -231,8 +231,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
     JLabel label2Return = new JLabel(pathPresentation);
 
-    @SuppressWarnings("removal")
-    final IFile srcRootFile = sourceRoot.getAbsolutePath();
+    @SuppressWarnings("removal") final IFile srcRootFile = sourceRoot.getAbsolutePath();
     if (srcRootFile != null && srcRootFile.exists()) {
       HoverHyperlinkLabel hyperlinkLabel = new HoverHyperlinkLabel(pathPresentation, foreground);
       hyperlinkLabel.setMinimumSize(new Dimension(0, 0));
@@ -243,8 +242,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
       });
       registerTextComponent(hyperlinkLabel, foreground);
       label2Return = hyperlinkLabel;
-    }
-    else {
+    } else {
       label2Return.setOpaque(false);
       label2Return.setForeground(Color.RED);
     }
@@ -298,7 +296,9 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
 
   public void updateUI() {
     myEventDispatcher.getMulticaster().fireDataChanged();
-    myFileBasedModelRootEditor.myTree.repaint();
+    if (myFileBasedModelRootEditor != null) {
+      myFileBasedModelRootEditor.myTree.repaint();
+    }
   }
 
   @Override
@@ -317,7 +317,8 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
       return new Status.OK("Different file systems");
     }
     if (contentDirectory.isDescendant(otherCD) || otherCD.isDescendant(contentDirectory)) {
-      String m = "<html>Content directory (%s) intersects with another model root's content directory:<br><b>%s</b><br><br>Please, choose another folder.</html>";
+      String m =
+          "<html>Content directory (%s) intersects with another model root's content directory:<br><b>%s</b><br><br>Please, choose another folder.</html>";
       return new Status.ERROR(String.format(m, StringUtil.escapeXmlEntities(otherCD.getPath()), StringUtil.escapeXmlEntities((contentDirectory.getPath()))));
     }
     return Status.NO_ERRORS;
@@ -342,7 +343,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
         final int y = fontMetrics.getMaxAscent();
         final Color savedColor = g.getColor();
         g.setColor(DASH_LINE_COLOR);
-        drawDottedLine((Graphics2D)g, startX, y, endX, y);
+        drawDottedLine((Graphics2D) g, startX, y, endX, y);
         g.setColor(savedColor);
       }
     }
