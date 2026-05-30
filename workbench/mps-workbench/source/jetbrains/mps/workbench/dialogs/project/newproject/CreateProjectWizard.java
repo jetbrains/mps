@@ -73,7 +73,6 @@ import java.util.Objects;
 
 public final class CreateProjectWizard extends DialogWrapper {
 
-  private static final String PROJECTS_DIR = System.getProperty("user.home") + File.separator + "MPSProjects";
   private static final String PROJECT_NAME_PREFIX = "Project";
   private final Project myCurrentProject;
 
@@ -294,15 +293,12 @@ public final class CreateProjectWizard extends DialogWrapper {
 
     myProjectPath = new PathField();
     myProjectPath.addPathChangedListener(newPathValue -> {
-      if (myProjectPath.isPathChangedByUser()) {
-        updateProjectNameFromPath(newPathValue);
-      }
       //If path changed need to update specific module settings
-      fireProjectPathChanged(newPathValue);
+      fireProjectPathChanged(getProjectPath());
       checkSettings();
     });
 
-    //Change project path if project name changed
+    // The project is created under <location>/<name>; template settings depend on the full path.
     myProjectName.addCaretListener(new CaretListener() {
       private String myValue = myProjectName.getText();
 
@@ -310,7 +306,7 @@ public final class CreateProjectWizard extends DialogWrapper {
       public void caretUpdate(CaretEvent e) {
         if (!Objects.equals(myValue, myProjectName.getText())) {
           myValue = myProjectName.getText();
-          updateProjectPath();
+          fireProjectPathChanged(getProjectPath());
           checkSettings();
         }
       }
@@ -396,7 +392,7 @@ public final class CreateProjectWizard extends DialogWrapper {
     }
 
     // Check that there is no other project at this project path
-    File file = new File(myProjectPath.getPath());
+    File file = new File(getProjectPath());
     if (file.exists() && file.getParent() != null && file.isDirectory()) {
       final File[] files = file.listFiles(
           (dir, name) -> Project.DIRECTORY_STORE_FOLDER.equals(name) || name.toLowerCase().endsWith(MPSExtentions.DOT_MPS_PROJECT));
@@ -429,7 +425,7 @@ public final class CreateProjectWizard extends DialogWrapper {
     // It's better to have almost unreachable limit then stuck in infinite loop
     for (int i = 0; i < 1 << 10 ; i++) {
       final String projectName = i > 0 ? PROJECT_NAME_PREFIX + i : PROJECT_NAME_PREFIX;
-      if (!(new File(PROJECTS_DIR, projectName).exists())) {
+      if (!(new File(getDefaultProjectLocation(), projectName).exists())) {
         return projectName;
       }
     }
@@ -438,27 +434,17 @@ public final class CreateProjectWizard extends DialogWrapper {
   }
 
   private void updateProjectPath() {
-    if (myProjectPath.getPath() == null || myProjectPath.getPath().length() == 0 ||
-        (myProjectPath.getPath().startsWith(PROJECTS_DIR) && !myProjectPath.isPathChangedByUser())) {
-      myProjectPath.setPath(PROJECTS_DIR + File.separator + myProjectName.getText());
+    if (myProjectPath.getPath() == null || myProjectPath.getPath().length() == 0) {
+      myProjectPath.setPath(getDefaultProjectLocation());
     }
   }
 
-  private void updateProjectNameFromPath(String path) {
-    // Mirrors IDEA's NamePathComponent.syncPathAndName: only update when the path has an unambiguous
-    // trailing segment, so the name doesn't flicker while the user is typing a separator and isn't
-    // cleared when the location field is wiped.
-    if (path == null) {
-      return;
-    }
-    int lastSeparatorIndex = path.lastIndexOf(File.separatorChar);
-    if (lastSeparatorIndex < 0 || lastSeparatorIndex + 1 >= path.length()) {
-      return;
-    }
-    String name = path.substring(lastSeparatorIndex + 1);
-    if (!Objects.equals(name, myProjectName.getText())) {
-      myProjectName.setText(name);
-    }
+  private String getDefaultProjectLocation() {
+    return ProjectUtil.getBaseDir();
+  }
+
+  private String getProjectPath() {
+    return new File(myProjectPath.getPath(), myProjectName.getText()).getPath();
   }
 
   private void fireProjectPathChanged(String newValue) {
@@ -518,10 +504,11 @@ public final class CreateProjectWizard extends DialogWrapper {
 
     final ProjectOptions myOptions = new ProjectOptions();
     myOptions.setProjectName(myProjectName.getText());
-    myOptions.setProjectPath(myProjectPath.getPath());
+    myOptions.setProjectPath(getProjectPath());
     myOptions.setCreateNewLanguage(false);
     myOptions.setCreateNewSolution(false);
     myOptions.setStorageScheme(false);
+    ProjectUtil.updateLastProjectLocation(new File(getProjectPath()).toPath());
 
     // Copy/paste from com.intellij.ide.impl.NewProjectUtil#createNewProject(AbstractProjectWizard)
     // FIXME extract to message bundle
