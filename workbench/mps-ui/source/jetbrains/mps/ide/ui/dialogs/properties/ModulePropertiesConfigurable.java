@@ -204,6 +204,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
   private final Project myIdeaProject;
   private final FacetTabsPersistence myFacetTabsPersistence;
 
+  private ModuleCommonTab myCommonTab;
   private AddFacetsTab myControlTab;
 
   // We are tightly coupled with IDEA IDE here, no reason to be shy about project kind.
@@ -221,7 +222,8 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
 
     setReadOnly(module.isReadOnly());
 
-    registerTabs(new ModuleCommonTab());
+    myCommonTab = new ModuleCommonTab();
+    registerTabs(myCommonTab);
 
     if (!(myModule instanceof DevKit)) {
       final ModuleDependenciesTab moduleDependenciesTab = new ModuleDependenciesTab();
@@ -260,6 +262,9 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     myFacetTabsPersistence.clearTabs();
     removeTab(myControlTab);
     myModuleRepository.getModelAccess().runReadAction(() -> {
+      if (!(myModule instanceof DevKit)) {
+        reinitializeTab(myCommonTab);
+      }
       // unlike similar code in the cons, above, we init() and add tabs right away
       for (SModuleFacet moduleFacet : myModule.getFacets()) {
         Tab facetTab = myFacetTabsPersistence.getFacetTab(moduleFacet);
@@ -366,6 +371,15 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     private JSpinner myModuleVersion;
     private DevkitVisibleScope myPlanPickScope;
     private GenPlanPickPanel myPlanPanel;
+
+    @Override
+    public void init() {
+      if (myEntriesEditor != null) {
+        Disposer.dispose(myEntriesEditor);
+        myEntriesEditor = null;
+      }
+      super.init();
+    }
 
     @Override
     protected String getConfigItemName() {
