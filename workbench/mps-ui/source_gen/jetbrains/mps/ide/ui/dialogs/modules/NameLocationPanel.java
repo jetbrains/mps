@@ -88,7 +88,7 @@ public class NameLocationPanel extends JPanel {
         final String moduleLocationText = myModuleLocation.getText();
         mySelectedLocation = new File(moduleLocationText);
         int lastSeparatorIndex = moduleLocationText.lastIndexOf(File.separatorChar);
-        if (lastSeparatorIndex >= 0 && lastSeparatorIndex + 1 < moduleLocationText.length()) {
+        if (lastSeparatorIndex >= 0) {
           updateModuleNameText(moduleLocationText.substring(lastSeparatorIndex + 1));
         }
         fireChanged();
