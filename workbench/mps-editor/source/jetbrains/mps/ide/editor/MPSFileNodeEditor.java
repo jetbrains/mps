@@ -24,12 +24,12 @@ import com.intellij.openapi.actionSystem.PlatformDataKeys;
 import com.intellij.openapi.actionSystem.UiDataProvider;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.DocumentsEditor;
-import com.intellij.openapi.fileEditor.FileEditorLocation;
 import com.intellij.openapi.fileEditor.FileEditorState;
 import com.intellij.openapi.fileEditor.FileEditorStateLevel;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.util.UserDataHolderBase;
 import com.intellij.openapi.vfs.VirtualFile;
+import jetbrains.mps.ide.ThreadUtils;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import jetbrains.mps.ide.editor.BaseNodeEditor.BaseEditorState;
 import jetbrains.mps.logging.Logger;
@@ -70,10 +70,12 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
 
   public MPSFileNodeEditor(@NotNull MPSProject project, MPSNodeVirtualFile file) {
     // there's at least 1 scenario when file == null, although I'd like it to become @NotNull
+    // FIXME ^^^ is it still true?
     myProject = project;
     myFile = file;
 
-    myProject.getModelAccess().runReadAction(this::initEditor);
+    NodeEditorSModelChangeListener.getInstance(myProject).oneUp(this);
+    myFile.whenReady(this::initEditor);
   }
 
   @Nullable
@@ -290,8 +292,13 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   }
 
   private void initEditor() {
-    NodeEditorSModelChangeListener.getInstance(myProject).oneUp(this);
-    recreateEditor(myNodeEditor != null ? getState(FileEditorStateLevel.FULL).getEditorState() : null);
+    Runnable createEditor = () -> recreateEditor(myNodeEditor != null ? getState(FileEditorStateLevel.FULL).getEditorState() : null);
+    if (ThreadUtils.isInEDT()) {
+      // it's important not to delay editor creation, MPSEditorOpener may want to access component right after editor instantiation.
+      myProject.getModelAccess().runReadAction(createEditor);
+    } else {
+      myProject.getModelAccess().runReadInEDT(createEditor);
+    }
   }
 
   public void recreateEditorOnTabChange() {
@@ -313,6 +320,7 @@ public class MPSFileNodeEditor extends UserDataHolderBase implements DocumentsEd
   }
 
   private boolean waitingForNodeFile() {
+    // FIXME I don't quite understand if myFile could be null any longer, definitely not for isValid() story
     return myFile == null;
   }
 

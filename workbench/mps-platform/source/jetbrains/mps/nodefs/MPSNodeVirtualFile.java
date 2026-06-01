@@ -27,10 +27,13 @@ import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -54,6 +57,7 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   private long myModificationStamp = LocalTimeCounter.currentTime();
   private long myTimeStamp = -1;
   private boolean myValid = true;
+  private Runnable myWhenReady;
 
   MPSNodeVirtualFile(@NotNull SNodeReference nodePointer, @NotNull RepositoryVirtualFiles vfs) {
     myNode = nodePointer;
@@ -66,7 +70,8 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     myRepoFiles = vfs;
     myPath = path;
     myName = myPresentationName = myRepoFiles.getPathFacility().tail(path);
-    myValid = false; // FIXME???
+    // despite the fact this isn't a real file, we can't answer isValid() == false as IDEA doesn't re-open editors for such files.
+    myValid = true;
   }
 
   // FIXME: check, perhaps is invoked with proper model access already.
@@ -97,6 +102,20 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     });
   }
 
+  /*
+   * mechanism gor MPSFileNodeEditor to get notified once the file is ready to be used in UI,
+   * independent of regular node change or VF change notifications (which get tricky for files that change state internally)
+   */
+  @Hack
+  @Internal
+  public void whenReady(@NotNull Runnable runnable) {
+    if (myRepoFiles.forUnknownFiles()) {
+      myWhenReady = runnable;
+    } else {
+      runnable.run();
+    }
+  }
+
   /*package*/ void adopted(@NotNull SNode node, @NotNull RepositoryVirtualFiles properOwner) {
     assert myRepoFiles != properOwner;
     myRepoFiles.forgetMe(this);
@@ -106,6 +125,9 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     myName = myPresentationName = String.valueOf(node.getPresentation());
     myTimeStamp = node.getModel().getSource().getTimestamp();
     myValid = true;
+    if (myWhenReady != null) {
+      myWhenReady.run();
+    }
   }
 
   @Nullable
@@ -279,10 +301,11 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   @Override
   public boolean isInProject(@NotNull Project project) {
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-    if (mpsProject!=null && mpsProject.getRepository()!=null) {
+    SModelReference modelReference = myNode.getModelReference(); // could be null for a provisional file we didn't resolve yet
+    if (modelReference != null && mpsProject != null && mpsProject.getRepository() != null) {
       final boolean[] result = new boolean[]{false};
       mpsProject.getRepository().getModelAccess().runReadAction(() -> {
-        final SModel model = myNode.getModelReference().resolve(mpsProject.getRepository());
+        final SModel model = modelReference.resolve(mpsProject.getRepository());
         result[0] = model != null && !model.isReadOnly();
       });
       return result[0];

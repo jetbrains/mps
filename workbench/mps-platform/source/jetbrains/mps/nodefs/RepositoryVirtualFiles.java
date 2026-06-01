@@ -103,6 +103,10 @@ final class RepositoryVirtualFiles {
     return myPathFacility;
   }
 
+  /*package*/ boolean forUnknownFiles() {
+    return myForUnknownFiles;
+  }
+
   public Optional<MPSNodeVirtualFile> lookupFileFor(@NotNull final SNodeReference nodePointer) {
     if (hasVirtualFileFor(nodePointer)) {
       return Optional.of(getVirtualFile(nodePointer));
