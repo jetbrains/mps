@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -45,8 +45,8 @@ public class MPSProjectRule implements UiDataRule {
   @Nullable
   private MPSProject deduceFromIJProject(@NotNull DataMap dataProvider) {
     Project project = dataProvider.get(CommonDataKeys.PROJECT);
-    if (project != null) {
-      return ProjectHelper.fromIdeaProject(project);
+    if (project != null && !project.isDefault()) {
+      return ProjectHelper.fromIdeaProjectIfCreated(project);
     }
     return null;
   }
