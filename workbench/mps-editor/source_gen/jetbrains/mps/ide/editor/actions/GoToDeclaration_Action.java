@@ -19,7 +19,15 @@ import jetbrains.mps.ide.editor.MPSEditorDataKeys;
 import jetbrains.mps.ide.actions.MPSCommonDataKeys;
 import com.intellij.featureStatistics.FeatureUsageTracker;
 import jetbrains.mps.openapi.navigation.EditorNavigator;
-import com.intellij.openapi.ui.Messages;
+import com.intellij.openapi.application.Application;
+import com.intellij.openapi.application.ApplicationManager;
+import javax.swing.JComponent;
+import jetbrains.mps.nodeEditor.EditorComponent;
+import com.intellij.ui.awt.RelativePoint;
+import java.awt.Point;
+import com.intellij.openapi.ui.popup.JBPopupFactory;
+import com.intellij.openapi.ui.MessageType;
+import com.intellij.openapi.ui.popup.Balloon;
 
 @GeneratedClass(nodeId = "3228268613620327405", model = "r:9832fb5f-2578-4b58-8014-a5de79da988e(jetbrains.mps.ide.editor.actions)")
 public class GoToDeclaration_Action extends BaseAction {
@@ -90,8 +98,17 @@ public class GoToDeclaration_Action extends BaseAction {
             return;
           }
         }
-        Messages.showInfoMessage("Cannot navigate to the node " + SNodeOperations.present(wrtNode), "Go To Declaration Problem");
+        GoToDeclaration_Action.this.showNoNodeToNavigate(wrtNode, _params);
       }
     });
+  }
+  private void showNoNodeToNavigate(SNode wrtNode, final Map<String, Object> _params) {
+    Application app = ApplicationManager.getApplication();
+    if (app.isUnitTestMode() || app.isHeadlessEnvironment()) {
+      return;
+    }
+    JComponent comp = (EditorComponent) ((EditorCell) MapSequence.fromMap(_params).get("cell")).getEditorComponent();
+    RelativePoint point = new RelativePoint(comp, new Point(((EditorCell) MapSequence.fromMap(_params).get("cell")).getX(), ((EditorCell) MapSequence.fromMap(_params).get("cell")).getY() + ((EditorCell) MapSequence.fromMap(_params).get("cell")).getHeight()));
+    JBPopupFactory.getInstance().createHtmlTextBalloonBuilder("Cannot navigate to the node " + SNodeOperations.present(wrtNode), MessageType.INFO, null).setFadeoutTime(3000).createBalloon().show(point, Balloon.Position.below);
   }
 }
