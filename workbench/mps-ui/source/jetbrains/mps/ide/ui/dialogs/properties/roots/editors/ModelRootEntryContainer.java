@@ -25,6 +25,7 @@ import com.intellij.ui.roots.IconActionComponent;
 import com.intellij.util.EventDispatcher;
 import com.intellij.util.ui.JBInsets;
 import com.intellij.util.ui.UIUtil;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 import org.jetbrains.mps.openapi.ui.persistence.ModelRootEntry;
@@ -221,6 +222,20 @@ public final class ModelRootEntryContainer implements ModelRootEntryListener {
   @Override
   public void fireDataChanged() {
     updateUI();
+  }
+
+  @Override
+  public void selectFile(@NotNull IFile file) {
+    // The user activated a source root hyperlink (possibly on a non-selected entry, whose editor is not yet shown).
+    // Focus this entry first so its editor is displayed in the right panel (and lazily created via getEditor()),
+    // then reveal the source root in it. selectEntry() de-duplicates when this entry is already focused.
+    if (!myIsSelected) {
+      myEventDispatcher.getMulticaster().focused(this);
+    }
+    ModelRootEntryEditor editor = getEditor();
+    if (editor instanceof FileBasedModelRootEditor) {
+      ((FileBasedModelRootEditor) editor).selectFile(file);
+    }
   }
 
   public interface ContentEntryEditorListener extends EventListener {

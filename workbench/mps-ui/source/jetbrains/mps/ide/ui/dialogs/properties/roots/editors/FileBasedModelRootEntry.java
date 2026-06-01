@@ -235,11 +235,7 @@ public final class FileBasedModelRootEntry implements ModelRootEntry<FileBasedMo
     if (srcRootFile != null && srcRootFile.exists()) {
       HoverHyperlinkLabel hyperlinkLabel = new HoverHyperlinkLabel(pathPresentation, foreground);
       hyperlinkLabel.setMinimumSize(new Dimension(0, 0));
-      hyperlinkLabel.addHyperlinkListener(e -> {
-        if (myFileBasedModelRootEditor != null) {
-          myFileBasedModelRootEditor.selectFile(srcRootFile);
-        }
-      });
+      hyperlinkLabel.addHyperlinkListener(e -> myEventDispatcher.getMulticaster().selectFile(srcRootFile));
       registerTextComponent(hyperlinkLabel, foreground);
       label2Return = hyperlinkLabel;
     } else {

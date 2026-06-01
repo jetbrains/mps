@@ -18,6 +18,7 @@ package org.jetbrains.mps.openapi.ui.persistence;
 import com.intellij.openapi.Disposable;
 import jetbrains.mps.util.IStatus;
 import jetbrains.mps.util.Status;
+import jetbrains.mps.vfs.IFile;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.mps.openapi.persistence.ModelRoot;
 
@@ -62,5 +63,16 @@ public interface ModelRootEntry<T extends ModelRoot> extends Disposable {
 
   interface ModelRootEntryListener extends EventListener {
     void fireDataChanged();
+
+    /**
+     * Requests the UI to reveal and select {@code file} (a source root of this entry's model root) in the corresponding
+     * model root editor, switching focus to this entry first if it is not currently selected. Fired when the user
+     * activates a source root hyperlink in the entry's details component.
+     *
+     * @param file source root file to select
+     * @since 2026.1
+     */
+    default void selectFile(@NotNull IFile file) {
+    }
   }
 }
