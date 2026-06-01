@@ -30,6 +30,7 @@ import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.smodel.MPSModuleRepository;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.RepoListenerRegistrar;
+import jetbrains.mps.smodel.RepositoryFacade;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.event.NodeChangeCollector;
 import org.jetbrains.annotations.NonNls;
@@ -51,6 +52,7 @@ import org.jetbrains.mps.openapi.module.SRepositoryContentAdapter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -107,6 +109,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
   private final SRepositoryContentAdapter myRepositoryListener;
   private final NodeFileEventListener myEventPublisher;
   private boolean myDisposed = false;
+  private final RepositoryVirtualFiles myUnresolvedFiles;
 
   public NodeVirtualFileSystem() {
     final Platform mpsPlatform = MPSCoreComponents.getInstance().getPlatform();
@@ -118,6 +121,10 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
       new RepoListenerRegistrar(myGlobalRepoFiles.getRepository(), myRepositoryListener).attach());
     MessageBus messageBus = ApplicationManager.getApplication().getMessageBus();
     myEventPublisher = messageBus.syncPublisher(NODE_FS_CHANGES);
+
+    // use a separate blank repository where nothing could ever get resolved
+    RepositoryFacade repo = RepositoryFacade.createPlainRegistrationRepo();
+    myUnresolvedFiles = new RepositoryVirtualFiles(this, repo.get(), true);
   }
 
   /**
@@ -158,6 +165,8 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
       listener = new MyRepositoryListener(repoFiles);
       myFiles2ListenerMap.put(repoFiles, listener);
     }
+    // FIXME shall revisit unknown files and tell if they are 'adopted' and need to reflect the change or get discarded (reported as deleted)
+    // myUnresolvedFiles.getNotifier(new VFSNotifier(myUnresolvedFiles)).deleted(myUnresolvedFiles.getAll()).notify();
     new RepoListenerRegistrar(repoFiles.getRepository(), listener).attach();
   }
 
@@ -222,20 +231,43 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
   @Override
   @Nullable
   public VirtualFile findFileByPath(final @NotNull @NonNls String path) {
+    final VirtualFile vf = myUnresolvedFiles.findFileByPath(path, false);
     for (RepositoryVirtualFiles rvf : myPerRepositoryFiles) { // going by snapshot here and checking all persisted repositories
       VirtualFile file = new ModelAccessHelper(rvf.getRepository()).runReadAction(() -> {
         synchronized (myRepoVFLock) {
           if (myPerRepositoryFiles.contains(rvf)) { // double check
-            return rvf.findFileByPath(path);
+            return rvf.findFileByPath(path, vf);
           }
           return null;
         }
       });
       if (file != null) {
+        if (vf != null) {
+          //noinspection UseVirtualFileEquals
+          assert vf == file;
+          if (file instanceof MPSNodeVirtualFile nvf) {
+            VFSNotifier notifier = rvf.getNotifier(new VFSNotifier(rvf));
+            notifier.changed(Collections.singleton(nvf));
+            notifier.execute();
+          }
+        }
         return file;
       }
     }
-    return new ModelAccessHelper(myGlobalRepoFiles.getRepository()).runReadAction(() -> myGlobalRepoFiles.findFileByPath(path));
+    VirtualFile globalFile = new ModelAccessHelper(myGlobalRepoFiles.getRepository()).runReadAction(() -> myGlobalRepoFiles.findFileByPath(path, vf));
+    if (globalFile != null) {
+      if (vf != null) {
+        //noinspection UseVirtualFileEquals
+        assert vf == globalFile;
+        if (globalFile instanceof MPSNodeVirtualFile nvf) {
+          VFSNotifier notifier = myGlobalRepoFiles.getNotifier(new VFSNotifier(myGlobalRepoFiles));
+          notifier.changed(Collections.singleton(nvf));
+          notifier.execute();
+        }
+      }
+      return globalFile;
+    }
+    return vf != null ? vf : myUnresolvedFiles.findFileByPath(path, true);
   }
 
   @NotNull

@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,6 +26,7 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.SNodePointer;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -44,9 +45,9 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   public static final String NODE_PREFIX = "node://";
 
   @NotNull
-  private final SNodeReference myNode;
+  private SNodeReference myNode;
   @NotNull
-  private final RepositoryVirtualFiles myRepoFiles;
+  private RepositoryVirtualFiles myRepoFiles;
   private String myPath;
   private String myName;
   private String myPresentationName;
@@ -60,10 +61,20 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     updateFields();
   }
 
+  MPSNodeVirtualFile(@NotNull String path, @NotNull RepositoryVirtualFiles vfs) {
+    myNode = new SNodePointer(null);
+    myRepoFiles = vfs;
+    myPath = path;
+    myName = myPresentationName = myRepoFiles.getPathFacility().tail(path);
+    myValid = false; // FIXME???
+  }
+
   // FIXME: check, perhaps is invoked with proper model access already.
   // for exposed files, this shall happen in exclusive read (so that different threads from readAction do not get different
   // result e.g. for getName().
   /*package*/ void updateFields() {
+    // FWIW, updateFields is never invoked for unknown files (created using path:String, as we don't invoke updateFields() on construction
+    //       nor these files ever get reported as changed (see NVFS.VFSNotifier)
     myRepoFiles.getRepository().getModelAccess().runReadAction(() -> {
       SNode node = myNode.resolve(myRepoFiles.getRepository());
       if (node == null) {
@@ -84,6 +95,17 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
         myTimeStamp = node.getModel().getSource().getTimestamp();
       }
     });
+  }
+
+  /*package*/ void adopted(@NotNull SNode node, @NotNull RepositoryVirtualFiles properOwner) {
+    assert myRepoFiles != properOwner;
+    myRepoFiles.forgetMe(this);
+    myRepoFiles = properOwner;
+    myNode = node.getReference();
+    // here I assume we never adopt a node from transient module, and don't care to update presentation name
+    myName = myPresentationName = String.valueOf(node.getPresentation());
+    myTimeStamp = node.getModel().getSource().getTimestamp();
+    myValid = true;
   }
 
   @Nullable
@@ -151,8 +173,7 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   }
 
   @Override
-  @NotNull
-  public byte[] contentsToByteArray() {
+  public byte @NotNull [] contentsToByteArray() {
     return CONTENTS;
   }
 

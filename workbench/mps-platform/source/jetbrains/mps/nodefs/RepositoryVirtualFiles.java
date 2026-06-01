@@ -48,12 +48,18 @@ final class RepositoryVirtualFiles {
   private final Map<SModelReference, MPSModelVirtualFile> myModelVirtualFiles = new ConcurrentHashMap<>();
   private final NiceReferenceSerializer myPathFacility;
   private final FileSystemBridge myFileBridge;
+  private final boolean myForUnknownFiles;
 
   /*package*/ RepositoryVirtualFiles(@NotNull NodeVirtualFileSystem mpsFileSystem, @NotNull SRepository repository) {
+    this(mpsFileSystem, repository, false);
+  }
+
+  /*package*/ RepositoryVirtualFiles(@NotNull NodeVirtualFileSystem mpsFileSystem, @NotNull SRepository repository, boolean forUnknownFiles) {
     myFileSystem = mpsFileSystem;
     myRepository = repository;
     myPathFacility = new NiceReferenceSerializer(repository);
     myFileBridge = new LocalFSOnly();
+    myForUnknownFiles = forUnknownFiles;
   }
 
   /*package*/ RepositoryVirtualFiles(@NotNull NodeVirtualFileSystem mpsFileSystem, @NotNull MPSProject mpsProject) {
@@ -61,6 +67,7 @@ final class RepositoryVirtualFiles {
     myRepository = mpsProject.getRepository();
     myPathFacility = new NiceReferenceSerializer(myRepository);
     myFileBridge = mpsProject.getFileSystem();
+    myForUnknownFiles = false;
   }
 
   /**
@@ -128,6 +135,10 @@ final class RepositoryVirtualFiles {
     return myVirtualFiles.containsKey(nodePointer);
   }
 
+  private boolean hasVirtualFileFor(SModelReference nodePointer) {
+    return myModelVirtualFiles.containsKey(nodePointer);
+  }
+
   /**
    * @return existing VF, if any.
    */
@@ -156,19 +167,55 @@ final class RepositoryVirtualFiles {
     myVirtualFiles.put(nodePointer, vf);
   }
 
+  // not sure has to be concurrent, doesn't hurt for now, shall revisit
+  private final Map<String, VirtualFile> myUnresolvedFiles = new ConcurrentHashMap<>();
+  /*package*/ VirtualFile findFileByPath(final @NotNull String path, boolean createIfAbsent) {
+    assert myForUnknownFiles : "method intended solely for specific scenario";
+    if (createIfAbsent) {
+      if (path.startsWith(MPSNodeVirtualFile.NODE_PREFIX)) {
+        return myUnresolvedFiles.computeIfAbsent(path, p -> new MPSNodeVirtualFile(p, this));
+      } else if (path.startsWith(MPSModelVirtualFile.MODEL_PREFIX)) {
+        return myUnresolvedFiles.computeIfAbsent(path, p -> new MPSModelVirtualFile(p, this));
+      }
+    }
+    return myUnresolvedFiles.get(path);
+  }
+
+  /*package*/ void forgetMe(MPSNodeVirtualFile vf) {
+    assert myForUnknownFiles : "method intended solely for specific scenario";
+    myUnresolvedFiles.remove(vf.getPath());
+  }
+
+  /*package*/ void forgetMe(MPSModelVirtualFile vf) {
+    assert myForUnknownFiles : "method intended solely for specific scenario";
+    myUnresolvedFiles.remove(vf.getPath());
+  }
+
   @Nullable
-  /*package*/ VirtualFile findFileByPath(final @NotNull String path) {
+  /*package*/ VirtualFile findFileByPath(final @NotNull String path, final @Nullable VirtualFile instanceToAdopt) {
     try {
       if (path.startsWith(MPSNodeVirtualFile.NODE_PREFIX)) {
         SNode node = getPathFacility().deserializeNode(path.substring(MPSNodeVirtualFile.NODE_PREFIX.length()));
         if (node == null) {
           return null;
         }
+        if (instanceToAdopt instanceof MPSNodeVirtualFile nvf) {
+          assert !hasVirtualFileFor(node.getReference());
+          myVirtualFiles.put(node.getReference(), nvf);
+          nvf.adopted(node, this);
+          return nvf;
+        }
         return getFileFor(node.getReference());
       } else if (path.startsWith(MPSModelVirtualFile.MODEL_PREFIX)) {
         SModel model = getPathFacility().deserializeModel(path.substring(MPSModelVirtualFile.MODEL_PREFIX.length()));
         if (model == null) {
           return null;
+        }
+        if (instanceToAdopt instanceof MPSModelVirtualFile mvf) {
+          assert !hasVirtualFileFor(model.getReference());
+          myModelVirtualFiles.put(model.getReference(), mvf);
+          mvf.adopted(model, this);
+          return mvf;
         }
         return getFileFor(model.getReference());
       }
