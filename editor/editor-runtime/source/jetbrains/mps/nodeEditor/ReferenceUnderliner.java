@@ -75,7 +75,7 @@ class ReferenceUnderliner {
         }
         SNode snodeWRTReference = myEditorComponent.getRepository().getModelAccess().computeReadAction(() -> myEditorComponent.isInvalid() ? null : APICellAdapter.getSNodeWRTReference(editorCell));
         String url = editorCell.getStyle().get(StyleAttributes.URL);
-        if (editorCell.getSNode() == snodeWRTReference && url == null) {
+        if (editorCell.getSNode() == snodeWRTReference && url == null && !APICellAdapter.hasExplicitNavigatableNode(editorCell)) {
           myLastReferenceCell = null;
           return;
         }

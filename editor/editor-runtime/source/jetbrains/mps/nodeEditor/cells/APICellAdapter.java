@@ -56,6 +56,15 @@ public class APICellAdapter {
     return getSNodeWRTReference(cell, null);
   }
 
+  /**
+   * @return {@code true} when the cell carries an explicitly assigned {@code navigatable-node} style attribute. Such a
+   * cell is always navigatable, even when the target equals the cell's own node, because the style is an opt-in
+   * declaration of navigation intent (see MPSSPRT-456).
+   */
+  public static boolean hasExplicitNavigatableNode(@NotNull EditorCell cell) {
+    return cell.getStyle().get(StyleAttributes.NAVIGATABLE_NODE) != null;
+  }
+
   @Nullable
   public static SNode getSNodeWRTReference(@NotNull EditorCell cell, @Nullable SRepository repository) {
     SNode target = cell.getStyle().get(StyleAttributes.NAVIGATABLE_NODE);
