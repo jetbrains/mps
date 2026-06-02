@@ -67,6 +67,11 @@ This project is configured to work with coding agents (like Claude or GitHub Cop
     - Ensure it is available at `~/.local/bin/teamcity` and is in your `PATH`.
     - Authenticate using `teamcity auth login`.
     - To enable agents to use it do `teamcity skill install` or `teamcity skill install --project`.
+5.  **ENABLE_TOOL_SEARCH**: in `.claude/settings.json`
+    - Set to `"true"` to enable deferred (on-demand) tool loading.
+    - Without this flag, JetBrains Central CLI — which proxies Claude Code — disables tool search, causing all MCP tools to be loaded eagerly and included in every context window.
+    - With the flag set, tool schemas are fetched only when needed, keeping the context uncluttered.
+    - See: https://github.com/JetBrains/central-cli/issues/205
 
 Download
 --------
