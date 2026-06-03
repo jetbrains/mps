@@ -357,7 +357,7 @@ public class MergeTest extends ChangesTestBase {
     Assert.assertTrue(Sequence.fromIterable(session.getAllChanges()).all((c) -> Sequence.fromIterable(session.getConflictedWith(c)).isEmpty()));
 
     session.applyChanges(Sequence.fromIterable(session.getAllChanges()).toList());
-    ModelChangeSet changes = ChangeSetBuilder.buildChangeSet(expectedModel, session.getResultModel());
+    ModelChangeSet changes = ChangeSetBuilder.buildChangeSet(expectedModel, session.getSortedResultModel());
 
     Assert.assertTrue(dumpChangeSet(changes, session), ListSequence.fromList(changes.getModelChanges()).isEmpty());
   }

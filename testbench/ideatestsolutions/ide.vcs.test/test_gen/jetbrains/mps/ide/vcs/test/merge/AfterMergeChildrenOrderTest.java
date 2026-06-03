@@ -246,7 +246,7 @@ public class AfterMergeChildrenOrderTest extends ChangesTestBase {
     boolean noConflicts = Sequence.fromIterable(session.getAllChanges()).all((c) -> Sequence.fromIterable(session.getConflictedWith(c)).isEmpty());
     Assert.assertTrue("test setup must not produce conflicts", noConflicts);
     session.applyChanges(session.getAllChanges());
-    SModel resultModel = session.getResultModel();
+    SModel resultModel = session.getSortedResultModel();
     // 1. Structural diff via ChangeSetBuilder: catches everything *except* cross-role order.
     ModelChangeSet diff = ChangeSetBuilder.buildChangeSet(expectedModel, resultModel);
     Assert.assertTrue("Model changes in expected compare to result:\n" + IterableUtils.join(ListSequence.fromList(diff.getModelChanges()).select((ch) -> ch.getDescription()), "\n\n"), ListSequence.fromList(diff.getModelChanges()).isEmpty());
@@ -273,7 +273,7 @@ public class AfterMergeChildrenOrderTest extends ChangesTestBase {
     boolean noConflicts = Sequence.fromIterable(session.getAllChanges()).all((c) -> Sequence.fromIterable(session.getConflictedWith(c)).isEmpty());
     Assert.assertTrue("test setup must not produce conflicts", noConflicts);
     session.applyChanges(session.getAllChanges());
-    return session.getResultModel();
+    return session.getSortedResultModel();
   }
 
   /**

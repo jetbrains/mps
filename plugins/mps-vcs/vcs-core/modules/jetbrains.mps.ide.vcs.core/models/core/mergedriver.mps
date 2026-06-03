@@ -3712,7 +3712,6 @@
                       </node>
                     </node>
                   </node>
-                  <node concept="3clFbH" id="1E917uvgJV5" role="3cqZAp" />
                   <node concept="3cpWs8" id="7vnu9rGOuKL" role="3cqZAp">
                     <node concept="3cpWsn" id="7vnu9rGOuKM" role="3cpWs9">
                       <property role="TrG5h" value="resultModel" />
@@ -3722,7 +3721,7 @@
                           <ref role="3cqZAo" node="2TzypFyLJgJ" resolve="mergeSession" />
                         </node>
                         <node concept="liA8E" id="7vnu9rGOuKP" role="2OqNvi">
-                          <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+                          <ref role="37wK5l" to="bmv6:7OAO1yPTxzu" resolve="getSortedResultModel" />
                         </node>
                       </node>
                     </node>

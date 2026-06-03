@@ -195,7 +195,6 @@ public final class MergeSession {
     myModelListener.disable();
     applyChangesNoRestoreIds(changes);
     myNodeCopier.restoreIds(false);
-    new PostMergeSorting(getBaseModel(), getMyModel(), getRepositoryModel(), myResultModel).sortChildrenForChanges(changes);
     myModelListener.enable();
   }
 

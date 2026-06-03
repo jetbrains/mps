@@ -5461,7 +5461,7 @@
                   <ref role="3cqZAo" node="7mLn5gQglVY" resolve="session" />
                 </node>
                 <node concept="liA8E" id="7mLn5gQglWC" role="2OqNvi">
-                  <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+                  <ref role="37wK5l" to="bmv6:7OAO1yPTxzu" resolve="getSortedResultModel" />
                 </node>
               </node>
             </node>
@@ -36026,7 +36026,7 @@
                 <ref role="3cqZAo" node="7OAO1yQ5stJ" resolve="session" />
               </node>
               <node concept="liA8E" id="7OAO1yQ6B5W" role="2OqNvi">
-                <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+                <ref role="37wK5l" to="bmv6:7OAO1yPTxzu" resolve="getSortedResultModel" />
               </node>
             </node>
           </node>
@@ -36808,7 +36808,7 @@
               <ref role="3cqZAo" node="1n$6_bfDGlo" resolve="session" />
             </node>
             <node concept="liA8E" id="1n$6_bfFv2w" role="2OqNvi">
-              <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+              <ref role="37wK5l" to="bmv6:7OAO1yPTxzu" resolve="getSortedResultModel" />
             </node>
           </node>
         </node>
