@@ -449,7 +449,6 @@
         "-Djava.system.class.loader=com.intellij.util.lang.PathClassLoader",
         "-Dintellij.platform.load.app.info.from.resources=true",
         "-Didea.executables=mps",
-        "-Dawt.toolkit.name=auto",
         "-Dpty4j.preferred.native.folder=$IDE_HOME/lib/pty4j",
         "-DjbScreenMenuBar.enabled=true",
         "-Dcache.dir.macro.test=$IDE_CACHE_DIR",

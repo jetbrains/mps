@@ -591,7 +591,6 @@ MAIN_CLASS=jetbrains.mps.Launcher
   ${IDE_PROPERTIES_PROPERTY} \
   ${IDE_JVM_ARGS} \
   -Didea.jre.check=true \
-  -Dawt.toolkit.name=auto \
   -Djna.boot.library.path="${IDE_HOME}/lib/jna" \
   -Dskiko.library.path="${IDE_HOME}/lib/skiko-awt-runtime-all" \
   -Dintellij.platform.load.app.info.from.resources=true \

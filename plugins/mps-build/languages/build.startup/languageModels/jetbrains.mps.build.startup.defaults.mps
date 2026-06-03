@@ -136,6 +136,9 @@
     <node concept="26Ea6D" id="1qi0vDPMXGb" role="2hID6k">
       <property role="26Ea6C" value="-Didea.disable.collect.statistics=true" />
     </node>
+    <node concept="26Ea6D" id="4d$y3X1UMJD" role="2hID6k">
+      <property role="26Ea6C" value="-Dawt.toolkit.name=auto" />
+    </node>
     <node concept="26Ea6D" id="1qi0vDPH7Xr" role="2hID6k">
       <property role="2eq24a" value="true" />
       <property role="26Ea6C" value="-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071" />
