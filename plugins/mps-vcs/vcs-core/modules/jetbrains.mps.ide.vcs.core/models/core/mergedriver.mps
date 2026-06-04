@@ -3721,7 +3721,7 @@
                           <ref role="3cqZAo" node="2TzypFyLJgJ" resolve="mergeSession" />
                         </node>
                         <node concept="liA8E" id="7vnu9rGOuKP" role="2OqNvi">
-                          <ref role="37wK5l" to="bmv6:3$YpntjF4sv" resolve="getResultModel" />
+                          <ref role="37wK5l" to="bmv6:7OAO1yPTxzu" resolve="getSortedResultModel" />
                         </node>
                       </node>
                     </node>

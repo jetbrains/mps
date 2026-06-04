@@ -26,4 +26,5 @@
 -Didea.trust.disabled=false
 -Dfreeze.reporter.enabled=false
 -Didea.indices.psi.dependent.default=false
+-Dawt.toolkit.name=auto
 #-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5071

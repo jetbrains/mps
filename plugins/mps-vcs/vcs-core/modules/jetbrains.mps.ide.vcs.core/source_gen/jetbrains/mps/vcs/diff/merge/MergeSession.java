@@ -198,6 +198,19 @@ public final class MergeSession {
     myModelListener.enable();
   }
 
+  /**
+   * Restores the cross-role order of children in the result model.
+   * Should be called before the result model is saved.
+   */
+  public void sortResultChildren() {
+    myModelListener.disable();
+    try {
+      new PostMergeSorting(getBaseModel(), getMyModel(), getRepositoryModel(), myResultModel).sortAll();
+    } finally {
+      myModelListener.enable();
+    }
+  }
+
   public void excludeChanges(Iterable<ModelChange> changes) {
     excludeChangesNoRestoreIds(changes);
     myNodeCopier.restoreIds(false);
@@ -266,7 +279,7 @@ public final class MergeSession {
       for (NodeGroupChange ch : ListSequence.fromList(ngcConflictedChanges)) {
         // add new changes only for insertions, we need ChangeSetImpl to manually add one change there
         // original conflicted changes will be resolved
-        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a46(ch.getChangeSet(), ChangeSetImpl.class);
+        ChangeSetImpl changeSet = as_bow6nj_a0a2a5a3a66(ch.getChangeSet(), ChangeSetImpl.class);
         assert changeSet != null;
         NodeGroupChange newChange = new NodeGroupChange(changeSet, ch.getOldParentNodeId(), ch.getNewParentNodeId(), ch.getRoleLink(), anchorIndex, anchorIndex, ch.getResultBegin(), ch.getResultEnd());
         if (isNotEmptyChange(newChange)) {
@@ -309,6 +322,14 @@ public final class MergeSession {
   }
 
   public SModel getResultModel() {
+    return myResultModel;
+  }
+  /**
+   * gets the result model but first re-sort children, so order of children in the same role remains unchanged
+   * but the overall children order reflects the order for models before merge as much as possible
+   */
+  public SModel getSortedResultModel() {
+    sortResultChildren();
     return myResultModel;
   }
 
@@ -502,7 +523,7 @@ public final class MergeSession {
     private Set<ModelChange> myResolvedChanges;
     private Map<SNodeId, SNodeId> myIdReplacementCache;
   }
-  private static <T> T as_bow6nj_a0a2a5a3a46(Object o, Class<T> type) {
+  private static <T> T as_bow6nj_a0a2a5a3a66(Object o, Class<T> type) {
     return (type.isInstance(o) ? (T) o : null);
   }
 
