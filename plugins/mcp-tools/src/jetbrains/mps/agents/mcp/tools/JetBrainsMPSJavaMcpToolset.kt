@@ -19,13 +19,10 @@ import jetbrains.mps.smodel.DynamicReference
 import jetbrains.mps.smodel.ModelDependencyResolver
 import jetbrains.mps.smodel.ModelImports
 import jetbrains.mps.smodel.SReference
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.smodel.constraints.ModelConstraints
 import jetbrains.mps.smodel.language.LanguageRegistry
 import jetbrains.mps.typechecking.TypecheckingFacade
-import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SContainmentLink
-import org.jetbrains.mps.openapi.language.SProperty
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
@@ -60,73 +57,15 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         }
     }
 
-    // IYetUnresolved interface concept (jetbrains.mps.baseLanguage.structure.IYetUnresolved)
-    private val IYET_UNRESOLVED: SAbstractConcept = MetaAdapterFactory.getInterfaceConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x70ea1dc4c5721865L,
-        "jetbrains.mps.baseLanguage.structure.IYetUnresolved"
-    )
-
-    // IFixableMethodReference interface concept (jetbrains.mps.baseLanguage.structure.IFixableMethodReference)
-    private val IFIXABLE_METHOD_REF: SAbstractConcept = MetaAdapterFactory.getInterfaceConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x5a672f2d82ff2834L,
-        "jetbrains.mps.baseLanguage.structure.IFixableMethodReference"
-    )
-
-    // BaseMethodDeclaration concept (jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration)
-    private val BASE_METHOD_DECL: SAbstractConcept = MetaAdapterFactory.getConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0xf8cc56b1fcL,
-        "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration"
-    )
-
-    // INamedConcept.name property (jetbrains.mps.lang.core.structure.INamedConcept)
-    private val NAME_PROPERTY: SProperty = MetaAdapterFactory.getProperty(
-        0xceab519525ea4f22UL.toLong(), 0x9b92103b95ca8c0cUL.toLong(), 0x110396eaaa4L, 0x110396ec041L, "name"
-    )
-
-    private val ACTUAL_ARGUMENT_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x11857355952L, 0xf8c78301aeL, "actualArgument"
-    )
-
-    private val PARAMETER_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter"
-    )
-
-    private val ANONYMOUS_CLASS: SAbstractConcept = MetaAdapterFactory.getConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x1107e0cb103L, "jetbrains.mps.baseLanguage.structure.AnonymousClass"
-    )
-
-    private val CLASS_CREATOR: SAbstractConcept = MetaAdapterFactory.getConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator"
-    )
-
-    private val INSTANCE_METHOD_CALL: SAbstractConcept = MetaAdapterFactory.getConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x118154a6332L, "jetbrains.mps.baseLanguage.structure.InstanceMethodCallOperation"
-    )
-
-    private val CLASSIFIER_LINK: org.jetbrains.mps.openapi.language.SReferenceLink = MetaAdapterFactory.getReferenceLink(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x1107e0cb103L, 0x1107e0fd2a0L, "classifier"
-    )
-
-    private val IMETHOD_CALL: SAbstractConcept = MetaAdapterFactory.getInterfaceConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall"
-    )
-
-    // JavaImports concept (jetbrains.mps.baseLanguage.structure.JavaImports)
-    private val JAVA_IMPORTS: SAbstractConcept = MetaAdapterFactory.getConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x53f7c33f069862f2L,
-        "jetbrains.mps.baseLanguage.structure.JavaImports"
-    )
-
-    // JavaImport concept (jetbrains.mps.baseLanguage.structure.JavaImport)
-    private val JAVA_IMPORT: SAbstractConcept = MetaAdapterFactory.getConcept(
-        0xf3061a5392264cc5UL.toLong(), 0xa443f952ceaf5816UL.toLong(), 0x64c0181e603bcfL,
-        "jetbrains.mps.baseLanguage.structure.JavaImport"
-    )
-
     private fun countUnknowns(roots: Iterable<SNode>): Int {
         var cnt = 0
         for (root in roots) {
-            val it = SNodeOperations.getNodeDescendants(root, IYET_UNRESOLVED, true, arrayOf(IYET_UNRESOLVED))
+            val it = SNodeOperations.getNodeDescendants(
+                root,
+                BaseLanguageMeta.iYetUnresolvedConcept,
+                true,
+                arrayOf(BaseLanguageMeta.iYetUnresolvedConcept)
+            )
             for (node in it) cnt++
         }
         return cnt
@@ -163,7 +102,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             for (scope in searchScopes) {
                 val it = SNodeOperations.getNodeDescendants(scope, targetConcept, true, emptyArray())
                 for (n in it) {
-                    val nName = SPropertyOperations.getString(n, NAME_PROPERTY)
+                    val nName = SPropertyOperations.getString(n, BaseLanguageMeta.nameProperty)
                     if (nName == name) {
                         // If multiple, prefer the closest (first found in this ordered traversal)
                         return n
@@ -249,11 +188,11 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         for (root in rootList) {
             val descendants = SNodeOperations.getNodeDescendants(root, null, true, emptyArray())
             for (node in descendants) {
-                if (SNodeOperations.isInstanceOf(node, IFIXABLE_METHOD_REF) ||
-                    SNodeOperations.isInstanceOf(node, IMETHOD_CALL) ||
-                    SNodeOperations.isInstanceOf(node, ANONYMOUS_CLASS) ||
-                    SNodeOperations.isInstanceOf(node, CLASS_CREATOR) ||
-                    SNodeOperations.isInstanceOf(node, INSTANCE_METHOD_CALL)
+                if (SNodeOperations.isInstanceOf(node, BaseLanguageMeta.iFixableMethodReferenceConcept) ||
+                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.iMethodCallConcept) ||
+                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.anonymousClassConcept) ||
+                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.classCreatorConcept) ||
+                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.instanceMethodCallOperationConcept)
                 ) {
 
                     try {
@@ -279,7 +218,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     }
 
     private fun isReferenceFixed(node: SNode): Boolean {
-        if (SNodeOperations.isInstanceOf(node, IYET_UNRESOLVED)) {
+        if (SNodeOperations.isInstanceOf(node, BaseLanguageMeta.iYetUnresolvedConcept)) {
             return false
         }
         for (ref in node.references) {
@@ -287,12 +226,12 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             if (target == null) {
                 return false
             }
-            if (!SNodeOperations.isInstanceOf(target, BASE_METHOD_DECL)) {
+            if (!SNodeOperations.isInstanceOf(target, BaseLanguageMeta.baseMethodDeclarationConcept)) {
                 continue
             }
 
-            val actualArgs = SLinkOperations.getChildren(node, ACTUAL_ARGUMENT_LINK)
-            val targetParams = SLinkOperations.getChildren(target, PARAMETER_LINK)
+            val actualArgs = SLinkOperations.getChildren(node, BaseLanguageMeta.actualArgumentLink)
+            val targetParams = SLinkOperations.getChildren(target, BaseLanguageMeta.parameterLink)
 
             if (actualArgs.size != targetParams.size) {
                 return false
@@ -304,25 +243,25 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     private fun fixReferenceDumb(node: SNode) {
         for (ref in node.references) {
             val target = ref.targetNode
-            if (target != null && !SNodeOperations.isInstanceOf(target, BASE_METHOD_DECL)) continue
+            if (target != null && !SNodeOperations.isInstanceOf(target, BaseLanguageMeta.baseMethodDeclarationConcept)) continue
 
-            val actualArgs = SLinkOperations.getChildren(node, ACTUAL_ARGUMENT_LINK)
+            val actualArgs = SLinkOperations.getChildren(node, BaseLanguageMeta.actualArgumentLink)
             val actualArgsCount = actualArgs.size
 
             // If current target has wrong parameter count, try to find a better one in the scope
-            if (target == null || SLinkOperations.getChildren(target, PARAMETER_LINK).size != actualArgsCount) {
+            if (target == null || SLinkOperations.getChildren(target, BaseLanguageMeta.parameterLink).size != actualArgsCount) {
                 val scope = ModelConstraints.getScope(ref)
                 // `target` may be null here (anonymous class with no resolved method, fresh
                 // parser output, etc.); only fall back to its name property when it exists.
                 var refText = (ref as? SReference)?.resolveInfo
-                    ?: target?.let { SPropertyOperations.getString(it, NAME_PROPERTY) }
+                    ?: target?.let { SPropertyOperations.getString(it, BaseLanguageMeta.nameProperty) }
 
-                if ((refText == null || refText.isEmpty()) && SNodeOperations.isInstanceOf(node, ANONYMOUS_CLASS)) {
-                    // CLASSIFIER_LINK can be unresolved on a newly parsed anonymous class — guard
+                if ((refText == null || refText.isEmpty()) && SNodeOperations.isInstanceOf(node, BaseLanguageMeta.anonymousClassConcept)) {
+                    // The classifier link can be unresolved on a newly parsed anonymous class; guard
                     // against null before reading the name property.
-                    val classifier = SLinkOperations.getTarget(node, CLASSIFIER_LINK)
+                    val classifier = SLinkOperations.getTarget(node, BaseLanguageMeta.anonymousClassClassifierLink)
                     if (classifier != null) {
-                        refText = SPropertyOperations.getString(classifier, NAME_PROPERTY)
+                        refText = SPropertyOperations.getString(classifier, BaseLanguageMeta.nameProperty)
                     }
                 }
 
@@ -331,10 +270,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                 }
 
                 val candidates = scope.getAvailableElements(refText).toList()
-                val methodCandidates = candidates.filter { SNodeOperations.isInstanceOf(it, BASE_METHOD_DECL) }
+                val methodCandidates = candidates.filter { SNodeOperations.isInstanceOf(it, BaseLanguageMeta.baseMethodDeclarationConcept) }
 
                 val bestMatch = methodCandidates.find { cand ->
-                    SLinkOperations.getChildren(cand, PARAMETER_LINK).size == actualArgsCount
+                    SLinkOperations.getChildren(cand, BaseLanguageMeta.parameterLink).size == actualArgsCount
                 }
 
                 if (bestMatch != null) {
@@ -403,26 +342,53 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         }
         return nodes.map { node ->
             val concept = node.concept
-            when (concept.name) {
+            val extracted = when (concept.name) {
                 "LocalVariableDeclarationStatement" -> {
                     // Unwrap: LocalVariableDeclarationStatement -> LocalVariableDeclaration -> initializer.
                     val varDecl = node.children.firstOrNull()
-                    if (varDecl != null) {
-                        val initLink = varDecl.concept.containmentLinks.find { it.name == "initializer" }
-                        if (initLink != null) varDecl.getChildren(initLink).firstOrNull() ?: node
-                        else varDecl.children.lastOrNull() ?: node
-                    } else node
+                    val initLink = varDecl?.concept?.containmentLinks?.find { it.name == "initializer" }
+                    when {
+                        varDecl == null -> null
+                        initLink != null -> varDecl.getChildren(initLink).firstOrNull()
+                        else -> varDecl.children.lastOrNull()
+                    }
                 }
 
                 "ExpressionStatement" -> {
                     val link = concept.containmentLinks.find { it.name == "expression" }
-                    if (link != null) node.getChildren(link).firstOrNull() ?: node
-                    else node.children.firstOrNull() ?: node
+                    if (link != null) node.getChildren(link).firstOrNull() else node.children.firstOrNull()
                 }
 
-                else -> node
+                else -> null
+            }
+            // JavaParser returns the wrapper statement detached (JavaParser.java:150), but the
+            // initializer/expression we pull out of it is still attached to that transient wrapper.
+            // addChild()/insertChildBefore()/addRootNode() assert the incoming node has no parent
+            // (replaceWithAnother detaches it for us via SNodeUtil), so detach it the same way the
+            // parser detaches its top-level statements. Falls back to the original node when
+            // unwrapping fails.
+            if (extracted != null) {
+                SNodeOperations.deleteNode(extracted)
+                extracted
+            } else {
+                node
             }
         }
+    }
+
+    // Structural guard: a node may only be placed in a containment role whose declared target
+    // concept it conforms to. Both `child` (parent.addChild) and `replace`
+    // (SNodeOperations.replaceWithAnother) attach parser output directly without validating the
+    // concept against the role, so a mismatch (e.g. an Expression into the `member` role, or a
+    // ClassConcept into a statement slot) silently corrupts the model and only surfaces later in
+    // check_root_node_problems. Returns an actionable message when the node does not fit, else null.
+    private fun roleAssignabilityError(node: SNode, link: SContainmentLink, parent: SNode): String? {
+        val target = link.targetConcept
+        if (node.concept.isSubConceptOf(target)) return null
+        return "Concept '${node.concept.name}' cannot be placed in role '${link.name}' of " +
+                "'${parent.concept.name}': the role expects '${target.name}' or a subconcept. " +
+                "Check that 'featureKind' matches the target role (for example, EXPRESSION targets an " +
+                "expression-bearing role, not 'member')."
     }
 
     private fun resolveEditableModel(repo: SRepository, modelRefStr: String, onError: (String) -> Unit): EditableSModel? {
@@ -518,10 +484,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
     private fun removeJavaImports(roots: Iterable<SNode>) {
         for (root in roots) {
-            for (desc in SNodeOperations.getNodeDescendants(root, JAVA_IMPORT, true, emptyArray())) {
+            for (desc in SNodeOperations.getNodeDescendants(root, BaseLanguageMeta.javaImportConcept, true, emptyArray())) {
                 SNodeOperations.deleteNode(desc)
             }
-            for (desc in SNodeOperations.getNodeDescendants(root, JAVA_IMPORTS, true, emptyArray())) {
+            for (desc in SNodeOperations.getNodeDescendants(root, BaseLanguageMeta.javaImportsConcept, true, emptyArray())) {
                 SNodeOperations.deleteNode(desc)
             }
         }
@@ -570,7 +536,12 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         return false
     }
 
-    private fun updateModelDependencies(model: SModel, repo: SRepository, inserted: List<SNode>) {
+    // `importUsedLanguages` gates language imports only. Cross-model reference imports are always
+    // applied because resolution would otherwise be left broken (the inserted nodes point at
+    // models that must be imported for the references to resolve). Previously the used-language
+    // loop ran unconditionally here, so `importUsedLanguages:false` did NOT suppress language
+    // imports whenever `resolveReferences:true` (e.g. closures got auto-imported anyway).
+    private fun updateModelDependencies(model: SModel, repo: SRepository, inserted: List<SNode>, importUsedLanguages: Boolean) {
         val langRegistry = LanguageRegistry.getInstance(repo)
         val mdr = ModelDependencyResolver(langRegistry, repo)
         val imports = ModelImports(model)
@@ -578,10 +549,12 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         val scanner = jetbrains.mps.smodel.ModelDependencyScanner()
         scanner.usedLanguages(true).crossModelReferences(true).walk(inserted)
 
-        val alreadyUsed = mdr.usedLanguages(model)
-        for (lang in scanner.usedLanguages) {
-            if (!alreadyUsed.contains(lang) && !isLanguageProvidedByDevKit(model, repo, lang)) {
-                imports.addUsedLanguage(lang)
+        if (importUsedLanguages) {
+            val alreadyUsed = mdr.usedLanguages(model)
+            for (lang in scanner.usedLanguages) {
+                if (!alreadyUsed.contains(lang) && !isLanguageProvidedByDevKit(model, repo, lang)) {
+                    imports.addUsedLanguage(lang)
+                }
             }
         }
 
@@ -625,6 +598,15 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             return
         }
 
+        // When the caller suppressed language imports, snapshot the languages already on the model
+        // so we can strip whatever the platform resolution passes import unconditionally below.
+        // JavaToMpsConverter.tryResolveRefs (via ModelDependencyUpdate.updateUsedLanguages) and
+        // YetUnknownResolver.addUsedLanguage add used languages directly, bypassing our
+        // importUsedLanguages gate; without this cleanup importUsedLanguages=false would not
+        // actually suppress them once resolveReferences=true. Pre-existing imports are preserved.
+        val languagesBeforeResolve =
+            if (!doImportLang) (model as? SModelInternal)?.importedLanguageIds()?.toHashSet() else null
+
         val handler = jetbrains.mps.messages.IMessageHandler { _: jetbrains.mps.messages.IMessage -> }
         val conv = JavaToMpsConverter(model, repo, handler)
 
@@ -666,7 +648,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
                 // Update model dependencies after the standalone resolver pass so that subsequent
                 // iterations have an expanded scope (newly resolved imports become visible).
-                updateModelDependencies(model, repo, inserted)
+                updateModelDependencies(model, repo, inserted, doImportLang)
 
                 fixDynamicReferences(model, inserted)
 
@@ -695,13 +677,28 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             fixDynamicReferences(model, inserted)
         }
         removeJavaImports(inserted)
+
+        // Strip the languages the platform resolution passes imported when importUsedLanguages=false.
+        // Only languages absent before resolution are removed, so pre-existing imports stay intact.
+        // Cross-model *model* imports are intentionally left alone (resolution needs them).
+        languagesBeforeResolve?.let { before ->
+            (model as? SModelInternal)?.let { internal ->
+                val imports = ModelImports(model)
+                for (lang in internal.importedLanguageIds().toList()) {
+                    if (!before.contains(lang)) {
+                        imports.removeUsedLanguage(lang)
+                    }
+                }
+            }
+        }
+
         finalizeResolutionDependencies(model, repo, doImportLang, parseResult)
     }
 
     @McpTool
     @McpDescription(
         """
-        Parses Java code with the MPS `JavaParser` and inserts the result as MPS nodes — either as root(s), as a child in a given role, or as a replacement of an existing node. `CLASS_STUB` is rejected; root insertion always appends. See `mps-baselanguage/references/parse-java-tips.md` for the `parameters` JSON schema (`code`, `featureKind`, `insert.mode`, `postProcess`) and the per-mode required fields.
+        Parses Java code with the MPS `JavaParser` and inserts the result as MPS nodes — either as root(s), as a child in a given role, or as a replacement of an existing node. `CLASS_STUB` is rejected; root insertion always appends and rejects a `position` other than `-1`/absent; replace mode requires exactly one top-level parsed node; child insertion into a single-cardinality role overwrites the existing occupant (consistent with `mps_mcp_update_node`); into a multi-cardinality role a `position` past the child count is clamped to an append (not rejected) and each inserted node reports its actual `index`. `featureKind` `FIELD`/`METHOD`/`NESTED_CLASS` are all parsed as class members (the kind is advisory; what a node may be placed where is validated against the target role, not the kind). Unrecognized keys in `parameters` (including `dryRun`, which is not supported) are rejected. See `mps-baselanguage/references/parse-java-tips.md` for the `parameters` JSON schema (`code`, `featureKind`, `insert.mode`, `postProcess`) and the per-mode required fields.
         """
     )
     suspend fun mps_mcp_parse_java_and_insert(
@@ -782,6 +779,46 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                         val link = childContext.link
                         val model = childContext.model
 
+                        // Validate concept/role compatibility BEFORE mutating so a mismatch fails
+                        // cleanly without a partial insert.
+                        for (n in parsedNodes) {
+                            roleAssignabilityError(n, link, parent)?.let {
+                                error = it
+                                return@executeShortCommandOnEdt
+                            }
+                        }
+
+                        // A single-cardinality role (0..1 / 1) holds at most one child, but
+                        // parent.addChild / insertChildBefore append regardless of cardinality
+                        // (cardinality is a structure-checker constraint, not an API guard).
+                        // Appending into an occupied role would yield two children and fail
+                        // validation with "Only one child is allowed in the role '<role>'", so we
+                        // overwrite the existing occupant instead — consistent with the sibling
+                        // mps_mcp_update_node, which also replaces the child of a single-cardinality
+                        // role. A multi-node input cannot fit one slot, so that case is still
+                        // rejected (like 'replace' mode's single-node requirement).
+                        var displaced: SNode? = null
+                        if (!link.isMultiple) {
+                            if (parsedNodes.size > 1) {
+                                error = "Role '${link.name}' of '${parent.concept.name}' has single " +
+                                        "cardinality but the input parsed into ${parsedNodes.size} " +
+                                        "top-level nodes. Supply a single feature/expression, or target " +
+                                        "a multi-cardinality role."
+                                return@executeShortCommandOnEdt
+                            }
+                            val requestedPos = insertTarget.position
+                            if (requestedPos != null && requestedPos != -1 && requestedPos != 0) {
+                                error = "position $requestedPos is not applicable to single-cardinality " +
+                                        "role '${link.name}' (only -1 or 0 are allowed)"
+                                return@executeShortCommandOnEdt
+                            }
+                            // All validation is done; this delete is the first mutation, so no early
+                            // return below can leave the occupant destroyed. The finalize rollback
+                            // re-attaches it if resolution fails before the model is persisted.
+                            displaced = parent.getChildren(link).firstOrNull()
+                            displaced?.let { SNodeOperations.deleteNode(it) }
+                        }
+
                         val pos = insertTarget.position
                         if (pos == null || pos == -1) {
                             for (n in parsedNodes) {
@@ -789,27 +826,26 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                                 inserted.add(n)
                             }
                         } else {
-                            var index = pos
+                            var index: Int = pos
+                            // -1 is the only append sentinel; any other negative value is
+                            // meaningless as an index, so reject it before mutating.
+                            if (index < 0) {
+                                error = "position $index is invalid for role '${link.name}'; " +
+                                        "use -1 or omit position to append, or supply a value >= 0"
+                                return@executeShortCommandOnEdt
+                            }
+                            // A position at or beyond the current child count appends (clamp to
+                            // end) instead of failing — mirroring common list-insert semantics
+                            // such as Python's list.insert(big, x). The response reports each
+                            // inserted node's actual landing index (see below), so a caller that
+                            // overshoots can still see where it landed.
                             for (n in parsedNodes) {
                                 val children = parent.getChildren(link).toList()
-                                if (index < 0 || index > children.size) {
-                                    error = "Target index $index is out of bounds (count: ${children.size})"
-                                    // Roll back the children already inserted in prior loop
-                                    // iterations: finalizeInsertedNodes's rollback only fires
-                                    // when finalize itself throws, so an early return here would
-                                    // otherwise leak the partially attached batch.
-                                    inserted.asReversed().forEach { insertedNode ->
-                                        if (insertedNode.parent != null) {
-                                            SNodeOperations.deleteNode(insertedNode)
-                                        }
-                                    }
-                                    inserted.clear()
-                                    return@executeShortCommandOnEdt
-                                }
-                                val anchor = if (index < children.size) children[index] else null
+                                val effectiveIndex = if (index > children.size) children.size else index
+                                val anchor = if (effectiveIndex < children.size) children[effectiveIndex] else null
                                 parent.insertChildBefore(link, n, anchor)
                                 inserted.add(n)
-                                index++
+                                index = effectiveIndex + 1
                             }
                         }
 
@@ -826,6 +862,11 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                                 if (insertedNode.parent != null) {
                                     SNodeOperations.deleteNode(insertedNode)
                                 }
+                            }
+                            // Restore the single-cardinality occupant we overwrote, if finalize
+                            // failed before persisting (mirrors the 'replace' branch's rollback).
+                            displaced?.let {
+                                if (it.parent == null) parent.addChild(link, it)
                             }
                         }
                     }
@@ -861,6 +902,12 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                         // concurrent edit).
                         val link = targetNode.containmentLink ?: run {
                             error = "Target node '$targetRefStr' has no containment link"
+                            return@executeShortCommandOnEdt
+                        }
+                        // Validate concept/role compatibility BEFORE the swap so an incompatible
+                        // replacement cannot corrupt the AST.
+                        roleAssignabilityError(newNode, link, parent)?.let {
+                            error = it
                             return@executeShortCommandOnEdt
                         }
                         // g1: Capture the exact index of targetNode in its parent's role list
@@ -903,7 +950,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
                 val pkg = parseResult.getPackage()
                 val langs = parseResult.getLanguages()?.map { it.qualifiedName } ?: emptyList()
-                val insertedInfos = inserted.map { nodeInfoJsonObject(it) }
+                // Each inserted node carries its actual landing index within the parent role, so
+                // callers see where a node ended up — in particular when an out-of-range
+                // `position` was clamped to an append. Omitted for roots (no containment role).
+                val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it) }
                 val gson = Gson()
                 val data = JsonObject().apply {
                     add("inserted", gson.toJsonTree(insertedInfos))

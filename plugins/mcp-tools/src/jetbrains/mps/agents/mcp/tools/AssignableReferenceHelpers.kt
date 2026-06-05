@@ -1,6 +1,5 @@
 package jetbrains.mps.agents.mcp.tools
 
-import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.typechecking.TypecheckingFacade
 import kotlinx.coroutines.CancellationException
 import org.jetbrains.mps.openapi.language.SReferenceLink
@@ -11,33 +10,31 @@ import org.jetbrains.mps.openapi.persistence.PersistenceFacade
  * Project-free helpers extracted from [AssignableReferenceService]. None of these methods touch
  * [jetbrains.mps.project.MPSProject], so they are directly unit-testable without constructing one.
  *
- * The companion concept/link constants are static lookups via [MetaAdapterFactory]; they can be
+ * The companion concept/link constants are static lookups from [BaseLanguageMeta]; they can be
  * resolved without an open MPS project. [PersistenceFacade.getInstance] is required only by the
  * methods that round-trip node/model/module references through [facade].
  */
 internal class AssignableReferenceHelpers(
     internal val facade: PersistenceFacade = PersistenceFacade.getInstance()
 ) {
-    // Concepts
-    internal val classCreatorConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x11a59b0fbceL, "jetbrains.mps.baseLanguage.structure.ClassCreator")
-    internal val iMethodCallConcept = MetaAdapterFactory.getInterfaceConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x11857355952L, "jetbrains.mps.baseLanguage.structure.IMethodCall")
-    internal val baseMethodDeclarationConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0xf8cc56b1fcL, "jetbrains.mps.baseLanguage.structure.BaseMethodDeclaration")
-    internal val constructorDeclarationConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0xf8cc56b204L, "jetbrains.mps.baseLanguage.structure.ConstructorDeclaration")
-    internal val classifierConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x101d9d3ca30L, "jetbrains.mps.baseLanguage.structure.Classifier")
-    internal val instanceMethodDeclarationConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0xf8cc56b21dL, "jetbrains.mps.baseLanguage.structure.InstanceMethodDeclaration")
-    internal val staticMethodDeclarationConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0xfbbebabf0aL, "jetbrains.mps.baseLanguage.structure.StaticMethodDeclaration")
-    internal val classifierTypeConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x101de48bf9eL, "jetbrains.mps.baseLanguage.structure.ClassifierType")
-    internal val privateVisibilityConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x10af9586f0cL, "jetbrains.mps.baseLanguage.structure.PrivateVisibility")
-    internal val protectedVisibilityConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x10af958b686L, "jetbrains.mps.baseLanguage.structure.ProtectedVisibility")
-    internal val publicVisibilityConcept = MetaAdapterFactory.getConcept(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x10af9581ff1L, "jetbrains.mps.baseLanguage.structure.PublicVisibility")
+    internal val classCreatorConcept = BaseLanguageMeta.classCreatorConcept
+    internal val iMethodCallConcept = BaseLanguageMeta.iMethodCallConcept
+    internal val baseMethodDeclarationConcept = BaseLanguageMeta.baseMethodDeclarationConcept
+    internal val constructorDeclarationConcept = BaseLanguageMeta.constructorDeclarationConcept
+    internal val classifierConcept = BaseLanguageMeta.classifierConcept
+    internal val instanceMethodDeclarationConcept = BaseLanguageMeta.instanceMethodDeclarationConcept
+    internal val staticMethodDeclarationConcept = BaseLanguageMeta.staticMethodDeclarationConcept
+    internal val classifierTypeConcept = BaseLanguageMeta.classifierTypeConcept
+    internal val privateVisibilityConcept = BaseLanguageMeta.privateVisibilityConcept
+    internal val protectedVisibilityConcept = BaseLanguageMeta.protectedVisibilityConcept
+    internal val publicVisibilityConcept = BaseLanguageMeta.publicVisibilityConcept
 
-    // Links
-    internal val baseMethodDeclarationLink = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x11857355952L, 0xf8c78301adL, "baseMethodDeclaration")
-    internal val actualArgumentLink = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x11857355952L, 0xf8c78301aeL, "actualArgument")
-    internal val parameterLink = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0xf8cc56b1fcL, 0xf8cc56b1feL, "parameter")
-    internal val typeLink = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x450368d90ce1522fL, 0x450368d90ce15230L, "type")
-    internal val classifierLink = MetaAdapterFactory.getReferenceLink(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x101de48bf9eL, 0x101de490babL, "classifier")
-    internal val visibilityLink = MetaAdapterFactory.getContainmentLink(0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(), 0x112670d273fL, 0x112670d886aL, "visibility")
+    internal val baseMethodDeclarationLink = BaseLanguageMeta.baseMethodDeclarationLink
+    internal val actualArgumentLink = BaseLanguageMeta.actualArgumentLink
+    internal val parameterLink = BaseLanguageMeta.parameterLink
+    internal val typeLink = BaseLanguageMeta.typeLink
+    internal val classifierLink = BaseLanguageMeta.classifierTypeClassifierLink
+    internal val visibilityLink = BaseLanguageMeta.visibilityLink
 
     internal fun errorResponse(message: String?): GetAssignableReferencesResponse =
         GetAssignableReferencesResponse(ok = false, data = emptyList(), error = message)

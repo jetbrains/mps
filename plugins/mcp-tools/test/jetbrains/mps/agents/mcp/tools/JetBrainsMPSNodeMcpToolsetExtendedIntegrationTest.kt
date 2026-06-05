@@ -382,24 +382,26 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
     }
 
     @Test
-    fun `alter_nodes MOVE_CHILD with invalid position returns error with resolved index`() {
-        val parentRef = createConceptRoot("MoveHostInvalid")
+    fun `alter_nodes MOVE_CHILD clamps an over-range position to the last index`() {
+        val parentRef = createConceptRoot("MoveHostClamp")
         addPropertyChild(parentRef, "x", "string")
         addPropertyChild(parentRef, "y", "string")
 
-        val (yRef, _) = readOnRepo {
-            val kids = resolveNode(parentRef).children
+        val xRef = readOnRepo {
+            val x = resolveNode(parentRef).children
                 .filter { it.containmentLink?.name == "propertyDeclaration" }
-            val y = kids.single { it.name == "y" }
-            PersistenceFacade.getInstance().asString(y.reference) to kids.mapNotNull { it.name }
+                .single { it.name == "x" }
+            PersistenceFacade.getInstance().asString(x.reference)
         }
 
-        // Move 'y' to out of bounds index 5
+        // Move 'x' (index 0) to position 5 — past the last index (count 2) — which clamps to the
+        // end rather than failing, matching the insert tools. The response reports the actual
+        // resulting index.
         val params = """
             {
               "nodeReference": "$parentRef",
               "childRole": "propertyDeclaration",
-              "childNodeRef": "$yRef",
+              "childNodeRef": "$xRef",
               "position": 5
             }
         """.trimIndent()
@@ -407,9 +409,56 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
             it.mps_mcp_alter_nodes(MPSAlterOperation.MOVE_CHILD, params)
         }
         val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        assertEquals(
+            "over-range position must clamp to the last index: $response",
+            1,
+            obj.getAsJsonObject("data").get("index").asInt,
+        )
+
+        readOnRepo {
+            val kids = resolveNode(parentRef).children
+                .filter { it.containmentLink?.name == "propertyDeclaration" }
+            assertEquals(listOf("y", "x"), kids.mapNotNull { it.name })
+        }
+    }
+
+    @Test
+    fun `alter_nodes MOVE_CHILD rejects a negative position other than -1`() {
+        val parentRef = createConceptRoot("MoveHostNeg")
+        addPropertyChild(parentRef, "x", "string")
+        addPropertyChild(parentRef, "y", "string")
+
+        val yRef = readOnRepo {
+            val y = resolveNode(parentRef).children
+                .filter { it.containmentLink?.name == "propertyDeclaration" }
+                .single { it.name == "y" }
+            PersistenceFacade.getInstance().asString(y.reference)
+        }
+
+        val params = """
+            {
+              "nodeReference": "$parentRef",
+              "childRole": "propertyDeclaration",
+              "childNodeRef": "$yRef",
+              "position": -2
+            }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_alter_nodes(MPSAlterOperation.MOVE_CHILD, params)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
-        val msg = obj.get("error").asString
-        assertTrue("error should mention resolved index: $msg", msg.contains("Target index 5 is out of bounds (count: 2)"))
+        assertTrue(
+            "error should explain the invalid negative position: ${obj.get("error").asString}",
+            obj.get("error").asString.contains("position -2 is invalid"),
+        )
+
+        readOnRepo {
+            val kids = resolveNode(parentRef).children
+                .filter { it.containmentLink?.name == "propertyDeclaration" }
+            assertEquals("a rejected move must not reorder the role", listOf("x", "y"), kids.mapNotNull { it.name })
+        }
     }
 
     // ── alter_nodes: MOVE_NODE_TO_PARENT ───────────────────────────────────────────
@@ -447,6 +496,44 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
             val bKids = b.children.filter { it.containmentLink?.name == "propertyDeclaration" }
             assertEquals(1, bKids.size)
             assertEquals("movee", bKids.single().name)
+        }
+    }
+
+    @Test
+    fun `alter_nodes MOVE_NODE_TO_PARENT clamps an over-range position to an append`() {
+        val parentARef = createConceptRoot("MNPClampA")
+        val parentBRef = createConceptRoot("MNPClampB")
+        addPropertyChild(parentARef, "movee", "string")
+        addPropertyChild(parentBRef, "existing", "string")
+        val moveeRef = readOnRepo {
+            val p = resolveNode(parentARef).children.single { it.containmentLink?.name == "propertyDeclaration" }
+            PersistenceFacade.getInstance().asString(p.reference)
+        }
+
+        // parentB already has 1 child; position 9 is past the end and must clamp to an append
+        // rather than fail, with the response reporting the actual landing index.
+        val params = """
+            {
+              "nodeReference": "$moveeRef",
+              "newParentRef": "$parentBRef",
+              "role": "propertyDeclaration",
+              "position": 9
+            }
+        """.trimIndent()
+        val response = runTool(toolset) {
+            it.mps_mcp_alter_nodes(MPSAlterOperation.MOVE_NODE_TO_PARENT, params)
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        assertEquals(
+            "over-range position must clamp to the append index (1 existing child): $response",
+            1,
+            obj.getAsJsonObject("data").get("index").asInt,
+        )
+
+        readOnRepo {
+            val bKids = resolveNode(parentBRef).children.filter { it.containmentLink?.name == "propertyDeclaration" }
+            assertEquals(listOf("existing", "movee"), bKids.mapNotNull { it.name })
         }
     }
 

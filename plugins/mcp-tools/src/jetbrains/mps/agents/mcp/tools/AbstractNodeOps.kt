@@ -607,10 +607,14 @@ abstract class AbstractNodeOps : AbstractOps() {
         // Validate `position` up front so we never partially mutate the model.
         if (position != null) {
             if (role.isMultiple) {
-                val existingChildCount = existingChildrenInRole.size
-                if (position < -1 || position > existingChildCount) {
+                // A position at or beyond the current child count clamps to an append (see the
+                // append-at-end logic below) rather than failing — matching
+                // mps_mcp_parse_java_and_insert and the move operations. Only a negative value
+                // other than the -1 append sentinel is meaningless as an index, so reject it.
+                if (position < -1) {
                     return errJson(
-                        "position out of range: $position for role '$childRole' which has $existingChildCount children",
+                        "position $position is invalid for role '$childRole'; use -1 or omit " +
+                            "position to append, or supply a value >= 0",
                         McpErrorCode.INVALID_REQUEST
                     )
                 }
@@ -668,7 +672,9 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
         val fixResult = performFixReferences(mpsProject, newChild)
         saveModelAndModule(model)
-        return okJson(withFixReferencesInfo(nodeInfoJsonObject(newChild), fixResult))
+        // Report the new child's actual index so a caller that overshot `position` (now clamped
+        // to an append) can see where it landed.
+        return okJson(withFixReferencesInfo(nodeInfoJsonObjectWithIndex(newChild), fixResult))
     }
 
     protected suspend fun update_node_reference(mpsProject: MPSProject, nodeReference: String, referenceRole: String, targetNodeRefStr: String?): String {

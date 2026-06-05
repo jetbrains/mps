@@ -94,6 +94,11 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val inserted = data.getAsJsonArray("inserted")
         assertEquals("expected one inserted method: $response", 1, inserted.size())
         assertEquals("greet", inserted.first().asJsonObject.get("name").asString)
+        assertEquals(
+            "the append path must also report the actual landing index: $response",
+            0,
+            inserted.first().asJsonObject.get("index").asInt,
+        )
 
         readOnRepo {
             val classRoot = javaModel.rootNodes.single { it.name == "Bar" }
@@ -208,6 +213,71 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     }
 
     @Test
+    fun `importUsedLanguages false suppresses imports even when resolveReferences runs`() {
+        // Regression: the reference-resolution loop calls updateModelDependencies(), which used to
+        // add used languages unconditionally. That meant importUsedLanguages=false did NOT suppress
+        // language imports whenever resolveReferences=true. The flag must win in both passes.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+
+        val parameters = """
+            {
+              "code": "class Quiet {}",
+              "featureKind": "CLASS",
+              "insert": { "mode": "root", "modelRef": "$javaModelRef" },
+              "postProcess": { "importUsedLanguages": false, "resolveReferences": true }
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSJavaMcpToolset()) { it.mps_mcp_parse_java_and_insert(parameters) }
+        assertOkData(response)
+
+        readOnRepo {
+            val rootNames = javaModel.rootNodes.mapNotNull { it.name }.toList()
+            assertEquals("expected the class to land as a root regardless: $rootNames", listOf("Quiet"), rootNames)
+            assertFalse(
+                "importUsedLanguages=false must suppress language imports even when the resolution loop runs",
+                usedLanguageNames(javaModel).contains("jetbrains.mps.baseLanguage")
+            )
+        }
+    }
+
+    @Test
+    fun `unknown parameter key is rejected instead of silently ignored`() {
+        // Regression: unrecognized keys (e.g. the unsupported `dryRun`) used to be silently dropped
+        // and the model mutated anyway. They must now fail as INVALID_REQUEST without mutating.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+
+        val parameters = """
+            {
+              "code": "class Foo {}",
+              "featureKind": "CLASS",
+              "dryRun": true,
+              "insert": { "mode": "root", "modelRef": "$javaModelRef" }
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSJavaMcpToolset()) { it.mps_mcp_parse_java_and_insert(parameters) }
+
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        assertTrue(
+            "error must name the offending unknown key: ${obj.get("error").asString}",
+            obj.get("error").asString.contains("dryRun")
+        )
+
+        readOnRepo {
+            assertEquals(
+                "rejected request must not mutate the model",
+                emptyList<SNode>(),
+                javaModel.rootNodes.toList()
+            )
+        }
+    }
+
+    @Test
     fun `replace mode rejects code that parses to multiple top-level nodes`() {
         // Replace mode substitutes the target node with a single replacement; multiple parsed
         // nodes cannot fill a single containment slot. Previously the toolset silently consumed
@@ -291,6 +361,313 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             assertEquals("schema-level rejection must not touch the model", emptyList<SNode>(), javaModel.rootNodes.toList())
         }
+    }
+
+    @Test
+    fun `root mode rejects a position other than the append sentinel as INVALID_REQUEST`() {
+        // INC-6: a root insert with position:0 used to return ok:true while silently appending the
+        // root (never prepending it), leaving the caller with no signal that the parameter had no
+        // effect. It must now be rejected up front, before the model is touched.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+
+        val parameters = """
+            {
+              "code": "class Foo {}",
+              "featureKind": "CLASS",
+              "insert": { "mode": "root", "modelRef": "$javaModelRef", "position": 0 }
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSJavaMcpToolset()) { it.mps_mcp_parse_java_and_insert(parameters) }
+
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        assertTrue(
+            "error should explain that root inserts do not support position: ${obj.get("error").asString}",
+            obj.get("error").asString.contains("'position' is not supported for root insertion")
+        )
+
+        readOnRepo {
+            assertEquals("schema-level rejection must not touch the model", emptyList<SNode>(), javaModel.rootNodes.toList())
+        }
+    }
+
+    @Test
+    fun `child mode inserts an expression into an expression-bearing role`() {
+        // Regression: EXPRESSION input is parsed through a temporary `Object __mcp_expr__ = …;`
+        // wrapper. JavaParser detaches the top-level statement, but the unwrapped initializer was
+        // handed back still attached to that wrapper, so child-mode addChild() (which asserts the
+        // incoming node has no parent) threw. The unwrap step must detach the expression so it can
+        // be re-parented.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        val seedClass = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"class Holder {}","featureKind":"CLASS",
+                    "insert":{"mode":"root","modelRef":"$javaModelRef"}}"""
+            )
+        }
+        val classRef = assertOkData(seedClass).getAsJsonArray("inserted")
+            .first().asJsonObject.get("reference").asString
+
+        // Seed a field whose (empty) `initializer` role accepts an Expression.
+        val seedField = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"int total;","featureKind":"FIELD","contextNodeRef":"$classRef",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member"}}"""
+            )
+        }
+        val fieldRef = assertOkData(seedField).getAsJsonArray("inserted")
+            .first().asJsonObject.get("reference").asString
+
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"1 + 2","featureKind":"EXPRESSION",
+                    "insert":{"mode":"child","parentRef":"$fieldRef","role":"initializer"}}"""
+            )
+        }
+        val data = assertOkData(response)
+        val inserted = data.getAsJsonArray("inserted")
+        assertEquals("expected one inserted expression: $response", 1, inserted.size())
+        assertEquals("PlusExpression", inserted.first().asJsonObject.get("concept").asString)
+
+        readOnRepo {
+            val field = javaModel.rootNodes.single { it.name == "Holder" }
+                .children.single { it.name == "total" }
+            val initializer = field.children.single { it.containmentLink?.name == "initializer" }
+            assertEquals("PlusExpression", initializer.concept.name)
+        }
+    }
+
+    @Test
+    fun `child mode rejects an expression placed in the member role`() {
+        // Regression (E6): child mode called parent.addChild() without checking that the node's
+        // concept fits the role, so an Expression dropped into `member` silently corrupted the
+        // model. The toolset must reject the mismatch up front and leave the model untouched.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        val seedClass = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"class Box {}","featureKind":"CLASS",
+                    "insert":{"mode":"root","modelRef":"$javaModelRef"}}"""
+            )
+        }
+        val classRef = assertOkData(seedClass).getAsJsonArray("inserted")
+            .first().asJsonObject.get("reference").asString
+
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"1 + 2","featureKind":"EXPRESSION",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member"}}"""
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        val err = obj.get("error").asString
+        assertTrue(
+            "error must call out the role assignability mismatch: $err",
+            err.contains("cannot be placed in role 'member'"),
+        )
+
+        readOnRepo {
+            val classRoot = javaModel.rootNodes.single { it.name == "Box" }
+            assertEquals(
+                "assignability rejection must not mutate the model",
+                emptyList<String>(),
+                classRoot.children.filter { it.containmentLink?.name == "member" }.mapNotNull { it.name },
+            )
+        }
+    }
+
+    @Test
+    fun `replace mode rejects a concept incompatible with the target role`() {
+        // Regression (E6): replace mode called SNodeOperations.replaceWithAnother() without
+        // checking that the replacement's concept fits the target's containment role, so swapping
+        // a method (member role) for an Expression corrupted the AST. The mismatch must be
+        // rejected and the original node left in place.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        val seedClass = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"class Crate {}","featureKind":"CLASS",
+                    "insert":{"mode":"root","modelRef":"$javaModelRef"}}"""
+            )
+        }
+        val classRef = assertOkData(seedClass).getAsJsonArray("inserted")
+            .first().asJsonObject.get("reference").asString
+
+        val seedMethod = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"void run() {}","featureKind":"METHOD","contextNodeRef":"$classRef",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member"}}"""
+            )
+        }
+        val methodRef = assertOkData(seedMethod).getAsJsonArray("inserted")
+            .first().asJsonObject.get("reference").asString
+
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"1 + 2","featureKind":"EXPRESSION",
+                    "insert":{"mode":"replace","targetRef":"$methodRef"}}"""
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        val err = obj.get("error").asString
+        assertTrue(
+            "error must call out the role assignability mismatch: $err",
+            err.contains("cannot be placed in role 'member'"),
+        )
+
+        readOnRepo {
+            val classRoot = javaModel.rootNodes.single { it.name == "Crate" }
+            assertEquals(
+                "replace rejection must leave the original method intact",
+                listOf("run"),
+                classRoot.children.filter { it.containmentLink?.name == "member" }.mapNotNull { it.name },
+            )
+        }
+    }
+
+    @Test
+    fun `child mode clamps an out-of-range position to an append and reports the actual index`() {
+        // INC-5: a multi-cardinality child insert with a `position` past the current child count
+        // used to fail hard with "Target index N is out of bounds (count: …)". It must now clamp
+        // to an append, return ok:true, and report the node's actual landing index so a caller
+        // that overshoots (e.g. a loop counter) can still see where the node ended up.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        val classRef = seedClassRoot(toolset, javaModelRef, "Seq")
+        seedFieldMember(toolset, classRef, "a")
+        seedFieldMember(toolset, classRef, "b")
+        seedFieldMember(toolset, classRef, "c")
+
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"int z;","featureKind":"FIELD","contextNodeRef":"$classRef",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member","position":99}}"""
+            )
+        }
+        val data = assertOkData(response)
+        val inserted = data.getAsJsonArray("inserted")
+        assertEquals("expected one inserted member: $response", 1, inserted.size())
+        assertEquals("z", inserted.first().asJsonObject.get("name").asString)
+        assertEquals(
+            "out-of-range position must clamp to the append index (3 existing members): $response",
+            3,
+            inserted.first().asJsonObject.get("index").asInt,
+        )
+
+        readOnRepo {
+            val classRoot = javaModel.rootNodes.single { it.name == "Seq" }
+            assertEquals(
+                "the overshooting member must be appended last, original order preserved",
+                listOf("a", "b", "c", "z"),
+                classRoot.children.filter { it.containmentLink?.name == "member" }.mapNotNull { it.name },
+            )
+        }
+    }
+
+    @Test
+    fun `child mode inserts at position 0 and reports the actual index`() {
+        // The complement of the clamp case: an in-range `position` is honoured, and the response
+        // reports the same index the node actually landed at.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        val classRef = seedClassRoot(toolset, javaModelRef, "Front")
+        seedFieldMember(toolset, classRef, "a")
+        seedFieldMember(toolset, classRef, "b")
+
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"int y;","featureKind":"FIELD","contextNodeRef":"$classRef",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member","position":0}}"""
+            )
+        }
+        val data = assertOkData(response)
+        val inserted = data.getAsJsonArray("inserted")
+        assertEquals(
+            "position 0 must report index 0: $response",
+            0,
+            inserted.first().asJsonObject.get("index").asInt,
+        )
+
+        readOnRepo {
+            val classRoot = javaModel.rootNodes.single { it.name == "Front" }
+            assertEquals(
+                "position 0 must prepend, pushing existing members back",
+                listOf("y", "a", "b"),
+                classRoot.children.filter { it.containmentLink?.name == "member" }.mapNotNull { it.name },
+            )
+        }
+    }
+
+    @Test
+    fun `child mode rejects a negative position other than the append sentinel`() {
+        // -1 is the only append sentinel; any other negative value is meaningless as an index and
+        // is rejected up front, leaving the model untouched.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        val classRef = seedClassRoot(toolset, javaModelRef, "Neg")
+        seedFieldMember(toolset, classRef, "a")
+
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"int z;","featureKind":"FIELD","contextNodeRef":"$classRef",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member","position":-2}}"""
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertTrue(
+            "error should explain the invalid negative position: ${obj.get("error").asString}",
+            obj.get("error").asString.contains("position -2 is invalid"),
+        )
+
+        readOnRepo {
+            val classRoot = javaModel.rootNodes.single { it.name == "Neg" }
+            assertEquals(
+                "a rejected insert must not mutate the model",
+                listOf("a"),
+                classRoot.children.filter { it.containmentLink?.name == "member" }.mapNotNull { it.name },
+            )
+        }
+    }
+
+    /** Seeds an empty class root via root-mode insertion and returns its SNodeReference string. */
+    private fun seedClassRoot(toolset: JetBrainsMPSJavaMcpToolset, modelRef: String, name: String): String {
+        val seed = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"class $name {}","featureKind":"CLASS",
+                    "insert":{"mode":"root","modelRef":"$modelRef"}}"""
+            )
+        }
+        return assertOkData(seed).getAsJsonArray("inserted").first().asJsonObject.get("reference").asString
+    }
+
+    /** Appends a field named [fieldName] into the class's `member` role. */
+    private fun seedFieldMember(toolset: JetBrainsMPSJavaMcpToolset, classRef: String, fieldName: String) {
+        val seed = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"int $fieldName;","featureKind":"FIELD","contextNodeRef":"$classRef",
+                    "insert":{"mode":"child","parentRef":"$classRef","role":"member"}}"""
+            )
+        }
+        assertOkData(seed)
     }
 
     private fun createJavaModel(): SModel {

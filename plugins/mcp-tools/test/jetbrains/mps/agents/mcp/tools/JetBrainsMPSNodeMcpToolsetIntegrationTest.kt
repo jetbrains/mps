@@ -155,24 +155,29 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     }
 
     @Test
-    fun `add-node-child rejects position past current count and leaves model unchanged`() {
+    fun `add-node-child clamps a position past the current count to an append`() {
         val enumRef = createColorEnum()
 
-        val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
+        // 3 existing children; position 4 is past the end and must clamp to an append rather
+        // than fail, with the response reporting the actual landing index (matches
+        // mps_mcp_parse_java_and_insert).
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            // 3 existing children; 4 is past the end.
             it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("ZETA"), position = 4)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
-        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
-        val msg = obj.get("error").asString
-        assertTrue("error should mention position out of range: $msg", msg.contains("position out of range"))
-        assertTrue("error should mention the role: $msg", msg.contains("members"))
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        assertEquals(
+            "over-range position must clamp to the append index (3 existing members): $response",
+            3,
+            obj.get("data").asNodeInfo().get("index").asInt,
+        )
 
         readOnRepo {
-            assertEquals("model must be unchanged after rejected insertion", before,
-                membersOf(enumRef).mapNotNull { it.name })
+            assertEquals(
+                listOf("RED", "GREEN", "BLUE", "ZETA"),
+                membersOf(enumRef).mapNotNull { it.name }
+            )
         }
     }
 
@@ -188,8 +193,8 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
         assertTrue(
-            "error should mention position out of range: ${obj.get("error").asString}",
-            obj.get("error").asString.contains("position out of range")
+            "error should explain the invalid negative position: ${obj.get("error").asString}",
+            obj.get("error").asString.contains("position -2 is invalid")
         )
 
         readOnRepo {
@@ -435,12 +440,15 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
         val before = readOnRepo { membersOf(enumRef).mapNotNull { it.name } }
         val response = runTool(JetBrainsMPSNodeMcpToolset()) {
-            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("DRY"), position = 99, dryRun = true)
+            // position -2 is invalid (only -1 is the append sentinel); an over-range positive
+            // value would now clamp, so a negative value is used to exercise the validation path
+            // under dryRun.
+            it.mps_mcp_update_node(NodeUpdateOperation.ADD, NodeUpdateKind.CHILD, nodeReference = enumRef, childRole = "members", childJson = memberJson("DRY"), position = -2, dryRun = true)
         }
 
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("dryRun with bad position should fail: $response", obj.get("ok").asBoolean)
-        assertTrue(obj.get("error").asString.contains("position out of range"))
+        assertTrue(obj.get("error").asString.contains("position -2 is invalid"))
 
         readOnRepo {
             assertEquals("model must be unchanged after rejected dryRun", before,

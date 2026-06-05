@@ -137,7 +137,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Structural node mutations and code generation: move a child within its role, move a node to a new parent or make it a root, make/rebuild models/modules/whole project, fix broken references. Parameters are a JSON object string. MAKE parameters: {"modules":[<moduleRef>,...]} | {"models":[<modelRef>,...]} | {"wholeProject":true}, plus optional "rebuild":bool; node references are not accepted — resolve the node's module or model first. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
+        Structural node mutations and code generation: move a child within its role, move a node to a new parent or make it a root, make/rebuild models/modules/whole project, fix broken references. Parameters are a JSON object string. For MOVE_CHILD and MOVE_NODE_TO_PARENT, `position` is 0-based and `-1` moves to the end; a `position` at or beyond the role's child count is clamped to the end (not rejected) and a negative value other than -1 is rejected — the response's `data.index` reports the moved node's actual resulting index. MAKE parameters: {"modules":[<moduleRef>,...]} | {"models":[<modelRef>,...]} | {"wholeProject":true}, plus optional "rebuild":bool; node references are not accepted — resolve the node's module or model first. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
     suspend fun mps_mcp_alter_nodes(
         @McpDescription("The operation to perform (MOVE_CHILD, MOVE_NODE_TO_PARENT, MAKE, FIX_REFERENCES)") operation: MPSAlterOperation,
@@ -681,8 +681,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           nodeReference: persistent ref of the parent node.
           childRole: containment role name.
           childJson: JSON blueprint as an inline string (max 4 KB) OR an absolute path to a file containing the JSON. For large blueprints prefer the file form to avoid MCP transport truncation. Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. `dryRun=true` validates without mutating.
-          position: Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. Single-cardinality roles accept only null/-1/0. 
-          Returns the inserted node's info envelope (`data.parentReference` carries the parent ref).
+          position: Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. A `position` at or beyond the current child count is clamped to an append (not rejected); a negative value other than -1 is rejected. Single-cardinality roles accept only null/-1/0.
+          Returns the inserted node's info envelope (`data.parentReference` carries the parent ref, `data.index` the actual landing index — useful when an over-range `position` was clamped).
 
         SET × CHILD — Replace an existing child node with a new node described by a JSON blueprint. Deletes the child if `childJson = null`.
           childNodeRef: persistent ref of the child to replace.
@@ -707,7 +707,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         @McpDescription("The kind of element to operate on (CHILD, PROPERTY, REFERENCE)") kind: NodeUpdateKind,
         @McpDescription("Parent node ref for ADD CHILD") nodeReference: String? = null,
         @McpDescription("Containment role name for ADD CHILD") childRole: String? = null,
-        @McpDescription("0-based insert index for ADD CHILD multi-cardinality roles; null/-1 = append. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
+        @McpDescription("0-based insert index for ADD CHILD multi-cardinality roles; null/-1 = append. A value at or beyond the current child count is clamped to an append; a negative value other than -1 is rejected. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
         @McpDescription("For ADD CHILD or SET CHILD: JSON blueprint as an inline string (max 4 KB) OR an absolute path to a file containing the JSON. Prefer the file form for blueprints larger than ~4 KB to avoid MCP transport truncation.") childJson: String? = null,
         @McpDescription("Ref of the child to replace or delete (SET CHILD)") childNodeRef: String? = null,
         @McpDescription("If true, validate without mutating (ADD CHILD, SET CHILD only). Default: false.") dryRun: Boolean = false,
@@ -859,15 +859,22 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 val count = childrenInRole.size
                 val currentIndex = childrenInRole.indexOf(childNode)
 
-                val targetIndex = if (position == -1) count - 1 else position
-
-                if (targetIndex !in 0 until count) {
-                    return@executeShortCommandOnEdt errJson("Target index $targetIndex is out of bounds (count: $count)", McpErrorCode.INVALID_REQUEST)
+                // -1 means "move to the end"; any value at or beyond the last index also clamps to
+                // the end, mirroring the append-clamp used by the insert tools
+                // (mps_mcp_update_node ADD CHILD, mps_mcp_parse_java_and_insert). A value below -1
+                // is meaningless as an index, so reject it.
+                if (position < -1) {
+                    return@executeShortCommandOnEdt errJson(
+                        "position $position is invalid for role '$childRole'; use -1 to move to the " +
+                            "end, or supply a value >= 0",
+                        McpErrorCode.INVALID_REQUEST
+                    )
                 }
+                val targetIndex = if (position == -1 || position >= count) count - 1 else position
 
                 if (targetIndex == currentIndex) {
                     // Already at the correct position
-                    return@executeShortCommandOnEdt okJson(nodeInfoJson(parent))
+                    return@executeShortCommandOnEdt okJson(nodeInfoJsonObjectWithIndex(childNode))
                 }
 
                 // Repositioning
@@ -885,7 +892,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 }
 
                 saveModelAndModule(model)
-                okJson(nodeInfoJson(parent))
+                // Return the moved node with its actual resulting index (consistent with
+                // MOVE_NODE_TO_PARENT), so a caller that overshot `position` sees where it landed.
+                okJson(nodeInfoJsonObjectWithIndex(childNode))
             }
         }
     }
@@ -929,13 +938,17 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     val containmentLink = newParent.concept.containmentLinks.find { it.name == role }
                         ?: return@executeShortCommandOnEdt errJson("Child role '$role' not found in concept '${newParent.concept.name}'", McpErrorCode.NOT_FOUND)
 
-                    // Validate target position BEFORE detaching the node so an invalid request
-                    // doesn't leave the model in a partially-mutated state.
-                    if (position != null && position != -1) {
-                        val preCount = newParent.getChildren(containmentLink).toList().size
-                        if (position !in 0..preCount) {
-                            return@executeShortCommandOnEdt errJson("Target index $position is out of bounds (count: $preCount)", McpErrorCode.INVALID_REQUEST)
-                        }
+                    // A position past the current child count clamps to an append (see the insert
+                    // logic below) rather than failing — matching the insert tools. Only a
+                    // negative value other than the -1 append sentinel is rejected. Validate
+                    // BEFORE detaching so an invalid request doesn't leave the model partially
+                    // mutated.
+                    if (position != null && position < -1) {
+                        return@executeShortCommandOnEdt errJson(
+                            "position $position is invalid for role '${containmentLink.name}'; use -1 " +
+                                "or omit position to append, or supply a value >= 0",
+                            McpErrorCode.INVALID_REQUEST
+                        )
                     }
 
                     detachNode(node, sourceModel)
@@ -952,7 +965,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     if (sourceModel != null && sourceModel != targetModel) {
                         saveModelAndModule(sourceModel)
                     }
-                    okJson(nodeInfoJson(node))
+                    // Report the moved node's actual index so a caller that overshot `position`
+                    // (now clamped to an append) can see where it landed.
+                    okJson(nodeInfoJsonObjectWithIndex(node))
 
                 } else if (modelReference != null) {
                     val targetModel = when (val r = resolveEditableModel(repo, modelReference)) {

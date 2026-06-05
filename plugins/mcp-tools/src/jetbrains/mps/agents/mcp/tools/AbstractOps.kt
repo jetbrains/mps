@@ -696,6 +696,21 @@ abstract class AbstractOps : McpToolset {
         return nodeInfoJsonObject(n).toString()
     }
 
+    /**
+     * [nodeInfoJsonObject] plus an `index` property giving the node's 0-based position within its
+     * containment role. Lets callers see where a node actually landed after an insert or move —
+     * in particular when an out-of-range `position` was clamped to an append. The `index` is
+     * omitted for nodes with no parent/containment (e.g. roots).
+     */
+    protected fun nodeInfoJsonObjectWithIndex(n: SNode): JsonObject =
+        nodeInfoJsonObject(n).also { info ->
+            val containment = n.containmentLink
+            val parentNode = n.parent
+            if (containment != null && parentNode != null) {
+                info.addProperty("index", parentNode.getChildren(containment).toList().indexOf(n))
+            }
+        }
+
     protected fun nodeHierarchyToJson(node: SNode, deep: Boolean): String {
         return nodeHierarchyJsonObject(node, deep).toString()
     }
