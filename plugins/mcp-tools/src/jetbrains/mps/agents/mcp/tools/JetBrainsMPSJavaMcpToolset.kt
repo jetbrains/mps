@@ -141,13 +141,14 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     // The recommended `ComponentHost.findComponent(ClassLoaderManager.class)` replacement requires
     // an MPS `ComponentHost`/`Environment` handle that is not currently plumbed into the MCP toolsets.
     // Tracked under phase 6 as a deferred architectural change; suppress here to keep noise low.
+    //
+    // Resolves jetbrains.mps.baseLanguage.scopes.MethodResolveUtil.replaceFromEditor(SNode) via
+    // reflection, trying multiple classloaders when the class is not on the default one. The result
+    // depends only on [repo], so callers resolve it once and reuse it across the whole resolution
+    // loop instead of re-running this classloader scan on every fixMethodReferences call.
     @Suppress("DEPRECATION")
-    private fun fixMethodReferences(roots: Iterable<SNode>) {
-        val rootList = roots.toList()
-        val repo = rootList.firstOrNull()?.model?.repository
-
-        // Try to get MethodResolveUtil via reflection, trying multiple classloaders if needed.
-        val replaceFromEditor: java.lang.reflect.Method? = try {
+    private fun resolveReplaceFromEditorMethod(repo: SRepository?): java.lang.reflect.Method? {
+        return try {
             var clazz: Class<*>? = null
             try {
                 clazz = Class.forName("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
@@ -184,8 +185,13 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             javaToolsetLogger.warn("Failed to find 'replaceFromEditor' method via reflection", e)
             null
         }
+    }
 
-        for (root in rootList) {
+    // Resolves method-call / overload references (and AnonymousClass classifiers) on the inserted
+    // subtrees. [replaceFromEditor] is the pre-resolved MethodResolveUtil.replaceFromEditor handle
+    // (see resolveReplaceFromEditorMethod); when null, only the fixReferenceDumb fallback runs.
+    private fun fixMethodReferences(roots: Iterable<SNode>, replaceFromEditor: java.lang.reflect.Method?) {
+        for (root in roots) {
             val descendants = SNodeOperations.getNodeDescendants(root, null, true, emptyArray())
             for (node in descendants) {
                 if (SNodeOperations.isInstanceOf(node, BaseLanguageMeta.iFixableMethodReferenceConcept) ||
@@ -330,23 +336,20 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             return nodes
         }
         return nodes.map { node ->
-            val concept = node.concept
-            val extracted = when (concept.name) {
-                "LocalVariableDeclarationStatement" -> {
+            val extracted = when {
+                SNodeOperations.isInstanceOf(node, BaseLanguageMeta.localVariableDeclarationStatementConcept) -> {
                     // Unwrap: LocalVariableDeclarationStatement -> LocalVariableDeclaration -> initializer.
                     val varDecl = node.children.firstOrNull()
-                    val initLink = varDecl?.concept?.containmentLinks?.find { it.name == "initializer" }
                     when {
                         varDecl == null -> null
-                        initLink != null -> varDecl.getChildren(initLink).firstOrNull()
+                        SNodeOperations.isInstanceOf(varDecl, BaseLanguageMeta.variableDeclarationConcept) ->
+                            varDecl.getChildren(BaseLanguageMeta.initializerLink).firstOrNull()
                         else -> varDecl.children.lastOrNull()
                     }
                 }
 
-                "ExpressionStatement" -> {
-                    val link = concept.containmentLinks.find { it.name == "expression" }
-                    if (link != null) node.getChildren(link).firstOrNull() else node.children.firstOrNull()
-                }
+                SNodeOperations.isInstanceOf(node, BaseLanguageMeta.expressionStatementConcept) ->
+                    node.getChildren(BaseLanguageMeta.expressionLink).firstOrNull()
 
                 else -> null
             }
@@ -408,7 +411,17 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             model.save()
             (model.module as? AbstractModule)?.save()
         } catch (e: Exception) {
-            rollbackInsertedNodes()
+            // The rollback is best-effort: its delete arm already swallows per-node failures via
+            // safelyRollbackNodes, but the mode-specific restore arm (re-attaching a displaced or
+            // replaced node) is bespoke and could still throw. Guard the whole call so a failing
+            // rollback can never replace the original failure `e` that the caller needs to surface.
+            try {
+                rollbackInsertedNodes()
+            } catch (rollbackEx: Throwable) {
+                rethrowIfCancellation(rollbackEx)
+                if (rollbackEx is Error) throw rollbackEx
+                javaToolsetLogger.warn("Rollback after a failed insert threw; preserving the original failure", rollbackEx)
+            }
             throw e
         }
     }
@@ -563,6 +576,12 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             )
         }
 
+        // Resolve MethodResolveUtil.replaceFromEditor once for the whole resolution loop instead of
+        // re-running the (Class.forName + classloader scan + getMethod) reflection on every
+        // fixMethodReferences call below. The result depends only on `repo`, so it is stable across
+        // all loop iterations and the final pass.
+        val replaceFromEditor = resolveReplaceFromEditorMethod(repo)
+
         // Wrap the resolution loop in an isolated typechecking session so that
         // TypecheckingFacade.getFromContext().getTypeOf() calls in codeTransformPass (e.g. for
         // array .length / .clone() resolution) succeed and UnknownInstanceMethodCall nodes get replaced.
@@ -577,7 +596,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
                 // Fix method references and overloads (including AnonymousClass classifier)
                 // This might unblock more unknowns for YetUnknownResolver in this or next iteration.
-                fixMethodReferences(inserted)
+                fixMethodReferences(inserted, replaceFromEditor)
 
                 // Manually call YetUnknownResolver just in case JavaToMpsConverter didn't do it or didn't do it enough
                 val yur = YetUnknownResolver(model, inserted)
@@ -607,7 +626,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             }
 
             // Final check for any remaining method call problems
-            fixMethodReferences(inserted)
+            fixMethodReferences(inserted, replaceFromEditor)
             // One last try for unknowns unblocked by overload resolution
             YetUnknownResolver(model, inserted).tryResolveUnknowns(EmptyProgressMonitor())
             // Final dynamic reference cleanup in case last passes unlocked more
@@ -671,11 +690,9 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             request.resolveReferences,
             parseResult
         ) {
-            inserted.asReversed().forEach { insertedNode ->
-                if (insertedNode.model === model) {
-                    model.removeRootNode(insertedNode)
-                }
-            }
+            // Roots were attached via model.addRootNode; node.delete() (inside safelyRollbackNodes)
+            // detaches a root from its model — the same undo the language-structure toolset relies on.
+            safelyRollbackNodes(inserted.asReversed())
         }
         return InsertOutcome.Ok(inserted)
     }
@@ -746,35 +763,32 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             displaced?.let { SNodeOperations.deleteNode(it) }
         }
 
-        val pos = insertTarget.position
-        if (pos == null || pos == -1) {
-            for (n in parsedNodes) {
-                parent.addChild(link, n)
-                inserted.add(n)
+        // Resolve where the (possibly multiple) parsed nodes land via the shared rule — null/-1
+        // append, >= child-count clamps to an append, < -1 is rejected — keeping this tool
+        // consistent with mps_mcp_update_node ADD CHILD and the move ops. The response reports each
+        // inserted node's actual landing index (see below), so a caller that overshoots can still
+        // see where it landed.
+        when (val resolved = resolveInsertIndex(link.name, insertTarget.position, parent.getChildren(link).toList().size)) {
+            is InsertIndex.Invalid -> return InsertOutcome.Err(errJson(resolved.message, McpErrorCode.INVALID_REQUEST))
+            InsertIndex.Append -> {
+                for (n in parsedNodes) {
+                    parent.addChild(link, n)
+                    inserted.add(n)
+                }
             }
-        } else {
-            var index: Int = pos
-            // -1 is the only append sentinel; any other negative value is
-            // meaningless as an index, so reject it before mutating.
-            if (index < 0) {
-                return InsertOutcome.Err(errJson(
-                    "position $index is invalid for role '${link.name}'; " +
-                            "use -1 or omit position to append, or supply a value >= 0",
-                    McpErrorCode.INVALID_REQUEST
-                ))
-            }
-            // A position at or beyond the current child count appends (clamp to
-            // end) instead of failing — mirroring common list-insert semantics
-            // such as Python's list.insert(big, x). The response reports each
-            // inserted node's actual landing index (see below), so a caller that
-            // overshoots can still see where it landed.
-            for (n in parsedNodes) {
-                val children = parent.getChildren(link).toList()
-                val effectiveIndex = if (index > children.size) children.size else index
-                val anchor = if (effectiveIndex < children.size) children[effectiveIndex] else null
-                parent.insertChildBefore(link, n, anchor)
-                inserted.add(n)
-                index = effectiveIndex + 1
+            is InsertIndex.At -> {
+                // Insert the parsed nodes consecutively starting at the resolved index, advancing
+                // per node. Re-reading children each iteration keeps the clamp correct as the role
+                // grows.
+                var index = resolved.index
+                for (n in parsedNodes) {
+                    val children = parent.getChildren(link).toList()
+                    val effectiveIndex = if (index > children.size) children.size else index
+                    val anchor = if (effectiveIndex < children.size) children[effectiveIndex] else null
+                    parent.insertChildBefore(link, n, anchor)
+                    inserted.add(n)
+                    index = effectiveIndex + 1
+                }
             }
         }
 
@@ -787,11 +801,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             request.resolveReferences,
             parseResult
         ) {
-            inserted.asReversed().forEach { insertedNode ->
-                if (insertedNode.parent != null) {
-                    SNodeOperations.deleteNode(insertedNode)
-                }
-            }
+            safelyRollbackNodes(inserted.asReversed())
             // Restore the single-cardinality occupant we overwrote, if finalize
             // failed before persisting (mirrors the 'replace' branch's rollback).
             displaced?.let {
@@ -866,9 +876,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             request.resolveReferences,
             parseResult
         ) {
-            if (newNode.parent != null) {
-                SNodeOperations.deleteNode(newNode)
-            }
+            safelyRollbackNodes(inserted)
             if (targetNode.parent == null) {
                 val currentChildren = parent.getChildren(link).toList()
                 if (originalIndex in 0..currentChildren.lastIndex) {

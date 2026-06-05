@@ -592,6 +592,37 @@ abstract class AbstractNodeOps : AbstractOps() {
         return okJson(nodeInfoJson(parent))
     }
 
+    /** Result of [resolveInsertIndex]: where a new child should be placed in a containment role. */
+    protected sealed class InsertIndex {
+        /** Insert before the existing child at this in-range index (`0 <= index < count`). */
+        data class At(val index: Int) : InsertIndex()
+
+        /** Append at the end of the role. */
+        object Append : InsertIndex()
+
+        /** The requested position is invalid; [message] is ready to hand to `errJson`. */
+        data class Invalid(val message: String) : InsertIndex()
+    }
+
+    /**
+     * Where a new child lands in a **multiple-cardinality** containment role, given the caller's
+     * requested 0-based [requested] position and the role's current child [count]. Centralizes the
+     * append/clamp/reject rule shared by the insert paths — `mps_mcp_update_node` ADD CHILD
+     * ([addNodeChild]), `mps_mcp_parse_java_and_insert`, and MOVE_NODE_TO_PARENT: `null`/`-1`
+     * append; a value `>= count` clamps to an append (not rejected); a value `< -1` is meaningless
+     * as an index and is rejected. NOT used by MOVE_CHILD, which repositions a node already in the
+     * role and so clamps to `count - 1` with its own message.
+     */
+    protected fun resolveInsertIndex(roleName: String, requested: Int?, count: Int): InsertIndex = when {
+        requested == null || requested == -1 -> InsertIndex.Append
+        requested < -1 -> InsertIndex.Invalid(
+            "position $requested is invalid for role '$roleName'; use -1 or omit " +
+                "position to append, or supply a value >= 0"
+        )
+        requested >= count -> InsertIndex.Append
+        else -> InsertIndex.At(requested)
+    }
+
     private fun addNodeChild(mpsProject: MPSProject, repo: SRepository, nodeReference: String, childRole: String, childJson: String, position: Int?, dryRun: Boolean): String {
         val sNodeRef = resolveNodeReference(repo, nodeReference)
         val parent = sNodeRef?.resolve(repo) ?: return errJson("Parent node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
@@ -604,28 +635,22 @@ abstract class AbstractNodeOps : AbstractOps() {
         val existingChildrenInRole: List<SNode> =
             if (role.isMultiple) parent.getChildren(role).toList() else emptyList()
 
-        // Validate `position` up front so we never partially mutate the model.
-        if (position != null) {
-            if (role.isMultiple) {
-                // A position at or beyond the current child count clamps to an append (see the
-                // append-at-end logic below) rather than failing — matching
-                // mps_mcp_parse_java_and_insert and the move operations. Only a negative value
-                // other than the -1 append sentinel is meaningless as an index, so reject it.
-                if (position < -1) {
-                    return errJson(
-                        "position $position is invalid for role '$childRole'; use -1 or omit " +
-                            "position to append, or supply a value >= 0",
-                        McpErrorCode.INVALID_REQUEST
-                    )
-                }
-            } else {
-                if (position != -1 && position != 0) {
-                    return errJson(
-                        "position $position not applicable to single-cardinality role '$childRole' (only -1 or 0 are allowed)",
-                        McpErrorCode.INVALID_REQUEST
-                    )
-                }
+        // Validate `position` up front — and, for multi-cardinality roles, resolve where the child
+        // lands — so we never partially mutate the model. Single-cardinality roles ignore the index
+        // (they replace the lone occupant below) and accept only the -1/0 sentinels.
+        val insertIndex: InsertIndex = if (role.isMultiple) {
+            when (val ix = resolveInsertIndex(childRole, position, existingChildrenInRole.size)) {
+                is InsertIndex.Invalid -> return errJson(ix.message, McpErrorCode.INVALID_REQUEST)
+                else -> ix
             }
+        } else {
+            if (position != null && position != -1 && position != 0) {
+                return errJson(
+                    "position $position not applicable to single-cardinality role '$childRole' (only -1 or 0 are allowed)",
+                    McpErrorCode.INVALID_REQUEST
+                )
+            }
+            InsertIndex.Append
         }
 
         val jsonObject = try {
@@ -662,13 +687,14 @@ abstract class AbstractNodeOps : AbstractOps() {
             }, warnings = nodeWarnings ?: emptyList())
         }
 
-        val appendAtEnd = position == null || position == -1 || !role.isMultiple || position >= existingChildrenInRole.size
-        if (appendAtEnd) {
-            parent.addChild(role, newChild)
-        } else {
-            // position is in [0, existingChildrenInRole.size); the snapshot was taken before any mutation.
-            val anchor = existingChildrenInRole[position]
-            parent.insertChildBefore(role, newChild, anchor)
+        when (insertIndex) {
+            is InsertIndex.At -> {
+                // index is in [0, existingChildrenInRole.size); the snapshot was taken before any mutation.
+                parent.insertChildBefore(role, newChild, existingChildrenInRole[insertIndex.index])
+            }
+            // Append covers every multi-cardinality append/clamp case and all single-cardinality
+            // inserts (Invalid was already returned above).
+            else -> parent.addChild(role, newChild)
         }
         val fixResult = performFixReferences(mpsProject, newChild)
         saveModelAndModule(model)

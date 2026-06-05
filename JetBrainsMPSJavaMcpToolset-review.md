@@ -11,14 +11,18 @@ This file went through a heavy bug-fixing phase (the `c2`/`d1`/`e1`/`g1`/`f` mar
 
 ## Status (this session)
 
-**Done — H3, H1, H2, M2, M1** (verified: single-file compile clean, `get_file_problems` reports no errors):
+**Done — H3, H1, H2, M2, M1, M3, M5, M6, M4** (verified: single-file compile clean, `get_file_problems` reports no errors):
 - **H3** — removed the dead `ensureJDKDependency(model)` call from `finalizeResolutionDependencies`; updated its comment and the `c2` comment in `resolveIteratively`. Also dropped the now-unused `descriptor` binding in `ensureJDKDependency` (a sibling leftover from the same `d1` refactor), keeping the guard.
 - **H1** — `mps_mcp_parse_java_and_insert` now dispatches to three extracted privates: `insertAsRoot` / `insertAsChild` / `insertAsReplace`, plus a shared `parseInsertSuccessJson` builder. The tool method is ~25 lines.
 - **H2** — removed the swallowing inner `catch`; unexpected exceptions now propagate to `withMpsProject` → `toolFailure` (logged as `INTERNAL_ERROR`).
 - **M2** — dropped the `var resultJson`/`var error` capture; each mode returns an `InsertOutcome.Ok(inserted)` / `InsertOutcome.Err(json)`, and validation errors now carry `McpErrorCode.INVALID_REQUEST`.
 - **M1** — deleted the shadowing `resolveEditableModel(repo, ref, onError)` overload, the two bespoke context records (`ChildInsertContext` / `ReplaceInsertContext`), and the `resolveChildInsertContext` / `resolveReplaceInsertContext` callback resolvers (~62 net lines). The three `insertAs*` functions now resolve via the inherited sealed helpers `resolveEditableModel` / `resolveEditableNodeAndModel` (matching `JetBrainsMPSNodeMcpToolset`), so resolver errors now carry proper `NOT_FOUND` / `NOT_EDITABLE` codes — retiring the "deferred uncoded errors" caveat from M2.
+- **M3** — extracted the `MethodResolveUtil.replaceFromEditor` reflection lookup into `resolveReplaceFromEditorMethod(repo)` and slimmed `fixMethodReferences` to take the pre-resolved `Method?`. `resolveIteratively` now resolves it once before the loop and passes it to both call sites (in-loop + final pass), eliminating the per-iteration `Class.forName` + classloader scan (was up to 11× per tool call). The `@Suppress("DEPRECATION")` moved to the extracted method (where the deprecated `ClassLoaderManager` calls live).
+- **M5** — replaced the three near-identical reverse-delete loops in the `insertAsRoot` / `insertAsChild` / `insertAsReplace` rollback closures with a single `safelyRollbackNodes(...)` call each (per-node best-effort delete + logging; the now-moot `parent != null` / `model === model` guards dropped). Confirmed `node.delete()` correctly detaches roots — it's the same undo the language-structure toolset uses for `createNewRootNode` roots — so `insertAsRoot` no longer needs `model.removeRootNode`. The mode-specific *restore* arms (displaced child / target at `originalIndex`) stay bespoke. Completed the guarantee by wrapping the `rollbackInsertedNodes()` call in `finalizeInsertedNodes` in a cancellation/Error-aware try/catch, so a throwing restore arm can no longer replace the original failure `e`.
+- **M6** — added `expressionStatementConcept`, `localVariableDeclarationStatementConcept`, `variableDeclarationConcept`, and the `expressionLink` / `initializerLink` containment links to `BaseLanguageMeta` (IDs copied verbatim from MPS-generated baseLanguage sources), then rewrote `unwrapExpressionNodes` to match via `SNodeOperations.isInstanceOf` + typed `getChildren(link)` instead of `concept.name == "…"` / `it.name == "…"` string matching. Behavior preserved: the `else` fallbacks were only reachable on a name-lookup miss, which a static descriptor cannot hit for a conforming node.
+- **M4** — added a shared `resolveInsertIndex(roleName, requested, count): InsertIndex` (sealed `At` / `Append` / `Invalid`) to `AbstractNodeOps` and routed the three genuine insert sites through it: `AbstractNodeOps.addNodeChild`, `JetBrainsMPSNodeMcpToolset.moveNodeToParent`, and this file's `insertAsChild`. The clamp/reject rule and its (already byte-identical) error message now live in one place. **Correction to the review:** the fourth site it listed, `moveNodeChild`, is *not* an insert — it repositions an existing member and clamps to `count - 1`, not `count`; routing it through the insert helper would be an off-by-one bug, so it is intentionally left as-is with a clarifying comment. Strictly behavior-preserving: `moveNodeToParent`'s pre-detach validation is kept, and the single-cardinality / multi-node-advancing-index logic at each site is untouched.
 
-**Remaining:** M3, M4, M5, M6, M7, and the L-tier items (see below).
+**Remaining:** M7, and the L-tier items (see below).
 
 ---
 
@@ -219,9 +223,11 @@ Neither "anonymous/classifier subtree" nor "if present" is reflected in the code
 1. ✅ **H3** — delete the dead `ensureJDKDependency` call + fix its comment (tiny, zero-risk, removes confusion). *(done)*
 2. ✅ **H1 + H2 + M2** — split the three insert modes into private functions; while doing so, return `errJson(msg, code)`/`okJson` directly and drop the `var error`/`var resultJson` capture and the swallowing catch. *(done)*
 3. ✅ **M1** — fold the context resolvers onto the inherited sealed-result helpers; remove the shadowing `resolveEditableModel` overload. *(done — also retired the "deferred" uncoded resolver errors.)*
-4. **M3** — hoist the `replaceFromEditor` reflection out of the loop.
-5. **M5** — route rollbacks through `safelyRollbackNodes`.
-6. **M4 / M6 / M7** — shared `resolveInsertIndex`; move the two concepts/links into `BaseLanguageMeta`; extract `JavaParseResolver`.
+4. ✅ **M3** — hoist the `replaceFromEditor` reflection out of the loop. *(done)*
+5. ✅ **M5** — route rollbacks through `safelyRollbackNodes`. *(done)*
+6. ✅ **M6** — moved the two concepts + `initializer`/`expression` links into `BaseLanguageMeta`; `unwrapExpressionNodes` now uses typed descriptors. *(done)*
+   ✅ **M4** — shared `resolveInsertIndex` in `AbstractNodeOps`, routed the three insert sites through it (`moveNodeChild` correctly excluded as a reposition). *(done)*
+   ⏳ **M7** — extract the Java resolution engine into a `JavaParseResolver` collaborator. *(remaining)*
 7. **L-tier** — opportunistic cleanup alongside the above.
 
-Items 1–5 are low-risk and directly retire debt from the recent bug-fixing phase; 6–7 are larger refactors best done with the resolver extraction.
+Items 1–6 are done. M7 is the one remaining structural refactor; the L-tier items are opportunistic cleanup.

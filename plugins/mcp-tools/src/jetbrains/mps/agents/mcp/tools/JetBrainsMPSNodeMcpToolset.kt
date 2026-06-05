@@ -862,7 +862,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 // -1 means "move to the end"; any value at or beyond the last index also clamps to
                 // the end, mirroring the append-clamp used by the insert tools
                 // (mps_mcp_update_node ADD CHILD, mps_mcp_parse_java_and_insert). A value below -1
-                // is meaningless as an index, so reject it.
+                // is meaningless as an index, so reject it. NB: this repositions a node already in
+                // the role, so it clamps to `count - 1` and intentionally does NOT use the shared
+                // resolveInsertIndex (which inserts a NEW child and clamps to `count`).
                 if (position < -1) {
                     return@executeShortCommandOnEdt errJson(
                         "position $position is invalid for role '$childRole'; use -1 to move to the " +
@@ -943,6 +945,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     // negative value other than the -1 append sentinel is rejected. Validate
                     // BEFORE detaching so an invalid request doesn't leave the model partially
                     // mutated.
+                    // Reject an out-of-range index BEFORE detaching so an invalid request leaves the
+                    // model untouched. The append/clamp decision itself is made post-detach, against
+                    // the destination role's then-current child count (so resolveInsertIndex here
+                    // never sees an invalid value and never returns Invalid).
                     if (position != null && position < -1) {
                         return@executeShortCommandOnEdt errJson(
                             "position $position is invalid for role '${containmentLink.name}'; use -1 " +
@@ -953,13 +959,11 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
                     detachNode(node, sourceModel)
 
-                    // Add to new parent
-                    if (position == null || position == -1) {
-                        newParent.addChild(containmentLink, node)
-                    } else {
-                        val childrenInRole = newParent.getChildren(containmentLink).toList()
-                        val anchor = if (position < childrenInRole.size) childrenInRole[position] else null
-                        newParent.insertChildBefore(containmentLink, node, anchor)
+                    // Add to new parent at the resolved index (childrenInRole snapshot is post-detach).
+                    val childrenInRole = newParent.getChildren(containmentLink).toList()
+                    when (val ix = resolveInsertIndex(containmentLink.name, position, childrenInRole.size)) {
+                        is InsertIndex.At -> newParent.insertChildBefore(containmentLink, node, childrenInRole[ix.index])
+                        else -> newParent.addChild(containmentLink, node)
                     }
                     saveModelAndModule(targetModel)
                     if (sourceModel != null && sourceModel != targetModel) {
