@@ -25,9 +25,25 @@ Use Git worktrees for new branches only when asked explicitly.
 
 ## Commit format
 
+Conventions observed in this repo's history (`git log`):
+
+* **Subject line:** `<Area> - <summary>`, where `<Area>` is a short component/topic tag and `<summary>`
+  briefly describes the change. Examples: `MPSCLI - create build script`, `MPSCLI - Switch to Gson`,
+  `MPSCLI - fix tests`. Keep the subject to a single concise line.
+* **Body (optional):** after a blank line, explain the *what/why* — bullet points are fine for
+  multi-part changes. Wrap prose at a sensible width.
+* **Trailers last:** any trailers (`Co-Authored-By`, issue/MR references, etc.) go in a final,
+  separate paragraph after a blank line, not mixed into the body.
+
 ## AI co-authorship
 
 Every commit produced with AI assistance must include a `Co-Authored-By` trailer identifying the AI tool used.
+
+## Pushing
+
+* Feature branches following the `<MPS_VERSION>/<user_name>/<...>` pattern are pushed to `origin`;
+  set the upstream on first push with `git push -u origin <branch>`.
+* Never push to the protected `master` or release branches (see above).
 
 ## Commit hygiene
 
