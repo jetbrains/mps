@@ -145,6 +145,8 @@ public final class Renamer {
 
 
   private void renameModules() {
+    // it's not safe to start a refactoring without saving all changes; MPS-39761
+    myProject.getRepository().saveAll();
     Collection<ModuleRenameInfo> renameInfos = Stream.concat(Stream.concat(myNestedRenames.stream(), myRelatedRenames.stream()), Stream.of(myPrimaryRename)).collect(Collectors.toList());
     saveModules(renameInfos); // need SModule, original
     // Explicit project module management is needed for any module, including generators owned by a language.
