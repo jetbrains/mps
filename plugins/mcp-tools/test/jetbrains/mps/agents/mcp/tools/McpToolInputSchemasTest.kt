@@ -826,6 +826,44 @@ class McpToolInputSchemasTest {
     }
 
     @Test
+    fun javaInsertRootModeRejectsPositionZero() {
+        // INC-6: position:0 on a root insert used to be silently discarded (the root was appended,
+        // not prepended) with no signal to the caller. It must now fail loudly instead.
+        assertSchemaFailure(
+            "'position' is not supported for root insertion: root nodes are always appended and " +
+                "their order cannot be controlled. Remove 'position' (or pass -1) from the insert object."
+        ) {
+            parseJavaParseInsertRequest(
+                """{"code":"class Foo {}","featureKind":"CLASS","insert":{"mode":"root","modelRef":"r:m","position":0}}"""
+            )
+        }
+    }
+
+    @Test
+    fun javaInsertRootModeRejectsPositivePosition() {
+        assertSchemaFailure(
+            "'position' is not supported for root insertion: root nodes are always appended and " +
+                "their order cannot be controlled. Remove 'position' (or pass -1) from the insert object."
+        ) {
+            parseJavaParseInsertRequest(
+                """{"code":"class Foo {}","featureKind":"CLASS","insert":{"mode":"root","modelRef":"r:m","position":5}}"""
+            )
+        }
+    }
+
+    @Test
+    fun javaInsertRootModeAllowsAppendSentinelPosition() {
+        // -1 means "append", which is exactly what roots do, so it stays valid (and is a no-op).
+        val request = parseJavaParseInsertRequest(
+            """{"code":"class Foo {}","featureKind":"CLASS","insert":{"mode":"root","modelRef":"r:m","position":-1}}"""
+        )
+
+        val insert = read(request, "getInsert") ?: error("insert must be present")
+        assertEquals("root", read(insert, "getMode"))
+        assertEquals(-1, read(insert, "getPosition"))
+    }
+
+    @Test
     fun javaInsertChildModeRequiresParentRef() {
         assertSchemaFailure("'parentRef' is required for child insertion") {
             parseJavaParseInsertRequest(

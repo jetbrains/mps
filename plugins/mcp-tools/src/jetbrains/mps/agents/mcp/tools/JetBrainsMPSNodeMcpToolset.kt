@@ -5,29 +5,21 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
-import jetbrains.mps.checkers.ConstraintsChecker
-import jetbrains.mps.checkers.RefScopeChecker
-import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.errors.item.ModelReportItem
-import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.validation.ModelValidator
-import jetbrains.mps.project.validation.StructureChecker
 import jetbrains.mps.smodel.BaseScope
-import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker
-import jetbrains.mps.typesystemEngine.checker.TypesystemChecker
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SModelReference
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
-import org.jetbrains.mps.openapi.util.Consumer
 
 
 enum class MPSQueryOperation {
@@ -137,7 +129,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Structural node mutations and code generation: move a child within its role, move a node to a new parent or make it a root, make/rebuild models/modules/whole project, fix broken references. Parameters are a JSON object string. MAKE parameters: {"modules":[<moduleRef>,...]} | {"models":[<modelRef>,...]} | {"wholeProject":true}, plus optional "rebuild":bool; node references are not accepted — resolve the node's module or model first. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
+        Structural node mutations and code generation: move a child within its role, move a node to a new parent or make it a root, make/rebuild models/modules/whole project, fix broken references. Parameters are a JSON object string. For MOVE_CHILD and MOVE_NODE_TO_PARENT, `position` is 0-based and `-1` moves to the end; a `position` at or beyond the role's child count is clamped to the end (not rejected) and a negative value other than -1 is rejected — the response's `data.index` reports the moved node's actual resulting index. MAKE parameters: {"modules":[<moduleRef>,...]} | {"models":[<modelRef>,...]} | {"wholeProject":true}, plus optional "rebuild":bool; node references are not accepted — resolve the node's module or model first. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
     suspend fun mps_mcp_alter_nodes(
         @McpDescription("The operation to perform (MOVE_CHILD, MOVE_NODE_TO_PARENT, MAKE, FIX_REFERENCES)") operation: MPSAlterOperation,
@@ -581,29 +573,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
                     if (node != null) {
                         val root = node.containingRoot
-                        val problems = mutableMapOf<SNode, MutableList<NodeReportItem>>()
-                        val collector = Consumer<NodeReportItem> { item ->
-                            val problemNode = item.node.resolve(repo)
-                            if (problemNode != null) {
-                                problems.getOrPut(problemNode) { mutableListOf() }.add(item)
-                            }
-                        }
-
-                        StructureChecker(host).asRootChecker().check(root, repo, collector, monitor)
-                        ConstraintsChecker(host).asRootChecker().check(root, repo, collector, monitor)
-                        TargetConceptChecker2(host).asRootChecker().check(root, repo, collector, monitor)
-                        RefScopeChecker(host).asRootChecker().check(root, repo, collector, monitor)
-
-                        // Optional checkers if available
-                        val checkers = arrayOf(TypesystemChecker(), NonTypesystemChecker())
-                        for (checker in checkers) {
-                            try {
-                                checker.check(root, repo, collector, monitor)
-                            } catch (e: Exception) {
-                                rethrowIfCancellation(e)
-                                logger.warn("Optional checker ${checker::class.simpleName} failed on ${root.reference}", e)
-                            }
-                        }
+                        val problems = runRootCheckers(mpsProject, root, repo)
 
                         // hasAnyProblems / hasLocalProblems live in AbstractOps so this fast-path
                         // and nodeWithProblemsListToJson share the exact same definition of
@@ -681,8 +651,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           nodeReference: persistent ref of the parent node.
           childRole: containment role name.
           childJson: JSON blueprint as an inline string (max 4 KB) OR an absolute path to a file containing the JSON. For large blueprints prefer the file form to avoid MCP transport truncation. Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. `dryRun=true` validates without mutating.
-          position: Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. Single-cardinality roles accept only null/-1/0. 
-          Returns the inserted node's info envelope (`data.parentReference` carries the parent ref).
+          position: Multi-cardinality roles append by default; pass `position` (0-based) to insert at a specific index. A `position` at or beyond the current child count is clamped to an append (not rejected); a negative value other than -1 is rejected. Single-cardinality roles accept only null/-1/0.
+          Returns the inserted node's info envelope (`data.parentReference` carries the parent ref, `data.index` the actual landing index — useful when an over-range `position` was clamped).
 
         SET × CHILD — Replace an existing child node with a new node described by a JSON blueprint. Deletes the child if `childJson = null`.
           childNodeRef: persistent ref of the child to replace.
@@ -707,7 +677,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         @McpDescription("The kind of element to operate on (CHILD, PROPERTY, REFERENCE)") kind: NodeUpdateKind,
         @McpDescription("Parent node ref for ADD CHILD") nodeReference: String? = null,
         @McpDescription("Containment role name for ADD CHILD") childRole: String? = null,
-        @McpDescription("0-based insert index for ADD CHILD multi-cardinality roles; null/-1 = append. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
+        @McpDescription("0-based insert index for ADD CHILD multi-cardinality roles; null/-1 = append. A value at or beyond the current child count is clamped to an append; a negative value other than -1 is rejected. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
         @McpDescription("For ADD CHILD or SET CHILD: JSON blueprint as an inline string (max 4 KB) OR an absolute path to a file containing the JSON. Prefer the file form for blueprints larger than ~4 KB to avoid MCP transport truncation.") childJson: String? = null,
         @McpDescription("Ref of the child to replace or delete (SET CHILD)") childNodeRef: String? = null,
         @McpDescription("If true, validate without mutating (ADD CHILD, SET CHILD only). Default: false.") dryRun: Boolean = false,
@@ -859,15 +829,24 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 val count = childrenInRole.size
                 val currentIndex = childrenInRole.indexOf(childNode)
 
-                val targetIndex = if (position == -1) count - 1 else position
-
-                if (targetIndex !in 0 until count) {
-                    return@executeShortCommandOnEdt errJson("Target index $targetIndex is out of bounds (count: $count)", McpErrorCode.INVALID_REQUEST)
+                // -1 means "move to the end"; any value at or beyond the last index also clamps to
+                // the end, mirroring the append-clamp used by the insert tools
+                // (mps_mcp_update_node ADD CHILD, mps_mcp_parse_java_and_insert). A value below -1
+                // is meaningless as an index, so reject it. NB: this repositions a node already in
+                // the role, so it clamps to `count - 1` and intentionally does NOT use the shared
+                // resolveInsertIndex (which inserts a NEW child and clamps to `count`).
+                if (position < -1) {
+                    return@executeShortCommandOnEdt errJson(
+                        "position $position is invalid for role '$childRole'; use -1 to move to the " +
+                            "end, or supply a value >= 0",
+                        McpErrorCode.INVALID_REQUEST
+                    )
                 }
+                val targetIndex = if (position == -1 || position >= count) count - 1 else position
 
                 if (targetIndex == currentIndex) {
                     // Already at the correct position
-                    return@executeShortCommandOnEdt okJson(nodeInfoJson(parent))
+                    return@executeShortCommandOnEdt okJson(nodeInfoJsonObjectWithIndex(childNode))
                 }
 
                 // Repositioning
@@ -885,7 +864,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 }
 
                 saveModelAndModule(model)
-                okJson(nodeInfoJson(parent))
+                // Return the moved node with its actual resulting index (consistent with
+                // MOVE_NODE_TO_PARENT), so a caller that overshot `position` sees where it landed.
+                okJson(nodeInfoJsonObjectWithIndex(childNode))
             }
         }
     }
@@ -929,30 +910,34 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     val containmentLink = newParent.concept.containmentLinks.find { it.name == role }
                         ?: return@executeShortCommandOnEdt errJson("Child role '$role' not found in concept '${newParent.concept.name}'", McpErrorCode.NOT_FOUND)
 
-                    // Validate target position BEFORE detaching the node so an invalid request
-                    // doesn't leave the model in a partially-mutated state.
-                    if (position != null && position != -1) {
-                        val preCount = newParent.getChildren(containmentLink).toList().size
-                        if (position !in 0..preCount) {
-                            return@executeShortCommandOnEdt errJson("Target index $position is out of bounds (count: $preCount)", McpErrorCode.INVALID_REQUEST)
-                        }
+                    // Reject an out-of-range index BEFORE detaching so an invalid request leaves the
+                    // model untouched. A position past the child count is NOT rejected — the
+                    // append/clamp decision is made post-detach by resolveInsertIndex (below),
+                    // against the destination role's then-current count, so it never sees an invalid
+                    // value here and never returns Invalid. Matches the other insert tools.
+                    if (position != null && position < -1) {
+                        return@executeShortCommandOnEdt errJson(
+                            "position $position is invalid for role '${containmentLink.name}'; use -1 " +
+                                "or omit position to append, or supply a value >= 0",
+                            McpErrorCode.INVALID_REQUEST
+                        )
                     }
 
                     detachNode(node, sourceModel)
 
-                    // Add to new parent
-                    if (position == null || position == -1) {
-                        newParent.addChild(containmentLink, node)
-                    } else {
-                        val childrenInRole = newParent.getChildren(containmentLink).toList()
-                        val anchor = if (position < childrenInRole.size) childrenInRole[position] else null
-                        newParent.insertChildBefore(containmentLink, node, anchor)
+                    // Add to new parent at the resolved index (childrenInRole snapshot is post-detach).
+                    val childrenInRole = newParent.getChildren(containmentLink).toList()
+                    when (val ix = resolveInsertIndex(containmentLink.name, position, childrenInRole.size)) {
+                        is InsertIndex.At -> newParent.insertChildBefore(containmentLink, node, childrenInRole[ix.index])
+                        else -> newParent.addChild(containmentLink, node)
                     }
                     saveModelAndModule(targetModel)
                     if (sourceModel != null && sourceModel != targetModel) {
                         saveModelAndModule(sourceModel)
                     }
-                    okJson(nodeInfoJson(node))
+                    // Report the moved node's actual index so a caller that overshot `position`
+                    // (now clamped to an append) can see where it landed.
+                    okJson(nodeInfoJsonObjectWithIndex(node))
 
                 } else if (modelReference != null) {
                     val targetModel = when (val r = resolveEditableModel(repo, modelReference)) {

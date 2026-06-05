@@ -134,6 +134,11 @@ fun parseEnumValueSpecs(json: String, sourceName: String = "valuesJson"): List<E
 
 fun parseJavaParseInsertRequest(parameters: String): JavaParseInsertRequest {
   val obj = parseParametersObject(parameters)
+  // Reject unrecognized top-level keys so a misspelled or unsupported field fails loudly
+  // instead of being silently dropped. In particular `dryRun` is NOT supported by this tool
+  // (unlike `mps_mcp_update_node`); previously passing it was a no-op and the model was mutated
+  // anyway, hiding caller misuse.
+  obj.rejectUnknownKeys(setOf("code", "featureKind", "recovery", "contextNodeRef", "insert", "postProcess"), "parameters")
   val code = obj.requiredString("code", "parameters")
   if (code.length > 50_000) {
     throw ToolInputSchemaException("Code exceeds maximum allowed length of 50_000 characters")
@@ -166,6 +171,10 @@ fun parseJavaParseInsertRequest(parameters: String): JavaParseInsertRequest {
 
   val insertObj = obj.requiredObject("insert", "parameters")
   val insertPath = "parameters.insert"
+  insertObj.rejectUnknownKeys(
+    setOf("mode", "modelRef", "parentRef", "targetRef", "role", "position", "virtualPackage"),
+    insertPath
+  )
   val mode = insertObj.requiredString("mode", insertPath)
   val insertTarget = JavaInsertTarget(
     mode = mode,
@@ -179,6 +188,7 @@ fun parseJavaParseInsertRequest(parameters: String): JavaParseInsertRequest {
   validateInsertTarget(insertTarget)
 
   val postProcess = obj.optionalObject("postProcess", "parameters")
+  postProcess?.rejectUnknownKeys(setOf("importUsedLanguages", "resolveReferences"), "parameters.postProcess")
   return JavaParseInsertRequest(
     code = code,
     featureKind = featureKind,
@@ -197,6 +207,17 @@ private fun validateInsertTarget(insertTarget: JavaInsertTarget) {
     "root" -> {
       if (insertTarget.modelRef.isNullOrEmpty()) {
         throw ToolInputSchemaException("'modelRef' is required for root insertion")
+      }
+      // Roots are always appended; their order in the model cannot be controlled through
+      // `position`. Reject any position that implies ordering (e.g. 0 to prepend) instead of
+      // silently discarding it, which previously misled callers into thinking it had taken
+      // effect. The append sentinel (-1) and absence stay valid because they ask for the exact
+      // behavior roots already have.
+      if (insertTarget.position != null && insertTarget.position != -1) {
+        throw ToolInputSchemaException(
+          "'position' is not supported for root insertion: root nodes are always appended and " +
+            "their order cannot be controlled. Remove 'position' (or pass -1) from the insert object."
+        )
       }
     }
     "child" -> {
@@ -241,6 +262,16 @@ private fun parseElement(json: String, sourceName: String): JsonElement {
   }
   catch (e: JsonParseException) {
     throw ToolInputJsonException("Invalid JSON for $sourceName: ${e.message ?: "Invalid JSON syntax"}")
+  }
+}
+
+private fun JsonObject.rejectUnknownKeys(allowed: Set<String>, path: String) {
+  val unknown = keySet().filterNot { it in allowed }
+  if (unknown.isNotEmpty()) {
+    throw ToolInputSchemaException(
+      "Unknown ${if (unknown.size == 1) "parameter" else "parameters"} in '$path': " +
+        "${unknown.sorted().joinToString(", ")}. Allowed: ${allowed.sorted().joinToString(", ")}."
+    )
   }
 }
 

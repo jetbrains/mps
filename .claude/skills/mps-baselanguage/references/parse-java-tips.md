@@ -12,18 +12,25 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
   "featureKind": string,                     // required, one of:
                                              //   CLASS, NESTED_CLASS, FIELD, METHOD,
                                              //   STATEMENTS, CLASS_CONTENT, EXPRESSION
+                                             //   FIELD/METHOD/NESTED_CLASS are parsed as
+                                             //   class members; the kind is advisory (see Rules)
   "recovery": boolean,                       // optional, default true
   "contextNodeRef": string,                  // optional SNodeReference (r:...) used as parser
                                              //   context. REQUIRED for FIELD, METHOD,
                                              //   NESTED_CLASS, CLASS_CONTENT.
   "insert": {                                // required
     "mode": "root" | "child" | "replace",   // required
-    "modelReference": string,                      // required when mode=="root" (SModelReference)
+    "modelRef": string,                            // required when mode=="root" (SModelReference)
     "parentRef": string,                     // required when mode=="child" (SNodeReference)
     "targetRef": string,                     // required when mode=="replace" (SNodeReference)
     "role": string,                          // required when mode=="child" (containment role)
     "position": int,                         // optional, 0-based; -1 or absent = append.
-                                             //   Ignored for roots.
+                                             //   For a multi-cardinality child role, a value at or
+                                             //   beyond the current child count is clamped to an
+                                             //   append (not rejected); a negative value other than
+                                             //   -1 is rejected.
+                                             //   For mode=="root", only -1/absent is allowed;
+                                             //   any other value is rejected (roots always append).
     "virtualPackage": string                 // optional, root insertions only
   },
   "postProcess": {                           // optional
@@ -36,9 +43,13 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
 ### Rules
 
 - `CLASS_STUB` is not supported and will be rejected.
-- Root insertion always **appends**; the root `position` is ignored.
+- Root insertion always **appends**; root order cannot be controlled. Supplying a root `position` other than `-1`/absent is **rejected** with an `INVALID_REQUEST` error (it is *not* silently ignored). Use `-1` or omit `position` to append.
 - For child insertion, the `role` name must exist on the parent concept; otherwise the call fails.
-- For `replace` mode, the target node is replaced by the **first** parsed node.
+- For `child` insertion into a **single-cardinality** role (`0..1` / `1`), an existing occupant is **overwritten** (the new node replaces it) rather than appended — appending would otherwise create two children and break validation with *"Only one child is allowed in the role …"*. This matches `mps_mcp_update_node`. A multi-node input cannot fill one slot, so that case is still rejected; for single-cardinality roles `position` must be `-1`/absent or `0`.
+- For `child` insertion into a **multi-cardinality** role, `position` is 0-based. A value at or beyond the current child count is **clamped to an append** — it is *not* rejected — matching common list-insert semantics (e.g. Python `list.insert(big, x)`). A negative value other than `-1` is rejected. The response's `inserted[]` entries each carry the node's **actual `index`** within the parent role, so when a `position` overshoots you can see the resulting append position. This clamp-and-report behavior is consistent across the MCP tool family — `mps_mcp_update_node` (`ADD` × `CHILD`) and `mps_mcp_alter_nodes` (`MOVE_CHILD` / `MOVE_NODE_TO_PARENT`) clamp the same way.
+- For `replace` mode, the input must parse to exactly one top-level node; multi-node input is rejected.
+- `FIELD`, `METHOD`, and `NESTED_CLASS` are all parsed as **class members** (internally as `CLASS_CONTENT`). The `featureKind` here is **advisory**: the parser accepts any class-body content for these kinds, and what may be placed where is validated against the **target containment role**, not the kind. For example `featureKind:METHOD` with a nested-class body succeeds when the target role accepts a nested class. Constrain placement via the insert target / `role`, not `featureKind`.
+- Unrecognized keys in `parameters` (and in `insert` / `postProcess`) are **rejected** with an error naming the offending key. In particular **`dryRun` is not supported** by this tool (unlike `mps_mcp_update_node`); passing it fails rather than silently mutating.
 
 ## Editing Strategy
 
@@ -50,6 +61,7 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
 
 * **Reference resolution**: after insertion, call `mps_mcp_print_node` to verify references resolved correctly.
 * **Dependencies**: ensure the containing models and modules of all referenced nodes are imported.
+* **Type-system problems (`problems` response field)**: every success envelope (`ok:true`) carries a `problems` array. Each entry has `severity` (`error`/`warning`), `message`, and the offending node's `reference` and `concept`. It lists the problems found *within the inserted nodes' subtrees* using the same checkers as `mps_mcp_check_root_node_problems`. An **empty** array means the insert type-checks; a **non-empty** array means the insert succeeded and was persisted but left problems you must fix (for example, a lambda whose closure type does not match the destination slot). `ok:true` does **not** by itself imply a clean model — always inspect `problems`.
 
 ## Direct AST Editing Tips
 
@@ -75,7 +87,9 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
 
 ### Compatibility
 
-* Supports Java 7 (including generics). Avoid Java 8+ features like lambdas or records.
+* Supports Java 7 (including generics) plus the Java 8+ syntax the MPS parser recognizes.
+* **Lambdas are accepted.** A lambda expression is mapped to a `jetbrains.mps.baseLanguage.closures` `ClosureLiteral` (an expression-bodied lambda such as `() -> 42` becomes a closure whose trailing expression is its result; untyped parameters become the closures `var` type, inferred from the target). The closures language is auto-imported (when `postProcess.importUsedLanguages` is on). Like any MPS closure, a lambda only type-checks against a matching **functional-type** target — e.g. `() -> 42` fits a `{() => int}` slot but **not** an `int` slot. A mismatch is reported in the response `problems` array (see *After Insertion*), not as a parse failure.
+* Constructs the parser does not recognize (e.g. records) still fail with a parse error.
 
 ## Validation
 

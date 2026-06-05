@@ -22,9 +22,13 @@ The MPS **type system** tracks these separately: `sequence<node<Type>>` is an MP
 `SequenceType` containing an `SNodeType`, which is entirely different from
 `java.util.List<SNode>`, even though both generate to `Iterable<SNode>`.
 
-The **Java parser** inside `mps_mcp_parse_java_and_insert` understands only plain Java.
-It cannot produce `SequenceType`, `SNodeType`, `SLinkAccess`, `Node_ConceptMethodCall`,
-`ApplicableNodeReference`, or any other MPS-specific concept node.
+The **Java parser** inside `mps_mcp_parse_java_and_insert` understands plain Java plus the
+Java 8+ syntax MPS recognizes — most notably **lambdas, which it maps to
+`baseLanguage.closures` closures** (auto-importing that language). It cannot produce
+`SequenceType`, `SNodeType`, `SLinkAccess`, `Node_ConceptMethodCall`,
+`ApplicableNodeReference`, or other MPS-specific concept nodes. A lambda only type-checks
+against a matching functional-type target; a mismatch is reported in the insert response's
+`problems` array, not as a parse error.
 
 ## Common pitfalls (symptom → cause → fix)
 

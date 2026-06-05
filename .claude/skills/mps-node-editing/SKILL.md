@@ -22,7 +22,7 @@ All child, property, and reference operations on existing nodes go through `mps_
 
 | operation × kind        | Required parameters                                           | Notes |
 |-------------------------|---------------------------------------------------------------|-------|
-| `ADD` × `CHILD`         | `nodeReference` (parent), `childRole`, `childJson`            | Optional `position` (0-based; null/-1 = append) and `dryRun`. |
+| `ADD` × `CHILD`         | `nodeReference` (parent), `childRole`, `childJson`            | Optional `position` (0-based; null/-1 = append) and `dryRun`. A `position` ≥ the current child count clamps to an append; a negative value other than -1 is rejected. The response's `data.index` reports the actual landing index. |
 | `SET` × `CHILD`         | `childNodeRef`, `childJson`                                   | Replaces an existing child; preserves its position in the role. Optional `dryRun`. |
 | `DELETE` × `CHILD`      | `childNodeRef`                                                | Removes the child from its parent. |
 | `SET` × `PROPERTY`      | `properties` = `[[nodeRef, propertyName, value], …]`          | Batch operation; returns per-row results. |
