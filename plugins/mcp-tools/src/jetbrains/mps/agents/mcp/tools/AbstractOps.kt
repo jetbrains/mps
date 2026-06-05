@@ -7,6 +7,9 @@ import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.progress.ProcessCanceledException
+import jetbrains.mps.checkers.ConstraintsChecker
+import jetbrains.mps.checkers.RefScopeChecker
+import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.classloading.ClassLoaderManager
 import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.ModelReportItem
@@ -28,6 +31,7 @@ import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.facets.JavaModuleFacet
 import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.project.structure.modules.ModuleDescriptor
+import jetbrains.mps.project.validation.StructureChecker
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
@@ -40,6 +44,8 @@ import jetbrains.mps.smodel.language.LanguageRuntime
 import jetbrains.mps.smodel.resources.MResource
 import jetbrains.mps.smodel.resources.MakeKeys
 import jetbrains.mps.smodel.resources.ModelsToResources
+import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker
+import jetbrains.mps.typesystemEngine.checker.TypesystemChecker
 import kotlinx.coroutines.*
 import org.jetbrains.mps.openapi.language.*
 import org.jetbrains.mps.openapi.model.*
@@ -47,6 +53,7 @@ import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import org.jetbrains.mps.openapi.util.Consumer
 import java.io.File
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CountDownLatch
@@ -1028,6 +1035,76 @@ abstract class AbstractOps : McpToolset {
 
         traverse(rootNode)
         return resultList
+    }
+
+    /**
+     * Runs the standard node checkers (structure, constraints, target-concept, reference-scope,
+     * typesystem, non-typesystem) on [root] and returns the problems they report, keyed by node.
+     *
+     * Shared by `mps_mcp_check_root_node_problems` and the post-insert reporting of
+     * `mps_mcp_parse_java_and_insert`, so an insertion surfaces exactly the same problems an explicit
+     * check would. The two typesystem checkers are best-effort: a failure in either is logged and
+     * swallowed instead of aborting the whole check.
+     */
+    protected fun runRootCheckers(
+        mpsProject: MPSProject,
+        root: SNode,
+        repo: SRepository
+    ): MutableMap<SNode, MutableList<NodeReportItem>> {
+        val host = mpsProject.platform
+        val monitor = EmptyProgressMonitor()
+        val problems = mutableMapOf<SNode, MutableList<NodeReportItem>>()
+        val collector = Consumer<NodeReportItem> { item ->
+            val problemNode = item.node.resolve(repo)
+            if (problemNode != null) {
+                problems.getOrPut(problemNode) { mutableListOf() }.add(item)
+            }
+        }
+
+        StructureChecker(host).asRootChecker().check(root, repo, collector, monitor)
+        ConstraintsChecker(host).asRootChecker().check(root, repo, collector, monitor)
+        TargetConceptChecker2(host).asRootChecker().check(root, repo, collector, monitor)
+        RefScopeChecker(host).asRootChecker().check(root, repo, collector, monitor)
+
+        // Optional checkers if available
+        val checkers = arrayOf(TypesystemChecker(), NonTypesystemChecker())
+        for (checker in checkers) {
+            try {
+                checker.check(root, repo, collector, monitor)
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
+                logger.warn("Optional checker ${checker::class.simpleName} failed on ${root.reference}", e)
+            }
+        }
+        return problems
+    }
+
+    /**
+     * Flat list of error/warning problems found in [node] and its descendants, as concise
+     * `{reference, concept, severity, message}` entries. Used by `mps_mcp_parse_java_and_insert` to
+     * surface the type/structure problems an insertion leaves behind — e.g. a Java 8 lambda mapped to
+     * a `baseLanguage.closures` closure whose type does not fit the destination slot — without
+     * dumping the full node tree.
+     */
+    protected fun subtreeProblemsJsonArray(node: SNode, problems: Map<SNode, List<NodeReportItem>>): JsonArray {
+        val arr = JsonArray()
+        fun traverse(n: SNode) {
+            problems[n]?.forEach { item ->
+                if (item.severity == MessageStatus.ERROR || item.severity == MessageStatus.WARNING) {
+                    val o = JsonObject()
+                    o.addProperty("reference", PersistenceFacade.getInstance().asString(n.reference))
+                    o.addProperty("concept", n.concept.name)
+                    o.addProperty("severity", problemSeverity(item.severity))
+                    o.addProperty("message", item.message)
+                    arr.add(o)
+                }
+            }
+            for (c in n.children) {
+                traverse(c)
+            }
+        }
+        traverse(node)
+        return arr
     }
 
     protected fun modelWithProblemsToJson(model: SModel, problems: List<ModelReportItem>): String {

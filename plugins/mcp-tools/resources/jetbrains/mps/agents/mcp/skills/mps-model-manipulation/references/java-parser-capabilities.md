@@ -1,6 +1,6 @@
 # What `mps_mcp_parse_java_and_insert` Can and Cannot Do
 
-Open before calling the Java parser. The parser understands only plain Java — it cannot produce smodel/collection types or any MPS-specific concept node.
+Open before calling the Java parser. The parser understands plain Java plus the Java 8+ syntax MPS recognizes (notably lambdas, which map to `baseLanguage.closures` closures — see below); it cannot produce smodel/collection types or most other MPS-specific concept nodes — construct those directly.
 
 ## What the Java parser CAN handle
 
@@ -22,6 +22,10 @@ Things that resolve correctly:
   as long as they already exist on the target class
 - `MetaAdapterFactory.getConcept(...)`, `MetaAdapterFactory.getReferenceLink(...)` resolve,
   but see the note on `getContainmentLink` below
+
+## Java 8 lambdas → closures
+
+Lambda expressions parse and insert: each becomes a `jetbrains.mps.baseLanguage.closures.ClosureLiteral`, and the closures language is auto-imported. They are **not** plain Java in the MPS sense — they cross into the `closures` extension. A lambda only type-checks against a matching **functional-type** target (e.g. `() -> 42` fits a `{() => int}` slot, but not an `int` slot); untyped parameters get the closures `var` type and rely on the target to infer. A type mismatch at the destination is surfaced in the tool response's `problems` array — **not** as a parse error — so inspect `problems` after inserting a lambda.
 
 ## Collection types: MPS concepts for `list<node<X>>` and `new arraylist<node<X>>`
 

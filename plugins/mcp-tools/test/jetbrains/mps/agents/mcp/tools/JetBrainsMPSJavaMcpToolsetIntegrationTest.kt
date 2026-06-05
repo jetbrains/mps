@@ -5,6 +5,7 @@ import com.google.gson.JsonParser
 import jetbrains.mps.smodel.SModelInternal
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotEquals
@@ -646,6 +647,93 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
                 classRoot.children.filter { it.containmentLink?.name == "member" }.mapNotNull { it.name },
             )
         }
+    }
+
+    @Test
+    fun `lambda is accepted as a closure and closures language is imported`() {
+        // INC-4: a Java 8 lambda is no longer rejected. The parser maps it to a
+        // baseLanguage.closures ClosureLiteral and the closures language is auto-imported. Because a
+        // closure only type-checks against a matching functional-type target, placing one in an
+        // int-typed slot is a type error — surfaced through the always-present `problems` array
+        // (see the next test) rather than by silently leaving the model broken. The exact
+        // type-system wording depends on the closures typesystem runtime (mirroring the
+        // check_root_node_problems test), so here we assert the closure mapping + import + the
+        // presence of the problems channel rather than pinning the message text.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+        val toolset = JetBrainsMPSJavaMcpToolset()
+
+        // Seed a class with an int field initializer that we will replace with a lambda.
+        val seedResponse = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"class L { int f = 0; }","featureKind":"CLASS",
+                    "insert":{"mode":"root","modelRef":"$javaModelRef"}}"""
+            )
+        }
+        assertOkData(seedResponse)
+
+        val initializerRef = readOnRepo {
+            val cls = javaModel.rootNodes.single { it.name == "L" }
+            val field = cls.children.single { it.containmentLink?.name == "member" && it.name == "f" }
+            val initializer = field.children.single { it.containmentLink?.name == "initializer" }
+            PersistenceFacade.getInstance().asString(initializer.reference)
+        }
+
+        val response = runTool(toolset) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"() -> 42","featureKind":"EXPRESSION","recovery":false,
+                    "insert":{"mode":"replace","targetRef":"$initializerRef"}}"""
+            )
+        }
+        val data = assertOkData(response)
+
+        val inserted = data.getAsJsonArray("inserted")
+        assertEquals("lambda should map to exactly one inserted node: $response", 1, inserted.size())
+        assertEquals(
+            "a Java 8 lambda must be mapped to a closures ClosureLiteral: $response",
+            "ClosureLiteral",
+            inserted.first().asJsonObject.get("concept").asString,
+        )
+
+        val languages = data.getAsJsonArray("languages").map { it.asString }
+        assertTrue(
+            "the closures language must be reported as used/imported: $languages",
+            languages.contains("jetbrains.mps.baseLanguage.closures"),
+        )
+
+        assertTrue("the success envelope must always carry a problems array: $response", data.has("problems"))
+
+        readOnRepo {
+            assertTrue(
+                "the closures language must be imported into the model: ${usedLanguageNames(javaModel)}",
+                usedLanguageNames(javaModel).contains("jetbrains.mps.baseLanguage.closures"),
+            )
+        }
+    }
+
+    @Test
+    fun `insert response carries a problems array and a clean insert has no errors`() {
+        // The success envelope now always carries a `problems` array — the same checks as
+        // mps_mcp_check_root_node_problems, scoped to the inserted nodes' subtrees — so an
+        // ok:true result that nonetheless leaves a type error is never silent. A clean insert
+        // leaves no error-severity problems.
+        val javaModel = createJavaModel()
+        val javaModelRef = modelRefOf(javaModel)
+
+        val response = runTool(JetBrainsMPSJavaMcpToolset()) {
+            it.mps_mcp_parse_java_and_insert(
+                """{"code":"class Clean {}","featureKind":"CLASS",
+                    "insert":{"mode":"root","modelRef":"$javaModelRef"}}"""
+            )
+        }
+        val data = assertOkData(response)
+
+        assertTrue("the response must carry a problems array: $response", data.has("problems"))
+        val problems = data.getAsJsonArray("problems")
+        assertTrue(
+            "a clean insert must not leave any error-severity problems: $problems",
+            problems.none { it.asJsonObject.get("severity").asString == "error" },
+        )
     }
 
     /** Seeds an empty class root via root-mode insertion and returns its SNodeReference string. */

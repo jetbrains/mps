@@ -61,6 +61,7 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
 
 * **Reference resolution**: after insertion, call `mps_mcp_print_node` to verify references resolved correctly.
 * **Dependencies**: ensure the containing models and modules of all referenced nodes are imported.
+* **Type-system problems (`problems` response field)**: every success envelope (`ok:true`) carries a `problems` array. Each entry has `severity` (`error`/`warning`), `message`, and the offending node's `reference` and `concept`. It lists the problems found *within the inserted nodes' subtrees* using the same checkers as `mps_mcp_check_root_node_problems`. An **empty** array means the insert type-checks; a **non-empty** array means the insert succeeded and was persisted but left problems you must fix (for example, a lambda whose closure type does not match the destination slot). `ok:true` does **not** by itself imply a clean model — always inspect `problems`.
 
 ## Direct AST Editing Tips
 
@@ -86,7 +87,9 @@ The tool takes a single JSON-encoded `parameters` argument. Shape:
 
 ### Compatibility
 
-* Supports Java 7 (including generics). Avoid Java 8+ features like lambdas or records.
+* Supports Java 7 (including generics) plus the Java 8+ syntax the MPS parser recognizes.
+* **Lambdas are accepted.** A lambda expression is mapped to a `jetbrains.mps.baseLanguage.closures` `ClosureLiteral` (an expression-bodied lambda such as `() -> 42` becomes a closure whose trailing expression is its result; untyped parameters become the closures `var` type, inferred from the target). The closures language is auto-imported (when `postProcess.importUsedLanguages` is on). Like any MPS closure, a lambda only type-checks against a matching **functional-type** target — e.g. `() -> 42` fits a `{() => int}` slot but **not** an `int` slot. A mismatch is reported in the response `problems` array (see *After Insertion*), not as a parse failure.
+* Constructs the parser does not recognize (e.g. records) still fail with a parse error.
 
 ## Validation
 

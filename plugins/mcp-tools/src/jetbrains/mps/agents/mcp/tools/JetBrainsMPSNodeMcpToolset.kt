@@ -5,29 +5,21 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
-import jetbrains.mps.checkers.ConstraintsChecker
-import jetbrains.mps.checkers.RefScopeChecker
-import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.errors.item.ModelReportItem
-import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.validation.ModelValidator
-import jetbrains.mps.project.validation.StructureChecker
 import jetbrains.mps.smodel.BaseScope
-import jetbrains.mps.typesystemEngine.checker.NonTypesystemChecker
-import jetbrains.mps.typesystemEngine.checker.TypesystemChecker
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SModelReference
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
-import org.jetbrains.mps.openapi.util.Consumer
 
 
 enum class MPSQueryOperation {
@@ -581,29 +573,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
                     if (node != null) {
                         val root = node.containingRoot
-                        val problems = mutableMapOf<SNode, MutableList<NodeReportItem>>()
-                        val collector = Consumer<NodeReportItem> { item ->
-                            val problemNode = item.node.resolve(repo)
-                            if (problemNode != null) {
-                                problems.getOrPut(problemNode) { mutableListOf() }.add(item)
-                            }
-                        }
-
-                        StructureChecker(host).asRootChecker().check(root, repo, collector, monitor)
-                        ConstraintsChecker(host).asRootChecker().check(root, repo, collector, monitor)
-                        TargetConceptChecker2(host).asRootChecker().check(root, repo, collector, monitor)
-                        RefScopeChecker(host).asRootChecker().check(root, repo, collector, monitor)
-
-                        // Optional checkers if available
-                        val checkers = arrayOf(TypesystemChecker(), NonTypesystemChecker())
-                        for (checker in checkers) {
-                            try {
-                                checker.check(root, repo, collector, monitor)
-                            } catch (e: Exception) {
-                                rethrowIfCancellation(e)
-                                logger.warn("Optional checker ${checker::class.simpleName} failed on ${root.reference}", e)
-                            }
-                        }
+                        val problems = runRootCheckers(mpsProject, root, repo)
 
                         // hasAnyProblems / hasLocalProblems live in AbstractOps so this fast-path
                         // and nodeWithProblemsListToJson share the exact same definition of
@@ -940,15 +910,11 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     val containmentLink = newParent.concept.containmentLinks.find { it.name == role }
                         ?: return@executeShortCommandOnEdt errJson("Child role '$role' not found in concept '${newParent.concept.name}'", McpErrorCode.NOT_FOUND)
 
-                    // A position past the current child count clamps to an append (see the insert
-                    // logic below) rather than failing — matching the insert tools. Only a
-                    // negative value other than the -1 append sentinel is rejected. Validate
-                    // BEFORE detaching so an invalid request doesn't leave the model partially
-                    // mutated.
                     // Reject an out-of-range index BEFORE detaching so an invalid request leaves the
-                    // model untouched. The append/clamp decision itself is made post-detach, against
-                    // the destination role's then-current child count (so resolveInsertIndex here
-                    // never sees an invalid value and never returns Invalid).
+                    // model untouched. A position past the child count is NOT rejected — the
+                    // append/clamp decision is made post-detach by resolveInsertIndex (below),
+                    // against the destination role's then-current count, so it never sees an invalid
+                    // value here and never returns Invalid. Matches the other insert tools.
                     if (position != null && position < -1) {
                         return@executeShortCommandOnEdt errJson(
                             "position $position is invalid for role '${containmentLink.name}'; use -1 " +

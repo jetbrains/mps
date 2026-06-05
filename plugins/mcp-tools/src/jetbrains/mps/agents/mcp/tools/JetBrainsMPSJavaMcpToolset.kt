@@ -1,35 +1,20 @@
 package jetbrains.mps.agents.mcp.tools
 
 import com.google.gson.Gson
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
-import com.intellij.openapi.diagnostic.Logger
-import jetbrains.mps.classloading.ClassLoaderManager
+import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.java.core.newparser.*
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SLinkOperations
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
-import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations
-import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.AbstractModule
-import jetbrains.mps.project.DevKit
-import jetbrains.mps.project.structure.modules.Dependency
-import jetbrains.mps.smodel.SModelInternal
-import jetbrains.mps.smodel.DynamicReference
-import jetbrains.mps.smodel.ModelDependencyResolver
-import jetbrains.mps.smodel.ModelImports
-import jetbrains.mps.smodel.SReference
-import jetbrains.mps.smodel.constraints.ModelConstraints
-import jetbrains.mps.smodel.language.LanguageRegistry
-import jetbrains.mps.typechecking.TypecheckingFacade
+import jetbrains.mps.project.MPSProject
+import jetbrains.mps.smodel.SNodeUtil
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.model.EditableSModel
-import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
-import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SRepository
-import org.jetbrains.mps.openapi.persistence.PersistenceFacade
-import java.lang.reflect.Field
 
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
@@ -37,7 +22,9 @@ import java.lang.reflect.Field
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
 class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
-    private val javaToolsetLogger = Logger.getInstance(JetBrainsMPSJavaMcpToolset::class.java)
+    // The Java parser -> MPS reference-resolution engine. Kept as a separate collaborator so this
+    // toolset stays focused on MCP dispatch, validation, and serialization (see JavaParseResolver).
+    private val javaParseResolver = JavaParseResolver()
 
     companion object {
         data class EffectiveJavaParseSource(val code: String, val featureKind: FeatureKind)
@@ -57,240 +44,6 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         }
     }
 
-    private fun countUnknowns(roots: Iterable<SNode>): Int {
-        var cnt = 0
-        for (root in roots) {
-            val it = SNodeOperations.getNodeDescendants(
-                root,
-                BaseLanguageMeta.iYetUnresolvedConcept,
-                true,
-                arrayOf(BaseLanguageMeta.iYetUnresolvedConcept)
-            )
-            for (node in it) cnt++
-        }
-        return cnt
-    }
-
-    private fun countDynamicRefs(roots: Iterable<SNode>): Int {
-        var cnt = 0
-        for (root in roots) {
-            for (desc in SNodeOperations.getNodeDescendants(root, null, true, emptyArray())) {
-                for (ref in desc.references) if (ref is DynamicReference) cnt++
-            }
-        }
-        return cnt
-    }
-
-    private fun fixDynamicReferences(model: SModel, roots: Iterable<SNode>): Int {
-        fun resolveByNameContext(source: SNode, dref: DynamicReference): SNode? {
-            val name = dref.resolveInfo ?: return null
-            val link = dref.link
-            val targetConcept = link.targetConcept
-
-            // 1) Prefer nearest anonymous/classifier subtree (common for method calls on anonymous classes)
-            val searchScopes = ArrayList<SNode>()
-            // current node subtree (receiver subtree is often a sibling, but searching root/ancestors is safe)
-            searchScopes.add(source)
-
-            // 2) Walk upwards and include anonymous/class creator subtrees if present
-            var p: SNode? = source.parent
-            while (p != null) {
-                searchScopes.add(p)
-                p = p.parent
-            }
-
-            for (scope in searchScopes) {
-                val it = SNodeOperations.getNodeDescendants(scope, targetConcept, true, emptyArray())
-                for (n in it) {
-                    val nName = SPropertyOperations.getString(n, BaseLanguageMeta.nameProperty)
-                    if (nName == name) {
-                        // If multiple, prefer the closest (first found in this ordered traversal)
-                        return n
-                    }
-                }
-            }
-            return null
-        }
-
-        var fixed = 0
-        for (root in roots) {
-            for (desc in SNodeOperations.getNodeDescendants(root, null, true, emptyArray())) {
-                val refs = desc.references.toList() // snapshot
-                for (ref in refs) {
-                    if (ref is DynamicReference) {
-                        var targetNode: SNode? = ref.targetNode
-                        if (targetNode == null) {
-                            // try smart resolution by name + nearest scope
-                            targetNode = resolveByNameContext(desc, ref)
-                        }
-                        if (targetNode != null) {
-                            desc.setReferenceTarget(ref.link, targetNode)
-                            val targetModel = targetNode.model
-                            if (targetModel != null) {
-                                ModelImports(model).addModelImport(targetModel.reference)
-                            }
-                            fixed++
-                        }
-                    }
-                }
-            }
-        }
-        return fixed
-    }
-
-    // The recommended `ComponentHost.findComponent(ClassLoaderManager.class)` replacement requires
-    // an MPS `ComponentHost`/`Environment` handle that is not currently plumbed into the MCP toolsets.
-    // Tracked under phase 6 as a deferred architectural change; suppress here to keep noise low.
-    //
-    // Resolves jetbrains.mps.baseLanguage.scopes.MethodResolveUtil.replaceFromEditor(SNode) via
-    // reflection, trying multiple classloaders when the class is not on the default one. The result
-    // depends only on [repo], so callers resolve it once and reuse it across the whole resolution
-    // loop instead of re-running this classloader scan on every fixMethodReferences call.
-    @Suppress("DEPRECATION")
-    private fun resolveReplaceFromEditorMethod(repo: SRepository?): java.lang.reflect.Method? {
-        return try {
-            var clazz: Class<*>? = null
-            try {
-                clazz = Class.forName("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
-            } catch (e: ClassNotFoundException) {
-                if (repo != null) {
-                    // Try the solution where it is defined
-                    val module = repo.modules.find { it.moduleName == "jetbrains.mps.baseLanguage.scopes" }
-                    if (module != null) {
-                        clazz = ClassLoaderManager.getInstance().getClassLoader(module).loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
-                    }
-
-                    if (clazz == null) {
-                        val lang = LanguageRegistry.getInstance(repo).getLanguage("jetbrains.mps.baseLanguage")
-                        val runtimeModuleRef = lang?.runtimeModules?.firstOrNull()
-                        val runtimeModule = if (runtimeModuleRef != null) repo.getModule(runtimeModuleRef.moduleId) else null
-                        if (runtimeModule != null) {
-                            clazz =
-                                ClassLoaderManager.getInstance().getClassLoader(runtimeModule).loadClass("jetbrains.mps.baseLanguage.scopes.MethodResolveUtil")
-                        }
-                    }
-                }
-            }
-
-            if (clazz != null) {
-                clazz.getMethod("replaceFromEditor", SNode::class.java)
-            } else {
-                null
-            }
-        } catch (e: Throwable) {
-            rethrowIfCancellation(e)
-            if (e is Error) {
-                throw e
-            }
-            javaToolsetLogger.warn("Failed to find 'replaceFromEditor' method via reflection", e)
-            null
-        }
-    }
-
-    // Resolves method-call / overload references (and AnonymousClass classifiers) on the inserted
-    // subtrees. [replaceFromEditor] is the pre-resolved MethodResolveUtil.replaceFromEditor handle
-    // (see resolveReplaceFromEditorMethod); when null, only the fixReferenceDumb fallback runs.
-    private fun fixMethodReferences(roots: Iterable<SNode>, replaceFromEditor: java.lang.reflect.Method?) {
-        for (root in roots) {
-            val descendants = SNodeOperations.getNodeDescendants(root, null, true, emptyArray())
-            for (node in descendants) {
-                if (SNodeOperations.isInstanceOf(node, BaseLanguageMeta.iFixableMethodReferenceConcept) ||
-                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.iMethodCallConcept) ||
-                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.anonymousClassConcept) ||
-                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.classCreatorConcept) ||
-                    SNodeOperations.isInstanceOf(node, BaseLanguageMeta.instanceMethodCallOperationConcept)
-                ) {
-
-                    try {
-                        var fixed = false
-                        if (replaceFromEditor != null) {
-                            replaceFromEditor.invoke(null, node)
-                            fixed = isReferenceFixed(node)
-                        }
-
-                        if (!fixed) {
-                            fixReferenceDumb(node)
-                        }
-                    } catch (e: Throwable) {
-                        rethrowIfCancellation(e)
-                        if (e is Error) {
-                            throw e
-                        }
-                        javaToolsetLogger.warn("Error resolving method references in fixReferences for node $node", e)
-                    }
-                }
-            }
-        }
-    }
-
-    private fun isReferenceFixed(node: SNode): Boolean {
-        if (SNodeOperations.isInstanceOf(node, BaseLanguageMeta.iYetUnresolvedConcept)) {
-            return false
-        }
-        for (ref in node.references) {
-            val target = ref.targetNode
-            if (target == null) {
-                return false
-            }
-            if (!SNodeOperations.isInstanceOf(target, BaseLanguageMeta.baseMethodDeclarationConcept)) {
-                continue
-            }
-
-            val actualArgs = SLinkOperations.getChildren(node, BaseLanguageMeta.actualArgumentLink)
-            val targetParams = SLinkOperations.getChildren(target, BaseLanguageMeta.parameterLink)
-
-            if (actualArgs.size != targetParams.size) {
-                return false
-            }
-        }
-        return true
-    }
-
-    private fun fixReferenceDumb(node: SNode) {
-        for (ref in node.references) {
-            val target = ref.targetNode
-            if (target != null && !SNodeOperations.isInstanceOf(target, BaseLanguageMeta.baseMethodDeclarationConcept)) continue
-
-            val actualArgs = SLinkOperations.getChildren(node, BaseLanguageMeta.actualArgumentLink)
-            val actualArgsCount = actualArgs.size
-
-            // If current target has wrong parameter count, try to find a better one in the scope
-            if (target == null || SLinkOperations.getChildren(target, BaseLanguageMeta.parameterLink).size != actualArgsCount) {
-                val scope = ModelConstraints.getScope(ref)
-                // `target` may be null here (anonymous class with no resolved method, fresh
-                // parser output, etc.); only fall back to its name property when it exists.
-                var refText = (ref as? SReference)?.resolveInfo
-                    ?: target?.let { SPropertyOperations.getString(it, BaseLanguageMeta.nameProperty) }
-
-                if ((refText == null || refText.isEmpty()) && SNodeOperations.isInstanceOf(node, BaseLanguageMeta.anonymousClassConcept)) {
-                    // The classifier link can be unresolved on a newly parsed anonymous class; guard
-                    // against null before reading the name property.
-                    val classifier = SLinkOperations.getTarget(node, BaseLanguageMeta.anonymousClassClassifierLink)
-                    if (classifier != null) {
-                        refText = SPropertyOperations.getString(classifier, BaseLanguageMeta.nameProperty)
-                    }
-                }
-
-                if (refText == null || refText.isEmpty()) {
-                    continue
-                }
-
-                val candidates = scope.getAvailableElements(refText).toList()
-                val methodCandidates = candidates.filter { SNodeOperations.isInstanceOf(it, BaseLanguageMeta.baseMethodDeclarationConcept) }
-
-                val bestMatch = methodCandidates.find { cand ->
-                    SLinkOperations.getChildren(cand, BaseLanguageMeta.parameterLink).size == actualArgsCount
-                }
-
-                if (bestMatch != null) {
-                    if (bestMatch !== target) {
-                        node.setReferenceTarget(ref.link, bestMatch)
-                    }
-                }
-            }
-        }
-    }
-
     private sealed class JavaParsePreparation {
         data class Ok(
             val parseResult: JavaParser.JavaParseResult,
@@ -301,7 +54,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     }
 
     private suspend fun prepareJavaParseResult(
-        mpsProject: jetbrains.mps.project.MPSProject,
+        mpsProject: MPSProject,
         code: String,
         featureKind: FeatureKind,
         isExpression: Boolean,
@@ -322,9 +75,9 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                 return@executeBackgroundRead JavaParsePreparation.Err("Java parsing error: ${e.message}")
             }
 
-            val parsedNodes = unwrapExpressionNodes(parseResult.getNodes(), isExpression)
+            val parsedNodes = unwrapExpressionNodes(parseResult.nodes, isExpression)
             if (parsedNodes.isEmpty()) {
-                JavaParsePreparation.Err(parseResult.getErrorMsg() ?: "Parser returned no nodes")
+                JavaParsePreparation.Err(parseResult.errorMsg ?: "Parser returned no nodes")
             } else {
                 JavaParsePreparation.Ok(parseResult, parsedNodes)
             }
@@ -383,9 +136,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                 "expression-bearing role, not 'member')."
     }
 
-    // Best-effort: only the inserted nodes are undone. Side effects of resolveIteratively
-    // (JDK dep, ModelImports updates) are not reverted — they remain in memory but are not
-    // persisted, since model.save() and the module-side save() run only on success.
+    // Best-effort: only the inserted nodes are undone. Other in-memory mutations on the failure
+    // path — the ModelImports updates from resolveIteratively and the JDK dependency staged below —
+    // are not reverted; neither is persisted, since model.save() and the module-side save() run
+    // only on success.
     private fun finalizeInsertedNodes(
         model: EditableSModel,
         repo: SRepository,
@@ -397,12 +151,12 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         rollbackInsertedNodes: () -> Unit
     ) {
         try {
-            resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
+            javaParseResolver.resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
             // d1: stage the JDK dependency addition here (after resolveIteratively succeeds).
             // ensureJDKDependency now only returns the Dependency (or null) without mutating.
             // Both add and setChanged() happen exclusively on the success path, immediately
             // before the saves. On any failure the descriptor remains untouched.
-            val jdkDep = ensureJDKDependency(model)
+            val jdkDep = javaParseResolver.ensureJDKDependency(model)
             if (jdkDep != null) {
                 val module = model.module as? AbstractModule
                 module?.moduleDescriptor?.dependencies?.add(jdkDep)
@@ -420,235 +174,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             } catch (rollbackEx: Throwable) {
                 rethrowIfCancellation(rollbackEx)
                 if (rollbackEx is Error) throw rollbackEx
-                javaToolsetLogger.warn("Rollback after a failed insert threw; preserving the original failure", rollbackEx)
+                logger.warn("Rollback after a failed insert threw; preserving the original failure", rollbackEx)
             }
             throw e
         }
-    }
-
-    private fun removeJavaImports(roots: Iterable<SNode>) {
-        for (root in roots) {
-            for (desc in SNodeOperations.getNodeDescendants(root, BaseLanguageMeta.javaImportConcept, true, emptyArray())) {
-                SNodeOperations.deleteNode(desc)
-            }
-            for (desc in SNodeOperations.getNodeDescendants(root, BaseLanguageMeta.javaImportsConcept, true, emptyArray())) {
-                SNodeOperations.deleteNode(desc)
-            }
-        }
-    }
-
-    // c2: Deferred used-language finalization. Runs after the resolution loop on the success path,
-    // and also on the early-return path when doResolveRefs is false. The parser-declared language
-    // imports used to run BEFORE the loop, but moving them after means a mid-loop exception leaves
-    // the model unchanged in memory. The JDK dependency is finalized separately by the caller
-    // (finalizeInsertedNodes), which stages the descriptor mutation onto the success path only;
-    // ensureJDKDependency is side-effect-free, so it is intentionally not called here.
-    private fun finalizeResolutionDependencies(
-        model: SModel,
-        repo: SRepository,
-        doImportLang: Boolean,
-        parseResult: JavaParser.JavaParseResult
-    ) {
-        if (doImportLang) {
-            val imports = ModelImports(model)
-            val mdr = ModelDependencyResolver(LanguageRegistry.getInstance(repo), repo)
-            val alreadyUsed = mdr.usedLanguages(model)
-            for (lang in parseResult.getLanguages() ?: emptyList()) {
-                if (!alreadyUsed.contains(lang) && !isLanguageProvidedByDevKit(model, repo, lang)) {
-                    imports.addUsedLanguage(lang)
-                }
-            }
-        }
-    }
-
-    private fun ensureJDKDependency(model: SModel): Dependency? {
-        val module = model.module as? AbstractModule ?: return null
-        val jdkRef = PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)")
-        if (module.getScope().resolve(jdkRef) != null) return null
-
-        // Guard: a module with no descriptor can't receive the dependency the caller would add,
-        // so return null rather than a Dependency that would be silently dropped (and avoid a
-        // spurious setChanged() on the caller side).
-        module.moduleDescriptor ?: return null
-        // Staged: the actual add + setChanged() is performed by the caller in
-        // finalizeInsertedNodes after resolveIteratively has succeeded.
-        return Dependency(jdkRef, SDependencyScope.DEFAULT, false)
-    }
-
-    private fun isLanguageProvidedByDevKit(model: SModel, repo: SRepository, lang: org.jetbrains.mps.openapi.language.SLanguage): Boolean {
-        if (model !is SModelInternal) return false
-        for (dkRef in model.importedDevkits()) {
-            val dk = dkRef.resolve(repo) as? DevKit ?: continue
-            if (dk.allExportedLanguageIds.any { it == lang }) return true
-        }
-        return false
-    }
-
-    // `importUsedLanguages` gates language imports only. Cross-model reference imports are always
-    // applied because resolution would otherwise be left broken (the inserted nodes point at
-    // models that must be imported for the references to resolve). Previously the used-language
-    // loop ran unconditionally here, so `importUsedLanguages:false` did NOT suppress language
-    // imports whenever `resolveReferences:true` (e.g. closures got auto-imported anyway).
-    private fun updateModelDependencies(model: SModel, repo: SRepository, inserted: List<SNode>, importUsedLanguages: Boolean) {
-        val langRegistry = LanguageRegistry.getInstance(repo)
-        val mdr = ModelDependencyResolver(langRegistry, repo)
-        val imports = ModelImports(model)
-
-        val scanner = jetbrains.mps.smodel.ModelDependencyScanner()
-        scanner.usedLanguages(true).crossModelReferences(true).walk(inserted)
-
-        if (importUsedLanguages) {
-            val alreadyUsed = mdr.usedLanguages(model)
-            for (lang in scanner.usedLanguages) {
-                if (!alreadyUsed.contains(lang) && !isLanguageProvidedByDevKit(model, repo, lang)) {
-                    imports.addUsedLanguage(lang)
-                }
-            }
-        }
-
-        val effectiveImportedModels = mutableSetOf<org.jetbrains.mps.openapi.model.SModelReference>()
-        mdr.directImports(model).forEach { effectiveImportedModels.add(it.reference) }
-        mdr.implicitImports(model).forEach { effectiveImportedModels.add(it.reference) }
-
-        for (mref in scanner.crossModelReferences) {
-            if (!effectiveImportedModels.contains(mref)) {
-                imports.addModelImport(mref)
-                effectiveImportedModels.add(mref)
-            }
-        }
-    }
-
-    private fun resolveIteratively(
-        model: SModel,
-        repo: SRepository,
-        inserted: List<SNode>,
-        featureKind: FeatureKind,
-        doImportLang: Boolean,
-        doResolveRefs: Boolean,
-        parseResult: JavaParser.JavaParseResult
-    ) {
-        // c2: ensureJDKDependency and the initial parser-declared-language imports used to run
-        // here, before the resolution loop. That made them load-bearing for resolution (the
-        // tryResolveRefs pass needs JDK in scope to resolve java.lang.* references and the
-        // parser-declared languages to find concept-level refs), but it also meant that if the
-        // loop threw mid-way the model retained those imports and the module retained the JDK
-        // dependency in memory. Now the parser-declared language imports run AFTER the loop, in
-        // finalizeResolutionDependencies, and the JDK dependency is added by finalizeInsertedNodes
-        // on the success path (see ensureJDKDependency).
-        //
-        // Trade-off: in modules that do not already have JDK in scope, the loop's tryResolveRefs
-        // pass will not be able to resolve JDK references — they remain Unknown until the
-        // post-loop pass adds JDK and the user re-runs resolution. The in-loop
-        // updateModelDependencies still expands scope iteratively for cross-model refs found in
-        // the inserted nodes, so resolution quality is unaffected for modules that already have
-        // JDK and for non-JDK cross-model refs.
-
-        if (!doResolveRefs) {
-            finalizeResolutionDependencies(model, repo, doImportLang, parseResult)
-            return
-        }
-
-        // When the caller suppressed language imports, snapshot the languages already on the model
-        // so we can strip whatever the platform resolution passes import unconditionally below.
-        // JavaToMpsConverter.tryResolveRefs (via ModelDependencyUpdate.updateUsedLanguages) and
-        // YetUnknownResolver.addUsedLanguage add used languages directly, bypassing our
-        // importUsedLanguages gate; without this cleanup importUsedLanguages=false would not
-        // actually suppress them once resolveReferences=true. Pre-existing imports are preserved.
-        val languagesBeforeResolve =
-            if (!doImportLang) (model as? SModelInternal)?.importedLanguageIds()?.toHashSet() else null
-
-        val handler = jetbrains.mps.messages.IMessageHandler { _: jetbrains.mps.messages.IMessage -> }
-        val conv = JavaToMpsConverter(model, repo, handler)
-
-        // Try to set myAttachedRoots via reflection to help internal resolution passes.
-        // e1: log at WARN level when the reflection fails so future API renames don't go
-        // unnoticed. The field is a private implementation detail of JavaToMpsConverter, so
-        // we can't depend on its existence — but if it disappears, resolution quality drops
-        // silently, which is exactly the kind of regression we want to surface.
-        try {
-            val field: Field = JavaToMpsConverter::class.java.getDeclaredField("myAttachedRoots")
-            field.isAccessible = true
-            field.set(conv, inserted)
-        } catch (e: Exception) {
-            javaToolsetLogger.warn(
-                "Failed to set JavaToMpsConverter.myAttachedRoots via reflection; resolution may be degraded",
-                e
-            )
-        }
-
-        // Resolve MethodResolveUtil.replaceFromEditor once for the whole resolution loop instead of
-        // re-running the (Class.forName + classloader scan + getMethod) reflection on every
-        // fixMethodReferences call below. The result depends only on `repo`, so it is stable across
-        // all loop iterations and the final pass.
-        val replaceFromEditor = resolveReplaceFromEditorMethod(repo)
-
-        // Wrap the resolution loop in an isolated typechecking session so that
-        // TypecheckingFacade.getFromContext().getTypeOf() calls in codeTransformPass (e.g. for
-        // array .length / .clone() resolution) succeed and UnknownInstanceMethodCall nodes get replaced.
-        TypecheckingFacade.getFromContext().runIsolated { _ ->
-            var iteration = 0
-            val maxIterations = 10
-            while (iteration < maxIterations) {
-                val unknownsBefore = countUnknowns(inserted)
-                val dynamicBefore = countDynamicRefs(inserted)
-
-                conv.tryResolveRefs(inserted, featureKind, EmptyProgressMonitor())
-
-                // Fix method references and overloads (including AnonymousClass classifier)
-                // This might unblock more unknowns for YetUnknownResolver in this or next iteration.
-                fixMethodReferences(inserted, replaceFromEditor)
-
-                // Manually call YetUnknownResolver just in case JavaToMpsConverter didn't do it or didn't do it enough
-                val yur = YetUnknownResolver(model, inserted)
-                yur.tryResolveUnknowns(EmptyProgressMonitor())
-
-                // Update model dependencies after the standalone resolver pass so that subsequent
-                // iterations have an expanded scope (newly resolved imports become visible).
-                updateModelDependencies(model, repo, inserted, doImportLang)
-
-                fixDynamicReferences(model, inserted)
-
-                val unknownsAfter = countUnknowns(inserted)
-                val dynamicAfter = countDynamicRefs(inserted)
-
-                // If no more unknowns and no more dynamic refs, we are done
-                if (unknownsAfter == 0 && dynamicAfter == 0) break
-
-                // If no progress in this iteration, we may stop.
-                // We run at least two complete passes (iteration 0 and 1) because the first pass (iteration 0)
-                // might resolve some class imports or types that unblock subsequent resolutions in the second pass (iteration 1).
-                // If there is still no progress after running at least two passes, we terminate early to save CPU cycles.
-                if (unknownsAfter == unknownsBefore && dynamicAfter == dynamicBefore) {
-                    if (iteration >= 1) break
-                }
-
-                iteration++
-            }
-
-            // Final check for any remaining method call problems
-            fixMethodReferences(inserted, replaceFromEditor)
-            // One last try for unknowns unblocked by overload resolution
-            YetUnknownResolver(model, inserted).tryResolveUnknowns(EmptyProgressMonitor())
-            // Final dynamic reference cleanup in case last passes unlocked more
-            fixDynamicReferences(model, inserted)
-        }
-        removeJavaImports(inserted)
-
-        // Strip the languages the platform resolution passes imported when importUsedLanguages=false.
-        // Only languages absent before resolution are removed, so pre-existing imports stay intact.
-        // Cross-model *model* imports are intentionally left alone (resolution needs them).
-        languagesBeforeResolve?.let { before ->
-            (model as? SModelInternal)?.let { internal ->
-                val imports = ModelImports(model)
-                for (lang in internal.importedLanguageIds().toList()) {
-                    if (!before.contains(lang)) {
-                        imports.removeUsedLanguage(lang)
-                    }
-                }
-            }
-        }
-
-        finalizeResolutionDependencies(model, repo, doImportLang, parseResult)
     }
 
     // Outcome of one insert mode. A validation failure (bad position, role mismatch, unresolvable
@@ -676,7 +205,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         for (n in parsedNodes) {
             model.addRootNode(n)
             if (insertTarget.virtualPackage != null) {
-                n.setProperty(jetbrains.mps.smodel.SNodeUtil.property_BaseConcept_virtualPackage, insertTarget.virtualPackage)
+                n.setProperty(SNodeUtil.property_BaseConcept_virtualPackage, insertTarget.virtualPackage)
             }
             inserted.add(n)
         }
@@ -879,7 +408,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             safelyRollbackNodes(inserted)
             if (targetNode.parent == null) {
                 val currentChildren = parent.getChildren(link).toList()
-                if (originalIndex in 0..currentChildren.lastIndex) {
+                if (originalIndex in currentChildren.indices) {
                     parent.insertChildBefore(link, targetNode, currentChildren[originalIndex])
                 } else {
                     parent.addChild(link, targetNode)
@@ -889,19 +418,55 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         return InsertOutcome.Ok(inserted)
     }
 
+    // After a successful insert, re-run the standard node checkers on the affected root(s) and collect
+    // the error/warning problems that fall within the inserted subtree(s). This makes input that maps
+    // to a structurally valid node but does not type-check at the destination — most notably a Java 8
+    // lambda, which the parser maps to a jetbrains.mps.baseLanguage.closures ClosureLiteral that only
+    // type-checks against a matching functional-type target — visible in the response instead of
+    // silently leaving the model in an error state. Best-effort: any checker failure is swallowed so
+    // it can never turn a successful, already-persisted insert into a tool error.
+    private fun collectInsertedProblems(
+        mpsProject: MPSProject,
+        repo: SRepository,
+        inserted: List<SNode>
+    ): JsonArray {
+        return try {
+            // Check each affected root once, then report only the problems that fall within each
+            // inserted node's own subtree.
+            val problemsByRoot = HashMap<SNode, Map<SNode, List<NodeReportItem>>>()
+            val result = JsonArray()
+            for (node in inserted) {
+                val root = node.containingRoot
+                val problems = problemsByRoot.getOrPut(root) { runRootCheckers(mpsProject, root, repo) }
+                result.addAll(subtreeProblemsJsonArray(node, problems))
+            }
+            result
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            logger.warn("Post-insert problem check failed; reporting no problems", e)
+            JsonArray()
+        }
+    }
+
     // Builds the success envelope shared by all three insert modes. Each inserted node carries its
     // actual landing index within the parent role, so callers see where a node ended up — in
     // particular when an out-of-range `position` was clamped to an append. Index is omitted for
-    // roots (no containment role).
-    private fun parseInsertSuccessJson(inserted: List<SNode>, parseResult: JavaParser.JavaParseResult): String {
-        val langs = parseResult.getLanguages()?.map { it.qualifiedName } ?: emptyList()
+    // roots (no containment role). The `problems` array carries any type/structure errors or warnings
+    // the checkers found within the inserted nodes' subtrees (empty when the insert type-checks).
+    private fun parseInsertSuccessJson(
+        inserted: List<SNode>,
+        parseResult: JavaParser.JavaParseResult,
+        problems: JsonArray
+    ): String {
+        val langs = parseResult.languages?.map { it.qualifiedName } ?: emptyList()
         val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it) }
         val gson = Gson()
         val data = JsonObject().apply {
             add("inserted", gson.toJsonTree(insertedInfos))
             addProperty("package", parseResult.getPackage())
             add("languages", gson.toJsonTree(langs))
-            addProperty("errorMsg", parseResult.getErrorMsg())
+            add("problems", problems)
+            addProperty("errorMsg", parseResult.errorMsg)
         }
         return okJson(data.toString())
     }
@@ -909,7 +474,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Parses Java code with the MPS `JavaParser` and inserts the result as MPS nodes — either as root(s), as a child in a given role, or as a replacement of an existing node. `CLASS_STUB` is rejected; root insertion always appends and rejects a `position` other than `-1`/absent; replace mode requires exactly one top-level parsed node; child insertion into a single-cardinality role overwrites the existing occupant (consistent with `mps_mcp_update_node`); into a multi-cardinality role a `position` past the child count is clamped to an append (not rejected) and each inserted node reports its actual `index`. `featureKind` `FIELD`/`METHOD`/`NESTED_CLASS` are all parsed as class members (the kind is advisory; what a node may be placed where is validated against the target role, not the kind). Unrecognized keys in `parameters` (including `dryRun`, which is not supported) are rejected. See `mps-baselanguage/references/parse-java-tips.md` for the `parameters` JSON schema (`code`, `featureKind`, `insert.mode`, `postProcess`) and the per-mode required fields.
+        Parses Java code with the MPS `JavaParser` and inserts the result as MPS nodes — either as root(s), as a child in a given role, or as a replacement of an existing node. `CLASS_STUB` is rejected; root insertion always appends and rejects a `position` other than `-1`/absent; replace mode requires exactly one top-level parsed node; child insertion into a single-cardinality role overwrites the existing occupant (consistent with `mps_mcp_update_node`); into a multi-cardinality role a `position` past the child count is clamped to an append (not rejected) and each inserted node reports its actual `index`. `featureKind` `FIELD`/`METHOD`/`NESTED_CLASS` are all parsed as class members (the kind is advisory; what a node may be placed where is validated against the target role, not the kind). Unrecognized keys in `parameters` (including `dryRun`, which is not supported) are rejected. Java 8+ constructs the MPS parser recognizes are accepted and mapped to the corresponding BaseLanguage extension — most notably lambda expressions, which become `jetbrains.mps.baseLanguage.closures` closures (the closures language is auto-imported when `postProcess.importUsedLanguages` is on); like any closure, a lambda only type-checks against a matching functional-type target. Every success envelope carries a `problems` array (each entry has `severity`, `message`, node `reference`, `concept`) listing the type-system errors/warnings found within the inserted nodes — empty when the insert type-checks — so a successful insert never silently leaves the model in an ERROR state. See `mps-baselanguage/references/parse-java-tips.md` for the `parameters` JSON schema (`code`, `featureKind`, `insert.mode`, `postProcess`), the `problems` response field, and the per-mode required fields.
         """
     )
     suspend fun mps_mcp_parse_java_and_insert(
@@ -959,7 +524,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             }
 
             when (outcome) {
-                is InsertOutcome.Ok -> parseInsertSuccessJson(outcome.inserted, parseResult)
+                is InsertOutcome.Ok -> {
+                    val problems = collectInsertedProblems(mpsProject, repo, outcome.inserted)
+                    parseInsertSuccessJson(outcome.inserted, parseResult, problems)
+                }
                 is InsertOutcome.Err -> outcome.json
             }
         }
