@@ -285,17 +285,6 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         }
     }
 
-    private data class ChildInsertContext(
-        val parent: SNode,
-        val link: SContainmentLink,
-        val model: EditableSModel
-    )
-
-    private data class ReplaceInsertContext(
-        val targetNode: SNode,
-        val model: EditableSModel
-    )
-
     private sealed class JavaParsePreparation {
         data class Ok(
             val parseResult: JavaParser.JavaParseResult,
@@ -391,64 +380,6 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                 "expression-bearing role, not 'member')."
     }
 
-    private fun resolveEditableModel(repo: SRepository, modelRefStr: String, onError: (String) -> Unit): EditableSModel? {
-        val mref = PersistenceFacade.getInstance().createModelReference(modelRefStr)
-        val model = mref.resolve(repo)
-        if (model == null) {
-            onError("Model '$modelRefStr' not found")
-            return null
-        }
-        if (model !is EditableSModel) {
-            onError("Target model is not editable")
-            return null
-        }
-        return model
-    }
-
-    private fun resolveChildInsertContext(
-        repo: SRepository,
-        parentRefStr: String,
-        roleName: String,
-        onError: (String) -> Unit
-    ): ChildInsertContext? {
-        val nref = resolveNodeReference(repo, parentRefStr)
-        val parent = nref?.resolve(repo)
-        if (parent == null) {
-            onError("Parent node '$parentRefStr' not found")
-            return null
-        }
-        val link = parent.concept.containmentLinks.find { it.name == roleName }
-        if (link == null) {
-            onError("Child role '$roleName' not found in concept '${parent.concept.name}'")
-            return null
-        }
-        val model = parent.model
-        if (model !is EditableSModel) {
-            onError("Target model is not editable")
-            return null
-        }
-        return ChildInsertContext(parent, link, model)
-    }
-
-    private fun resolveReplaceInsertContext(
-        repo: SRepository,
-        targetRefStr: String,
-        onError: (String) -> Unit
-    ): ReplaceInsertContext? {
-        val tref = resolveNodeReference(repo, targetRefStr)
-        val targetNode = tref?.resolve(repo)
-        if (targetNode == null) {
-            onError("Target node '$targetRefStr' not found")
-            return null
-        }
-        val model = targetNode.model
-        if (model !is EditableSModel) {
-            onError("Target model is not editable")
-            return null
-        }
-        return ReplaceInsertContext(targetNode, model)
-    }
-
     // Best-effort: only the inserted nodes are undone. Side effects of resolveIteratively
     // (JDK dep, ModelImports updates) are not reverted — they remain in memory but are not
     // persisted, since model.save() and the module-side save() run only on success.
@@ -493,17 +424,18 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         }
     }
 
-    // c2: Deferred dependency finalization. Runs after the resolution loop on the success path,
-    // and also on the early-return path when doResolveRefs is false. ensureJDKDependency and the
-    // parser-declared language imports used to run BEFORE the loop, but moving them after the
-    // loop means a mid-loop exception leaves the model and module unchanged in memory.
+    // c2: Deferred used-language finalization. Runs after the resolution loop on the success path,
+    // and also on the early-return path when doResolveRefs is false. The parser-declared language
+    // imports used to run BEFORE the loop, but moving them after means a mid-loop exception leaves
+    // the model unchanged in memory. The JDK dependency is finalized separately by the caller
+    // (finalizeInsertedNodes), which stages the descriptor mutation onto the success path only;
+    // ensureJDKDependency is side-effect-free, so it is intentionally not called here.
     private fun finalizeResolutionDependencies(
         model: SModel,
         repo: SRepository,
         doImportLang: Boolean,
         parseResult: JavaParser.JavaParseResult
     ) {
-        ensureJDKDependency(model)
         if (doImportLang) {
             val imports = ModelImports(model)
             val mdr = ModelDependencyResolver(LanguageRegistry.getInstance(repo), repo)
@@ -521,7 +453,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         val jdkRef = PersistenceFacade.getInstance().createModuleReference("6354ebe7-c22a-4a0f-ac54-50b52ab9b065(JDK)")
         if (module.getScope().resolve(jdkRef) != null) return null
 
-        val descriptor = module.moduleDescriptor ?: return null
+        // Guard: a module with no descriptor can't receive the dependency the caller would add,
+        // so return null rather than a Dependency that would be silently dropped (and avoid a
+        // spurious setChanged() on the caller side).
+        module.moduleDescriptor ?: return null
         // Staged: the actual add + setChanged() is performed by the caller in
         // finalizeInsertedNodes after resolveIteratively has succeeded.
         return Dependency(jdkRef, SDependencyScope.DEFAULT, false)
@@ -584,7 +519,9 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         // tryResolveRefs pass needs JDK in scope to resolve java.lang.* references and the
         // parser-declared languages to find concept-level refs), but it also meant that if the
         // loop threw mid-way the model retained those imports and the module retained the JDK
-        // dependency in memory. Now they run AFTER the loop, in finalizeResolutionDependencies.
+        // dependency in memory. Now the parser-declared language imports run AFTER the loop, in
+        // finalizeResolutionDependencies, and the JDK dependency is added by finalizeInsertedNodes
+        // on the success path (see ensureJDKDependency).
         //
         // Trade-off: in modules that do not already have JDK in scope, the loop's tryResolveRefs
         // pass will not be able to resolve JDK references — they remain Unknown until the
@@ -695,6 +632,272 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         finalizeResolutionDependencies(model, repo, doImportLang, parseResult)
     }
 
+    // Outcome of one insert mode. A validation failure (bad position, role mismatch, unresolvable
+    // target, …) is returned as a pre-formatted [Err]; unexpected failures during mutation or
+    // post-processing are thrown and handled by the caller's withMpsProject/toolFailure boundary.
+    private sealed class InsertOutcome {
+        data class Ok(val inserted: List<SNode>) : InsertOutcome()
+        data class Err(val json: String) : InsertOutcome()
+    }
+
+    private fun insertAsRoot(
+        repo: SRepository,
+        parsedNodes: List<SNode>,
+        parseResult: JavaParser.JavaParseResult,
+        request: JavaParseInsertRequest
+    ): InsertOutcome {
+        val insertTarget = request.insert
+        val modelRefStr = checkNotNull(insertTarget.modelRef)
+        val model = when (val r = resolveEditableModel(repo, modelRefStr)) {
+            is EditableModelResolution.Ok -> r.model
+            is EditableModelResolution.Err -> return InsertOutcome.Err(r.errJson)
+        }
+
+        val inserted = mutableListOf<SNode>()
+        for (n in parsedNodes) {
+            model.addRootNode(n)
+            if (insertTarget.virtualPackage != null) {
+                n.setProperty(jetbrains.mps.smodel.SNodeUtil.property_BaseConcept_virtualPackage, insertTarget.virtualPackage)
+            }
+            inserted.add(n)
+        }
+
+        finalizeInsertedNodes(
+            model,
+            repo,
+            inserted,
+            request.featureKind,
+            request.importUsedLanguages,
+            request.resolveReferences,
+            parseResult
+        ) {
+            inserted.asReversed().forEach { insertedNode ->
+                if (insertedNode.model === model) {
+                    model.removeRootNode(insertedNode)
+                }
+            }
+        }
+        return InsertOutcome.Ok(inserted)
+    }
+
+    private fun insertAsChild(
+        repo: SRepository,
+        parsedNodes: List<SNode>,
+        parseResult: JavaParser.JavaParseResult,
+        request: JavaParseInsertRequest
+    ): InsertOutcome {
+        val insertTarget = request.insert
+        val parentRefStr = checkNotNull(insertTarget.parentRef)
+        val roleName = checkNotNull(insertTarget.role)
+        val (parent, model) = when (
+            val r = resolveEditableNodeAndModel(repo, parentRefStr, { "Parent node '$it' not found" })
+        ) {
+            is EditableNodeResolution.Ok -> r.node to r.model
+            is EditableNodeResolution.Err -> return InsertOutcome.Err(r.errJson)
+        }
+        val link = parent.concept.containmentLinks.find { it.name == roleName }
+            ?: return InsertOutcome.Err(errJson(
+                "Child role '$roleName' not found in concept '${parent.concept.name}'",
+                McpErrorCode.NOT_FOUND
+            ))
+
+        // Validate concept/role compatibility BEFORE mutating so a mismatch fails
+        // cleanly without a partial insert.
+        for (n in parsedNodes) {
+            roleAssignabilityError(n, link, parent)?.let {
+                return InsertOutcome.Err(errJson(it, McpErrorCode.INVALID_REQUEST))
+            }
+        }
+
+        val inserted = mutableListOf<SNode>()
+
+        // A single-cardinality role (0..1 / 1) holds at most one child, but
+        // parent.addChild / insertChildBefore append regardless of cardinality
+        // (cardinality is a structure-checker constraint, not an API guard).
+        // Appending into an occupied role would yield two children and fail
+        // validation with "Only one child is allowed in the role '<role>'", so we
+        // overwrite the existing occupant instead — consistent with the sibling
+        // mps_mcp_update_node, which also replaces the child of a single-cardinality
+        // role. A multi-node input cannot fit one slot, so that case is still
+        // rejected (like 'replace' mode's single-node requirement).
+        var displaced: SNode? = null
+        if (!link.isMultiple) {
+            if (parsedNodes.size > 1) {
+                return InsertOutcome.Err(errJson(
+                    "Role '${link.name}' of '${parent.concept.name}' has single " +
+                            "cardinality but the input parsed into ${parsedNodes.size} " +
+                            "top-level nodes. Supply a single feature/expression, or target " +
+                            "a multi-cardinality role.",
+                    McpErrorCode.INVALID_REQUEST
+                ))
+            }
+            val requestedPos = insertTarget.position
+            if (requestedPos != null && requestedPos != -1 && requestedPos != 0) {
+                return InsertOutcome.Err(errJson(
+                    "position $requestedPos is not applicable to single-cardinality " +
+                            "role '${link.name}' (only -1 or 0 are allowed)",
+                    McpErrorCode.INVALID_REQUEST
+                ))
+            }
+            // All validation is done; this delete is the first mutation, so no early
+            // return below can leave the occupant destroyed. The finalize rollback
+            // re-attaches it if resolution fails before the model is persisted.
+            displaced = parent.getChildren(link).firstOrNull()
+            displaced?.let { SNodeOperations.deleteNode(it) }
+        }
+
+        val pos = insertTarget.position
+        if (pos == null || pos == -1) {
+            for (n in parsedNodes) {
+                parent.addChild(link, n)
+                inserted.add(n)
+            }
+        } else {
+            var index: Int = pos
+            // -1 is the only append sentinel; any other negative value is
+            // meaningless as an index, so reject it before mutating.
+            if (index < 0) {
+                return InsertOutcome.Err(errJson(
+                    "position $index is invalid for role '${link.name}'; " +
+                            "use -1 or omit position to append, or supply a value >= 0",
+                    McpErrorCode.INVALID_REQUEST
+                ))
+            }
+            // A position at or beyond the current child count appends (clamp to
+            // end) instead of failing — mirroring common list-insert semantics
+            // such as Python's list.insert(big, x). The response reports each
+            // inserted node's actual landing index (see below), so a caller that
+            // overshoots can still see where it landed.
+            for (n in parsedNodes) {
+                val children = parent.getChildren(link).toList()
+                val effectiveIndex = if (index > children.size) children.size else index
+                val anchor = if (effectiveIndex < children.size) children[effectiveIndex] else null
+                parent.insertChildBefore(link, n, anchor)
+                inserted.add(n)
+                index = effectiveIndex + 1
+            }
+        }
+
+        finalizeInsertedNodes(
+            model,
+            repo,
+            inserted,
+            request.featureKind,
+            request.importUsedLanguages,
+            request.resolveReferences,
+            parseResult
+        ) {
+            inserted.asReversed().forEach { insertedNode ->
+                if (insertedNode.parent != null) {
+                    SNodeOperations.deleteNode(insertedNode)
+                }
+            }
+            // Restore the single-cardinality occupant we overwrote, if finalize
+            // failed before persisting (mirrors the 'replace' branch's rollback).
+            displaced?.let {
+                if (it.parent == null) parent.addChild(link, it)
+            }
+        }
+        return InsertOutcome.Ok(inserted)
+    }
+
+    private fun insertAsReplace(
+        repo: SRepository,
+        parsedNodes: List<SNode>,
+        parseResult: JavaParser.JavaParseResult,
+        request: JavaParseInsertRequest
+    ): InsertOutcome {
+        val targetRefStr = checkNotNull(request.insert.targetRef)
+        val (targetNode, model) = when (
+            val r = resolveEditableNodeAndModel(repo, targetRefStr, { "Target node '$it' not found" })
+        ) {
+            is EditableNodeResolution.Ok -> r.node to r.model
+            is EditableNodeResolution.Err -> return InsertOutcome.Err(r.errJson)
+        }
+
+        // Replace expects exactly one top-level node; multiple parsed nodes
+        // cannot be substituted into a single containment slot, so reject up
+        // front instead of silently dropping the trailing nodes.
+        if (parsedNodes.size > 1) {
+            return InsertOutcome.Err(errJson(
+                "Replace mode requires exactly one top-level parsed node, " +
+                        "but the input parsed into ${parsedNodes.size}. Use 'child' or " +
+                        "'root' mode for multi-node insertions, or supply a single " +
+                        "feature/expression here.",
+                McpErrorCode.INVALID_REQUEST
+            ))
+        }
+
+        val newNode = parsedNodes.first()
+        val parent = targetNode.parent
+            ?: return InsertOutcome.Err(errJson(
+                "Target node '$targetRefStr' is a root; root replacement not supported via 'replace' mode",
+                McpErrorCode.INVALID_REQUEST
+            ))
+        // f: getContainmentLink() should be non-null for any non-root node, but
+        // surfacing it as a structured error is safer than crashing on `!!` if the
+        // platform invariant ever changes (e.g. transient detachment during a
+        // concurrent edit).
+        val link = targetNode.containmentLink
+            ?: return InsertOutcome.Err(errJson(
+                "Target node '$targetRefStr' has no containment link",
+                McpErrorCode.INVALID_REQUEST
+            ))
+        // Validate concept/role compatibility BEFORE the swap so an incompatible
+        // replacement cannot corrupt the AST.
+        roleAssignabilityError(newNode, link, parent)?.let {
+            return InsertOutcome.Err(errJson(it, McpErrorCode.INVALID_REQUEST))
+        }
+        // g1: Capture the exact index of targetNode in its parent's role list
+        // BEFORE the replace. On rollback we put targetNode back at that index,
+        // which preserves order even if siblings were moved or removed between
+        // the failed mutation and the rollback. nextSibling-based recovery (the
+        // prior approach) misbehaves if the sibling itself was relocated.
+        val originalIndex = parent.getChildren(link).toList().indexOf(targetNode)
+        SNodeOperations.replaceWithAnother(targetNode, newNode)
+        val inserted = mutableListOf(newNode)
+
+        finalizeInsertedNodes(
+            model,
+            repo,
+            inserted,
+            request.featureKind,
+            request.importUsedLanguages,
+            request.resolveReferences,
+            parseResult
+        ) {
+            if (newNode.parent != null) {
+                SNodeOperations.deleteNode(newNode)
+            }
+            if (targetNode.parent == null) {
+                val currentChildren = parent.getChildren(link).toList()
+                if (originalIndex in 0..currentChildren.lastIndex) {
+                    parent.insertChildBefore(link, targetNode, currentChildren[originalIndex])
+                } else {
+                    parent.addChild(link, targetNode)
+                }
+            }
+        }
+        return InsertOutcome.Ok(inserted)
+    }
+
+    // Builds the success envelope shared by all three insert modes. Each inserted node carries its
+    // actual landing index within the parent role, so callers see where a node ended up — in
+    // particular when an out-of-range `position` was clamped to an append. Index is omitted for
+    // roots (no containment role).
+    private fun parseInsertSuccessJson(inserted: List<SNode>, parseResult: JavaParser.JavaParseResult): String {
+        val langs = parseResult.getLanguages()?.map { it.qualifiedName } ?: emptyList()
+        val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it) }
+        val gson = Gson()
+        val data = JsonObject().apply {
+            add("inserted", gson.toJsonTree(insertedInfos))
+            addProperty("package", parseResult.getPackage())
+            add("languages", gson.toJsonTree(langs))
+            addProperty("errorMsg", parseResult.getErrorMsg())
+        }
+        return okJson(data.toString())
+    }
+
     @McpTool
     @McpDescription(
         """
@@ -726,250 +929,32 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             is JavaParsePreparation.Err -> return@withMpsProject errJson(preparation.message)
         }
 
-        var resultJson: String? = null
-        var error: String? = null
-
+        // The insert + post-process runs under one write command. Validation failures return a
+        // coded InsertOutcome.Err; unexpected exceptions during mutation or post-processing
+        // propagate to withMpsProject's toolFailure boundary, which logs them as INTERNAL_ERROR.
+        // finalizeInsertedNodes rolls back the inserted nodes on any throw before the model is
+        // persisted.
         executeShortCommandOnEdt(mpsProject) {
-            try {
-                val repo = mpsProject.repository
-                val parseResult = parsedJava.parseResult
-                val parsedNodes = parsedJava.parsedNodes
+            val repo = mpsProject.repository
+            val parseResult = parsedJava.parseResult
+            val parsedNodes = parsedJava.parsedNodes
 
-                val inserted = mutableListOf<SNode>()
-                val insertTarget = request.insert
+            val outcome = when (request.insert.mode) {
+                "root" -> insertAsRoot(repo, parsedNodes, parseResult, request)
+                "child" -> insertAsChild(repo, parsedNodes, parseResult, request)
+                "replace" -> insertAsReplace(repo, parsedNodes, parseResult, request)
+                // Unreachable in practice: parseJavaParseInsertRequest already rejects unknown
+                // modes. Kept as a defensive fallback.
+                else -> InsertOutcome.Err(
+                    errJson("Unknown insert.mode '${request.insert.mode}'", McpErrorCode.INVALID_REQUEST)
+                )
+            }
 
-                when (insertTarget.mode) {
-                    "root" -> {
-                        val modelRefStr = checkNotNull(insertTarget.modelRef)
-                        val model = resolveEditableModel(repo, modelRefStr) {
-                            error = it
-                        } ?: return@executeShortCommandOnEdt
-                        for (n in parsedNodes) {
-                            model.addRootNode(n)
-                            if (insertTarget.virtualPackage != null) {
-                                n.setProperty(jetbrains.mps.smodel.SNodeUtil.property_BaseConcept_virtualPackage, insertTarget.virtualPackage)
-                            }
-                            inserted.add(n)
-                        }
-
-                        finalizeInsertedNodes(
-                            model,
-                            repo,
-                            inserted,
-                            request.featureKind,
-                            request.importUsedLanguages,
-                            request.resolveReferences,
-                            parseResult
-                        ) {
-                            inserted.asReversed().forEach { insertedNode ->
-                                if (insertedNode.model === model) {
-                                    model.removeRootNode(insertedNode)
-                                }
-                            }
-                        }
-                    }
-
-                    "child" -> {
-                        val parentRefStr = checkNotNull(insertTarget.parentRef)
-                        val roleName = checkNotNull(insertTarget.role)
-                        val childContext = resolveChildInsertContext(repo, parentRefStr, roleName) {
-                            error = it
-                        } ?: return@executeShortCommandOnEdt
-                        val parent = childContext.parent
-                        val link = childContext.link
-                        val model = childContext.model
-
-                        // Validate concept/role compatibility BEFORE mutating so a mismatch fails
-                        // cleanly without a partial insert.
-                        for (n in parsedNodes) {
-                            roleAssignabilityError(n, link, parent)?.let {
-                                error = it
-                                return@executeShortCommandOnEdt
-                            }
-                        }
-
-                        // A single-cardinality role (0..1 / 1) holds at most one child, but
-                        // parent.addChild / insertChildBefore append regardless of cardinality
-                        // (cardinality is a structure-checker constraint, not an API guard).
-                        // Appending into an occupied role would yield two children and fail
-                        // validation with "Only one child is allowed in the role '<role>'", so we
-                        // overwrite the existing occupant instead — consistent with the sibling
-                        // mps_mcp_update_node, which also replaces the child of a single-cardinality
-                        // role. A multi-node input cannot fit one slot, so that case is still
-                        // rejected (like 'replace' mode's single-node requirement).
-                        var displaced: SNode? = null
-                        if (!link.isMultiple) {
-                            if (parsedNodes.size > 1) {
-                                error = "Role '${link.name}' of '${parent.concept.name}' has single " +
-                                        "cardinality but the input parsed into ${parsedNodes.size} " +
-                                        "top-level nodes. Supply a single feature/expression, or target " +
-                                        "a multi-cardinality role."
-                                return@executeShortCommandOnEdt
-                            }
-                            val requestedPos = insertTarget.position
-                            if (requestedPos != null && requestedPos != -1 && requestedPos != 0) {
-                                error = "position $requestedPos is not applicable to single-cardinality " +
-                                        "role '${link.name}' (only -1 or 0 are allowed)"
-                                return@executeShortCommandOnEdt
-                            }
-                            // All validation is done; this delete is the first mutation, so no early
-                            // return below can leave the occupant destroyed. The finalize rollback
-                            // re-attaches it if resolution fails before the model is persisted.
-                            displaced = parent.getChildren(link).firstOrNull()
-                            displaced?.let { SNodeOperations.deleteNode(it) }
-                        }
-
-                        val pos = insertTarget.position
-                        if (pos == null || pos == -1) {
-                            for (n in parsedNodes) {
-                                parent.addChild(link, n)
-                                inserted.add(n)
-                            }
-                        } else {
-                            var index: Int = pos
-                            // -1 is the only append sentinel; any other negative value is
-                            // meaningless as an index, so reject it before mutating.
-                            if (index < 0) {
-                                error = "position $index is invalid for role '${link.name}'; " +
-                                        "use -1 or omit position to append, or supply a value >= 0"
-                                return@executeShortCommandOnEdt
-                            }
-                            // A position at or beyond the current child count appends (clamp to
-                            // end) instead of failing — mirroring common list-insert semantics
-                            // such as Python's list.insert(big, x). The response reports each
-                            // inserted node's actual landing index (see below), so a caller that
-                            // overshoots can still see where it landed.
-                            for (n in parsedNodes) {
-                                val children = parent.getChildren(link).toList()
-                                val effectiveIndex = if (index > children.size) children.size else index
-                                val anchor = if (effectiveIndex < children.size) children[effectiveIndex] else null
-                                parent.insertChildBefore(link, n, anchor)
-                                inserted.add(n)
-                                index = effectiveIndex + 1
-                            }
-                        }
-
-                        finalizeInsertedNodes(
-                            model,
-                            repo,
-                            inserted,
-                            request.featureKind,
-                            request.importUsedLanguages,
-                            request.resolveReferences,
-                            parseResult
-                        ) {
-                            inserted.asReversed().forEach { insertedNode ->
-                                if (insertedNode.parent != null) {
-                                    SNodeOperations.deleteNode(insertedNode)
-                                }
-                            }
-                            // Restore the single-cardinality occupant we overwrote, if finalize
-                            // failed before persisting (mirrors the 'replace' branch's rollback).
-                            displaced?.let {
-                                if (it.parent == null) parent.addChild(link, it)
-                            }
-                        }
-                    }
-
-                    "replace" -> {
-                        val targetRefStr = checkNotNull(insertTarget.targetRef)
-                        val replaceContext = resolveReplaceInsertContext(repo, targetRefStr) {
-                            error = it
-                        } ?: return@executeShortCommandOnEdt
-                        val targetNode = replaceContext.targetNode
-                        val model = replaceContext.model
-
-                        // Replace expects exactly one top-level node; multiple parsed nodes
-                        // cannot be substituted into a single containment slot, so reject up
-                        // front instead of silently dropping the trailing nodes.
-                        if (parsedNodes.size > 1) {
-                            error = "Replace mode requires exactly one top-level parsed node, " +
-                                    "but the input parsed into ${parsedNodes.size}. Use 'child' or " +
-                                    "'root' mode for multi-node insertions, or supply a single " +
-                                    "feature/expression here."
-                            return@executeShortCommandOnEdt
-                        }
-
-                        val newNode = parsedNodes.first()
-                        val parent = targetNode.parent
-                        if (parent == null) {
-                            error = "Target node '$targetRefStr' is a root; root replacement not supported via 'replace' mode"
-                            return@executeShortCommandOnEdt
-                        }
-                        // f: getContainmentLink() should be non-null for any non-root node, but
-                        // surfacing it as a structured error is safer than crashing on `!!` if the
-                        // platform invariant ever changes (e.g. transient detachment during a
-                        // concurrent edit).
-                        val link = targetNode.containmentLink ?: run {
-                            error = "Target node '$targetRefStr' has no containment link"
-                            return@executeShortCommandOnEdt
-                        }
-                        // Validate concept/role compatibility BEFORE the swap so an incompatible
-                        // replacement cannot corrupt the AST.
-                        roleAssignabilityError(newNode, link, parent)?.let {
-                            error = it
-                            return@executeShortCommandOnEdt
-                        }
-                        // g1: Capture the exact index of targetNode in its parent's role list
-                        // BEFORE the replace. On rollback we put targetNode back at that index,
-                        // which preserves order even if siblings were moved or removed between
-                        // the failed mutation and the rollback. nextSibling-based recovery (the
-                        // prior approach) misbehaves if the sibling itself was relocated.
-                        val originalIndex = parent.getChildren(link).toList().indexOf(targetNode)
-                        SNodeOperations.replaceWithAnother(targetNode, newNode)
-                        inserted.add(newNode)
-
-                        finalizeInsertedNodes(
-                            model,
-                            repo,
-                            inserted,
-                            request.featureKind,
-                            request.importUsedLanguages,
-                            request.resolveReferences,
-                            parseResult
-                        ) {
-                            if (newNode.parent != null) {
-                                SNodeOperations.deleteNode(newNode)
-                            }
-                            if (targetNode.parent == null) {
-                                val currentChildren = parent.getChildren(link).toList()
-                                if (originalIndex in 0..currentChildren.lastIndex) {
-                                    parent.insertChildBefore(link, targetNode, currentChildren[originalIndex])
-                                } else {
-                                    parent.addChild(link, targetNode)
-                                }
-                            }
-                        }
-                    }
-
-                    else -> {
-                        error = "Unknown insert.mode '${insertTarget.mode}'"
-                        return@executeShortCommandOnEdt
-                    }
-                }
-
-                val pkg = parseResult.getPackage()
-                val langs = parseResult.getLanguages()?.map { it.qualifiedName } ?: emptyList()
-                // Each inserted node carries its actual landing index within the parent role, so
-                // callers see where a node ended up — in particular when an out-of-range
-                // `position` was clamped to an append. Omitted for roots (no containment role).
-                val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it) }
-                val gson = Gson()
-                val data = JsonObject().apply {
-                    add("inserted", gson.toJsonTree(insertedInfos))
-                    addProperty("package", pkg)
-                    add("languages", gson.toJsonTree(langs))
-                    addProperty("errorMsg", parseResult.getErrorMsg())
-                }
-                resultJson = okJson(data.toString())
-            } catch (e: Throwable) {
-                rethrowIfCancellation(e)
-                if (e is Error) throw e
-                error = e.message
+            when (outcome) {
+                is InsertOutcome.Ok -> parseInsertSuccessJson(outcome.inserted, parseResult)
+                is InsertOutcome.Err -> outcome.json
             }
         }
-
-        error?.let { errJson(it) } ?: resultJson ?: errJson("Failed to parse and insert Java nodes")
     }
 
 }
