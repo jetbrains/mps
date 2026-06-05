@@ -12,6 +12,8 @@ import javax.swing.Icon;
 import jetbrains.mps.icons.MPSIcons;
 import jetbrains.mps.generator.IModifiableGenerationSettings;
 import java.awt.KeyboardFocusManager;
+
+import jetbrains.mps.ide.project.ProjectHelper;
 import org.jetbrains.annotations.NotNull;
 import com.intellij.openapi.application.ApplicationManager;
 import org.jetbrains.annotations.Nullable;
@@ -211,7 +213,7 @@ public class TransientModelsWidget implements StatusBarWidget, CustomStatusBarWi
       return "Save Transient Models";
     }
     private MPSProject getMPSProject(Project project) {
-      return project.getComponent(MPSProject.class);
+      return ProjectHelper.fromIdeaProject(project);
     }
   }
 }

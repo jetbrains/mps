@@ -56,8 +56,7 @@ public class ProjectHelper {
   @Nullable
   public static MPSProject fromIdeaProject(@Nullable com.intellij.openapi.project.Project p) {
     if (p != null) {
-      // FIXME avoid calling ComponentManger.getComponent
-      return p.getComponent(MPSProject.class);
+      return p.getService(MPSProject.class);
     }
     return null;
   }
