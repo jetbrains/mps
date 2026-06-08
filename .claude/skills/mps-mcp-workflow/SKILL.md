@@ -12,6 +12,10 @@ Read this together with `AGENTS.md` whenever the task involves MPS artifacts or 
 
 ## Critical Directives
 
+> **⚠️ STOP — If you are reading raw `.mps` or `.mpl` XML files, you are way off track.**
+> MPS model files are opaque serialized XML: you cannot safely understand or edit them as plain text, and doing so will corrupt the model.
+> Use `mps_mcp_*` tools instead. If they are not available, ask the user to start MPS and enable the MPS MCP server before continuing.
+
 - **Always prefer MPS MCP tools over hand-editing `.mps` / `.mpl` XML.** Hand-edits silently corrupt model files.
 - **Preserve node IDs.** Prefer `mps_mcp_update_root_node_from_json` or surgical edits (`mps_mcp_update_node`, …) over delete-and-reinsert. Deleting destroys persistent IDs and breaks incoming references.
 - **Reload after compiled-aspect changes.** After modifying **typesystem**, **constraints**, **behavior**, **editor**, or any other compiled aspect, call `mps_mcp_reload_all` (or rebuild the language module via `mps_mcp_alter_nodes MAKE`) before validating with `mps_mcp_check_root_node_problems` on a consumer model. Without a reload, cached compiled rules continue to fire — checking will report stale errors or miss new ones.
