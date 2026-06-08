@@ -2173,6 +2173,202 @@
                 </node>
               </node>
             </node>
+            <node concept="3clFbH" id="LVoJj$r8A8" role="3cqZAp" />
+            <node concept="3SKdUt" id="LVoJj$tTis" role="3cqZAp">
+              <node concept="1PaTwC" id="LVoJj$tTit" role="1aUNEU">
+                <node concept="3oM_SD" id="LVoJj$tWTk" role="1PaTwD">
+                  <property role="3oM_SC" value="Start" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTl" role="1PaTwD">
+                  <property role="3oM_SC" value="each" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTm" role="1PaTwD">
+                  <property role="3oM_SC" value="test" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTn" role="1PaTwD">
+                  <property role="3oM_SC" value="run" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTo" role="1PaTwD">
+                  <property role="3oM_SC" value="from" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTp" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTq" role="1PaTwD">
+                  <property role="3oM_SC" value="cold" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTr" role="1PaTwD">
+                  <property role="3oM_SC" value="cache." />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTs" role="1PaTwD">
+                  <property role="3oM_SC" value="The" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTt" role="1PaTwD">
+                  <property role="3oM_SC" value="system" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTu" role="1PaTwD">
+                  <property role="3oM_SC" value="dir" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTv" role="1PaTwD">
+                  <property role="3oM_SC" value="(caches/index/VFS)" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTw" role="1PaTwD">
+                  <property role="3oM_SC" value="is" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTx" role="1PaTwD">
+                  <property role="3oM_SC" value="resolved" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTy" role="1PaTwD">
+                  <property role="3oM_SC" value="from" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$tWTz" role="1PaTwD">
+                  <property role="3oM_SC" value="the" />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="LVoJj$tZTR" role="3cqZAp">
+              <node concept="1PaTwC" id="LVoJj$tZTS" role="1aUNEU">
+                <node concept="3oM_SD" id="LVoJj$u4_3" role="1PaTwD">
+                  <property role="3oM_SC" value="'MPSCmdLineTest'" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_4" role="1PaTwD">
+                  <property role="3oM_SC" value="paths" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_5" role="1PaTwD">
+                  <property role="3oM_SC" value="selector" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_6" role="1PaTwD">
+                  <property role="3oM_SC" value="set" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_7" role="1PaTwD">
+                  <property role="3oM_SC" value="above," />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_8" role="1PaTwD">
+                  <property role="3oM_SC" value="so" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_9" role="1PaTwD">
+                  <property role="3oM_SC" value="this" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_a" role="1PaTwD">
+                  <property role="3oM_SC" value="only" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_b" role="1PaTwD">
+                  <property role="3oM_SC" value="ever" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_c" role="1PaTwD">
+                  <property role="3oM_SC" value="deletes" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_d" role="1PaTwD">
+                  <property role="3oM_SC" value="a" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_e" role="1PaTwD">
+                  <property role="3oM_SC" value="test-specific" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$u4_f" role="1PaTwD">
+                  <property role="3oM_SC" value="directory." />
+                </node>
+              </node>
+            </node>
+            <node concept="3SKdUt" id="LVoJj$u9_y" role="3cqZAp">
+              <node concept="1PaTwC" id="LVoJj$u9_z" role="1aUNEU">
+                <node concept="3oM_SD" id="LVoJj$ucmY" role="1PaTwD">
+                  <property role="3oM_SC" value="Must" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucmZ" role="1PaTwD">
+                  <property role="3oM_SC" value="run" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn0" role="1PaTwD">
+                  <property role="3oM_SC" value="before" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn1" role="1PaTwD">
+                  <property role="3oM_SC" value="TestApplicationManager.getInstance()," />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn2" role="1PaTwD">
+                  <property role="3oM_SC" value="which" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn3" role="1PaTwD">
+                  <property role="3oM_SC" value="loads" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn4" role="1PaTwD">
+                  <property role="3oM_SC" value="and" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn5" role="1PaTwD">
+                  <property role="3oM_SC" value="locks" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn6" role="1PaTwD">
+                  <property role="3oM_SC" value="these" />
+                </node>
+                <node concept="3oM_SD" id="LVoJj$ucn7" role="1PaTwD">
+                  <property role="3oM_SC" value="caches." />
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbJ" id="LVoJj$rdJ7" role="3cqZAp">
+              <node concept="3fqX7Q" id="LVoJj$rdJ8" role="3clFbw">
+                <node concept="2YIFZM" id="LVoJj$rj40" role="3fr31v">
+                  <ref role="1Pybhc" to="wyt6:~Boolean" resolve="Boolean" />
+                  <ref role="37wK5l" to="wyt6:~Boolean.getBoolean(java.lang.String)" resolve="getBoolean" />
+                  <node concept="Xl_RD" id="LVoJj$rj41" role="37wK5m">
+                    <property role="Xl_RC" value="mps.test.keep.system.dir" />
+                  </node>
+                </node>
+              </node>
+              <node concept="3clFbS" id="LVoJj$rdJc" role="3clFbx">
+                <node concept="3cpWs8" id="LVoJj$rdJe" role="3cqZAp">
+                  <node concept="3cpWsn" id="LVoJj$rdJd" role="3cpWs9">
+                    <property role="TrG5h" value="systemDir" />
+                    <node concept="3uibUv" id="LVoJj$rdJf" role="1tU5fm">
+                      <ref role="3uigEE" to="guwi:~File" resolve="File" />
+                    </node>
+                    <node concept="2ShNRf" id="LVoJj$rj4F" role="33vP2m">
+                      <node concept="1pGfFk" id="LVoJj$rj5m" role="2ShVmc">
+                        <ref role="37wK5l" to="guwi:~File.&lt;init&gt;(java.lang.String)" resolve="File" />
+                        <node concept="2YIFZM" id="LVoJj$sxkl" role="37wK5m">
+                          <ref role="37wK5l" to="bd8o:~PathManager.getSystemPath()" resolve="getSystemPath" />
+                          <ref role="1Pybhc" to="bd8o:~PathManager" resolve="PathManager" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+                <node concept="RRSsy" id="LVoJj$tgKN" role="3cqZAp">
+                  <property role="RRSoG" value="h1akgim/info" />
+                  <node concept="3cpWs3" id="LVoJj$tlTB" role="RRSoy">
+                    <node concept="Xl_RD" id="LVoJj$tlTC" role="3uHU7B">
+                      <property role="Xl_RC" value="Clearing test system directory before application init: " />
+                    </node>
+                    <node concept="37vLTw" id="LVoJj$tlTD" role="3uHU7w">
+                      <ref role="3cqZAo" node="LVoJj$rdJd" resolve="systemDir" />
+                    </node>
+                  </node>
+                </node>
+                <node concept="3clFbJ" id="LVoJj$rdJr" role="3cqZAp">
+                  <node concept="3fqX7Q" id="LVoJj$rdJt" role="3clFbw">
+                    <node concept="2YIFZM" id="LVoJj$rj5q" role="3fr31v">
+                      <ref role="1Pybhc" to="18ew:~FileUtil" resolve="FileUtil" />
+                      <ref role="37wK5l" to="18ew:~FileUtil.delete(java.io.File)" resolve="delete" />
+                      <node concept="37vLTw" id="LVoJj$rj5r" role="37wK5m">
+                        <ref role="3cqZAo" node="LVoJj$rdJd" resolve="systemDir" />
+                      </node>
+                    </node>
+                  </node>
+                  <node concept="3clFbS" id="LVoJj$rdJy" role="3clFbx">
+                    <node concept="RRSsy" id="LVoJj$twOD" role="3cqZAp">
+                      <property role="RRSoG" value="gZ5fksE/warn" />
+                      <node concept="3cpWs3" id="LVoJj$tAol" role="RRSoy">
+                        <node concept="Xl_RD" id="LVoJj$tAom" role="3uHU7B">
+                          <property role="Xl_RC" value="Could not fully clear test system directory: " />
+                        </node>
+                        <node concept="37vLTw" id="LVoJj$tAon" role="3uHU7w">
+                          <ref role="3cqZAo" node="LVoJj$rdJd" resolve="systemDir" />
+                        </node>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+            <node concept="3clFbH" id="LVoJj$r8A9" role="3cqZAp" />
             <node concept="3clFbF" id="65UowUML9kL" role="3cqZAp">
               <node concept="37vLTI" id="65UowUMLbJH" role="3clFbG">
                 <node concept="37vLTw" id="65UowUMLeGt" role="37vLTJ">

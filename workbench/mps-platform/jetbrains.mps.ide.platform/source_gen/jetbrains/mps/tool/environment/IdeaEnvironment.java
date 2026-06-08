@@ -21,6 +21,7 @@ import jetbrains.mps.internal.collections.runtime.SetSequence;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.project.impl.P3SupportInstaller;
 import java.awt.GraphicsEnvironment;
+import jetbrains.mps.util.FileUtil;
 import com.intellij.testFramework.TestApplicationManager;
 import jetbrains.mps.project.Project;
 import jetbrains.mps.RuntimeFlags;
@@ -42,7 +43,6 @@ import com.intellij.util.indexing.FileBasedIndexImpl;
 import jetbrains.mps.library.LibraryInitializer;
 import jetbrains.mps.vfs.VFSManager;
 import java.util.Collections;
-import jetbrains.mps.util.FileUtil;
 import jetbrains.mps.util.Reference;
 import java.util.concurrent.TimeUnit;
 import org.jetbrains.annotations.Nullable;
@@ -198,6 +198,22 @@ public final class IdeaEnvironment extends EnvironmentBase {
       System.setProperty("java.awt.headless", Boolean.FALSE.toString());
       GraphicsEnvironment.isHeadless();
       System.setProperty("java.awt.headless", Boolean.TRUE.toString());
+
+      // Start each test run from a cold cache. The system dir (caches/index/VFS) is resolved from the
+      // 'MPSCmdLineTest' paths selector set above, so this only ever deletes a test-specific directory.
+      // Must run before TestApplicationManager.getInstance(), which loads and locks these caches.
+      if (!(Boolean.getBoolean("mps.test.keep.system.dir"))) {
+        File systemDir = new File(PathManager.getSystemPath());
+        if (LOG.isInfoLevel()) {
+          LOG.info("Clearing test system directory before application init: " + systemDir);
+        }
+        if (!(FileUtil.delete(systemDir))) {
+          if (LOG.isWarningLevel()) {
+            LOG.warning("Could not fully clear test system directory: " + systemDir);
+          }
+        }
+      }
+
       myIdeaApplication = TestApplicationManager.getInstance();
     } else {
       myIdeaApplication = MPSHeadlessPlatformStarter.Holder.IT.createApp();
