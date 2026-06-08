@@ -15,11 +15,15 @@
  */
 package jetbrains.mps.testsuites;
 
+import com.intellij.testFramework.TestLoggerFactory;
+import jetbrains.mps.logging.Logger;
 import jetbrains.mps.testbench.junit.runners.PushEnvironmentRunnerBuilder;
 import jetbrains.mps.tool.environment.EnvironmentConfig;
 import jetbrains.mps.tool.environment.IdeaEnvironment;
 import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+import org.junit.runner.Runner;
+import org.junit.runner.notification.RunNotifier;
 import org.junit.runners.Suite;
 import org.junit.runners.model.InitializationError;
 import org.junit.runners.model.RunnerBuilder;
@@ -60,6 +64,7 @@ import org.junit.runners.model.RunnerBuilder;
 })
 public class PlatformTestSuite extends OutputWatchingTestSuite {
   private static IdeaEnvironment ourEnvironment;
+  private static final Logger LOG = Logger.getLogger(PlatformTestSuite.class);
 
   // creating the platform environment for the first time
   static {
@@ -84,5 +89,16 @@ public class PlatformTestSuite extends OutputWatchingTestSuite {
   public static void tearDown() {
     ourEnvironment.dispose();
     ourEnvironment = null;
+  }
+
+  @Override
+  protected void runChild(Runner runner, RunNotifier notifier) {
+    String start = "Running " + runner.getDescription().getDisplayName();
+    LOG.info(start);
+    try {
+      super.runChild(runner, notifier);
+    } finally {
+      TestLoggerFactory.dumpLogToStdout(start);
+    }
   }
 }
