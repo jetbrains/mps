@@ -59,7 +59,7 @@ If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unles
 - Mapping scripts (pre / post) — bulk passes and `modifiesModel`: `references/mapping-scripts.md`.
 - Utility models, template functions, fragments — where to place non-trivial generator-time helpers: `references/utility-models.md`.
 - `genContext` operations catalog (every `GenerationContextOp_*` with editor alias and purpose): `references/generation-context.md`.
-- Generation algorithm — five-stage pipeline, micro-steps, weaving vs. reduction ordering: `references/algorithm.md`.
+- Generation algorithm — pipeline stages (selection → implicit grouping/ordering → explicit priorities → step-by-step transformation → TextGen), micro-steps, weaving vs. reduction ordering: `references/algorithm.md`.
 - Cookbook recipes — multi-root, cross-ref, unique IDs, extensible generators, loop-extraction refactor: `references/cookbook.md`.
 - Common failures — symptom-to-cause-to-fix table: `references/common-failures.md`.
 - Validated concept FQNs and minimal `MappingConfiguration` blueprint: `references/concept-fqns.md`.
