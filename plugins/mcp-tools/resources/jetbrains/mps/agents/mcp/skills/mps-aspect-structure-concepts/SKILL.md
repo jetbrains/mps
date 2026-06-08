@@ -31,6 +31,7 @@ Concepts (`ConceptDeclaration`), interface concepts (`InterfaceConceptDeclaratio
     * **InterfaceConceptDeclaration**: orthogonal functionality.
     * **EnumerationDeclaration**: fixed values.
     * **ConstrainedDataTypeDeclaration**: regex-restricted properties.
+    * **Attributes (annotations)**: concepts extending `NodeAttribute` / `PropertyAttribute` / `ChildAttribute` / `LinkAttribute` that graft extra children/data onto *other* concepts without editing them — see Attributes section below.
 4. **Inheritance & interfaces**:
     * Use inheritance and abstract concepts for shared logic.
     * Implement `jetbrains.mps.lang.core.structure.INamedConcept` if the concept needs a `name` property.
@@ -44,6 +45,13 @@ Concepts (`ConceptDeclaration`), interface concepts (`InterfaceConceptDeclaratio
     * Local references within the same JSON blueprint can use names for resolution.
 11. **Reload runtime**: always rebuild the language (via `mps_mcp_alter_nodes` with `MAKE` and `rebuild="true"`) after structural changes to make concepts discoverable.
 
+## Attributes (Annotations)
+
+Attributes let one language attach extra children, references, or property data to nodes of a concept it does **not** own — without editing or subclassing that concept. The host carries a universal `smodelAttribute` child slot (`0..n`, every `BaseConcept` has it); the attribute's own declaration says where it may attach. Used heavily for cross-cutting concerns: generator macros (`NodeMacro`/`PropertyMacro`/`ReferenceMacro`), documentation/description comments, requirement traces, error suppression.
+
+- Declare an attribute = a `ConceptDeclaration` that **extends** one of `NodeAttribute` (whole node), `PropertyAttribute` (one property), `ChildAttribute` (one child link), or `LinkAttribute` (one reference link), **plus** an `AttributeInfo` (alias `@attribute info`) in its `smodelAttribute` role specifying the extension point: `role` (the attach key), `attributed` (which concept(s) may receive it — `BaseConcept` = any), and `multiple` (one vs. many per node).
+- `CREATE_CONCEPTS` cannot express the `AttributeInfo` — create the concept extending the base attribute, then add the `AttributeInfo` with `mps_mcp_update_node`. Full walkthrough, concept reference, and the canonical `RequirementTrace` blueprint live in `references/attributes-and-annotations.md`.
+
 ## Related Skills
 
 - **`mps-aspect-editor-menus-and-keymaps`** — once concepts exist, define their editors (often the next step).
@@ -55,3 +63,4 @@ Concepts (`ConceptDeclaration`), interface concepts (`InterfaceConceptDeclaratio
 ## Reference Index
 
 - Open `references/structure-operation-api.md` for exact `mps_mcp_alter_structure` and `mps_mcp_query_structure` operation names, JSON parameter formats, structure blueprint schemas, `make` flag handling, and `makeStatus` semantics (success / runtime_stale / failed / skipped).
+- Open `references/attributes-and-annotations.md` for attributes/annotations: the four attribute kinds (`NodeAttribute` / `PropertyAttribute` / `ChildAttribute` / `LinkAttribute`), the `AttributeInfo` extension-point spec, the two-step MCP creation flow, the `smodelAttribute` slot, and worked examples (`RequirementTrace`, generator macros, doc/comment annotations).
