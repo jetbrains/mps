@@ -98,6 +98,8 @@ details, sandbox examples, JSON blueprints, or non-obvious constraints.
 
 A skill is a set of local instructions stored in a `SKILL.md` file under `.agents/skills/<skill-name>/` or `.claude/skills/<skill-name>/`. Start with `mps-mcp-workflow` for the overview and a directory of every other skill.
 
+These `mps-*` skills and this guide were installed by the `mps_mcp_initialize_project_for_agents` MCP tool. If they become stale or incomplete, ask the user for approval to refresh: delete every `mps-*` skill folder (keeping any project-local `*-dsl` skills), re-run the tool, then carefully merge its returned text back into this file while preserving the Project-Specific Notes below. See the tool's description for the full refresh contract.
+
 ---
 
 ## Project-Specific Notes
