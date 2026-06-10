@@ -20,6 +20,7 @@ import org.jetbrains.annotations.Nullable;
 
 import javax.swing.Icon;
 import javax.swing.JComponent;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,6 +47,23 @@ public interface MPSProjectTemplate {
   TemplateFiller getTemplateFiller();
 
   void setProjectPath(String projectPath);
+
+  @Nullable
+  default String getProjectPathFromSettings() {
+    return null;
+  }
+
+  @Nullable
+  static String getProjectPathFromModuleLocation(@NotNull File moduleLocation, @NotNull String defaultGroupLocation) {
+    File moduleGroupLocation = moduleLocation.getParentFile();
+    if (moduleGroupLocation == null) {
+      return null;
+    }
+    File projectPath = !defaultGroupLocation.isEmpty() && defaultGroupLocation.equals(moduleGroupLocation.getName())
+                       ? moduleGroupLocation.getParentFile()
+                       : moduleGroupLocation;
+    return projectPath == null ? null : projectPath.getPath();
+  }
 
   /**
    * <p>

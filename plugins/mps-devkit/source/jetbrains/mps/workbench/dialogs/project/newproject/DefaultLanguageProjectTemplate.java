@@ -35,6 +35,8 @@ import java.awt.event.ActionListener;
 import java.io.File;
 
 public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
+  private static final String DEFAULT_LANGUAGE_NAME = "NewLanguage";
+  private static final String LANGUAGES_DIR = "languages";
 
   private final NameLocationPanel mySettings;
   private final JCheckBox myRuntimeSolution;
@@ -78,7 +80,7 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
         myGenerator.setSelected(true);
       }
     };
-    mySettings.withDefaults("NewLanguage", "languages");
+    mySettings.withDefaults(DEFAULT_LANGUAGE_NAME, LANGUAGES_DIR);
     mySettings.onChange(this::fireSettingsChanged);
   }
 
@@ -131,6 +133,12 @@ public class DefaultLanguageProjectTemplate implements LanguageProjectTemplate {
   @Override
   public void setProjectPath(String projectPath) {
     mySettings.withProjectPath(new File(projectPath));
+  }
+
+  @Nullable
+  @Override
+  public String getProjectPathFromSettings() {
+    return MPSProjectTemplate.getProjectPathFromModuleLocation(mySettings.getModuleLocation(), LANGUAGES_DIR);
   }
 
   @Nullable

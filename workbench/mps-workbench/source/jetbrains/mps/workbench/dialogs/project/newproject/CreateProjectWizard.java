@@ -92,7 +92,8 @@ public final class CreateProjectWizard extends DialogWrapper {
   private JPanel myTemplateSettings;
 
   private TemplateItem myCurrentTemplateItem = null;
-  private final MPSProjectTemplate.MPSProjectTemplateListener myTemplateListener = this::checkSettings;
+  private final MPSProjectTemplate.MPSProjectTemplateListener myTemplateListener = this::templateSettingsChanged;
+  private boolean myUpdatingProjectFieldsFromTemplateSettings;
 
   public CreateProjectWizard(@Nullable Project project) {
     super(project);
@@ -294,8 +295,10 @@ public final class CreateProjectWizard extends DialogWrapper {
     myProjectPath = new PathField();
     myProjectPath.addPathChangedListener(newPathValue -> {
       //If path changed need to update specific module settings
-      fireProjectPathChanged(getProjectPath());
-      checkSettings();
+      if (!myUpdatingProjectFieldsFromTemplateSettings) {
+        fireProjectPathChanged(getProjectPath());
+        checkSettings();
+      }
     });
 
     // The project is created under <location>/<name>; template settings depend on the full path.
@@ -306,8 +309,10 @@ public final class CreateProjectWizard extends DialogWrapper {
       public void caretUpdate(CaretEvent e) {
         if (!Objects.equals(myValue, myProjectName.getText())) {
           myValue = myProjectName.getText();
-          fireProjectPathChanged(getProjectPath());
-          checkSettings();
+          if (!myUpdatingProjectFieldsFromTemplateSettings) {
+            fireProjectPathChanged(getProjectPath());
+            checkSettings();
+          }
         }
       }
     });
@@ -434,7 +439,7 @@ public final class CreateProjectWizard extends DialogWrapper {
   }
 
   private void updateProjectPath() {
-    if (myProjectPath.getPath() == null || myProjectPath.getPath().length() == 0) {
+    if (myProjectPath.getPath() == null || myProjectPath.getPath().isEmpty()) {
       myProjectPath.setPath(getDefaultProjectLocation());
     }
   }
@@ -450,6 +455,45 @@ public final class CreateProjectWizard extends DialogWrapper {
   private void fireProjectPathChanged(String newValue) {
     if (myCurrentTemplateItem != null) {
       myCurrentTemplateItem.setNewProjectPath(newValue);
+    }
+  }
+
+  private void templateSettingsChanged() {
+    updateProjectFieldsFromTemplateSettings();
+    checkSettings();
+  }
+
+  private void updateProjectFieldsFromTemplateSettings() {
+    if (myCurrentTemplateItem == null) {
+      return;
+    }
+    String projectPath = myCurrentTemplateItem.getProjectPathFromSettings();
+    if (projectPath == null || projectPath.isEmpty()) {
+      return;
+    }
+    File projectPathFile = new File(projectPath);
+    if (!projectPathFile.isAbsolute()) {
+      return;
+    }
+    File projectLocation = projectPathFile.getParentFile();
+    String projectName = projectPathFile.getName();
+    if (projectLocation == null || projectName.isEmpty()) {
+      return;
+    }
+    if (Objects.equals(projectName, myProjectName.getText()) && Objects.equals(projectLocation.getPath(), myProjectPath.getPath())) {
+      return;
+    }
+
+    myUpdatingProjectFieldsFromTemplateSettings = true;
+    try {
+      if (!Objects.equals(projectName, myProjectName.getText())) {
+        myProjectName.setText(projectName);
+      }
+      if (!Objects.equals(projectLocation.getPath(), myProjectPath.getPath())) {
+        myProjectPath.setPath(projectLocation.getPath());
+      }
+    } finally {
+      myUpdatingProjectFieldsFromTemplateSettings = false;
     }
   }
 
@@ -474,7 +518,7 @@ public final class CreateProjectWizard extends DialogWrapper {
                                                  GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null));
     }
     if (myCurrentTemplateItem != null) {
-      myCurrentTemplateItem.setNewProjectPath(myProjectPath.getPath());
+      myCurrentTemplateItem.setNewProjectPath(getProjectPath());
     }
     myTemplateSettingsHolder.setVisible(component != null);
   }
@@ -584,6 +628,11 @@ public final class CreateProjectWizard extends DialogWrapper {
     void setNewProjectPath(String newValue) {
       myTemplate.setProjectPath(newValue);
       checkSettings();
+    }
+
+    @Nullable
+    String getProjectPathFromSettings() {
+      return myTemplate.getProjectPathFromSettings();
     }
   }
 }

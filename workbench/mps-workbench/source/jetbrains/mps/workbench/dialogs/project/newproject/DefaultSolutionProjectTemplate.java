@@ -18,7 +18,6 @@ package jetbrains.mps.workbench.dialogs.project.newproject;
 import com.intellij.openapi.startup.StartupManager;
 import jetbrains.mps.icons.MPSIcons.Nodes;
 import jetbrains.mps.ide.ui.dialogs.modules.NameLocationPanel;
-import jetbrains.mps.project.MPSExtentions;
 import jetbrains.mps.project.modules.NewModuleCheck;
 import jetbrains.mps.project.modules.SolutionProducer;
 import jetbrains.mps.util.IStatus;
@@ -31,12 +30,14 @@ import javax.swing.JComponent;
 import java.io.File;
 
 public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
+  private static final String DEFAULT_SOLUTION_NAME = "NewSolution";
+  private static final String SOLUTIONS_DIR = "solutions";
 
   private final NameLocationPanel myNewSolutionSettings;
 
   public DefaultSolutionProjectTemplate() {
     myNewSolutionSettings = new NameLocationPanel(new File("."), "Solution name:", "Solution file location:");
-    myNewSolutionSettings.withDefaults("NewSolution", "solutions");
+    myNewSolutionSettings.withDefaults(DEFAULT_SOLUTION_NAME, SOLUTIONS_DIR);
     myNewSolutionSettings.onChange(this::fireSettingsChanged);
   }
 
@@ -78,6 +79,12 @@ public class DefaultSolutionProjectTemplate implements SolutionProjectTemplate {
   @Override
   public void setProjectPath(String projectPath) {
     myNewSolutionSettings.withProjectPath(new File(projectPath));
+  }
+
+  @Nullable
+  @Override
+  public String getProjectPathFromSettings() {
+    return MPSProjectTemplate.getProjectPathFromModuleLocation(myNewSolutionSettings.getModuleLocation(), SOLUTIONS_DIR);
   }
 
   @Nullable
