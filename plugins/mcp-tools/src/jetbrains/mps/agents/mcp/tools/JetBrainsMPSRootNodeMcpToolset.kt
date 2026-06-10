@@ -120,44 +120,70 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Searches editable project models (excludes platform/library stubs — use `mps_mcp_get_project_structure` with `includeStubModules=true` to enumerate those) for root nodes whose name matches any of the given names. `names` accepts a single name or a JSON array of names. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
+        Searches project models for root nodes whose name matches any of the given names, honoring the same `scope` semantics as `mps_mcp_query_nodes`'s FIND_USAGES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` excludes read-only platform/library stubs; `all` covers the whole repository including the read-only Modules Pool; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
-        @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String
+        @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String,
+        @McpDescription("Search scope, mirroring FIND_USAGES: 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules').") scope: String = "editable",
+        @McpDescription("Optional model references; required when scope is 'models'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") models: String? = null,
+        @McpDescription("Optional module references; required when scope is 'modules'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") modules: String? = null
     ): String {
         return withMpsProject("Searching for MPS root node by name") { mpsProject ->
-            val nameSet: Set<String> = try {
-                val elem = JsonParser.parseString(names)
-                when {
-                    elem.isJsonArray -> elem.asJsonArray.map { it.asString }.toSet()
-                    // A JSON-encoded primitive string like "\"Foo\"" must unwrap to "Foo",
-                    // not stay as the quoted literal.
-                    elem.isJsonPrimitive && elem.asJsonPrimitive.isString -> setOf(elem.asString)
-                    else -> setOf(names)
-                }
-            } catch (e: Exception) {
-                rethrowIfCancellation(e)
-                setOf(names)
+            val nameSet: Set<String> = parseStringOrJsonArray(names).toSet()
+
+            // Reuse the exact scope-resolution code that backs FIND_USAGES so the two tools agree
+            // on what 'editable'/'all'/'models'/'modules' mean. 'models'/'modules' are passed
+            // through a JsonObject because that is the shape buildSearchScope consumes.
+            val scopeParams = JsonObject().apply {
+                parseScopeRefArray(models)?.let { add("models", it) }
+                parseScopeRefArray(modules)?.let { add("modules", it) }
             }
 
-            // Walk on a background dispatcher: the description promises "all models of the
-            // project", and iterating every module × model × root on the EDT freezes the UI
-            // for seconds on realistically-sized projects. Restricting to
-            // projectModulesWithGenerators also matches the documented scope (project models
-            // only) instead of including read-only libraries and platform languages.
+            // Walk on a background dispatcher: the scope may span the whole repository, and
+            // iterating every model × root on the EDT would freeze the UI for seconds on
+            // realistically-sized projects.
             executeBackgroundRead(mpsProject) {
+                val searchScope = when (val r = buildSearchScope(mpsProject, scope, scopeParams)) {
+                    is SearchScopeResolution.Ok -> r.scope
+                    is SearchScopeResolution.Err -> return@executeBackgroundRead r.errJson
+                }
                 val results = mutableListOf<String>()
-                for (module in mpsProject.projectModulesWithGenerators) {
-                    for (model in module.models) {
-                        for (root in model.rootNodes) {
-                            if (root.name in nameSet) {
-                                results.add(nodeInfoJson(root))
-                            }
+                for (model in searchScope.models) {
+                    for (root in model.rootNodes) {
+                        if (root.name in nameSet) {
+                            results.add(nodeInfoJson(root))
                         }
                     }
                 }
                 finalizeResult("[" + results.joinToString(",") + "]")
             }
+        }
+    }
+
+    // Parses a 'models'/'modules' scope parameter into the JsonArray shape buildSearchScope
+    // expects. Accepts a JSON array, a JSON-encoded string, or a bare reference string (the
+    // latter is common because persistent module/model references are not valid bare JSON).
+    private fun parseScopeRefArray(raw: String?): JsonArray? {
+        if (raw.isNullOrBlank()) return null
+        return JsonArray().apply { parseStringOrJsonArray(raw).forEach { add(it) } }
+    }
+
+    // Parses a string parameter that may be a JSON array, a JSON-encoded primitive string, or a
+    // bare string into the list of string values it represents. A JSON array maps each element
+    // to its string value; a JSON-encoded string (e.g. "\"Foo\"") unwraps to "Foo"; anything
+    // else, including invalid JSON (common for persistent module/model references), is treated
+    // as a single bare value.
+    private fun parseStringOrJsonArray(raw: String): List<String> {
+        return try {
+            val elem = JsonParser.parseString(raw)
+            when {
+                elem.isJsonArray -> elem.asJsonArray.map { it.asString }
+                elem.isJsonPrimitive && elem.asJsonPrimitive.isString -> listOf(elem.asString)
+                else -> listOf(raw)
+            }
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            listOf(raw)
         }
     }
 

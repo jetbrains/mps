@@ -7,8 +7,11 @@ import com.google.gson.JsonSyntaxException
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.diagnostic.Logger
 import jetbrains.mps.project.AbstractModule
+import jetbrains.mps.project.EditableFilteringScope
+import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.resolve.ResolverComponent
+import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.smodel.SModelInternal
 import jetbrains.mps.smodel.SReference as SRefImpl
 import jetbrains.mps.smodel.SNodeUtil
@@ -22,11 +25,15 @@ import org.jetbrains.mps.openapi.language.SReferenceLink
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.ResolveInfo
 import org.jetbrains.mps.openapi.model.SModel
+import org.jetbrains.mps.openapi.model.SModelReference
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil
 import org.jetbrains.mps.openapi.model.SReference
 import org.jetbrains.mps.openapi.model.SNodeReference
+import org.jetbrains.mps.openapi.module.SModule
+import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
+import org.jetbrains.mps.openapi.module.SearchScope
 
 abstract class AbstractNodeOps : AbstractOps() {
 
@@ -870,5 +877,66 @@ abstract class AbstractNodeOps : AbstractOps() {
             }
         }
         node.setProperty(sProperty, propertyValue)
+    }
+
+    protected sealed class SearchScopeResolution {
+        data class Ok(val scope: SearchScope) : SearchScopeResolution()
+        data class Err(val errJson: String) : SearchScopeResolution()
+    }
+
+    /**
+     * Builds the SearchScope corresponding to the 'scope' parameter shared by FIND_USAGES and
+     * root-node-by-name search. Supported values: "all", "editable", "models" (requires
+     * "models": [...]), "modules" (requires "modules": [...]). Returns the scope or an error result.
+     */
+    protected fun buildSearchScope(
+        mpsProject: MPSProject,
+        scopeParam: String,
+        params: JsonObject
+    ): SearchScopeResolution {
+        val repo = mpsProject.repository
+        return when (scopeParam) {
+            "all" -> SearchScopeResolution.Ok(GlobalScope(repo))
+            "editable" -> SearchScopeResolution.Ok(EditableFilteringScope(GlobalScope(repo)))
+            "models" -> {
+                val modelsArray = params.getAsJsonArray("models")
+                    ?: return SearchScopeResolution.Err(errJson("Parameter 'models' is missing for scope 'models'"))
+                val modelRefs = modelsArray.mapNotNull { resolveModel(repo, it.asString)?.reference }.toSet()
+                SearchScopeResolution.Ok(filteredScope(repo, allowedModels = modelRefs, allowedModules = null))
+            }
+            "modules" -> {
+                val modulesArray = params.getAsJsonArray("modules")
+                    ?: return SearchScopeResolution.Err(errJson("Parameter 'modules' is missing for scope 'modules'"))
+                val moduleRefs = modulesArray.mapNotNull { resolveModule(repo, it.asString)?.moduleReference }.toSet()
+                SearchScopeResolution.Ok(filteredScope(repo, allowedModels = null, allowedModules = moduleRefs))
+            }
+            else -> SearchScopeResolution.Err(errJson("Unsupported scope: $scopeParam"))
+        }
+    }
+
+    /**
+     * Builds a [BaseScope] restricted to either an explicit set of model references or
+     * an explicit set of module references. Exactly one of [allowedModels] / [allowedModules]
+     * must be non-null. The 'other' axis is derived: explicit-models contributes its containing
+     * modules; explicit-modules contributes all its models.
+     */
+    private fun filteredScope(
+        repo: SRepository,
+        allowedModels: Set<SModelReference>?,
+        allowedModules: Set<SModuleReference>?,
+    ): BaseScope = object : BaseScope() {
+        override fun getModules(): Iterable<SModule> =
+            allowedModules?.mapNotNull { it.resolve(repo) }
+                ?: allowedModels!!.mapNotNull { it.resolve(repo)?.module }.distinct()
+
+        override fun getModels(): Iterable<SModel> =
+            allowedModels?.mapNotNull { it.resolve(repo) }
+                ?: getModules().flatMap { it.models }
+
+        override fun resolve(reference: SModelReference): SModel? =
+            if (allowedModels == null || reference in allowedModels) reference.resolve(repo) else null
+
+        override fun resolve(reference: SModuleReference): SModule? =
+            if (allowedModules == null || reference in allowedModules) reference.resolve(repo) else null
     }
 }
