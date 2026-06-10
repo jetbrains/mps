@@ -15,7 +15,7 @@ Use this lookup when constructing JSON blueprints for BaseLanguage code. Every J
 | `int x = 5;`               | `LocalVariableDeclarationStatement` | `localVariableDeclaration` -> `LocalVariableDeclaration`             |
 | `x = 5;` (assignment)      | `ExpressionStatement` | `expression` -> `AssignmentExpression` (`lValue`, `rValue`)          |
 | `node1 :eq: node2`         | `NPEEqualsExpression` / `NPENotEqualsExpression` | `leftExpression`, `rightExpression`                                  |
-| `if` / `while`             | `IfStatement` / `WhileStatement` | `condition`, `ifTrue` / `body` (StatementList)                       |
+| `if` / `while`             | `IfStatement` / `WhileStatement` | `condition`, `ifTrue` (StatementList); `else` → `ifFalseStatement` (single Statement, see note) / `body` (StatementList) |
 | `for` / `foreach`          | `ForStatement` / `ForeachStatement` | `variable`, `condition`, `iteration` / `iterable`, `body`            |
 | `try { ... } catch`        | `TryCatchStatement` | `body` (StatementList), `catchClause`                                |
 | `return` / `throw`         | `ReturnStatement` / `ThrowStatement` | `expression` / `throwable`                                           |
@@ -33,6 +33,13 @@ Use this lookup when constructing JSON blueprints for BaseLanguage code. Every J
 | `this()`                   | `ThisConstructorInvocation` |                                                                     |
 | `super.method()`           | `SuperMethodCall` | `baseMethodDeclaration`                                                                     |
 | `super()`                  | `SuperConstructorInvocation` |                                                                      |
+
+## IfStatement — the `else` branch is **not** a StatementList
+
+`IfStatement` is asymmetric: `ifTrue` is a `StatementList`, but the `else` branch lives in `ifFalseStatement`, whose role accepts a **single `Statement`**, not a `StatementList`. Do not place statements directly into `ifFalseStatement` or try to fill it with a `StatementList` the way you do for `ifTrue` — that fails the structural/assignability check.
+
+- For a normal `else { ... }` block, put a **`BlockStatement`** into `ifFalseStatement` (this is the most typical concrete concept here) and add your statements to its inner `StatementList` (`BlockStatement.statements`).
+- For an `else if (...)` chain use the `elsifClauses` children.
 
 ## Workflow
 
