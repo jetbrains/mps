@@ -247,6 +247,16 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
             if (javaFacet != null) {
                 obj.addProperty("loadExtensions", javaFacet.loadExtensions.name)
             }
+            if (m is Language) {
+                val generators = JsonArray()
+                for (gen in m.ownedGenerators) {
+                    val genObj = JsonObject()
+                    genObj.addProperty("name", gen.moduleName ?: "")
+                    genObj.addProperty("reference", PersistenceFacade.getInstance().asString(gen.moduleReference))
+                    generators.add(genObj)
+                }
+                obj.add("generators", generators)
+            }
         }
 
         if (includeModels) {

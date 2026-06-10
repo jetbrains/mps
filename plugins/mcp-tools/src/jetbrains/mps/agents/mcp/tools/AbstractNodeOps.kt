@@ -902,12 +902,16 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val modelsArray = params.getAsJsonArray("models")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'models' is missing for scope 'models'"))
                 val modelRefs = modelsArray.mapNotNull { resolveModel(repo, it.asString)?.reference }.toSet()
+                if (modelsArray.size() > 0 && modelRefs.isEmpty())
+                    return SearchScopeResolution.Err(errJson("None of the ${modelsArray.size()} model reference(s) could be resolved"))
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = modelRefs, allowedModules = null))
             }
             "modules" -> {
                 val modulesArray = params.getAsJsonArray("modules")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'modules' is missing for scope 'modules'"))
                 val moduleRefs = modulesArray.mapNotNull { resolveModule(repo, it.asString)?.moduleReference }.toSet()
+                if (modulesArray.size() > 0 && moduleRefs.isEmpty())
+                    return SearchScopeResolution.Err(errJson("None of the ${modulesArray.size()} module reference(s) could be resolved"))
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = null, allowedModules = moduleRefs))
             }
             else -> SearchScopeResolution.Err(errJson("Unsupported scope: $scopeParam"))
@@ -924,19 +928,24 @@ abstract class AbstractNodeOps : AbstractOps() {
         repo: SRepository,
         allowedModels: Set<SModelReference>?,
         allowedModules: Set<SModuleReference>?,
-    ): BaseScope = object : BaseScope() {
-        override fun getModules(): Iterable<SModule> =
-            allowedModules?.mapNotNull { it.resolve(repo) }
-                ?: allowedModels!!.mapNotNull { it.resolve(repo)?.module }.distinct()
+    ): BaseScope {
+        require((allowedModels == null) != (allowedModules == null)) {
+            "exactly one of allowedModels / allowedModules must be non-null"
+        }
+        return object : BaseScope() {
+            override fun getModules(): Iterable<SModule> =
+                allowedModules?.mapNotNull { it.resolve(repo) }
+                    ?: allowedModels!!.mapNotNull { it.resolve(repo)?.module }.distinct()
 
-        override fun getModels(): Iterable<SModel> =
-            allowedModels?.mapNotNull { it.resolve(repo) }
-                ?: getModules().flatMap { it.models }
+            override fun getModels(): Iterable<SModel> =
+                allowedModels?.mapNotNull { it.resolve(repo) }
+                    ?: getModules().flatMap { it.models }
 
-        override fun resolve(reference: SModelReference): SModel? =
-            if (allowedModels == null || reference in allowedModels) reference.resolve(repo) else null
+            override fun resolve(reference: SModelReference): SModel? =
+                if (allowedModels == null || reference in allowedModels) reference.resolve(repo) else null
 
-        override fun resolve(reference: SModuleReference): SModule? =
-            if (allowedModules == null || reference in allowedModules) reference.resolve(repo) else null
+            override fun resolve(reference: SModuleReference): SModule? =
+                if (allowedModules == null || reference in allowedModules) reference.resolve(repo) else null
+        }
     }
 }
