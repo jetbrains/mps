@@ -1,6 +1,6 @@
 ---
 name: mps-aspect-behavior
-description: Use when defining or editing MPS `ConceptBehavior` — per-concept methods (virtual / final / abstract / static), constructors, virtual dispatch (MRO), super and interface-default calls (`super<Interface>.method`), overriding methods from `lang.core.behavior` interfaces such as `ScopeProvider.getScope` / `INamedConcept.getName` / `BaseConcept.getPresentation`, calling sibling methods (`LocalBehaviorMethodCall`) and behavior methods from other aspects via `node.method(...)`. Reach for this skill whenever the task involves authoring or modifying `<lang>/languageModels/behavior.mps`.
+description: Use when defining or editing MPS `ConceptBehavior` — per-concept methods (non-virtual / virtual / abstract / static / virtual static), constructors, virtual dispatch (MRO), super and interface-default calls (`super<Interface>.method`), overriding methods from `lang.core.behavior` interfaces such as `ScopeProvider.getScope` / `INamedConcept.getName` / `BaseConcept.getPresentation`, calling sibling methods (`LocalBehaviorMethodCall`) and behavior methods from other aspects via `node.method(...)`. Reach for this skill whenever the task involves authoring or modifying `<lang>/languageModels/behavior.mps`.
 type: reference
 ---
 
@@ -17,6 +17,8 @@ The **behavior** aspect attaches methods and a constructor to a concept, much li
 - An overriding method must match the signature of the supertype/interface method exactly. When implementing an interface method (e.g. `ScopeProvider.getScope`), set `overriddenMethod` on the new method to the interface declaration — MPS uses it for dispatch and signature validation.
 - Behavior calls on a `null` node do **not** NPE — MPS returns `null` for reference/String returns and the default for primitives. Still handle the `null` return for reference types.
 - Hoist shared methods to an abstract super-concept rather than duplicating per-sub-concept `ConceptBehavior` roots — virtual dispatch covers all non-abstract sub-concepts. (See `references/inheritance-and-dispatch.md`.)
+- Methods are **non-virtual by default**: all modifier booleans (`isVirtual`, `isAbstract`, `isStatic`, `isFinal`) default to `false`. Only `virtual` methods can be overridden; mark a method `virtual` up front if sub-concepts may ever need to specialise it.
+- When the same piece of node-handling logic repeats across several places or several aspects of one concept (editor, constraints, typesystem, generator, intentions, textgen), **extract it into a behavior method** and call it everywhere via `node.m(...)` — this de-duplication is the behavior aspect's primary purpose. Pick the modifier with the table below.
 - Edit behavior models through MPS MCP tools (`mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`, `mps_mcp_parse_java_and_insert`). Do not hand-edit `.mps` files.
 - For MPS-typed return types (`sequence<node<X>>`, `list<node<X>>`), `mps_mcp_parse_java_and_insert` produces Java `List<SNode>` — replace `returnType` afterwards with the correct MPS blueprint (see `mps-model-manipulation/references/variable-declarations.md`).
 - After edits run `mps_mcp_check_root_node_problems` and rebuild the language.
@@ -31,12 +33,20 @@ The **behavior** aspect attaches methods and a constructor to a concept, much li
 
 ## Method Modifier Quick Reference
 
-| Modifier | Call shape | Inheritance | Notes |
+| Modifier | Call shape | Dispatch / inheritance | Notes |
 |---|---|---|---|
-| `virtual` (default) | `node.m(...)` | Overridable by sub-concepts | Standard instance method. |
-| `final` | `node.m(...)` | Not overridable | Use when overriding must be forbidden. |
-| `abstract` | `node.m(...)` (virtually dispatched) | Every non-abstract sub-concept must provide an implementation | Only allowed on abstract concepts; no body. |
-| `static` | `Concept.m(...)` (qualified by concept name) | Not virtually dispatched; not inherited via dispatch | No `this`; called as `LocalBehaviorMethodCall` when unqualified inside the same `ConceptBehavior`. |
+| *(none)* — non-virtual (**default**) | `node.m(...)` | Inherited by sub-concepts but **statically bound — cannot be overridden** | A same-named method in a sub-concept's behavior shadows it (hazard) instead of overriding. Most `Classifier_Behavior` utilities in baseLanguage are non-virtual. |
+| `virtual` | `node.m(...)` | Dispatched at runtime by the node's actual concept; overridable in sub-concept behaviors | Set `isVirtual: true` explicitly. E.g. `Expression.isLValue` and every method of `Type_Behavior` in baseLanguage. |
+| `abstract` | `node.m(...)` (virtually dispatched) | No body; every non-abstract sub-concept must provide an implementation | **Implies `virtual` — set both `isAbstract` and `isVirtual`.** Declare on abstract/interface concepts (e.g. `Classifier.findAncestor`, `IMemberContainer.getMembers` in baseLanguage). |
+| `final` | `node.m(...)` | A virtual method that cannot be overridden further down | Rarely needed — a plain non-virtual method is already non-overridable. |
+| `static` | `ConceptName.m(...)` (qualified by concept name) | Belongs to the concept; no `this`; no dispatch | Concept-wide utilities, e.g. `Classifier.getContextClassifier` in baseLanguage. Called as `LocalBehaviorMethodCall` when unqualified inside the same `ConceptBehavior`. |
+| `virtual static` | `conceptValue.m(...)` on a `concept<X>` expression | Dispatched by the runtime **concept value**; overridable in sub-concept behaviors (link `overriddenMethod`) | Per-concept (not per-node) polymorphism — e.g. `Expression.getPrecedenceLevel`, `Type.isValueType` in baseLanguage, overridden across the smodel/collections behaviors. |
+
+### Choosing a modifier for an extracted method
+
+- Invoked on a **node** (needs `this`, properties, children)? → instance method: `virtual` if sub-concepts must be able to override it (or the logic varies by concept), non-virtual for a fixed helper.
+- Invoked on a **concept** (no node instance at hand, concept-wide utility, or nodes passed as parameters)? → `static`; make it `virtual static` when the result must vary per concept (dispatch on a `concept<X>` value).
+- Shared by several sub-concepts? → declare it once on their common (abstract) super-concept or interface; use `abstract` (+ `virtual`) when only sub-concepts can supply the body.
 
 ## Related Skills
 
