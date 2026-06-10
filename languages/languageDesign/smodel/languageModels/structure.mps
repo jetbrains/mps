@@ -98,6 +98,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.featureAccess" />
     <property role="EcuMT" value="1138056022639" />
+    <property role="R4oN_" value="read a property value (.propName)" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="gzTsBJd" role="1TKVEi">
       <property role="20kJfa" value="property" />
@@ -111,6 +112,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.featureAccess" />
     <property role="EcuMT" value="1138056143562" />
+    <property role="R4oN_" value="access single-cardinality link (.role)" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="gzTt5is" role="1TKVEi">
       <property role="20kJfa" value="link" />
@@ -127,6 +129,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.featureAccess" />
     <property role="EcuMT" value="1138056282393" />
+    <property role="R4oN_" value="access multi-cardinality link list (.role)" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="gzTtc_y" role="1TKVEi">
       <property role="20kJfa" value="link" />
@@ -145,6 +148,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation" />
     <property role="EcuMT" value="1138411891628" />
+    <property role="R4oN_" value="abstract base for all smodel operations" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="gDxVPDm" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -181,6 +185,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.property" />
     <property role="EcuMT" value="1138676077309" />
+    <property role="R4oN_" value="deprecated: use EnumMemberReference" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="1TJgyj" id="g$uo_Gj" role="1TKVEi">
       <property role="20kJfa" value="enumMember" />
@@ -330,6 +335,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="34LRSv" value=":" />
     <property role="EcuMT" value="1140137987495" />
+    <property role="R4oN_" value="cast node to narrower smodel type (node as C)" />
     <ref role="1TJDcQ" node="253epK5leq7" resolve="AbstractTypeCastExpression" />
     <node concept="t5JxF" id="2k7p7sTvW9p" role="lGtFl">
       <property role="t5JxN" value="Casts node to the given type. 'asCast' property is true &lt;=&gt; the operation is null-safe (null if the provided type is incompatible)" />
@@ -437,6 +443,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="new node" />
     <property role="EcuMT" value="1143235216708" />
+    <property role="R4oN_" value="create non-root node in this model" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="gCI8USK" role="1TKVEi">
       <property role="20kJfa" value="concept" />
@@ -484,6 +491,7 @@
     <property role="TrG5h" value="AbstractOperationParameter" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="EcuMT" value="1144100743722" />
+    <property role="R4oN_" value="abstract base for operation modifier parameters" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
   <node concept="1TIwiD" id="gDxIGKj">
@@ -503,6 +511,7 @@
     <property role="3GE5qa" value="operation.parameter" />
     <property role="34LRSv" value="root" />
     <property role="EcuMT" value="1144101597970" />
+    <property role="R4oN_" value="stop traversal at the containing root boundary" />
     <ref role="1TJDcQ" node="gDxHYCE" resolve="AbstractOperationParameter" />
   </node>
   <node concept="1TIwiD" id="gDxMEHC">
@@ -512,6 +521,7 @@
     <property role="3GE5qa" value="operation.parameter" />
     <property role="34LRSv" value="concept" />
     <property role="EcuMT" value="1144101972840" />
+    <property role="R4oN_" value="concept type filter &lt;C&gt; parameter" />
     <ref role="1TJDcQ" node="gDxHYCE" resolve="AbstractOperationParameter" />
     <node concept="1TJgyj" id="h$ri$Pk" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -688,6 +698,7 @@
     <property role="3GE5qa" value="operation.parameter" />
     <property role="34LRSv" value="concept in" />
     <property role="EcuMT" value="1154546920561" />
+    <property role="R4oN_" value="list of concept type filters" />
     <ref role="1TJDcQ" node="gDxHYCE" resolve="AbstractOperationParameter" />
     <node concept="1TJgyj" id="gNgmYLN" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -701,6 +712,7 @@
     <property role="TrG5h" value="ConceptReference" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="EcuMT" value="1154546950173" />
+    <property role="R4oN_" value="concept entry in a concept filter list" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="gNgnhzJ" role="1TKVEi">
       <property role="20kJfa" value="concept" />
@@ -717,6 +729,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="new root node" />
     <property role="EcuMT" value="1166648550386" />
+    <property role="R4oN_" value="create and insert root node in this model" />
     <ref role="1TJDcQ" node="gCI8gl4" resolve="Model_CreateNewNodeOperation" />
   </node>
   <node concept="1TIwiD" id="h2Rf3i4">
@@ -747,6 +760,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="roots" />
     <property role="EcuMT" value="1171315804604" />
+    <property role="R4oN_" value="root nodes in this model" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="5QK5AMJ1t1p" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -772,6 +786,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="nodes" />
     <property role="EcuMT" value="1171323947159" />
+    <property role="R4oN_" value="all nodes (roots and descendants) in this model" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="1xD045lXGSy" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -910,6 +925,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="rootsIncludingImported" />
     <property role="EcuMT" value="1176109685393" />
+    <property role="R4oN_" value="roots of this model and imported models" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="5QK5AMJ1OKV" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -932,6 +948,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="EcuMT" value="1177026924588" />
+    <property role="R4oN_" value="&lt;ConceptName&gt; concept argument in operation brackets" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="h8cht0$" role="1TKVEi">
       <property role="20kJfa" value="conceptDeclaration" />
@@ -1100,6 +1117,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="nodesIncludingImported" />
     <property role="EcuMT" value="1182511038748" />
+    <property role="R4oN_" value="all nodes of this and imported models" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="5QK5AMJ1OL7" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1120,7 +1138,7 @@
   <node concept="1TIwiD" id="hy5Kd_5">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
-    <property role="R4oN_" value="expression" />
+    <property role="R4oN_" value="# expr # used as link, property, or concept qualifier" />
     <property role="TrG5h" value="PoundExpression" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="34LRSv" value="# &lt;expr&gt;" />
@@ -1153,11 +1171,13 @@
     <property role="TrG5h" value="ILinkAccessQualifier" />
     <property role="3GE5qa" value="attribute" />
     <property role="EcuMT" value="1204848879094" />
+    <property role="R4oN_" value="identifies the link or attribute to access" />
   </node>
   <node concept="1TIwiD" id="hy6LbF0">
     <property role="TrG5h" value="LinkRefQualifier" />
     <property role="3GE5qa" value="attribute" />
     <property role="EcuMT" value="1204851882688" />
+    <property role="R4oN_" value="link access qualified by a node reference" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="hy6LbF1" role="1TKVEi">
       <property role="20kJfa" value="link" />
@@ -1187,6 +1207,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="add root" />
     <property role="EcuMT" value="1206482823744" />
+    <property role="R4oN_" value="insert detached node as new root" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="hzBYID2" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1200,6 +1221,7 @@
     <property role="TrG5h" value="IRefConceptArg" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="EcuMT" value="1206659704055" />
+    <property role="R4oN_" value="concept argument in an operation parameter" />
   </node>
   <node concept="1TIwiD" id="hCLkI6b">
     <property role="R5$K7" value="false" />
@@ -1209,6 +1231,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="name" />
     <property role="EcuMT" value="1212008292747" />
+    <property role="R4oN_" value="fully qualified model name" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
   <node concept="1TIwiD" id="hFZvMIM">
@@ -1408,6 +1431,7 @@
     <property role="TrG5h" value="SEnumOperation_Old" />
     <property role="3GE5qa" value="enum.enumoperation" />
     <property role="EcuMT" value="1240930395965" />
+    <property role="R4oN_" value="deprecated old-API enum operation interface" />
     <node concept="asaX9" id="50Pb80HCIJw" role="lGtFl">
       <property role="YLPcu" value="19.1" />
       <property role="YLQ7P" value="Use EnumOperation instead" />
@@ -1504,6 +1528,7 @@
     <property role="TrG5h" value="EnumMemberOperation" />
     <property role="3GE5qa" value="enumerations" />
     <property role="EcuMT" value="1241015185235" />
+    <property role="R4oN_" value="interface for enumeration member operations" />
     <node concept="PrWs8" id="i3Mhhsg" role="PrDN$">
       <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
     </node>
@@ -1515,6 +1540,7 @@
     <property role="3GE5qa" value="operation.parameter" />
     <property role="34LRSv" value="stop concepts are" />
     <property role="EcuMT" value="1803469493727536395" />
+    <property role="R4oN_" value="stop concepts (exclusive) for descendants traversal" />
     <ref role="1TJDcQ" node="gDxHYCE" resolve="AbstractOperationParameter" />
     <node concept="1TJgyj" id="1$7dvc8Sykc" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1527,12 +1553,14 @@
   <node concept="PlHQZ" id="3vpu_siOTrb">
     <property role="TrG5h" value="ILinkAccess" />
     <property role="EcuMT" value="4024382256428848843" />
+    <property role="R4oN_" value="assignable l-value: link, list, or attribute access" />
   </node>
   <node concept="1TIwiD" id="35Jy4LMD1lX">
     <property role="TrG5h" value="SLinkImplicitSelect" />
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.featureAccess" />
     <property role="EcuMT" value="3562215692195599741" />
+    <property role="R4oN_" value="implicit single selection from a multi-role access" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="35Jy4LMD1u3" role="1TKVEi">
       <property role="20kJfa" value="link" />
@@ -1552,6 +1580,7 @@
     <property role="3GE5qa" value="operation.node" />
     <property role="34LRSv" value="references" />
     <property role="EcuMT" value="8758390115028452779" />
+    <property role="R4oN_" value="all outgoing SReference values" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
   <node concept="1TIwiD" id="7Ac3mvqBi5P">
@@ -1573,6 +1602,7 @@
     <property role="3GE5qa" value="operation.reference" />
     <property role="34LRSv" value="target" />
     <property role="EcuMT" value="4124388153790980106" />
+    <property role="R4oN_" value="the node this reference points to" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="1lUJQtrPjS9" role="PzmwI">
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
@@ -1586,6 +1616,7 @@
     <property role="3GE5qa" value="operation.reference" />
     <property role="34LRSv" value="linkDeclaration" />
     <property role="EcuMT" value="1547759872598425067" />
+    <property role="R4oN_" value="deprecated: use .link" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="1lUJQtrPjSa" role="PzmwI">
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
@@ -1599,6 +1630,7 @@
     <property role="TrG5h" value="IReferenceOperation" />
     <property role="3GE5qa" value="operation.reference" />
     <property role="EcuMT" value="1547759872598425074" />
+    <property role="R4oN_" value="operations on an SReference value" />
     <node concept="PrWs8" id="1lUJQtrPjRN" role="PrDN$">
       <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
     </node>
@@ -1611,6 +1643,7 @@
     <property role="3GE5qa" value="operation.reference" />
     <property role="34LRSv" value="role" />
     <property role="EcuMT" value="5692182839349412519" />
+    <property role="R4oN_" value="deprecated: use .link.name" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="asaX9" id="7cdZoO_MeqH" role="lGtFl">
       <property role="YLPcu" value="3.3" />
@@ -1628,6 +1661,7 @@
     <property role="3GE5qa" value="operation.node" />
     <property role="34LRSv" value="containingRole" />
     <property role="EcuMT" value="1960721196051541146" />
+    <property role="R4oN_" value="deprecated: use .containingLink" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="asaX9" id="7cdZoO_MeDD" role="lGtFl">
       <property role="YLQ7P" value="use SNode.getContainmentLink() method or &quot;link&quot; operation after 3.5" />
@@ -1642,6 +1676,7 @@
     <property role="3GE5qa" value="operation.node" />
     <property role="34LRSv" value="reference" />
     <property role="EcuMT" value="3609773094169249792" />
+    <property role="R4oN_" value="get specific outgoing reference by link" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
     <node concept="1TJgyj" id="38ovo3PI95k" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1655,6 +1690,7 @@
     <property role="TrG5h" value="ILinkAccessQualifierContainer" />
     <property role="3GE5qa" value="attribute" />
     <property role="EcuMT" value="3542758363529077353" />
+    <property role="R4oN_" value="carries an ILinkAccessQualifier child" />
   </node>
   <node concept="1TIwiD" id="4uVbusd0fYc">
     <property role="R5$K7" value="false" />
@@ -1663,6 +1699,7 @@
     <property role="3GE5qa" value="operation.parameter" />
     <property role="34LRSv" value="linkQualifier" />
     <property role="EcuMT" value="5168775467716640652" />
+    <property role="R4oN_" value="link/C:role/ identifier for reference access" />
     <ref role="1TJDcQ" node="gDxHYCE" resolve="AbstractOperationParameter" />
     <node concept="1TJgyj" id="4uVbusd0fYd" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1683,6 +1720,7 @@
     <property role="3GE5qa" value="operation.reference" />
     <property role="34LRSv" value="resolveInfo" />
     <property role="EcuMT" value="5708036808576088033" />
+    <property role="R4oN_" value="stored text hint for reference resolution" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="4WR1jK$23yk" role="PzmwI">
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
@@ -1694,7 +1732,7 @@
   <node concept="1TIwiD" id="1lvHLgR6tlS">
     <property role="R5$K7" value="false" />
     <property role="R5$K2" value="false" />
-    <property role="R4oN_" value="same metalevel" />
+    <property role="R4oN_" value="include only nodes at the same meta-level" />
     <property role="TrG5h" value="OperationParm_SameMetaLevel" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="34LRSv" value="M" />
@@ -1741,12 +1779,14 @@
   <node concept="1TIwiD" id="1Cyzq4Pv$D9">
     <property role="TrG5h" value="IfInstanceOfVariable" />
     <property role="EcuMT" value="1883223317721008713" />
+    <property role="R4oN_" value="typed variable bound to the cast node" />
     <ref role="1TJDcQ" to="tpee:4k3qd$cSlJ3" resolve="BaseVariableDeclaration" />
   </node>
   <node concept="1TIwiD" id="1Cyzq4PvWDN">
     <property role="TrG5h" value="IfInstanceOfVarReference" />
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="EcuMT" value="1883223317721107059" />
+    <property role="R4oN_" value="reference to the IfInstanceOfVariable" />
     <ref role="1TJDcQ" to="tpee:4Lb$w0Yiqs4" resolve="BaseVariableReference" />
     <node concept="1TJgyj" id="1Cyzq4PvWDO" role="1TKVEi">
       <property role="20kJfa" value="instanceOfVariable" />
@@ -1782,12 +1822,14 @@
     <property role="TrG5h" value="AttributeQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="6407023681583036843" />
+    <property role="R4oN_" value="abstract base for attribute qualifier" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
   <node concept="1TIwiD" id="5zEkxuKhrAP">
     <property role="TrG5h" value="NodeAttributeQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="6407023681583036853" />
+    <property role="R4oN_" value="attribute on the node itself (@AttributeConcept)" />
     <ref role="1TJDcQ" node="5zEkxuKhrAF" resolve="AttributeQualifier" />
     <node concept="1TJgyj" id="5zEkxuKhrAQ" role="1TKVEi">
       <property role="20kJfa" value="attributeConcept" />
@@ -1800,6 +1842,7 @@
     <property role="TrG5h" value="LinkAttributeQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="6407023681583036855" />
+    <property role="R4oN_" value="attribute on a reference link" />
     <ref role="1TJDcQ" node="5zEkxuKhrAF" resolve="AttributeQualifier" />
     <node concept="1TJgyj" id="5zEkxuKhrUi" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1829,6 +1872,7 @@
     <property role="TrG5h" value="PropertyAttributeQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="6407023681583040953" />
+    <property role="R4oN_" value="attribute on a property" />
     <ref role="1TJDcQ" node="5zEkxuKhrAF" resolve="AttributeQualifier" />
     <node concept="1TJgyj" id="5zEkxuKhsAV" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1848,16 +1892,19 @@
     <property role="TrG5h" value="ILinkQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="2788452359612124330" />
+    <property role="R4oN_" value="identifies a specific link for attribute access" />
   </node>
   <node concept="PlHQZ" id="2qM$EmJLWMF">
     <property role="TrG5h" value="IPropertyQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="2788452359612124331" />
+    <property role="R4oN_" value="identifies a specific property for attribute access" />
   </node>
   <node concept="1TIwiD" id="2qM$EmJLWMG">
     <property role="TrG5h" value="LinkQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="2788452359612124332" />
+    <property role="R4oN_" value="names a specific link by its declaration" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2qM$EmJLWMK" role="1TKVEi">
       <property role="20kJfa" value="link" />
@@ -1873,6 +1920,7 @@
     <property role="TrG5h" value="PropertyQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="2788452359612124333" />
+    <property role="R4oN_" value="names a specific property by its declaration" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="2qM$EmJLWMJ" role="1TKVEi">
       <property role="20kJfa" value="property" />
@@ -1892,6 +1940,7 @@
     <property role="3GE5qa" value="operation.model" />
     <property role="34LRSv" value="module" />
     <property role="EcuMT" value="6995935425733782641" />
+    <property role="R4oN_" value="module containing this model" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
   <node concept="1TIwiD" id="3wj3sjzQPFL">
@@ -1942,6 +1991,7 @@
     <property role="3GE5qa" value="reference.model" />
     <property role="34LRSv" value="model" />
     <property role="EcuMT" value="559557797393017698" />
+    <property role="R4oN_" value="runtime reference to a specific SModel" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="asaX9" id="5C3R$hJlJ8f" role="lGtFl">
       <property role="YLPcu" value="2018.1" />
@@ -1969,6 +2019,7 @@
     <property role="3GE5qa" value="conceptSwitch" />
     <property role="34LRSv" value="subconcept of" />
     <property role="EcuMT" value="5944356402132808754" />
+    <property role="R4oN_" value="branch matching concept C or any subconcept" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="gVKbmvf" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -1996,6 +2047,7 @@
     <property role="34LRSv" value="concept switch" />
     <property role="3GE5qa" value="conceptSwitch" />
     <property role="EcuMT" value="5944356402132808749" />
+    <property role="R4oN_" value="dispatch statement branching on node's concept" />
     <ref role="1TJDcQ" to="tpee:fzclF8l" resolve="Statement" />
     <node concept="t5JxF" id="2SK3zPtoyXP" role="lGtFl">
       <property role="t5JxN" value="Unlike case clause in Java switch, there's no fall-thrugh mechanism, both exact and subconcept match cases are treated as an either-or alternatives. I.e. if you get two subconcept cases for INamedElement and BaseConcept, only the first one to match would be respected. " />
@@ -2057,6 +2109,7 @@
     <property role="3GE5qa" value="operation.concept" />
     <property role="34LRSv" value="asNode" />
     <property role="EcuMT" value="8866923313515890008" />
+    <property role="R4oN_" value="project concept&lt;C&gt; to its AbstractConceptDeclaration node" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
   <node concept="1TIwiD" id="637Y3IJQ3Hr">
@@ -2100,6 +2153,7 @@
     <property role="34LRSv" value="childNode" />
     <property role="R5$K7" value="false" />
     <property role="EcuMT" value="597763930871270009" />
+    <property role="R4oN_" value="reference to a child node by role path" />
     <ref role="1TJDcQ" node="36vPRrqnoSW" resolve="AbstractNodeRefExpression" />
     <node concept="1TJgyj" id="xbFM377T9g" role="1TKVEi">
       <property role="20kJfa" value="targetNode" />
@@ -2208,6 +2262,7 @@
     <property role="3GE5qa" value="operation.concept" />
     <property role="34LRSv" value="asConcept" />
     <property role="EcuMT" value="334628810661441841" />
+    <property role="R4oN_" value="downcast concept&lt;&gt; to Java SConcept API type" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
   <node concept="1TIwiD" id="5MFgGQnlLNI">
@@ -2241,6 +2296,7 @@
     <property role="3GE5qa" value="reference" />
     <property role="TrG5h" value="BootstrapAwareMetaObject" />
     <property role="EcuMT" value="2565258849284146373" />
+    <property role="R4oN_" value="meta-object requiring bootstrap-safe ID resolution" />
     <node concept="1TJgyi" id="2epClk4wB9F" role="1TKVEl">
       <property role="TrG5h" value="bootstrap" />
       <property role="IQ2nx" value="2565258849284158059" />
@@ -2254,6 +2310,7 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="3GE5qa" value="operation.concept" />
     <property role="EcuMT" value="6870613620389313273" />
+    <property role="R4oN_" value="abstract base for concept&lt;&gt; value operations" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="5XpkEY8gZFV" role="PzmwI">
       <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
@@ -2264,6 +2321,7 @@
     <property role="TrG5h" value="ConceptAliasOperation" />
     <property role="34LRSv" value="conceptAlias" />
     <property role="EcuMT" value="6870613620390542976" />
+    <property role="R4oN_" value="get a concept's alias string (.alias)" />
     <ref role="1TJDcQ" node="5XpkEY8gZFT" resolve="SConceptOperation" />
   </node>
   <node concept="1TIwiD" id="5XpkEY8oJOs">
@@ -2271,6 +2329,7 @@
     <property role="TrG5h" value="ConceptShortDescriptionOperation" />
     <property role="34LRSv" value="shortDescription" />
     <property role="EcuMT" value="6870613620391345436" />
+    <property role="R4oN_" value="get a concept's short description string" />
     <ref role="1TJDcQ" node="5XpkEY8gZFT" resolve="SConceptOperation" />
   </node>
   <node concept="1TIwiD" id="34EJa6aIcz0">
@@ -2321,11 +2380,13 @@
     <property role="TrG5h" value="LanguageIdentity" />
     <property role="3GE5qa" value="identity" />
     <property role="EcuMT" value="3542851458883437336" />
+    <property role="R4oN_" value="provides stable language identity" />
   </node>
   <node concept="1TIwiD" id="BpxLfMiwTr">
     <property role="TrG5h" value="ChildAttributeQualifier" />
     <property role="3GE5qa" value="attributes" />
     <property role="EcuMT" value="709746936026631771" />
+    <property role="R4oN_" value="attribute on a containment link" />
     <ref role="1TJDcQ" node="5zEkxuKhrAF" resolve="AttributeQualifier" />
     <node concept="1TJgyj" id="BpxLfMiwTs" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -2346,6 +2407,7 @@
     <property role="TrG5h" value="ExactConceptCase" />
     <property role="34LRSv" value="exact concept" />
     <property role="EcuMT" value="6039268229364358244" />
+    <property role="R4oN_" value="branch matching only the exact concept C" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5ffMBka$9NN" role="1TKVEi">
       <property role="20lmBu" value="fLJjDmT" />
@@ -2369,6 +2431,7 @@
     <property role="3GE5qa" value="conceptSwitch" />
     <property role="TrG5h" value="IConceptSwitchCase" />
     <property role="EcuMT" value="6039268229364358294" />
+    <property role="R4oN_" value="interface for concept switch case branches" />
   </node>
   <node concept="1TIwiD" id="4o40NPkYE0z">
     <property role="3GE5qa" value="operation.node" />
@@ -2405,6 +2468,7 @@
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="ModuleIdentity" />
     <property role="EcuMT" value="427659576753753630" />
+    <property role="R4oN_" value="provides stable module identity" />
     <node concept="asaX9" id="7k$14oQrlDk" role="lGtFl">
       <property role="YLQ7P" value="Use lang.modelapi.ModuleIdentity instead. This concept and its subconcepts will be removed in 2019.3" />
       <property role="YLPcu" value="2018.2" />
@@ -2442,6 +2506,7 @@
     <property role="TrG5h" value="AbstractTypeCastExpression" />
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="EcuMT" value="2396822768958367367" />
+    <property role="R4oN_" value="abstract base for smodel type-cast expressions" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="PrWs8" id="253epK5leqc" role="PzmwI">
       <ref role="PrY4T" to="tpee:1wHCnsn58oY" resolve="IBinaryLike" />
@@ -2471,6 +2536,7 @@
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="PropertyIdentity" />
     <property role="EcuMT" value="6911370362349110807" />
+    <property role="R4oN_" value="provides stable property identity" />
     <node concept="PrWs8" id="2PiAZGev8vJ" role="PrDN$">
       <ref role="PrY4T" node="2PiAZGev8v_" resolve="ConceptMemberIdentity" />
     </node>
@@ -2479,6 +2545,7 @@
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="ConceptIdentity" />
     <property role="EcuMT" value="6911370362349110850" />
+    <property role="R4oN_" value="provides stable concept identity" />
   </node>
   <node concept="1TIwiD" id="5ZE7FBYYQZB">
     <property role="3GE5qa" value="identity" />
@@ -2545,13 +2612,14 @@
     <property role="2_RsDV" value="4G1g3fIR8JG" />
     <property role="34LRSv" value=":" />
     <property role="EcuMT" value="1761385620274348152" />
+    <property role="R4oN_" value="cast concept&lt;&gt; to typed concept&lt;C&gt;" />
     <ref role="1TJDcQ" node="253epK5leq7" resolve="AbstractTypeCastExpression" />
   </node>
   <node concept="1TIwiD" id="7c$ruAHVbwd">
     <property role="EcuMT" value="8296877263936075789" />
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="GeneratorModulePointer" />
-    <property role="R4oN_" value="As long as there's no runtime identity for generators (like SLanguage for language), GeneratorIdentity doesn't specify any behaviour methods, and we use SModuleReference here." />
+    <property role="R4oN_" value="persistent reference to a generator module" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="7c$ruAHVbxO" role="1TKVEi">
       <property role="IQ2ns" value="8296877263936075892" />
@@ -2572,6 +2640,7 @@
     <property role="EcuMT" value="8296877263936070003" />
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="GeneratorIdentity" />
+    <property role="R4oN_" value="provides stable generator identity" />
   </node>
   <node concept="1TIwiD" id="7jb4LXp8VrB">
     <property role="3GE5qa" value="identity" />
@@ -2629,6 +2698,7 @@
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="AggregationIdentity" />
     <property role="EcuMT" value="8415841354032330481" />
+    <property role="R4oN_" value="provides stable containment link identity" />
     <node concept="PrWs8" id="2PiAZGev8vP" role="PrDN$">
       <ref role="PrY4T" node="2PiAZGev8v_" resolve="ConceptMemberIdentity" />
     </node>
@@ -2637,6 +2707,7 @@
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="AssociationIdentity" />
     <property role="EcuMT" value="8415841354032330482" />
+    <property role="R4oN_" value="provides stable reference link identity" />
     <node concept="PrWs8" id="2PiAZGev8vM" role="PrDN$">
       <ref role="PrY4T" node="2PiAZGev8v_" resolve="ConceptMemberIdentity" />
     </node>
@@ -2645,6 +2716,7 @@
     <property role="EcuMT" value="3265844182379169765" />
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="ConceptMemberIdentity" />
+    <property role="R4oN_" value="provides stable concept member identity" />
   </node>
   <node concept="1TIwiD" id="4JM1Q3lfSBE">
     <property role="EcuMT" value="5472444609684539882" />
@@ -2667,6 +2739,7 @@
     <property role="3GE5qa" value="operation.node" />
     <property role="34LRSv" value="containingLink" />
     <property role="EcuMT" value="7504436213544206332" />
+    <property role="R4oN_" value="SContainmentLink connecting this node to parent" />
     <ref role="1TJDcQ" node="g$eCIIG" resolve="SNodeOperation" />
   </node>
   <node concept="1TIwiD" id="2ytHpS0VIut">
@@ -2677,6 +2750,7 @@
     <property role="3GE5qa" value="operation.reference" />
     <property role="34LRSv" value="link" />
     <property role="EcuMT" value="2926695023085807517" />
+    <property role="R4oN_" value="SReferenceLink of this reference" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="2ytHpS0VKmm" role="PzmwI">
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
@@ -2686,6 +2760,7 @@
     <property role="EcuMT" value="2469893808086079682" />
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="LanguageIdentityBySourceModule" />
+    <property role="R4oN_" value="language identity via its source module" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="296OPknU5zD" role="1TKVEi">
       <property role="IQ2ns" value="2469893808086079721" />
@@ -2749,6 +2824,7 @@
     <property role="34LRSv" value="resolve" />
     <property role="R5$K7" value="true" />
     <property role="R5$K2" value="false" />
+    <property role="R4oN_" value="abstract base for pointer resolution operations" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="3ayRDg9aL$v" role="1TKVEi">
       <property role="IQ2ns" value="3648723375513868575" />
@@ -2817,6 +2893,7 @@
     <property role="3GE5qa" value="identity" />
     <property role="TrG5h" value="DevkitIdentity" />
     <property role="EcuMT" value="8222125370833325502" />
+    <property role="R4oN_" value="provides stable devkit identity" />
   </node>
   <node concept="1TIwiD" id="OjQ__FNYXe">
     <property role="EcuMT" value="942336824646299470" />
@@ -2837,6 +2914,7 @@
     <property role="EcuMT" value="3320646261221695165" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="TrG5h" value="NodePointerArg_Identity" />
+    <property role="R4oN_" value="node pointer arg: lookup by node identity" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="2SljyToQhW3" role="PzmwI">
       <ref role="PrY4T" node="2SljyToQhT_" resolve="INodePointerArg" />
@@ -2853,6 +2931,7 @@
     <property role="EcuMT" value="3320646261221695077" />
     <property role="3GE5qa" value="operation.parameter" />
     <property role="TrG5h" value="INodePointerArg" />
+    <property role="R4oN_" value="interface for node pointer identity arguments" />
   </node>
   <node concept="1TIwiD" id="3bhfBP455GQ">
     <property role="EcuMT" value="3661776679762942774" />
@@ -2885,6 +2964,7 @@
     <property role="TrG5h" value="EnumMember_NameOperation" />
     <property role="34LRSv" value="name" />
     <property role="3GE5qa" value="enumerations" />
+    <property role="R4oN_" value="name string of this enum member" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="50Pb80HCIIB" role="PzmwI">
       <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
@@ -2894,6 +2974,7 @@
     <property role="EcuMT" value="1966870290088668405" />
     <property role="3GE5qa" value="enumerations" />
     <property role="TrG5h" value="EnumOperation" />
+    <property role="R4oN_" value="interface for enumeration-level operations" />
     <node concept="PrWs8" id="50Pb80HCzRH" role="PrDN$">
       <ref role="PrY4T" to="tpee:hqOqG0K" resolve="IOperation" />
     </node>
@@ -2970,6 +3051,7 @@
     <property role="3GE5qa" value="enumerations" />
     <property role="TrG5h" value="EnumMember_PresentationOperation" />
     <property role="34LRSv" value="presentation" />
+    <property role="R4oN_" value="presentation string of this enum member" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="50Pb80HCIIF" role="PzmwI">
       <ref role="PrY4T" node="i3MheXj" resolve="EnumMemberOperation" />
@@ -3029,6 +3111,7 @@
     <property role="TrG5h" value="EnumSwitchExpression" />
     <property role="34LRSv" value="enum switch" />
     <property role="3GE5qa" value="enumSwitch" />
+    <property role="R4oN_" value="expression dispatching on enumeration member value" />
     <ref role="1TJDcQ" to="tpee:fz3vP1J" resolve="Expression" />
     <node concept="1TJgyj" id="28aPEVv7nnw" role="1TKVEi">
       <property role="IQ2ns" value="2453008993612559840" />
@@ -3055,6 +3138,7 @@
     <property role="EcuMT" value="2453008993612559843" />
     <property role="3GE5qa" value="enumSwitch" />
     <property role="TrG5h" value="EnumSwitchCase" />
+    <property role="R4oN_" value="case branch in an EnumSwitchExpression" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="28aPEVv7nn$" role="1TKVEi">
       <property role="IQ2ns" value="2453008993612559844" />
@@ -3076,12 +3160,14 @@
     <property role="3GE5qa" value="enumSwitch" />
     <property role="TrG5h" value="EnumSwitchCaseBody" />
     <property role="R5$K7" value="true" />
+    <property role="R4oN_" value="abstract body of an EnumSwitchCase" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
   </node>
   <node concept="1TIwiD" id="28aPEVv7XN5">
     <property role="EcuMT" value="2453008993612717253" />
     <property role="3GE5qa" value="enumSwitch" />
     <property role="TrG5h" value="EnumSwitchCaseBody_Expression" />
+    <property role="R4oN_" value="enum case body: single expression result" />
     <ref role="1TJDcQ" node="28aPEVv7XLw" resolve="EnumSwitchCaseBody" />
     <node concept="1TJgyj" id="28aPEVv7XN6" role="1TKVEi">
       <property role="IQ2ns" value="2453008993612717254" />
@@ -3096,6 +3182,7 @@
     <property role="3GE5qa" value="enumSwitch" />
     <property role="TrG5h" value="EnumSwitchCaseBody_StatementList" />
     <property role="34LRSv" value="{" />
+    <property role="R4oN_" value="enum case body: statement list" />
     <ref role="1TJDcQ" node="28aPEVv7XLw" resolve="EnumSwitchCaseBody" />
     <node concept="1TJgyj" id="28aPEVv7XNa" role="1TKVEi">
       <property role="IQ2ns" value="2453008993612717258" />
@@ -3155,6 +3242,7 @@
     <property role="3GE5qa" value="operation.reference" />
     <property role="TrG5h" value="Reference_IsDynamic" />
     <property role="34LRSv" value="isDynamic" />
+    <property role="R4oN_" value="whether this reference is dynamically resolved" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="PrWs8" id="5hvwTWxpWvs" role="PzmwI">
       <ref role="PrY4T" node="1lUJQtrPjRM" resolve="IReferenceOperation" />
@@ -3233,6 +3321,7 @@
     <property role="3GE5qa" value="operation.node" />
     <property role="R5$K7" value="true" />
     <property role="TrG5h" value="ConceptJustToIntroduceAggregatedLanguage" />
+    <property role="R4oN_" value="placeholder to import aggregated language" />
     <ref role="1TJDcQ" to="tpck:gw2VY9q" resolve="BaseConcept" />
     <node concept="1TJgyj" id="5sqSqyx6RHu" role="1TKVEi">
       <property role="IQ2ns" value="6276577145067895646" />
