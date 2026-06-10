@@ -29,7 +29,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Primary tool for project discovery, name-based searching, dependency analysis, and shortened-name expansion (e.g. `j.m.l.core` → `jetbrains.mps.lang.core`). Saves the result to a temp file to bypass MCP response-size limits (path returned in `data`). Use `startingPoint` (a module/model/node reference) to scope the dump; use the `include...` flags to control depth. Keep `include...` flags false for fast project-wide discovery. See `mps-mcp-workflow/references/finding-things.md` for the name-resolution protocol.
+        Primary tool for project discovery, name-based searching, dependency analysis, and shortened-name expansion (e.g. `j.m.l.core` → `jetbrains.mps.lang.core`). Saves the result to a temp file to bypass MCP response-size limits (path returned in `data`). Use `startingPoint` (a module/model/node reference) to scope the dump; use the `include...` flags to control depth. Keep `include...` flags false for fast project-wide discovery. With `includeDependencies`, each model's `usedLanguages` lists directly-used languages plus used devkits; every devkit entry (`kind: devkit`) carries a `providedLanguages` array enumerating the languages it brings into scope transitively (including via extended devkits), so a language already supplied by a devkit need not be imported again. See `mps-mcp-workflow/references/finding-things.md` for the name-resolution protocol.
     """
     )
     suspend fun mps_mcp_get_project_structure(
@@ -296,9 +296,24 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                 for (language in model.importedLanguageIds()) {
                     usedLanguages.add(namedReferenceJsonObject(language.qualifiedName, PersistenceFacade.getInstance().asString(language)))
                 }
+                val repository = model.repository
                 for (devkit in model.importedDevkits()) {
                     val devkitObj = namedReferenceJsonObject(devkit.moduleName ?: "", PersistenceFacade.getInstance().asString(devkit))
                     devkitObj.addProperty("kind", "devkit")
+                    // Expand the devkit into the languages it actually brings into the model's scope
+                    // (transitively, including languages exported by extended devkits). A reader that
+                    // sees only the devkit name cannot tell that a language is already available, which
+                    // is what drives redundant mps_mcp_model_used_language ADD calls — those can only be
+                    // answered after the fact with providedByDevKit. Surfacing the expansion lets the
+                    // caller decide not to import a language a used devkit already supplies.
+                    val dk = devkit.resolve(repository) as? DevKit
+                    if (dk != null) {
+                        val provided = JsonArray()
+                        for (lang in dk.allExportedLanguageIds.sortedBy { it.qualifiedName }) {
+                            provided.add(namedReferenceJsonObject(lang.qualifiedName, PersistenceFacade.getInstance().asString(lang)))
+                        }
+                        devkitObj.add("providedLanguages", provided)
+                    }
                     usedLanguages.add(devkitObj)
                 }
             }
