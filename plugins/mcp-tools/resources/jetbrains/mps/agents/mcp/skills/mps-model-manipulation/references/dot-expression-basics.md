@@ -10,25 +10,25 @@ DotExpression
 
 This file lists the blueprints you'll reach for most often: cardinality choice, operand casting, navigation (`.parent`, `.children`, `.ancestor<C>`, `.ancestors<C>`, `.descendants<C>` with include-self `+`), the two type-cast forms (`node:C` vs `node as C`), the two downcast bridges (`expr/` smodel→Java and `downcast expr` collections→Java interface), `.isInstanceOf` / `.isNotNull` / `.isNull` / `.behaviorMethod(args)`, and the four common sequence operations (`.where`, `.any`, `.translate`, `list.add`). The reusable closure-literal blueprint is in `closures-catalog.md`.
 
-## Cardinality cheatsheet — `SLinkAccess` vs `SLinkListAccess` (and child variants)
+## Cardinality cheatsheet — `SLinkAccess` vs `SLinkListAccess`
 
-The choice of access concept depends on the **link/child cardinality**, not on what feels natural in the dot expression. Picking the wrong one produces confusing errors that don't point at the cardinality mismatch.
+A single concept pair covers **both** reference links and containment children — there is no separate `SChildAccess`/`SChildListAccess` in this MPS (`search_concepts` confirms only `SLinkAccess`/`SLinkListAccess` exist, and their `link` reference targets a `LinkDeclaration` that may be either a reference link or a containment link). What selects the concept is the **cardinality**, not whether the role is a reference or a child.
 
-| Cardinality | Reference (link) access | Containment (child) access | Result type |
-|---|---|---|---|
-| `1`, `0..1` | `SLinkAccess` | `SChildAccess` | `node<Target>` |
-| `0..n`, `1..n` | `SLinkListAccess` | `SChildListAccess` | `sequence<node<Target>>` |
+| Cardinality | Access concept (reference *or* child) | Result type |
+|---|---|---|
+| `1`, `0..1` | `SLinkAccess` | `node<Target>` |
+| `0..n`, `1..n` | `SLinkListAccess` | `sequence<node<Target>>` |
 
-Symptoms of using the singular form (`SLinkAccess`/`SChildAccess`) on a list-cardinality role:
+Symptoms of using the singular form (`SLinkAccess`) on a list-cardinality role:
 - "operation is not applicable to null"
-- "access to link/child 'X' is not expected here"
+- "access to link 'X' is not expected here"
 - "The reference X is out of search scope"
 
 None of these mention cardinality — check it explicitly when these errors appear.
 
 ## Operand must be a typed `node<X>` — cast an untyped operand
 
-`SLinkAccess` / `SLinkListAccess` / `SPropertyAccess` / `SChildAccess` / `SChildListAccess` all require their **operand** to be typed as `node<X>` where `X` is the concept that declares the link/property. A plain `node<>` (e.g. the result of a generic operation that loses concept information, a parameter typed loosely as `node<BaseConcept>`, or a `VariableReference` to a `ForEachVariable` whose source sequence is `sequence<node<>>`) will fail validation with the same family of errors as the cardinality mismatch above — particularly **"out of search scope"** or **"access to link 'X' is not expected here"**.
+`SLinkAccess` / `SLinkListAccess` / `SPropertyAccess` all require their **operand** to be typed as `node<X>` where `X` is the concept that declares the link/property. A plain `node<>` (e.g. the result of a generic operation that loses concept information, a parameter typed loosely as `node<BaseConcept>`, or a `VariableReference` to a `ForEachVariable` whose source sequence is `sequence<node<>>`) will fail validation with the same family of errors as the cardinality mismatch above — particularly **"out of search scope"** or **"access to link 'X' is not expected here"**.
 
 **Fix**: wrap the operand in an `SNodeTypeCastExpression` to give it the right concept type. Use `asCast=false` (the strict `:` form) when you know statically that the node is of concept `X`; use `asCast=true` (the null-safe `as` form) when the cast may legitimately miss. The `SNodeTypeCastExpression` becomes the new `operand` of the surrounding `DotExpression`:
 
@@ -71,7 +71,7 @@ See "`node as C` vs `node:C`" below for the full `SNodeTypeCastExpression` bluep
 }
 ```
 
-For list cardinality (`0..n` or `1..n`), use `jetbrains.mps.lang.smodel.structure.SLinkListAccess` instead — same shape, different concept. The same applies to `SChildAccess` vs `SChildListAccess` for containment links.
+For list cardinality (`0..n` or `1..n`), use `jetbrains.mps.lang.smodel.structure.SLinkListAccess` instead — same shape, different concept. This holds whether the role is a reference link or a containment child: `SLinkAccess`/`SLinkListAccess` serve both.
 
 ### `node.parent` — direct parent (no concept filtering)
 

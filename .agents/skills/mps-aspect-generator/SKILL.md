@@ -14,7 +14,7 @@ A **generator** transforms models written in the source language into models of 
 - **`applicableConcept` must be a structure-model node ref** (`r:<modelUUID>(<lang>.structure)/<nodeId>`), never the `c:<langUUID>/<conceptId>` form. Wrong form → silent `Unresolved reference: c:...`. See `references/rule-consequences.md`.
 - **A `TemplateDeclaration` used as a reduction target requires at least one `TemplateFragment`** on the produced subtree, or the rule fires and emits nothing.
 - **Module dependencies vs. model used-languages are two distinct layers** (see `references/module-structure.md`). Adding a class to the wrong one yields "cannot resolve" in generated Java or unusable concepts in templates.
-- **Macros attach via the `smodelAttribute` child role.** Multiple sibling macros on the same target are valid and order-independent (`$LOOP` + `$COPY_SRC` is the canonical pair).
+- **Macros attach via the `smodelAttribute` child role, and co-located macros are chained in child order — order is semantics.** `$IF$` before `$LOOP$` gates the whole loop in the outer context; `$LOOP$` before `$IF$` evaluates the condition per iteration. The `$LOOP$` + `$COPY_SRC$` pair is order-insensitive only because `$COPY_SRC$` is terminal — don't generalize. See `references/macro-catalog.md`.
 - **Reductions can self-loop** when they produce their own concept — break out with `DismissTopMappingRule`, a marker subconcept, or `$COPY_SRC$`.
 - **Cross-rule/cross-template references go through mapping labels.** Direct references survive only within a single fragment.
 

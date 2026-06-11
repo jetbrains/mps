@@ -15,7 +15,9 @@ Read this when: choosing what plugs into a rule's `ruleConsequence` role, replac
 | `DismissTopMappingRule` | Fail over to the next matching rule | optional message property |
 | `SwitchMacro_RuleConsequence` *(pattern rules)* | Dispatch through a template switch | ref `templateSwitch` |
 
-## Verbatim StateChart example — `EmptyOperation` reduces to nothing (drop from the XML output):
+## Example from the StateChart *sample* — `EmptyOperation` reduces to nothing (drop from the XML output):
+
+> Adapted from the bundled `jetbrains.mps.samples.StateChart` sample (`samples/stateChart/`), **not** your project's language. `EmptyOperation` and the `org.example.statecharts.structure` model below are placeholders — substitute your own concept and structure-model ref.
 
 ```json
 {
