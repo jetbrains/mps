@@ -372,10 +372,11 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
     }
 
     @Test
-    fun `find-instances scoped to one model returns exactly the created concepts`() {
-        // Three new ConceptDeclaration roots in the test's structure model. Once they are in
-        // place, FIND_INSTANCES of `ConceptDeclaration` scoped to that model must report all
-        // three and nothing else — the model has no other roots.
+    fun `find-instances via query_structure (compat path) still returns the created concepts`() {
+        // FIND_INSTANCES moved to mps_mcp_query_nodes; mps_mcp_query_structure keeps accepting
+        // it (unadvertised) so pre-move skill copies in other projects continue to work. This
+        // test pins that compat path: three new ConceptDeclaration roots, FIND_INSTANCES scoped
+        // to the model must report all three and nothing else.
         val createParams = """
             {
               "structureModelRef": "$structureModelRef",

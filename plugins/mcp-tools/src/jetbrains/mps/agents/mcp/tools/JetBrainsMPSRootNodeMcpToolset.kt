@@ -120,15 +120,26 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Searches project models for root nodes whose name matches any of the given names, honoring the same `scope` semantics as `mps_mcp_query_nodes`'s FIND_USAGES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` excludes read-only platform/library stubs; `all` covers the whole repository including the read-only Modules Pool; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
+        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` excludes read-only platform/library stubs; `all` covers the whole repository including the read-only Modules Pool; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String,
-        @McpDescription("Search scope, mirroring FIND_USAGES: 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules').") scope: String = "editable",
+        @McpDescription("Search scope: 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules'). 'roots' is not supported here.") scope: String = "editable",
         @McpDescription("Optional model references; required when scope is 'models'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") models: String? = null,
         @McpDescription("Optional module references; required when scope is 'modules'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") modules: String? = null
     ): String {
         return withMpsProject("Searching for MPS root node by name") { mpsProject ->
+            // Guard before the shared resolver: buildSearchScope does support 'roots', but this
+            // tool exposes no 'roots' parameter, so letting it through would fail with the
+            // misleading "Parameter 'roots' is missing" instead of the documented contract.
+            if (scope == "roots") {
+                return@withMpsProject errJson(
+                    "Scope 'roots' is not supported by mps_mcp_search_root_node_by_name; " +
+                            "use 'all', 'editable', 'models', or 'modules'. To search within specific " +
+                            "roots, use mps_mcp_query_nodes (FIND_INSTANCES/FIND_USAGES) with scope 'roots'.",
+                    McpErrorCode.INVALID_REQUEST,
+                )
+            }
             val nameSet: Set<String> = parseStringOrJsonArray(names).toSet()
 
             // Reuse the exact scope-resolution code that backs FIND_USAGES so the two tools agree

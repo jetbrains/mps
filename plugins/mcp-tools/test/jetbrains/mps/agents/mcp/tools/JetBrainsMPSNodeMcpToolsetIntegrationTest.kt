@@ -19,6 +19,8 @@ import org.junit.Test
  *  - `mps_mcp_query_nodes(FIND_USAGES)`: a `Base`/`Derived` concept pair routed through
  *    the structure toolset so the `extends` reference is wired by the same code paths users
  *    hit at runtime; we then ask find-usages for `Base` and assert that `Derived` shows up.
+ *  - `mps_mcp_query_nodes(FIND_INSTANCES)`: the canonical home of instance search (moved here
+ *    from the structure toolset), including the `propertyFilter` narrowing.
  */
 class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
@@ -68,6 +70,118 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             setOf("Derived"),
             resultNames
         )
+    }
+
+    @Test
+    fun `find-instances scoped to one model returns the nodes of the concept`() {
+        createAlphaBetaGamma()
+
+        val findParams = """
+            {
+              "conceptRef": "jetbrains.mps.lang.structure.structure.ConceptDeclaration",
+              "scope": "models",
+              "models": [ "$structureModelRef" ]
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_query_nodes(MPSQueryOperation.FIND_INSTANCES, findParams)
+        }
+
+        assertEquals(
+            "find-instances scoped to the test structure model should return exactly the three new concepts",
+            setOf("Alpha", "Beta", "Gamma"),
+            parseResultNames(response)
+        )
+    }
+
+    @Test
+    fun `find-instances with propertyFilter returns only nodes whose property matches`() {
+        createAlphaBetaGamma()
+
+        val findParams = """
+            {
+              "conceptRef": "jetbrains.mps.lang.structure.structure.ConceptDeclaration",
+              "scope": "models",
+              "models": [ "$structureModelRef" ],
+              "propertyFilter": { "name": "name", "value": "Beta" }
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_query_nodes(MPSQueryOperation.FIND_INSTANCES, findParams)
+        }
+
+        assertEquals(
+            "propertyFilter name=Beta should narrow the result to the single matching concept",
+            setOf("Beta"),
+            parseResultNames(response)
+        )
+    }
+
+    @Test
+    fun `find-instances treats an explicit null propertyFilter as no filter`() {
+        createAlphaBetaGamma()
+
+        val findParams = """
+            {
+              "conceptRef": "jetbrains.mps.lang.structure.structure.ConceptDeclaration",
+              "scope": "models",
+              "models": [ "$structureModelRef" ],
+              "propertyFilter": null
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_query_nodes(MPSQueryOperation.FIND_INSTANCES, findParams)
+        }
+
+        assertEquals(
+            "an explicit JSON null propertyFilter must mean 'no filter', not INVALID_REQUEST",
+            setOf("Alpha", "Beta", "Gamma"),
+            parseResultNames(response)
+        )
+    }
+
+    @Test
+    fun `find-instances rejects a malformed propertyFilter`() {
+        val findParams = """
+            {
+              "conceptRef": "jetbrains.mps.lang.structure.structure.ConceptDeclaration",
+              "propertyFilter": { "name": "name" }
+            }
+        """.trimIndent()
+
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_query_nodes(MPSQueryOperation.FIND_INSTANCES, findParams)
+        }
+
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("propertyFilter without 'value' must be rejected: $response", obj.get("ok").asBoolean)
+    }
+
+    /** Three fresh ConceptDeclaration roots in the test's structure model. */
+    private fun createAlphaBetaGamma() {
+        val createParams = """
+            {
+              "structureModelRef": "$structureModelRef",
+              "conceptsJson": [
+                { "name": "Alpha" },
+                { "name": "Beta" },
+                { "name": "Gamma" }
+              ]
+            }
+        """.trimIndent()
+        assertOk(runTool { it.mps_mcp_alter_structure(MPSStructureAlterOperation.CREATE_CONCEPTS, createParams) })
+    }
+
+    /** Parses an ok envelope whose `data` is a JSON-array string and returns the result names. */
+    private fun parseResultNames(response: String): Set<String> {
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        val data = obj.get("data")
+        val rawData = if (data.isJsonPrimitive) data.asString else data.toString()
+        return JsonParser.parseString(rawData).asJsonArray.map { it.asJsonObject.get("name").asString }.toSet()
     }
 
     @Test

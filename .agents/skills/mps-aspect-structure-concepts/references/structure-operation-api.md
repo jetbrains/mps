@@ -3,7 +3,7 @@
 Two tools cover structure operations:
 
 - **`mps_mcp_alter_structure`** — write operations: `CREATE_CONCEPTS`, `CREATE_ENUM`, `UPDATE_CONCEPT_PROPERTY`, `UPDATE_CONCEPT_CHILD`, `UPDATE_CONCEPT_REFERENCE`, `RENAME_CONCEPT_PROPERTY`, `RENAME_CONCEPT_CHILD`, `RENAME_CONCEPT_REFERENCE`.
-- **`mps_mcp_query_structure`** — read-only operations: `GET_ENUMERATION_LITERALS`, `FIND_INSTANCES`, `IS_SUBCONCEPT_OF`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ALL_SUPERCONCEPTS`, `LIST_CONCEPT_ASPECTS`, `GET_ASSIGNABLE_REFERENCES`, `IS_SMART_REFERENCE`.
+- **`mps_mcp_query_structure`** — read-only operations: `GET_ENUMERATION_LITERALS`, `IS_SUBCONCEPT_OF`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ALL_SUPERCONCEPTS`, `LIST_CONCEPT_ASPECTS`, `GET_ASSIGNABLE_REFERENCES`, `IS_SMART_REFERENCE`. To find nodes that are *instances* of a concept use `mps_mcp_query_nodes` (`FIND_INSTANCES`) — see `mps-mcp-workflow/references/analysis-tools.md`.
 
 Both return a JSON object with `'ok':true` and `'data':{...}` on success, or `'ok':false` and `'error':"..."` on failure.
 Failure responses can also include optional stable metadata fields: `'code'`, `'details'`, and `'warnings'`.
@@ -127,23 +127,6 @@ Parameters:
   "enumerationRef": "Persistent reference of an EnumerationDeclaration node. Use this OR (nodeReference + propertyName), not both.",
   "nodeReference": "Persistent reference of a node whose concept has an enumeration-typed property (SNodeReference). Pair with 'propertyName'.",
   "propertyName": "The name of the enumeration property on the concept of 'nodeReference'."
-}
-```
-
-#### `FIND_INSTANCES`
-Returns all nodes that are instances of the specified concept, or a single sample instance (randomly selected) if requested.
-Returns a JSON array of node info objects, or a path to a temporary JSON file if the data is large.
-
-Parameters:
-```
-{
-  "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
-  "scope": "Optional: 'all', 'editable' (default), 'models', 'modules', 'roots'",
-  "models": "Optional: list of persistent model references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'models')",
-  "modules": "Optional: list of persistent module references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'modules')",
-  "roots": "Optional: list of root node references (e.g. [\"r:model-id(NodeName)\", \"r:...\"]) (required if scope is 'roots'). Restricts the search to nodes contained within the specified root nodes.",
-  "exact": "Boolean (optional, default: false). Whether to exclude instances of subconcepts.",
-  "sampleOnly": "Boolean (optional, default: false). If true, only a single sample instance (randomly selected) will be returned to illustrate usage and JSON structure."
 }
 ```
 

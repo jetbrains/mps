@@ -7,7 +7,6 @@ import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.errors.item.ModelReportItem
-import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.validation.ModelValidator
@@ -25,6 +24,7 @@ enum class MPSQueryOperation {
     SIBLINGS,
     GET_CHILD_ROLE,
     FIND_USAGES,
+    FIND_INSTANCES,
 }
 
 enum class MPSAlterOperation {
@@ -99,10 +99,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Read-only node queries: get parent/root, get containing model, find usages, query node index/siblings/child role. All operations require `nodeReference` in the parameters JSON. FIND_USAGES also accepts optional `scope` (all, editable, models, modules) and `models`/`modules` arrays. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
+        Read-only node queries. FIND_INSTANCES: find nodes that are instances of a concept (`conceptRef`; optional `scope` all|editable|models|modules|roots with matching `models`/`modules`/`roots` arrays, `propertyFilter` {"name","value"}, `exact`, `sampleOnly`:true for one example node). FIND_USAGES: find nodes whose references point at the given node — incoming references, not instances (`nodeReference`; optional `scope` as above). GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE take `nodeReference`. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
     suspend fun mps_mcp_query_nodes(
-        @McpDescription("The operation to perform (GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE, FIND_USAGES)") operation: MPSQueryOperation,
+        @McpDescription("The operation to perform (FIND_INSTANCES, FIND_USAGES, GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE)") operation: MPSQueryOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
         return withMpsProject("Querying MPS nodes: $operation") { mpsProject ->
@@ -118,6 +118,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     opNodeInfoRead(mpsProject, operation, params)
 
                 MPSQueryOperation.FIND_USAGES -> opFindUsages(mpsProject, params)
+                MPSQueryOperation.FIND_INSTANCES -> opFindInstances(mpsProject, params)
             }
         }
     }
@@ -177,7 +178,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 MPSQueryOperation.NODE_INDEX -> opNodeIndex(node)
                 MPSQueryOperation.SIBLINGS -> opSiblings(node)
                 MPSQueryOperation.GET_CHILD_ROLE -> opGetChildRole(node, mpsProject)
-                MPSQueryOperation.FIND_USAGES -> errJson("Unsupported operation: $operation")
+                MPSQueryOperation.FIND_USAGES,
+                MPSQueryOperation.FIND_INSTANCES -> errJson("Unsupported operation: $operation")
             }
         }
     }
@@ -211,26 +213,19 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             val node = sNodeRef?.resolve(mpsProject.repository)
                 ?: return@executeBackgroundRead errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
-            val searchScope = when (val r = buildSearchScope(mpsProject, scopeParam, params)) {
-                is SearchScopeResolution.Ok -> r.scope
+            val (searchScope, rootFilter) = when (val r = buildSearchScope(mpsProject, scopeParam, params)) {
+                is SearchScopeResolution.Ok -> r.scope to r.rootFilter
                 is SearchScopeResolution.Err -> return@executeBackgroundRead r.errJson
             }
 
             val results = mutableSetOf<SNode>()
-            FindUsagesFacade.getInstance().findUsages(searchScope, setOf(node), { ref ->
-                if (!monitor.isCanceled) {
-                    results.add(ref.sourceNode)
-                }
-            }, monitor)
-            if (results.isEmpty() && !monitor.isCanceled) {
-                val lookup = NodeUsageLookup(setOf(node)) { ref ->
-                    if (!monitor.isCanceled) {
+            findUsagesWithFallback(searchScope, setOf(node), monitor) { ref ->
+                if (!monitor.isCanceled &&
+                    (rootFilter == null || ref.sourceNode.containingRoot.reference in rootFilter)
+                ) {
+                    synchronized(results) {
                         results.add(ref.sourceNode)
                     }
-                }
-                for (m in searchScope.models) {
-                    if (monitor.isCanceled) break
-                    lookup.collectUsages(m, monitor)
                 }
             }
             if (monitor.isCanceled) {

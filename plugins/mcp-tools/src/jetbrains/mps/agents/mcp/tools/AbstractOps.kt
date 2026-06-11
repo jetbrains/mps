@@ -691,6 +691,11 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("reference", reference)
         obj.addProperty("parentReference", parentReference)
         obj.addProperty("rootReference", rootReference)
+        if (!isRoot) {
+            // Spares search callers (FIND_INSTANCES/FIND_USAGES) a follow-up GET_ROOT call just
+            // to learn which root a hit lives in. Omitted for roots, where it would equal "name".
+            obj.addProperty("rootName", n.containingRoot.let { it.name ?: it.presentation })
+        }
         obj.addProperty("modelReference", modelReference)
         obj.addProperty("moduleReference", moduleReference)
         obj.addProperty("virtualFolder", virtualFolder)

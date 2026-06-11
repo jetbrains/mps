@@ -6,6 +6,8 @@ import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.diagnostic.Logger
+import jetbrains.mps.findUsages.InstanceLookup
+import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.GlobalScope
@@ -17,6 +19,7 @@ import jetbrains.mps.smodel.SReference as SRefImpl
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import kotlinx.coroutines.currentCoroutineContext
+import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SConcept
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.language.SEnumeration
@@ -30,10 +33,14 @@ import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.model.SNodeAccessUtil
 import org.jetbrains.mps.openapi.model.SReference
 import org.jetbrains.mps.openapi.model.SNodeReference
+import org.jetbrains.mps.openapi.module.FindUsagesFacade
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.module.SearchScope
+import org.jetbrains.mps.openapi.util.ProgressMonitor
+import java.util.Random
+import java.util.concurrent.atomic.AtomicBoolean
 
 abstract class AbstractNodeOps : AbstractOps() {
 
@@ -880,14 +887,21 @@ abstract class AbstractNodeOps : AbstractOps() {
     }
 
     protected sealed class SearchScopeResolution {
-        data class Ok(val scope: SearchScope) : SearchScopeResolution()
+        /**
+         * [rootFilter] is non-null only for scope "roots": a SearchScope can narrow the search
+         * no further than the roots' containing models, so callers must additionally drop
+         * candidate nodes whose containing root is not in this set.
+         */
+        data class Ok(val scope: SearchScope, val rootFilter: Set<SNodeReference>? = null) : SearchScopeResolution()
         data class Err(val errJson: String) : SearchScopeResolution()
     }
 
     /**
-     * Builds the SearchScope corresponding to the 'scope' parameter shared by FIND_USAGES and
-     * root-node-by-name search. Supported values: "all", "editable", "models" (requires
-     * "models": [...]), "modules" (requires "modules": [...]). Returns the scope or an error result.
+     * Builds the SearchScope corresponding to the 'scope' parameter shared by FIND_USAGES,
+     * FIND_INSTANCES and root-node-by-name search. Supported values: "all", "editable",
+     * "models" (requires "models": [...]), "modules" (requires "modules": [...]), "roots"
+     * (requires "roots": [...] node references — non-root references widen to their containing
+     * root). Returns the scope (plus the root filter for scope "roots") or an error result.
      */
     protected fun buildSearchScope(
         mpsProject: MPSProject,
@@ -914,6 +928,20 @@ abstract class AbstractNodeOps : AbstractOps() {
                     return SearchScopeResolution.Err(errJson("None of the ${modulesArray.size()} module reference(s) could be resolved"))
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = null, allowedModules = moduleRefs))
             }
+            "roots" -> {
+                val rootsArray = params.getAsJsonArray("roots")
+                    ?: return SearchScopeResolution.Err(errJson("Parameter 'roots' is missing for scope 'roots'"))
+                val rootRefs = mutableSetOf<SNodeReference>()
+                val modelRefs = mutableSetOf<SModelReference>()
+                for (elem in rootsArray) {
+                    val refStr = elem.asString
+                    val node = resolveNodeReference(repo, refStr)?.resolve(repo)
+                        ?: return SearchScopeResolution.Err(errJson("Failed to resolve root reference: '$refStr'"))
+                    rootRefs.add(node.containingRoot.reference)
+                    node.model?.reference?.let { modelRefs.add(it) }
+                }
+                SearchScopeResolution.Ok(filteredScope(repo, allowedModels = modelRefs, allowedModules = null), rootRefs)
+            }
             else -> SearchScopeResolution.Err(errJson("Unsupported scope: $scopeParam"))
         }
     }
@@ -924,7 +952,7 @@ abstract class AbstractNodeOps : AbstractOps() {
      * must be non-null. The 'other' axis is derived: explicit-models contributes its containing
      * modules; explicit-modules contributes all its models.
      */
-    private fun filteredScope(
+    protected fun filteredScope(
         repo: SRepository,
         allowedModels: Set<SModelReference>?,
         allowedModules: Set<SModuleReference>?,
@@ -932,10 +960,15 @@ abstract class AbstractNodeOps : AbstractOps() {
         require((allowedModels == null) != (allowedModules == null)) {
             "exactly one of allowedModels / allowedModules must be non-null"
         }
+        // For the explicit-models case the module allow-set is derived from the models' owning
+        // modules, so resolve(SModuleReference) cannot leak modules outside the filter: an
+        // unrestricted module resolve would let a models-scoped search accept references
+        // targeting modules outside the filter set.
+        val effectiveModules = allowedModules
+            ?: allowedModels!!.mapNotNull { it.resolve(repo)?.module?.moduleReference }.toSet()
         return object : BaseScope() {
             override fun getModules(): Iterable<SModule> =
-                allowedModules?.mapNotNull { it.resolve(repo) }
-                    ?: allowedModels!!.mapNotNull { it.resolve(repo)?.module }.distinct()
+                effectiveModules.mapNotNull { it.resolve(repo) }
 
             override fun getModels(): Iterable<SModel> =
                 allowedModels?.mapNotNull { it.resolve(repo) }
@@ -945,7 +978,135 @@ abstract class AbstractNodeOps : AbstractOps() {
                 if (allowedModels == null || reference in allowedModels) reference.resolve(repo) else null
 
             override fun resolve(reference: SModuleReference): SModule? =
-                if (allowedModules == null || reference in allowedModules) reference.resolve(repo) else null
+                if (reference in effectiveModules) reference.resolve(repo) else null
         }
     }
+
+    /**
+     * Runs the find-usages facade over [searchScope] and, when the index produced **zero raw
+     * candidates**, falls back to a direct model walk over the scope's models. The gate watches
+     * raw facade callbacks, not what [collector] kept: the fallback compensates for missing
+     * index coverage (e.g. freshly created models), not for caller-side filter misses —
+     * triggering on a filtered-empty result would walk the whole scope only to re-apply the
+     * same filter. [collector] may be invoked concurrently; synchronize shared state inside it
+     * (the gate itself is an atomic for the same reason — a plain local would have no
+     * happens-before edge with pooled-thread callbacks and could read a stale zero).
+     */
+    protected fun findUsagesWithFallback(
+        searchScope: SearchScope,
+        targets: Set<SNode>,
+        monitor: ProgressMonitor,
+        collector: (SReference) -> Unit
+    ) {
+        val sawAny = AtomicBoolean(false)
+        val counting: (SReference) -> Unit = { sawAny.set(true); collector(it) }
+        FindUsagesFacade.getInstance().findUsages(searchScope, targets, { counting(it) }, monitor)
+        if (!sawAny.get() && !monitor.isCanceled) {
+            val lookup = NodeUsageLookup(targets) { counting(it) }
+            for (m in searchScope.models) {
+                if (monitor.isCanceled) break
+                lookup.collectUsages(m, monitor)
+            }
+        }
+    }
+
+    /**
+     * [findUsagesWithFallback]'s instance-search counterpart: facade first, direct
+     * [InstanceLookup] walk only when the index produced zero raw candidates. Note the fallback
+     * walk does not honor [exact] (it never has) — exact filtering applies on the facade path
+     * only; callers needing strict-exact semantics on unindexed models must filter themselves
+     * (as [opFindInstances] does).
+     */
+    protected fun findInstancesWithFallback(
+        searchScope: SearchScope,
+        concepts: Set<SAbstractConcept>,
+        exact: Boolean,
+        monitor: ProgressMonitor,
+        collector: (SNode) -> Unit
+    ) {
+        val sawAny = AtomicBoolean(false)
+        val counting: (SNode) -> Unit = { sawAny.set(true); collector(it) }
+        FindUsagesFacade.getInstance().findInstances(searchScope, concepts, exact, { counting(it) }, monitor)
+        if (!sawAny.get() && !monitor.isCanceled) {
+            val lookup = InstanceLookup(concepts) { counting(it) }
+            for (m in searchScope.models) {
+                if (monitor.isCanceled) break
+                lookup.collectInstances(m, monitor)
+            }
+        }
+    }
+
+    /**
+     * FIND_INSTANCES — finds nodes that are instances of a concept. The canonical home is
+     * mps_mcp_query_nodes; mps_mcp_query_structure keeps dispatching here (unadvertised) so
+     * pre-move skill copies installed in other projects continue to work.
+     */
+    protected suspend fun opFindInstances(mpsProject: MPSProject, params: JsonObject): String {
+        val conceptRef = params.get("conceptRef")?.asString ?: return errJson("Parameter 'conceptRef' is missing")
+        val scopeParam = params.get("scope")?.asString ?: "editable"
+        val exact = params.get("exact")?.asBoolean ?: false
+        val sampleOnly = params.get("sampleOnly")?.asBoolean ?: false
+        // takeIf: agents commonly pass explicit nulls for optional params; Gson surfaces
+        // "propertyFilter": null as JsonNull, which must mean "no filter", not INVALID_REQUEST.
+        val propertyFilter = params.get("propertyFilter")?.takeIf { !it.isJsonNull }
+        var filterName: String? = null
+        var filterValue: String? = null
+        if (propertyFilter != null) {
+            val obj = if (propertyFilter.isJsonObject) propertyFilter.asJsonObject else null
+            filterName = obj?.get("name")?.takeIf { it.isJsonPrimitive }?.asString
+            filterValue = obj?.get("value")?.takeIf { it.isJsonPrimitive }?.asString
+            if (filterName == null || filterValue == null) {
+                return errJson(
+                    "Parameter 'propertyFilter' must be an object {\"name\": \"<propertyName>\", \"value\": \"<expectedValue>\"}",
+                    McpErrorCode.INVALID_REQUEST,
+                )
+            }
+        }
+        val monitor = coroutineProgressMonitor()
+        return executeBackgroundRead(mpsProject) {
+            val concept = resolveConcept(mpsProject.repository, conceptRef)
+                ?: return@executeBackgroundRead errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
+            val (searchScope, rootFilter) = when (val r = buildSearchScope(mpsProject, scopeParam, params)) {
+                is SearchScopeResolution.Ok -> r.scope to r.rootFilter
+                is SearchScopeResolution.Err -> return@executeBackgroundRead r.errJson
+            }
+
+            val results = mutableSetOf<SNode>()
+            var sample: SNode? = null
+            var count = 0
+            val random = Random()
+            findInstancesWithFallback(searchScope, setOf(concept), exact, monitor) { node ->
+                // The exact check is a no-op on the facade path (already filtered there) but is
+                // required on the fallback walk, which does not honor the exact flag.
+                val accepted = !monitor.isCanceled &&
+                    (!exact || node.concept == concept) &&
+                    (rootFilter == null || node.containingRoot.reference in rootFilter) &&
+                    (filterName == null || propertyValueByName(node, filterName) == filterValue)
+                if (accepted) {
+                    synchronized(results) {
+                        if (sampleOnly) {
+                            // Reservoir sampling: every accepted node becomes the sample with
+                            // probability 1/count without materializing the full result set.
+                            count++
+                            if (count == 1 || random.nextInt(count) == 0) {
+                                sample = node
+                            }
+                        } else {
+                            results.add(node)
+                        }
+                    }
+                }
+            }
+            if (monitor.isCanceled) {
+                return@executeBackgroundRead errJson("Operation canceled")
+            }
+            if (sampleOnly) {
+                sample?.let { results.add(it) }
+            }
+            finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it) } + "]")
+        }
+    }
+
+    private fun propertyValueByName(node: SNode, propertyName: String): String? =
+        node.concept.properties.find { it.name == propertyName }?.let { node.getProperty(it) }
 }
