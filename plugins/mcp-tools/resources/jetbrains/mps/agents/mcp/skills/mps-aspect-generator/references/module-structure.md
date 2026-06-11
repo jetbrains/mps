@@ -14,6 +14,8 @@ Read this when: setting up a new generator module, debugging missing/unresolved 
 
 A generator module has its own dependencies — it must depend on the target language's runtime (e.g. `jetbrains.mps.baseLanguage`) independently of the source language.
 
+> Two different "runtimes" show up here. (1) The **target language's runtime** (e.g. `jetbrains.mps.baseLanguage`) — a `Default` generator dependency so templates can use the output language. (2) The **source language's own runtime solution** — classes the *generated* code calls (the generator's *stable part*; MPS source or a bundled JAR). If your templates name those classes, add a `Default` generator dependency on that runtime solution too (the Kaja generator depends on `JavaKaja` for exactly this). See `mps-aspect-accessories/references/runtime-solutions.md`.
+
 ## Creating the generator module
 
 Use `mps_mcp_create_module` to add a generator to a language — do **not** hand-edit the language `.mpl` to insert a `<generators>` entry.

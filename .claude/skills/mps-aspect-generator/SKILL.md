@@ -8,6 +8,16 @@ type: reference
 
 A **generator** transforms models written in the source language into models of one or more *target* languages (usually BaseLanguage or another DSL). It is a separate MPS module — a *generator module* — owned by the language and driven by **templates**: target-language code snippets annotated with **macros**.
 
+## Generator architecture (read first)
+
+A generator translates from the problem domain (source language) toward the implementation domain, often as a **cascade**: each generator lowers the abstraction level by producing its target language, which becomes the next generator's input, until a base language (usually BaseLanguage) is reached and TextGen emits plain text.
+
+A generator definition has a **stable part** and a **variable part**:
+- the **stable part** does not change with the model being generated — engines, base classes, helpers. Provide it **once in a runtime solution** (an MPS `Solution` the language declares as a runtime module — as MPS-authored source or a bundled JAR), not as a template.
+- the **variable part** *is* the templates + macros, which react to the input model and choose different output.
+
+Idiomatic generators keep the stable part **out** of the templates and emit thin code that **calls into** the runtime solution. Before adding rules, decide how much is stable: see the **architecture ladder** in `references/cookbook.md` and the stable-vs-variable split + wiring in `mps-aspect-accessories/references/runtime-solutions.md` (worked example: the `Kaja` language + its `JavaKaja` runtime).
+
 ## Critical Directives
 
 - **Edit the generator, not `source_gen/`.** If a bug appears in generated Java, the fix almost always belongs in a template, macro body, or concept behavior. Patch generated output only when explicitly told to.
