@@ -4,15 +4,17 @@ Read this when: a rule "doesn't fire" or fires in unexpected order, debugging in
 
 Understanding the algorithm saves hours of debugging rules that "don't fire" or fire in the wrong order.
 
-## Five-stage pipeline
+## Generation pipeline
 
-Per MPS docs, one generation run has:
+One generation run has the following stages. Steps 2–4 are planning steps that happen before any model transformation begins; they produce the ordered list of generation steps that step 5 then executes.
 
 1. **Generator selection.** MPS finds every generator required by concepts actually in the input model, then iterates: for every output language a template mentions, pull in *its* generator too, until no new languages appear. You almost never need to configure this by hand.
-2. **Priority ordering.** All involved mapping configurations are partitioned into priority groups by the declared `<mapping priorities>` constraints (`strictly before`, `same as`, `before or same` …). One priority group = one **generation step**.
-3. **Step-by-step transformation.** Each step transforms `input → transient output`, then the output becomes the next step's input. A step runs: pre-scripts → templates → post-scripts.
-4. **TextGen.** Once the final model is in text-generator-aware languages, MPS produces text files (one file per root).
-5. **Post-processing.** External tool hooks etc.
+2. **Implicit grouping.** Mapping configurations without explicit ordering constraints between them are assigned to the same generation step by default.
+3. **Implicit ordering.** The language-extension hierarchy creates implicit ordering constraints: a generator for an extending language is scheduled before the generator for the extended language, with no declarations needed. Consequence: you almost never need explicit `<mapping priorities>` constraints between a language and the language it extends.
+4. **Priority ordering.** Explicit `<mapping priorities>` constraints (`strictly before`, `same as`, `before or same` …), if present, refine or override the implicit ordering from steps 2–3. One priority group = one **generation step**.
+5. **Step-by-step transformation.** Each step transforms `input → transient output`, then the output becomes the next step's input. A step runs: pre-scripts → templates → post-scripts.
+6. **TextGen.** Once the final model is in text-generator-aware languages, MPS produces text files (one file per root).
+7. **Post-processing.** External tool hooks etc.
 
 ## A single step, in detail
 
@@ -34,7 +36,7 @@ The step repeats micro-steps until a fixed point (no new transformations).
 - You cannot read the output model during a rule's query — output is incrementally built and only partially valid until the micro-step completes. Use mapping labels instead of trying to observe output directly.
 - Weaving is the exception — it's explicitly allowed to modify existing output.
 - If two independent reductions match the same node, MPS errors out. Disambiguate via `applicableConcept` subtyping or `conditionFunction`.
-- `priority` constraints are coarse: they partition rules into *groups*, not a total order. Within a group all mappings run together. Add a dedicated intermediate language if you need a strict hand-off.
+- `priority` constraints are coarse: they partition rules into *priority groups*, not a total order. Within a priority group all mappings run together. Add a dedicated intermediate language if you need a strict hand-off.
 
 ## Inspecting a real run
 

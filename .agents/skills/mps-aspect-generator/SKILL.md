@@ -20,7 +20,7 @@ A **generator** transforms models written in the source language into models of 
 
 ## Common-path workflow
 
-1. Ensure the language declares a generator. If not: `mps_mcp_create_module(type="generator", parentLanguage="<lang>")`.
+1. **Locate or create the generator module.** List languages with `mps_mcp_get_project_structure(moduleKind="Language")` and find yours by `name`: each language entry carries a `generators` array (unconditional — not gated on `includeDependencies`) listing every owned generator's `name` and `reference`. Prefer this over `startingPoint="<language-name>"` — a language and its owned generator share a base name, so a *name* starting point can resolve to the **generator** module instead, and then the `generators` array is never emitted. (If you already hold the language's persistent `reference`, `startingPoint="<reference>"` resolves by id and is also unambiguous.) To go the other direction, each generator entry carries a `sourceLanguage` field (only when `includeDependencies=true`) with the owning language's `name` and `reference`; follow it with `mps_mcp_get_project_structure(startingPoint="<sourceLanguage.reference>", includeModels=true)`. If no generator exists yet: `mps_mcp_create_module(type="generator", parentLanguage="<lang>")`.
 2. In `template/main@generator.mps` (the `generator` model stereotype — `name@generator`; see [aspect-model-stereotypes.md](../mps-mcp-workflow/references/aspect-model-stereotypes.md) for all model identifiers), add the used languages you target (`jetbrains.mps.devkit.templates` is the quickest umbrella) and ensure the target language is also a *module* `generate-into` dependency on the language `.mpl` (see `references/module-structure.md`).
 3. Create or edit the `MappingConfiguration` root (`mps_mcp_create_root_node` with the FQN in `references/concept-fqns.md`).
 4. Add the rule(s):
@@ -59,7 +59,7 @@ If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unles
 - Mapping scripts (pre / post) — bulk passes and `modifiesModel`: `references/mapping-scripts.md`.
 - Utility models, template functions, fragments — where to place non-trivial generator-time helpers: `references/utility-models.md`.
 - `genContext` operations catalog (every `GenerationContextOp_*` with editor alias and purpose): `references/generation-context.md`.
-- Generation algorithm — five-stage pipeline, micro-steps, weaving vs. reduction ordering: `references/algorithm.md`.
+- Generation algorithm — pipeline stages (selection → implicit grouping/ordering → explicit priorities → step-by-step transformation → TextGen), micro-steps, weaving vs. reduction ordering: `references/algorithm.md`.
 - Cookbook recipes — multi-root, cross-ref, unique IDs, extensible generators, loop-extraction refactor: `references/cookbook.md`.
 - Common failures — symptom-to-cause-to-fix table: `references/common-failures.md`.
 - Validated concept FQNs and minimal `MappingConfiguration` blueprint: `references/concept-fqns.md`.

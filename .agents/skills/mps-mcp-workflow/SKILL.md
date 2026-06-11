@@ -12,6 +12,10 @@ Read this together with `AGENTS.md` whenever the task involves MPS artifacts or 
 
 ## Critical Directives
 
+> **⚠️ STOP — If you are reading raw `.mps` or `.mpl` XML files, you are way off track.**
+> MPS model files are opaque serialized XML: you cannot safely understand or edit them as plain text, and doing so will corrupt the model.
+> Use `mps_mcp_*` tools instead. If they are not available, ask the user to start MPS and enable the MPS MCP server before continuing.
+
 - **Always prefer MPS MCP tools over hand-editing `.mps` / `.mpl` XML.** Hand-edits silently corrupt model files.
 - **Preserve node IDs.** Prefer `mps_mcp_update_root_node_from_json` or surgical edits (`mps_mcp_update_node`, …) over delete-and-reinsert. Deleting destroys persistent IDs and breaks incoming references.
 - **Reload after compiled-aspect changes.** After modifying **typesystem**, **constraints**, **behavior**, **editor**, or any other compiled aspect, call `mps_mcp_reload_all` (or rebuild the language module via `mps_mcp_alter_nodes MAKE`) before validating with `mps_mcp_check_root_node_problems` on a consumer model. Without a reload, cached compiled rules continue to fire — checking will report stale errors or miss new ones.
@@ -24,9 +28,12 @@ Read this together with `AGENTS.md` whenever the task involves MPS artifacts or 
 
 All MPS skills live in a per-harness directory loaded by the agent host (e.g. `.agents/skills/<skill-name>/SKILL.md` for AGENTS.md-aware hosts, `.claude/skills/<skill-name>/SKILL.md` for Claude Code). Load whichever ones apply to your current task.
 
+> **Installing / refreshing the catalog.** These `mps-*` skills and the project's `AGENTS.md`/`CLAUDE.md` are installed and refreshed by the `mps_mcp_initialize_project_for_agents` MCP tool. If no `mps-*` skills exist yet, the project has not been initialized for agents — tell the user and offer to run it. If the catalog looks stale or incomplete, offer to refresh it (with approval): delete every `mps-*` skill folder from `.agents/skills/` and `.claude/skills/` — keeping any project-local `*-dsl` skills — re-run the tool, then carefully merge its returned text into `AGENTS.md`/`CLAUDE.md`, preserving project-specific sections. See that tool's description for the exact refresh contract.
+
 | Skill | What it covers |
 |-------|---------------|
 | `mps-language-aspects-overview`     | Entry point for defining an MPS language — lists the aspects, what each owns, and the typical authoring order. Start here. |
+| `mps-language-modularity`           | Design tier for multi-language work — choose between referencing, extension, reuse, and embedding *before* authoring aspects, then route into the aspect skills. Use when one language must see, extend, embed, or adapt another. |
 | `mps-aspect-structure-concepts`            | Define concepts, interface concepts, enumerations, and constrained data types. Includes the full `mps_mcp_alter_structure` / `mps_mcp_query_structure` reference. |
 | `mps-baselanguage`                  | Author and edit `jetbrains.mps.baseLanguage` (Java) nodes — parser vs. JSON AST, concept mapping, reference harvesting, validation. Load when writing any Java/BaseLanguage code in MPS. |
 | `mps-model-manipulation`                    | Write and edit MPS BaseLanguage code that uses smodel, closures, and collections — manipulating nodes, lists, and queries. Use when editing checking rules, behavior methods, typesystem rules, or any model code that manipulates nodes. |

@@ -4,6 +4,7 @@ package jetbrains.mps.agents.mcp.tools
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import jetbrains.mps.project.modules.LanguageProducer
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
@@ -131,6 +132,122 @@ class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertTrue(
             "the freshly created solution must be present; got=$names",
             names.contains(solution.moduleName)
+        )
+    }
+
+    // ── generators field ──────────────────────────────────────────────────────────────────
+
+    @Test
+    fun `get-project-structure language entry has empty generators array when language owns no generator`() {
+        // Use moduleKind="Language" to get an unambiguous language-only listing — looking up a
+        // language by name via startingPoint can resolve to a Generator module (same base name)
+        // when one is present in the repository.
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(moduleKind = "Language")
+        }
+
+        val payload = readJsonObjectFromOkPath(response)
+        val langEntry = payload.getAsJsonArray("modules")
+            .map { it.asJsonObject }
+            .single { it.get("name").asString == language.moduleName }
+        assertTrue("language entry must always carry a 'generators' field", langEntry.has("generators"))
+        val generators = langEntry.getAsJsonArray("generators")
+        assertEquals(
+            "language with no generator must have an empty generators array; got=$generators",
+            0, generators.size()
+        )
+    }
+
+    @Test
+    fun `get-project-structure language entry lists owned generators with name and reference`() {
+        val name = "test.lang.withgen${System.nanoTime()}"
+        val moduleDir = createDirInProject(name)
+        executeCommand {
+            LanguageProducer(myProject).withGenerator(true).create(name, moduleDir)
+        }
+
+        // Use moduleKind="Language" rather than startingPoint=name: in MPS a Language and its
+        // owned Generator share the same base module name, so resolveModule by name is ambiguous
+        // and may return the Generator. Filtering by kind gives an unambiguous language-only list.
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(moduleKind = "Language")
+        }
+
+        val payload = readJsonObjectFromOkPath(response)
+        val langEntry = payload.getAsJsonArray("modules")
+            .map { it.asJsonObject }
+            .single { it.get("name").asString == name }
+        assertTrue("language entry must carry a 'generators' field", langEntry.has("generators"))
+        val generators = langEntry.getAsJsonArray("generators")
+        assertEquals(
+            "language with one generator must list exactly one entry; got=$generators",
+            1, generators.size()
+        )
+        val genEntry = generators[0].asJsonObject
+        assertTrue("generator entry must have a 'name' field", genEntry.has("name"))
+        assertTrue("generator entry must have a 'reference' field", genEntry.has("reference"))
+        assertTrue(
+            "generator name must contain the parent language name; got=${genEntry.get("name").asString}",
+            genEntry.get("name").asString.contains(name)
+        )
+    }
+
+    @Test
+    fun `get-project-structure flat module listing carries generators array on language entries`() {
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure()
+        }
+
+        val payload = readJsonObjectFromOkPath(response)
+        val modules = payload.getAsJsonArray("modules")
+        val langEntry = modules.map { it.asJsonObject }
+            .single { it.get("kind").asString == "Language" && it.get("name").asString == language.moduleName }
+        assertTrue(
+            "language entry in the flat module listing must include a 'generators' field",
+            langEntry.has("generators")
+        )
+    }
+
+    @Test
+    fun `get-project-structure generator entry points back to its language via sourceLanguage when dependencies are included`() {
+        val name = "test.lang.gensrc${System.nanoTime()}"
+        val moduleDir = createDirInProject(name)
+        executeCommand {
+            LanguageProducer(myProject).withGenerator(true).create(name, moduleDir)
+        }
+
+        // Reverse of the `generators` navigation: a Generator entry carries `sourceLanguage`
+        // pointing back to its owning language — but only when includeDependencies is set.
+        // Filter by moduleKind="Generator" for an unambiguous generator-only listing (a language
+        // and its owned generator share a base name, so startingPoint=name would be ambiguous).
+        val withDeps = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(moduleKind = "Generator", includeDependencies = true)
+        }
+        val genEntry = readJsonObjectFromOkPath(withDeps).getAsJsonArray("modules")
+            .map { it.asJsonObject }
+            .single { it.get("name").asString.contains(name) }
+        assertTrue(
+            "generator entry must carry a 'sourceLanguage' field when includeDependencies=true",
+            genEntry.has("sourceLanguage")
+        )
+        val sourceLanguage = genEntry.getAsJsonObject("sourceLanguage")
+        assertEquals(
+            "sourceLanguage must name the owning language; got=$sourceLanguage",
+            name, sourceLanguage.get("name").asString
+        )
+        assertTrue("sourceLanguage must carry a 'reference' field", sourceLanguage.has("reference"))
+
+        // The back-link is gated on includeDependencies — the mps-aspect-generator skill documents
+        // this asymmetry, so a plain listing of the same generator must omit sourceLanguage.
+        val withoutDeps = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(moduleKind = "Generator")
+        }
+        val bareGenEntry = readJsonObjectFromOkPath(withoutDeps).getAsJsonArray("modules")
+            .map { it.asJsonObject }
+            .single { it.get("name").asString.contains(name) }
+        assertFalse(
+            "sourceLanguage must be absent without includeDependencies; got=$bareGenEntry",
+            bareGenEntry.has("sourceLanguage")
         )
     }
 

@@ -13,6 +13,7 @@ An MPS language is a collection of **aspects**, each a separate model inside the
 - **Always prefer MPS MCP tools over hand-editing `.mps` XML.** Hand edits can silently corrupt model files.
 - **Keep aspect rules thin and declarative** — push logic into **behavior methods**, then call them from any aspect.
 - **When something in a consumer is wrong, re-check the root cause on the language side** (structure / generator / typesystem) before patching generated Java.
+- **Choose a modularity strategy before authoring** when this language must relate to others — reference, extend, embed, or adapt them. The kind you pick (referencing / extension / reuse / embedding) changes how you use structure, constraints, typesystem, and generator. See [`mps-language-modularity`](../mps-language-modularity/SKILL.md).
 
 ## Aspects and Where to Find Detailed Guidance
 

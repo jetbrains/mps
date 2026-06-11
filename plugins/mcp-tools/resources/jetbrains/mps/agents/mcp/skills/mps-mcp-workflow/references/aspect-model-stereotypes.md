@@ -1,5 +1,9 @@
 # MPS Aspect IDs and Model Stereotypes
 
+## Before creating: check whether the model already exists
+
+Don't reach for `mps_mcp_create_model` reflexively — most aspect models you need are already in the language. **`structure`, `editor`, `constraints`, `behavior`, and `typesystem` are the aspects a typical language already has**; for these, the right move is to reuse the existing model, not create a new one. The remaining aspects (`textGen`, `intentions`, `actions`, `dataFlow`, `migration`, `plugin`, `findUsages`, …) are optional and genuinely may be absent, so creating them on demand is normal. Either way, **confirm presence with `mps_mcp_get_project_structure` first** (it lists each module's models); create only what is actually missing. Creating a model that already exists wastes a step and risks confusion about which model holds the content.
+
 When you call `mps_mcp_create_model(moduleName, modelName)` the `modelName` argument selects one of three unrelated naming mechanisms:
 
 - **A plain model** typically used in solutions or as utility mmodels in generators and languages.

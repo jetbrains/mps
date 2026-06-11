@@ -1,7 +1,11 @@
 package jetbrains.mps.agents.mcp.tools
 
 import com.google.gson.JsonParser
+import jetbrains.mps.project.DevKit
+import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.smodel.SModelInternal
+import jetbrains.mps.smodel.language.LanguageRegistry
+import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -9,6 +13,7 @@ import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
+import java.io.File
 
 /**
  * End-to-end integration tests for [JetBrainsMPSModelMcpToolset].
@@ -479,5 +484,94 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             it.mps_mcp_model_used_language(modelRefOf(model), "jetbrains.mps.lang.core", "not-a-kind", DependencyOperation.DELETE)
         }
         assertTrue(expectErr(response).contains("Invalid kind"))
+    }
+
+    // ── devkit-provided languages ──────────────────────────────────────────────────────────
+    // These lock in the contract that a language already supplied by an imported devkit is
+    // neither added to the model's own used languages (the ADD guard) nor hidden from a reader
+    // (the get_project_structure expansion). The shared fixture builds a devkit that exports a
+    // known-loaded language and imports it into a fresh model.
+
+    /**
+     * Creates a devkit that exports [exportedLanguage] (a fully-loaded language, so its module
+     * reference carries the UUID that `DevKit.getAllExportedLanguageIds` relies on) and imports
+     * that devkit into a fresh model. Returns the devkit name and the (live) imported model.
+     */
+    private fun modelImportingDevkitThatExports(exportedLanguage: String): Pair<String, SModel> {
+        val devkitName = "test.dk.exporting${System.nanoTime()}"
+        val devkitDir = freshPathInProject(devkitName)
+        val devkitResp = runTool(JetBrainsMPSModuleMcpToolset()) {
+            it.mps_mcp_create_module("devkit", devkitName, devkitDir, null, null, false, false, false)
+        }
+        assertTrue("devkit creation must succeed: $devkitResp",
+            JsonParser.parseString(devkitResp).asJsonObject.get("ok").asBoolean)
+
+        // Wire the exported language straight into the devkit descriptor. getExportedLanguages()
+        // returns the live mutable set, so DevKit.getAllExportedLanguageIds() reflects this at once.
+        // The ref comes from the registry's SLanguage (sourceModuleReference carries the UUID that
+        // DevKit.getAllExportedLanguageIds -> ref2LangId requires), and the same registry entry is
+        // what the ADD guard resolves the requested language to — so both sides share one identity.
+        executeCommand {
+            val devkit = myProject.projectModules.filterIsInstance<DevKit>().single { it.moduleName == devkitName }
+            val exportedRef = LanguageRegistry.getInstance(myProject.repository).allLanguages
+                .first { it.qualifiedName == exportedLanguage }.sourceModuleReference
+            (devkit.moduleDescriptor as DevkitDescriptor).exportedLanguages.add(exportedRef)
+            devkit.setChanged()
+        }
+
+        val solution = createSolution()
+        val model = createModel(solution, "test.dkprovided${System.nanoTime()}")
+        val dkAddResp = runTool(toolset) { it.mps_mcp_model_used_language(modelRefOf(model), devkitName, "devkit") }
+        assertTrue("importing the devkit must succeed: $dkAddResp",
+            JsonParser.parseString(dkAddResp).asJsonObject.get("ok").asBoolean)
+        return devkitName to model
+    }
+
+    @Test
+    fun `add_model_used_language no-ops a language already provided by an imported devkit`() {
+        // jetbrains.mps.lang.core is always loaded as part of the MPS test environment.
+        val providedLang = "jetbrains.mps.lang.core"
+        val (devkitName, model) = modelImportingDevkitThatExports(providedLang)
+
+        val response = runTool(toolset) {
+            it.mps_mcp_model_used_language(modelRefOf(model), providedLang, "language")
+        }
+        val data = expectOk(response)
+        assertFalse("a devkit-provided language must not be added: $response", data.get("added").asBoolean)
+        assertTrue("the no-op must be reported as providedByDevKit: $response",
+            data.get("providedByDevKit").asBoolean)
+        assertEquals("the supplying devkit must be named: $response", devkitName, data.get("devKit").asString)
+
+        // The guard must keep the language out of the model's OWN used languages — otherwise the
+        // model carries a redundant import that duplicates what the devkit already supplies.
+        readOnRepo {
+            val used = (model as SModelInternal).importedLanguageIds().map { it.qualifiedName }
+            assertFalse("devkit-provided language must not leak into used languages: $used",
+                used.contains(providedLang))
+        }
+    }
+
+    @Test
+    fun `get_project_structure expands an imported devkit into providedLanguages`() {
+        val providedLang = "jetbrains.mps.lang.core"
+        val (devkitName, model) = modelImportingDevkitThatExports(providedLang)
+
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(
+                includeDependencies = true,
+                startingPoint = modelRefOf(model),
+            )
+        }
+        // get_project_structure returns the temp-file path in `data`, and the file itself holds an
+        // {ok, data} envelope whose `data` is the model JSON — unwrap both layers.
+        val fileEnvelope = JsonParser.parseString(File(extractFilePathFromData(response)).readText()).asJsonObject
+        val modelJson = parseDataObject(fileEnvelope.get("data"))
+        val devkitEntry = modelJson.getAsJsonArray("usedLanguages")
+            .map { it.asJsonObject }
+            .single { it.has("kind") && it.get("kind").asString == "devkit" && it.get("name").asString == devkitName }
+        assertTrue("devkit entry must carry providedLanguages: $devkitEntry", devkitEntry.has("providedLanguages"))
+        val providedNames = devkitEntry.getAsJsonArray("providedLanguages").map { it.asJsonObject.get("name").asString }
+        assertTrue("providedLanguages must list the exported language $providedLang: $providedNames",
+            providedNames.contains(providedLang))
     }
 }

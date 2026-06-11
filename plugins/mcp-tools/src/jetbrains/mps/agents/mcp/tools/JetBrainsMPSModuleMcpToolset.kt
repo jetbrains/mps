@@ -227,13 +227,13 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Creates a new, empty MPS module of the given type at the specified directory (created if missing). Types: `solution` | `language` | `devkit` | `generator`. `type=generator` requires `parentLanguage` and may default the directory to `<parent-language-dir>/generator` when empty. `type=language` accepts the `withGenerator`/`withSandbox`/`withRuntime` companion flags. The optional `facets` list is allowed only for `solution`/`language` (rejected upfront for `devkit`/`generator`); unknown facet types fail before the module is produced. Returns the new module's info envelope (same shape as `mps_mcp_get_project_structure(startingPoint=<module>)`). See `mps-aspect-accessories/references/module-creation.md` for the facets policy and `module-info-fields.md` for the return-envelope fields.
+        Creates a new, empty MPS module of the given type at the specified directory (created if missing). Types: `solution` | `language` | `devkit` | `generator`. `directory` is required for `solution`/`language`/`devkit`. `type=generator` requires `parentLanguage`; its `directory` is optional and defaults to `<parent-language-dir>/generator` when omitted or blank — a pre-existing *empty* directory at the target is reused (only a non-empty directory or a non-directory file is rejected). Creating a generator also scaffolds its `templates@generator` model with a `main` `MappingConfiguration`, so the module is immediately ready for mapping/reduction rules. `type=language` accepts the `withGenerator`/`withSandbox`/`withRuntime` companion flags. The optional `facets` list is allowed only for `solution`/`language` (rejected upfront for `devkit`/`generator`); unknown facet types fail before the module is produced. Returns the new module's info envelope (same shape as `mps_mcp_get_project_structure(startingPoint=<module>)`). See `mps-aspect-accessories/references/module-creation.md` for the facets policy and `module-info-fields.md` for the return-envelope fields.
     """
     )
     suspend fun mps_mcp_create_module(
         @McpDescription("Module type: solution|language|devkit|generator") type: String,
-        @McpDescription("Module name or namespace") name: String,
-        @McpDescription("Directory to place the module in (absolute), the directory will be created by the tool. For 'generator' type, may be empty to default to '<parent-language-dir>/generator'.") directory: String,
+        @McpDescription("Module name or namespace. Ignored for type='generator' — the generator's name is derived as '<parentLanguage>.generator'.") name: String,
+        @McpDescription("Absolute directory for the module; created by the tool if missing. Required for solution/language/devkit. Optional for 'generator': omit or leave blank to default to '<parent-language-dir>/generator'; an existing empty directory at the target is reused.") @Nullable directory: String? = null,
         @McpDescription("Optional Project View virtual folder") @Nullable virtualFolder: String? = null,
         @McpDescription("Required only when type='generator'; ignored otherwise") @Nullable parentLanguage: String? = null,
         @McpDescription("For language: also create a generator") withGenerator: Boolean = false,
@@ -292,18 +292,30 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 mpsProject.repository.modelAccess.executeCommand {
                     val fs: jetbrains.mps.vfs.openapi.FileSystem = mpsProject.fileSystem
                     val normalizedType = type.lowercase()
+                    // `directory` is optional at the protocol level (nullable, no default). Normalize a
+                    // missing/blank value to the empty string so the per-kind logic below has a single
+                    // shape: empty means "use the kind's default location" (only 'generator' has one),
+                    // non-empty means "use exactly this path".
+                    val dir = directory?.trim().orEmpty()
                     // m: only 'generator' may default directory from its parent language; for
                     // every other module kind an empty directory is a programming error that
                     // used to surface as `fs.getFile("").mkdirs()` producing a non-recoverable
                     // file system state. Reject it early with a structured error.
-                    if (normalizedType != "generator" && directory.isEmpty()) {
+                    if (normalizedType != "generator" && dir.isEmpty()) {
                         error = "Parameter 'directory' must be non-empty for module type '$type'"
                         return@executeCommand
                     }
-                    val dirFile: IFile? = if (normalizedType == "generator" && directory.isEmpty()) {
-                        null // resolved per-branch
+                    // The generator branch resolves AND creates its own location (the default
+                    // '<parent-language-dir>/generator' or the explicit `dir`). It must NOT be
+                    // pre-created here: for a non-empty `dir` that used to make the generator
+                    // branch's own existence check fire on the directory this code had just
+                    // created, aborting every non-empty-directory generator creation. So `dirFile`
+                    // is always null for generators; the other kinds reuse an existing directory or
+                    // create it here.
+                    val dirFile: IFile? = if (normalizedType == "generator") {
+                        null // resolved (and created) per-branch
                     } else {
-                        fs.findExistingFile(directory) ?: fs.getFile(directory).also { it.mkdirs() }
+                        fs.findExistingFile(dir) ?: fs.getFile(dir).also { it.mkdirs() }
                     }
 
                     when (normalizedType) {
@@ -368,50 +380,112 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                                 return@executeCommand
                             }
 
-                            val generatorLocation = if (directory.isEmpty()) {
+                            val generatorLocation = if (dir.isEmpty()) {
                                 parentDescriptorFile.parent?.findChild("generator")
                             } else {
-                                fs.getFile(directory)
+                                fs.getFile(dir)
                             }
                             if (generatorLocation == null) {
-                                error = "Could not determine generator location (directory='$directory')"
+                                error = "Could not determine generator location (directory='$dir')"
                                 return@executeCommand
                             }
+                            // Tolerate a pre-existing EMPTY directory at the target location: the
+                            // conventional '<lang>/generator' folder is often laid out as empty
+                            // scaffolding before any generator exists, and a language-owned generator
+                            // has no separate descriptor file to collide with (it lives in the parent
+                            // '.mpl'). Approximate NewModuleCheck.checkHome: reject only a non-directory
+                            // file or a directory that already holds "real" content. We deviate from
+                            // checkHome's VFileProperty.HIDDEN test and instead skip dotfiles and
+                            // FS-ignored entries (e.g. '.DS_Store', VCS metadata) so an otherwise-empty
+                            // scaffold dir is reused; an empty (or all-skipped) directory falls through
+                            // to the mkdirs() below, which is then a no-op.
                             if (generatorLocation.exists()) {
-                                error = "The generator location $generatorLocation already exists"
-                                return@executeCommand
+                                if (!generatorLocation.isDirectory) {
+                                    error = "The generator location $generatorLocation already exists and is not a directory"
+                                    return@executeCommand
+                                }
+                                val nonHiddenChildren = generatorLocation.children
+                                    ?.filter { !it.name.startsWith(".") && !it.isIgnored }
+                                    ?: emptyList()
+                                if (nonHiddenChildren.isNotEmpty()) {
+                                    error = "The generator location $generatorLocation already exists and is not empty; " +
+                                            "pass a different 'directory' or remove its contents"
+                                    return@executeCommand
+                                }
                             }
+                            // Track whether THIS call created the directory (vs. reused a pre-existing
+                            // empty one) so rollback only deletes a folder we own.
+                            val createdGeneratorDir = !generatorLocation.exists()
                             generatorLocation.mkdirs()
 
                             val languageDescriptor = parentLang.moduleDescriptor
                             val generatorDescriptor = LanguageProducer.createGeneratorDescriptor(parentLang.moduleName + ".generator", generatorLocation, null)
                             generatorDescriptor.sourceLanguage = languageDescriptor.moduleReference
-                            languageDescriptor.generators.add(generatorDescriptor)
-                            // setModuleDescriptor → Language.revalidateGenerators already instantiates the
-                            // new Generator with its model roots and registers it with the project's
-                            // repository. Calling ModuleRepositoryFacade.instantiate(...) and addModule
-                            // afterwards used to produce a duplicate, half-built Generator with empty
-                            // model roots, which then crashed LanguageProducer.createTemplateModelIfNoneYet.
-                            // Look up the registered generator instead.
-                            parentLang.setModuleDescriptor(languageDescriptor)
 
-                            val generator = parentLang.generators
-                                .singleOrNull { it.moduleReference == generatorDescriptor.moduleReference }
-                                ?: run {
-                                    error = "Generator was not registered with parent language after descriptor update: ${generatorDescriptor.moduleReference}"
-                                    return@executeCommand
+                            // Undo a partially-created generator if any step below fails. Unlike the
+                            // facet path (which has its own rollback), the generator path mutates the
+                            // parent language's descriptor, may register a generator module, and may
+                            // lay down a templates model — a throw or the "not registered" guard would
+                            // otherwise strand the parent '.mpl' half-mutated plus an empty generator
+                            // dir on disk. Best-effort: the primary error is what the caller needs.
+                            fun rollbackGeneratorCreation() {
+                                runCatching {
+                                    if (languageDescriptor.generators.removeIf { it.moduleReference == generatorDescriptor.moduleReference }) {
+                                        // Re-apply the cleaned descriptor so revalidateGenerators
+                                        // unregisters any generator the failed attempt instantiated.
+                                        parentLang.setModuleDescriptor(languageDescriptor)
+                                    }
+                                    // Safety belt: drop a generator that is somehow still registered.
+                                    val stray = parentLang.generators
+                                        .firstOrNull { it.moduleReference == generatorDescriptor.moduleReference }
+                                    if (stray != null && mpsProject.repository.getModule(stray.moduleReference.moduleId) != null) {
+                                        runCatching { mpsProject.removeModule(stray) }
+                                    }
+                                    parentLang.save()
                                 }
+                                // Only remove a directory we created — never a reused pre-existing one.
+                                if (createdGeneratorDir) {
+                                    runCatching { if (generatorLocation.exists()) generatorLocation.delete() }
+                                }
+                            }
 
-                            LanguageProducer.createTemplateModelIfNoneYet(mpsProject, generator)
+                            try {
+                                languageDescriptor.generators.add(generatorDescriptor)
+                                // setModuleDescriptor → Language.revalidateGenerators already instantiates
+                                // the new Generator with its model roots and registers it with the
+                                // project's repository. Calling ModuleRepositoryFacade.instantiate(...) and
+                                // addModule afterwards used to produce a duplicate, half-built Generator
+                                // with empty model roots, which then crashed
+                                // LanguageProducer.createTemplateModelIfNoneYet. Look up the registered
+                                // generator instead.
+                                parentLang.setModuleDescriptor(languageDescriptor)
 
-                            val mv = ModuleDependencyVersions(mpsProject.getComponent(LanguageRegistry::class.java), mpsProject.repository)
-                            mv.update(parentLang)
-                            parentLang.save()
-                            mv.update(generator)
-                            generator.save()
+                                val generator = parentLang.generators
+                                    .singleOrNull { it.moduleReference == generatorDescriptor.moduleReference }
+                                    ?: run {
+                                        rollbackGeneratorCreation()
+                                        error = "Generator was not registered with parent language after descriptor update: ${generatorDescriptor.moduleReference}"
+                                        return@executeCommand
+                                    }
 
-                            applyVirtualFolder(mpsProject, generator, virtualFolder)
-                            created = generator
+                                LanguageProducer.createTemplateModelIfNoneYet(mpsProject, generator)
+
+                                val mv = ModuleDependencyVersions(mpsProject.getComponent(LanguageRegistry::class.java), mpsProject.repository)
+                                mv.update(parentLang)
+                                parentLang.save()
+                                mv.update(generator)
+                                generator.save()
+
+                                applyVirtualFolder(mpsProject, generator, virtualFolder)
+                                created = generator
+                            } catch (t: Throwable) {
+                                rethrowIfCancellation(t)
+                                if (t is Error) throw t
+                                rollbackGeneratorCreation()
+                                created = null
+                                error = "Failed to create generator for language '$parentLangName': ${t.message ?: t.toString()}"
+                                return@executeCommand
+                            }
                         }
                         else -> {
                             error = "Unsupported module type '$type'"

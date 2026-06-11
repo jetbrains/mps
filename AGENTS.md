@@ -10,6 +10,17 @@ Agents must adapt to the tools available in the current session. Use this file a
 
 For detailed MPS node, model, language, generator, validation, and MCP workflows, load the `mps-mcp-workflow` skill. If your agent runtime does not explicitly confirm that project skills are auto-loaded, read `.agents/skills/mps-mcp-workflow/SKILL.md` before changing MPS artifacts.
 
+## ⚠️ WARNING: Never Read Raw MPS Model Files
+
+**If you are opening or reading `.mps`, `.mpl`, or other MPS XML files directly, you are way off track and must stop immediately.**
+
+MPS model files are binary-like serialized XML that cannot be safely understood or edited as plain text. Reading them gives you opaque node IDs and no semantic insight — you will misinterpret the content and likely corrupt the model if you try to edit it.
+
+**What to do instead:**
+- Use MPS MCP tools (`mps_mcp_*`) to inspect, navigate, and edit MPS models.
+- If MPS MCP tools are not available in your session, ask the user to start MPS and enable the MPS MCP server before continuing with any MPS work.
+- Do not attempt to parse, edit, or reason from raw `.mps` XML.
+
 ## Project Nature: JVM + MPS
 
 Treat this repository as having two kinds of source of truth:

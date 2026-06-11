@@ -21,7 +21,11 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Installs the bundled MPS skill catalog into `<projectPath>/.agents/skills/` and `<projectPath>/.claude/skills/` (each skill as a subfolder containing `SKILL.md` and its references) and returns the recommended `AGENTS.md` text in `data` — the caller writes the file. Aborts upfront with an error listing colliding names if any skill name already exists in either target directory; unrelated subfolders are left untouched. Safe to re-run once collisions are resolved. Use once when initializing AI support for an MPS project.
+        Installs the bundled MPS skill catalog into `<projectPath>/.agents/skills/` and `<projectPath>/.claude/skills/` (each skill as a subfolder containing `SKILL.md` and its references) and returns the recommended `AGENTS.md`/`CLAUDE.md` text in `data` — the caller writes the file. Aborts upfront with an error listing colliding names if any skill name already exists in either target directory; unrelated subfolders are left untouched. Safe to re-run once collisions are resolved. Use once when initializing AI support for an MPS project.
+
+        DISCOVERY: if this MPS project has no `mps-*` skill folders under `.agents/skills/` or `.claude/skills/`, it has not yet been initialized for agents — before doing substantial MPS work, proactively tell the user that and ask whether to run this tool (do not run it without approval).
+
+        REFRESHING STALE SKILLS AND AGENT GUIDES (on user request): when the user asks to update/refresh out-of-date MPS skills or the `AGENTS.md`/`CLAUDE.md` guidance, perform a clean reinstall: (1) delete every bundled MPS skill folder — the `mps-*` skills this tool installs, i.e. exactly the folder names it reports as collisions when run against an already-initialized project — from BOTH `.agents/skills/` and `.claude/skills/`, so dropped/renamed skills do not linger; leave any non-`mps-*` skills (e.g. project-local `<dsl-name>-dsl` skills) in place; (2) call this tool again to install the current catalog (with the collisions removed it now succeeds); (3) carefully update `AGENTS.md`/`CLAUDE.md` from the returned `data` text — refresh the MPS guidance sections to match the returned template while preserving project-specific content (e.g. the "Project-Specific Notes" section and any hand-authored details), rather than blindly overwriting the whole file.
     """
     )
     suspend fun mps_mcp_initialize_project_for_agents(

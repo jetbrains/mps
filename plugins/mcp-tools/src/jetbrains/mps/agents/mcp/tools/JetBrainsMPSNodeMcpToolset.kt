@@ -9,14 +9,9 @@ import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.errors.item.ModelReportItem
 import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.progress.EmptyProgressMonitor
-import jetbrains.mps.project.EditableFilteringScope
-import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.validation.ModelValidator
-import jetbrains.mps.smodel.BaseScope
 import org.jetbrains.mps.openapi.model.EditableSModel
-import org.jetbrains.mps.openapi.model.SModel
-import org.jetbrains.mps.openapi.model.SModelReference
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
@@ -244,67 +239,6 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it) } + "]")
             }
         }
-    }
-
-    private sealed class SearchScopeResolution {
-        data class Ok(val scope: SearchScope) : SearchScopeResolution()
-        data class Err(val errJson: String) : SearchScopeResolution()
-    }
-
-    /**
-     * Builds the SearchScope corresponding to the 'scope' parameter for FIND_USAGES.
-     * Supported values: "all", "editable", "models" (requires "models": [...]),
-     * "modules" (requires "modules": [...]). Returns the scope or an error result.
-     */
-    private fun buildSearchScope(
-        mpsProject: MPSProject,
-        scopeParam: String,
-        params: JsonObject
-    ): SearchScopeResolution {
-        val repo = mpsProject.repository
-        return when (scopeParam) {
-            "all" -> SearchScopeResolution.Ok(GlobalScope(repo))
-            "editable" -> SearchScopeResolution.Ok(EditableFilteringScope(GlobalScope(repo)))
-            "models" -> {
-                val modelsArray = params.getAsJsonArray("models")
-                    ?: return SearchScopeResolution.Err(errJson("Parameter 'models' is missing for scope 'models'"))
-                val modelRefs = modelsArray.mapNotNull { resolveModel(repo, it.asString)?.reference }.toSet()
-                SearchScopeResolution.Ok(filteredScope(repo, allowedModels = modelRefs, allowedModules = null))
-            }
-            "modules" -> {
-                val modulesArray = params.getAsJsonArray("modules")
-                    ?: return SearchScopeResolution.Err(errJson("Parameter 'modules' is missing for scope 'modules'"))
-                val moduleRefs = modulesArray.mapNotNull { resolveModule(repo, it.asString)?.moduleReference }.toSet()
-                SearchScopeResolution.Ok(filteredScope(repo, allowedModels = null, allowedModules = moduleRefs))
-            }
-            else -> SearchScopeResolution.Err(errJson("Unsupported scope: $scopeParam"))
-        }
-    }
-
-    /**
-     * Builds a [BaseScope] restricted to either an explicit set of model references or
-     * an explicit set of module references. Exactly one of [allowedModels] / [allowedModules]
-     * must be non-null. The 'other' axis is derived: explicit-models contributes its containing
-     * modules; explicit-modules contributes all its models.
-     */
-    private fun filteredScope(
-        repo: SRepository,
-        allowedModels: Set<SModelReference>?,
-        allowedModules: Set<SModuleReference>?,
-    ): BaseScope = object : BaseScope() {
-        override fun getModules(): Iterable<SModule> =
-            allowedModules?.mapNotNull { it.resolve(repo) }
-                ?: allowedModels!!.mapNotNull { it.resolve(repo)?.module }.distinct()
-
-        override fun getModels(): Iterable<SModel> =
-            allowedModels?.mapNotNull { it.resolve(repo) }
-                ?: getModules().flatMap { it.models }
-
-        override fun resolve(reference: SModelReference): SModel? =
-            if (allowedModels == null || reference in allowedModels) reference.resolve(repo) else null
-
-        override fun resolve(reference: SModuleReference): SModule? =
-            if (allowedModules == null || reference in allowedModules) reference.resolve(repo) else null
     }
 
     private suspend fun opMoveChild(params: JsonObject): String {

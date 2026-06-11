@@ -5,6 +5,7 @@ Rules that, if violated, make the AST fail structural / assignability / typesyst
 ## Expressions and Statements
 * **Expressions** must be wrapped in `ExpressionStatement` to be valid in a `StatementList`.
 * **StatementList vs Single Statement**: Always check whether a role expects a `StatementList` or a single `Statement`. Most loop and branch bodies expect a `StatementList`.
+* **`IfStatement` `else` branch is a single `Statement`**: `IfStatement.ifTrue` is a `StatementList`, but the `else` branch (`IfStatement.ifFalseStatement`) accepts a **single `Statement`**, not a `StatementList`. Do not pass a `StatementList` into `ifFalseStatement` the way you do for `ifTrue` — it fails assignability. For a normal `else { ... }` block use a `BlockStatement` (the most typical concrete concept here) and put the statements in its inner `StatementList`; for `else if` use another `IfStatement` (or the `elsifClauses` children).
 
 ## Dot Expressions
 * Modeled as `DotExpression` with `operand` (left) and `operation` (right).

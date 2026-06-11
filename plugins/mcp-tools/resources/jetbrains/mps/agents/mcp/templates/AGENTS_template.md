@@ -6,6 +6,17 @@ For detailed MPS node, model, language, generator, validation, and MCP workflows
 
 MCP integration with MPS is an experimental feature. Use it with caution, expect surprises as well as future changes, and report any issues to the JetBrains MPS team.
 
+## ⚠️ WARNING: Never Read Raw MPS Model Files
+
+**If you are opening or reading `.mps`, `.mpl`, or other MPS XML files directly, you are way off track and must stop immediately.**
+
+MPS model files are binary-like serialized XML that cannot be safely understood or edited as plain text. Reading them gives you opaque node IDs and no semantic insight — you will misinterpret the content and likely corrupt the model if you try to edit it.
+
+**What to do instead:**
+- Use MPS MCP tools (`mps_mcp_*`) to inspect, navigate, and edit MPS models.
+- If MPS MCP tools are not available in your session, ask the user to start MPS and enable the MPS MCP server before continuing with any MPS work.
+- Do not attempt to parse, edit, or reason from raw `.mps` XML.
+
 ## Project Nature
 
 This repository is primarily an MPS project. Generated Java, Kotlin, and XML artifacts are produced by MPS generators and must not be edited directly. By default, all meaningful source lives in MPS models, but some projects also include hand-authored JVM or build code (e.g. custom runtime libraries, Gradle build scripts, or test harnesses). If this project contains such code, the user should document it in the Project-Specific Notes section below and note which tools are appropriate for it.
@@ -86,6 +97,8 @@ details, sandbox examples, JSON blueprints, or non-obvious constraints.
 ## Skills
 
 A skill is a set of local instructions stored in a `SKILL.md` file under `.agents/skills/<skill-name>/` or `.claude/skills/<skill-name>/`. Start with `mps-mcp-workflow` for the overview and a directory of every other skill.
+
+These `mps-*` skills and this guide were installed by the `mps_mcp_initialize_project_for_agents` MCP tool. If they become stale or incomplete, ask the user for approval to refresh: delete every `mps-*` skill folder (keeping any project-local `*-dsl` skills), re-run the tool, then carefully merge its returned text back into this file while preserving the Project-Specific Notes below. See the tool's description for the full refresh contract.
 
 ---
 
