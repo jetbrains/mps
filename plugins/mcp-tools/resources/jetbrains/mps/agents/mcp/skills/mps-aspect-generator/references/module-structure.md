@@ -14,6 +14,39 @@ Read this when: setting up a new generator module, debugging missing/unresolved 
 
 A generator module has its own dependencies — it must depend on the target language's runtime (e.g. `jetbrains.mps.baseLanguage`) independently of the source language.
 
+## Creating the generator module
+
+Use `mps_mcp_create_module` to add a generator to a language — do **not** hand-edit the language `.mpl` to insert a `<generators>` entry.
+
+```
+mps_mcp_create_module(
+  type           = "generator",
+  name           = "ignored",          # ignored for generators: the name is derived as "<parentLanguage>.generator"
+  parentLanguage = "<your.language>",
+  # directory is OPTIONAL — omit it to use the conventional "<parent-language-dir>/generator".
+  # Pass an explicit absolute path only if you want the generator somewhere else.
+)
+```
+
+In that single call the tool:
+- registers a new generator under the parent language (adds it to the language descriptor's `<generators>`),
+- creates the generator's `templates@generator` model with the generator-authoring imports auto-populated (the `jetbrains.mps.devkit.templates` stack), and
+- seeds that model with a top-level `MappingConfiguration` named `main`.
+
+So right after creation you can start adding rules to the `main` `MappingConfiguration` (see the role table below) — no manual model or descriptor wiring needed.
+
+Notes:
+- A language created with `withGenerator = true` already owns a generator at `<lang>/generator`. Call this tool only to give a generator-less language one, or to add an *additional* generator at a different path.
+- `directory` is optional at the protocol level. An existing **empty** directory at the target (common as project scaffolding) is reused; only a **non-empty** directory or a non-directory file is rejected. (Older guidance that `directory` must always be passed — even as `""` — is obsolete.)
+
+### When a model-to-model generator is not the right tool
+
+If the language's final artifact is **plain text** (a source file, config, DDL, XML, a script), there are two genuinely different designs — not fallbacks for one another:
+- a **model-to-model generator** (this skill) that reduces your concepts into a target *language* (e.g. `jetbrains.mps.core.xml`), which MPS then serialises via that language's TextGen; or
+- a **TextGen aspect** (see `mps-aspect-textgen`) on your own concepts that emits the text directly with a custom file extension — no generator module, no target language.
+
+Reach for TextGen when the mapping to text is direct and you need no intermediate language; reach for a generator when you want to reuse a target language's structure, constraints, type-checks, and its own generator.
+
 ## Module dependencies vs. model used-languages
 
 The generator has **two distinct import layers** that often trip up agents.

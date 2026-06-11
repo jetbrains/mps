@@ -6,6 +6,7 @@ import jetbrains.mps.project.modules.LanguageProducer
 import jetbrains.mps.project.structure.modules.LanguageDescriptor
 import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
+import jetbrains.mps.smodel.SModelStereotype
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.junit.Assert.*
 import org.junit.Test
@@ -430,6 +431,126 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
                 existingCount + 1, gens.size)
             val match = gens.firstOrNull { (it as? Generator)?.moduleName == createdName }
             assertNotNull("created generator must show up under the parent: $createdName", match)
+        }
+    }
+
+    @Test
+    fun `generator creation into an explicit fresh directory succeeds`() {
+        // Regression for the create-then-abort bug: a non-empty `directory` used to be
+        // pre-created by the shared directory-resolution step, after which the generator
+        // branch's own existence check fired on the folder this tool had just created and
+        // aborted EVERY non-empty-directory generator creation. A brand-new path must succeed.
+        val parentName = language.moduleName!!
+        val existingCount = readOnRepo { language.generators.toList().size }
+        val genDir = freshPathInProject("explicitGen${System.nanoTime()}")
+
+        val response = runTool(toolset) {
+            it.mps_mcp_create_module(
+                "generator", "ignored", /* directory = */ genDir,
+                null, /* parentLanguage = */ parentName,
+                false, false, false,
+            )
+        }
+        val createdName = expectOk(response).get("name").asString
+
+        readOnRepo {
+            assertEquals("a fresh generator must be registered with the parent language",
+                existingCount + 1, language.generators.toList().size)
+        }
+        assertTrue("the explicit generator directory must have been created on disk",
+            projectFile(genDir).exists())
+        assertGeneratorScaffolded(createdName)
+    }
+
+    @Test
+    fun `generator creation reuses a pre-existing empty directory`() {
+        // The conventional '<lang>/generator' folder is often laid out as empty scaffolding.
+        // An empty target directory must be reused, not treated as a fatal collision.
+        val parentName = language.moduleName!!
+        val genDir = freshPathInProject("emptyGen${System.nanoTime()}")
+        executeCommand { projectFile(genDir).mkdirs() }
+
+        val response = runTool(toolset) {
+            it.mps_mcp_create_module(
+                "generator", "ignored", /* directory = */ genDir,
+                null, /* parentLanguage = */ parentName,
+                false, false, false,
+            )
+        }
+        val createdName = expectOk(response).get("name").asString
+        assertGeneratorScaffolded(createdName)
+    }
+
+    @Test
+    fun `generator creation into a non-empty directory is rejected`() {
+        val parentName = language.moduleName!!
+        val genDir = freshPathInProject("nonEmptyGen${System.nanoTime()}")
+        executeCommand {
+            val d = projectFile(genDir)
+            d.mkdirs()
+            d.findChild("marker.txt").createNewFile()
+        }
+
+        val response = runTool(toolset) {
+            it.mps_mcp_create_module(
+                "generator", "ignored", /* directory = */ genDir,
+                null, /* parentLanguage = */ parentName,
+                false, false, false,
+            )
+        }
+        val err = expectErr(response)
+        assertTrue("non-empty target must be rejected with a clear message: $err",
+            err.contains("already exists and is not empty"))
+    }
+
+    @Test
+    fun `generator creation with null directory defaults under the parent language`() {
+        // `directory` is optional: a null/blank value defaults to '<parent-language-dir>/generator'.
+        val parentName = language.moduleName!!
+        val existingCount = readOnRepo { language.generators.toList().size }
+
+        val response = runTool(toolset) {
+            it.mps_mcp_create_module(
+                "generator", "ignored", /* directory = */ null,
+                null, /* parentLanguage = */ parentName,
+                false, false, false,
+            )
+        }
+        val createdName = expectOk(response).get("name").asString
+        readOnRepo {
+            assertEquals("a fresh generator must be registered with the parent language",
+                existingCount + 1, language.generators.toList().size)
+        }
+        assertGeneratorScaffolded(createdName)
+    }
+
+    /**
+     * Resolves an [jetbrains.mps.vfs.IFile] handle for [path] via the project file system.
+     * Routed through the non-deprecated `jetbrains.mps.vfs.openapi.FileSystem` interface type
+     * (mirroring the production toolset) to avoid the `IdeaFileSystem` deprecation flag.
+     */
+    private fun projectFile(path: String): jetbrains.mps.vfs.IFile {
+        val fs: jetbrains.mps.vfs.openapi.FileSystem = myProject.fileSystem
+        return fs.getFile(path)
+    }
+
+    /**
+     * Asserts that the generator named [generatorName] under the test's [language] was scaffolded
+     * with exactly one `@generator`-stereotype templates model holding the auto-created
+     * `MappingConfiguration` root named `main` (produced by
+     * `LanguageProducer.createTemplateModelIfNoneYet`).
+     */
+    private fun assertGeneratorScaffolded(generatorName: String) {
+        readOnRepo {
+            val gen = language.generators.single { it.moduleName == generatorName }
+            val templates = gen.models.filter { SModelStereotype.isGeneratorModel(it) }
+            assertEquals("generator must own exactly one templates model: ${gen.models.toList()}",
+                1, templates.size)
+            val roots = templates.single().rootNodes.toList()
+            assertEquals("templates model must hold the auto-created MappingConfiguration: $roots",
+                1, roots.size)
+            assertEquals("MappingConfiguration", roots.single().concept.name)
+            assertEquals("main", roots.single().getPropertyByName("name"))
         }
     }
 
