@@ -320,44 +320,62 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
 
                     when (normalizedType) {
                         "solution" -> {
-                            val sol = SolutionProducer(mpsProject).create(name, dirFile!!)
-                            applyVirtualFolder(mpsProject, sol, virtualFolder)
-                            created = sol
+                            try {
+                                val sol = SolutionProducer(mpsProject).create(name, dirFile!!)
+                                applyVirtualFolder(mpsProject, sol, virtualFolder)
+                                created = sol
+                            } catch (e: IllegalStateException) {
+                                throw McpInvalidRequestException(e.message ?: "Collision detected during module creation")
+                            } catch (e: IllegalArgumentException) {
+                                throw McpInvalidRequestException(e.message ?: "Collision detected during module creation")
+                            }
                         }
                         "devkit" -> {
-                            val dk = DevkitProducer(mpsProject).create(name, dirFile!!)
-                            applyVirtualFolder(mpsProject, dk, virtualFolder)
-                            created = dk
+                            try {
+                                val dk = DevkitProducer(mpsProject).create(name, dirFile!!)
+                                applyVirtualFolder(mpsProject, dk, virtualFolder)
+                                created = dk
+                            } catch (e: IllegalStateException) {
+                                throw McpInvalidRequestException(e.message ?: "Collision detected during module creation")
+                            } catch (e: IllegalArgumentException) {
+                                throw McpInvalidRequestException(e.message ?: "Collision detected during module creation")
+                            }
                         }
                         "language" -> {
-                            val lp = LanguageAndSolutionsProducer(mpsProject)
-                                .withGenerator(withGenerator)
-                                .withRuntimeSolution(withRuntime)
-                                .withSandboxSolution(withSandbox)
-                            val lang = lp.create(name, dirFile!!)
-                            if (virtualFolder != null) {
-                                applyVirtualFolder(mpsProject, lang, virtualFolder)
-                                lp.runtimeSolution.ifPresent { applyVirtualFolder(mpsProject, it, virtualFolder) }
-                                lp.sandboxSolution.ifPresent { applyVirtualFolder(mpsProject, it, virtualFolder) }
-                                lang.generators.forEach { applyVirtualFolder(mpsProject, it, virtualFolder) }
+                            try {
+                                val lp = LanguageAndSolutionsProducer(mpsProject)
+                                    .withGenerator(withGenerator)
+                                    .withRuntimeSolution(withRuntime)
+                                    .withSandboxSolution(withSandbox)
+                                val lang = lp.create(name, dirFile!!)
+                                if (virtualFolder != null) {
+                                    applyVirtualFolder(mpsProject, lang, virtualFolder)
+                                    lp.runtimeSolution.ifPresent { applyVirtualFolder(mpsProject, it, virtualFolder) }
+                                    lp.sandboxSolution.ifPresent { applyVirtualFolder(mpsProject, it, virtualFolder) }
+                                    lang.generators.forEach { applyVirtualFolder(mpsProject, it, virtualFolder) }
+                                }
+                                lang.save()
+                                // Persist all sub-modules the producer created. Without this, an opted-in
+                                // runtime/sandbox solution or generator would stay dirty in memory until a
+                                // later, unrelated save flushed them — which is fragile and order-dependent.
+                                lp.runtimeSolution.ifPresent { it.save() }
+                                lp.sandboxSolution.ifPresent { it.save() }
+                                lang.generators.forEach { it.save() }
+                                created = lang
+                                // Record companions so a later facet-attachment failure can
+                                // unregister them alongside the Language. Without this, the
+                                // create-call's "no partial state is left behind" guarantee
+                                // would not hold for `withGenerator`/`withRuntime`/`withSandbox`.
+                                val companions = mutableListOf<SModule>()
+                                lp.runtimeSolution.ifPresent { companions.add(it) }
+                                lp.sandboxSolution.ifPresent { companions.add(it) }
+                                lang.generators.forEach { companions.add(it) }
+                                companionsForRollback = companions
+                            } catch (e: IllegalStateException) {
+                                throw McpInvalidRequestException(e.message ?: "Collision detected during module creation")
+                            } catch (e: IllegalArgumentException) {
+                                throw McpInvalidRequestException(e.message ?: "Collision detected during module creation")
                             }
-                            lang.save()
-                            // Persist all sub-modules the producer created. Without this, an opted-in
-                            // runtime/sandbox solution or generator would stay dirty in memory until a
-                            // later, unrelated save flushed them — which is fragile and order-dependent.
-                            lp.runtimeSolution.ifPresent { it.save() }
-                            lp.sandboxSolution.ifPresent { it.save() }
-                            lang.generators.forEach { it.save() }
-                            created = lang
-                            // Record companions so a later facet-attachment failure can
-                            // unregister them alongside the Language. Without this, the
-                            // create-call's "no partial state is left behind" guarantee
-                            // would not hold for `withGenerator`/`withRuntime`/`withSandbox`.
-                            val companions = mutableListOf<SModule>()
-                            lp.runtimeSolution.ifPresent { companions.add(it) }
-                            lp.sandboxSolution.ifPresent { companions.add(it) }
-                            lang.generators.forEach { companions.add(it) }
-                            companionsForRollback = companions
                         }
                         "generator" -> {
                             val parentLangName = parentLanguage
