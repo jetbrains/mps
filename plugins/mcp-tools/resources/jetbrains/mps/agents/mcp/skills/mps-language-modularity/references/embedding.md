@@ -38,13 +38,11 @@ if (fr.fact.type.isInstanceOf(rules.NumberType))  { typeof(fr) :==: <expr.Number
 // (alternative) overload guest == to accept a rules.BooleanType operand, result expr.BooleanType
 ```
 
-**Generation — reuse the guest's lowering pipeline.** The guest already lowers to BaseLanguage; reuse it in the host chain rather than re-flattening expressions to text in every host. Host-specific reductions then handle *only* the adapter concepts (here `FactRef` → a host fact read). → [`mps-aspect-generator`](../../mps-aspect-generator/SKILL.md).
+**Generation — reuse the guest's lowering pipeline.** The guest already lowers to some base language; reuse it in the host chain rather than re-flattening expressions to text in every host. Host-specific reductions then handle *only* the adapter concepts (here `FactRef` → a host fact read). → [`mps-aspect-generator`](../../mps-aspect-generator/SKILL.md).
 
 ```text
 reduction rule FactRef -> facts.read( $[fact.name] )   // host-specific; guest Expression -> Java reused unchanged
 ```
-
-**Migration.** When embedding arrives as a subconcept of an existing host concept, provide an **intention** to convert old nodes (copy the outcome from a plain `Rule` into a new `ConditionalRule`). → [`mps-aspect-intentions`](../../mps-aspect-intentions/SKILL.md).
 
 ## Recipe
 
@@ -55,7 +53,6 @@ reduction rule FactRef -> facts.read( $[fact.name] )   // host-specific; guest E
 5. **Constraints/scoping** — restrict visibility aggressively to the host context; embedded languages over-expose easily.
 6. **Typesystem** — choose a canonical target type space and add explicit bridges. Duplicate primitive hierarchies are the #1 failure.
 7. **Generator** — reuse the guest→BaseLanguage lowering; keep host-specific reductions only for adapter concepts.
-8. **Intentions/migration** — provide conversions from old host concepts.
 
 ## Pitfalls
 

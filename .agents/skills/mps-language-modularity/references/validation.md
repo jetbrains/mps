@@ -23,15 +23,15 @@ Use `NodesTestCase` (typesystem, constraints, scopes, generator output) and `Edi
 - [ ] **Coexistence** — base-language and extension nodes work together in one fragment (an `unless` beside a plain `if`).
 - [ ] **Type integration** — the new type is typed; overloaded operators accept it and yield the right result type (`money + money → money`; `money + int` handled or rejected).
 - [ ] **Generator assimilation** — the extended construct is fully lowered to base language (no `UnlessStatement`/`SwapStatement`/placeholder survives; any weaving helper + mapping label resolved).
-- [ ] **Hook ordering** — placeholder concepts are produced before, and consumed after, the right generators (priorities explicit).
-- [ ] **Upgrade path** — the intention/migration converts old nodes to the extended form.
+- [ ] **Hook ordering** — placeholder concepts are produced before, and consumed after, the right generators (generation plans or priorities explicit).
+- [ ] **Upgrade path** — the intention converts old nodes to the extended form.
 
 ## Reuse
 
 - [ ] **Core independence** — the core (`statemachine`) module has **no** dependency on any host context (assert on used/extended languages: no `Sensor`/`Output`).
 - [ ] **Adapter completeness** — every abstract hook (`Guard`/`Action` + its behavior method) has a concrete adapter implementation.
 - [ ] **Generated abstract API** — separated generation emits the expected abstract signatures (`guard_0`/`action_0`); the adapter subclass implements exactly those.
-- [ ] **Hook IDs & priorities** — interwoven generation: placeholder IDs match between emitter and reducer; priorities guarantee the placeholder exists before the adapter runs and is gone before text gen.
+- [ ] **Hook IDs & priorities** — interwoven generation: placeholder IDs match between emitter and reducer; generation plans or priorities guarantee the placeholder exists before the adapter runs and is gone before text gen.
 
 ## Embedding
 

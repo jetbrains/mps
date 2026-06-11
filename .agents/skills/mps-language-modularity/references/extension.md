@@ -44,7 +44,6 @@ operation MulExpression   operands: <MoneyType>,<int|float>  -> <MoneyType>
 
 **Constraints — don't overgeneralize the host.** Restrict illegal blends only where needed (e.g. a `can be ancestor` rule banning a statement inside a constant-expression context). → [`mps-aspect-constraints`](../../mps-aspect-constraints/SKILL.md).
 
-**Migration.** When an extended concept supersedes an older one, add an intention/migration to convert existing nodes. → [`mps-aspect-intentions`](../../mps-aspect-intentions/SKILL.md), [`mps-aspect-migrations`](../../mps-aspect-migrations/SKILL.md).
 
 ## Recipe
 
@@ -55,12 +54,11 @@ operation MulExpression   operands: <MoneyType>,<int|float>  -> <MoneyType>
 5. **Constraints** — ban illegal placements narrowly.
 6. **Generator** — assimilate via reduction + weaving; reserve placeholders for future post-processing.
 7. **Generation priorities** — run the extension generator **before** the host's final text generator and **after** any generator that must create hook nodes first. → [`mps-aspect-generation-plan`](../../mps-aspect-generation-plan/SKILL.md)
-8. **Intentions/migration** — provide an upgrade path from old nodes.
 
 ## Pitfalls
 
 - **Syntax without semantics** — a concept added but not typed: looks valid, fails semantically.
-- **Unordered hooks** — placeholders without explicit generator priorities leak into later phases.
+- **Unordered hooks** — placeholders without explicit generator priorities (generation plans or generator priorities) leak into later phases.
 - **New operators instead of overloads** — forces users to choose among near-identical concepts at completion.
 - **Retrofitted reuse** — after-the-fact extension points are limited; plan hook concepts deliberately and early.
 

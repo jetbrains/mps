@@ -68,7 +68,7 @@ Robust sequence: stabilize the core abstraction → add the adapter → choose s
 
 - **Host leakage into the core** — one import of a host concept (`Sensor` in `statemachine`) destroys reusability; enforce as a review rule.
 - **Unplanned interwoven generation** — if the core generator never emitted hooks, interwoven reuse can't be made clean later; decide separated-vs-interwoven *before* writing the core generator.
-- **Fragile priority chains** — make interwoven priorities explicit, not incidental.
+- **Fragile priority chains** — make interwoven priorities explicit, not incidental, with generation plans or generator priorities.
 - **Skipping the adapter** — host references in the core "just this once" collapse reuse into referencing.
 
 **Validation:** see `validation.md` § Reuse.
