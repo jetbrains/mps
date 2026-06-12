@@ -1,6 +1,17 @@
 # Cookbook recipes
 
-Read this when: applying a recognized recipe — multiple roots from one input, cross-reference wiring, unique IDs, extensible generators, debugging a failing step, breaking out of a reduction loop, choosing between switch vs. reduction, or extracting an inline LOOP into a standalone reduction.
+Read this when: applying a recognized recipe — parsing a Java template and attaching macros to its literals, multiple roots from one input, cross-reference wiring, unique IDs, extensible generators, debugging a failing step, breaking out of a reduction loop, choosing between switch vs. reduction, or extracting an inline LOOP into a standalone reduction.
+
+## Parse a Java template, then attach `$PROPERTY$` macros to its literals
+
+The bridge from a parsed Java skeleton to a working, property-substituting template. Use it whenever the generator targets BaseLanguage (Java) and you want specific literals — a class name, an integer, a string — driven by the source node instead of being hard-coded.
+
+1. **Parse the skeleton in.** `mps_mcp_parse_java_and_insert` (mode `root`) the Java source into the generator's `templates@generator` model. You now hold the template root, but nothing is parameterized yet.
+2. **Locate the literal sites.** Run `mps_mcp_query_nodes` `FIND_INSTANCES` with `conceptRef = IntegerConstant` / `StringLiteral` (etc.), `scope = roots`, `roots = [<template root>]`. No external tree-walker is needed. Add a `propertyFilter` such as `{"name": "value", "value": "<the literal>"}` to pinpoint a literal by its value directly — often avoiding the disambiguation pass below. Otherwise, when a query returns several hits, disambiguate with `mps_mcp_print_node` on the handful of candidates to pick the exact literal to parameterize.
+3. **Graft the macro.** Add a `PropertyMacro` as an `smodelAttribute` child of the target literal node (`mps_mcp_update_node`, `operation = ADD`, `kind = CHILD`, `childRole = "smodelAttribute"`). If the node already carries a macro, choose the child `position` deliberately — sibling macros chain in attribute-list order and that order is semantics. Set `propertyId` using the harvesting recipe in `macro-catalog.md` (PropertyMacro section); it is an encoded three-segment string, never a node reference.
+4. **Validate.** Run `mps_mcp_check_root_node_problems` on the template (it decodes `propertyId` and flags a malformed value), then do a dry generation / MAKE and diff `source_gen/` to confirm the literal is now driven by the source node.
+
+See `macro-catalog.md` for the `PropertyMacro` blueprint, the `propertyId` encoding, and the `smodelAttribute` ordering rule. When dedicated literal-locating or macro-grafting helpers land, prefer them over steps 2–3.
 
 ## Emit multiple roots from one input
 
