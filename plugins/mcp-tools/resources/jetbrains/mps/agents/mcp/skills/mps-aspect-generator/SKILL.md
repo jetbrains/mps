@@ -40,9 +40,22 @@ Idiomatic generators keep the stable part **out** of the templates and emit thin
 5. Author target-language templates; attach macros as `smodelAttribute` children. Mark the produced subtree with `TemplateFragment` (or `RootTemplateAnnotation` on a target root).
 6. Declare any mapping labels on the `MappingConfiguration`; tag writers (`labelDeclaration` ref or `$LABEL$` macro); read with `genContext.get/pick output <label> for (<input>)` inside `$REF$` or other queries.
 7. Validate with `mps_mcp_check_root_node_problems` on the `MappingConfiguration` and every template (re-run with `onlyNodesWithProblems = false` if siblings look "missing").
-8. `mps_mcp_alter_nodes MAKE` over the generator and a sample model; inspect `source_gen/`. Use the Generator Tracer / `$TRACE$` macros to bisect misgenerated fragments.
+8. `mps_mcp_alter_nodes MAKE` over the generator and a sample model; **read the generated text** (see *Reading generator output* below). Use the Generator Tracer / `$TRACE$` macros to bisect misgenerated fragments.
 
 If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unless explicitly asked — inspect only and report.
+
+## Reading generator output
+
+After a `MAKE`, generators write Java (and TextGen artifacts like `.xml`, `.scxml`) to the owning module's `source_gen/` directory. **No `mps_mcp_*` tool reads this output** — but the MPS MCP server exposes the same generic IDE file tools, so generated text is readable over MCP *today*. Don't drop to a raw shell `find`/`cat`.
+
+**Path convention.** Output lands at `<module-dir>/source_gen/<model-namespace>/<java-package>/<File>.java`, where the model namespace's dots become directory separators. Example: model `Kaja.sandbox` in solution `Kajak.sandbox` → `samples/robot_Kaja/solutions/Kajak.sandbox/source_gen/Kaja/sandbox/sandbox/Karel.java` (trailing `sandbox/` is the Java package). TextGen artifacts (`.scxml`, etc.) follow the same layout. A module may override its output root, so if `source_gen/` is not beside the module descriptor, check the module's output path.
+
+**Tools.** Use the generic IDE file tools (exposed by the MPS MCP server, also by IDEA's; pass `projectPath` to disambiguate) — not `mps_mcp_*`:
+- `find_files_by_glob` — discover what was generated, e.g. project-root-relative `**/Kajak.sandbox/source_gen/**/*.java`. Note this matches only `.java`; use `list_directory_tree` to also see TextGen artifacts (`.scxml`, `trace.info`, …).
+- `list_directory_tree` — browse the output directory.
+- `read_file` — read a specific generated file (output is line-capped; use its `max_lines`/`start_line` args for large files).
+
+**Staleness.** On-disk `source_gen/` reflects the *last* MAKE. Re-run `MAKE` before reading so the output matches the current model, otherwise you may read stale text.
 
 ## Related Skills
 
