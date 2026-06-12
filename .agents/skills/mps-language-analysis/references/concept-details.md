@@ -57,6 +57,26 @@ Each entry in the result file has the shape:
 
 Use the `qualifiedName` field (e.g. `"jetbrains.mps.baseLanguage.structure.ClassConcept"`) as the `concept` field in JSON node blueprints. It is unambiguous and does not require a `conceptReference`.
 
+### Feature entries (`properties`, `references`, `children`)
+
+Each item in these three arrays carries the identifiers needed to reference the feature from blueprints — no deep `print_node` calls required to mine them:
+
+```
+{
+  name,
+  type,                     // properties: "string"|"integer"|"boolean"|<enum/datatype name>
+  targetConcept,            // references/children only
+  cardinality,              // references/children only
+  featureId,                // <langUUID>/<conceptId>/<featureId> — the encoded id triple
+  sourceNode,               // declaration node's persistent ref, e.g. r:...(...structure)/<id>
+  enumerationValues: [...], // properties with an enum type only
+  doc, deprecated           // when present on the declaration
+}
+```
+
+- **`featureId`** is the exact value to paste into a `$PROPERTY$` macro's `propertyId`, or to encode smodel `SPropertyAccess` / `SLinkAccess` targets.
+- **`sourceNode`** is the `r:...(...structure)/<id>` form. This is the form `applicableConcept` requires — the `c:<langUUID>/<conceptId>` form yields a silent "Unresolved reference". It is omitted when the feature has no resolvable declaration (rare; e.g. a hollow descriptor).
+
 ## Stale runtime descriptors (`descriptorStatus: "hollow"`)
 
 A concept can have a *hollow* runtime descriptor: the runtime entry exists but reports `sourceNode == null`, no properties, no references, no children, and `isAbstract: true`. This shape is the fingerprint of an MPS language runtime that is out of sync with the structure model — typically after `CREATE_CONCEPTS` where an incremental make did not regenerate the language aspect descriptor classes.

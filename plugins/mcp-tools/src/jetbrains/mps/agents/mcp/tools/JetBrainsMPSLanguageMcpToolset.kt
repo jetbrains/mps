@@ -18,6 +18,9 @@ import jetbrains.mps.smodel.ModelDependencyResolver
 import org.jetbrains.mps.openapi.language.SAbstractLink
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.language.SReferenceLink
+import jetbrains.mps.smodel.adapter.ids.MetaIdHelper
+import org.jetbrains.mps.openapi.model.SNode
+import org.jetbrains.mps.openapi.model.SNodeReference
 import java.util.PriorityQueue
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
@@ -60,7 +63,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Returns detailed info for the listed concepts and/or for every concept of the listed languages. Saves the result to a temp file (path returned in `data`). Unresolved refs are surfaced in `warnings` (partial success) or in an error envelope with `details.unresolved` suggestions (everything failed); use `mps_mcp_search_concepts` for free-form lookup. The `qualifiedName` field is the unambiguous form to use as `concept` in JSON blueprints. If a concept was just created via `CREATE_CONCEPTS` and the response carried `makeStatus: "runtime_stale"`, the runtime descriptor returned here may be hollow (empty properties/references/children, `isAbstract: true`); each affected entry is marked with `descriptorStatus: "hollow"` and a `descriptorRecoveryAction` string — `mps_mcp_reload_all` alone is not sufficient, a clean rebuild via `mps_mcp_alter_nodes` MAKE with `rebuild = true` is required. See `mps-language-analysis/references/concept-details.md` for the result schema and the unresolved-ref policy.
+        Returns detailed info for the listed concepts and/or for every concept of the listed languages. Saves the result to a temp file (path returned in `data`). Each entry in `properties`, `references`, and `children` carries `featureId` (the encoded `<langUUID>/<conceptId>/<featureId>` triple to paste into `PROPERTY`/`REF` macros and smodel `SPropertyAccess`/`SLinkAccess`) and `sourceNode` (the declaration node's persistent ref, e.g. `r:...(...structure)/<id>`; this is the right node-ref *form* for APIs that expect a structure declaration such as `applicableConcept`, but a feature declaration ref is informational only and is not itself a valid `applicableConcept` target) — so the ids no longer need harvesting via deep `print_node` calls. Unresolved refs are surfaced in `warnings` (partial success) or in an error envelope with `details.unresolved` suggestions (everything failed); use `mps_mcp_search_concepts` for free-form lookup. The `qualifiedName` field is the unambiguous form to use as `concept` in JSON blueprints. If a concept was just created via `CREATE_CONCEPTS` and the response carried `makeStatus: "runtime_stale"`, the runtime descriptor returned here may be hollow (empty properties/references/children, `isAbstract: true`); each affected entry is marked with `descriptorStatus: "hollow"` and a `descriptorRecoveryAction` string — `mps_mcp_reload_all` alone is not sufficient, a clean rebuild via `mps_mcp_alter_nodes` MAKE with `rebuild = true` is required. See `mps-language-analysis/references/concept-details.md` for the result schema and the unresolved-ref policy.
     """
     )
     suspend fun mps_mcp_get_concept_details(
@@ -306,6 +309,19 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
         }
     }
 
+    /**
+     * Adds the `sourceNode` persistent ref to [obj] (when [nodeRef] is resolvable) AND returns the
+     * resolved declaration [SNode], so callers do not pay a second [SNodeReference.resolve] lookup
+     * for the doc/deprecation pass. Returns null when [nodeRef] is null or does not resolve.
+     */
+    private fun addSourceNodeAndResolve(obj: JsonObject, nodeRef: SNodeReference?, repository: SRepository): SNode? {
+        val resolved = nodeRef?.resolve(repository)
+        if (resolved != null) {
+            nodeRef?.let { obj.addProperty("sourceNode", PersistenceFacade.getInstance().asString(it)) }
+        }
+        return resolved
+    }
+
     private fun conceptPropertiesJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
         val result = JsonArray()
         for (prop in concept.properties) {
@@ -323,7 +339,8 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                 else -> "unknown"
             }
             obj.addProperty("type", typeName)
-            val declarationNode = prop.sourceNode?.resolve(repository)
+            obj.addProperty("featureId", MetaIdHelper.getProperty(prop).serialize())
+            val declarationNode = addSourceNodeAndResolve(obj, prop.sourceNode, repository)
             addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
             if (type is SEnumeration) {
                 val values = JsonArray()
@@ -351,7 +368,13 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                 is SReferenceLink -> getCardinality(ref)
                 else -> "0..1"
             })
-            val declarationNode = ref.sourceNode?.resolve(repository)
+            val featureId = when (ref) {
+                is SReferenceLink -> MetaIdHelper.getAssociation(ref).serialize()
+                is SContainmentLink -> MetaIdHelper.getAggregation(ref).serialize()
+                else -> null
+            }
+            featureId?.let { obj.addProperty("featureId", it) }
+            val declarationNode = addSourceNodeAndResolve(obj, ref.sourceNode, repository)
             addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
             result.add(obj)
         }
