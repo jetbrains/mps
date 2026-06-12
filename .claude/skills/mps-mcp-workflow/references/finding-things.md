@@ -9,6 +9,7 @@
 ## Finding Models, Modules, and Languages
 
 - A fully qualified name or a unique persistent reference is needed to unambiguously represent an entity.
+- **Model names include their stereotype.** The `name` a tool reports for a model is its full name with any stereotype attached (e.g. `foo.bar@tests`, `foo.bar@generator`), matching the `@stereotype` form `mps_mcp_create_model` expects. The stereotype is part of the model's identity — when you address a model by name, pass it verbatim (`foo.bar@tests`, not `foo.bar`). Two models can share a long name and differ only by stereotype.
 - If given an incomplete or shortened name (e.g. `j.m.l.core`), use `mps_mcp_get_project_structure` with eager filtering to find the full name.
 - Single-letter packages usually expand: `j` → `jetbrains`, `m` → `mps`, `l` → `lang`.
 - For incomplete names call `mps_mcp_get_project_structure` with eager filtering.
