@@ -12,8 +12,10 @@ import jetbrains.mps.checkers.RefScopeChecker
 import jetbrains.mps.checkers.TargetConceptChecker2
 import jetbrains.mps.classloading.ClassLoaderManager
 import jetbrains.mps.errors.MessageStatus
+import jetbrains.mps.errors.item.IssueKindReportItem
 import jetbrains.mps.errors.item.ModelReportItem
 import jetbrains.mps.errors.item.NodeReportItem
+import jetbrains.mps.errors.item.NodeReportItemBase
 import jetbrains.mps.errors.messageTargets.PropertyMessageTarget
 import jetbrains.mps.errors.messageTargets.ReferenceMessageTarget
 import jetbrains.mps.ide.MPSCoreComponents
@@ -37,6 +39,8 @@ import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import jetbrains.mps.smodel.adapter.ids.MetaIdByDeclaration
 import jetbrains.mps.smodel.adapter.ids.SLanguageId
+import jetbrains.mps.smodel.adapter.ids.SPropertyId
+import jetbrains.mps.smodel.adapter.ids.SReferenceLinkId
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.smodel.language.LanguageRegistry
 import jetbrains.mps.smodel.language.LanguageRegistryListener
@@ -158,6 +162,32 @@ abstract class AbstractOps : McpToolset {
             STRUCTURE_LANG_HI, STRUCTURE_LANG_LO, 0xf979bd086aL, 0xf98051c244L,
             "specializedLink"
         )
+
+        // jetbrains.mps.lang.core meta descriptors for the attribute concepts whose encoded feature
+        // ids ([PropertyAttribute.propertyId] / [LinkAttribute.linkId]) are validated by
+        // [checkAttributeFeatureIds]. `PropertyMacro`/`ReferenceMacro` (and the structure-level
+        // property/link annotations) are subconcepts of these, so an `isSubConceptOf` test covers them
+        // all. Ids mirror `PropertyAttribute__BehaviorDescriptor` / `LinkAttribute__BehaviorDescriptor`.
+        private val CORE_LANG_HI = 0xceab519525ea4f22uL.toLong()
+        private val CORE_LANG_LO = 0x9b92103b95ca8c0cuL.toLong()
+        private val PROPERTY_ATTRIBUTE_CONCEPT = MetaAdapterFactory.getConcept(
+            CORE_LANG_HI, CORE_LANG_LO, 0x2eb1ad060897da56L,
+            "jetbrains.mps.lang.core.structure.PropertyAttribute"
+        )
+        private val PROPERTY_ATTRIBUTE_PROPERTY_ID = MetaAdapterFactory.getProperty(
+            CORE_LANG_HI, CORE_LANG_LO, 0x2eb1ad060897da56L, 0x129f3f61278d556dL, "propertyId"
+        )
+        private val LINK_ATTRIBUTE_CONCEPT = MetaAdapterFactory.getConcept(
+            CORE_LANG_HI, CORE_LANG_LO, 0x2eb1ad060897da51L,
+            "jetbrains.mps.lang.core.structure.LinkAttribute"
+        )
+        private val LINK_ATTRIBUTE_LINK_ID = MetaAdapterFactory.getProperty(
+            CORE_LANG_HI, CORE_LANG_LO, 0x2eb1ad060897da51L, 0x129f3f612792fc5cL, "linkId"
+        )
+
+        // Specialization label for the synthetic structure-level problems reported by
+        // [checkAttributeFeatureIds]; surfaces as the issue kind in check results.
+        private const val ATTRIBUTE_FEATURE_ID_ISSUE = "invalid attribute feature id"
     }
 
     // ---- helpers ----
@@ -1081,7 +1111,100 @@ abstract class AbstractOps : McpToolset {
                 logger.warn("Optional checker ${checker::class.simpleName} failed on ${root.reference}", e)
             }
         }
+
+        // Extra MCP-only checker: validate the encoded feature ids on attribute nodes. None of the
+        // six standard checkers above decode `PropertyAttribute.propertyId` / `LinkAttribute.linkId`,
+        // so a malformed or non-resolving id is otherwise accepted silently and only fails at
+        // generation time as an opaque error (see mcp_usability_report 1.2).
+        checkAttributeFeatureIds(root, collector)
+
         return problems
+    }
+
+    /**
+     * Validates the encoded feature ids stored on attribute nodes — `PropertyAttribute.propertyId`
+     * and `LinkAttribute.linkId` — across [root] and its descendants. These are the ids generators
+     * embed in `PropertyMacro` / `ReferenceMacro` (and that the structure language uses for
+     * property/link annotations).
+     *
+     * The MCP write path checks only that a *property name* exists, never that the *value* of
+     * `propertyId`/`linkId` decodes to a real feature, and none of the standard root checkers decode
+     * it either. So a wrong value — a node ref (`r:...`), a truncated id, or a bare property name —
+     * is stored silently; `mps_mcp_check_root_node_problems` reports nothing and it only blows up at
+     * generation time as a generic "an error occurred" with no pointer back to the offending macro.
+     *
+     * This decodes the id exactly as `PropertyAttribute.getProperty` / `LinkAttribute.getLink` do at
+     * runtime (`SPropertyId.deserialize` / `SReferenceLinkId.deserialize`, then `MetaAdapterFactory`)
+     * and reports a precise structure-level error instead. It deliberately does not check that the
+     * feature belongs to the *attributed* node's concept: in a generator template the attributed node
+     * may legitimately be reduced to a different concept, so that check would produce false positives.
+     */
+    private fun checkAttributeFeatureIds(root: SNode, collector: Consumer<NodeReportItem>) {
+        fun visit(node: SNode) {
+            val concept = node.concept
+            when {
+                concept.isSubConceptOf(PROPERTY_ATTRIBUTE_CONCEPT) ->
+                    validateFeatureId(
+                        node, node.getProperty(PROPERTY_ATTRIBUTE_PROPERTY_ID), "propertyId", "property"
+                    ) { MetaAdapterFactory.getProperty(SPropertyId.deserialize(it), "") }
+                        ?.let { collector.consume(it) }
+
+                concept.isSubConceptOf(LINK_ATTRIBUTE_CONCEPT) ->
+                    validateFeatureId(
+                        node, node.getProperty(LINK_ATTRIBUTE_LINK_ID), "linkId", "link"
+                    ) { MetaAdapterFactory.getReferenceLink(SReferenceLinkId.deserialize(it), "") }
+                        ?.let { collector.consume(it) }
+            }
+            for (child in node.children) {
+                visit(child)
+            }
+        }
+        visit(root)
+    }
+
+    /**
+     * Shared body of the [checkAttributeFeatureIds] property/link branches. [rawId] is the stored
+     * `propertyId`/`linkId` string, [propertyName] names the property holding it (for the message),
+     * [featureKind] is `"property"` or `"link"`, and [deserialize] decodes the id to its
+     * `SConceptFeature` (or throws on a malformed string, exactly as the runtime behavior does).
+     * Returns a structure-level error item, or `null` when the id is well-formed and resolves.
+     */
+    protected fun validateFeatureId(
+        node: SNode,
+        rawId: String?,
+        propertyName: String,
+        featureKind: String,
+        deserialize: (String) -> SConceptFeature
+    ): NodeReportItem? {
+        val itemKind = IssueKindReportItem.STRUCTURE.deriveItemKind(ATTRIBUTE_FEATURE_ID_ISSUE)
+        if (rawId.isNullOrBlank()) {
+            return NodeReportItemBase.error(
+                "${node.concept.name}: $propertyName is not set; it must be the encoded " +
+                    "<langUUID>/<conceptId>/<featureId> id of the target $featureKind " +
+                    "(see the `featureId` field from mps_mcp_get_concept_details).",
+                node.reference, itemKind
+            )
+        }
+        val feature = try {
+            deserialize(rawId)
+        } catch (e: RuntimeException) {
+            return NodeReportItemBase.error(
+                "${node.concept.name}: $propertyName \"$rawId\" is not a valid encoded $featureKind id. " +
+                    "Expected the <langUUID>/<conceptId>/<featureId> triple (e.g. " +
+                    "ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001), not a node ref, " +
+                    "a bare id, or a name. Use the `featureId` field from mps_mcp_get_concept_details.",
+                node.reference, itemKind
+            )
+        }
+        if (!feature.isValid) {
+            return NodeReportItemBase.error(
+                "${node.concept.name}: $propertyName \"$rawId\" does not resolve to any known $featureKind. " +
+                    "Verify the id against the `featureId` field from mps_mcp_get_concept_details for the " +
+                    "target concept.",
+                node.reference, itemKind
+            )
+        }
+        return null
     }
 
     /**

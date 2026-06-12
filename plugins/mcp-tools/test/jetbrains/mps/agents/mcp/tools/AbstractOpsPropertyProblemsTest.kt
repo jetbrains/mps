@@ -3,6 +3,7 @@ package jetbrains.mps.agents.mcp.tools
 import com.google.gson.JsonParser
 import com.google.gson.JsonPrimitive
 import com.google.gson.JsonSyntaxException
+import jetbrains.mps.errors.MessageStatus
 import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.java.core.newparser.FeatureKind
 import jetbrains.mps.persistence.PersistenceRegistry
@@ -20,6 +21,8 @@ import org.junit.Assert.fail
 import org.junit.BeforeClass
 import org.junit.Test
 import org.jetbrains.mps.openapi.language.SAbstractConcept
+import org.jetbrains.mps.openapi.language.SConcept
+import org.jetbrains.mps.openapi.language.SConceptFeature
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.language.SDataType
 import org.jetbrains.mps.openapi.language.SEnumeration
@@ -99,6 +102,14 @@ class AbstractOpsPropertyProblemsTest {
         fun toolFailureForTest(activity: String, e: Throwable) = toolFailure(activity, e)
 
         suspend fun coroutineProgressMonitorForTest() = coroutineProgressMonitor()
+
+        fun validateFeatureIdForTest(
+            node: SNode,
+            rawId: String?,
+            propertyName: String,
+            featureKind: String,
+            deserialize: (String) -> SConceptFeature
+        ) = validateFeatureId(node, rawId, propertyName, featureKind, deserialize)
     }
 
     private val nodeOps = object : AbstractNodeOps() {
@@ -142,6 +153,83 @@ class AbstractOpsPropertyProblemsTest {
 
         val json = ops.nodeWithProblemsToJsonForTest(node, problems)
         assertTrue(json.contains("Empty enumeration property"))
+    }
+
+    @Test
+    fun featureIdValidationAcceptsResolvingId() {
+        val node = stubAttributeNode("PropertyMacro")
+        val valid = stubFeature(valid = true)
+
+        val problem = ops.validateFeatureIdForTest(
+            node,
+            "ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001",
+            "propertyId",
+            "property",
+        ) { valid }
+
+        assertEquals(null, problem)
+    }
+
+    @Test
+    fun featureIdValidationRejectsBlankId() {
+        val node = stubAttributeNode("PropertyMacro")
+
+        val problem = checkNotNull(
+            ops.validateFeatureIdForTest(node, "  ", "propertyId", "property") {
+                fail("Blank id must not be decoded")
+                stubFeature(valid = true)
+            }
+        )
+
+        assertEquals(MessageStatus.ERROR, problem.severity)
+        assertTrue(problem.message.contains("PropertyMacro: propertyId is not set"))
+        assertTrue(problem.message.contains("target property"))
+    }
+
+    @Test
+    fun featureIdValidationRejectsMalformedId() {
+        val node = stubAttributeNode("PropertyMacro")
+
+        val problem = checkNotNull(
+            ops.validateFeatureIdForTest(node, "name", "propertyId", "property") {
+                throw IllegalArgumentException("not an id")
+            }
+        )
+
+        assertEquals(MessageStatus.ERROR, problem.severity)
+        assertTrue(problem.message.contains("propertyId \"name\" is not a valid encoded property id"))
+        assertTrue(problem.message.contains("<langUUID>/<conceptId>/<featureId>"))
+    }
+
+    @Test
+    fun featureIdValidationRejectsNonResolvingId() {
+        val node = stubAttributeNode("PropertyMacro")
+        val stale = stubFeature(valid = false)
+
+        val problem = checkNotNull(
+            ops.validateFeatureIdForTest(
+                node,
+                "ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/9999999999999",
+                "propertyId",
+                "property",
+            ) { stale }
+        )
+
+        assertEquals(MessageStatus.ERROR, problem.severity)
+        assertTrue(problem.message.contains("does not resolve to any known property"))
+    }
+
+    @Test
+    fun featureIdValidationReportsLinkKindForLinkAttribute() {
+        val node = stubAttributeNode("ReferenceMacro")
+
+        val problem = checkNotNull(
+            ops.validateFeatureIdForTest(node, "r:not-a-link-id", "linkId", "link") {
+                throw IllegalArgumentException("not an id")
+            }
+        )
+
+        assertTrue(problem.message.contains("ReferenceMacro: linkId \"r:not-a-link-id\" is not a valid encoded link id"))
     }
 
     @Test
@@ -1024,6 +1112,33 @@ class AbstractOpsPropertyProblemsTest {
     private fun stubNodeReference(tag: String): SNodeReference = proxyWithDefaults {
         when (it) {
             "toString" -> "stubNodeReference($tag)"
+            else -> null
+        }
+    }
+
+    private fun stubConcept(name: String): SConcept = proxyWithDefaults {
+        when (it) {
+            "getName" -> name
+            else -> null
+        }
+    }
+
+    private fun stubAttributeNode(conceptName: String): SNode {
+        val concept = stubConcept(conceptName)
+        val reference = stubNodeReference(conceptName)
+        return proxyWithDefaults {
+            when (it) {
+                "getConcept" -> concept
+                "getReference" -> reference
+                else -> null
+            }
+        }
+    }
+
+    private fun stubFeature(valid: Boolean): SConceptFeature = proxyWithDefaults {
+        when (it) {
+            "isValid" -> valid
+            "getName" -> "stubFeature"
             else -> null
         }
     }
