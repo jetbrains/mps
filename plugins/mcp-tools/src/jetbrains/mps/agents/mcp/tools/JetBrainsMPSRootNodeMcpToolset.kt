@@ -120,15 +120,26 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Searches project models for root nodes whose name matches any of the given names, honoring the same `scope` semantics as `mps_mcp_query_nodes`'s FIND_USAGES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` excludes read-only platform/library stubs; `all` covers the whole repository including the read-only Modules Pool; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
+        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` excludes read-only platform/library stubs; `all` covers the whole repository including the read-only Modules Pool; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String,
-        @McpDescription("Search scope, mirroring FIND_USAGES: 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules').") scope: String = "editable",
+        @McpDescription("Search scope: 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules'). 'roots' is not supported here.") scope: String = "editable",
         @McpDescription("Optional model references; required when scope is 'models'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") models: String? = null,
         @McpDescription("Optional module references; required when scope is 'modules'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") modules: String? = null
     ): String {
         return withMpsProject("Searching for MPS root node by name") { mpsProject ->
+            // Guard before the shared resolver: buildSearchScope does support 'roots', but this
+            // tool exposes no 'roots' parameter, so letting it through would fail with the
+            // misleading "Parameter 'roots' is missing" instead of the documented contract.
+            if (scope == "roots") {
+                return@withMpsProject errJson(
+                    "Scope 'roots' is not supported by mps_mcp_search_root_node_by_name; " +
+                            "use 'all', 'editable', 'models', or 'modules'. To search within specific " +
+                            "roots, use mps_mcp_query_nodes (FIND_INSTANCES/FIND_USAGES) with scope 'roots'.",
+                    McpErrorCode.INVALID_REQUEST,
+                )
+            }
             val nameSet: Set<String> = parseStringOrJsonArray(names).toSet()
 
             // Reuse the exact scope-resolution code that backs FIND_USAGES so the two tools agree
@@ -189,7 +200,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Bulk-creates one or more MPS root nodes from a JSON blueprint (a single object or a top-level array; arrays insert atomically with batch rollback on failure). Returns the new node's info envelope, or an array of envelopes when the input was an array. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`) and `mps-mcp-workflow/references/bulk-creation.md` for the array contract and large-input strategies.
+        Bulk-creates one or more MPS root nodes from a JSON blueprint (a single object or a top-level array; arrays insert atomically with batch rollback on failure). Returns the new node's info envelope, or an array of envelopes when the input was an array. Two blueprint values fail silently rather than erroring: a reference role given a `c:` concept ref (instead of an `r:` node ref or a plain name) yields an unresolved reference, and an encoded id inside a property value (e.g. a `PropertyMacro.propertyId`) is not validated — both surface only via `mps_mcp_check_root_node_problems`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`) and `mps-mcp-workflow/references/bulk-creation.md` for the array contract and large-input strategies.
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,

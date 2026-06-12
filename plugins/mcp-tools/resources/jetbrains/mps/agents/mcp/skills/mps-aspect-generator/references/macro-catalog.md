@@ -44,7 +44,12 @@ Additionally, **`TemplateFragment`** (`jetbrains.mps.lang.generator.structure.Te
 
 > **A `TemplateDeclaration` used as a reduction target requires at least one `TemplateFragment`.** Without it the rule fires but emits nothing — the matched input simply disappears from the output, which looks identical to "the rule never matched". If a refactor splits inline content into a standalone `TemplateDeclaration` and the output silently loses those elements, the missing `TemplateFragment` on the produced subtree is the first thing to check. The fragment goes on the *exact* node that should replace the input — typically the outermost element of the template's `contentNode`.
 
-> **Multiple sibling macros on the same `smodelAttribute` slot are valid and order-independent.** The canonical example is `LoopMacro` + `CopySrcNodeMacro` together on a single target node ("for each source element, copy it through reductions"). MPS treats the macros as a set, not as a sequence; the order in which children sit under `smodelAttribute` does not change semantics. Add them with separate `mps_mcp_update_node` calls — no need to coordinate ordering.
+> **Multiple sibling macros on the same `smodelAttribute` slot are chained in attribute-list order, and that order is semantics.** MPS does *not* treat co-located macros as an unordered set: `TemplateNode` builds a linked list from the `smodelAttribute` children preserving their order, and `TemplateProcessor` walks that chain, each macro invoking the rest of the chain. So the order in which children sit under `smodelAttribute` determines the evaluation nesting.
+>
+> - **`$LOOP$` before `$IF$`** ⇒ `$IF$` is evaluated once *per iteration*, with that iteration's node as input (the condition gates each emitted element).
+> - **`$IF$` before `$LOOP$`** ⇒ `$IF$` is evaluated *once*, in the outer context, gating the whole loop (false ⇒ the alternative consequence runs once if present, otherwise nothing is emitted instead of the loop).
+>
+> The canonical `LoopMacro` + `CopySrcNodeMacro` pair *looks* order-independent only because `$COPY_SRC$` is terminal — the pair happens to be order-insensitive in that one case. Do not generalize from it. When grafting a macro onto a node that already carries one, the JSON child `position` in the `smodelAttribute` role *is* the execution order — choose it deliberately.
 
 ## CopySrcNodeMacro (minimal, no query)
 
@@ -96,7 +101,7 @@ List-valued sibling of `CopySrcNodeMacro`. Attached to a target node, it replica
 
 Prefer `COPY_SRCL` when that is all you need — one macro, one query. Prefer `LOOP + COPY_SRC` when you need any of the extra power that `CopySrcNodeMacro.sourceNodeQuery` provides:
 
-- **copy something other than the current element** — give `CopySrcNodeMacro` a `sourceNodeQuery` that navigates into the looped node (e.g. `node.availableTriggers.first` to copy a selected child instead of the state itself);
+- **copy something other than the current element** — give `CopySrcNodeMacro` a `sourceNodeQuery` that navigates into the looped node (e.g. `node.someChildren.first` to copy a selected child instead of the looped node itself);
 - **attach more macros to the same target** — the LOOP surface is a separate macro, so `PropertyMacro`/`IfMacro`/`ReferenceMacro` siblings can run inside each iteration while COPY_SRC still handles the content;
 - **copy a sibling / ancestor expression** rather than a subtree of the current `node`.
 
@@ -116,7 +121,7 @@ Example — the literal value for the `name` property of `INamedConcept` (used w
 ceab5195-25ea-4f22-9b92-103b95ca8c0c/1169194658468/1169194664001
 ```
 
-> ⚠️ **Do not pass an `r:.../<id>` node reference here.** `propertyId` is a plain `string` property, not a reference role. The serializer does not validate it: a wrong value (node ref, short id, just the property id, a name like `"name"`) is silently accepted and surfaces only at generation time as a generic "an error occurred" failure with no useful pointer back to the macro. There is no autofix.
+> ⚠️ **Do not pass an `r:.../<id>` node reference here.** `propertyId` is a plain `string` property, not a reference role, and the write path does not validate it. A wrong value (node ref, short id, just the property id, a name like `"name"`) is accepted on write. **Run `mps_mcp_check_root_node_problems` after setting it** — the check now decodes `propertyId` (and `linkId` for `ReferenceMacro`) and reports a malformed, blank, or non-resolving value as a structure-level error pointing at the offending macro. If you skip the check, a wrong value surfaces only at generation time as a generic "an error occurred" failure with no useful pointer back to the macro and no autofix.
 >
 > Get the segments via `mps_mcp_get_concept_details` on the owning concept (use `languageReference` for the language UUID and `conceptReference` / property `id` for the other two segments) or by inspecting an existing `PropertyMacro` on the same target property with `mps_mcp_print_node`. See `mps-quotations/references/property-and-reference-ids.md` for the same encoding documented from the antiquotation side.
 
@@ -226,9 +231,11 @@ Invokes another `TemplateDeclaration` with the current `node` (or an explicit so
 }
 ```
 
-## Verbatim StateChart pattern combinations
+## Verbatim patterns from the StateChart *sample*
 
-StateChart's `main@generator.mps` demonstrates combinations worth copying:
+> **These come from the MPS-bundled `jetbrains.mps.samples.StateChart` sample (`samples/stateChart/`), NOT from your project's language.** Concept and role names below (`availableTriggers`, `isInitial`, `onTransit`, `reduce_NonFinalState`, `reduce_AnyState`, …) are the *sample's* — your language will use different names. Copy the *macro-combination shapes*, not the concept/role identifiers.
+
+The sample's `generator/template/main@generator.mps` demonstrates combinations worth adapting:
 
 - **LoopMacro + CopySrcNodeMacro on the same element** (iterate + delegate to reductions). On the target `<state>` XmlElement, attach both as `smodelAttribute` siblings — LoopMacro over `node.states`, CopySrcNodeMacro with no query. Net effect: for each child state, emit a `<state>` that is then *reduced* by the `State` reduction rule (splitting into `<state>` vs `<final>`). Equivalent in this form to `CopySrcListMacro(node.states)` on the same element.
 - **LoopMacro + CopySrcNodeMacro with `sourceNodeQuery`** (iterate + copy a *subnode*). Same target `<state>` but `CopySrcNodeMacro` has a `sourceNodeQuery` body `node.availableTriggers.first`. For each state the loop binds `node` to, the COPY_SRC emits content derived from that state's first available trigger rather than from the state itself. This is the pattern `CopySrcListMacro` cannot express, because COPY_SRCL has no per-element re-selection hook.

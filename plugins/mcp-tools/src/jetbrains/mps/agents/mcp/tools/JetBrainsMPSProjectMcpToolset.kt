@@ -29,7 +29,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Primary tool for project discovery, name-based searching, dependency analysis, and shortened-name expansion (e.g. `j.m.l.core` → `jetbrains.mps.lang.core`). Saves the result to a temp file to bypass MCP response-size limits (path returned in `data`). Use `startingPoint` (a module/model/node reference) to scope the dump; use the `include...` flags to control depth. Keep `include...` flags false for fast project-wide discovery. With `includeDependencies`, each model's `usedLanguages` lists directly-used languages plus used devkits; every devkit entry (`kind: devkit`) carries a `providedLanguages` array enumerating the languages it brings into scope transitively (including via extended devkits), so a language already supplied by a devkit need not be imported again. See `mps-mcp-workflow/references/finding-things.md` for the name-resolution protocol.
+        Primary tool for project discovery, name-based searching, dependency analysis, and shortened-name expansion (e.g. `j.m.l.core` → `jetbrains.mps.lang.core`). Saves the result to a temp file to bypass MCP response-size limits (path returned in `data`). Use `startingPoint` (a module/model/node reference) to scope the dump; use the `include...` flags to control depth. Keep `include...` flags false for fast project-wide discovery. With `includeDependencies`, each model's `usedLanguages` lists directly-used languages plus used devkits; every devkit entry (`kind: devkit`) carries a `providedLanguages` array enumerating the languages it brings into scope transitively (including via extended devkits), so a language already supplied by a devkit need not be imported again. A model's reported `name` is its full name including any stereotype (e.g. `foo.bar@tests`, `foo.bar@generator`); pass that exact name (stereotype included) when addressing the model. See `mps-mcp-workflow/references/finding-things.md` for the name-resolution protocol.
     """
     )
     suspend fun mps_mcp_get_project_structure(
@@ -288,7 +288,11 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
 
     private fun modelJsonObject(model: SModel, includeRootNodes: Boolean, includeNodes: Boolean, includeDependencies: Boolean): JsonObject {
         val obj = JsonObject()
-        obj.addProperty("name", model.name.longName)
+        // Use the full model name (SModelName.value), which keeps the stereotype (e.g.
+        // `foo@tests`, `bar@generator`). longName drops it, so a @tests/@generator model would
+        // be reported under a name that cannot be addressed back. Stays consistent with
+        // modelInfoJsonObject (create/update_model) and the persistent `reference` below.
+        obj.addProperty("name", model.name.value)
         obj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
         obj.addProperty("readOnly", model.isReadOnly)
 

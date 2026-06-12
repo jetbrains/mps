@@ -1081,4 +1081,24 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
     }
 
+    @Test
+    fun `create_module rejects directory collision with INVALID_REQUEST`() {
+        val name = "test.collision.lang${System.nanoTime()}"
+        val directory = freshPathInProject(name)
+
+        val firstResponse = runTool(toolset) {
+            it.mps_mcp_create_module("language", name, directory, null, null, false, false, false)
+        }
+        expectOk(firstResponse)
+
+        val collisionResponse = runTool(toolset) {
+            it.mps_mcp_create_module("language", name, directory, null, null, false, false, false)
+        }
+        
+        val obj = JsonParser.parseString(collisionResponse).asJsonObject
+        assertFalse("expected error envelope", obj.get("ok").asBoolean)
+        val code = obj.get("code")?.asString
+        assertEquals("expected INVALID_REQUEST", "INVALID_REQUEST", code)
+    }
+
 }

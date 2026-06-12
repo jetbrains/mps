@@ -14,6 +14,8 @@ Read this when: setting up a new generator module, debugging missing/unresolved 
 
 A generator module has its own dependencies — it must depend on the target language's runtime (e.g. `jetbrains.mps.baseLanguage`) independently of the source language.
 
+> Two different "runtimes" show up here. (1) The **target language's runtime** (e.g. `jetbrains.mps.baseLanguage`) — a `Default` generator dependency so templates can use the output language. (2) The **source language's own runtime solution** — classes the *generated* code calls (the generator's *stable part*; MPS source or a bundled JAR). If your templates name those classes, add a `Default` generator dependency on that runtime solution too (the Kaja generator depends on `JavaKaja` for exactly this). See `mps-aspect-accessories/references/runtime-solutions.md`.
+
 ## Creating the generator module
 
 Use `mps_mcp_create_module` to add a generator to a language — do **not** hand-edit the language `.mpl` to insert a `<generators>` entry.
@@ -114,3 +116,12 @@ Each rule has an `applicableConcept` (or a pattern) and either:
 - a `template` reference pointing to a standalone `TemplateDeclaration`, **or**
 - for `Root_MappingRule`, a `template` reference pointing to any target-language root node (e.g. a BaseLanguage `ClassConcept`) decorated with a `RootTemplateAnnotation`, which marks that root as a template, **or**
 - for `Reduction_MappingRule`, an inline `ruleConsequence` child of concept `InlineTemplateWithContext_RuleConsequence` (or `InlineTemplate_RuleConsequence`) carrying the replacement subtree directly — no separate `TemplateDeclaration` needed. Prefer the inline form for small, one-off reductions.
+
+### `Root_MappingRule.keepSourceRoot`
+
+This property is typed `Options_DefaultTrue` with enum literals `default_`/`true_`, but the type name is misleading: the **default literal is `default_`, which behaves as `false`**. Only the explicit `true_` literal keeps the source root.
+
+- `default_` (i.e. `keepSourceRoot = false`) — the source root is **consumed**: it is excluded from the copy-roots phase and the rule's output **replaces** it. This is what you almost always want for a root-to-root mapping that transforms one document into another (e.g. replacing a `StateChart` root with an `<scxml>` document). Getting this wrong leaves a stray, un-generatable copy of the source root in the output.
+- `true_` (`keepSourceRoot = true`) — the source root **persists**: in addition to the rule's output, the source root is copied into the output and may be matched by other rules.
+
+Subtlety: if the rule body dismisses itself via `DismissTopMappingRuleException`, a consumed root is restored by copying, so dismissal does not leave the output short a root.

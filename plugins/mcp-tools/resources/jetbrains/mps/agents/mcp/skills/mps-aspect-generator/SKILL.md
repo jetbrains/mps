@@ -8,13 +8,23 @@ type: reference
 
 A **generator** transforms models written in the source language into models of one or more *target* languages (usually BaseLanguage or another DSL). It is a separate MPS module — a *generator module* — owned by the language and driven by **templates**: target-language code snippets annotated with **macros**.
 
+## Generator architecture (read first)
+
+A generator translates from the problem domain (source language) toward the implementation domain, often as a **cascade**: each generator lowers the abstraction level by producing its target language, which becomes the next generator's input, until a base language (usually BaseLanguage) is reached and TextGen emits plain text.
+
+A generator definition has a **stable part** and a **variable part**:
+- the **stable part** does not change with the model being generated — engines, base classes, helpers. Provide it **once in a runtime solution** (an MPS `Solution` the language declares as a runtime module — as MPS-authored source or a bundled JAR), not as a template.
+- the **variable part** *is* the templates + macros, which react to the input model and choose different output.
+
+Idiomatic generators keep the stable part **out** of the templates and emit thin code that **calls into** the runtime solution. Before adding rules, decide how much is stable: see the **architecture ladder** in `references/cookbook.md` and the stable-vs-variable split + wiring in `mps-aspect-accessories/references/runtime-solutions.md` (worked example: the `Kaja` language + its `JavaKaja` runtime).
+
 ## Critical Directives
 
 - **Edit the generator, not `source_gen/`.** If a bug appears in generated Java, the fix almost always belongs in a template, macro body, or concept behavior. Patch generated output only when explicitly told to.
 - **`applicableConcept` must be a structure-model node ref** (`r:<modelUUID>(<lang>.structure)/<nodeId>`), never the `c:<langUUID>/<conceptId>` form. Wrong form → silent `Unresolved reference: c:...`. See `references/rule-consequences.md`.
 - **A `TemplateDeclaration` used as a reduction target requires at least one `TemplateFragment`** on the produced subtree, or the rule fires and emits nothing.
 - **Module dependencies vs. model used-languages are two distinct layers** (see `references/module-structure.md`). Adding a class to the wrong one yields "cannot resolve" in generated Java or unusable concepts in templates.
-- **Macros attach via the `smodelAttribute` child role.** Multiple sibling macros on the same target are valid and order-independent (`$LOOP` + `$COPY_SRC` is the canonical pair).
+- **Macros attach via the `smodelAttribute` child role, and co-located macros are chained in child order — order is semantics.** `$IF$` before `$LOOP$` gates the whole loop in the outer context; `$LOOP$` before `$IF$` evaluates the condition per iteration. The `$LOOP$` + `$COPY_SRC$` pair is order-insensitive only because `$COPY_SRC$` is terminal — don't generalize. See `references/macro-catalog.md`.
 - **Reductions can self-loop** when they produce their own concept — break out with `DismissTopMappingRule`, a marker subconcept, or `$COPY_SRC$`.
 - **Cross-rule/cross-template references go through mapping labels.** Direct references survive only within a single fragment.
 
@@ -30,9 +40,22 @@ A **generator** transforms models written in the source language into models of 
 5. Author target-language templates; attach macros as `smodelAttribute` children. Mark the produced subtree with `TemplateFragment` (or `RootTemplateAnnotation` on a target root).
 6. Declare any mapping labels on the `MappingConfiguration`; tag writers (`labelDeclaration` ref or `$LABEL$` macro); read with `genContext.get/pick output <label> for (<input>)` inside `$REF$` or other queries.
 7. Validate with `mps_mcp_check_root_node_problems` on the `MappingConfiguration` and every template (re-run with `onlyNodesWithProblems = false` if siblings look "missing").
-8. `mps_mcp_alter_nodes MAKE` over the generator and a sample model; inspect `source_gen/`. Use the Generator Tracer / `$TRACE$` macros to bisect misgenerated fragments.
+8. `mps_mcp_alter_nodes MAKE` over the generator and a sample model; **read the generated text** (see *Reading generator output* below). Use the Generator Tracer / `$TRACE$` macros to bisect misgenerated fragments.
 
 If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unless explicitly asked — inspect only and report.
+
+## Reading generator output
+
+After a `MAKE`, generators write Java (and TextGen artifacts like `.xml`, `.scxml`) to the owning module's `source_gen/` directory. **No `mps_mcp_*` tool reads this output** — but the MPS MCP server exposes the same generic IDE file tools, so generated text is readable over MCP *today*. Don't drop to a raw shell `find`/`cat`.
+
+**Path convention.** Output lands at `<module-dir>/source_gen/<model-namespace>/<java-package>/<File>.java`, where the model namespace's dots become directory separators. Example: model `Kaja.sandbox` in solution `Kajak.sandbox` → `samples/robot_Kaja/solutions/Kajak.sandbox/source_gen/Kaja/sandbox/sandbox/Karel.java` (trailing `sandbox/` is the Java package). TextGen artifacts (`.scxml`, etc.) follow the same layout. A module may override its output root, so if `source_gen/` is not beside the module descriptor, check the module's output path.
+
+**Tools.** Use the generic IDE file tools (exposed by the MPS MCP server, also by IDEA's; pass `projectPath` to disambiguate) — not `mps_mcp_*`:
+- `find_files_by_glob` — discover what was generated, e.g. project-root-relative `**/Kajak.sandbox/source_gen/**/*.java`. Note this matches only `.java`; use `list_directory_tree` to also see TextGen artifacts (`.scxml`, `trace.info`, …).
+- `list_directory_tree` — browse the output directory.
+- `read_file` — read a specific generated file (output is line-capped; use its `max_lines`/`start_line` args for large files).
+
+**Staleness.** On-disk `source_gen/` reflects the *last* MAKE. Re-run `MAKE` before reading so the output matches the current model, otherwise you may read stale text.
 
 ## Related Skills
 

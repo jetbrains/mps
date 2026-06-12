@@ -7,14 +7,9 @@ import com.google.gson.reflect.TypeToken
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.ide.MPSCoreComponents
-import jetbrains.mps.findUsages.NodeUsageLookup
-import jetbrains.mps.findUsages.InstanceLookup
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SPropertyOperations
 import jetbrains.mps.progress.EmptyProgressMonitor
-import jetbrains.mps.project.EditableFilteringScope
-import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.MPSProject
-import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
@@ -22,9 +17,7 @@ import jetbrains.mps.smodel.language.LanguageRegistry
 import org.jetbrains.mps.openapi.language.*
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SModel
-import org.jetbrains.mps.openapi.model.SModelReference
 import org.jetbrains.mps.openapi.model.SNode
-import org.jetbrains.mps.openapi.model.SNodeReference
 import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.*
@@ -56,16 +49,16 @@ enum class MPSStructureAlterOperation {
 // surface, and they are invoked via reflection by the MCP server framework, so static
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
-class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
+class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription(
         """
-        Queries MPS language structure (read-only): find concept instances, check inheritance, list aspects, resolve references, query enumeration literals, check smart-reference status. Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill.
+        Queries MPS language structure (read-only): check inheritance, list aspects, resolve references, query enumeration literals, check smart-reference status. For nodes that are instances of a concept use `mps_mcp_query_nodes` FIND_INSTANCES. Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill.
     """
     )
     suspend fun mps_mcp_query_structure(
-        @McpDescription("The operation to perform (GET_ENUMERATION_LITERALS, FIND_INSTANCES, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES, IS_SMART_REFERENCE)") operation: MPSStructureQueryOperation,
+        @McpDescription("The operation to perform (GET_ENUMERATION_LITERALS, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES, IS_SMART_REFERENCE)") operation: MPSStructureQueryOperation,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String = withMpsProject("Performing MPS structure query: $operation") { mpsProject ->
         val gson = Gson()
@@ -95,84 +88,10 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 }
             }
 
-            MPSStructureQueryOperation.FIND_INSTANCES -> {
-                val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
-                val scopeParam = params.get("scope")?.asString ?: "editable"
-                val exact = params.get("exact")?.asBoolean ?: false
-                val sampleOnly = params.get("sampleOnly")?.asBoolean ?: false
-                val monitor = coroutineProgressMonitor()
-                executeBackgroundRead(mpsProject) {
-                    val concept = resolveConcept(mpsProject.repository, conceptRef)
-                        ?: return@executeBackgroundRead errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
-                    var scopeError: String? = null
-                    val searchScope: SearchScope =
-                        resolveSearchScope(mpsProject, params, scopeParam, mpsProject.repository) { scopeError = errJson(it) }
-                            ?: return@executeBackgroundRead scopeError ?: errJson("Failed to resolve search scope")
-
-                    val rootNodeRefs: Set<SNodeReference>? = if (scopeParam == "roots") {
-                        val rootsArray = params.getAsJsonArray("roots")
-                        if (rootsArray == null) {
-                            return@executeBackgroundRead errJson("Parameter 'roots' is missing for scope 'roots'")
-                        }
-                        val resolved = mutableSetOf<SNodeReference>()
-                        for (elem in rootsArray) {
-                            val refStr = elem.asString
-                            val node = resolveNodeReference(mpsProject.repository, refStr)
-                                ?.resolve(mpsProject.repository)
-                            if (node == null) {
-                                return@executeBackgroundRead errJson("Failed to resolve root reference: '$refStr'")
-                            }
-                            resolved.add(node.containingRoot.reference)
-                        }
-                        resolved
-                    } else null
-
-                    val results = mutableSetOf<SNode>()
-                    var sample: SNode? = null
-                    var count = 0
-                    val random = Random()
-                    FindUsagesFacade.getInstance().findInstances(searchScope, setOf(concept), exact, { node ->
-                        val inScope = !monitor.isCanceled && (rootNodeRefs == null || rootNodeRefs.contains(node.containingRoot.reference))
-                        if (inScope) {
-                            if (sampleOnly) {
-                                count++
-                                if (count == 1 || random.nextInt(count) == 0) {
-                                    sample = node
-                                }
-                            } else {
-                                results.add(node)
-                            }
-                        }
-                    }, monitor)
-                    if (results.isEmpty() && sample == null && !monitor.isCanceled) {
-                        val lookup = InstanceLookup(setOf(concept)) { node ->
-                            val inScope = !monitor.isCanceled && (rootNodeRefs == null || rootNodeRefs.contains(node.containingRoot.reference))
-                            if (inScope) {
-                                if (sampleOnly) {
-                                    count++
-                                    if (count == 1 || random.nextInt(count) == 0) {
-                                        sample = node
-                                    }
-                                } else {
-                                    results.add(node)
-                                }
-                            }
-                        }
-                        for (m in searchScope.models) {
-                            if (monitor.isCanceled) break
-                            lookup.collectInstances(m, monitor)
-                        }
-                    }
-                    if (monitor.isCanceled) {
-                        return@executeBackgroundRead errJson("Operation canceled")
-                    }
-                    if (sampleOnly) {
-                        sample?.let { results.add(it) }
-                    }
-                    val jsonResults = results.map { nodeInfoJson(it) }
-                    finalizeResult("[" + jsonResults.joinToString(",") + "]")
-                }
-            }
+            // Not advertised in the tool description anymore — FIND_INSTANCES moved to
+            // mps_mcp_query_nodes. Kept dispatching so pre-move skill copies installed in
+            // other projects continue to work.
+            MPSStructureQueryOperation.FIND_INSTANCES -> opFindInstances(mpsProject, params)
 
             MPSStructureQueryOperation.IS_SUBCONCEPT_OF -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
@@ -283,6 +202,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
     @McpDescription(
         """
         Alters MPS language structure: create concepts/enums, manage and rename properties/children/references. Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill.
+
+        For `CREATE_CONCEPTS` with `make:true`, the response includes a `makeStatus` field (one of "success", "runtime_stale", "failed", or "skipped"). `makeStatus` is verified against the live runtime: "success" means the build succeeded AND every created concept's runtime descriptor was read back non-hollow, so dependent tools (`get_concept_details`, `scaffold_editor`) can be trusted immediately. The tool already forces a clean rebuild and, if the first (model-scoped) build leaves any descriptor hollow — which happens for a brand-new, never-before-deployed language — it automatically performs one module-scoped clean rebuild that materializes the runtime (`recoveryStage:"module-rebuild"` is then set). "runtime_stale" means descriptors are still hollow even after that; the still-hollow concept names are listed in `hollowConcepts` and a `descriptorRecoveryAction` is provided — recover by running `mps_mcp_alter_nodes` with `MAKE`, `rebuild=true`, targeting the language module (calling `mps_mcp_reload_all` alone is insufficient; restart MPS if it persists). For the canonical structure-to-aspect editing and compilation prerequisite chain, see the Critical Directives in the `mps-mcp-workflow` skill.
     """
     )
     suspend fun mps_mcp_alter_structure(
@@ -666,15 +587,75 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                     // descriptor classes so the reload picks up the new concepts. The caller asked
                     // for `make = true` specifically to consume the freshly built concepts; an
                     // incremental make here defeats that purpose.
-                    val makeResult = performMake(mpsProject, listOf(model), emptyList(), true)
-                    // `makeStatus` is the sole signal here; no companion `runtimeReady` boolean
-                    // (it would duplicate "runtime_stale" and risk drifting out of sync).
+                    var makeResult = performMake(mpsProject, listOf(model), emptyList(), true)
+
+                    // Ground-truth readiness check. performMake's reload latch only proves that
+                    // *a* reload fired; for a brand-new, never-before-deployed language it is
+                    // vacuous (LanguageRegistry.onLoaded skips an already-present language, so the
+                    // reload re-publishes the hollow descriptor while the latch still counts down
+                    // and reports runtimeReady=true). Read each created concept's runtime
+                    // descriptor directly to learn whether it actually materialized.
+                    var hollow: List<String> = if (makeResult.success) {
+                        executeBackgroundRead(mpsProject) {
+                            hollowRuntimeConcepts(mpsProject.repository, createdReferences.values)
+                        }
+                    } else {
+                        emptyList()
+                    }
+
+                    // Verification-gated recovery for the brand-new-language case. The first make
+                    // above is model-scoped (cheap, and sufficient for an already-deployed
+                    // language). For a never-before-deployed language it leaves the runtime
+                    // descriptors hollow: the in-make reload cannot force the unload/load cycle
+                    // because LanguageRegistry.onLoaded skips an already-present SLanguageId.
+                    //
+                    // The fix proven on a live server is a *module-scoped* clean rebuild: rebuilding
+                    // the whole Language module (CLEAN_MAKE on the module resource, generator
+                    // included) invalidates the module's classloader, which does drive a real
+                    // unload/load and materializes the runtime. A model-scoped rebuild and a bare
+                    // ClassLoaderManager.reload were both measured to be insufficient here, so we
+                    // go straight to the module rebuild and only when verification demands it — the
+                    // steady-state path pays for nothing.
+                    var recoveryStage: String? = null
+                    if (makeResult.success && hollow.isNotEmpty()) {
+                        recoveryStage = "module-rebuild"
+                        val module = executeBackgroundRead(mpsProject) { model.module }
+                        makeResult = performMake(mpsProject, emptyList(), listOf(module), true)
+                        hollow = if (makeResult.success) {
+                            executeBackgroundRead(mpsProject) {
+                                hollowRuntimeConcepts(mpsProject.repository, createdReferences.values)
+                            }
+                        } else {
+                            emptyList()
+                        }
+                    }
+
+                    // makeStatus is driven by ground truth: a successful build whose created
+                    // concepts all read back non-hollow is `success`; anything that leaves a hollow
+                    // descriptor is `runtime_stale`. The old `runtimeReady`-only downgrade is no
+                    // longer consulted here — the per-concept check both subsumes it (a stale
+                    // runtime yields hollow descriptors) and avoids its false positives (a latch
+                    // timeout while the descriptors are in fact fine).
                     result["makeStatus"] = when {
                         !makeResult.success -> "failed"
-                        !makeResult.runtimeReady -> "runtime_stale"
+                        hollow.isNotEmpty() -> "runtime_stale"
                         else -> "success"
                     }
                     result["makeMessage"] = makeResult.message
+                    if (recoveryStage != null) {
+                        // Present only when the first make left descriptors hollow and an extra
+                        // module-scoped rebuild was performed. Exposed for observability.
+                        result["recoveryStage"] = recoveryStage
+                    }
+                    if (hollow.isNotEmpty()) {
+                        result["hollowConcepts"] = hollow
+                        result["descriptorRecoveryAction"] =
+                            "These concepts' runtime descriptors are still hollow after a clean " +
+                                "rebuild plus an automatic module rebuild: ${hollow.joinToString(", ")}. " +
+                                "Run mps_mcp_alter_nodes with operation=MAKE, rebuild=true, and the " +
+                                "language module (not just the structure model) as the target, then " +
+                                "retry; restart MPS if it persists."
+                    }
                     if (makeResult.details.isNotEmpty()) {
                         result["makeDetails"] = makeResult.details
                     }
@@ -1301,35 +1282,16 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
                 val languageModule = language.sourceModuleReference.resolve(mpsProject.repository) ?: continue
 
                 val aspectModels = languageModule.models.filter { !it.name.hasStereotype() && it.name.simpleName != "structure" }
+                val aspectModelRefs = aspectModels.map { it.reference }.toSet()
+                val scope = filteredScope(mpsProject.repository, allowedModels = aspectModelRefs, allowedModules = null)
 
-                val scope = object : BaseScope() {
-                    override fun getModules(): Iterable<SModule> = listOf(languageModule)
-                    override fun getModels(): Iterable<SModel> = aspectModels
-                }
-
-                var hasResults = false
-                FindUsagesFacade.getInstance().findUsages(scope, setOf(conceptNode), { reference ->
+                findUsagesWithFallback(scope, setOf(conceptNode), EmptyProgressMonitor()) { reference ->
                     val root = reference.sourceNode.containingRoot
-                    if (root.model != null && aspectModels.contains(root.model)) {
+                    val rootModel = root.model
+                    if (rootModel != null && rootModel.reference in aspectModelRefs) {
                         synchronized(resultsByModel) {
-                            val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
-                            rootsInModel.putIfAbsent(root, concept)
-                            hasResults = true
+                            resultsByModel.getOrPut(rootModel) { mutableMapOf() }.putIfAbsent(root, concept)
                         }
-                    }
-                }, EmptyProgressMonitor())
-                if (!hasResults) {
-                    val lookup = NodeUsageLookup(setOf(conceptNode)) { reference ->
-                        val root = reference.sourceNode.containingRoot
-                        if (root.model != null && aspectModels.contains(root.model)) {
-                            synchronized(resultsByModel) {
-                                val rootsInModel = resultsByModel.getOrPut(root.model!!) { mutableMapOf() }
-                                rootsInModel.putIfAbsent(root, concept)
-                            }
-                        }
-                    }
-                    for (m in scope.models) {
-                        lookup.collectUsages(m, EmptyProgressMonitor())
                     }
                 }
             }
@@ -1374,84 +1336,6 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractOps() {
             }
 
             finalizeResult(dataArray.toString())
-        }
-    }
-
-    private fun resolveSearchScope(
-        mpsProject: MPSProject,
-        params: JsonObject,
-        scopeParam: String,
-        repository: SRepository,
-        onError: (String) -> Unit
-    ): SearchScope? {
-
-        return when (scopeParam) {
-            "all" -> GlobalScope(repository)
-            "editable" -> EditableFilteringScope(GlobalScope(repository))
-            "models" -> {
-                val modelsArray = params.getAsJsonArray("models")
-                if (modelsArray == null) {
-                    onError("Parameter 'models' is missing for scope 'models'")
-                    return null
-                }
-                val modelRefs = modelsArray.mapNotNull { resolveModel(repository, it.asString)?.reference }.toSet()
-                // j: restrict resolve(SModuleReference) to the set of modules that actually
-                // own one of the listed models. The prior implementation resolved any module
-                // reference through the repository, which leaked containment scope: a model
-                // filter would accept references targeting modules outside the filter set.
-                val moduleRefs = modelRefs.mapNotNull { it.resolve(repository)?.module?.moduleReference }.toSet()
-                object : BaseScope() {
-                    override fun getModules(): Iterable<SModule> = modelRefs.mapNotNull { it.resolve(repository)?.module }.distinct()
-                    override fun getModels(): Iterable<SModel> = modelRefs.mapNotNull { it.resolve(repository) }
-                    override fun resolve(reference: SModelReference): SModel? = if (modelRefs.contains(reference)) reference.resolve(repository) else null
-                    override fun resolve(reference: SModuleReference): SModule? = if (moduleRefs.contains(reference)) reference.resolve(repository) else null
-                }
-            }
-
-            "modules" -> {
-                val modulesArray = params.getAsJsonArray("modules")
-                if (modulesArray == null) {
-                    onError("Parameter 'modules' is missing for scope 'modules'")
-                    return null
-                }
-                val moduleRefs = modulesArray.mapNotNull { resolveModule(repository, it.asString)?.moduleReference }.toSet()
-                object : BaseScope() {
-                    override fun getModules(): Iterable<SModule> = moduleRefs.mapNotNull { it.resolve(repository) }
-                    override fun getModels(): Iterable<SModel> = getModules().flatMap { it.models }
-                    override fun resolve(reference: SModuleReference): SModule? = if (moduleRefs.contains(reference)) reference.resolve(repository) else null
-                    override fun resolve(reference: SModelReference): SModel? = reference.resolve(repository)
-                }
-            }
-
-            "roots" -> {
-                val rootsArray = params.getAsJsonArray("roots")
-                if (rootsArray == null) {
-                    onError("Parameter 'roots' is missing for scope 'roots'")
-                    return null
-                }
-                val rootNodes = mutableListOf<SNode>()
-                for (elem in rootsArray) {
-                    val refStr = elem.asString
-                    val node = resolveNodeReference(repository, refStr)?.resolve(repository)
-                    if (node == null) {
-                        onError("Failed to resolve root reference: '$refStr'")
-                        return null
-                    }
-                    rootNodes.add(node)
-                }
-                val modelRefs = rootNodes.mapNotNull { it.model?.reference }.toSet()
-                object : BaseScope() {
-                    override fun getModules(): Iterable<SModule> = modelRefs.mapNotNull { it.resolve(repository)?.module }.distinct()
-                    override fun getModels(): Iterable<SModel> = modelRefs.mapNotNull { it.resolve(repository) }
-                    override fun resolve(reference: SModelReference): SModel? = if (modelRefs.contains(reference)) reference.resolve(repository) else null
-                    override fun resolve(reference: SModuleReference): SModule? = reference.resolve(repository)
-                }
-            }
-
-            else -> {
-                onError("Unsupported scope: $scopeParam")
-                null
-            }
         }
     }
 

@@ -11,11 +11,15 @@ Read this when: choosing what plugs into a rule's `ruleConsequence` role, replac
 | `TemplateDeclarationReference` | Delegate to a standalone `TemplateDeclaration` | ref `template` → TemplateDeclaration |
 | `InlineTemplate_RuleConsequence` | Inline target subtree is the replacement | child `templateNode` — a target-language node |
 | `InlineTemplateWithContext_RuleConsequence` | Like inline, but provides `context` for macros | children `templateNode`, `contextNode` |
+| `InlineSwitch_RuleConsequence` | Pick one of several consequences by condition, inline (no separate `TemplateSwitch`) | children `case` (0..n), `defaultConsequence` (1) |
 | `AbandonInput_RuleConsequence` | **Drop the input node entirely**; produce nothing | (none) |
 | `DismissTopMappingRule` | Fail over to the next matching rule | optional message property |
-| `SwitchMacro_RuleConsequence` *(pattern rules)* | Dispatch through a template switch | ref `templateSwitch` |
 
-## Verbatim StateChart example — `EmptyOperation` reduces to nothing (drop from the XML output):
+These are exactly the options offered in the `ruleConsequence` completion menu (`<in-line template>`, `<in-line template with context>`, `<in-line switch>`, `<abandon input>`, `<dismiss top rule>`), plus the plain `TemplateDeclarationReference` you get by referencing a named template.
+
+## Example from the StateChart *sample* — `EmptyOperation` reduces to nothing (drop from the XML output):
+
+> Adapted from the bundled `jetbrains.mps.samples.StateChart` sample (`samples/stateChart/`), **not** your project's language. `EmptyOperation` and the `org.example.statecharts.structure` model below are placeholders — substitute your own concept and structure-model ref.
 
 ```json
 {
@@ -39,3 +43,7 @@ Read this when: choosing what plugs into a rule's `ruleConsequence` role, replac
 ## When to use AbandonInput
 
 Use `AbandonInput_RuleConsequence` whenever the source concept has no counterpart in the output (placeholder / no-op nodes, unused annotations, empty blocks). It is strictly stronger than "empty template": an empty template still produces a target placeholder; `AbandonInput` deletes the slot.
+
+## When to use InlineSwitch
+
+Use `InlineSwitch_RuleConsequence` (`<in-line switch>`) when one rule must produce **different output depending on a condition** on the source node, and you don't want to factor the alternatives out into a reusable `TemplateSwitch`. Each `case` child is an `InlineSwitch_Case` carrying a `conditionFunction` (a `BaseMappingRule_Condition` query returning boolean) and a `caseConsequence` (any `RuleConsequence` — typically an inline template); the required `defaultConsequence` (also any `RuleConsequence`) fires when no case matches. Cases are tested top-to-bottom. For dispatch logic that several rules share, prefer a standalone `TemplateSwitch` referenced via a `$SWITCH$` macro instead.

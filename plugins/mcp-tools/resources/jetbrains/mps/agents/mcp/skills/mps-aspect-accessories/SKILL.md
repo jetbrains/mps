@@ -16,6 +16,7 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 - **Don't hand-edit `languageVersions` / `dependencyVersions`.** MPS maintains these. Use the MPS "Update language/dependency versions" action.
 - **Generator modules have their own dependency list.** Add target-language deps to the generator, not the parent language.
 - **Used languages auto-import** when nodes are inserted via `mps_mcp_insert_root_node_from_json`, `mps_mcp_update_node`. Manually add a used language only for hand-written code or implicit dependencies.
+- **A runtime solution holds the *stable* part of generation** (code that doesn't vary with the model). Generate thin code that calls it; don't regenerate it. No MCP tool wires the language's `<runtime>` block — see `references/runtime-solutions.md`.
 
 ## Rule of Thumb — Dependency vs. Used Language
 
@@ -46,7 +47,7 @@ This skill covers the *wiring* layer of an MPS language — the module descripto
 - Open `references/module-level-deps.md` for the full list of `.mpl` declarations (dependencies, usedLanguages, usedDevKits, extendedLanguages, runtimeModules, generators, accessoryModels, version stamps), their scopes, and the `mps_mcp_module_dependency` scope-dispatch table.
 - Open `references/model-level-imports.md` for per-model `dependencies`, used languages, used devkits, and the auto-import behavior of node-insertion tools.
 - Open `references/accessory-models.md` when shipping a model that should be available to every consumer of the language without an explicit import — including the `.mpl` `<accessoryModels>` XML shape and the hand-edit caveat.
-- Open `references/runtime-solutions.md` for shipping Java code that generated programs need at runtime.
+- Open `references/runtime-solutions.md` for **runtime solutions** — shipping the Java that *generated* programs call at run time (the generator's *stable part*, as MPS source or a prebuilt JAR): the Java-facet settings, the language `<runtime>`-block wiring, jar-as-stubs (`java_classes` model root + facet `<library>`), the no-MCP-tool caveat, and the Kaja/JavaKaja worked example.
 - Open `references/extends-vs-uses.md` for the semantic difference between `extendedLanguages` and `usedLanguages` with examples.
 - Open `references/pitfalls.md` when you need to diagnose a symptom ("Cannot resolve concept X", "ClassNotFoundException", version mismatch, generator can't find target-language concept, devkit changes not picked up).
 - Open `references/module-creation.md` for `mps_mcp_create_module` — supported types, language-only companions (`withGenerator`/`withSandbox`/`withRuntime`), and the `facets` policy.

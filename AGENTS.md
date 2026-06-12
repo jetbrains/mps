@@ -45,6 +45,8 @@ Prefer MPS MCP tools for:
 - model navigation, concept analysis, node editing, and model validation
 - generation-related issues whose root cause is in MPS artifacts
 
+Plain file tools (Read, Grep, Glob, Bash) are fine for reading generated output, non-MPS configuration, and plain-text docs — but never for editing `.mps` files.
+
 For cross-cutting tasks:
 - inspect both the JVM side and the MPS side before editing
 - validate the MPS model and the affected JVM code path
@@ -79,7 +81,7 @@ Typical JVM-side areas in this repository include:
 When working on MPS artifacts:
 - Use MPS MCP tools whenever available.
 - Resolve nodes, concepts, models, and modules precisely before editing.
-- Validate frequently after structural changes, reference updates, or generator changes.
+- Validate frequently with `mps_mcp_check_root_node_problems` after structural changes, reference updates, or generator changes.
 - Rebuild or regenerate when needed so downstream JVM code and project state remain consistent.
 
 Use the `mps-mcp-workflow` skill whenever the task involves MPS project structure, MPS modules or models, language syntax, concept relationships, generators, or MPS-specific changes. In practice, serious MPS work in this repository depends on that workflow skill together with MPS MCP tools.
@@ -87,6 +89,10 @@ Use the `mps-mcp-workflow` skill whenever the task involves MPS project structur
 ## Rules For Generated Code
 
 Generated code may be useful for inspection, debugging, or understanding runtime behavior, but it is often not the correct place to apply a fix.
+
+Generated artifacts are recreated on every Make/Rebuild. Typical generated locations:
+- `source_gen/` — Java/Kotlin sources produced by MPS generators
+- `classes_gen/` — compiled classes produced from generated sources
 
 Default rule:
 - do not edit generated sources if the real source of truth is an MPS model or generator
@@ -126,7 +132,7 @@ Current environment uses:
 ---
 ## Platform sources
 
-This project builds on top of the IntelliJ platform. It is bundled with the project as jar files. The platform Java and Kotlin classes are typically organized into `com.intellij...` packages, while MPS code is in `jetbrains.mps...`.
+This project builds on top of the IntelliJ platform, bundled as jar files. Platform Java/Kotlin classes live in `com.intellij...` packages; MPS code lives in `jetbrains.mps...`.
 
 **When the sources of the platform are required for understanding an MPS feature/code/problem**:
 - Get the location of the IntelliJ platform sources - typically it is a folder nearby (`../intellij-community` or a similar location).
@@ -145,8 +151,6 @@ The primary way for agents to build the project is through the IntelliJ IDEA MCP
 - Verified to use **JDK 25**.
 - Run configurations such as `CoreTestSuite` or `MPS` can be found via `get_run_configurations`.
 
-## Docs
-
 ## Global rules
 
 These rules are **mandatory** — always follow them, not just when a skill is active.
@@ -158,4 +162,5 @@ These rules are **mandatory** — always follow them, not just when a skill is a
 - [`.agents/quality-gates.md`](.agents/quality-gates.md) — quality standards
 
 ## Skills
-A skill is a set of local instructions to follow that is stored in a `SKILL.md` file under `.agents/skills/<skill-name>/`.
+
+A skill is a set of local instructions stored in a `SKILL.md` file under `.agents/skills/<skill-name>/`. Start with `mps-mcp-workflow` for the overview and a directory of every other skill.

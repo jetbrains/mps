@@ -3,7 +3,7 @@
 Two tools cover structure operations:
 
 - **`mps_mcp_alter_structure`** — write operations: `CREATE_CONCEPTS`, `CREATE_ENUM`, `UPDATE_CONCEPT_PROPERTY`, `UPDATE_CONCEPT_CHILD`, `UPDATE_CONCEPT_REFERENCE`, `RENAME_CONCEPT_PROPERTY`, `RENAME_CONCEPT_CHILD`, `RENAME_CONCEPT_REFERENCE`.
-- **`mps_mcp_query_structure`** — read-only operations: `GET_ENUMERATION_LITERALS`, `FIND_INSTANCES`, `IS_SUBCONCEPT_OF`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ALL_SUPERCONCEPTS`, `LIST_CONCEPT_ASPECTS`, `GET_ASSIGNABLE_REFERENCES`, `IS_SMART_REFERENCE`.
+- **`mps_mcp_query_structure`** — read-only operations: `GET_ENUMERATION_LITERALS`, `IS_SUBCONCEPT_OF`, `GET_SUB_CONCEPTS`, `GET_ASSIGNABLE_CONCEPTS`, `GET_ALL_SUPERCONCEPTS`, `LIST_CONCEPT_ASPECTS`, `GET_ASSIGNABLE_REFERENCES`, `IS_SMART_REFERENCE`. To find nodes that are *instances* of a concept use `mps_mcp_query_nodes` (`FIND_INSTANCES`) — see `mps-mcp-workflow/references/analysis-tools.md`.
 
 Both return a JSON object with `'ok':true` and `'data':{...}` on success, or `'ok':false` and `'error':"..."` on failure.
 Failure responses can also include optional stable metadata fields: `'code'`, `'details'`, and `'warnings'`.
@@ -18,7 +18,9 @@ Returns a JSON object mapping concept names to their persistent node references 
 When the `make` flag is true, `CREATE_CONCEPTS` performs a **clean** make of the structure model's language module (equivalent to `mps_mcp_alter_nodes MAKE` with `rebuild = true`). An incremental make would often leave the language aspect descriptor classes unchanged on disk, so the post-make `ClassLoaderManager.reload` would re-publish the previously compiled — now stale — `StructureAspectDescriptor` and downstream tools (`mps_mcp_get_concept_details`, `mps_mcp_scaffold_editor`) would read empty properties/references/children. The clean make avoids that whole class of problems.
 
 The response reports:
-- `makeStatus`: one of `"success"`, `"runtime_stale"`, `"failed"`, or `"skipped"`. **`"runtime_stale"` means the build succeeded but the MPS language runtime did not reload within the post-make safety-net window** (currently 10 s; see `AbstractOps.LANGUAGE_RELOAD_TIMEOUT_SECONDS`), so concept descriptors are likely hollow downstream. Recovery: call `mps_mcp_alter_nodes` with operation `MAKE` and `rebuild = true` on the same model, then retry. `mps_mcp_reload_all` alone is **not** sufficient — it reloads classes from disk, but the disk content is stale until a clean rebuild regenerates the aspect descriptor classes.
+- `makeStatus`: one of `"success"`, `"runtime_stale"`, `"failed"`, or `"skipped"`, **verified against the live runtime** rather than the build outcome alone. `"success"` means the build succeeded *and* every created concept read back non-hollow, so `mps_mcp_get_concept_details` / `mps_mcp_scaffold_editor` are trustworthy at once. A never-before-deployed language stays hollow after the initial model-scoped make; the tool detects that and automatically runs one module-scoped clean rebuild to materialize the runtime (`recoveryStage: "module-rebuild"`). `"runtime_stale"` means descriptors were *still* hollow after that rebuild (names in `hollowConcepts`); recover by calling `mps_mcp_alter_nodes` `MAKE` with `rebuild = true` on the **language module** — not just the structure model — then retry. `mps_mcp_reload_all` alone is **not** sufficient.
+- `recoveryStage`: present only when the first make left descriptors hollow and an extra module-scoped rebuild was performed (value `"module-rebuild"`).
+- `hollowConcepts`: present only with `"runtime_stale"` — the names of concepts whose runtime descriptor is still hollow.
 - `makeMessage`: human-readable summary of the make outcome.
 - `makeDetails`: list of warnings/errors emitted during the build.
 
@@ -127,23 +129,6 @@ Parameters:
   "enumerationRef": "Persistent reference of an EnumerationDeclaration node. Use this OR (nodeReference + propertyName), not both.",
   "nodeReference": "Persistent reference of a node whose concept has an enumeration-typed property (SNodeReference). Pair with 'propertyName'.",
   "propertyName": "The name of the enumeration property on the concept of 'nodeReference'."
-}
-```
-
-#### `FIND_INSTANCES`
-Returns all nodes that are instances of the specified concept, or a single sample instance (randomly selected) if requested.
-Returns a JSON array of node info objects, or a path to a temporary JSON file if the data is large.
-
-Parameters:
-```
-{
-  "conceptRef": "Persistent reference of the concept (SAbstractConcept) or fully qualified concept name",
-  "scope": "Optional: 'all', 'editable' (default), 'models', 'modules', 'roots'",
-  "models": "Optional: list of persistent model references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'models')",
-  "modules": "Optional: list of persistent module references (e.g. [\"ref1\", \"ref2\"]) (required if scope is 'modules')",
-  "roots": "Optional: list of root node references (e.g. [\"r:model-id(NodeName)\", \"r:...\"]) (required if scope is 'roots'). Restricts the search to nodes contained within the specified root nodes.",
-  "exact": "Boolean (optional, default: false). Whether to exclude instances of subconcepts.",
-  "sampleOnly": "Boolean (optional, default: false). If true, only a single sample instance (randomly selected) will be returned to illustrate usage and JSON structure."
 }
 ```
 

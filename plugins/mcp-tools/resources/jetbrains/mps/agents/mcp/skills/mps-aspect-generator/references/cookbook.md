@@ -1,6 +1,17 @@
 # Cookbook recipes
 
-Read this when: applying a recognized recipe — multiple roots from one input, cross-reference wiring, unique IDs, extensible generators, debugging a failing step, breaking out of a reduction loop, choosing between switch vs. reduction, or extracting an inline LOOP into a standalone reduction.
+Read this when: applying a recognized recipe — parsing a Java template and attaching macros to its literals, multiple roots from one input, cross-reference wiring, unique IDs, extensible generators, debugging a failing step, breaking out of a reduction loop, choosing between switch vs. reduction, or extracting an inline LOOP into a standalone reduction.
+
+## Parse a Java template, then attach `$PROPERTY$` macros to its literals
+
+The bridge from a parsed Java skeleton to a working, property-substituting template. Use it whenever the generator targets BaseLanguage (Java) and you want specific literals — a class name, an integer, a string — driven by the source node instead of being hard-coded.
+
+1. **Parse the skeleton in.** `mps_mcp_parse_java_and_insert` (mode `root`) the Java source into the generator's `templates@generator` model. You now hold the template root, but nothing is parameterized yet.
+2. **Locate the literal sites.** Run `mps_mcp_query_nodes` `FIND_INSTANCES` with `conceptRef = IntegerConstant` / `StringLiteral` (etc.), `scope = roots`, `roots = [<template root>]`. No external tree-walker is needed. Add a `propertyFilter` such as `{"name": "value", "value": "<the literal>"}` to pinpoint a literal by its value directly — often avoiding the disambiguation pass below. Otherwise, when a query returns several hits, disambiguate with `mps_mcp_print_node` on the handful of candidates to pick the exact literal to parameterize.
+3. **Graft the macro.** Add a `PropertyMacro` as an `smodelAttribute` child of the target literal node (`mps_mcp_update_node`, `operation = ADD`, `kind = CHILD`, `childRole = "smodelAttribute"`). If the node already carries a macro, choose the child `position` deliberately — sibling macros chain in attribute-list order and that order is semantics. Set `propertyId` using the harvesting recipe in `macro-catalog.md` (PropertyMacro section); it is an encoded three-segment string, never a node reference.
+4. **Validate.** Run `mps_mcp_check_root_node_problems` on the template (it decodes `propertyId` and flags a malformed value), then do a dry generation / MAKE and diff `source_gen/` to confirm the literal is now driven by the source node.
+
+See `macro-catalog.md` for the `PropertyMacro` blueprint, the `propertyId` encoding, and the `smodelAttribute` ordering rule. When dedicated literal-locating or macro-grafting helpers land, prefer them over steps 2–3.
 
 ## Emit multiple roots from one input
 
@@ -77,3 +88,14 @@ When a root template grows unwieldy (everything inlined under one big node tree)
 - Adding only `LoopMacro` (without `CopySrcNodeMacro`) on the placeholder → loop replicates the placeholder shape but no reduction fires; output contains empty placeholders.
 
 This refactor scales: repeat per concept (Transition, then State, then …) until each reduction is a small focused template and the root template is just structural scaffolding plus delegation placeholders.
+
+## Architecture ladder: minimal vs. idiomatic
+
+Pick the lowest rung that fits; climb only when the trigger appears.
+
+1. **One root template + `$PROPERTY$` / `$IF$`** — small, fixed-shape output: one source concept → one output skeleton with a few value/branch substitutions. A single `Root_MappingRule` (or one `TemplateDeclaration`); don't decompose. *Climb when:* the concept must be produced in several contexts, or the skeleton sprouts many independent variants.
+2. **Reduction rules, one per concept** — when concepts recur or the language will grow. Each `Reduction_MappingRule` owns a small focused template; the `MappingConfiguration` is the dispatch table. The idiomatic default beyond a one-shot mapping (cf. the Kaja generator: one `reduce_*` per command). The LOOP-extraction recipe above is the rung 1 → 2 refactor.
+3. **Generation-time specialization vs. generated runtime dispatch** — when output varies by a *closed* set known at generation time (an enum, a boolean property), specialize **at generation time** with `$IF$` / `$SWITCH$` + `TemplateSwitch` so dead branches never reach the output. Emit a runtime `switch`/dispatch **only** when the variability is open or genuinely run-time (config read at run time, user input). *Anti-pattern:* the generator emits all N variants plus a dispatch on a generated constant, where an `$IF$` on that constant would have emitted just one.
+4. **Extract the stable part into a runtime solution** — the rung most often missed. Before generating a lot of code, ask *which part never changes with the model.* Engines, base classes, helpers should be **written once in a runtime solution** and merely **called** by generated code — not regenerated per model, not collapsed into a generated artifact that dispatches at run time. Kaja generates only `extends KajaFrame { perform() { …runtime calls… } }`; the robot engine lives in the `JavaKaja` runtime solution. See `mps-aspect-accessories/references/runtime-solutions.md`.
+
+**Rule of thumb: the less code a generator emits, the better.** Push fixed logic down into a runtime solution (rung 4), close generation-time variability with `$IF$`/switch (rung 3), and reserve generated runtime dispatch for variability that is genuinely open at run time.

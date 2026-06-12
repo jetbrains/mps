@@ -56,12 +56,36 @@ class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val payload = readJsonObjectFromOkPath(response)
         // Drilling into a single model yields the model JSON shape (name + reference), not a
         // top-level `modules` array — the toolset's docstring guarantees this dispatch.
-        assertEquals(structureModel.name.longName, payload.get("name").asString)
+        // The reported name is the full SModelName.value (stereotype included when present); a
+        // structure model has no stereotype, so value == longName here.
+        assertEquals(structureModel.name.value, payload.get("name").asString)
         assertFalse(
             "a model-rooted response should not be wrapped as a module list",
             payload.has("modules")
         )
         assertEquals(0, payload.get("rootNodesCount").asInt)
+    }
+
+    @Test
+    fun `get-project-structure reports a stereotyped model name with the stereotype kept`() {
+        // Regression: the reported model name must keep its stereotype (e.g. @tests). It used to
+        // be built from SModelName.longName, which drops the stereotype, so a @tests/@generator
+        // model came back under a name that could not be addressed back. It now uses .value.
+        val solution = createSolution("test.proj.stereo${System.nanoTime()}")
+        createModel(solution, "test.proj.stereo.sample@tests")
+
+        // Address the model by its stereotyped name (not the persistent reference). This guards
+        // the documented promise that the reported `name` — stereotype included — round-trips as
+        // a startingPoint: resolveModel must match `foo.bar@tests` against SModelName.value.
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(startingPoint = "test.proj.stereo.sample@tests")
+        }
+
+        val payload = readJsonObjectFromOkPath(response)
+        assertEquals(
+            "the reported name must include the @tests stereotype",
+            "test.proj.stereo.sample@tests", payload.get("name").asString
+        )
     }
 
     @Test

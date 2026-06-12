@@ -54,6 +54,57 @@ class JetBrainsMPSLanguageMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     }
 
     @Test
+    fun `get-concept-details emits a featureId and sourceNode on each property reference and child`() {
+        // The id-harvesting fix: every property/reference/child entry must carry the encoded
+        // featureId (so $PROPERTY$/SPropertyAccess can be built without deep print_node calls) and
+        // the declaration's persistent sourceNode ref. ConceptDeclaration is a rich fixture — it
+        // has properties (e.g. `abstract`, `final`), references, and children — so the union of the
+        // three arrays is guaranteed non-empty.
+        val response = runTool(JetBrainsMPSLanguageMcpToolset()) {
+            it.mps_mcp_get_concept_details(
+                conceptRefs = listOf("jetbrains.mps.lang.structure.structure.ConceptDeclaration"),
+            )
+        }
+
+        val concept = readConceptArrayFromOkPath(response).first().asJsonObject
+        val features = listOf("properties", "references", "children").flatMap { block ->
+            concept.get(block).asJsonArray.map { it.asJsonObject }
+        }
+        assertTrue("ConceptDeclaration must expose at least one feature; got none", features.isNotEmpty())
+        for (feature in features) {
+            val name = feature.get("name").asString
+            assertTrue(
+                "feature '$name' must carry a featureId so macros/smodel accesses can be built without deep print_node",
+                feature.has("featureId")
+            )
+            val featureId = feature.get("featureId").asString
+            // The 3-segment <langUUID>/<conceptId>/<featureId> encoding from SPropertyId/
+            // S{Reference,Containment}LinkId.serialize().
+            assertEquals(
+                "featureId for '$name' must be the 3-segment <langUUID>/<conceptId>/<featureId> form; got '$featureId'",
+                2, featureId.count { it == '/' }
+            )
+            // MetaIdHelper.get{Property,Association,Aggregation} returns the all-zero INVALID_*
+            // constant when the feature is not a recognized adapter; that serializes to
+            // "00000000-0000-0000-0000-000000000000/0/0" — exactly 2 slashes, so the segment count
+            // alone would not catch it. Reject the INVALID prefix so a regression that stops
+            // resolving real ids fails here rather than shipping useless all-zero featureIds.
+            assertFalse(
+                "featureId for '$name' must encode a real id, not the all-zero INVALID prefix; got '$featureId'",
+                featureId.startsWith("00000000-0000-0000-0000-000000000000/")
+            )
+            assertTrue(
+                "feature '$name' must carry the declaration's sourceNode ref",
+                feature.has("sourceNode")
+            )
+            assertTrue(
+                "feature '$name' must carry a non-blank declaration sourceNode ref; got=${feature.get("sourceNode")}",
+                feature.get("sourceNode").asString.isNotBlank()
+            )
+        }
+    }
+
+    @Test
     fun `get-concept-details expands an entire language into its concept set`() {
         val response = runTool(JetBrainsMPSLanguageMcpToolset()) {
             it.mps_mcp_get_concept_details(

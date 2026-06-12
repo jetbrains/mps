@@ -95,7 +95,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Generates a default `ConceptEditorDeclaration` (or `EditorComponentDeclaration` when `type="component"`) for a concept, wiring properties/children/references to default cell models. Requires the concept to have been compiled before use.
+        Generates a default `ConceptEditorDeclaration` (or `EditorComponentDeclaration` when `type="component"`) for a concept, wiring properties/children/references to default cell models. If the target concept is uncompiled or its structure is out of date, this tool automatically attempts to build (make) the structure model (self-healing). However, if this automatic build fails, or if the language runtime remains stale or hollow after compilation, the tool cannot retrieve the concept details and the operation will fail. For details on the canonical structure-to-aspect editing and compilation prerequisite chain, see the Critical Directives in the `mps-mcp-workflow` skill.
     """
     )
     suspend fun mps_mcp_scaffold_editor(
