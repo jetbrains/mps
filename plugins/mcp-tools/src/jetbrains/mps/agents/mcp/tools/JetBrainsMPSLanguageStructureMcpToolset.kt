@@ -202,6 +202,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
     @McpDescription(
         """
         Alters MPS language structure: create concepts/enums, manage and rename properties/children/references. Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill.
+
+        The response includes a `makeStatus` field (one of "success", "runtime_stale", "failed", or "skipped"). A "runtime_stale" status means the build succeeded but the language runtime is not yet reloaded; recover by running `mps_mcp_alter_nodes` with `MAKE` and `rebuild=true` (calling `mps_mcp_reload_all` alone is insufficient). For the canonical structure-to-aspect editing and compilation prerequisite chain, see the Critical Directives in the `mps-mcp-workflow` skill.
     """
     )
     suspend fun mps_mcp_alter_structure(
