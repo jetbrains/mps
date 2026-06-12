@@ -589,10 +589,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
           Returns the inserted node's info envelope or the parent's one, if deletion (`childJson = null`).
 
         SET × PROPERTY — Set or delete properties on a batch of nodes. The value `propertyValue = null` DELETES the property.
-          properties: list of triplets [nodeReference, propertyName, propertyValue]. Returns a JSON array with one result per triplet.
+          properties: list of triplets [nodeReference, propertyName, propertyValue]. Returns a JSON array with one result per triplet. Encoded ids carried inside a property value (e.g. a `PropertyMacro.propertyId`) are NOT validated when set — a malformed, blank, or non-resolving id is accepted silently and surfaces only via `mps_mcp_check_root_node_problems`.
 
         SET × REFERENCE — Set or delete references on a batch of nodes. The value `targetNodeRefOrName = null` DELETES the reference.
-          references: list of triplets [nodeReference, referenceRole, targetNodeRefOrName]. `targetNodeRefOrName` accepts a persistent node reference (`r:...`) or a plain name for auto-resolution; do NOT use MPS XML short IDs copied from `.mps` files. Returns a JSON array with one result per triplet. See `mps-mcp-workflow/references/reference-formats.md`.
+          references: list of triplets [nodeReference, referenceRole, targetNodeRefOrName]. `targetNodeRefOrName` accepts a persistent node reference (`r:...`) or a plain name for auto-resolution; do NOT use MPS XML short IDs copied from `.mps` files. A reference role never accepts a `c:` concept ref — passing one is accepted silently and produces an unresolved reference, not an error. Returns a JSON array with one result per triplet. See `mps-mcp-workflow/references/reference-formats.md`.
 
         ADD × PROPERTY and ADD × REFERENCE are not valid combinations and return an error.
 

@@ -200,7 +200,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Bulk-creates one or more MPS root nodes from a JSON blueprint (a single object or a top-level array; arrays insert atomically with batch rollback on failure). Returns the new node's info envelope, or an array of envelopes when the input was an array. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`) and `mps-mcp-workflow/references/bulk-creation.md` for the array contract and large-input strategies.
+        Bulk-creates one or more MPS root nodes from a JSON blueprint (a single object or a top-level array; arrays insert atomically with batch rollback on failure). Returns the new node's info envelope, or an array of envelopes when the input was an array. Two blueprint values fail silently rather than erroring: a reference role given a `c:` concept ref (instead of an `r:` node ref or a plain name) yields an unresolved reference, and an encoded id inside a property value (e.g. a `PropertyMacro.propertyId`) is not validated — both surface only via `mps_mcp_check_root_node_problems`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`) and `mps-mcp-workflow/references/bulk-creation.md` for the array contract and large-input strategies.
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,
