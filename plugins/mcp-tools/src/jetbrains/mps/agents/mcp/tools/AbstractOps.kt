@@ -135,10 +135,11 @@ abstract class AbstractOps : McpToolset {
          * force a clean regeneration.
          */
         internal const val DESCRIPTOR_REBUILD_INSTRUCTION_HOLLOW: String =
-            "Run `mps_mcp_alter_nodes` with operation=MAKE and rebuild=true on the " +
-                "language's structure model, then retry. (`mps_mcp_reload_all` alone is not " +
-                "sufficient — the language-aspect descriptor classes on disk are still stale " +
-                "until a clean rebuild.)"
+            "Run `mps_mcp_alter_nodes` with operation=MAKE and rebuild=true targeting the " +
+                "language module (a model-scoped make can leave a never-deployed language's " +
+                "runtime hollow), then retry. (`mps_mcp_reload_all` alone is not sufficient — " +
+                "the language-aspect descriptor classes on disk are still stale until a clean " +
+                "rebuild.)"
         private val GSON = Gson()
         private val PRETTY_GSON = GsonBuilder().setPrettyPrinting().create()
 
@@ -1836,7 +1837,7 @@ abstract class AbstractOps : McpToolset {
             obj.addProperty("descriptorStatus", "hollow")
             obj.addProperty(
                 "descriptorRecoveryAction",
-                "Run mps_mcp_alter_nodes with operation=MAKE and rebuild=true on the language's structure model, then retry."
+                "Run mps_mcp_alter_nodes with operation=MAKE and rebuild=true targeting the language module (not just the structure model), then retry."
             )
         }
         return obj
@@ -1854,6 +1855,61 @@ abstract class AbstractOps : McpToolset {
             concept.properties.isEmpty() &&
             concept.referenceLinks.isEmpty() &&
             concept.containmentLinks.isEmpty()
+    }
+
+    /**
+     * Ground-truth post-make verification for freshly created concepts.
+     *
+     * The event-level reload latch in [performMake] only proves that *a* language reload
+     * fired. For a brand-new, never-before-deployed language that latch is vacuous: the
+     * explicit `ClassLoaderManager.reload` produces an empty module-watcher diff, so
+     * `LanguageRegistry.onLoaded` never re-creates the runtime (it skips an already-present
+     * `SLanguageId`), yet `performMake` still counts the latch down and reports
+     * `runtimeReady = true`. The descriptor read back is then hollow.
+     *
+     * Rather than trust the latch, this reads each created concept's runtime descriptor
+     * straight out of [LanguageRegistry] and asks whether it actually materialized. This is
+     * the authoritative readiness signal for `CREATE_CONCEPTS make:true`.
+     *
+     * @param conceptDeclRefs node references (`r:...`) of the created concept *declaration*
+     *   nodes, as collected in `createdReferences`.
+     * @return the names (or, when a name is unavailable, the refs) of concepts whose runtime
+     *   descriptor is still hollow or entirely absent from the registry. An empty list means
+     *   every created concept is consistently readable. Must be called inside a read action.
+     */
+    protected fun hollowRuntimeConcepts(repository: SRepository, conceptDeclRefs: Collection<String>): List<String> {
+        if (conceptDeclRefs.isEmpty()) return emptyList()
+        refreshRegistries(repository)
+        val facade = PersistenceFacade.getInstance()
+        val registry = LanguageRegistry.getInstance(repository)
+        val hollow = mutableListOf<String>()
+        for (ref in conceptDeclRefs) {
+            val declNode = try {
+                facade.createNodeReference(ref)?.resolve(repository)
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
+                null
+            }
+            if (declNode == null) {
+                // The declaration node we just created no longer resolves — treat as not-ready.
+                hollow.add(ref)
+                continue
+            }
+            val name = declNode.name ?: ref
+            val declConcept = MetaAdapterByDeclaration.getConcept(declNode)
+            val runtime = registry.getLanguage(declConcept.language)
+            if (runtime == null) {
+                // Language has no loaded runtime at all — the strongest form of "stale".
+                hollow.add(name)
+                continue
+            }
+            val declRef = facade.asString(declConcept)
+            val runtimeConcept = runtime.concepts.find { facade.asString(it) == declRef }
+            if (runtimeConcept == null || isHollowDescriptor(runtimeConcept)) {
+                hollow.add(name)
+            }
+        }
+        return hollow
     }
 
     /**

@@ -75,7 +75,7 @@ Each item in these three arrays carries the identifiers needed to reference the 
 ```
 
 - **`featureId`** is the exact value to paste into a `$PROPERTY$` macro's `propertyId`, or to encode smodel `SPropertyAccess` / `SLinkAccess` targets.
-- **`sourceNode`** is the `r:...(...structure)/<id>` form. This is the form `applicableConcept` requires — the `c:<langUUID>/<conceptId>` form yields a silent "Unresolved reference". It is omitted when the feature has no resolvable declaration (rare; e.g. a hollow descriptor).
+- **`sourceNode`** is the `r:...(...structure)/<id>` form. That is the correct *kind* of ref when another API expects a structure declaration node (for example `applicableConcept`), but this particular feature-declaration ref is informational only and is not itself a valid `applicableConcept` target. It is omitted when the feature has no resolvable declaration (rare; e.g. a hollow descriptor).
 
 ## Stale runtime descriptors (`descriptorStatus: "hollow"`)
 
@@ -83,6 +83,6 @@ A concept can have a *hollow* runtime descriptor: the runtime entry exists but r
 
 When `mps_mcp_get_concept_details` detects this shape it adds `descriptorStatus: "hollow"` and a `descriptorRecoveryAction` string to the entry. **Treat the entry as untrustworthy: empty `properties`/`references`/`children` here mean "unknown", not "the concept has none".**
 
-Recovery: call `mps_mcp_alter_nodes` with operation `MAKE` and `rebuild = true` on the language's structure model, then re-call `mps_mcp_get_concept_details`. `mps_mcp_reload_all` alone is **not** sufficient — it reloads classes from their current on-disk form, but the disk content is stale until a clean rebuild has regenerated the aspect descriptor classes.
+Recovery: call `mps_mcp_alter_nodes` with operation `MAKE` and `rebuild = true` targeting the **language module** (not just the structure model), then re-call `mps_mcp_get_concept_details`. `mps_mcp_reload_all` alone is **not** sufficient — it reloads classes from their current on-disk form, but the disk content is stale until a clean rebuild has regenerated the aspect descriptor classes.
 
-Note that `CREATE_CONCEPTS` with `make: true` already performs a clean rebuild, so a hollow descriptor immediately after that path indicates a deeper problem (build failure, language module not in the project scope, …) — inspect `makeStatus` and `makeDetails` on the create response first.
+Note that `CREATE_CONCEPTS` with `make: true` already clean-rebuilds *and* verifies each created descriptor against the live runtime — auto-recovering a never-deployed language with one module-scoped rebuild — so it returns `makeStatus: "runtime_stale"` only when descriptors are genuinely still hollow. A hollow descriptor after a `"success"` from that path indicates a deeper problem (build failure, language module not in the project scope, …) — inspect `makeStatus`, `hollowConcepts`, and `makeDetails` on the create response first.

@@ -203,7 +203,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
         """
         Alters MPS language structure: create concepts/enums, manage and rename properties/children/references. Returns a JSON object with 'ok':true and 'data':{...} on success, or 'ok':false and 'error':"..." on failure. Failure responses may also include optional 'code', 'details', and 'warnings' fields. Parameters are passed as a JSON object string. For the full operation list, parameter formats, and JSON blueprint schemas, see the `mps-aspect-structure-concepts` skill.
 
-        The response includes a `makeStatus` field (one of "success", "runtime_stale", "failed", or "skipped"). A "runtime_stale" status means the build succeeded but the language runtime is not yet reloaded; recover by running `mps_mcp_alter_nodes` with `MAKE` and `rebuild=true` (calling `mps_mcp_reload_all` alone is insufficient). For the canonical structure-to-aspect editing and compilation prerequisite chain, see the Critical Directives in the `mps-mcp-workflow` skill.
+        For `CREATE_CONCEPTS` with `make:true`, the response includes a `makeStatus` field (one of "success", "runtime_stale", "failed", or "skipped"). `makeStatus` is verified against the live runtime: "success" means the build succeeded AND every created concept's runtime descriptor was read back non-hollow, so dependent tools (`get_concept_details`, `scaffold_editor`) can be trusted immediately. The tool already forces a clean rebuild and, if the first (model-scoped) build leaves any descriptor hollow — which happens for a brand-new, never-before-deployed language — it automatically performs one module-scoped clean rebuild that materializes the runtime (`recoveryStage:"module-rebuild"` is then set). "runtime_stale" means descriptors are still hollow even after that; the still-hollow concept names are listed in `hollowConcepts` and a `descriptorRecoveryAction` is provided — recover by running `mps_mcp_alter_nodes` with `MAKE`, `rebuild=true`, targeting the language module (calling `mps_mcp_reload_all` alone is insufficient; restart MPS if it persists). For the canonical structure-to-aspect editing and compilation prerequisite chain, see the Critical Directives in the `mps-mcp-workflow` skill.
     """
     )
     suspend fun mps_mcp_alter_structure(
@@ -587,15 +587,75 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                     // descriptor classes so the reload picks up the new concepts. The caller asked
                     // for `make = true` specifically to consume the freshly built concepts; an
                     // incremental make here defeats that purpose.
-                    val makeResult = performMake(mpsProject, listOf(model), emptyList(), true)
-                    // `makeStatus` is the sole signal here; no companion `runtimeReady` boolean
-                    // (it would duplicate "runtime_stale" and risk drifting out of sync).
+                    var makeResult = performMake(mpsProject, listOf(model), emptyList(), true)
+
+                    // Ground-truth readiness check. performMake's reload latch only proves that
+                    // *a* reload fired; for a brand-new, never-before-deployed language it is
+                    // vacuous (LanguageRegistry.onLoaded skips an already-present language, so the
+                    // reload re-publishes the hollow descriptor while the latch still counts down
+                    // and reports runtimeReady=true). Read each created concept's runtime
+                    // descriptor directly to learn whether it actually materialized.
+                    var hollow: List<String> = if (makeResult.success) {
+                        executeBackgroundRead(mpsProject) {
+                            hollowRuntimeConcepts(mpsProject.repository, createdReferences.values)
+                        }
+                    } else {
+                        emptyList()
+                    }
+
+                    // Verification-gated recovery for the brand-new-language case. The first make
+                    // above is model-scoped (cheap, and sufficient for an already-deployed
+                    // language). For a never-before-deployed language it leaves the runtime
+                    // descriptors hollow: the in-make reload cannot force the unload/load cycle
+                    // because LanguageRegistry.onLoaded skips an already-present SLanguageId.
+                    //
+                    // The fix proven on a live server is a *module-scoped* clean rebuild: rebuilding
+                    // the whole Language module (CLEAN_MAKE on the module resource, generator
+                    // included) invalidates the module's classloader, which does drive a real
+                    // unload/load and materializes the runtime. A model-scoped rebuild and a bare
+                    // ClassLoaderManager.reload were both measured to be insufficient here, so we
+                    // go straight to the module rebuild and only when verification demands it — the
+                    // steady-state path pays for nothing.
+                    var recoveryStage: String? = null
+                    if (makeResult.success && hollow.isNotEmpty()) {
+                        recoveryStage = "module-rebuild"
+                        val module = executeBackgroundRead(mpsProject) { model.module }
+                        makeResult = performMake(mpsProject, emptyList(), listOf(module), true)
+                        hollow = if (makeResult.success) {
+                            executeBackgroundRead(mpsProject) {
+                                hollowRuntimeConcepts(mpsProject.repository, createdReferences.values)
+                            }
+                        } else {
+                            emptyList()
+                        }
+                    }
+
+                    // makeStatus is driven by ground truth: a successful build whose created
+                    // concepts all read back non-hollow is `success`; anything that leaves a hollow
+                    // descriptor is `runtime_stale`. The old `runtimeReady`-only downgrade is no
+                    // longer consulted here — the per-concept check both subsumes it (a stale
+                    // runtime yields hollow descriptors) and avoids its false positives (a latch
+                    // timeout while the descriptors are in fact fine).
                     result["makeStatus"] = when {
                         !makeResult.success -> "failed"
-                        !makeResult.runtimeReady -> "runtime_stale"
+                        hollow.isNotEmpty() -> "runtime_stale"
                         else -> "success"
                     }
                     result["makeMessage"] = makeResult.message
+                    if (recoveryStage != null) {
+                        // Present only when the first make left descriptors hollow and an extra
+                        // module-scoped rebuild was performed. Exposed for observability.
+                        result["recoveryStage"] = recoveryStage
+                    }
+                    if (hollow.isNotEmpty()) {
+                        result["hollowConcepts"] = hollow
+                        result["descriptorRecoveryAction"] =
+                            "These concepts' runtime descriptors are still hollow after a clean " +
+                                "rebuild plus an automatic module rebuild: ${hollow.joinToString(", ")}. " +
+                                "Run mps_mcp_alter_nodes with operation=MAKE, rebuild=true, and the " +
+                                "language module (not just the structure model) as the target, then " +
+                                "retry; restart MPS if it persists."
+                    }
                     if (makeResult.details.isNotEmpty()) {
                         result["makeDetails"] = makeResult.details
                     }
