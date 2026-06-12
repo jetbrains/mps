@@ -93,7 +93,7 @@ Repeat for every editor that should show the component (e.g. both `Step` and `Le
 
 ## Scaffold Path (`mps_mcp_scaffold_editor`)
 
-`mps_mcp_scaffold_editor` can both create a component and wire it into editors. The concept must have been compiled (rebuild the language) before scaffolding.
+`mps_mcp_scaffold_editor` can both create a component and wire it into editors. If the concept has not been compiled or is out-of-date, the tool automatically attempts to build (make) the structure model (self-healing), but you can also manually rebuild the language beforehand if needed.
 
 ### Create the component
 
