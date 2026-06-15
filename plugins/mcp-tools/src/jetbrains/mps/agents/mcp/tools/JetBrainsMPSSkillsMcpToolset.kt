@@ -225,23 +225,12 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
     }
 
     /**
-     * Walks up from [projectBasePath] to the nearest enclosing VCS root (a directory that contains
-     * a `.git`, `.hg`, or `.svn` entry) and returns it. `.git` may be a directory (normal clone) or
-     * a file (worktree / submodule), so existence — not directory-ness — is checked. If no VCS root
-     * is found up to the filesystem root, [projectBasePath] itself is returned. This keeps agent
-     * configuration at the repository root even when the MPS project lives in a subdirectory.
+     * Thin wrapper around [AgentConfigRootResolver.deriveAgentConfigRoot] (the VCS-root walk-up).
+     * Kept as an instance method so the logic stays unit-testable via reflection — see
+     * `JetBrainsMPSSkillsMcpToolsetTest.deriveAgentConfigRootForTest`.
      */
     private fun deriveAgentConfigRoot(projectBasePath: Path): Path {
-        val start = projectBasePath.toAbsolutePath().normalize()
-        var cursor: Path? = start
-        while (cursor != null) {
-            val dir = cursor
-            if (VCS_ROOT_MARKERS.any { Files.exists(dir.resolve(it)) }) {
-                return dir
-            }
-            cursor = dir.parent
-        }
-        return start
+        return AgentConfigRootResolver.deriveAgentConfigRoot(projectBasePath)
     }
 
     private fun stringJsonArray(paths: Iterable<Path>): JsonArray =
@@ -300,8 +289,5 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
         // Agent guide files written (only when absent) from the bundled template. Both names are
         // produced so the same setup serves AGENTS.md-aware hosts and Claude Code (CLAUDE.md).
         private val GUIDE_FILE_NAMES = listOf("AGENTS.md", "CLAUDE.md")
-
-        // Markers whose presence in a directory identifies it as a VCS / repository root.
-        private val VCS_ROOT_MARKERS = listOf(".git", ".hg", ".svn")
     }
 }
