@@ -35,6 +35,8 @@ import org.jetbrains.mps.openapi.model.SNodeReference;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwareVirtualFile, VirtualFileWithoutContent {
   private static final byte[] CONTENTS = new byte[0];
@@ -152,6 +154,11 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   @NotNull
   public byte[] contentsToByteArray() {
     return CONTENTS;
+  }
+
+  @Override
+  public @NotNull Charset getCharset() {
+    return StandardCharsets.US_ASCII;
   }
 
   @Override

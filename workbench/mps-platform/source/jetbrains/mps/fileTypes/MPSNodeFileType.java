@@ -58,6 +58,11 @@ public class MPSNodeFileType extends LanguageFileType implements FileTypeIdentif
   }
 
   @Override
+  public boolean isCharsetHardcoded() {
+    return true;
+  }
+
+  @Override
   public boolean isMyFileType(@NotNull VirtualFile file) {
     return file instanceof MPSNodeVirtualFile;
   }
