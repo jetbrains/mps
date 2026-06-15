@@ -1,7 +1,10 @@
 package jetbrains.mps.agents.mcp.tools
 
+import com.google.gson.JsonArray
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import com.intellij.mcpserver.projectOrNull
+import kotlinx.coroutines.currentCoroutineContext
 import java.net.URI
 import java.nio.file.FileSystem
 import java.nio.file.FileSystemNotFoundException
@@ -21,24 +24,28 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""
-        Installs the bundled MPS skill catalog into `<projectPath>/.agents/skills/` and `<projectPath>/.claude/skills/` (each skill as a subfolder containing `SKILL.md` and its references) and returns the recommended `AGENTS.md`/`CLAUDE.md` text in `data` — the caller writes the file. Aborts upfront with an error listing colliding names if any skill name already exists in either target directory; unrelated subfolders are left untouched. Safe to re-run once collisions are resolved. Use once when initializing AI support for an MPS project.
+        Initializes AI-agent support for an MPS checkout. Installs the bundled MPS skill catalog into `<targetDirectory>/.agents/skills/` and `<targetDirectory>/.claude/skills/` (each skill a subfolder containing `SKILL.md` and its references), and creates `<targetDirectory>/AGENTS.md` and `<targetDirectory>/CLAUDE.md` from the bundled template — but ONLY if those guide files do not already exist (existing files are never overwritten). Returns a JSON `data` object: `targetDirectory` (the resolved install location), `installedSkillCount`, `skillsDirectories`, `guideFilesWritten` (created fresh — nothing more to do for these), `guideFilesAlreadyPresent` (left untouched — merge `agentsFileText` into each yourself, preserving project-specific sections), and `agentsFileText` (the recommended guide content). Aborts upfront, installing nothing, with an error listing colliding names if any incoming skill name already exists under either skills directory; unrelated subfolders are left untouched. Safe to re-run once collisions are resolved.
+
+        WHERE TO INSTALL (`targetDirectory`): the directory that should hold the agent configuration — normally your REPOSITORY / WORKSPACE ROOT (the directory that contains the VCS folder such as `.git`), NOT necessarily the MPS project directory. Many repositories keep the MPS project in a subdirectory (e.g. `<repo>/tools/BigProject`, mbeddr, MPS-extensions, or one of several MPS projects in one checkout); the agent configuration still belongs at the repo root so one `.agents/`/`.claude/` setup covers the whole checkout. LEAVE `targetDirectory` EMPTY to let the tool derive it: it takes the open MPS project's base directory and walks up to the nearest enclosing VCS root (`.git`/`.hg`/`.svn`), falling back to the project directory if there is none. Pass it explicitly only when the derivation would be wrong — no VCS root, multiple projects open, or you want a specific location. Do NOT pass the framework `projectPath` argument to this tool: it works purely on the filesystem and needs no open project, and supplying `projectPath` makes the platform reject the call whenever the path is not at/inside an open project (exactly the subdirectory-project case this tool exists to handle).
 
         DISCOVERY: if this MPS project has no `mps-*` skill folders under `.agents/skills/` or `.claude/skills/`, it has not yet been initialized for agents — before doing substantial MPS work, proactively tell the user that and ask whether to run this tool (do not run it without approval).
 
-        REFRESHING STALE SKILLS AND AGENT GUIDES (on user request): when the user asks to update/refresh out-of-date MPS skills or the `AGENTS.md`/`CLAUDE.md` guidance, perform a clean reinstall: (1) delete every bundled MPS skill folder — the `mps-*` skills this tool installs, i.e. exactly the folder names it reports as collisions when run against an already-initialized project — from BOTH `.agents/skills/` and `.claude/skills/`, so dropped/renamed skills do not linger; leave any non-`mps-*` skills (e.g. project-local `<dsl-name>-dsl` skills) in place; (2) call this tool again to install the current catalog (with the collisions removed it now succeeds); (3) carefully update `AGENTS.md`/`CLAUDE.md` from the returned `data` text — refresh the MPS guidance sections to match the returned template while preserving project-specific content (e.g. the "Project-Specific Notes" section and any hand-authored details), rather than blindly overwriting the whole file.
+        REFRESHING STALE SKILLS AND AGENT GUIDES (on user request): when the user asks to update/refresh out-of-date MPS skills or the `AGENTS.md`/`CLAUDE.md` guidance, perform a clean reinstall: (1) delete every bundled MPS skill folder — the `mps-*` skills this tool installs, i.e. exactly the folder names it reports as collisions when run against an already-initialized project — from BOTH `.agents/skills/` and `.claude/skills/`, so dropped/renamed skills do not linger; leave any non-`mps-*` skills (e.g. project-local `<dsl-name>-dsl` skills) in place; (2) call this tool again to install the current catalog (with the collisions removed it now succeeds); (3) the existing `AGENTS.md`/`CLAUDE.md` are reported in `guideFilesAlreadyPresent` and left untouched — carefully update them from the returned `agentsFileText`, refreshing the MPS guidance sections to match the template while preserving project-specific content (e.g. the "Project-Specific Notes" section and any hand-authored details), rather than blindly overwriting the whole file.
     """
     )
     suspend fun mps_mcp_initialize_project_for_agents(
-        @McpDescription("Absolute path to the target MPS project root. The directory must exist; target skills directories are created if missing.")
-        projectPath: String
+        @McpDescription(
+            "Optional. Absolute path to the directory that should hold the agent configuration — normally the " +
+                    "repository / workspace root (the directory containing `.git`), which may be an ANCESTOR of the MPS " +
+                    "project directory when the project lives in a subdirectory. The directory must exist; the skills " +
+                    "directories and guide files are created inside it. Leave empty to derive it from the open MPS " +
+                    "project's enclosing VCS root. Do not confuse this with the framework `projectPath` argument."
+        )
+        targetDirectory: String? = null
     ): String {
-        val projectDir = try {
-            Paths.get(projectPath)
-        } catch (e: Exception) {
-            return errJson("Invalid project path '$projectPath': ${e.message}")
-        }
-        if (!Files.isDirectory(projectDir)) {
-            return errJson("Project directory does not exist or is not a directory: $projectPath")
+        val targetDir: Path = when (val resolution = resolveTargetDirectory(targetDirectory)) {
+            is TargetResolution.Ok -> resolution.dir
+            is TargetResolution.Err -> return resolution.json
         }
 
         val skillsResourceRoot = javaClass.classLoader.getResource(SKILLS_RESOURCE_PATH)
@@ -65,8 +72,8 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
                 }
 
                 val targetSkillsDirs = listOf(
-                    projectDir.resolve(".agents").resolve("skills"),
-                    projectDir.resolve(".claude").resolve("skills"),
+                    targetDir.resolve(".agents").resolve("skills"),
+                    targetDir.resolve(".claude").resolve("skills"),
                 )
                 val incomingNames = skillFolders.map { it.name }.toSet()
                 val collisionsByDir: List<String> = targetSkillsDirs.mapNotNull { targetSkillsDir ->
@@ -90,7 +97,7 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
                 }
 
                 // No rollback: if copying skill #N fails after #1..N-1 already landed on disk, the
-                // project is left half-installed. The collision check above prevents the common
+                // checkout is left half-installed. The collision check above prevents the common
                 // case of clobbering user content, so the remaining failure modes are I/O errors
                 // (full disk, permission denied) where the user fixes the underlying problem and
                 // re-runs after deleting any partially-installed target skills directories, which
@@ -104,12 +111,141 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
                     }
                 }
 
-                okJsonString(agentsMdText)
+                // Create the agent guide files from the template, but never clobber an existing one:
+                // a project may have hand-authored AGENTS.md/CLAUDE.md whose project-specific content
+                // must survive. Files that already exist are reported back so the caller can merge.
+                val guideFilesWritten = mutableListOf<Path>()
+                val guideFilesAlreadyPresent = mutableListOf<Path>()
+                for (guideFileName in GUIDE_FILE_NAMES) {
+                    val guideFile = targetDir.resolve(guideFileName)
+                    if (Files.exists(guideFile)) {
+                        guideFilesAlreadyPresent.add(guideFile)
+                    } else {
+                        Files.writeString(guideFile, agentsMdText)
+                        guideFilesWritten.add(guideFile)
+                    }
+                }
+
+                val data = jsonObject {
+                    addProperty("targetDirectory", targetDir.toString())
+                    addProperty("installedSkillCount", skillFolders.size)
+                    add("skillsDirectories", stringJsonArray(targetSkillsDirs))
+                    add("guideFilesWritten", stringJsonArray(guideFilesWritten))
+                    add("guideFilesAlreadyPresent", stringJsonArray(guideFilesAlreadyPresent))
+                    addProperty("agentsFileText", agentsMdText)
+                }
+                okJson(data)
             }
         } catch (e: Exception) {
-            errJson("Failed to install MPS skills: ${e.message}")
+            rethrowIfCancellation(e)
+            errJson("Failed to initialize agent support: ${e.message}")
         }
     }
+
+    /** Result of resolving the directory that should receive the agent configuration. */
+    private sealed class TargetResolution {
+        data class Ok(val dir: Path) : TargetResolution()
+        data class Err(val json: String) : TargetResolution()
+    }
+
+    /**
+     * Resolves the install directory. When [targetDirectory] is given it is validated and used
+     * verbatim. When it is null/blank the directory is derived from the currently open MPS project:
+     * the project's base directory is taken and the nearest enclosing VCS root is used (see
+     * [deriveAgentConfigRoot]), so the agent configuration lands at the repository root even when
+     * the MPS project itself lives in a subdirectory.
+     */
+    private suspend fun resolveTargetDirectory(targetDirectory: String?): TargetResolution {
+        if (!targetDirectory.isNullOrBlank()) {
+            val dir = try {
+                Paths.get(targetDirectory)
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
+                return TargetResolution.Err(errJson("Invalid target directory '$targetDirectory': ${e.message}"))
+            }
+            // Require an absolute path: a relative one would be resolved against the MPS process's
+            // working directory (not the agent's), silently installing in the wrong place.
+            if (!dir.isAbsolute) {
+                return TargetResolution.Err(
+                    errJson(
+                        "Target directory must be an absolute path, got '$targetDirectory'. Pass the absolute path " +
+                                "to your repository / workspace root, or omit it to derive it from the open MPS project."
+                    )
+                )
+            }
+            if (!Files.isDirectory(dir)) {
+                return TargetResolution.Err(errJson("Target directory does not exist or is not a directory: $targetDirectory"))
+            }
+            return TargetResolution.Ok(dir.toAbsolutePath().normalize())
+        }
+
+        val projectBase = currentProjectBasePathOrNull()
+            ?: return TargetResolution.Err(
+                errJson(
+                    "No 'targetDirectory' was provided and no single open MPS project is available to derive one from. " +
+                            "Pass 'targetDirectory' explicitly — normally your repository / workspace root (the directory " +
+                            "that contains a VCS folder such as .git). It may be an ancestor of the MPS project directory " +
+                            "when the project lives in a subdirectory (e.g. tools/BigProject). Do not pass 'projectPath'."
+                )
+            )
+        if (!Files.isDirectory(projectBase)) {
+            return TargetResolution.Err(
+                errJson(
+                    "Could not derive a target directory: the open project's base path '$projectBase' is not an " +
+                            "existing directory. Pass 'targetDirectory' explicitly (usually your repository / workspace root)."
+                )
+            )
+        }
+        return TargetResolution.Ok(deriveAgentConfigRoot(projectBase))
+    }
+
+    /**
+     * Base directory of the currently open MPS project, or null when it cannot be determined
+     * unambiguously. Returns null (rather than throwing) when there is no MCP call context (e.g.
+     * a plain unit test), no open project, or multiple open projects with no single relevant one —
+     * the caller turns null into a "pass targetDirectory explicitly" message.
+     */
+    private suspend fun currentProjectBasePathOrNull(): Path? {
+        val project = try {
+            currentCoroutineContext().projectOrNull
+        } catch (e: Exception) {
+            // projectOrNull throws McpExpectedError when several projects are open and none is
+            // singled out, and IllegalStateException when invoked outside an MCP call. Either way
+            // we cannot safely guess a directory, so fall back to requiring an explicit one.
+            rethrowIfCancellation(e)
+            null
+        } ?: return null
+        val basePath = project.basePath ?: return null
+        return try {
+            Paths.get(basePath).toAbsolutePath().normalize()
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            null
+        }
+    }
+
+    /**
+     * Walks up from [projectBasePath] to the nearest enclosing VCS root (a directory that contains
+     * a `.git`, `.hg`, or `.svn` entry) and returns it. `.git` may be a directory (normal clone) or
+     * a file (worktree / submodule), so existence — not directory-ness — is checked. If no VCS root
+     * is found up to the filesystem root, [projectBasePath] itself is returned. This keeps agent
+     * configuration at the repository root even when the MPS project lives in a subdirectory.
+     */
+    private fun deriveAgentConfigRoot(projectBasePath: Path): Path {
+        val start = projectBasePath.toAbsolutePath().normalize()
+        var cursor: Path? = start
+        while (cursor != null) {
+            val dir = cursor
+            if (VCS_ROOT_MARKERS.any { Files.exists(dir.resolve(it)) }) {
+                return dir
+            }
+            cursor = dir.parent
+        }
+        return start
+    }
+
+    private fun stringJsonArray(paths: Iterable<Path>): JsonArray =
+        JsonArray().apply { for (p in paths) add(p.toString()) }
 
     /**
      * Resolves the bundled-skills resource directory to a [Path] regardless of whether the
@@ -160,5 +296,12 @@ class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
     companion object {
         private const val SKILLS_RESOURCE_PATH = "jetbrains/mps/agents/mcp/skills"
         private const val AGENTS_TEMPLATE_RESOURCE_PATH = "jetbrains/mps/agents/mcp/templates/AGENTS_template.md"
+
+        // Agent guide files written (only when absent) from the bundled template. Both names are
+        // produced so the same setup serves AGENTS.md-aware hosts and Claude Code (CLAUDE.md).
+        private val GUIDE_FILE_NAMES = listOf("AGENTS.md", "CLAUDE.md")
+
+        // Markers whose presence in a directory identifies it as a VCS / repository root.
+        private val VCS_ROOT_MARKERS = listOf(".git", ".hg", ".svn")
     }
 }

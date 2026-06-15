@@ -1,5 +1,6 @@
 package jetbrains.mps.agents.mcp.tools
 
+import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import kotlinx.coroutines.runBlocking
 import org.junit.After
@@ -23,6 +24,11 @@ import java.util.jar.JarOutputStream
  * Plain JUnit tests for [JetBrainsMPSSkillsMcpToolset]. The skill catalog is built from
  * classpath resources and does not need an MPS project, so these tests skip the
  * heavyweight [McpIntegrationTestBase] setup.
+ *
+ * Note on deriving the target directory: when `targetDirectory` is omitted the tool reads the
+ * open MPS project from the MCP call context. These tests run outside an MCP call, so that path
+ * resolves to "no project" — exercised by [omitting targetDirectory outside an MCP call returns a
+ * helpful error]. The pure VCS-root walk-up is covered directly via [deriveAgentConfigRootForTest].
  */
 class JetBrainsMPSSkillsMcpToolsetTest {
 
@@ -50,12 +56,17 @@ class JetBrainsMPSSkillsMcpToolsetTest {
     @Test
     fun `mps_mcp_initialize_project_for_agents copies bundled skills and returns AGENTS_md text`() {
         val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(tmpProjectRoot.toString()) }
-        val obj = JsonParser.parseString(response).asJsonObject
-        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
-        val data = obj.get("data").asString
+        val data = okData(response)
+
+        assertEquals(
+            "result must echo back the resolved target directory",
+            tmpProjectRoot.toAbsolutePath().normalize().toString(),
+            data.get("targetDirectory").asString
+        )
+        assertTrue("must report a positive installed skill count", data.get("installedSkillCount").asInt > 0)
         assertTrue(
-            "returned text must look like the AGENTS.md template: $data",
-            data.contains("Agents Guide for This MPS Project")
+            "returned text must look like the AGENTS.md template: ${data.get("agentsFileText").asString}",
+            data.get("agentsFileText").asString.contains("Agents Guide for This MPS Project")
         )
 
         // Sample one real bundled skill: any change to the catalog should keep at least this
@@ -78,8 +89,7 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         // Exercises the recursive branch of copyDirectoryRecursively. Uses a skill that
         // actually ships subdirectories so we don't have to invent test-only fixtures.
         val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(tmpProjectRoot.toString()) }
-        val obj = JsonParser.parseString(response).asJsonObject
-        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        okData(response)
 
         for (skillsDir in targetSkillsDirs()) {
             val nestedFile = skillsDir
@@ -91,6 +101,53 @@ class JetBrainsMPSSkillsMcpToolsetTest {
                 Files.isRegularFile(nestedFile)
             )
         }
+    }
+
+    @Test
+    fun `mps_mcp_initialize_project_for_agents writes AGENTS_md and CLAUDE_md when they are absent`() {
+        val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(tmpProjectRoot.toString()) }
+        val data = okData(response)
+
+        val agentsMd = tmpProjectRoot.resolve("AGENTS.md")
+        val claudeMd = tmpProjectRoot.resolve("CLAUDE.md")
+        assertTrue("AGENTS.md must be created when absent", Files.isRegularFile(agentsMd))
+        assertTrue("CLAUDE.md must be created when absent", Files.isRegularFile(claudeMd))
+        assertTrue(
+            "written guide file must carry the template content",
+            Files.readString(agentsMd).contains("Agents Guide for This MPS Project")
+        )
+
+        val written = stringArray(data, "guideFilesWritten")
+        assertTrue("AGENTS.md must be reported as written: $written", written.any { it.endsWith("AGENTS.md") })
+        assertTrue("CLAUDE.md must be reported as written: $written", written.any { it.endsWith("CLAUDE.md") })
+        assertTrue(
+            "no guide files should be reported as already present: ${stringArray(data, "guideFilesAlreadyPresent")}",
+            stringArray(data, "guideFilesAlreadyPresent").isEmpty()
+        )
+    }
+
+    @Test
+    fun `mps_mcp_initialize_project_for_agents never overwrites an existing guide file`() {
+        val agentsMd = tmpProjectRoot.resolve("AGENTS.md")
+        Files.writeString(agentsMd, "KEEP ME — hand-authored")
+
+        val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(tmpProjectRoot.toString()) }
+        val data = okData(response)
+
+        assertEquals(
+            "an existing guide file must be left byte-for-byte intact",
+            "KEEP ME — hand-authored",
+            Files.readString(agentsMd)
+        )
+        assertTrue(
+            "the absent CLAUDE.md must still be created",
+            Files.isRegularFile(tmpProjectRoot.resolve("CLAUDE.md"))
+        )
+
+        val present = stringArray(data, "guideFilesAlreadyPresent")
+        val written = stringArray(data, "guideFilesWritten")
+        assertTrue("AGENTS.md must be reported as already present: $present", present.any { it.endsWith("AGENTS.md") })
+        assertTrue("CLAUDE.md must be reported as written: $written", written.any { it.endsWith("CLAUDE.md") })
     }
 
     @Test
@@ -116,6 +173,10 @@ class JetBrainsMPSSkillsMcpToolsetTest {
             "no second target directory should be created after preflight collision failure",
             Files.exists(tmpProjectRoot.resolve(".claude"))
         )
+        assertFalse(
+            "no guide files should be written when the install aborts on collision",
+            Files.exists(tmpProjectRoot.resolve("AGENTS.md"))
+        )
     }
 
     @Test
@@ -137,19 +198,19 @@ class JetBrainsMPSSkillsMcpToolsetTest {
     }
 
     @Test
-    fun `mps_mcp_initialize_project_for_agents rejects a non-existent project directory`() {
+    fun `mps_mcp_initialize_project_for_agents rejects a non-existent target directory`() {
         val bogus = tmpProjectRoot.resolve("does-not-exist")
         val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(bogus.toString()) }
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
         assertTrue(
-            "error must explain that the project dir is missing: ${obj.get("error").asString}",
-            obj.get("error").asString.contains("Project directory")
+            "error must explain that the target dir is missing: ${obj.get("error").asString}",
+            obj.get("error").asString.contains("Target directory")
         )
     }
 
     @Test
-    fun `mps_mcp_initialize_project_for_agents rejects a projectPath that points at a file`() {
+    fun `mps_mcp_initialize_project_for_agents rejects a targetDirectory that points at a file`() {
         // The implementation gates on Files.isDirectory; passing a regular file must take
         // the same not-a-directory error path as a missing path, so users get a clear
         // message instead of an obscure IOException when copying starts.
@@ -157,15 +218,15 @@ class JetBrainsMPSSkillsMcpToolsetTest {
 
         val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(regularFile.toString()) }
         val obj = JsonParser.parseString(response).asJsonObject
-        assertFalse("expected error envelope when projectPath is a file: $response", obj.get("ok").asBoolean)
+        assertFalse("expected error envelope when targetDirectory is a file: $response", obj.get("ok").asBoolean)
         assertTrue(
             "error must explain that the path is not a directory: ${obj.get("error").asString}",
-            obj.get("error").asString.contains("Project directory")
+            obj.get("error").asString.contains("Target directory")
         )
     }
 
     @Test
-    fun `mps_mcp_initialize_project_for_agents rejects a syntactically invalid project path`() {
+    fun `mps_mcp_initialize_project_for_agents rejects a syntactically invalid target path`() {
         // NUL is rejected by Paths.get on every supported platform, so it's the most
         // portable way to hit the InvalidPathException catch arm. If the JVM ever starts
         // accepting NUL in paths, swap for another reliably-illegal sequence.
@@ -176,7 +237,101 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         assertFalse("expected error envelope on invalid path: $response", obj.get("ok").asBoolean)
         assertTrue(
             "error must mention the invalid path: ${obj.get("error").asString}",
-            obj.get("error").asString.contains("Invalid project path")
+            obj.get("error").asString.contains("Invalid target directory")
+        )
+    }
+
+    @Test
+    fun `mps_mcp_initialize_project_for_agents rejects a relative target directory`() {
+        // A relative path would resolve against the MPS process working directory, not the agent's,
+        // so it must be rejected rather than silently installing somewhere unexpected.
+        val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents("relative/dir") }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope for a relative path: $response", obj.get("ok").asBoolean)
+        assertTrue(
+            "error must explain the absolute-path requirement: ${obj.get("error").asString}",
+            obj.get("error").asString.contains("absolute path")
+        )
+    }
+
+    @Test
+    fun `omitting targetDirectory outside an MCP call returns a helpful error`() {
+        // With no targetDirectory and no MCP call context to derive one from, the tool must not
+        // crash — it returns a clear error telling the caller to pass the directory explicitly.
+        val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents() }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope when nothing can be derived: $response", obj.get("ok").asBoolean)
+        val error = obj.get("error").asString
+        assertTrue("error must point the caller at 'targetDirectory': $error", error.contains("targetDirectory"))
+        assertTrue(
+            "error must steer toward the repository/workspace root: $error",
+            error.contains("repository") || error.contains("workspace")
+        )
+        assertFalse("nothing must be installed when resolution fails", Files.exists(tmpProjectRoot.resolve(".agents")))
+    }
+
+    // ---- deriveAgentConfigRoot (VCS-root walk-up) ----
+
+    @Test
+    fun `deriveAgentConfigRoot walks up to the nearest VCS root for a subdirectory project`() {
+        // Mirrors the mbeddr layout: .git at the repo root, MPS project under tools/BigProject.
+        Files.createDirectories(tmpProjectRoot.resolve(".git"))
+        val projectDir = tmpProjectRoot.resolve("tools").resolve("BigProject")
+        Files.createDirectories(projectDir)
+
+        assertEquals(
+            tmpProjectRoot.toAbsolutePath().normalize(),
+            deriveAgentConfigRootForTest(projectDir)
+        )
+    }
+
+    @Test
+    fun `deriveAgentConfigRoot returns the project dir when it is itself the VCS root`() {
+        Files.createDirectories(tmpProjectRoot.resolve(".git"))
+        assertEquals(
+            tmpProjectRoot.toAbsolutePath().normalize(),
+            deriveAgentConfigRootForTest(tmpProjectRoot)
+        )
+    }
+
+    @Test
+    fun `deriveAgentConfigRoot prefers the nearest of nested VCS roots`() {
+        Files.createDirectories(tmpProjectRoot.resolve(".git"))
+        val inner = tmpProjectRoot.resolve("inner")
+        Files.createDirectories(inner.resolve(".git"))
+        val projectDir = inner.resolve("proj")
+        Files.createDirectories(projectDir)
+
+        assertEquals(
+            "the closest enclosing VCS root must win",
+            inner.toAbsolutePath().normalize(),
+            deriveAgentConfigRootForTest(projectDir)
+        )
+    }
+
+    @Test
+    fun `deriveAgentConfigRoot recognizes a git worktree file not just a directory`() {
+        // In a git worktree/submodule, `.git` is a regular file pointing at the real gitdir.
+        Files.writeString(tmpProjectRoot.resolve(".git"), "gitdir: /elsewhere/.git/worktrees/x")
+        val projectDir = tmpProjectRoot.resolve("sub")
+        Files.createDirectories(projectDir)
+
+        assertEquals(
+            tmpProjectRoot.toAbsolutePath().normalize(),
+            deriveAgentConfigRootForTest(projectDir)
+        )
+    }
+
+    @Test
+    fun `deriveAgentConfigRoot falls back to the start dir when no VCS root is found`() {
+        // Assumes the system temp directory is not itself inside a VCS checkout, which holds on
+        // standard dev/CI machines. The walk reaches the filesystem root and returns the start dir.
+        val start = tmpProjectRoot.resolve("novcs").resolve("deep")
+        Files.createDirectories(start)
+
+        assertEquals(
+            start.toAbsolutePath().normalize(),
+            deriveAgentConfigRootForTest(start)
         )
     }
 
@@ -226,6 +381,24 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         private const val NESTED_SKILL_NAME = "mps-aspect-structure-concepts"
         private const val NESTED_SKILL_SUBDIR = "references"
         private const val NESTED_SKILL_FILE = "structure-operation-api.md"
+    }
+
+    // ---- helpers ----
+
+    /** Asserts the response is an ok envelope and returns its `data` object. */
+    private fun okData(response: String): JsonObject {
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+        return obj.getAsJsonObject("data")
+    }
+
+    private fun stringArray(data: JsonObject, name: String): List<String> =
+        data.getAsJsonArray(name).map { it.asString }
+
+    private fun deriveAgentConfigRootForTest(path: Path): Path {
+        val method = JetBrainsMPSSkillsMcpToolset::class.java.getDeclaredMethod("deriveAgentConfigRoot", Path::class.java)
+        method.isAccessible = true
+        return method.invoke(toolset, path) as Path
     }
 
     @Suppress("UNCHECKED_CAST")

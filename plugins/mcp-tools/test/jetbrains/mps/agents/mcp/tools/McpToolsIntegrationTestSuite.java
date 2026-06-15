@@ -46,6 +46,7 @@ import java.lang.reflect.Field;
     AbstractOpsPropertyProblemsTest.class,
     AssignableReferenceServiceTest.class,
     JetBrainsMPSSkillsMcpToolsetTest.class,
+    JetBrainsMPSSkillsMcpToolsetIntegrationTest.class,
     McpToolInputSchemasTest.class,
 })
 public class McpToolsIntegrationTestSuite extends BaseMpsSuite {
