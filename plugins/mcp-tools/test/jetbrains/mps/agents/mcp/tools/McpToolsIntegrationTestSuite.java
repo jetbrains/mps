@@ -41,11 +41,14 @@ import java.lang.reflect.Field;
     JetBrainsMPSNodeMcpToolsetIntegrationTest.class,
     JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest.class,
     JetBrainsMPSRootNodeMcpToolsetIntegrationTest.class,
+    SearchRootNodeCrossProjectTest.class,
+    WriteToolCrossProjectTest.class,
     JetBrainsMPSProjectMcpToolsetIntegrationTest.class,
     JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest.class,
     AbstractOpsPropertyProblemsTest.class,
     AssignableReferenceServiceTest.class,
     JetBrainsMPSSkillsMcpToolsetTest.class,
+    JetBrainsMPSSkillsMcpToolsetIntegrationTest.class,
     McpToolInputSchemasTest.class,
 })
 public class McpToolsIntegrationTestSuite extends BaseMpsSuite {

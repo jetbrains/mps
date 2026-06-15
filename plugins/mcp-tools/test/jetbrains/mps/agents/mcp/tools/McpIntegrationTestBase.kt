@@ -20,6 +20,7 @@ import jetbrains.mps.project.Solution
 import jetbrains.mps.project.modules.LanguageProducer
 import jetbrains.mps.project.modules.SolutionProducer
 import jetbrains.mps.smodel.Language
+import jetbrains.mps.tool.environment.Environment
 import jetbrains.mps.vfs.IFile
 import kotlinx.coroutines.runBlocking
 import kotlinx.serialization.json.JsonObject
@@ -51,6 +52,14 @@ abstract class McpIntegrationTestBase : ModuleInProjectTest() {
     protected lateinit var language: Language
     protected lateinit var structureModel: SModel
     protected lateinit var structureModelRef: String
+
+    /** The test [Environment], captured so multi-project tests can open a second project. */
+    protected lateinit var mcpEnvironment: Environment
+
+    override fun setEnvironment(env: Environment) {
+        super.setEnvironment(env)
+        mcpEnvironment = env
+    }
 
     @Before
     fun createLanguageWithStructureModel() {
@@ -91,8 +100,16 @@ abstract class McpIntegrationTestBase : ModuleInProjectTest() {
      * The toolset is constructed inside the same coroutine context so its
      * suspend methods can resolve the project via the standard MCP plumbing.
      */
-    protected fun <T : McpToolset, R> runTool(toolset: T, block: suspend (T) -> R): R {
-        val element = McpCallAdditionalDataElement(stubMcpCallInfo(myProject))
+    protected fun <T : McpToolset, R> runTool(toolset: T, block: suspend (T) -> R): R =
+        runToolForProject(myProject, toolset, block)
+
+    /**
+     * Like [runTool] but routes the MCP call at an explicit [project]. Used by multi-project tests
+     * that need to invoke a tool "as" a project other than [myProject] (the `projectPath` selector
+     * the real MCP host would resolve).
+     */
+    protected fun <T : McpToolset, R> runToolForProject(project: MPSProject, toolset: T, block: suspend (T) -> R): R {
+        val element = McpCallAdditionalDataElement(stubMcpCallInfo(project))
         return runBlocking(element) { block(toolset) }
     }
 
@@ -106,11 +123,14 @@ abstract class McpIntegrationTestBase : ModuleInProjectTest() {
     protected fun <T> readOnRepo(block: () -> T): T =
         myProject.modelAccess.computeReadAction<T> { block() }
 
-    protected fun createDirInProject(subName: String): IFile {
-        val root = myProject.projectFile.canonicalFile
+    protected fun createDirInProject(subName: String): IFile = createDirIn(myProject, subName)
+
+    /** Creates a fresh subdirectory under [project]'s project file and returns it as an [IFile]. */
+    protected fun createDirIn(project: MPSProject, subName: String): IFile {
+        val root = project.projectFile.canonicalFile
         val target = File(root, subName)
         check(target.mkdirs()) { "Could not create dir $target" }
-        return myProject.fileSystem.getFile(target)
+        return project.fileSystem.getFile(target)
     }
 
     /** Returns an absolute path inside the project for a directory that may not yet exist. */
@@ -231,8 +251,11 @@ abstract class McpIntegrationTestBase : ModuleInProjectTest() {
         generatedTempFiles.clear()
     }
 
-    protected fun executeCommand(action: () -> Unit) {
-        val modelAccess = myProject.repository.modelAccess
+    protected fun executeCommand(action: () -> Unit) = executeCommandIn(myProject, action)
+
+    /** Runs [action] in a write command on [project]'s model access (on the EDT), rethrowing failures. */
+    protected fun executeCommandIn(project: MPSProject, action: () -> Unit) {
+        val modelAccess = project.repository.modelAccess
         val error = arrayOfNulls<Throwable>(1)
         ApplicationManager.getApplication().invokeAndWait(
             { modelAccess.executeCommand { try { action() } catch (e: Throwable) { error[0] = e } } },

@@ -30,6 +30,7 @@ import jetbrains.mps.progress.EmptyProgressMonitor
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
 import jetbrains.mps.project.MPSProject
+import jetbrains.mps.project.ProjectRepository
 import jetbrains.mps.project.facets.JavaModuleFacet
 import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.project.structure.modules.ModuleDescriptor
@@ -422,10 +423,14 @@ abstract class AbstractOps : McpToolset {
 
     /**
      * Resolves the given model reference and validates that the resolved model is an
-     * [EditableSModel]. Accepts the persistent form of an `SModelReference` (preferred)
-     * or the model's long/short name as a fallback — mirrors [resolveModel]. Returns
-     * [EditableModelResolution.Ok] on success or [EditableModelResolution.Err] (with a
-     * pre-formatted errJson) on any failure.
+     * [EditableSModel] **belonging to the project that owns [repository]**. Accepts the persistent
+     * form of an `SModelReference` (preferred) or the model's long/short name as a fallback —
+     * mirrors [resolveModel]. Returns [EditableModelResolution.Ok] on success or
+     * [EditableModelResolution.Err] (with a pre-formatted errJson) on any failure.
+     *
+     * The project-membership check is what keeps a write tool selected for one project from
+     * mutating a model owned by a different open project: the shared module repository would
+     * otherwise resolve the reference regardless of which project it lives in (see [isModuleInProject]).
      *
      * Use this from inside a model-access action (e.g. executeShortCommandOnEdt { ... }) so the
      * resolution and the subsequent mutations happen under the same lock.
@@ -435,6 +440,9 @@ abstract class AbstractOps : McpToolset {
             ?: return EditableModelResolution.Err(errJson("Model '$modelReference' not found", McpErrorCode.NOT_FOUND))
         if (model !is EditableSModel) {
             return EditableModelResolution.Err(errJson("Model '$modelReference' is not editable", McpErrorCode.NOT_EDITABLE))
+        }
+        if (!isModuleInProject(repository, model)) {
+            return EditableModelResolution.Err(crossProjectErr("Model '$modelReference'"))
         }
         return EditableModelResolution.Ok(model)
     }
@@ -470,8 +478,44 @@ abstract class AbstractOps : McpToolset {
         if (model !is EditableSModel) {
             return EditableNodeResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
         }
+        if (!isModuleInProject(repository, model)) {
+            return EditableNodeResolution.Err(crossProjectErr("Node '$nodeReference'"))
+        }
         return EditableNodeResolution.Ok(node, model)
     }
+
+    /**
+     * True if [model]'s owning module is part of the project that owns [repository]. A single MPS
+     * instance shares one module repository across every open project, so the editable resolvers
+     * must verify project membership explicitly: without it, a write tool selected for one project
+     * (via `projectPath`) could resolve and mutate a node owned by a different open project.
+     * Read-only/inspection tools deliberately do not apply this check — they may legitimately reach
+     * into depended-upon libraries. When [repository] has no owning MPSProject (not a
+     * [ProjectRepository]), the project cannot be identified and the check is skipped (returns true).
+     */
+    protected fun isModuleInProject(repository: SRepository, model: SModel): Boolean {
+        val mpsProject = projectOf(repository) ?: return true
+        val module = model.module ?: return false
+        return mpsProject.isProjectModule(module)
+    }
+
+    /** The [MPSProject] that owns [repository], or null when it is not a project repository. */
+    private fun projectOf(repository: SRepository): MPSProject? =
+        (repository as? ProjectRepository)?.project as? MPSProject
+
+    /**
+     * Error for a write target that resolved to a module outside the selected project. Bare-name
+     * lookups go through the shared (global) repository, so a name that collides with another open
+     * project's model can resolve there; the message steers the caller to the persistent reference,
+     * which carries the module id and is unambiguous.
+     */
+    private fun crossProjectErr(what: String): String =
+        errJson(
+            "$what resolves to a module that is not part of the project selected by projectPath. " +
+                "The MCP write tools refuse to modify a different open project. If the target really is " +
+                "in this project, pass its persistent reference (r:.../i:... form) rather than a bare name.",
+            McpErrorCode.INVALID_REQUEST,
+        )
 
     /**
      * Result of resolving a concept reference and validating it is a rootable [SConcept].

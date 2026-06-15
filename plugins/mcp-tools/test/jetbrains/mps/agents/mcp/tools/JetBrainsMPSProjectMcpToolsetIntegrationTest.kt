@@ -15,7 +15,9 @@ import java.io.File
 /**
  * End-to-end integration tests for [JetBrainsMPSProjectMcpToolset].
  *
- * Covers both tools the toolset exposes:
+ * Covers the tools the toolset exposes:
+ *  - `mps_mcp_list_open_projects` — discovering the open MPS project and the path agents should
+ *    pass as the host `projectPath` selector in multi-project checkouts;
  *  - `mps_mcp_get_project_structure` — listing project modules (default), descending into a
  *    model when [startingPoint] is set, the mutually-exclusive flag enforcement, and the
  *    NOT_FOUND envelope for an unknown starting point;
@@ -23,6 +25,36 @@ import java.io.File
  *    `ClassLoaderManager`.
  */
 class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
+
+    @Test
+    fun `list-open-projects reports the current MPS project and selector paths`() {
+        val basePath = myProject.project.basePath
+            ?: error("test project has no basePath; cannot exercise project listing")
+        val base = File(basePath).toPath().toAbsolutePath().normalize()
+
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_list_open_projects()
+        }
+
+        val data = expectOk(response)
+        assertTrue("listing must report at least one open project: $data", data.get("projectCount").asInt >= 1)
+        assertTrue("listing must report at least one MPS project: $data", data.get("mpsProjectCount").asInt >= 1)
+
+        val projects = data.getAsJsonArray("projects").map { it.asJsonObject }
+        val current = projects.singleOrNull { proj ->
+            val baseDir = proj.get("mpsProjectBaseDirectory")
+            baseDir != null && !baseDir.isJsonNull && baseDir.asString == base.toString()
+        } ?: error("expected test project base '$base' in open-project listing: $projects")
+
+        assertTrue("test project must be marked as an MPS project: $current", current.get("hasMpsProject").asBoolean)
+        assertTrue("test project must be marked current in the injected MCP context: $current", current.get("isCurrent").asBoolean)
+        assertEquals(
+            "agents should pass mpsProjectBaseDirectory (the project base dir) as host projectPath for mps_mcp_* tools",
+            base.toString(),
+            current.get("mpsProjectBaseDirectory").asString
+        )
+        assertTrue("listing must include the derived agent config root: $current", current.has("agentConfigRoot"))
+    }
 
     @Test
     fun `get-project-structure lists the test language module by default`() {

@@ -5,6 +5,9 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import com.intellij.mcpserver.projectOrNull
+import com.intellij.openapi.project.ProjectManager
+import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
 import jetbrains.mps.project.MPSProject
@@ -16,15 +19,52 @@ import jetbrains.mps.project.structure.modules.LanguageDescriptor
 import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SModelInternal
+import kotlinx.coroutines.currentCoroutineContext
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
+import java.nio.file.Path
+import java.nio.file.Paths
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
 // surface, and they are invoked via reflection by the MCP server framework, so static
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
 class JetBrainsMPSProjectMcpToolset : AbstractOps() {
+
+    @McpTool
+    @McpDescription(
+        """
+        Lists IDE projects currently open in this MPS MCP server and identifies which of them have
+        an MPS project counterpart. Use this before MPS work when an agent starts at a repository /
+        workspace root that may contain several MPS project subdirectories. The `mpsProjectBaseDirectory`
+        value is the path to pass through the MCP host's `projectPath` selector for ordinary
+        `mps_mcp_*` tools; `agentConfigRoot` is the repository/workspace root where
+        `mps_mcp_initialize_project_for_agents.targetDirectory` belongs.
+    """
+    )
+    suspend fun mps_mcp_list_open_projects(): String {
+        val currentIdeaProject = currentIdeaProjectOrNull()
+        return try {
+            val projects = ProjectManager.getInstance().openProjects
+                .sortedWith(compareBy({ it.basePath ?: "" }, { it.name }))
+            val array = JsonArray()
+            var mpsProjectCount = 0
+            for (ideaProject in projects) {
+                val projectJson = describeOpenProjectSafely(ideaProject, currentIdeaProject)
+                if (projectJson.get("hasMpsProject")?.asBoolean == true) mpsProjectCount++
+                array.add(projectJson)
+            }
+            okJson(jsonObject {
+                addProperty("projectCount", projects.size)
+                addProperty("mpsProjectCount", mpsProjectCount)
+                add("projects", array)
+            })
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            toolFailure("listing open MPS projects", e)
+        }
+    }
 
     @McpTool
     @McpDescription(
@@ -279,6 +319,73 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
             is DevKit -> "DevKit"
             is Generator -> "Generator"
             else -> m.javaClass.simpleName
+        }
+    }
+
+    private suspend fun currentIdeaProjectOrNull(): com.intellij.openapi.project.Project? {
+        return try {
+            currentCoroutineContext().projectOrNull
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            null
+        }
+    }
+
+    /**
+     * Builds the descriptor for [ideaProject], degrading to a minimal entry carrying an `error`
+     * field if describing it throws — one unreadable project must not blank the whole listing,
+     * since this tool exists precisely to disambiguate a confusing multi-project state.
+     */
+    private fun describeOpenProjectSafely(
+        ideaProject: com.intellij.openapi.project.Project,
+        currentIdeaProject: com.intellij.openapi.project.Project?
+    ): JsonObject {
+        return try {
+            openProjectJsonObject(ideaProject, currentIdeaProject)
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            if (e is Error) throw e
+            jsonObject {
+                addProperty("ideaProjectName", ideaProject.name)
+                addProperty("isCurrent", currentIdeaProject === ideaProject)
+                addProperty("hasMpsProject", false)
+                addProperty("error", "Failed to describe project: ${e.message ?: e.javaClass.simpleName}")
+            }
+        }
+    }
+
+    private fun openProjectJsonObject(
+        ideaProject: com.intellij.openapi.project.Project,
+        currentIdeaProject: com.intellij.openapi.project.Project?
+    ): JsonObject {
+        val mpsProject = ProjectHelper.fromIdeaProject(ideaProject)
+        // The MCP host resolves the `projectPath` selector against Project.getBasePath() (see
+        // com.intellij.mcpserver Fs_util.findMostRelevantProject, which keeps the open project whose
+        // basePath is the longest prefix of the supplied path). So basePath — not the @Deprecated
+        // MPSProject.getProjectFile()/presentableUrl — is the value agents must pass back; for a
+        // directory-based MPS project the two coincide anyway.
+        val ideaBase = normalizedPath(ideaProject.basePath)
+
+        return jsonObject {
+            addProperty("name", mpsProject?.name ?: ideaProject.name)
+            addProperty("ideaProjectName", ideaProject.name)
+            addProperty("hasMpsProject", mpsProject != null)
+            addProperty("isCurrent", currentIdeaProject === ideaProject)
+            // Path to pass as the host `projectPath` for mps_mcp_* tools: the project base directory
+            // when this IDE project has an MPS counterpart, null otherwise.
+            addProperty("mpsProjectBaseDirectory", if (mpsProject != null) ideaBase?.toString() else null)
+            addProperty("ideaBasePath", ideaBase?.toString())
+            addProperty("agentConfigRoot", ideaBase?.let { AgentConfigRootResolver.deriveAgentConfigRoot(it).toString() })
+        }
+    }
+
+    private fun normalizedPath(path: String?): Path? {
+        if (path.isNullOrBlank()) return null
+        return try {
+            Paths.get(path).toAbsolutePath().normalize()
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            null
         }
     }
 

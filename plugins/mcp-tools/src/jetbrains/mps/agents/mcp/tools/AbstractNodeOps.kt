@@ -10,9 +10,9 @@ import jetbrains.mps.findUsages.InstanceLookup
 import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.EditableFilteringScope
-import jetbrains.mps.project.GlobalScope
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.resolve.ResolverComponent
+import jetbrains.mps.scope.VisibleDepsSearchScope
 import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.smodel.SModelInternal
 import jetbrains.mps.smodel.SReference as SRefImpl
@@ -902,6 +902,12 @@ abstract class AbstractNodeOps : AbstractOps() {
      * "models" (requires "models": [...]), "modules" (requires "modules": [...]), "roots"
      * (requires "roots": [...] node references — non-root references widen to their containing
      * root). Returns the scope (plus the root filter for scope "roots") or an error result.
+     *
+     * Every scope is confined to [mpsProject]. A single MPS instance shares one module repository
+     * across all open projects (`ProjectRepository.getModules()` delegates to the global
+     * MPSModuleRepository), so a `GlobalScope(repo)` would leak modules belonging to sibling
+     * projects. Hence "all"/"editable" are rooted at the project's own modules ([MPSProject.getScope])
+     * rather than the repository, and "all" widens only to the project's visible dependency closure.
      */
     protected fun buildSearchScope(
         mpsProject: MPSProject,
@@ -910,8 +916,26 @@ abstract class AbstractNodeOps : AbstractOps() {
     ): SearchScopeResolution {
         val repo = mpsProject.repository
         return when (scopeParam) {
-            "all" -> SearchScopeResolution.Ok(GlobalScope(repo))
-            "editable" -> SearchScopeResolution.Ok(EditableFilteringScope(GlobalScope(repo)))
+            // Project-confined, NOT instance-global (see KDoc): root the default scopes at the
+            // project the projectPath selected, never the shared global module repository.
+            "all" -> {
+                // Project's own modules (+ owned generators) plus their VISIBLE dependency closure:
+                // used languages, the read-only library/Modules-Pool entries the project actually
+                // depends on, devkit-exported solutions and accessory models — still excludes the
+                // editable modules of other open projects.
+                // Hoisted into a local: each property read runs its own read action and rebuilds
+                // the list, so reuse the single result for both constructor arguments.
+                val projectModules = mpsProject.projectModulesWithGenerators
+                SearchScopeResolution.Ok(
+                    VisibleDepsSearchScope(
+                        repo,
+                        projectModules,
+                        projectModules.flatMap { it.usedLanguages }
+                    )
+                )
+            }
+            // Project's own editable modules only (mpsProject.scope == ProjectScope).
+            "editable" -> SearchScopeResolution.Ok(EditableFilteringScope(mpsProject.scope))
             "models" -> {
                 val modelsArray = params.getAsJsonArray("models")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'models' is missing for scope 'models'"))

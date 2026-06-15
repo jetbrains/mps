@@ -2,6 +2,7 @@
 
 ## Project and Structure
 
+- `mps_mcp_list_open_projects`: lists open IDE projects, marks which have MPS project counterparts, and returns the `mpsProjectBaseDirectory` to use as the host `projectPath` selector when several MPS projects are open.
 - `mps_mcp_get_project_structure`: the universal tool to explore the project. Use `startingPoint` and filtering to avoid large responses.
 
 ## Modules and Models
