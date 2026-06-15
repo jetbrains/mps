@@ -120,11 +120,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` excludes read-only platform/library stubs; `all` covers the whole repository including the read-only Modules Pool; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
+        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. Every scope is confined to the project selected by `projectPath` and never spans other open projects sharing the MPS instance. `scope` (default `editable`): `editable` searches this project's own editable modules; `all` additionally includes the read-only modules the project depends on (its visible dependency closure — the part of the Modules Pool it actually uses); `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String,
-        @McpDescription("Search scope: 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules'). 'roots' is not supported here.") scope: String = "editable",
+        @McpDescription("Search scope (always confined to the project selected by projectPath; never spans other open projects): 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules'). 'roots' is not supported here.") scope: String = "editable",
         @McpDescription("Optional model references; required when scope is 'models'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") models: String? = null,
         @McpDescription("Optional module references; required when scope is 'modules'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") modules: String? = null
     ): String {

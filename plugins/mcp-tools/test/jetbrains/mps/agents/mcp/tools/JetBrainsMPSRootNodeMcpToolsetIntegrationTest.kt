@@ -1,6 +1,9 @@
 package jetbrains.mps.agents.mcp.tools
 
+import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import jetbrains.mps.project.MPSProject
+import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -23,6 +26,8 @@ import org.junit.Test
 class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
     private val toolset = JetBrainsMPSRootNodeMcpToolset()
+
+    private val scopeProbe = ScopeProbe()
 
     private val conceptDeclarationFqn = "jetbrains.mps.lang.structure.structure.ConceptDeclaration"
 
@@ -447,6 +452,57 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertEquals(0, arr.size())
     }
 
+    // ── scope confinement (project-scoped, not instance-global) ───────────────────────────
+    // A single MPS instance shares one module repository across every open project, so the
+    // search scopes must be rooted at the projectPath-selected project, not GlobalScope(repository).
+
+    @Test
+    fun `all scope is rooted at the project, not the global module repository`() {
+        createConceptRoot("InProjectAllRoot")
+        readOnRepo {
+            val allModules = scopeProbe.modulesFor(myProject, "all")
+            val repoModules = myProject.repository.modules.toList()
+            assertTrue(
+                "'all' scope must include the project's own language module: ${allModules.map { it.moduleName }}",
+                allModules.any { it.moduleReference == language.moduleReference }
+            )
+            // The previous GlobalScope(repository) returned the whole repository (counts equal); the
+            // project-confined scope is a strict subset — the bench loads the entire platform, far
+            // more than this project's visible dependency closure.
+            assertTrue(
+                "'all' scope (${allModules.size}) must be a strict subset of the global repository (${repoModules.size})",
+                allModules.size < repoModules.size
+            )
+        }
+    }
+
+    @Test
+    fun `editable scope contains only modules of the selected project`() {
+        createConceptRoot("InProjectEditableRoot")
+        readOnRepo {
+            val editableModules = scopeProbe.modulesFor(myProject, "editable")
+            val projectModules = myProject.projectModulesWithGenerators
+            assertTrue(
+                "'editable' scope must include the project's own language module",
+                editableModules.any { it.moduleReference == language.moduleReference }
+            )
+            assertTrue(
+                "every 'editable' scope module must belong to the project: ${editableModules.map { it.moduleName }}",
+                editableModules.all { m -> projectModules.any { it.moduleReference == m.moduleReference } }
+            )
+        }
+    }
+
+    @Test
+    fun `search finds a project root under both all and editable scopes`() {
+        createConceptRoot("ScopedFindable")
+        for (scope in listOf("all", "editable")) {
+            val response = runTool(toolset) { it.mps_mcp_search_root_node_by_name("ScopedFindable", scope) }
+            val names = parseDataArray(response).map { it.asJsonObject.get("name").asString }
+            assertTrue("scope=$scope must find the project root: $names", names.contains("ScopedFindable"))
+        }
+    }
+
     // ── get_current_editor_root_node ──────────────────────────────────────────────────────
 
     @Test
@@ -459,4 +515,17 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertFalse("expected error envelope when no editor is open: $response", obj.get("ok").asBoolean)
     }
 
+}
+
+/**
+ * Exposes the protected [AbstractNodeOps.buildSearchScope] so the scope-confinement invariants can
+ * be asserted directly on the resolved [org.jetbrains.mps.openapi.module.SearchScope]. Lives in the
+ * same package as the toolsets so the protected member is visible.
+ */
+private class ScopeProbe : AbstractNodeOps() {
+    fun modulesFor(project: MPSProject, scope: String): List<SModule> =
+        when (val r = buildSearchScope(project, scope, JsonObject())) {
+            is SearchScopeResolution.Ok -> r.scope.modules.toList()
+            is SearchScopeResolution.Err -> error("buildSearchScope('$scope') failed: ${r.errJson}")
+        }
 }
