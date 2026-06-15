@@ -918,17 +918,22 @@ abstract class AbstractNodeOps : AbstractOps() {
         return when (scopeParam) {
             // Project-confined, NOT instance-global (see KDoc): root the default scopes at the
             // project the projectPath selected, never the shared global module repository.
-            "all" -> SearchScopeResolution.Ok(
+            "all" -> {
                 // Project's own modules (+ owned generators) plus their VISIBLE dependency closure:
                 // used languages, the read-only library/Modules-Pool entries the project actually
                 // depends on, devkit-exported solutions and accessory models — still excludes the
                 // editable modules of other open projects.
-                VisibleDepsSearchScope(
-                    repo,
-                    mpsProject.projectModulesWithGenerators,
-                    mpsProject.projectModulesWithGenerators.flatMap { it.usedLanguages }
+                // Hoisted into a local: each property read runs its own read action and rebuilds
+                // the list, so reuse the single result for both constructor arguments.
+                val projectModules = mpsProject.projectModulesWithGenerators
+                SearchScopeResolution.Ok(
+                    VisibleDepsSearchScope(
+                        repo,
+                        projectModules,
+                        projectModules.flatMap { it.usedLanguages }
+                    )
                 )
-            )
+            }
             // Project's own editable modules only (mpsProject.scope == ProjectScope).
             "editable" -> SearchScopeResolution.Ok(EditableFilteringScope(mpsProject.scope))
             "models" -> {
