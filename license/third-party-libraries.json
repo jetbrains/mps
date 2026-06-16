@@ -565,7 +565,7 @@
 }, {
   "name" : "Ktor Client Core",
   "url" : "https://github.com/ktorio/ktor/tree/main/ktor-client/ktor-client-core",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
@@ -883,13 +883,13 @@
 }, {
   "name" : "jediterm-core",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.64",
+  "version" : "3.68",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
   "name" : "jediterm-ui",
   "url" : "https://github.com/JetBrains/jediterm",
-  "version" : "3.64",
+  "version" : "3.68",
   "license" : "LGPL 3.0",
   "licenseUrl" : "https://github.com/JetBrains/jediterm/blob/master/LICENSE-LGPLv3.txt"
 }, {
@@ -961,49 +961,49 @@
 }, {
   "name" : "ktor-client-auth",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-cio-internal",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-content-negotiation",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-encoding",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-java",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-client-logging",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor-serialization-kotlinx-json",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
   "name" : "ktor.io TLS",
   "url" : "https://github.com/ktorio/ktor",
-  "version" : "3.3.2",
+  "version" : "3.4.1",
   "license" : "Apache 2.0",
   "licenseUrl" : "https://github.com/ktorio/ktor/blob/main/LICENSE"
 }, {
