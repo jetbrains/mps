@@ -57,11 +57,24 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Target module name or reference")
         targetModule: String,
         @McpDescription("Operation to perform: ADD or DELETE")
-        operation: DependencyOperation,
+        operation: String,
         @McpDescription("Dependency scope (Default by default)")
         @Nullable scope: String? = null,
         @McpDescription("Whether to reexport the dependency (false by default)")
         reexport: Boolean = false
+    ): String {
+        val op = resolveOperationOrNull<DependencyOperation>(operation)
+            ?: return unknownOperation<DependencyOperation>(operation)
+        return mps_mcp_module_dependency(moduleName, targetModule, op, scope, reexport)
+    }
+
+    /** Internal enum-typed entry point for [mps_mcp_module_dependency]; see [resolveOperationOrNull]. */
+    suspend fun mps_mcp_module_dependency(
+        moduleName: String,
+        targetModule: String,
+        operation: DependencyOperation,
+        scope: String? = null,
+        reexport: Boolean = false,
     ): String = withMpsProject("Adding MPS module dependency") { mpsProject ->
         if (operation == DependencyOperation.DELETE) {
             return@withMpsProject removeModuleDependency(moduleName, targetModule)
@@ -612,8 +625,20 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     suspend fun mps_mcp_update_module(
         @McpDescription("Existing module name or reference") moduleName: String,
         @McpDescription("New name or value for the operation: new qualified name for RENAME, new folder path for CHANGE_VIRTUAL_FOLDER, or ignored for DELETE.") @Nullable newName: String? = null,
-        @McpDescription("Operation to perform: RENAME, CHANGE_VIRTUAL_FOLDER, or DELETE. Default is RENAME.") operation: ModuleOperation = ModuleOperation.RENAME,
+        @McpDescription("Operation to perform: RENAME, CHANGE_VIRTUAL_FOLDER, or DELETE. Default is RENAME.") operation: String = "RENAME",
         @McpDescription("For DELETE only: whether to also delete module files from disk.") deleteFiles: Boolean = false,
+    ): String {
+        val op = resolveOperationOrNull<ModuleOperation>(operation)
+            ?: return unknownOperation<ModuleOperation>(operation)
+        return mps_mcp_update_module(moduleName, newName, op, deleteFiles)
+    }
+
+    /** Internal enum-typed entry point for [mps_mcp_update_module]; see [resolveOperationOrNull]. */
+    suspend fun mps_mcp_update_module(
+        moduleName: String,
+        newName: String? = null,
+        operation: ModuleOperation,
+        deleteFiles: Boolean = false,
     ): String = when (operation) {
         ModuleOperation.RENAME -> withMpsProject("Update MPS module") { mpsProject ->
             val trimmedNewName = newName?.trim()?.takeIf { it.isNotEmpty() }

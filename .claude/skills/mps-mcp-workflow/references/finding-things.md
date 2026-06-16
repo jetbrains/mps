@@ -6,6 +6,11 @@
 - To find the nodes that reference a given node, use `FIND_USAGES` (`nodeReference`). Usages are incoming references — FIND_USAGES does **not** return instances of a concept.
 - To find root nodes by name, use `mps_mcp_search_root_node_by_name`. Aspect roots like `<Concept>_Editor` have no name property and are not findable this way — use `mps_mcp_query_structure` (`LIST_CONCEPT_ASPECTS`) on the concept instead.
 
+## Finding Concepts
+
+- To find a concept by name, alias, or short description, use `mps_mcp_search_concepts` (`searchTexts`; optionally scope to a model's languages via `modelReference`). It also returns each feature's `featureId` and the declaration's `sourceNode` ref.
+- There is no "list all concepts" operation: `mps_mcp_query_structure` has no such op. Use `mps_mcp_search_concepts`, or `GET_SUB_CONCEPTS` / `GET_ASSIGNABLE_CONCEPTS` to enumerate the sub/assignable concepts of a given concept.
+
 ## Finding Models, Modules, and Languages
 
 - A fully qualified name or a unique persistent reference is needed to unambiguously represent an entity.

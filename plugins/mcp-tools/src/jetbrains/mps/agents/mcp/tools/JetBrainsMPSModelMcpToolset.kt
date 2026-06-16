@@ -37,7 +37,18 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         @McpDescription("Target model name(s) or reference(s). Single string or JSON array: [\"model1\", \"model2\"]")
         targetModels: String,
         @McpDescription("Operation to perform: ADD or DELETE")
-        operation: DependencyOperation = DependencyOperation.ADD
+        operation: String = "ADD"
+    ): String {
+        val op = resolveOperationOrNull<DependencyOperation>(operation)
+            ?: return unknownOperation<DependencyOperation>(operation)
+        return mps_mcp_model_dependency(modelReference, targetModels, op)
+    }
+
+    /** Internal enum-typed entry point for [mps_mcp_model_dependency]; see [resolveOperationOrNull]. */
+    suspend fun mps_mcp_model_dependency(
+        modelReference: String,
+        targetModels: String,
+        operation: DependencyOperation,
     ): String = withMpsProject("Adding MPS model dependency") { mpsProject ->
         val targetList: List<String> = try {
             val elem = JsonParser.parseString(targetModels)
@@ -193,7 +204,19 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         @McpDescription("Kind: 'language' or 'devkit'")
         kind: String,
         @McpDescription("Operation to perform: ADD or DELETE")
-        operation: DependencyOperation = DependencyOperation.ADD
+        operation: String = "ADD"
+    ): String {
+        val op = resolveOperationOrNull<DependencyOperation>(operation)
+            ?: return unknownOperation<DependencyOperation>(operation)
+        return mps_mcp_model_used_language(modelReference, usedLanguage, kind, op)
+    }
+
+    /** Internal enum-typed entry point for [mps_mcp_model_used_language]; see [resolveOperationOrNull]. */
+    suspend fun mps_mcp_model_used_language(
+        modelReference: String,
+        usedLanguage: String,
+        kind: String,
+        operation: DependencyOperation,
     ): String = withMpsProject("Adding MPS model used language") { mpsProject ->
         if (operation == DependencyOperation.DELETE) {
             return@withMpsProject removeModelUsedLanguage(modelReference, usedLanguage, kind)
@@ -387,7 +410,18 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         @McpDescription("New model name")
         newModelName: String = "",
         @McpDescription("Operation to perform: RENAME or DELETE")
-        operation: ModelOperation = ModelOperation.RENAME
+        operation: String = "RENAME"
+    ): String {
+        val op = resolveOperationOrNull<ModelOperation>(operation)
+            ?: return unknownOperation<ModelOperation>(operation)
+        return mps_mcp_update_model(modelReference, newModelName, op)
+    }
+
+    /** Internal enum-typed entry point for [mps_mcp_update_model]; see [resolveOperationOrNull]. */
+    suspend fun mps_mcp_update_model(
+        modelReference: String,
+        newModelName: String = "",
+        operation: ModelOperation,
     ): String = when (operation) {
         ModelOperation.RENAME -> withMpsProject("Update MPS model") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {

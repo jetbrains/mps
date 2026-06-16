@@ -58,9 +58,22 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
     """
     )
     suspend fun mps_mcp_query_structure(
-        @McpDescription("The operation to perform (GET_ENUMERATION_LITERALS, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES, IS_SMART_REFERENCE)") operation: MPSStructureQueryOperation,
+        @McpDescription("The operation to perform (GET_ENUMERATION_LITERALS, IS_SUBCONCEPT_OF, GET_SUB_CONCEPTS, GET_ASSIGNABLE_CONCEPTS, GET_ALL_SUPERCONCEPTS, LIST_CONCEPT_ASPECTS, GET_ASSIGNABLE_REFERENCES, IS_SMART_REFERENCE)") operation: String,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
-    ): String = withMpsProject("Performing MPS structure query: $operation") { mpsProject ->
+    ): String {
+        val op = resolveOperationOrNull<MPSStructureQueryOperation>(operation)
+            ?: return unknownOperation<MPSStructureQueryOperation>(operation)
+        return mps_mcp_query_structure(op, parameters)
+    }
+
+    /**
+     * Internal enum-typed entry point for [mps_mcp_query_structure]. Deliberately *not* annotated
+     * with `@McpTool`: the String-typed overload above is the registered tool, so an unrecognised
+     * `operation` is reported as a classified INVALID_REQUEST error instead of crashing the MCP
+     * framework's pre-call enum decode (see [resolveOperationOrNull]). Retained as a direct enum
+     * entry point for in-process callers and tests.
+     */
+    suspend fun mps_mcp_query_structure(operation: MPSStructureQueryOperation, parameters: String): String = withMpsProject("Performing MPS structure query: $operation") { mpsProject ->
         val gson = Gson()
         val params = try {
             gson.fromJson(parameters, JsonObject::class.java)
@@ -207,9 +220,19 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
     """
     )
     suspend fun mps_mcp_alter_structure(
-        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE)") operation: MPSStructureAlterOperation,
+        @McpDescription("The operation to perform (CREATE_CONCEPTS, CREATE_ENUM, UPDATE_CONCEPT_PROPERTY, RENAME_CONCEPT_PROPERTY, UPDATE_CONCEPT_CHILD, RENAME_CONCEPT_CHILD, UPDATE_CONCEPT_REFERENCE, RENAME_CONCEPT_REFERENCE)") operation: String,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
-    ): String = withMpsProject("Performing MPS structure alteration: $operation") { mpsProject ->
+    ): String {
+        val op = resolveOperationOrNull<MPSStructureAlterOperation>(operation)
+            ?: return unknownOperation<MPSStructureAlterOperation>(operation)
+        return mps_mcp_alter_structure(op, parameters)
+    }
+
+    /**
+     * Internal enum-typed entry point for [mps_mcp_alter_structure]; see the sibling
+     * [mps_mcp_query_structure] overload for why the registered `@McpTool` takes a String.
+     */
+    suspend fun mps_mcp_alter_structure(operation: MPSStructureAlterOperation, parameters: String): String = withMpsProject("Performing MPS structure alteration: $operation") { mpsProject ->
         val gson = Gson()
         val params = try {
             gson.fromJson(parameters, JsonObject::class.java)
