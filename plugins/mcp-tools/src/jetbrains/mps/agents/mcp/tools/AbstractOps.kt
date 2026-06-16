@@ -1502,13 +1502,28 @@ abstract class AbstractOps : McpToolset {
         return withContext(Dispatchers.EDT) {
             var result: T? = null
             var ran = false
+            // A McpUserException raised inside the command is expected control flow for bad client
+            // input (e.g. AssignabilityException, NOT_FOUND), not an MPS defect. If it escapes the
+            // command, ActionDispatcher logs it via LOG.error("Action dispatch failed") before
+            // rethrowing — flooding the IDE log with spurious error reports for ordinary validation
+            // failures. Capture it here so the command finishes normally, then rethrow OUTSIDE the
+            // command boundary: the caller's withMpsProject/toolFailure boundary still maps it to the
+            // proper errJson response, identically to today, but ActionDispatcher no longer sees an
+            // exception escape the command. Any other Throwable still propagates from inside the
+            // command, so genuine internal failures are still logged as errors.
+            var userException: McpUserException? = null
             mpsProject.modelAccess.executeCommand {
-                result = action()
+                try {
+                    result = action()
+                } catch (e: McpUserException) {
+                    userException = e
+                }
                 ran = true
             }
             check(ran) {
                 "modelAccess.executeCommand did not invoke the action; another write may be in progress"
             }
+            userException?.let { throw it }
             @Suppress("UNCHECKED_CAST")
             result as T
         }
