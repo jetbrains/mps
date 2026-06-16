@@ -10,6 +10,8 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.io.File
+import kotlin.reflect.full.declaredFunctions
+import kotlin.reflect.full.valueParameters
 
 /**
  * End-to-end integration tests for [JetBrainsMPSLanguageMcpToolset].
@@ -122,6 +124,27 @@ class JetBrainsMPSLanguageMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         assertTrue(
             "expanding a full language should yield more than a single concept; got=${qualifiedNames.size}",
             qualifiedNames.size > 1
+        )
+    }
+
+    @Test
+    fun `get-concept-details declares conceptRefs optional so language-only calls survive the MCP bridge`() {
+        // Regression guard for the bridge contract, which the runTool-based cases above cannot
+        // reach: runTool invokes the Kotlin method directly, but real MCP calls go through
+        // com.intellij.mcpserver.impl.util.CallableBridge. The bridge builds the argument map from
+        // the request JSON and rejects any parameter that is absent from the JSON and not
+        // KParameter.isOptional with "No argument is passed for required parameter 'conceptRefs'".
+        // A Kotlin parameter is isOptional only when it has a default value, so conceptRefs must
+        // keep its `= emptyList()` default; otherwise every documented language-only call
+        // (conceptRefs omitted, languageRefs provided) throws before the body's either/or guard
+        // ever runs.
+        val fn = JetBrainsMPSLanguageMcpToolset::class.declaredFunctions
+            .single { it.name == "mps_mcp_get_concept_details" }
+        val conceptRefs = fn.valueParameters.single { it.name == "conceptRefs" }
+        assertTrue(
+            "conceptRefs must have a Kotlin default (KParameter.isOptional) so CallableBridge accepts " +
+                "language-only calls instead of throwing 'No argument is passed for required parameter conceptRefs'",
+            conceptRefs.isOptional
         )
     }
 

@@ -67,7 +67,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_get_concept_details(
-        @McpDescription("List of persistent references (SAbstractConcept) or fully qualified names of the concepts and interface concepts") conceptRefs: List<String>,
+        @McpDescription("List of persistent references (SAbstractConcept) or fully qualified names of the concepts and interface concepts") conceptRefs: List<String> = emptyList(),
         @McpDescription("List of persistent references (SLanguage) or qualified names of the languages. All concepts and interface concepts of these languages will be returned.") languageRefs: List<String> = emptyList()
     ): String {
         if (conceptRefs.isEmpty() && languageRefs.isEmpty()) {
