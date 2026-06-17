@@ -899,9 +899,11 @@ abstract class AbstractNodeOps : AbstractOps() {
     /**
      * Builds the SearchScope corresponding to the 'scope' parameter shared by FIND_USAGES,
      * FIND_INSTANCES and root-node-by-name search. Supported values: "all", "editable",
-     * "models" (requires "models": [...]), "modules" (requires "modules": [...]), "roots"
-     * (requires "roots": [...] node references — non-root references widen to their containing
-     * root). Returns the scope (plus the root filter for scope "roots") or an error result.
+     * "models" (requires "models"), "modules" (requires "modules"), "roots" (requires "roots"
+     * node references — non-root references widen to their containing root). The "models"/
+     * "modules"/"roots" parameters each accept either a JSON array of references or a single bare
+     * reference string (see [scopeRefStrings]). Returns the scope (plus the root filter for scope
+     * "roots") or an error result.
      *
      * Every scope is confined to [mpsProject]. A single MPS instance shares one module repository
      * across all open projects (`ProjectRepository.getModules()` delegates to the global
@@ -937,28 +939,27 @@ abstract class AbstractNodeOps : AbstractOps() {
             // Project's own editable modules only (mpsProject.scope == ProjectScope).
             "editable" -> SearchScopeResolution.Ok(EditableFilteringScope(mpsProject.scope))
             "models" -> {
-                val modelsArray = params.getAsJsonArray("models")
+                val modelRefStrings = scopeRefStrings(params, "models")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'models' is missing for scope 'models'"))
-                val modelRefs = modelsArray.mapNotNull { resolveModel(repo, it.asString)?.reference }.toSet()
-                if (modelsArray.size() > 0 && modelRefs.isEmpty())
-                    return SearchScopeResolution.Err(errJson("None of the ${modelsArray.size()} model reference(s) could be resolved"))
+                val modelRefs = modelRefStrings.mapNotNull { resolveModel(repo, it)?.reference }.toSet()
+                if (modelRefStrings.isNotEmpty() && modelRefs.isEmpty())
+                    return SearchScopeResolution.Err(errJson("None of the ${modelRefStrings.size} model reference(s) could be resolved"))
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = modelRefs, allowedModules = null))
             }
             "modules" -> {
-                val modulesArray = params.getAsJsonArray("modules")
+                val moduleRefStrings = scopeRefStrings(params, "modules")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'modules' is missing for scope 'modules'"))
-                val moduleRefs = modulesArray.mapNotNull { resolveModule(repo, it.asString)?.moduleReference }.toSet()
-                if (modulesArray.size() > 0 && moduleRefs.isEmpty())
-                    return SearchScopeResolution.Err(errJson("None of the ${modulesArray.size()} module reference(s) could be resolved"))
+                val moduleRefs = moduleRefStrings.mapNotNull { resolveModule(repo, it)?.moduleReference }.toSet()
+                if (moduleRefStrings.isNotEmpty() && moduleRefs.isEmpty())
+                    return SearchScopeResolution.Err(errJson("None of the ${moduleRefStrings.size} module reference(s) could be resolved"))
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = null, allowedModules = moduleRefs))
             }
             "roots" -> {
-                val rootsArray = params.getAsJsonArray("roots")
+                val rootRefStrings = scopeRefStrings(params, "roots")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'roots' is missing for scope 'roots'"))
                 val rootRefs = mutableSetOf<SNodeReference>()
                 val modelRefs = mutableSetOf<SModelReference>()
-                for (elem in rootsArray) {
-                    val refStr = elem.asString
+                for (refStr in rootRefStrings) {
                     val node = resolveNodeReference(repo, refStr)?.resolve(repo)
                         ?: return SearchScopeResolution.Err(errJson("Failed to resolve root reference: '$refStr'"))
                     rootRefs.add(node.containingRoot.reference)
@@ -967,6 +968,29 @@ abstract class AbstractNodeOps : AbstractOps() {
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = modelRefs, allowedModules = null), rootRefs)
             }
             else -> SearchScopeResolution.Err(errJson("Unsupported scope: $scopeParam"))
+        }
+    }
+
+    /**
+     * Normalises an array-valued scope parameter ("models" / "modules" / "roots") to the list of
+     * reference strings it carries. Accepts either a JSON array of strings or a single bare string,
+     * because agents commonly pass one reference unwrapped (mirroring mps_mcp_search_root_node_by_name);
+     * non-string array elements are skipped. Returns null only when the member is absent or JSON null,
+     * so callers can emit the scope-specific "missing parameter" error.
+     *
+     * This replaces [JsonObject.getAsJsonArray], which casts the member to [JsonArray] unchecked: a
+     * non-array value (e.g. "models": "foo", or "models": null) threw [ClassCastException] from inside
+     * the read action, escaping as a spurious "Action dispatch failed" log rather than a clean
+     * validation result (MPS-39835).
+     */
+    private fun scopeRefStrings(params: JsonObject, name: String): List<String>? {
+        val elem = params.get(name)?.takeIf { !it.isJsonNull } ?: return null
+        return when {
+            elem.isJsonArray -> elem.asJsonArray.mapNotNull { e -> e.takeIf { it.isJsonPrimitive }?.asString }
+            elem.isJsonPrimitive -> listOf(elem.asString)
+            // A JSON object (or other non-array, non-primitive) carries no usable references; treat it
+            // as an empty selection rather than crashing, identical to an explicit empty array.
+            else -> emptyList()
         }
     }
 

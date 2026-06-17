@@ -99,7 +99,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Read-only node queries. FIND_INSTANCES: find nodes that are instances of a concept (`conceptRef`; optional `scope` all|editable|models|modules|roots (always confined to the project selected by `projectPath`; never spans other open projects) with matching `models`/`modules`/`roots` arrays, `propertyFilter` {"name","value"}, `exact`, `sampleOnly`:true for one example node). FIND_USAGES: find nodes whose references point at the given node — incoming references, not instances (`nodeReference`; optional `scope` as above). GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE take `nodeReference`. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
+        Read-only node queries. FIND_INSTANCES: find nodes that are instances of a concept (`conceptRef`; optional `scope` all|editable|models|modules|roots (always confined to the project selected by `projectPath`; never spans other open projects) with matching `models`/`modules`/`roots` (each a single reference or a JSON array), `propertyFilter` {"name","value"}, `exact`, `sampleOnly`:true for one example node). FIND_USAGES: find nodes whose references point at the given node — incoming references, not instances (`nodeReference`; optional `scope` as above). GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE take `nodeReference`. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
     suspend fun mps_mcp_query_nodes(
         @McpDescription("The operation to perform (FIND_INSTANCES, FIND_USAGES, GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE)") operation: String,
@@ -384,8 +384,19 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             )
         }
 
-        val modelsArray = params.getAsJsonArray("models")
-        val modulesArray = params.getAsJsonArray("modules")
+        // getAsJsonArray casts the member unchecked, so a non-array value (e.g. "models": "foo"
+        // instead of ["foo"], or "models": null) throws ClassCastException — surfacing as an opaque
+        // internal failure instead of a clean MAKE_INPUT_INVALID. Validate the type explicitly.
+        val modelsElem = params.get("models")?.takeIf { !it.isJsonNull }
+        val modulesElem = params.get("modules")?.takeIf { !it.isJsonNull }
+        if (modelsElem != null && !modelsElem.isJsonArray) {
+            return makeInputInvalid("Parameter 'models' must be a JSON array of model references, e.g. {\"models\": [\"<modelRef>\"]}")
+        }
+        if (modulesElem != null && !modulesElem.isJsonArray) {
+            return makeInputInvalid("Parameter 'modules' must be a JSON array of module references, e.g. {\"modules\": [\"<moduleRef>\"]}")
+        }
+        val modelsArray = modelsElem?.asJsonArray
+        val modulesArray = modulesElem?.asJsonArray
         val rebuild = params.get("rebuild")?.asBoolean ?: false
         val wholeProject = params.get("wholeProject")?.asBoolean ?: false
 
