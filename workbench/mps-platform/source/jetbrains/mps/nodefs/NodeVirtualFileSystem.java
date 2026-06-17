@@ -154,6 +154,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
 
   void register(@NotNull RepositoryVirtualFiles repoFiles) {
     MyRepositoryListener listener;
+    Collection<VirtualFile> adopted;
     synchronized (myRepoVFLock) {
       // assert not more than 1 file container per repository
       RepositoryVirtualFiles existing = findForRepository(repoFiles.getRepository());
@@ -164,9 +165,17 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
       myPerRepositoryFiles.add(0, repoFiles);
       listener = new MyRepositoryListener(repoFiles);
       myFiles2ListenerMap.put(repoFiles, listener);
+      adopted = myUnresolvedFiles.adoptFilesIfResolve(repoFiles);
     }
-    // FIXME shall revisit unknown files and tell if they are 'adopted' and need to reflect the change or get discarded (reported as deleted)
-    // myUnresolvedFiles.getNotifier(new VFSNotifier(myUnresolvedFiles)).deleted(myUnresolvedFiles.getAll()).notify();
+    // we send notification about MPSNodeVirtualFiles only
+    List<MPSNodeVirtualFile> adoptedNodes = adopted.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
+    if (!adoptedNodes.isEmpty()) {
+      VFSNotifier notifier = repoFiles.getNotifier(new VFSNotifier(repoFiles));
+      notifier.changed(adoptedNodes);
+      notifier.execute();
+    }
+    // FIXME what shall we do with the files left unresolved (not adopted) in myUnresolvedFiles? Report them as 'deleted' or wait for another RVF to come
+    //       (e.g. another project to get open).
     new RepoListenerRegistrar(repoFiles.getRepository(), listener).attach();
   }
 
