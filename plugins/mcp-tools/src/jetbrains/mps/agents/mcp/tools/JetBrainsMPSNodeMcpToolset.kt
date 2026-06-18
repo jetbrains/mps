@@ -99,12 +99,23 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Read-only node queries. FIND_INSTANCES: find nodes that are instances of a concept (`conceptRef`; optional `scope` all|editable|models|modules|roots (always confined to the project selected by `projectPath`; never spans other open projects) with matching `models`/`modules`/`roots` arrays, `propertyFilter` {"name","value"}, `exact`, `sampleOnly`:true for one example node). FIND_USAGES: find nodes whose references point at the given node — incoming references, not instances (`nodeReference`; optional `scope` as above). GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE take `nodeReference`. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
+        Read-only node queries. FIND_INSTANCES: find nodes that are instances of a concept (`conceptRef`; optional `scope` all|editable|models|modules|roots (always confined to the project selected by `projectPath`; never spans other open projects) with matching `models`/`modules`/`roots` (each a single reference or a JSON array), `propertyFilter` {"name","value"}, `exact`, `sampleOnly`:true for one example node). FIND_USAGES: find nodes whose references point at the given node — incoming references, not instances (`nodeReference`; optional `scope` as above). GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE take `nodeReference`. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
     suspend fun mps_mcp_query_nodes(
-        @McpDescription("The operation to perform (FIND_INSTANCES, FIND_USAGES, GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE)") operation: MPSQueryOperation,
+        @McpDescription("The operation to perform (FIND_INSTANCES, FIND_USAGES, GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE)") operation: String,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
+        val op = resolveOperationOrNull<MPSQueryOperation>(operation)
+            ?: return unknownOperation<MPSQueryOperation>(operation)
+        return mps_mcp_query_nodes(op, parameters)
+    }
+
+    /**
+     * Internal enum-typed entry point for [mps_mcp_query_nodes]; the String overload above is the
+     * registered `@McpTool`, so an unrecognised `operation` is an INVALID_REQUEST error instead of
+     * a crash in the framework's pre-call enum decode (see [resolveOperationOrNull]).
+     */
+    suspend fun mps_mcp_query_nodes(operation: MPSQueryOperation, parameters: String): String {
         return withMpsProject("Querying MPS nodes: $operation") { mpsProject ->
             val params = try {
                 Gson().fromJson(parameters, JsonObject::class.java)
@@ -128,9 +139,19 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         Structural node mutations and code generation: move a child within its role, move a node to a new parent or make it a root, make/rebuild models/modules/whole project, fix broken references. Parameters are a JSON object string. For MOVE_CHILD and MOVE_NODE_TO_PARENT, `position` is 0-based and `-1` moves to the end; a `position` at or beyond the role's child count is clamped to the end (not rejected) and a negative value other than -1 is rejected — the response's `data.index` reports the moved node's actual resulting index. MAKE parameters: {"modules":[<moduleRef>,...]} | {"models":[<modelRef>,...]} | {"wholeProject":true}, plus optional "rebuild":bool; node references are not accepted — resolve the node's module or model first. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
     suspend fun mps_mcp_alter_nodes(
-        @McpDescription("The operation to perform (MOVE_CHILD, MOVE_NODE_TO_PARENT, MAKE, FIX_REFERENCES)") operation: MPSAlterOperation,
+        @McpDescription("The operation to perform (MOVE_CHILD, MOVE_NODE_TO_PARENT, MAKE, FIX_REFERENCES)") operation: String,
         @McpDescription("JSON string representing the parameters for the operation") parameters: String
     ): String {
+        val op = resolveOperationOrNull<MPSAlterOperation>(operation)
+            ?: return unknownOperation<MPSAlterOperation>(operation)
+        return mps_mcp_alter_nodes(op, parameters)
+    }
+
+    /**
+     * Internal enum-typed entry point for [mps_mcp_alter_nodes]; the String overload above is the
+     * registered `@McpTool` (see [resolveOperationOrNull] for the rationale).
+     */
+    suspend fun mps_mcp_alter_nodes(operation: MPSAlterOperation, parameters: String): String {
         return withMpsProject("Altering MPS nodes: $operation") { mpsProject ->
             val params = try {
                 Gson().fromJson(parameters, JsonObject::class.java)
@@ -363,8 +384,19 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             )
         }
 
-        val modelsArray = params.getAsJsonArray("models")
-        val modulesArray = params.getAsJsonArray("modules")
+        // getAsJsonArray casts the member unchecked, so a non-array value (e.g. "models": "foo"
+        // instead of ["foo"], or "models": null) throws ClassCastException — surfacing as an opaque
+        // internal failure instead of a clean MAKE_INPUT_INVALID. Validate the type explicitly.
+        val modelsElem = params.get("models")?.takeIf { !it.isJsonNull }
+        val modulesElem = params.get("modules")?.takeIf { !it.isJsonNull }
+        if (modelsElem != null && !modelsElem.isJsonArray) {
+            return makeInputInvalid("Parameter 'models' must be a JSON array of model references, e.g. {\"models\": [\"<modelRef>\"]}")
+        }
+        if (modulesElem != null && !modulesElem.isJsonArray) {
+            return makeInputInvalid("Parameter 'modules' must be a JSON array of module references, e.g. {\"modules\": [\"<moduleRef>\"]}")
+        }
+        val modelsArray = modelsElem?.asJsonArray
+        val modulesArray = modulesElem?.asJsonArray
         val rebuild = params.get("rebuild")?.asBoolean ?: false
         val wholeProject = params.get("wholeProject")?.asBoolean ?: false
 
@@ -602,8 +634,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     """
     )
     suspend fun mps_mcp_update_node(
-        @McpDescription("The operation to perform (ADD or SET)") operation: NodeUpdateOperation,
-        @McpDescription("The kind of element to operate on (CHILD, PROPERTY, REFERENCE)") kind: NodeUpdateKind,
+        @McpDescription("The operation to perform (ADD or SET)") operation: String,
+        @McpDescription("The kind of element to operate on (CHILD, PROPERTY, REFERENCE)") kind: String,
         @McpDescription("Parent node ref for ADD CHILD") nodeReference: String? = null,
         @McpDescription("Containment role name for ADD CHILD") childRole: String? = null,
         @McpDescription("0-based insert index for ADD CHILD multi-cardinality roles; null/-1 = append. A value at or beyond the current child count is clamped to an append; a negative value other than -1 is rejected. Single-cardinality roles accept only null/-1/0.") position: Int? = null,
@@ -612,6 +644,30 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         @McpDescription("If true, validate without mutating (ADD CHILD, SET CHILD only). Default: false.") dryRun: Boolean = false,
         @McpDescription("Batch triplets [nodeRef, propertyName, value] for SET PROPERTY") properties: List<List<String?>>? = null,
         @McpDescription("Batch triplets [nodeRef, referenceRole, targetNodeRefOrName] for SET REFERENCE") references: List<List<String?>>? = null,
+    ): String {
+        val op = resolveOperationOrNull<NodeUpdateOperation>(operation)
+            ?: return unknownOperation<NodeUpdateOperation>(operation)
+        val k = resolveOperationOrNull<NodeUpdateKind>(kind)
+            ?: return unknownOperation<NodeUpdateKind>(kind)
+        return mps_mcp_update_node(op, k, nodeReference, childRole, position, childJson, childNodeRef, dryRun, properties, references)
+    }
+
+    /**
+     * Internal enum-typed entry point for [mps_mcp_update_node]; the String overload above is the
+     * registered `@McpTool`. Keep this parameter list in sync with the wrapper. See
+     * [resolveOperationOrNull] for why the tool boundary takes String selectors.
+     */
+    suspend fun mps_mcp_update_node(
+        operation: NodeUpdateOperation,
+        kind: NodeUpdateKind,
+        nodeReference: String? = null,
+        childRole: String? = null,
+        position: Int? = null,
+        childJson: String? = null,
+        childNodeRef: String? = null,
+        dryRun: Boolean = false,
+        properties: List<List<String?>>? = null,
+        references: List<List<String?>>? = null,
     ): String {
         return when (kind) {
             NodeUpdateKind.CHILD -> when (operation) {

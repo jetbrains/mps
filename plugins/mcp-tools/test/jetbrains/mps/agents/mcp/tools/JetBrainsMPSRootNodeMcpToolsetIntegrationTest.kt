@@ -1,5 +1,7 @@
 package jetbrains.mps.agents.mcp.tools
 
+import com.google.gson.JsonArray
+import com.google.gson.JsonNull
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import jetbrains.mps.project.MPSProject
@@ -503,6 +505,45 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         }
     }
 
+    // ── scope parameter normalisation (single reference vs. array; no crash on bad types) ─────
+    // Regression for MPS-39835: buildSearchScope used JsonObject.getAsJsonArray, which casts the
+    // member to JsonArray unchecked. A client that passed "models": "ref" (a bare string) instead of
+    // ["ref"] — or "models": null — crashed with ClassCastException inside the read action, which
+    // ActionDispatcher logged as a spurious "Action dispatch failed".
+
+    @Test
+    fun `models scope accepts a single reference string identically to a one-element array`() {
+        readOnRepo {
+            val single = JsonObject().apply { addProperty("models", structureModelRef) }
+            val asArray = JsonObject().apply { add("models", JsonArray().apply { add(structureModelRef) }) }
+            val refsFromSingle = scopeProbe.scopeModelRefsFor(myProject, "models", single)
+            val refsFromArray = scopeProbe.scopeModelRefsFor(myProject, "models", asArray)
+            assertTrue("a single 'models' string must resolve the structure model: $refsFromSingle", refsFromSingle.contains(structureModelRef))
+            assertEquals(
+                "a single reference string and a one-element array must yield the same scope",
+                refsFromArray,
+                refsFromSingle,
+            )
+        }
+    }
+
+    @Test
+    fun `models scope returns a clean error instead of crashing on a non-array value`() {
+        readOnRepo {
+            // An unresolvable bare string must surface as a clean error (not a ClassCastException),
+            // proving getAsJsonArray's unchecked cast is gone.
+            val bareErr = scopeProbe.errorFor(
+                myProject, "models", JsonObject().apply { addProperty("models", "no.such.model") }
+            )
+            assertNotNull("unresolvable single ref must be a clean error, not a crash", bareErr)
+            // An explicit JSON null is treated as a missing parameter, again without crashing.
+            val nullErr = scopeProbe.errorFor(
+                myProject, "models", JsonObject().apply { add("models", JsonNull.INSTANCE) }
+            )
+            assertNotNull("explicit null 'models' must be treated as missing, not a crash", nullErr)
+        }
+    }
+
     // ── get_current_editor_root_node ──────────────────────────────────────────────────────
 
     @Test
@@ -527,5 +568,20 @@ private class ScopeProbe : AbstractNodeOps() {
         when (val r = buildSearchScope(project, scope, JsonObject())) {
             is SearchScopeResolution.Ok -> r.scope.modules.toList()
             is SearchScopeResolution.Err -> error("buildSearchScope('$scope') failed: ${r.errJson}")
+        }
+
+    /** null when the scope resolves successfully; the error JSON otherwise. */
+    fun errorFor(project: MPSProject, scope: String, params: JsonObject): String? =
+        when (val r = buildSearchScope(project, scope, params)) {
+            is SearchScopeResolution.Ok -> null
+            is SearchScopeResolution.Err -> r.errJson
+        }
+
+    /** Stringified model references of the resolved scope; fails if the scope did not resolve. */
+    fun scopeModelRefsFor(project: MPSProject, scope: String, params: JsonObject): Set<String> =
+        when (val r = buildSearchScope(project, scope, params)) {
+            is SearchScopeResolution.Ok ->
+                r.scope.models.map { PersistenceFacade.getInstance().asString(it.reference) }.toSet()
+            is SearchScopeResolution.Err -> error("expected a resolved scope, got error: ${r.errJson}")
         }
 }

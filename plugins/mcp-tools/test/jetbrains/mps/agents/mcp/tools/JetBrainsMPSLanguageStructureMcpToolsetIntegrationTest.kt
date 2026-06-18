@@ -1029,6 +1029,45 @@ class JetBrainsMPSLanguageStructureMcpToolsetIntegrationTest : McpIntegrationTes
         assertTrue(expectErr(response).contains("contextNode"))
     }
 
+    @Test
+    fun `query_structure with unknown operation returns INVALID_REQUEST instead of crashing`() {
+        // Regression for the kotlinx SerializationException that escaped argument binding when a
+        // caller passed an operation outside MPSStructureQueryOperation (e.g. the hallucinated
+        // "LIST_CONCEPTS"). The String-typed tool overload must turn this into a classified error.
+        val response = runTool { it.mps_mcp_query_structure("LIST_CONCEPTS", "{}") }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        val error = obj.get("error").asString
+        assertTrue("error should quote the bad value: $error", error.contains("LIST_CONCEPTS"))
+        assertTrue("error should list the valid operations: $error", error.contains("LIST_CONCEPT_ASPECTS"))
+    }
+
+    @Test
+    fun `query_structure resolves the operation string case-insensitively`() {
+        // The framework's enum decode was case-insensitive; the String overload must preserve that.
+        // The concept refs are unresolvable, so a NOT_FOUND is expected — the point is that the
+        // lower-case operation still dispatched to IS_SUBCONCEPT_OF rather than being reported unknown.
+        val response = runTool {
+            it.mps_mcp_query_structure(
+                "is_subconcept_of",
+                """{"conceptRef":"$unresolvableNodeRef","superConceptRef":"$unresolvableNodeRef"}"""
+            )
+        }
+        val error = expectErr(response)
+        assertFalse("operation should have resolved, not be reported unknown: $error", error.contains("Unknown operation"))
+    }
+
+    @Test
+    fun `alter_structure with unknown operation returns INVALID_REQUEST instead of crashing`() {
+        val response = runTool { it.mps_mcp_alter_structure("MAKE_EVERYTHING", "{}") }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        assertTrue("error should list the valid operations: ${obj.get("error").asString}",
+                   obj.get("error").asString.contains("CREATE_CONCEPTS"))
+    }
+
     /**
      * Returns the java.io.File for the test language's structure model on disk.
      * The path follows the MPS convention: `<moduleDir>/languageModels/<longModelName>.mps`.

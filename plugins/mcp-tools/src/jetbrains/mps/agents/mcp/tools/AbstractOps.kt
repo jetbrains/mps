@@ -249,6 +249,40 @@ abstract class AbstractOps : McpToolset {
         errJson(message, McpErrorCode.MAKE_INPUT_INVALID, details)
 
     /**
+     * Resolves [raw] — a tool `operation` selector received as a plain `String` — to the
+     * matching constant of enum [E], case-insensitively and ignoring surrounding whitespace.
+     * Returns `null` when no constant matches.
+     *
+     * Tool `operation` parameters are intentionally declared as `String` rather than the enum
+     * type, with the enum resolved here. The MCP framework decodes typed parameters (see the
+     * platform `CallableBridge`) *before* the tool body runs, so an unknown enum name there is
+     * raised as a raw `kotlinx.serialization.SerializationException` during argument binding —
+     * it never reaches [withMpsProject]/[toolFailure], so the caller gets an opaque stack trace
+     * and the failure is logged as if it were an internal error. Decoding the value in the tool
+     * body instead turns an unrecognised operation into an ordinary [unknownOperation] response
+     * that names the valid values.
+     *
+     * Case-insensitive matching mirrors the framework's own `decodeEnumsCaseInsensitive`, so the
+     * behaviour for *valid* values is identical to declaring the parameter as the enum.
+     */
+    protected inline fun <reified E : Enum<E>> resolveOperationOrNull(raw: String): E? {
+        val needle = raw.trim()
+        return enumValues<E>().firstOrNull { it.name.equals(needle, ignoreCase = true) }
+    }
+
+    /**
+     * Builds the [McpErrorCode.INVALID_REQUEST] [errJson] for an `operation` value that
+     * [resolveOperationOrNull] could not match, quoting the offending value and listing every
+     * valid constant of [E] so the caller can correct the call.
+     */
+    protected inline fun <reified E : Enum<E>> unknownOperation(raw: String): String =
+        errJson(
+            "Unknown operation '$raw'. Valid operations: " +
+                enumValues<E>().joinToString(", ") { it.name } + ".",
+            McpErrorCode.INVALID_REQUEST,
+        )
+
+    /**
      * Maps a thrown exception to a stable MCP error response.
      *
      * Mapping policy — only the listed types receive a domain-specific code. Anything
@@ -1468,13 +1502,28 @@ abstract class AbstractOps : McpToolset {
         return withContext(Dispatchers.EDT) {
             var result: T? = null
             var ran = false
+            // A McpUserException raised inside the command is expected control flow for bad client
+            // input (e.g. AssignabilityException, NOT_FOUND), not an MPS defect. If it escapes the
+            // command, ActionDispatcher logs it via LOG.error("Action dispatch failed") before
+            // rethrowing — flooding the IDE log with spurious error reports for ordinary validation
+            // failures. Capture it here so the command finishes normally, then rethrow OUTSIDE the
+            // command boundary: the caller's withMpsProject/toolFailure boundary still maps it to the
+            // proper errJson response, identically to today, but ActionDispatcher no longer sees an
+            // exception escape the command. Any other Throwable still propagates from inside the
+            // command, so genuine internal failures are still logged as errors.
+            var userException: McpUserException? = null
             mpsProject.modelAccess.executeCommand {
-                result = action()
+                try {
+                    result = action()
+                } catch (e: McpUserException) {
+                    userException = e
+                }
                 ran = true
             }
             check(ran) {
                 "modelAccess.executeCommand did not invoke the action; another write may be in progress"
             }
+            userException?.let { throw it }
             @Suppress("UNCHECKED_CAST")
             result as T
         }

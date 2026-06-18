@@ -667,6 +667,31 @@ class JetBrainsMPSNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         return node?.name
     }
 
+    @Test
+    fun `update_node with unknown operation returns INVALID_REQUEST instead of crashing`() {
+        // Regression: an operation outside NodeUpdateOperation must be a classified error, not a
+        // kotlinx SerializationException escaping the framework's pre-call enum decode.
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_update_node("UPSERT", "CHILD", nodeReference = "x", childRole = "y", childJson = "{}")
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        assertTrue("error should list valid operations: ${obj.get("error").asString}", obj.get("error").asString.contains("ADD"))
+    }
+
+    @Test
+    fun `update_node with unknown kind returns INVALID_REQUEST instead of crashing`() {
+        // `kind` is the second enum selector on this tool; it must be validated as a String too.
+        val response = runTool(JetBrainsMPSNodeMcpToolset()) {
+            it.mps_mcp_update_node("ADD", "ATTRIBUTE", nodeReference = "x", childRole = "y", childJson = "{}")
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+        assertTrue("error should list valid kinds: ${obj.get("error").asString}", obj.get("error").asString.contains("CHILD"))
+    }
+
     /** node-info responses arrive as a JSON-string inside the `data` field; normalise either form. */
     private fun JsonElement.asNodeInfo(): JsonObject {
         return if (isJsonPrimitive) JsonParser.parseString(asString).asJsonObject else asJsonObject

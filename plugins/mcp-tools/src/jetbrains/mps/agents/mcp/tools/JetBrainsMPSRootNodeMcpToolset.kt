@@ -356,7 +356,19 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         @McpDescription("Persistent form of SNodeReference") nodeReference: String,
         @McpDescription("JSON blueprint of the root (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) file containing it. Ignored for DELETE. See `mps-node-editing` for the format and file-input semantics.") json: String = "",
         @McpDescription("Optional, ignored for DELETE - if true, only validate JSON and concept-role assignability without mutating the node. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false,
-        @McpDescription("Operation to perform: UPDATE or DELETE") operation: RootNodeOperation = RootNodeOperation.UPDATE
+        @McpDescription("Operation to perform: UPDATE or DELETE") operation: String = "UPDATE"
+    ): String {
+        val op = resolveOperationOrNull<RootNodeOperation>(operation)
+            ?: return unknownOperation<RootNodeOperation>(operation)
+        return mps_mcp_update_root_node_from_json(nodeReference, json, dryRun, op)
+    }
+
+    /** Internal enum-typed entry point for [mps_mcp_update_root_node_from_json]; see [resolveOperationOrNull]. */
+    suspend fun mps_mcp_update_root_node_from_json(
+        nodeReference: String,
+        json: String = "",
+        dryRun: Boolean = false,
+        operation: RootNodeOperation,
     ): String = when (operation) {
         RootNodeOperation.UPDATE -> withMpsProject("Updating MPS root node from JSON") { mpsProject ->
             val actualJson = readNodeJsonOrFile(json, dryRun)
