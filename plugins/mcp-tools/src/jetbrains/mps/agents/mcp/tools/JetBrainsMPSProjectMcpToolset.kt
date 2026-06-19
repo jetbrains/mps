@@ -8,6 +8,7 @@ import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import com.intellij.mcpserver.projectOrNull
 import com.intellij.openapi.project.ProjectManager
+import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.ide.project.ProjectHelper
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.DevKit
@@ -17,6 +18,7 @@ import jetbrains.mps.project.facets.JavaModuleFacet
 import jetbrains.mps.project.structure.modules.DevkitDescriptor
 import jetbrains.mps.project.structure.modules.GeneratorDescriptor
 import jetbrains.mps.project.structure.modules.LanguageDescriptor
+import jetbrains.mps.smodel.CopyUtil
 import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SModelInternal
@@ -634,6 +636,146 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
 
                 okJson(nodeInfoJsonObject(command), warnings = listOfNotNull(activateWarning, selectWarning))
             }
+        }
+    }
+
+    @McpTool
+    @McpDescription(
+        """
+        Lists the MPS Console's command history — the commands previously executed in the Console tool window's current tab — in execution order (oldest first). Each entry is a node-info envelope plus `index`, `kind` (`command`), `recallableCommandReference` (the node to print or recall), and a best-effort one-line `preview`. Feed `recallableCommandReference` to `mps_mcp_print_node` for the full JSON blueprint or notational (PLAIN TEXT / HTML) printout, or to `mps_mcp_recall_console_command` to copy it back into the input. Set `includeResponses=true` to also include the printed responses (`kind`:`response`) interleaved in order; pass `limit` to keep only the most recent N entries. Requires the MPS Console plugin. The returned references are only valid until the next console interaction (execute / clear / history navigation), so use them promptly. Returns the list inline, or a temp-file path when large.
+    """
+    )
+    suspend fun mps_mcp_get_console_history(
+        @McpDescription("Optional: also include the printed responses (output) interleaved with commands, as `kind`:`response` entries. Default: false (commands only).") includeResponses: Boolean = false,
+        @McpDescription("Optional: keep only the most recent N entries (after the response filter). Default: all.") limit: Int? = null
+    ): String {
+        return withMpsProject("Getting MPS console history") { mpsProject ->
+            executeShortReadOnEdt(mpsProject) {
+                val console = when (val r = resolveConsoleEditableTab(mpsProject.project)) {
+                    is ConsoleResolution.Ok -> r
+                    is ConsoleResolution.Err -> return@executeShortReadOnEdt r.errJson
+                }
+                val facade = PersistenceFacade.getInstance()
+                val filtered = consoleHistoryItems(console.consoleModel)
+                    .withIndex()
+                    .filter { (_, item) -> includeResponses || isConsoleCommandHolder(item) }
+                val selected = if (limit != null && limit >= 0) filtered.takeLast(limit) else filtered
+                val array = JsonArray()
+                for ((index, item) in selected) {
+                    val obj = nodeInfoJsonObject(item)
+                    obj.addProperty("index", index)
+                    if (isConsoleCommandHolder(item)) {
+                        obj.addProperty("kind", "command")
+                        recallableConsoleCommand(item)?.let { cmd ->
+                            obj.addProperty("recallableCommandReference", facade.asString(cmd.reference))
+                            consoleNodePreview(mpsProject.repository, cmd)?.let { obj.addProperty("preview", it) }
+                        }
+                    } else {
+                        obj.addProperty("kind", "response")
+                    }
+                    array.add(obj)
+                }
+                finalizeResult(array.toString())
+            }
+        }
+    }
+
+    @McpTool
+    @McpDescription(
+        """
+        Copies a command from the MPS Console history back into the Console input editor as the current (unexecuted) command — the agent's equivalent of recalling a previous command. `historyNodeReference` is an entry returned by `mps_mcp_get_console_history` (a `CommandHolder` in the console history). The command is deep-copied (the history entry is left unchanged) and inserted **without executing it** (the user runs it with Ctrl+Enter); its languages/imports are added and the Console is focused with the node selected. On `dryRun` it only validates that the reference resolves to a recallable history entry of the current console, without changing the input. Requires the MPS Console plugin. On success returns the new input command's node-info envelope.
+    """
+    )
+    suspend fun mps_mcp_recall_console_command(
+        @McpDescription("Reference of a console history entry to recall, as returned by `mps_mcp_get_console_history` (its node `reference`). Must be a `CommandHolder` in the current console's history.") historyNodeReference: String,
+        @McpDescription("Optional: if true, only validate that the reference resolves to a recallable history entry, without changing the console input. Default: false.") dryRun: Boolean = false
+    ): String {
+        return withMpsProject("Recalling MPS console command from history") { mpsProject ->
+            executeShortCommandOnEdt(mpsProject) {
+                val console = when (val r = resolveConsoleEditableTab(mpsProject.project)) {
+                    is ConsoleResolution.Ok -> r
+                    is ConsoleResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                }
+                val ref = resolveNodeReference(mpsProject.repository, historyNodeReference)
+                    ?: return@executeShortCommandOnEdt invalidReference("Invalid or unresolvable node reference: '$historyNodeReference'")
+                val entry = ref.resolve(mpsProject.repository)
+                    ?: return@executeShortCommandOnEdt errJson("History entry '$historyNodeReference' not found", McpErrorCode.NOT_FOUND)
+
+                // The console model is a temporary module (not a project module), so the cross-project
+                // editable guard does not apply here; confine the recall to the current console's own
+                // history instead. Both checks keep recall from touching arbitrary nodes.
+                if (entry.model?.reference != console.consoleModel.reference) {
+                    return@executeShortCommandOnEdt errJson(
+                        "Node '$historyNodeReference' is not part of the current MPS Console; pass a reference returned by mps_mcp_get_console_history.",
+                        McpErrorCode.INVALID_REQUEST
+                    )
+                }
+                if (!isConsoleHistoryEntry(entry)) {
+                    return@executeShortCommandOnEdt errJson(
+                        "Node '$historyNodeReference' is not a console history command entry (expected a CommandHolder in the console history).",
+                        McpErrorCode.INVALID_REQUEST
+                    )
+                }
+                val recallable = recallableConsoleCommand(entry)
+                    ?: return@executeShortCommandOnEdt errJson(
+                        "The history entry has no command to recall.",
+                        McpErrorCode.INVALID_REQUEST
+                    )
+
+                if (dryRun) {
+                    return@executeShortCommandOnEdt okJson(jsonObject {
+                        addProperty("dryRun", true)
+                        addProperty("message", "Dry run successful for console command recall")
+                    })
+                }
+
+                // No addressable "recall entry" API exists (previousCommand/nextCommand are relative
+                // cursor steppers that also rewrite history), so mirror their primitive: deep-copy the
+                // recallable command and set it as the current input via the same insertCommand path.
+                val copy = CopyUtil.copy(recallable)
+                try {
+                    console.tab.javaClass.getMethod("insertCommand", SNode::class.java)
+                        .invoke(console.tab, copy)
+                } catch (e: ReflectiveOperationException) {
+                    return@executeShortCommandOnEdt errJson(
+                        "Failed to recall the command into the MPS Console: ${e.message}",
+                        McpErrorCode.INTERNAL_ERROR
+                    )
+                }
+
+                // Best-effort: bring the Console forward and select the recalled node (mirrors the insert tool).
+                val activateWarning = warningMessageOrRethrow {
+                    console.tab.javaClass.getMethod("activate").invoke(console.tab)
+                }
+                val selectWarning = warningMessageOrRethrow {
+                    console.tab.javaClass.getMethod("selectNode", SNode::class.java)
+                        .invoke(console.tab, copy)
+                }
+
+                okJson(nodeInfoJsonObject(copy), warnings = listOfNotNull(activateWarning, selectWarning))
+            }
+        }
+    }
+
+    /**
+     * Best-effort one-line notational preview of a console command node (truncated to 200 chars), rendered
+     * via the same headless editor projection as `mps_mcp_print_node`'s PLAIN TEXT format. Returns null on
+     * any rendering failure — a preview is a convenience and must never fail the listing. Must run on the
+     * EDT under a read action.
+     */
+    private fun consoleNodePreview(repository: SRepository, node: SNode): String? {
+        return try {
+            val component = HeadlessEditorComponent(repository)
+            try {
+                component.editNode(node)
+                val text = component.rootCell.renderText().getText().replace(Regex("\\s+"), " ").trim()
+                if (text.isEmpty()) null else if (text.length > 200) text.take(200) + "…" else text
+            } finally {
+                component.dispose()
+            }
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            null
         }
     }
 

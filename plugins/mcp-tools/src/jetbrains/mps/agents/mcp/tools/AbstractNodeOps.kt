@@ -1192,6 +1192,32 @@ abstract class AbstractNodeOps : AbstractOps() {
             0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
             0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"
         )
+
+        // The console history: `ConsoleRoot.history` (a `History` node) whose `item` children are
+        // `HistoryItem`s in execution order — interleaved `CommandHolder`s (executed commands) and
+        // `Response`s (their output). A `ModifiedCommandHistoryItem` is a `CommandHolder` that also
+        // carries a `modifiedCommand` (an edited recall); its `getCommandToEdit()` returns that
+        // instead of `command`, which [recallableConsoleCommand] mirrors.
+        private val CONSOLE_HISTORY_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history"
+        )
+        private val CONSOLE_HISTORY_ITEM_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0xa835f28c1aa02beL, 0x63da33792b5df49aL, "item"
+        )
+        private val CONSOLE_COMMAND_HOLDER_CONCEPT: SConcept = MetaAdapterFactory.getConcept(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x4e27160acb4484bL, "jetbrains.mps.console.base.structure.CommandHolder"
+        )
+        private val CONSOLE_MODIFIED_HISTORY_ITEM_CONCEPT: SConcept = MetaAdapterFactory.getConcept(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x9992dadc6de20a7L, "jetbrains.mps.console.base.structure.ModifiedCommandHistoryItem"
+        )
+        private val CONSOLE_MODIFIED_COMMAND_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x9992dadc6de20a7L, 0x9992dadc6de20d6L, "modifiedCommand"
+        )
     }
 
     /** Resolved handle to the console's current editable tab and its backing temporary model. */
@@ -1256,15 +1282,49 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
     }
 
+    /** The console model's single `ConsoleRoot`, or null if the model has none. */
+    private fun consoleRoot(consoleModel: SModel): SNode? =
+        consoleModel.rootNodes.firstOrNull { it.concept.isSubConceptOf(CONSOLE_ROOT_CONCEPT) }
+
     /**
      * The command node currently shown in the MPS Console input editor — `ConsoleRoot.commandHolder.command`
      * — or null when the input is empty. Must be called under a read action on [consoleModel]'s repository.
      */
     protected fun currentConsoleCommand(consoleModel: SModel): SNode? {
-        val consoleRoot = consoleModel.rootNodes.firstOrNull { it.concept.isSubConceptOf(CONSOLE_ROOT_CONCEPT) }
-            ?: return null
-        val commandHolder = consoleRoot.getChildren(CONSOLE_COMMAND_HOLDER_LINK).firstOrNull()
+        val commandHolder = consoleRoot(consoleModel)?.getChildren(CONSOLE_COMMAND_HOLDER_LINK)?.firstOrNull()
             ?: return null
         return commandHolder.getChildren(CONSOLE_COMMAND_LINK).firstOrNull()
+    }
+
+    /**
+     * The console history entries — `ConsoleRoot.history.item` — in execution order (oldest first).
+     * Includes both `CommandHolder`s (executed commands) and `Response`s (their output); callers
+     * filter by [isConsoleCommandHolder]. Empty when there is no console root or no history.
+     * Must be called under a read action on [consoleModel]'s repository.
+     */
+    protected fun consoleHistoryItems(consoleModel: SModel): List<SNode> {
+        val history = consoleRoot(consoleModel)?.getChildren(CONSOLE_HISTORY_LINK)?.firstOrNull()
+            ?: return emptyList()
+        return history.getChildren(CONSOLE_HISTORY_ITEM_LINK).toList()
+    }
+
+    /** True when [node] is a console `CommandHolder` (an executed-command history entry, incl. `ModifiedCommandHistoryItem`). */
+    protected fun isConsoleCommandHolder(node: SNode): Boolean =
+        node.concept.isSubConceptOf(CONSOLE_COMMAND_HOLDER_CONCEPT)
+
+    /** True when [node] is a `CommandHolder` sitting in the console history (`History.item`), not the current input slot. */
+    protected fun isConsoleHistoryEntry(node: SNode): Boolean =
+        isConsoleCommandHolder(node) && node.containmentLink == CONSOLE_HISTORY_ITEM_LINK
+
+    /**
+     * The command an entry recalls into the input slot — mirrors `CommandHolder.getCommandToEdit()`:
+     * the `modifiedCommand` of a `ModifiedCommandHistoryItem`, otherwise the plain `command`. Null when
+     * the entry holds neither. Must be called under a read action on the entry's repository.
+     */
+    protected fun recallableConsoleCommand(historyEntry: SNode): SNode? {
+        if (historyEntry.concept.isSubConceptOf(CONSOLE_MODIFIED_HISTORY_ITEM_CONCEPT)) {
+            historyEntry.getChildren(CONSOLE_MODIFIED_COMMAND_LINK).firstOrNull()?.let { return it }
+        }
+        return historyEntry.getChildren(CONSOLE_COMMAND_LINK).firstOrNull()
     }
 }

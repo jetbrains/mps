@@ -11,12 +11,14 @@ The **MPS Console** runs DSL code against the live models of the open project: q
 
 The **smodel query language** (`jetbrains.mps.lang.smodel.query`) exposes the *same* queries (`#nodes`, `#instances`, `#usages`, …) for use in ordinary model code — intentions, behavior methods, actions, migration/refactoring scripts — wrapped in a `with (<scope>) { … }` statement. Reach for it whenever code needs to enumerate nodes/models/modules or find instances/usages across a scope.
 
-## Four ways this skill gets used
+## Ways this skill gets used
 
 1. **Type code in the Console tool window** (Tools ▸ Console, or the Console tool window). One command per input. See `references/console-languages.md`.
 2. **Write `smodel.query` queries inside model code** (an intention, behavior method, generator query, script). Import `jetbrains.mps.lang.smodel.query` and wrap queries in `with (<scope>) { … }`. See `references/smodel-query.md`.
 3. **Insert code into the Console from an agent** via `mps_mcp_insert_console_command_from_json` — builds a command from a JSON blueprint and drops it into the console input **without executing it** (the user reviews and runs it with Ctrl+Enter). See `references/mcp-insertion.md`.
 4. **Read the current Console command from an agent** via `mps_mcp_get_current_editor_root_node` with `source = "console"` — returns the node-info envelope of the command currently in the console input (one an agent inserted, or the user typed). Feed its `reference` to `mps_mcp_print_node` for the JSON blueprint (`format = "JSON"`) or the notational printout (`format = "PLAIN TEXT"` / `"HTML"`). The reference is only valid until the next console interaction (execute / clear / history navigation), so print it promptly and do not cache it.
+5. **Browse the Console history from an agent** via `mps_mcp_get_console_history` — lists previously executed commands in order, each with a one-line `preview` and a `recallableCommandReference`. Print any entry with `mps_mcp_print_node`, or pass `includeResponses = true` to also see the printed output. Same reference-validity caveat as #4.
+6. **Recall a history command into the input** via `mps_mcp_recall_console_command(historyNodeReference)` — deep-copies a history entry (from #5) back into the input slot **without executing it**. There is no MPS "recall" API to call directly; this mirrors what the Console's own up/down history navigation does (`copy` + insert).
 
 ## A command is one of three shapes
 
