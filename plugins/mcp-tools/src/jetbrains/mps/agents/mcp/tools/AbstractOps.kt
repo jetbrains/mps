@@ -341,6 +341,13 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
+    protected fun reflectionFailureDetail(e: ReflectiveOperationException): String {
+        val cause = if (e is java.lang.reflect.InvocationTargetException) e.cause ?: e else e
+        rethrowIfCancellation(cause)
+        val message = cause.message?.takeIf { it.isNotBlank() } ?: cause.javaClass.simpleName
+        return "$message (${cause.javaClass.simpleName})"
+    }
+
     /**
      * Deletes the given nodes, swallowing non-cancellation throwables. Intended for the rollback
      * arm of a save-failure branch: a delete that throws would propagate past

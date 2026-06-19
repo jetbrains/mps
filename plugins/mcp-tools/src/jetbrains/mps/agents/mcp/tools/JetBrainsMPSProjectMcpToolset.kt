@@ -619,7 +619,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
                         .invoke(console.tab, command)
                 } catch (e: ReflectiveOperationException) {
                     return@executeShortCommandOnEdt errJson(
-                        "Failed to insert the command into the MPS Console: ${e.message}",
+                        "Failed to insert the command into the MPS Console: ${reflectionFailureDetail(e)}",
                         McpErrorCode.INTERNAL_ERROR
                     )
                 }
@@ -647,7 +647,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
     @McpTool
     @McpDescription(
         """
-        Lists the MPS Console's command history — the commands previously executed in the Console tool window's current tab — in execution order (oldest first). Each entry is a node-info envelope plus `index`, `kind` (`command`), `recallableCommandReference` (the node to print or recall), and a best-effort one-line `preview`. Feed `recallableCommandReference` to `mps_mcp_print_node` for the full JSON blueprint or notational (PLAIN TEXT / HTML) printout, or to `mps_mcp_recall_console_command` to copy it back into the input. Set `includeResponses=true` to also include the printed responses (`kind`:`response`) interleaved in order; pass `limit` to keep only the most recent N entries. Requires the MPS Console plugin. The returned references are only valid until the next console interaction (execute / clear / history navigation), so use them promptly. Returns the list inline, or a temp-file path when large.
+        Lists the MPS Console's command history — the commands previously executed in the Console tool window's current tab — in execution order (oldest first). Each entry is a node-info envelope plus `index`, `kind` (`command`), `reference` (the history `CommandHolder` to recall), `effectiveCommandReference` (the command node that would be recalled, for printing/inspection), and a best-effort one-line `preview`. Feed `reference` to `mps_mcp_recall_console_command` to copy a command back into the input. Feed `effectiveCommandReference` to `mps_mcp_print_node` for the full JSON blueprint or notational (PLAIN TEXT / HTML) printout. Set `includeResponses=true` to also include the printed responses (`kind`:`response`) interleaved in order; pass `limit` to keep only the most recent N entries. Requires the MPS Console plugin. The returned references are only valid until the next console interaction (execute / clear / history navigation), so use them promptly. Returns the list inline, or a temp-file path when large.
     """
     )
     suspend fun mps_mcp_get_console_history(
@@ -671,8 +671,8 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
                     obj.addProperty("index", index)
                     if (isConsoleCommandHolder(item)) {
                         obj.addProperty("kind", "command")
-                        recallableConsoleCommand(item)?.let { cmd ->
-                            obj.addProperty("recallableCommandReference", facade.asString(cmd.reference))
+                        effectiveConsoleCommand(item)?.let { cmd ->
+                            obj.addProperty("effectiveCommandReference", facade.asString(cmd.reference))
                             consoleNodePreview(mpsProject.repository, cmd)?.let { obj.addProperty("preview", it) }
                         }
                     } else {
@@ -721,7 +721,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
                         McpErrorCode.INVALID_REQUEST
                     )
                 }
-                val recallable = recallableConsoleCommand(entry)
+                val effectiveCommand = effectiveConsoleCommand(entry)
                     ?: return@executeShortCommandOnEdt errJson(
                         "The history entry has no command to recall.",
                         McpErrorCode.INVALID_REQUEST
@@ -736,14 +736,14 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
 
                 // No addressable "recall entry" API exists (previousCommand/nextCommand are relative
                 // cursor steppers that also rewrite history), so mirror their primitive: deep-copy the
-                // recallable command and set it as the current input via the same insertCommand path.
-                val copy = CopyUtil.copy(recallable)
+                // effective command and set it as the current input via the same insertCommand path.
+                val copy = CopyUtil.copy(effectiveCommand)
                 try {
                     console.tab.javaClass.getMethod("insertCommand", SNode::class.java)
                         .invoke(console.tab, copy)
                 } catch (e: ReflectiveOperationException) {
                     return@executeShortCommandOnEdt errJson(
-                        "Failed to recall the command into the MPS Console: ${e.message}",
+                        "Failed to recall the command into the MPS Console: ${reflectionFailureDetail(e)}",
                         McpErrorCode.INTERNAL_ERROR
                     )
                 }
@@ -792,8 +792,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
                 }
                 // executeCurrentCommand silently no-ops on empty input, so check first to give the agent
                 // a clear error instead of a misleading success. The presence check takes a read action;
-                // the execution itself must NOT hold one — executeCurrentCommand opens its own command and
-                // its before-closure asserts no write lock is held — so it runs after the read action ends.
+                // execution below uses command access matching the Console action after this read ends.
                 val present = mpsProject.modelAccess.computeReadAction {
                     currentConsoleCommand(console.consoleModel) != null
                 }
@@ -811,13 +810,16 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
                     })
                     return@withContext
                 }
-                // Mirror ConsoleExecute_Action: invoke executeCurrentCommand on the EDT with no outer model
-                // lock; it manages its own command and (for long-running commands) runs asynchronously.
+                // Mirror ConsoleExecute_Action's UNDO_PROJECT access: executeCurrentCommand reads the
+                // current command while scheduling execution, and relies on its caller to provide
+                // model access for that outer read.
                 try {
-                    console.tab.javaClass.getMethod("executeCurrentCommand").invoke(console.tab)
+                    mpsProject.modelAccess.executeCommand {
+                        console.tab.javaClass.getMethod("executeCurrentCommand").invoke(console.tab)
+                    }
                 } catch (e: ReflectiveOperationException) {
                     reply = errJson(
-                        "Failed to run the command in the MPS Console: ${e.message}",
+                        "Failed to run the command in the MPS Console: ${reflectionFailureDetail(e)}",
                         McpErrorCode.INTERNAL_ERROR
                     )
                     return@withContext

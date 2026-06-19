@@ -1197,7 +1197,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         // `HistoryItem`s in execution order — interleaved `CommandHolder`s (executed commands) and
         // `Response`s (their output). A `ModifiedCommandHistoryItem` is a `CommandHolder` that also
         // carries a `modifiedCommand` (an edited recall); its `getCommandToEdit()` returns that
-        // instead of `command`, which [recallableConsoleCommand] mirrors.
+        // instead of `command`, which [effectiveConsoleCommand] mirrors.
         private val CONSOLE_HISTORY_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
             0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
             0x15fb34051f725a2cL, 0x15fb34051f725bafL, "history"
@@ -1321,7 +1321,7 @@ abstract class AbstractNodeOps : AbstractOps() {
      * the `modifiedCommand` of a `ModifiedCommandHistoryItem`, otherwise the plain `command`. Null when
      * the entry holds neither. Must be called under a read action on the entry's repository.
      */
-    protected fun recallableConsoleCommand(historyEntry: SNode): SNode? {
+    protected fun effectiveConsoleCommand(historyEntry: SNode): SNode? {
         if (historyEntry.concept.isSubConceptOf(CONSOLE_MODIFIED_HISTORY_ITEM_CONCEPT)) {
             historyEntry.getChildren(CONSOLE_MODIFIED_COMMAND_LINK).firstOrNull()?.let { return it }
         }
