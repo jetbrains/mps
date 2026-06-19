@@ -20,7 +20,7 @@ import kotlin.io.path.name
 // surface, and they are invoked via reflection by the MCP server framework, so static
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
-class JetBrainsMPSSkillsMcpToolset : AbstractOps() {
+class JetBrainsMPSInitMcpToolset : AbstractOps() {
 
     @McpTool
     @McpDescription("""

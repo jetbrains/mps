@@ -21,7 +21,7 @@ import java.util.jar.JarEntry
 import java.util.jar.JarOutputStream
 
 /**
- * Plain JUnit tests for [JetBrainsMPSSkillsMcpToolset]. The skill catalog is built from
+ * Plain JUnit tests for [JetBrainsMPSInitMcpToolset]. The skill catalog is built from
  * classpath resources and does not need an MPS project, so these tests skip the
  * heavyweight [McpIntegrationTestBase] setup.
  *
@@ -30,9 +30,9 @@ import java.util.jar.JarOutputStream
  * resolves to "no project" — exercised by [omitting targetDirectory outside an MCP call returns a
  * helpful error]. The pure VCS-root walk-up is covered directly via [deriveAgentConfigRootForTest].
  */
-class JetBrainsMPSSkillsMcpToolsetTest {
+class JetBrainsMPSInitMcpToolsetTest {
 
-    private val toolset = JetBrainsMPSSkillsMcpToolset()
+    private val toolset = JetBrainsMPSInitMcpToolset()
 
 
     // ---- mps_mcp_initialize_project_for_agents ----
@@ -396,14 +396,14 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         data.getAsJsonArray(name).map { it.asString }
 
     private fun deriveAgentConfigRootForTest(path: Path): Path {
-        val method = JetBrainsMPSSkillsMcpToolset::class.java.getDeclaredMethod("deriveAgentConfigRoot", Path::class.java)
+        val method = JetBrainsMPSInitMcpToolset::class.java.getDeclaredMethod("deriveAgentConfigRoot", Path::class.java)
         method.isAccessible = true
         return method.invoke(toolset, path) as Path
     }
 
     @Suppress("UNCHECKED_CAST")
     private fun <T> withSkillsResourceFsForTest(resourceUrl: URL, block: (Path) -> T): T {
-        val method = JetBrainsMPSSkillsMcpToolset::class.java.getDeclaredMethod(
+        val method = JetBrainsMPSInitMcpToolset::class.java.getDeclaredMethod(
             "withSkillsResourceFs",
             URL::class.java,
             Function1::class.java,
