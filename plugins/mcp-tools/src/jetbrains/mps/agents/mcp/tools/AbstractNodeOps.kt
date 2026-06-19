@@ -4,8 +4,11 @@ import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
 import com.google.gson.JsonSyntaxException
+import com.intellij.ide.plugins.PluginManagerCore
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.diagnostic.Logger
+import com.intellij.openapi.extensions.PluginId
+import com.intellij.openapi.project.Project
 import jetbrains.mps.findUsages.InstanceLookup
 import jetbrains.mps.findUsages.NodeUsageLookup
 import jetbrains.mps.project.AbstractModule
@@ -18,6 +21,7 @@ import jetbrains.mps.smodel.SModelInternal
 import jetbrains.mps.smodel.SReference as SRefImpl
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import kotlinx.coroutines.currentCoroutineContext
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SConcept
@@ -1157,4 +1161,110 @@ abstract class AbstractNodeOps : AbstractOps() {
 
     private fun propertyValueByName(node: SNode, propertyName: String): String? =
         node.concept.properties.find { it.name == propertyName }?.let { node.getProperty(it) }
+
+    // ── MPS Console access (shared by the console-insert and console-read tools) ──────────────────
+    //
+    // The console (jetbrains.mps.console) is an optional plugin, so these helpers reach it
+    // reflectively rather than via a compile-time dependency (mirrors the run-configuration
+    // toolset). The meta IDs come from the generated
+    // jetbrains.mps.console.tool.DialogConsoleTab.{LINKS,CONCEPTS}.
+
+    private companion object {
+        private const val CONSOLE_PLUGIN_ID = "jetbrains.mps.console"
+        private const val CONSOLE_TOOL_FQN = "jetbrains.mps.console.plugin.ConsoleTool_Tool"
+        private const val PROJECT_PLUGIN_MANAGER_FQN = "jetbrains.mps.plugins.projectplugins.ProjectPluginManager"
+
+        // jetbrains.mps.console.base.structure.CommandHolder.command — the single editable command
+        // the console input editor renders; its target concept is the console `Command` interface.
+        private val CONSOLE_COMMAND_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x4e27160acb4484bL, 0x4e27160acb44924L, "command"
+        )
+
+        // jetbrains.mps.console.base.structure.ConsoleRoot — the console model's single root, plus its
+        // `commandHolder` child link pointing at the current (editable) CommandHolder. History lives
+        // under a separate `history` link, so the current command is ConsoleRoot.commandHolder.command.
+        private val CONSOLE_ROOT_CONCEPT: SConcept = MetaAdapterFactory.getConcept(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x15fb34051f725a2cL, "jetbrains.mps.console.base.structure.ConsoleRoot"
+        )
+        private val CONSOLE_COMMAND_HOLDER_LINK: SContainmentLink = MetaAdapterFactory.getContainmentLink(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x15fb34051f725a2cL, 0x15fb34051f725bb1L, "commandHolder"
+        )
+    }
+
+    /** Resolved handle to the console's current editable tab and its backing temporary model. */
+    protected sealed class ConsoleResolution {
+        data class Ok(val tab: Any, val consoleModel: SModel) : ConsoleResolution()
+        data class Err(val errJson: String) : ConsoleResolution()
+    }
+
+    /**
+     * The console `Command` interface concept (the target of `CommandHolder.command`). The
+     * console-insert tool uses it to check that a blueprint resolves to an insertable command.
+     */
+    protected fun consoleCommandConcept(): SAbstractConcept = CONSOLE_COMMAND_LINK.targetConcept
+
+    /**
+     * Locates the MPS Console tool's current editable tab via reflection, so this plugin does not
+     * carry a compile-time dependency on the optional `jetbrains.mps.console` plugin (mirrors the
+     * reflective access in [JetBrainsMPSRunConfigurationMcpToolset]). The console classes are loaded
+     * through the console plugin's own classloader; that classloader also sees `ProjectPluginManager`
+     * (core MPS), so it is used for both lookups, keeping the `getTool(Class)` identity check valid.
+     *
+     * Returns a pre-formatted [ConsoleResolution.Err] envelope when the plugin is disabled, the tool
+     * is not registered, or no editable tab exists. Must run on the EDT (reads Swing tab state).
+     */
+    protected fun resolveConsoleEditableTab(ideaProject: Project): ConsoleResolution {
+        val consoleClassLoader = PluginManagerCore.getPlugin(PluginId.getId(CONSOLE_PLUGIN_ID))?.pluginClassLoader
+            ?: return ConsoleResolution.Err(
+                errJson(
+                    "The MPS Console plugin ($CONSOLE_PLUGIN_ID) is not available; cannot access the MPS Console.",
+                    McpErrorCode.NOT_FOUND
+                )
+            )
+        return try {
+            val consoleToolClass = Class.forName(CONSOLE_TOOL_FQN, true, consoleClassLoader)
+            val pluginManagerClass = Class.forName(PROJECT_PLUGIN_MANAGER_FQN, true, consoleClassLoader)
+            val pluginManager = pluginManagerClass.getMethod("getInstance", Project::class.java)
+                .invoke(null, ideaProject)
+                ?: return ConsoleResolution.Err(
+                    errJson("ProjectPluginManager is unavailable for this project.", McpErrorCode.INTERNAL_ERROR)
+                )
+            val tool = pluginManagerClass.getMethod("getTool", Class::class.java)
+                .invoke(pluginManager, consoleToolClass)
+                ?: return ConsoleResolution.Err(
+                    errJson(
+                        "The MPS Console tool is not registered for this project (the Console tool window may not be initialized yet).",
+                        McpErrorCode.NOT_FOUND
+                    )
+                )
+            val tab = consoleToolClass.getMethod("getCurrentEditableTab").invoke(tool)
+                ?: return ConsoleResolution.Err(
+                    errJson("No editable tab is available in the MPS Console tool window.", McpErrorCode.NOT_FOUND)
+                )
+            val consoleModel = tab.javaClass.getMethod("getConsoleModel").invoke(tab) as? SModel
+                ?: return ConsoleResolution.Err(
+                    errJson("The MPS Console tab has no backing model.", McpErrorCode.INTERNAL_ERROR)
+                )
+            ConsoleResolution.Ok(tab, consoleModel)
+        } catch (e: ReflectiveOperationException) {
+            ConsoleResolution.Err(
+                errJson("Failed to access the MPS Console tool: ${e.message}", McpErrorCode.INTERNAL_ERROR)
+            )
+        }
+    }
+
+    /**
+     * The command node currently shown in the MPS Console input editor — `ConsoleRoot.commandHolder.command`
+     * — or null when the input is empty. Must be called under a read action on [consoleModel]'s repository.
+     */
+    protected fun currentConsoleCommand(consoleModel: SModel): SNode? {
+        val consoleRoot = consoleModel.rootNodes.firstOrNull { it.concept.isSubConceptOf(CONSOLE_ROOT_CONCEPT) }
+            ?: return null
+        val commandHolder = consoleRoot.getChildren(CONSOLE_COMMAND_HOLDER_LINK).firstOrNull()
+            ?: return null
+        return commandHolder.getChildren(CONSOLE_COMMAND_LINK).firstOrNull()
+    }
 }

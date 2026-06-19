@@ -9,6 +9,8 @@ type: reference
 
 Use this skill when authoring code inside an MPS model where BaseLanguage is mixed with the `smodel`, `collections`, and `closures` extensions: behavior methods, checking/typesystem/dataflow rules, generator query functions, intentions, constraints, scope/canBe callbacks. The `mps_mcp_parse_java_and_insert` parser understands only plain Java, so most non-trivial code requires hand-built node blueprints — this skill is the catalog.
 
+To enumerate nodes/instances/usages across a **scope** (a whole project, module, model, or repository) rather than navigating from one root, add the `jetbrains.mps.lang.smodel.query` language — it supplies `#instances` / `#usages` / `#nodes` / `#references` / `#models` / `#modules` and a `with (<scope>) { … }` wrapper, the same queries the MPS Console runs. Its results compose with the `smodel`/`collections`/`closures` operations catalogued here. See the `mps-console` skill.
+
 ## Critical Directives
 
 - **Node equality uses `:eq:` and `:ne:`**, never `==` or `.equals()`. Use `NPEEqualsExpression` / `NPENotEqualsExpression`. See `references/node-equality.md`.
@@ -44,6 +46,7 @@ If MPS MCP tools are unavailable, do not hand-edit serialized `.mps` files unles
 - `mps-aspect-typesystem` — inference and checking rule bodies; uses the same idioms.
 - `mps-aspect-constraints` — `getScope`, `canBe*`, property validators; same idiom set.
 - `mps-node-editing` — programmatic node creation and editing from outside model code (the MCP-tool side rather than smodel-language side).
+- `mps-console` — the MPS Console and the `jetbrains.mps.lang.smodel.query` language (`with`-statement, `#instances`/`#usages`/`#nodes`/`#models`/`#modules`, scopes); use it to run or generate the smodel code in this skill across a project/repository scope, or to insert console commands via `mps_mcp_insert_console_command_from_json`.
 
 ## Reference Index
 

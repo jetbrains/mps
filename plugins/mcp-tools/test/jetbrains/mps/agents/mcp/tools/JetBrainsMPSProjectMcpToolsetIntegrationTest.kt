@@ -19,10 +19,14 @@ import java.io.File
  *  - `mps_mcp_list_open_projects` — discovering the open MPS project and the path agents should
  *    pass as the host `projectPath` selector in multi-project checkouts;
  *  - `mps_mcp_get_project_structure` — listing project modules (default), descending into a
- *    model when [startingPoint] is set, the mutually-exclusive flag enforcement, and the
+ *    model when `startingPoint` is set, the mutually-exclusive flag enforcement, and the
  *    NOT_FOUND envelope for an unknown starting point;
  *  - `mps_mcp_reload_all` — happy-path smoke test against the test project's
- *    `ClassLoaderManager`.
+ *    `ClassLoaderManager`;
+ *  - `mps_mcp_insert_console_command_from_json` — the pre-console input-validation guard
+ *    (malformed JSON is rejected before the Console tool window is touched). The happy paths
+ *    (inserting a Command, and wrapping one or more statements into a `{ … }` block command) need
+ *    a live Console tool window and are exercised manually.
  */
 class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
@@ -344,6 +348,45 @@ class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
                 resolvedModel
             )
         }
+    }
+
+    @Test
+    fun `insert-console-command rejects malformed JSON before touching the console`() {
+        // Malformed JSON is rejected in the pre-console parse guard, so this exercises the tool's
+        // input contract without needing a live Console tool window in the test fixture. (The
+        // happy paths — a single Command, or wrapping one/many statements into a block command —
+        // require the running console and are verified manually.)
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_insert_console_command_from_json(json = "{\"concept\":")
+        }
+
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_JSON", obj.get("code").asString)
+    }
+
+    @Test
+    fun `insert-console-command rejects an empty JSON array before touching the console`() {
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_insert_console_command_from_json(json = "[]")
+        }
+
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_JSON", obj.get("code").asString)
+        assertTrue("error should explain the empty array: $response", obj.get("error").asString.contains("empty"))
+    }
+
+    @Test
+    fun `insert-console-command rejects non-object array elements before touching the console`() {
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_insert_console_command_from_json(json = "[1]")
+        }
+
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_JSON", obj.get("code").asString)
+        assertTrue("error should point at the invalid element: $response", obj.get("error").asString.contains("[0]"))
     }
 
     /**

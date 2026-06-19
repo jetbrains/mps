@@ -9,6 +9,7 @@ import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.fileEditor.FileEditorManager
+import com.intellij.openapi.project.Project
 import jetbrains.mps.ide.editor.MPSEditorUtil
 import jetbrains.mps.ide.editor.MPSFileNodeEditor
 import jetbrains.mps.ide.project.ProjectHelper
@@ -50,72 +51,124 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Returns the root node currently open in the MPS editor as a node info envelope (see `mps-mcp-workflow/references/reference-formats.md`); when an editor selection is active, the envelope also carries `selectedNodeReference`. Use this to anchor on the user's focus before editing.
+        Returns a node currently focused in the MPS UI as a node info envelope (see `mps-mcp-workflow/references/reference-formats.md`). `source` selects the editor: `editor` (default) returns the root node open in the active MPS file editor and, when an editor selection is active, adds `selectedNodeReference`; `console` returns the current (unexecuted) command node in the MPS Console input editor (requires the Console plugin; errors if the input is empty). Use this to anchor on the user's focus before editing. The returned `reference` can be passed to `mps_mcp_print_node` to obtain the node's JSON blueprint or its notational (PLAIN TEXT / HTML) printout — but a console command's reference is only valid until the next console interaction (execute / clear / history navigation), so print it promptly and do not cache it.
     """)
-    suspend fun mps_mcp_get_current_editor_root_node(): String {
-        currentCoroutineContext().reportToolActivity("Getting current editor root node")
+    suspend fun mps_mcp_get_current_editor_root_node(
+        @McpDescription("Which editor to read: 'editor' (default) for the active MPS file editor's root node, or 'console' for the current command in the MPS Console input editor.") source: String = "editor"
+    ): String {
+        val normalizedSource = source.trim().lowercase()
+        val activity = if (normalizedSource == "console") "Getting current MPS console command" else "Getting current editor root node"
+        currentCoroutineContext().reportToolActivity(activity)
         val project = currentCoroutineContext().project
 
         return try {
-            // Default sentinel: if the EDT block exits abnormally without assigning `reply`,
-            // the caller still gets a structured error instead of a NullPointerException.
-            var reply: String = errJson(
-                "Getting current editor root node did not complete",
-                McpErrorCode.INTERNAL_ERROR
-            )
-            withContext(Dispatchers.EDT) {
-                val editorManager = FileEditorManager.getInstance(project)
-                val selectedEditors = editorManager.selectedEditors
-                val mpsEditor = selectedEditors.filterIsInstance<MPSFileNodeEditor>().firstOrNull()
-                if (mpsEditor == null) {
-                    reply = errJson("No MPS editor is currently open")
-                    return@withContext
+            when (normalizedSource) {
+                "editor" -> currentFileEditorRootNode(project)
+                "console" -> currentConsoleCommandNode(project)
+                else -> errJson(
+                    "Invalid source '$source'. Allowed values: 'editor' (default), 'console'.",
+                    McpErrorCode.INVALID_REQUEST
+                )
+            }
+        } catch (e: Exception) {
+            toolFailure(activity, e)
+        }
+    }
+
+    /** The root node open in the active MPS file editor; carries `selectedNodeReference` when an editor selection is active. */
+    private suspend fun currentFileEditorRootNode(project: Project): String {
+        // Default sentinel: if the EDT block exits abnormally without assigning `reply`,
+        // the caller still gets a structured error instead of a NullPointerException.
+        var reply: String = errJson(
+            "Getting current editor root node did not complete",
+            McpErrorCode.INTERNAL_ERROR
+        )
+        withContext(Dispatchers.EDT) {
+            val editorManager = FileEditorManager.getInstance(project)
+            val selectedEditors = editorManager.selectedEditors
+            val mpsEditor = selectedEditors.filterIsInstance<MPSFileNodeEditor>().firstOrNull()
+            if (mpsEditor == null) {
+                reply = errJson("No MPS editor is currently open")
+                return@withContext
+            }
+
+            val nvf = mpsEditor.file as? MPSNodeVirtualFile
+            if (nvf == null) {
+                reply = errJson("Could not detect the current root node")
+                return@withContext
+            }
+
+            val mpsProject = ProjectHelper.fromIdeaProject(project) ?: run {
+                reply = errJson("No MPS project available")
+                return@withContext
+            }
+
+            mpsProject.repository.modelAccess.runReadAction {
+                var node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nvf)
+                if (node == null) {
+                    node = nvf.node
                 }
 
-                val nvf = mpsEditor.file as? MPSNodeVirtualFile
-                if (nvf == null) {
+                if (node == null) {
                     reply = errJson("Could not detect the current root node")
-                    return@withContext
-                }
-
-                val mpsProject = ProjectHelper.fromIdeaProject(project) ?: run {
-                    reply = errJson("No MPS project available")
-                    return@withContext
-                }
-
-                mpsProject.repository.modelAccess.runReadAction {
-                    var node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nvf)
-                    if (node == null) {
-                        node = nvf.node
-                    }
-
-                    if (node == null) {
-                        reply = errJson("Could not detect the current root node")
-                    } else {
-                        var selectedNodeReference: String? = null
-                        val nodeEditor = mpsEditor.nodeEditor
-                        if (nodeEditor != null) {
-                            val editorComponent = nodeEditor.currentEditorComponent
-                            if (editorComponent != null) {
-                                val selectedNode = editorComponent.selectedNode
-                                if (selectedNode != null) {
-                                    selectedNodeReference = PersistenceFacade.getInstance().asString(selectedNode.reference)
-                                }
+                } else {
+                    var selectedNodeReference: String? = null
+                    val nodeEditor = mpsEditor.nodeEditor
+                    if (nodeEditor != null) {
+                        val editorComponent = nodeEditor.currentEditorComponent
+                        if (editorComponent != null) {
+                            val selectedNode = editorComponent.selectedNode
+                            if (selectedNode != null) {
+                                selectedNodeReference = PersistenceFacade.getInstance().asString(selectedNode.reference)
                             }
                         }
-
-                        val info = nodeInfoJsonObject(node)
-                        if (selectedNodeReference != null) {
-                            info.addProperty("selectedNodeReference", selectedNodeReference)
-                        }
-                        reply = okJson(info.toString())
                     }
+
+                    val info = nodeInfoJsonObject(node)
+                    if (selectedNodeReference != null) {
+                        info.addProperty("selectedNodeReference", selectedNodeReference)
+                    }
+                    reply = okJson(info.toString())
                 }
             }
-            reply
-        } catch (e: Exception) {
-            toolFailure("Getting current editor root node", e)
         }
+        return reply
+    }
+
+    /**
+     * The current (unexecuted) command node in the MPS Console input editor — `ConsoleRoot.commandHolder.command`
+     * — as a node info envelope. Its `reference` resolves through the project repository (the console's temporary
+     * model is registered there), so callers can feed it to `mps_mcp_print_node`; the reference is only valid until
+     * the next console interaction, though. Errors when the Console plugin is unavailable, no editable tab exists,
+     * or the input is empty. Reads Swing tab state, so it runs on the EDT under a model read action.
+     */
+    private suspend fun currentConsoleCommandNode(project: Project): String {
+        var reply: String = errJson(
+            "Getting current MPS console command did not complete",
+            McpErrorCode.INTERNAL_ERROR
+        )
+        withContext(Dispatchers.EDT) {
+            val consoleModel = when (val r = resolveConsoleEditableTab(project)) {
+                is ConsoleResolution.Ok -> r.consoleModel
+                is ConsoleResolution.Err -> {
+                    reply = r.errJson
+                    return@withContext
+                }
+            }
+            val mpsProject = ProjectHelper.fromIdeaProject(project) ?: run {
+                reply = errJson("No MPS project available", McpErrorCode.NOT_FOUND)
+                return@withContext
+            }
+            mpsProject.repository.modelAccess.runReadAction {
+                val command = currentConsoleCommand(consoleModel)
+                reply = if (command == null) {
+                    errJson("The MPS Console input editor is empty (no current command).", McpErrorCode.NOT_FOUND)
+                } else {
+                    okJson(nodeInfoJsonObject(command))
+                }
+            }
+        }
+        return reply
     }
 
     @McpTool

@@ -142,7 +142,7 @@ If they should be MPS collection or smodel types, replace them using `mps_mcp_up
 
 Node blueprints for common MPS types (use in `mps_mcp_update_node`):
 
-```json
+```text
 // sequence<node<Type>>
 {
   "concept": "jetbrains.mps.baseLanguage.collections.structure.SequenceType",

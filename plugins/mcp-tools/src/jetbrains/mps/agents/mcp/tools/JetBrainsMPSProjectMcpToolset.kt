@@ -2,6 +2,7 @@ package jetbrains.mps.agents.mcp.tools
 
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
@@ -20,8 +21,11 @@ import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SModelInternal
 import kotlinx.coroutines.currentCoroutineContext
+import org.jetbrains.mps.openapi.language.SConcept
 import org.jetbrains.mps.openapi.model.SModel
+import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.module.SModule
+import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.nio.file.Path
 import java.nio.file.Paths
@@ -30,7 +34,16 @@ import java.nio.file.Paths
 // surface, and they are invoked via reflection by the MCP server framework, so static
 // analysis flags them as "never used".
 @Suppress("FunctionName", "unused")
-class JetBrainsMPSProjectMcpToolset : AbstractOps() {
+class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
+
+    private companion object {
+        // The console command that renders as a `{ ... }` block (alias "{", shortDesc
+        // "baseLanguage statements"): its `body` is a baseLanguage StatementList. Wrapping one or
+        // more statements in a BLCommand is how multiple statements become a single console command.
+        // BLCommand extends GeneratedCommand which implements the console `Command` interface.
+        private const val BL_COMMAND_CONCEPT = "jetbrains.mps.console.base.structure.BLCommand"
+        private const val STATEMENT_LIST_CONCEPT = "jetbrains.mps.baseLanguage.structure.StatementList"
+    }
 
     @McpTool
     @McpDescription(
@@ -487,6 +500,188 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
             val root = generateSequence(e as Throwable) { it.cause?.takeIf { c -> c !== it } }.last()
             val detail = root.message?.takeIf { it.isNotBlank() } ?: root.javaClass.simpleName
             errJson("Failed to reload modules: $detail (${root.javaClass.simpleName})", McpErrorCode.INTERNAL_ERROR)
+        }
+    }
+
+    @McpTool
+    @McpDescription(
+        """
+        Inserts code built from a JSON blueprint into the MPS Console tool window's current input editor as an editable command. This puts the code into the console **without executing it** — the user can review, edit, and run it manually (Ctrl+Enter). The blueprint uses the same node format as `mps_mcp_insert_root_node_from_json` (see the `mps-node-editing` skill). The console input holds exactly one command, and the tool accepts two shapes: (1) a single console `Command` node (e.g. a `BLExpression` wrapping a baseLanguage expression, or a query / `ideCommands` command) is inserted as-is; (2) one or more baseLanguage `Statement` nodes — a single statement object, or a JSON array of statements — are wrapped into a single `BLCommand` (a `{ … }` block whose body is a baseLanguage `StatementList`) so that multiple statements run together as one command. The command's languages and model imports are added to the console model automatically. After a successful insert the Console tool window is focused and the inserted node selected. Requires the MPS Console plugin to be enabled. On success returns the inserted command's node-info envelope; on `dryRun` returns a validation-only envelope (no insertion). The `json` argument follows the same large-input rule: inline JSON up to 4 KB, or an absolute path to a TEMPORARY file (inside the system temp directory) containing it.
+    """
+    )
+    suspend fun mps_mcp_insert_console_command_from_json(
+        @McpDescription("JSON blueprint (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) containing it. Either a single object — a console `Command`, or a baseLanguage `Statement` to wrap — or a JSON array of baseLanguage `Statement`s to wrap together in a `{ … }` block command. See `mps-node-editing` for the format and file-input semantics.") json: String,
+        @McpDescription("Optional: if true, only validate the JSON, the console availability, and the command-concept assignability without inserting anything into the console. Default: false.") dryRun: Boolean = false
+    ): String {
+        return withMpsProject("Inserting MPS console command from JSON") { mpsProject ->
+            val actualJson = readNodeJsonOrFile(json, dryRun)
+                ?: return@withMpsProject invalidJson("JSON input is null or empty")
+
+            val jsonElement = try {
+                JsonParser.parseString(actualJson)
+            } catch (e: Exception) {
+                rethrowIfCancellation(e)
+                return@withMpsProject invalidJson("Failed to parse JSON: ${e.message}")
+            }
+            val blueprints: List<JsonObject> = when {
+                jsonElement.isJsonObject -> listOf(jsonElement.asJsonObject)
+                jsonElement.isJsonArray -> {
+                    val arr = jsonElement.asJsonArray
+                    if (arr.size() == 0) {
+                        return@withMpsProject errJson("JSON array is empty; provide at least one node.", McpErrorCode.INVALID_JSON)
+                    }
+                    arr.mapIndexed { i, elem ->
+                        if (!elem.isJsonObject) return@withMpsProject errJson("Array element [$i] is not a JSON object", McpErrorCode.INVALID_JSON)
+                        elem.asJsonObject
+                    }
+                }
+                else -> return@withMpsProject errJson(
+                    "Expected a JSON object or array, got ${jsonElement.javaClass.simpleName}",
+                    McpErrorCode.INVALID_JSON
+                )
+            }
+
+            val ideaProject = mpsProject.project
+            executeShortCommandOnEdt(mpsProject) {
+                val console = when (val r = resolveConsoleEditableTab(ideaProject)) {
+                    is ConsoleResolution.Ok -> r
+                    is ConsoleResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                }
+
+                // The command holder accepts one Command. A single blueprint that already is a
+                // Command (e.g. BLExpression) is inserted as-is; anything else — a single non-Command
+                // node or several nodes — is treated as baseLanguage statement(s) and wrapped in a
+                // BLCommand ({ … } block), which is how multiple statements form one console command.
+                val commandConcept = consoleCommandConcept()
+                val blueprint: JsonObject = if (blueprints.size == 1) {
+                    val only = blueprints[0]
+                    val onlyConcept = resolveBlueprintConcept(console.consoleModel.repository, only)
+                    when {
+                        // Unresolved concept: instantiate the user blueprint directly so the error
+                        // names their concept, not the synthesized wrapper.
+                        onlyConcept == null -> only
+                        onlyConcept.isSubConceptOf(commandConcept) -> only
+                        else -> wrapStatementsInBlockCommand(blueprints)
+                    }
+                } else {
+                    wrapStatementsInBlockCommand(blueprints)
+                }
+
+                // Mirror mps_mcp_insert_root_node_from_json: catch every instantiation failure here
+                // (including McpUserException) so nothing escapes the command and trips
+                // ActionDispatcher's "Action dispatch failed" log; the message still carries the
+                // specific cause. Cancellation is rethrown so coroutine cancellation is honoured.
+                val warnings = if (dryRun) mutableListOf<String>() else null
+                val command = try {
+                    instantiateNode(blueprint, console.consoleModel, dryRun, warnings = warnings)
+                } catch (e: Exception) {
+                    rethrowIfCancellation(e)
+                    return@executeShortCommandOnEdt errJson(
+                        "Failed to instantiate console command from JSON: ${e.message}",
+                        McpErrorCode.INVALID_REQUEST
+                    )
+                } ?: return@executeShortCommandOnEdt errJson(
+                    "Failed to instantiate console command from JSON",
+                    McpErrorCode.INVALID_REQUEST
+                )
+
+                // Defensive: the wrap path always yields a Command (BLCommand), and the direct path
+                // only runs when the concept is already a Command — but guard the insert anyway so a
+                // surprising concept produces a clear message instead of an opaque insertCommand failure.
+                if (!command.concept.isSubConceptOf(commandConcept)) {
+                    return@executeShortCommandOnEdt errJson(
+                        "Concept '${command.concept.name}' cannot be used as a console command; provide a " +
+                                "console Command (subconcept of '${commandConcept.name}') or one or more " +
+                                "baseLanguage statements to wrap in a block.",
+                        McpErrorCode.INVALID_REQUEST
+                    )
+                }
+
+                if (dryRun) {
+                    return@executeShortCommandOnEdt okJson(jsonObject {
+                        addProperty("dryRun", true)
+                        addProperty("message", "Dry run successful for console command insertion")
+                    }, warnings = warnings ?: emptyList())
+                }
+
+                // DialogConsoleTab.insertCommand adds the command's imports to the console model
+                // and attaches it to the command holder. Reflective call: a failure here is a real
+                // problem, so surface it (don't let the InvocationTargetException escape the command).
+                try {
+                    console.tab.javaClass.getMethod("insertCommand", SNode::class.java)
+                        .invoke(console.tab, command)
+                } catch (e: ReflectiveOperationException) {
+                    return@executeShortCommandOnEdt errJson(
+                        "Failed to insert the command into the MPS Console: ${e.message}",
+                        McpErrorCode.INTERNAL_ERROR
+                    )
+                }
+
+                // Open and focus the Console tool window so the inserted command is immediately
+                // visible. This is a deliberate, synchronous-on-EDT step (BaseConsoleTab.activate ->
+                // ToolWindow.activate + selectTab) so the window reliably opens even if the node
+                // selection below fails: selectNode does its own activation inside a deferred
+                // invokeLater whose failures are otherwise invisible. Both are best-effort — a UI
+                // failure must not fail an already-successful insert, so each surfaces as a warning.
+                val activateWarning = warningMessageOrRethrow {
+                    console.tab.javaClass.getMethod("activate").invoke(console.tab)
+                }
+                // Select the inserted node within the (now open) console editor.
+                val selectWarning = warningMessageOrRethrow {
+                    console.tab.javaClass.getMethod("selectNode", SNode::class.java)
+                        .invoke(console.tab, command)
+                }
+
+                okJson(nodeInfoJsonObject(command), warnings = listOfNotNull(activateWarning, selectWarning))
+            }
+        }
+    }
+
+    /**
+     * Resolves the concept named by a blueprint's `conceptReference` (preferred) / `concept` field,
+     * without instantiating it — used only to decide whether a single blueprint is already a console
+     * Command (insert as-is) or a statement to wrap. Mirrors [instantiateNode]'s resolution order, so
+     * the classification matches what instantiation would produce. Returns null if neither resolves.
+     */
+    private fun resolveBlueprintConcept(repository: SRepository, blueprint: JsonObject): SConcept? {
+        val conceptRef = blueprintStringField(blueprint, "conceptReference")
+        val conceptName = blueprintStringField(blueprint, "concept")
+        val byRef = if (!conceptRef.isNullOrEmpty()) resolveConcept(repository, conceptRef) as? SConcept else null
+        val byName = if (!conceptName.isNullOrEmpty()) resolveConcept(repository, conceptName) as? SConcept else null
+        return byRef ?: byName
+    }
+
+    private fun blueprintStringField(blueprint: JsonObject, field: String): String? {
+        val element = blueprint.get(field) ?: return null
+        return if (element.isJsonPrimitive) element.asString else null
+    }
+
+    /**
+     * Builds a `BLCommand` blueprint (`{ … }` block) whose baseLanguage `StatementList` body holds the
+     * given statement blueprints, so several statements become one console command. The wrapper is
+     * itself a node blueprint, so [instantiateNode] handles language imports and the per-statement
+     * assignability check (each must be a baseLanguage `Statement`) — link roles resolve by name, so
+     * no console/baseLanguage meta-ids are hard-coded here.
+     */
+    private fun wrapStatementsInBlockCommand(statements: List<JsonObject>): JsonObject {
+        val statementNodes = JsonArray().apply { statements.forEach { add(it) } }
+        val statementList = jsonObject {
+            addProperty("concept", STATEMENT_LIST_CONCEPT)
+            add("children", JsonArray().apply {
+                add(jsonObject {
+                    addProperty("role", "statement")
+                    add("nodes", statementNodes)
+                })
+            })
+        }
+        return jsonObject {
+            addProperty("concept", BL_COMMAND_CONCEPT)
+            add("children", JsonArray().apply {
+                add(jsonObject {
+                    addProperty("role", "body")
+                    add("nodes", JsonArray().apply { add(statementList) })
+                })
+            })
         }
     }
 }

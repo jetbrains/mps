@@ -150,12 +150,35 @@ Goes in `operation` of a `DotExpression` whose operand is the node to be replace
 
 ### `.copy` and `.detach` — leaf operations
 
+`node.copy`:
+
 ```json
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_CopyOperation" }
+```
+
+`node.detach`:
+
+```json
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_DetachOperation" }
 ```
 
-`copy` yields a new detached subtree (same model); `detach` removes the node from its parent in place.
+Both are bare `operation` children of a `DotExpression` on the target node — no references, no arguments.
+
+- `node.copy` returns a **new, detached** deep copy of the subtree rooted at `node`; the original stays exactly where it is. References pointing *inside* the copied subtree are remapped to the copy; references to nodes *outside* it still point at the original targets.
+- `node.detach` unlinks `node` from its current parent **in place** (a destructive move-out, the first half of a relocation).
+
+**Why `.copy` exists — one node, one parent.** An `SNode` occupies exactly one containment slot: it has *at most one parent*. So you cannot take a node that already lives somewhere and `add` / `set` / `insert … sibling` / `replace with(...)` it elsewhere and expect it to appear in *both* places — the containment APIs assume the supplied node is parent-less, so attaching an already-attached node either fails or silently moves it (detaching it from its old home). Whenever you need a *second, independent* instance with the same shape — duplicating a child, reusing an existing subtree as a template, seeding a new tree from an old one — copy first and insert the copy:
+
+```
+// WRONG: src already has a parent → it cannot live under two parents.
+//        This moves src out of its old slot, or errors.
+target.children.add(src);
+
+// RIGHT: insert an independent duplicate; src stays put.
+target.children.add(src.copy);
+```
+
+Use `.detach` (or hand the live node straight to `replace with(...)` / `insert … sibling(...)`, which relocate it) only when you genuinely want to **move** the node — i.e. it should leave its old location.
 
 ### Sibling inserts
 
