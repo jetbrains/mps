@@ -550,7 +550,7 @@ abstract class AbstractOps : McpToolset {
      * project's model can resolve there; the message steers the caller to the persistent reference,
      * which carries the module id and is unambiguous.
      */
-    private fun crossProjectErr(what: String): String =
+    protected fun crossProjectErr(what: String): String =
         errJson(
             "$what resolves to a module that is not part of the project selected by projectPath. " +
                 "The MCP write tools refuse to modify a different open project. If the target really is " +

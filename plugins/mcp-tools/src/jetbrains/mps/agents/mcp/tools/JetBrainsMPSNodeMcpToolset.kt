@@ -464,22 +464,22 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     private suspend fun opFixReferences(mpsProject: MPSProject, params: JsonObject): String {
         val nodeReference = params.get("nodeReference")?.asString ?: return errJson("Parameter 'nodeReference' is missing")
         return executeShortCommandOnEdt(mpsProject) {
-            val (node, model) = when (
-                val r = resolveEditableNodeAndModel(mpsProject.repository, nodeReference)
+            val (node, model, console) = when (
+                val r = resolveEditableNodeAllowingConsole(mpsProject, nodeReference)
             ) {
-                is EditableNodeResolution.Ok -> r.node to r.model
-                is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+                is ConsoleAwareResolution.Err -> return@executeShortCommandOnEdt r.errJson
             }
             val result = performFixReferences(mpsProject, node)
-            if (result.fixed > 0 || result.repointed > 0) {
-                saveModelAndModule(model)
-            }
+            val warn = if (result.fixed > 0 || result.repointed > 0) {
+                persistOrRefreshConsole(model, console)
+            } else null
             okJson(jsonObject {
                 addProperty("fixed", result.fixed)
                 addProperty("repointed", result.repointed)
                 addProperty("stillBroken", result.stillBroken)
                 addProperty("message", result.message)
-            })
+            }, warnings = listOfNotNull(warn))
         }
     }
 
@@ -758,17 +758,17 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     private suspend fun update_node_property(nodeReference: String, propertyName: String, propertyValue: String?): String {
         return withMpsProject("Updating MPS node property '$propertyName'") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {
-                val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject.repository, nodeReference)) {
-                    is EditableNodeResolution.Ok -> r.node to r.model
-                    is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                val (node, model, console) = when (val r = resolveEditableNodeAllowingConsole(mpsProject, nodeReference)) {
+                    is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+                    is ConsoleAwareResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
 
                 val sProperty = node.concept.properties.find { it.name == propertyName }
                     ?: return@executeShortCommandOnEdt errJson("Property '$propertyName' not found in concept '${node.concept.name}'", McpErrorCode.NOT_FOUND)
 
                 setProperty(node, sProperty, propertyValue)
-                saveModelAndModule(model)
-                okJson(nodeInfoJson(node))
+                val warn = persistOrRefreshConsole(model, console)
+                okJson(nodeInfoJsonObject(node), warnings = listOfNotNull(warn))
             }
         }
     }
@@ -782,17 +782,16 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         return withMpsProject("Moving MPS node child") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {
                 val repo = mpsProject.repository
-                val (parent, model) = when (
-                    val r = resolveEditableNodeAndModel(repo, nodeReference, { "Parent node '$it' not found" })
+                val (parent, model, console) = when (
+                    val r = resolveEditableNodeAllowingConsole(mpsProject, nodeReference, { "Parent node '$it' not found" })
                 ) {
-                    is EditableNodeResolution.Ok -> r.node to r.model
-                    is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                    is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+                    is ConsoleAwareResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
-                val childNode = when (
-                    val r = resolveEditableNodeAndModel(repo, childNodeRef, { "Child node '$it' not found" })
-                ) {
-                    is EditableNodeResolution.Ok -> r.node
-                    is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                val childNode = resolveNodeReference(repo, childNodeRef)?.resolve(repo)
+                    ?: return@executeShortCommandOnEdt errJson("Child node '$childNodeRef' not found", McpErrorCode.NOT_FOUND)
+                if (childNode.model?.reference != parent.model?.reference) {
+                    return@executeShortCommandOnEdt errJson("Child node '$childNodeRef' is not in the same model as parent '$nodeReference'", McpErrorCode.INVALID_REQUEST)
                 }
 
                 if (childNode.parent != parent) {
@@ -848,10 +847,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     parent.insertChildBefore(role, childNode, anchor)
                 }
 
-                saveModelAndModule(model)
+                val warn = persistOrRefreshConsole(model, console)
                 // Return the moved node with its actual resulting index (consistent with
                 // MOVE_NODE_TO_PARENT), so a caller that overshot `position` sees where it landed.
-                okJson(nodeInfoJsonObjectWithIndex(childNode))
+                okJson(nodeInfoJsonObjectWithIndex(childNode), warnings = listOfNotNull(warn))
             }
         }
     }
@@ -883,13 +882,39 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     if (role == null) {
                         return@executeShortCommandOnEdt errJson("Parameter 'role' is missing for MOVE_NODE_TO_PARENT with newParentRef", McpErrorCode.INVALID_REQUEST)
                     }
-                    val (newParent, targetModel) = when (
-                        val r = resolveEditableNodeAndModel(repo, newParentRef,
+                    val (newParent, targetModel, targetConsole) = when (
+                        val r = resolveEditableNodeAllowingConsole(mpsProject, newParentRef,
                             { "New parent node '$it' not found" },
                             "Target model is not editable")
                     ) {
-                        is EditableNodeResolution.Ok -> r.node to r.model
-                        is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                        is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+                        is ConsoleAwareResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                    }
+
+                    // Console-boundary guard: a node may be relocated WITHIN the current console command,
+                    // or BETWEEN project models, but never across the console boundary. The console model
+                    // is a throwaway temp model, so moving project nodes into it (or console nodes out of
+                    // it) is meaningless and would try to persist the temp model.
+                    if (targetConsole != null) {
+                        // Target is inside the console command: require the source to be a node inside the
+                        // SAME console's current command (resolved the same way, so history / stale /
+                        // external refs are rejected).
+                        when (val sr = resolveEditableNodeAllowingConsole(mpsProject, nodeReference)) {
+                            is ConsoleAwareResolution.Ok ->
+                                if (sr.console?.consoleModel?.reference != targetConsole.consoleModel.reference) {
+                                    return@executeShortCommandOnEdt errJson(
+                                        "MOVE_NODE_TO_PARENT cannot move a node from outside the MPS Console into the " +
+                                            "console input. Build the console command with mps_mcp_parse_java_and_insert " +
+                                            "(insert.mode \"console\") or mps_mcp_insert_console_command_from_json.",
+                                        McpErrorCode.INVALID_REQUEST
+                                    )
+                                }
+                            is ConsoleAwareResolution.Err -> return@executeShortCommandOnEdt sr.errJson
+                        }
+                    } else if (sourceModel != null && !isModuleInProject(repo, sourceModel)) {
+                        // Target is a project model: refuse a console node, or a node from another open
+                        // project, as the source (consistent with the other write tools' project guard).
+                        return@executeShortCommandOnEdt crossProjectErr("Source node '$nodeReference'")
                     }
 
                     val containmentLink = newParent.concept.containmentLinks.find { it.name == role }
@@ -916,18 +941,28 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                         is InsertIndex.At -> newParent.insertChildBefore(containmentLink, node, childrenInRole[ix.index])
                         else -> newParent.addChild(containmentLink, node)
                     }
-                    saveModelAndModule(targetModel)
-                    if (sourceModel != null && sourceModel != targetModel) {
+                    // Persist the project target, or refresh imports for a console target (the console
+                    // temp model is never saved to disk). For a cross-model project move also persist the
+                    // source model; a within-console move keeps source and target in the same model.
+                    val warn = persistOrRefreshConsole(targetModel, targetConsole)
+                    if (targetConsole == null && sourceModel != null && sourceModel != targetModel) {
                         saveModelAndModule(sourceModel)
                     }
                     // Report the moved node's actual index so a caller that overshot `position`
                     // (now clamped to an append) can see where it landed.
-                    okJson(nodeInfoJsonObjectWithIndex(node))
+                    okJson(nodeInfoJsonObjectWithIndex(node), warnings = listOfNotNull(warn))
 
                 } else if (modelReference != null) {
                     val targetModel = when (val r = resolveEditableModel(repo, modelReference)) {
                         is EditableModelResolution.Ok -> r.model
                         is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
+                    }
+                    // Make-root is a project-model operation: resolveEditableModel already refuses a
+                    // non-project (incl. console) target model; also refuse a console node, or a node from
+                    // another open project, as the source — the console has a single ConsoleRoot and is
+                    // not a place to promote arbitrary roots.
+                    if (sourceModel != null && !isModuleInProject(repo, sourceModel)) {
+                        return@executeShortCommandOnEdt crossProjectErr("Source node '$nodeReference'")
                     }
 
                     detachNode(node, sourceModel)

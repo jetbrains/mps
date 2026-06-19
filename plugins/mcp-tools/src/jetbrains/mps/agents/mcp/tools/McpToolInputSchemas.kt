@@ -233,6 +233,13 @@ private fun validateInsertTarget(insertTarget: JavaInsertTarget) {
         throw ToolInputSchemaException("'targetRef' is required for replace mode")
       }
     }
+    "console" -> {
+      if (!insertTarget.modelRef.isNullOrEmpty() || !insertTarget.parentRef.isNullOrEmpty() ||
+          !insertTarget.targetRef.isNullOrEmpty() || !insertTarget.role.isNullOrEmpty() ||
+          insertTarget.position != null || !insertTarget.virtualPackage.isNullOrEmpty()) {
+        throw ToolInputSchemaException("insert.mode 'console' only accepts 'mode'; for nested console edits use 'child' or 'replace' with a parentRef/targetRef that resolves to a node inside the current console command")
+      }
+    }
     else -> throw ToolInputSchemaException("Unknown insert.mode '${insertTarget.mode}'")
   }
 }

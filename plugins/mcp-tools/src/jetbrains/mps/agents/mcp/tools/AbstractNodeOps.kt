@@ -529,26 +529,25 @@ abstract class AbstractNodeOps : AbstractOps() {
     protected suspend fun update_node_child(mpsProject: MPSProject, nodeReference: String?, childRole: String?, childJson: String?, childToReplaceOrDeleteRef: String?, position: Int? = null, dryRun: Boolean = false): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node child")
         return executeShortCommandOnEdt(mpsProject) {
-            val repo = mpsProject.repository
             when {
                 childToReplaceOrDeleteRef != null && childJson != null ->
-                    replaceNodeChild(mpsProject, repo, childToReplaceOrDeleteRef, childJson, dryRun)
+                    replaceNodeChild(mpsProject, childToReplaceOrDeleteRef, childJson, dryRun)
                 childToReplaceOrDeleteRef != null ->
-                    deleteNodeChild(repo, childToReplaceOrDeleteRef, dryRun)
+                    deleteNodeChild(mpsProject, childToReplaceOrDeleteRef, dryRun)
                 nodeReference != null && childRole != null && childJson != null ->
-                    addNodeChild(mpsProject, repo, nodeReference, childRole, childJson, position, dryRun)
+                    addNodeChild(mpsProject, nodeReference, childRole, childJson, position, dryRun)
                 else ->
                     errJson("Invalid parameters for child update", McpErrorCode.INVALID_REQUEST)
             }
         }
     }
 
-    private fun replaceNodeChild(mpsProject: MPSProject, repo: SRepository, childRef: String, childJson: String, dryRun: Boolean): String {
-        val sChildNodeRef = resolveNodeReference(repo, childRef)
-        val childNode = sChildNodeRef?.resolve(repo) ?: return errJson("Child node '$childRef' not found", McpErrorCode.NOT_FOUND)
+    private fun replaceNodeChild(mpsProject: MPSProject, childRef: String, childJson: String, dryRun: Boolean): String {
+        val (childNode, model, console) = when (val r = resolveEditableNodeAllowingConsole(mpsProject, childRef, { "Child node '$it' not found" })) {
+            is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+            is ConsoleAwareResolution.Err -> return r.errJson
+        }
         val parent = childNode.parent ?: return errJson("Node '$childRef' has no parent (it might be a root node)", McpErrorCode.INVALID_REQUEST)
-        val model = parent.model
-        if (model !is EditableSModel) return errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
         val role = childNode.containmentLink ?: return errJson("Node has no containment link", McpErrorCode.INVALID_REQUEST)
 
         val jsonObject = try {
@@ -584,18 +583,18 @@ abstract class AbstractNodeOps : AbstractOps() {
         parent.insertChildBefore(role, newChild, childNode)
         childNode.delete()
         val fixResult = performFixReferences(mpsProject, newChild)
-        saveModelAndModule(model)
-        return okJson(withFixReferencesInfo(nodeInfoJsonObject(parent), fixResult))
+        val warn = persistOrRefreshConsole(model, console)
+        return okJson(withFixReferencesInfo(nodeInfoJsonObject(parent), fixResult), warnings = listOfNotNull(warn))
     }
 
     // Deletion: no fix-references step — removing a child doesn't relocate
     // any references, so the response intentionally omits `data.fixReferences`.
-    private fun deleteNodeChild(repo: SRepository, childRef: String, dryRun: Boolean): String {
-        val sChildNodeRef = resolveNodeReference(repo, childRef)
-        val childNode = sChildNodeRef?.resolve(repo) ?: return errJson("Child node '$childRef' not found", McpErrorCode.NOT_FOUND)
+    private fun deleteNodeChild(mpsProject: MPSProject, childRef: String, dryRun: Boolean): String {
+        val (childNode, model, console) = when (val r = resolveEditableNodeAllowingConsole(mpsProject, childRef, { "Child node '$it' not found" })) {
+            is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+            is ConsoleAwareResolution.Err -> return r.errJson
+        }
         val parent = childNode.parent ?: return errJson("Node '$childRef' has no parent (it might be a root node)", McpErrorCode.INVALID_REQUEST)
-        val model = parent.model
-        if (model !is EditableSModel) return errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
         if (childNode.containmentLink == null) return errJson("Node has no containment link", McpErrorCode.INVALID_REQUEST)
 
         if (dryRun) {
@@ -606,8 +605,8 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
 
         childNode.delete()
-        saveModelAndModule(model)
-        return okJson(nodeInfoJson(parent))
+        val warn = persistOrRefreshConsole(model, console)
+        return okJson(nodeInfoJsonObject(parent), warnings = listOfNotNull(warn))
     }
 
     /** Result of [resolveInsertIndex]: where a new child should be placed in a containment role. */
@@ -641,11 +640,11 @@ abstract class AbstractNodeOps : AbstractOps() {
         else -> InsertIndex.At(requested)
     }
 
-    private fun addNodeChild(mpsProject: MPSProject, repo: SRepository, nodeReference: String, childRole: String, childJson: String, position: Int?, dryRun: Boolean): String {
-        val sNodeRef = resolveNodeReference(repo, nodeReference)
-        val parent = sNodeRef?.resolve(repo) ?: return errJson("Parent node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
-        val model = parent.model
-        if (model !is EditableSModel) return errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
+    private fun addNodeChild(mpsProject: MPSProject, nodeReference: String, childRole: String, childJson: String, position: Int?, dryRun: Boolean): String {
+        val (parent, model, console) = when (val r = resolveEditableNodeAllowingConsole(mpsProject, nodeReference, { "Parent node '$it' not found" })) {
+            is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+            is ConsoleAwareResolution.Err -> return r.errJson
+        }
         val role = parent.concept.containmentLinks.find { it.name == childRole } ?: return errJson("Child role '$childRole' not found in concept '${parent.concept.name}'", McpErrorCode.NOT_FOUND)
 
         // Snapshot existing children only for multi-cardinality roles; for 0..1 / 1 the
@@ -715,20 +714,19 @@ abstract class AbstractNodeOps : AbstractOps() {
             else -> parent.addChild(role, newChild)
         }
         val fixResult = performFixReferences(mpsProject, newChild)
-        saveModelAndModule(model)
+        val warn = persistOrRefreshConsole(model, console)
         // Report the new child's actual index so a caller that overshot `position` (now clamped
         // to an append) can see where it landed.
-        return okJson(withFixReferencesInfo(nodeInfoJsonObjectWithIndex(newChild), fixResult))
+        return okJson(withFixReferencesInfo(nodeInfoJsonObjectWithIndex(newChild), fixResult), warnings = listOfNotNull(warn))
     }
 
     protected suspend fun update_node_reference(mpsProject: MPSProject, nodeReference: String, referenceRole: String, targetNodeRefStr: String?): String {
         currentCoroutineContext().reportToolActivity("Updating MPS node reference '$referenceRole'")
         return executeShortCommandOnEdt(mpsProject) {
-            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
-            val node = sNodeRef?.resolve(mpsProject.repository) ?: return@executeShortCommandOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
-
-            val model = node.model
-            if (model !is EditableSModel) return@executeShortCommandOnEdt errJson("Model containing the node is not editable", McpErrorCode.NOT_EDITABLE)
+            val (node, model, console) = when (val r = resolveEditableNodeAllowingConsole(mpsProject, nodeReference)) {
+                is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+                is ConsoleAwareResolution.Err -> return@executeShortCommandOnEdt r.errJson
+            }
 
             val sReferenceLink = node.concept.referenceLinks.find { it.name == referenceRole } ?: return@executeShortCommandOnEdt errJson("Reference link '$referenceRole' not found in concept '${node.concept.name}'", McpErrorCode.NOT_FOUND)
 
@@ -754,8 +752,8 @@ abstract class AbstractNodeOps : AbstractOps() {
                 node.dropReference(sReferenceLink)
             }
 
-            saveModelAndModule(model)
-            okJson(nodeInfoJson(node))
+            val warn = persistOrRefreshConsole(model, console)
+            okJson(nodeInfoJsonObject(node), warnings = listOfNotNull(warn))
         }
     }
 
@@ -1294,6 +1292,134 @@ abstract class AbstractNodeOps : AbstractOps() {
         val commandHolder = consoleRoot(consoleModel)?.getChildren(CONSOLE_COMMAND_HOLDER_LINK)?.firstOrNull()
             ?: return null
         return commandHolder.getChildren(CONSOLE_COMMAND_LINK).firstOrNull()
+    }
+
+    /** A console-scoped write target: the editable temporary console model plus its tab (for import refresh). */
+    protected class ConsoleTarget(val tab: Any, val consoleModel: SModel)
+
+    /** Result of [resolveEditableNodeAllowingConsole]. [console] is non-null iff the node was admitted
+     *  via the console fallback (i.e. it is inside the current console command and must NOT be persisted). */
+    protected sealed class ConsoleAwareResolution {
+        data class Ok(val node: SNode, val model: EditableSModel, val console: ConsoleTarget?) : ConsoleAwareResolution()
+        data class Err(val errJson: String) : ConsoleAwareResolution()
+    }
+
+    /**
+     * Resolves [nodeReference] for an editable write. Normal project nodes go through the standard
+     * project guard. A node that the project guard rejects is admitted ONLY when it lives inside the
+     * current console input command of [mpsProject]'s console (never history, never another project).
+     * Must be called on the EDT (the console fallback reads Swing tab state) — i.e. inside
+     * executeShortCommandOnEdt, like the existing resolves.
+     */
+    protected fun resolveEditableNodeAllowingConsole(
+        mpsProject: MPSProject,
+        nodeReference: String,
+        missingMessageBuilder: (String) -> String = { "Node '$it' not found" },
+        nonEditableMessage: String = "Model containing the node is not editable",
+    ): ConsoleAwareResolution {
+        val repository = mpsProject.repository
+        val node = resolveNodeReference(repository, nodeReference)?.resolve(repository)
+            ?: return ConsoleAwareResolution.Err(errJson(missingMessageBuilder(nodeReference), McpErrorCode.NOT_FOUND))
+        val model = node.model
+        if (model !is EditableSModel) {
+            return ConsoleAwareResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
+        }
+        if (isModuleInProject(repository, model)) {
+            return ConsoleAwareResolution.Ok(node, model, console = null)
+        }
+        // Not a project module — the only writes we allow are inside THIS project's current console command.
+        val console = when (val r = resolveConsoleEditableTab(mpsProject.project)) {
+            is ConsoleResolution.Ok -> r
+            // No console available: this is just a non-project node we won't touch. Preserve the
+            // cross-project refusal (do NOT surface a console-specific error here).
+            is ConsoleResolution.Err -> return ConsoleAwareResolution.Err(crossProjectErr("Node '$nodeReference'"))
+        }
+        if (model.reference != console.consoleModel.reference) {
+            return ConsoleAwareResolution.Err(crossProjectErr("Node '$nodeReference'"))
+        }
+        val currentCommand = currentConsoleCommand(console.consoleModel)
+        if (currentCommand == null || !isSameOrDescendantOf(node, currentCommand)) {
+            return ConsoleAwareResolution.Err(errJson(
+                "Node '$nodeReference' is not inside the current MPS Console input command. " +
+                    "Console history and stale console references cannot be edited.",
+                McpErrorCode.INVALID_REQUEST
+            ))
+        }
+        return ConsoleAwareResolution.Ok(node, model, ConsoleTarget(console.tab, console.consoleModel))
+    }
+
+    /**
+     * Finalizes a successful edit: persists a normal project model, OR — for a console target — skips
+     * persistence (the console model is a throwaway temp model) and, when [refreshImports] is set,
+     * refreshes the console's languages/imports/module dependencies so newly introduced references
+     * stay resolvable.
+     *
+     * [refreshImports] mirrors the parse-java `postProcess.importUsedLanguages` flag. `addNodeImports`
+     * adds used languages to the console model (it runs `ModelDependencyUpdate.updateUsedLanguages()`),
+     * so a caller that opted out of import management (`importUsedLanguages=false`) must NOT have those
+     * imports re-expanded behind its back — that would defeat the suppression `resolveIteratively`
+     * already applied (it even strips languages its resolution passes added under the same flag), and
+     * break symmetry with the root/child/replace project modes. The plain `mps_mcp_update_node` callers
+     * have no such flag and pass the default (always refresh), since the console temp model has no other
+     * mechanism to keep an edited node's references resolvable.
+     *
+     * The import refresh is best-effort; its failure is returned as a warning string (or null).
+     */
+    protected fun persistOrRefreshConsole(
+        model: EditableSModel,
+        console: ConsoleTarget?,
+        refreshImports: Boolean = true,
+    ): String? {
+        if (console == null) {
+            saveModelAndModule(model)
+            return null
+        }
+        if (!refreshImports) return null
+        return currentConsoleCommand(console.consoleModel)?.let { addConsoleNodeImports(console.tab, it) }
+            ?.let { "Failed to update MPS Console imports after the edit: $it" }
+    }
+
+    protected fun insertConsoleCommand(tab: Any, command: SNode): String? {
+        return try {
+            tab.javaClass.getMethod("insertCommand", SNode::class.java).invoke(tab, command)
+            null
+        } catch (e: ReflectiveOperationException) {
+            reflectionFailureDetail(e)
+        }
+    }
+
+    protected fun addConsoleNodeImports(tab: Any, node: SNode): String? {
+        return try {
+            val method = generateSequence(tab.javaClass) { it.superclass }
+                .mapNotNull { cls ->
+                    try {
+                        cls.getDeclaredMethod("addNodeImports", SNode::class.java)
+                    } catch (_: NoSuchMethodException) {
+                        null
+                    }
+                }
+                .firstOrNull()
+                ?: throw NoSuchMethodException("addNodeImports(${SNode::class.java.name})")
+            method.isAccessible = true
+            method.invoke(tab, node)
+            null
+        } catch (e: ReflectiveOperationException) {
+            reflectionFailureDetail(e)
+        }
+    }
+
+    private fun isSameOrDescendantOf(node: SNode, ancestor: SNode): Boolean {
+        // Compare by node reference rather than instance identity: resolve() and the parent walk
+        // are not guaranteed to hand back the same SNode wrapper instance for one logical node
+        // (adapter/attribute wrappers can differ), so `==` is unreliable. SNodeReference equality
+        // is value-based and uniquely identifies a node, so it is the robust identity test here.
+        val ancestorRef = ancestor.reference
+        var current: SNode? = node
+        while (current != null) {
+            if (current.reference == ancestorRef) return true
+            current = current.parent
+        }
+        return false
     }
 
     /**
