@@ -33,6 +33,14 @@
   - `childJson` accepts either an inline JSON string (max 4 KB) **or** an absolute path to a file containing the JSON blueprint — use the file form for large blueprints to avoid MCP-transport truncation.
 - `mps_mcp_check_root_node_problems`: validation tool. Use this frequently to ensure your changes are correct.
 
+## Console
+
+- `mps_mcp_insert_console_command_from_json`: inserts a console `Command` node or one or more BaseLanguage statements into the current MPS Console input without executing it.
+- `mps_mcp_get_current_editor_root_node` with `source="console"`: returns the current unexecuted command in the MPS Console input editor.
+- `mps_mcp_get_console_history`: lists executed console commands, optionally interleaved with response/output entries.
+- `mps_mcp_recall_console_command`: copies a command from console history back into the input editor without executing it.
+- `mps_mcp_run_console_command`: runs the command currently in the Console input editor; it can have side effects and returns only that execution was triggered, so read results from console history or the Console UI.
+
 ## Language Definition
 
 - `mps_mcp_get_concept_details`: provides properties, children, and references for a list of concepts and/or concepts of specified languages. Make/rebuild languages with `mps_mcp_alter_nodes` (`MAKE` with `rebuild=true`) if descriptors are hollow or stale. For the canonical structure-to-aspect editing and compilation prerequisite chain, see the Critical Directives in the `mps-mcp-workflow` skill.

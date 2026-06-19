@@ -1,7 +1,7 @@
 ---
 name: mps-console
 description: >-
-  Use when running or generating MPS Console code, or when writing `jetbrains.mps.lang.smodel.query` queries anywhere in MPS (intentions, behavior, actions, generator queries, plain BaseLanguage). Covers the console command languages (`jetbrains.mps.console.base` / `ideCommands` / `internalCommands` / `scripts`): `BLCommand` / `BLExpression`, the `#print*` / `#show` result printers, IDE commands (`#make` / `#clean` / `#removeGenSources` / `#reloadClasses` / `#stat` / `#showGenPlan` / `#showBrokenRefs`), `#exec` / `refactor` scripts. Covers the smodel query language: `#nodes` / `#references` / `#models` / `#modules` / `#instances` / `#usages`, the `with`-statement scope wrapper, scopes (`project` / `editable` / `global` / `visible` / `modules` / `models` / `custom`) and query parameters (`scope` / `exact` / `r/o+`). Also how to push code into the console with the `mps_mcp_insert_console_command_from_json` MCP tool.
+  Use when running or generating MPS Console code, or when writing `jetbrains.mps.lang.smodel.query` queries anywhere in MPS (intentions, behavior, actions, generator queries, plain BaseLanguage). Covers the console command languages (`jetbrains.mps.console.base` / `ideCommands` / `internalCommands` / `scripts`): `BLCommand` / `BLExpression`, the `#print*` / `#show` result printers, IDE commands (`#make` / `#clean` / `#removeGenSources` / `#reloadClasses` / `#stat` / `#showGenPlan` / `#showBrokenRefs`), `#exec` / `refactor` scripts. Covers the smodel query language: `#nodes` / `#references` / `#models` / `#modules` / `#instances` / `#usages`, the `with`-statement scope wrapper, scopes (`project` / `editable` / `global` / `visible` / `modules` / `models` / `custom`) and query parameters (`scope` / `exact` / `r/o+`). Also how to insert, read, recall, and run console commands with `mps_mcp_insert_console_command_from_json`, `mps_mcp_get_current_editor_root_node(source="console")`, `mps_mcp_get_console_history`, `mps_mcp_recall_console_command`, and `mps_mcp_run_console_command`.
 type: reference
 ---
 
@@ -19,6 +19,7 @@ The **smodel query language** (`jetbrains.mps.lang.smodel.query`) exposes the *s
 4. **Read the current Console command from an agent** via `mps_mcp_get_current_editor_root_node` with `source = "console"` — returns the node-info envelope of the command currently in the console input (one an agent inserted, or the user typed). Feed its `reference` to `mps_mcp_print_node` for the JSON blueprint (`format = "JSON"`) or the notational printout (`format = "PLAIN TEXT"` / `"HTML"`). The reference is only valid until the next console interaction (execute / clear / history navigation), so print it promptly and do not cache it.
 5. **Browse the Console history from an agent** via `mps_mcp_get_console_history` — lists previously executed commands in order, each with a one-line `preview` and a `recallableCommandReference`. Print any entry with `mps_mcp_print_node`, or pass `includeResponses = true` to also see the printed output. Same reference-validity caveat as #4.
 6. **Recall a history command into the input** via `mps_mcp_recall_console_command(historyNodeReference)` — deep-copies a history entry (from #5) back into the input slot **without executing it**. There is no MPS "recall" API to call directly; this mirrors what the Console's own up/down history navigation does (`copy` + insert).
+7. **Run the current Console command from an agent** via `mps_mcp_run_console_command` — executes whatever command is currently in the input (placed there by #3 or #6, or typed by the user), exactly as Ctrl+Enter, and only when a command is present. **It executes code with side effects.** The response is not returned by the tool; read it afterwards via #5 (`mps_mcp_get_console_history` with `includeResponses = true`) or from the Console tool window, and note that long-running commands (make/generate) complete asynchronously.
 
 ## A command is one of three shapes
 
@@ -40,7 +41,7 @@ The console input holds exactly **one** command (`jetbrains.mps.console.base.str
 - **Lazy vs eager:** `#nodes` / `#references` / `#models` / `#modules` are lazy sequences (full iteration). `#instances` / `#usages` use the find-usages index — far faster than iterate-then-filter. Prefer `#instances(C)` over `#nodes.ofConcept<C>()`.
 - **`exact` parameter** on `#instances` excludes instances of sub-concepts (`#instances<exact>(C)`).
 - **Never hand-edit the console's `.mps` model.** Use the editor or the MCP tool. The console lives in a temporary `ConsoleModel_*` model.
-- **The MCP tool inserts, it does not run.** Always tell the user the command is sitting in the console input for them to run.
+- **Insertion and recall do not execute.** `mps_mcp_insert_console_command_from_json` and `mps_mcp_recall_console_command` only place a command in the input; by default leave it for the user to run and tell them it is waiting. To execute it yourself, call `mps_mcp_run_console_command` (way #7) — it runs code with side effects, so do it deliberately and report what it did.
 
 ## Examples (surface syntax)
 

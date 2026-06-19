@@ -111,7 +111,7 @@ Open `references/analysis-tools.md` for the inventory of analysis operations (`m
 
 Open `references/editor-workflow.md` for the MPS Concept Editor workflow (scaffold → componentize → refine → validate) and the editor procedural guidelines.
 
-Open `references/mcp-tools-index.md` for the complete inventory of MPS MCP tools grouped by Project/Structure, Modules and Models, Root Nodes and Nodes, and Language Definition.
+Open `references/mcp-tools-index.md` for the complete inventory of MPS MCP tools grouped by Project/Structure, Modules and Models, Root Nodes and Nodes, Console, and Language Definition.
 
 ## Boundaries
 

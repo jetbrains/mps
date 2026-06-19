@@ -27,9 +27,10 @@ import java.io.File
  *    (malformed JSON is rejected before the Console tool window is touched). The happy paths
  *    (inserting a Command, and wrapping one or more statements into a `{ … }` block command) need
  *    a live Console tool window and are exercised manually.
- *  - `mps_mcp_get_console_history` / `mps_mcp_recall_console_command` — the console-unavailable
- *    branch (structured error, no crash, in the headless fixture). The happy paths (listing real
- *    history entries; recalling one into the input slot) need a live Console and are verified manually.
+ *  - `mps_mcp_get_console_history` / `mps_mcp_recall_console_command` / `mps_mcp_run_console_command` —
+ *    the console-unavailable branch (structured error, no crash, in the headless fixture). The happy
+ *    paths (listing real history entries; recalling one into the input slot; executing the current
+ *    command) need a live Console and are verified manually.
  */
 class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
@@ -387,6 +388,19 @@ class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         // same-console guard are verified manually against a running Console.
         val response = runTool(JetBrainsMPSProjectMcpToolset()) {
             it.mps_mcp_recall_console_command(historyNodeReference = "r:does-not-exist/0")
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope when the console is unavailable: $response", obj.get("ok").asBoolean)
+    }
+
+    @Test
+    fun `run_console_command returns an error envelope when the console is unavailable`() {
+        // The headless fixture never initializes the Console tool window, so this exercises the
+        // console-resolution branch: it must return a structured error rather than running anything.
+        // The happy path (executing a present command) and the empty-input guard are verified
+        // manually against a running Console.
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_run_console_command()
         }
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope when the console is unavailable: $response", obj.get("ok").asBoolean)

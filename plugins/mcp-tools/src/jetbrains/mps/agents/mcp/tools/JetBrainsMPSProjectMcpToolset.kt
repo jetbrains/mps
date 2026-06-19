@@ -6,7 +6,10 @@ import com.google.gson.JsonParser
 import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import com.intellij.mcpserver.project
 import com.intellij.mcpserver.projectOrNull
+import com.intellij.mcpserver.reportToolActivity
+import com.intellij.openapi.application.EDT
 import com.intellij.openapi.project.ProjectManager
 import jetbrains.mps.editor.runtime.HeadlessEditorComponent
 import jetbrains.mps.ide.project.ProjectHelper
@@ -22,7 +25,9 @@ import jetbrains.mps.smodel.CopyUtil
 import jetbrains.mps.smodel.Generator
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.SModelInternal
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
+import kotlinx.coroutines.withContext
 import org.jetbrains.mps.openapi.language.SConcept
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
@@ -754,6 +759,82 @@ class JetBrainsMPSProjectMcpToolset : AbstractNodeOps() {
 
                 okJson(nodeInfoJsonObject(copy), warnings = listOfNotNull(activateWarning, selectWarning))
             }
+        }
+    }
+
+    @McpTool
+    @McpDescription(
+        """
+        Runs the command currently in the MPS Console input editor against the live project — exactly as if the user pressed Ctrl+Enter in the Console tool window. Runs only when a command is present; if the input is empty it returns an error and runs nothing (it does not build or insert a command — use `mps_mcp_insert_console_command_from_json` to put one in first, or `mps_mcp_recall_console_command` to recall one). **This executes code with side effects:** a console command can mutate models, run make/clean, reload classes, etc. The executed command moves into the console history and its response is rendered in the Console; the response is NOT returned here, and for long-running commands (make/generate) it is produced asynchronously — read it from the Console tool window or via `mps_mcp_get_console_history` with `includeResponses=true`. Requires the MPS Console plugin. On `dryRun` it only checks that a command is present, without running anything. On success returns an envelope confirming execution was triggered.
+    """
+    )
+    suspend fun mps_mcp_run_console_command(
+        @McpDescription("Optional: if true, only check that a command is present in the console input without running it. Default: false.") dryRun: Boolean = false
+    ): String {
+        currentCoroutineContext().reportToolActivity("Running the current MPS console command")
+        val project = currentCoroutineContext().project
+        return try {
+            var reply: String = errJson(
+                "Running the current MPS console command did not complete",
+                McpErrorCode.INTERNAL_ERROR
+            )
+            withContext(Dispatchers.EDT) {
+                val console = when (val r = resolveConsoleEditableTab(project)) {
+                    is ConsoleResolution.Ok -> r
+                    is ConsoleResolution.Err -> {
+                        reply = r.errJson
+                        return@withContext
+                    }
+                }
+                val mpsProject = ProjectHelper.fromIdeaProject(project) ?: run {
+                    reply = errJson("No MPS project available", McpErrorCode.NOT_FOUND)
+                    return@withContext
+                }
+                // executeCurrentCommand silently no-ops on empty input, so check first to give the agent
+                // a clear error instead of a misleading success. The presence check takes a read action;
+                // the execution itself must NOT hold one — executeCurrentCommand opens its own command and
+                // its before-closure asserts no write lock is held — so it runs after the read action ends.
+                val present = mpsProject.modelAccess.computeReadAction {
+                    currentConsoleCommand(console.consoleModel) != null
+                }
+                if (!present) {
+                    reply = errJson(
+                        "The MPS Console input editor is empty (no current command to run).",
+                        McpErrorCode.NOT_FOUND
+                    )
+                    return@withContext
+                }
+                if (dryRun) {
+                    reply = okJson(jsonObject {
+                        addProperty("dryRun", true)
+                        addProperty("message", "Dry run successful: a console command is present and ready to run.")
+                    })
+                    return@withContext
+                }
+                // Mirror ConsoleExecute_Action: invoke executeCurrentCommand on the EDT with no outer model
+                // lock; it manages its own command and (for long-running commands) runs asynchronously.
+                try {
+                    console.tab.javaClass.getMethod("executeCurrentCommand").invoke(console.tab)
+                } catch (e: ReflectiveOperationException) {
+                    reply = errJson(
+                        "Failed to run the command in the MPS Console: ${e.message}",
+                        McpErrorCode.INTERNAL_ERROR
+                    )
+                    return@withContext
+                }
+                reply = okJson(jsonObject {
+                    addProperty("executed", true)
+                    addProperty(
+                        "message",
+                        "Triggered execution of the current console command (equivalent to Ctrl+Enter). The response is " +
+                            "rendered in the Console; long-running commands complete asynchronously. Read the result from " +
+                            "the Console tool window or via mps_mcp_get_console_history(includeResponses=true)."
+                    )
+                })
+            }
+            reply
+        } catch (e: Exception) {
+            toolFailure("Running the current MPS console command", e)
         }
     }
 
