@@ -78,7 +78,13 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         @McpDescription("Include module/model dependencies and used languages.") includeDependencies: Boolean = false,
         @McpDescription("Include root nodes of models.") includeRootNodes: Boolean = false,
         @McpDescription("Include all nodes (full AST). Warning: can be extremely large.") includeNodes: Boolean = false,
-        @McpDescription("Optional starting point reference (module, model, root node, or node ID)") startingPoint: String? = null,
+        @McpDescription(
+            "Optional starting point: a persistent reference (module/model/root-node/node id) or a plain name. " +
+            "A plain NAME is resolved in the order node -> model -> module, so a name shared by a model and a " +
+            "module resolves to the MODEL. To target a module unambiguously, pass its persistent reference " +
+            "(<uuid>(<name>)) or use the 'moduleKind' filter (with startingPoint null). Scope heavy 'include...' " +
+            "flags by passing a startingPoint."
+        ) startingPoint: String? = null,
         @McpDescription("Optional filter by module kind (Solution, Language, DevKit, Generator). Only used if startingPoint is null.") moduleKind: String? = null
     ): String {
         if (!startingPoint.isNullOrBlank() && !moduleKind.isNullOrBlank()) {

@@ -181,11 +181,19 @@ Full `body` (`StatementList`) blueprint — the scope factory's body. The target
                         { "concept": "jetbrains.mps.baseLanguage.collections.structure.SelectManyOperation",
                           "children": [
                             { "role": "closure", "nodes": [
-                              { "concept": "jetbrains.mps.baseLanguage.structure.ClosureLiteral",
+                              { "concept": "jetbrains.mps.baseLanguage.closures.structure.ClosureLiteral",
                                 "children": [
                                   { "role": "parameter", "nodes": [
-                                    { "concept": "jetbrains.mps.baseLanguage.structure.InferredClosureParameterDeclaration",
-                                      "properties": [ { "name": "name", "value": "it" } ]
+                                    { "concept": "jetbrains.mps.baseLanguage.closures.structure.InferredClosureParameterDeclaration",
+                                      "properties": [
+                                        { "name": "name", "value": "it" },
+                                        { "name": "resolveInfo", "value": "it" }
+                                      ],
+                                      "children": [
+                                        { "role": "type", "nodes": [
+                                          { "concept": "jetbrains.mps.baseLanguage.structure.UndefinedType" }
+                                        ]}
+                                      ]
                                     }
                                   ]},
                                   { "role": "body", "nodes": [
@@ -324,6 +332,8 @@ Full `body` (`StatementList`) blueprint — the scope factory's body. The target
   ]
 }
 ```
+
+> The closure-literal shape (correct FQNs, the obligatory `type` → `UndefinedType` child, and referencing the parameter) is documented canonically in `mps-model-manipulation/references/closures-catalog.md`, section *“Closure literal blueprint (reusable building block)”* (the JSON object is at lines 94–110; the `InferredClosureParameterDeclaration` shape this fix mirrors is lines 98–104).
 
 Use this pattern whenever the imperative scope must **gather nodes from more than one place**. For the "one host, one role" shape, stick with `SimpleRoleScope.forNamedElements(host, link/.../)` — it is cheaper and name-indexed.
 

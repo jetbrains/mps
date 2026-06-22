@@ -38,6 +38,7 @@ Idiomatic generators keep the stable part **out** of the templates and emit thin
    - `Reduction_MappingRule` for in-place rewrites (inline `RuleConsequence` or `TemplateDeclarationReference`);
    - `Weaving_MappingRule` to add content into an already-generated container.
 5. Author target-language templates; attach macros as `smodelAttribute` children. Mark the produced subtree with `TemplateFragment` (or `RootTemplateAnnotation` on a target root).
+   - **A `RootTemplateAnnotation` alone does NOT register a root mapping.** It only marks a target root as a template; a `Root_MappingRule` (step 4) whose `template` reference points to that annotated root is also required. Without the rule, generation silently produces no output for that root — MAKE still reports success.
 6. Declare any mapping labels on the `MappingConfiguration`; tag writers (`labelDeclaration` ref or `$LABEL$` macro); read with `genContext.get/pick output <label> for (<input>)` inside `$REF$` or other queries.
 7. Validate with `mps_mcp_check_root_node_problems` on the `MappingConfiguration` and every template (re-run with `onlyNodesWithProblems = false` if siblings look "missing").
 8. `mps_mcp_alter_nodes MAKE` over the generator and a sample model; **read the generated text** (see *Reading generator output* below). Use the Generator Tracer / `$TRACE$` macros to bisect misgenerated fragments.

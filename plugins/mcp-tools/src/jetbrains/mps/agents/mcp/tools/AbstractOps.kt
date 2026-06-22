@@ -693,15 +693,28 @@ abstract class AbstractOps : McpToolset {
                 ?: throw McpInvalidRequestException("Failed to parse JSON")
         } catch (e: JsonSyntaxException) {
             val message = e.message ?: "Invalid JSON syntax"
+            // EOF / unterminated input is almost always an unbalanced brace/bracket, not truncation.
+            // NOTE: this keys on Gson's (English) JsonSyntaxException message text ("End of input" /
+            // "Unterminated ..."). Gson messages are not localized today, so this is safe; if a future
+            // Gson reword changes them the hint simply stops appearing (no behavior break). The unit test
+            // parses real malformed JSON so such a reword fails the test rather than silently
+            // disabling the hint.
+            val looksTruncated = message.contains("End of input", ignoreCase = true) ||
+                                 message.contains("Unterminated", ignoreCase = true)
+            val hint = if (looksTruncated) {
+                "\n\nThis usually means an unbalanced '{'/'[' — verify every brace/bracket is closed. " +
+                "For large blueprints, pass an absolute temp-file path instead of inline JSON " +
+                "(see the mps-node-editing skill)."
+            } else ""
             val regex = "at line (\\d+) column (\\d+)".toRegex()
             val matchResult = regex.find(message)
             if (matchResult != null) {
                 val line = matchResult.groupValues[1].toInt()
                 val column = matchResult.groupValues[2].toInt()
                 val excerpt = getJsonExcerpt(jsonString, line, column)
-                throw McpInvalidRequestException("$message\n\n$excerpt")
+                throw McpInvalidRequestException("$message\n\n$excerpt$hint")
             }
-            throw McpInvalidRequestException(message)
+            throw McpInvalidRequestException("$message$hint")
         }
     }
 

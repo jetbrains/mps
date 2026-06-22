@@ -4,7 +4,7 @@ Use when you need to **report problems** but not contribute to type inference. E
 
 ## Fields
 
-- `applicableNode` — the concept the rule runs on (`ApplicableNodeCondition` containing a `ConceptReference` with `name` property + `concept` reference; the `name` is the variable bound in the body)
+- `applicableNode` — the concept the rule runs on. Holds a `ConceptReference` (the concrete subconcept of the abstract `ApplicableNodeCondition`) placed DIRECTLY in the role — there is no `ApplicableNodeCondition` wrapper and no nesting. Its `concept` reference is the applicable concept; its `name` property is the variable bound in the body.
 - `overrides` — if true, suppresses inherited non-typesystem rules from superconcepts
 - `body` — imperative BaseLanguage that calls reporters:
   - `error "msg" -> nodeToReport;`

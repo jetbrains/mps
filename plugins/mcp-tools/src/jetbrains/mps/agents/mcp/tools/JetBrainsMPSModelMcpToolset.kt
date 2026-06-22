@@ -361,11 +361,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_create_model(
-        @McpDescription("Module name") moduleName: String,
+        @McpDescription("Module name or reference") moduleName: String,
         @McpDescription("Model name. For a language aspect model use the case-sensitive aspect id, e.g. `myLang.textGen`. For generator/genplan/tests/descriptor models append `@stereotype`, e.g. `myTests@tests`.") modelName: String
     ): String = withMpsProject("Create MPS model") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
-            val module = mpsProject.projectModules.find { it.moduleName == moduleName }
+            val module = resolveModule(mpsProject, moduleName, projectOnly = true)
                 ?: return@executeShortCommandOnEdt errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
             validateModelName(modelName)?.let {
                 return@executeShortCommandOnEdt errJson(it, McpErrorCode.INVALID_REQUEST)

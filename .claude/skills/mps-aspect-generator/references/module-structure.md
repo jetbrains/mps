@@ -117,6 +117,8 @@ Each rule has an `applicableConcept` (or a pattern) and either:
 - for `Root_MappingRule`, a `template` reference pointing to any target-language root node (e.g. a BaseLanguage `ClassConcept`) decorated with a `RootTemplateAnnotation`, which marks that root as a template, **or**
 - for `Reduction_MappingRule`, an inline `ruleConsequence` child of concept `InlineTemplateWithContext_RuleConsequence` (or `InlineTemplate_RuleConsequence`) carrying the replacement subtree directly — no separate `TemplateDeclaration` needed. Prefer the inline form for small, one-off reductions.
 
+> A `RootTemplateAnnotation` only *marks* the root as a template — it does not by itself register a mapping. The annotated root must be referenced by a `Root_MappingRule.template`; otherwise MAKE succeeds but emits nothing for that root.
+
 ### `Root_MappingRule.keepSourceRoot`
 
 This property is typed `Options_DefaultTrue` with enum literals `default_`/`true_`, but the type name is misleading: the **default literal is `default_`, which behaves as `false`**. Only the explicit `true_` literal keeps the source root.
