@@ -37,6 +37,10 @@ Language extension also typically needs a regular `Default` dependency on the sa
 - Success: `ok:true`, `data:{ "added":false, "reason":"providedByDevKit" }` when the dependency is already provided by a used DevKit and no descriptor change was needed.
 - Failure: `ok:false`, `error:"..."`.
 
+### Upsert semantics
+
+ADD is an upsert on a single edge: a module holds at most one dependency per `source→target` pair, so calling ADD again for an existing edge with a different `scope`/`reexport` **overwrites** that edge in place — it does not add a second entry, and the pair keeps only the last scope written. `added:true` is returned for both a fresh insert and an in-place overwrite, so to *change* a scope just ADD again with the new value.
+
 ## `mps_mcp_module_dependency (operation = "DELETE")`
 
 Removes a dependency from an MPS module. Also removes the target from the module's `Extends`-side collection if it lives there (`LanguageDescriptor.extendedLanguages`, `GeneratorDescriptor.depGenerators`, `DevkitDescriptor.extendedDevkits`). The regular `<dependencies>` list and the `Extends` collection are both probed, and any removal counts as success.

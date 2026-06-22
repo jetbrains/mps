@@ -142,8 +142,8 @@ returned here — read it via history in 12.06.
 ### Step 12.09 — Invalid: insert a bare expression as a console command `[FAILURE]`
 
 A `Make` (`ideCommands.Make`) is a baseLanguage **Expression**, not a `Command` or
-`Statement`; passing it bare must fail (the tool tries to wrap it as a `Statement`). Use
-`dryRun:true` so nothing changes.
+`Statement`; passing it bare must fail (the tool tries to wrap a non-`Command` node into a
+`Statement` role it is not assignable to). Use `dryRun:true` so nothing changes.
 ```json
 {
   "tool": "mps_mcp_insert_console_command_from_json",
@@ -154,7 +154,9 @@ A `Make` (`ideCommands.Make`) is a baseLanguage **Expression**, not a `Command` 
   }
 }
 ```
-- Validation: `ok==false`; error is a concept-assignability error (actual concept `Make`,
-  expected `Statement`/`Command`).
+- Validation: `ok==false`; the error indicates the `Make` node cannot be used as a console
+  command (not assignable to the wrapped `Statement`/`Command` role). Match on substance, not
+  the exact text — the assignability cause may be wrapped (e.g. "Failed to instantiate console
+  command from JSON: …").
 
 Proceed to `13_update_and_delete_modules.md`.

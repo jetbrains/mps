@@ -1,6 +1,7 @@
 package jetbrains.mps.agents.mcp.tools
 
 import com.google.gson.JsonParser
+import java.io.File
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.modules.LanguageProducer
 import jetbrains.mps.project.structure.modules.LanguageDescriptor
@@ -725,6 +726,37 @@ class JetBrainsMPSModuleMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         readOnRepo {
             assertNull(myProject.projectModules.firstOrNull { it.moduleName == moduleName })
         }
+    }
+
+    @Test
+    fun `delete_module with deleteFiles removes the module directory from disk`() {
+        val solution = createSolution()
+        val moduleName = solution.moduleName!!
+
+        // Capture the directory the fix deletes (the descriptor file's parent) before the
+        // delete tears the descriptor wiring down. createSolution() laid it out via mkdirs(),
+        // so it is present on disk now.
+        val moduleDirPath = readOnRepo { (solution as AbstractModule).descriptorFile!!.parent!!.path }
+        val moduleDir = File(moduleDirPath)
+        assertTrue("module directory should exist before deletion: $moduleDirPath", moduleDir.exists())
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_module(moduleName, operation = ModuleOperation.DELETE, deleteFiles = true)
+        }
+        val data = expectOk(response)
+        assertTrue(data.get("deleted").asBoolean)
+        // The pre-fix bug deleted the directory outside a write action, failing the
+        // assertWriteAccessAllowed() check and reporting it as a fileDeletionWarning while the
+        // files survived. With the write action in place there must be no such warning.
+        assertFalse(
+            "deleteFiles=true must not report a fileDeletionWarning: $response",
+            data.has("fileDeletionWarning"),
+        )
+
+        readOnRepo {
+            assertNull(myProject.projectModules.firstOrNull { it.moduleName == moduleName })
+        }
+        assertFalse("module directory should be deleted from disk: $moduleDirPath", moduleDir.exists())
     }
 
     @Test

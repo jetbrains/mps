@@ -1,20 +1,26 @@
 # 11 — Run Configurations
 
-> **Captured-value contract** — _Inputs:_ `{{SERVER_PREFIX}}`, `{{PROJECT_DIR}}`, `{{JAVA_CLASS_REF}}`, `{{GEARBOX_REF}}`. _Produces (cross-part):_ none. _(`{{RUN_CONFIG_NAME}}` is intra-part.)_
+> **Captured-value contract** — _Inputs:_ `{{SERVER_PREFIX}}`, `{{PROJECT_DIR}}`, `{{JAVA_CLASS_REF}}`, `{{GEARBOX_REF}}`. _Produces (cross-part):_ none. _(`{{RUN_CONFIG_NAME}}` and `{{TEST_CASE_REF}}` are intra-part.)_
 
 Tool: `mps_mcp_create_run_configuration` (`nodeReference`, optional `configurationName`).
 Helper IDE tools (not `mps_mcp_*`): `get_run_configurations`, `execute_run_configuration`.
 
 Dispatch paths the tool supports (documented):
-- `ClassConcept` with a static `main(String[])` → **Java Application** (exercised here).
-- Concept implementing `IMainClass` → Java Application (DSL `main`-like roots).
-- Concept implementing `ITestCase` → JUnit Tests.
+- `ClassConcept` with a static `public static void main(String[])` → **Java Application**
+  (exercised here: `McpRunnable`, Steps 11.01–11.02, executed in optional Step 11.05). This is
+  the "create a Java class with a `main` method and run it via a run configuration" case — it is
+  already covered, so the scenario does not build a second one.
+- Concept implementing `ITestCase` → **JUnit Tests** (exercised here: Steps 11.06–11.07, using the
+  stock `jetbrains.mps.lang.test.structure.NodesTestCase`).
+- Concept implementing `IMainClass` → Java Application, named `Node <n>` (a DSL `main`-like root).
+  **Not exercised by this scenario**: `IMainClass` lives in `jetbrains.mps.execution.util` and has
+  no implementer among stock BaseLanguage concepts — reaching it needs a DSL/demo concept (e.g.
+  `jetbrains.mps.execution.demo`) a generic MPS project may not have loaded. This branch is covered
+  by the toolset's own unit tests (see COVERAGE_MATRIX.md); the practical "run a Java `main`" goal
+  is already met by the `ClassConcept` path above.
 
-The tool has **no enum parameters**; one valid call covers parameter coverage. The other two
-dispatch paths require an `IMainClass`/`ITestCase` node that this scenario does not build —
-they are recorded as documented-but-not-exercised in COVERAGE_MATRIX.md. The Java Application
-path requires the owning module's `compileInMPS=true`; `mcp.test.sandbox` satisfies this
-(its `java` facet has `compile=mps`).
+The two Java Application paths require the owning module's `compileInMPS=true`; `mcp.test.sandbox`
+satisfies this (its `java` facet has `compile=mps`). The JUnit (`ITestCase`) path has no such gate.
 
 Uses `{{JAVA_CLASS_REF}}` (McpRunnable, from Step 10.01) and `{{GEARBOX_REF}}`.
 
@@ -108,5 +114,45 @@ report. `McpRunnable.main` has an empty body, so it exits immediately.
 - Validation (if run): response includes `exitCode` (expected `0`) and possibly empty
   `output` (normal for a no-op `main`). If compilation fails in your environment, record the
   output as a finding (suspected: `MPS behavior`/environment) and continue.
+
+---
+
+### Step 11.06 — Create an `ITestCase` root (`NodesTestCase`) `[CAPTURE]`
+
+Exercises the `ITestCase` → JUnit Tests dispatch (distinct from the `ClassConcept` path above).
+`jetbrains.mps.lang.test.structure.NodesTestCase` is a stock, rootable concept that implements
+`ITestCase`; `create_root_node` auto-imports its language (`jetbrains.mps.lang.test`) into the
+model, so no separate `model_used_language` step is needed.
+```json
+{
+  "tool": "mps_mcp_create_root_node",
+  "arguments": {
+    "projectPath": "{{PROJECT_DIR}}",
+    "modelReference": "mcp.test.sandbox.cases@tests",
+    "concept": "jetbrains.mps.lang.test.structure.NodesTestCase",
+    "name": "McpNodeTests"
+  }
+}
+```
+- Validation: `ok==true`; `data.name=="McpNodeTests"`; `data.isRoot==true`.
+- **Capture** `data.reference` as `{{TEST_CASE_REF}}`.
+
+---
+
+### Step 11.07 — Create a JUnit run configuration for the test case (`ITestCase` dispatch) `[SUCCESS]`
+
+```json
+{
+  "tool": "mps_mcp_create_run_configuration",
+  "arguments": {
+    "projectPath": "{{PROJECT_DIR}}",
+    "nodeReference": "{{TEST_CASE_REF}}"
+  }
+}
+```
+- Validation: `ok==true`; `data.type=="JUnit Tests"`; `data.name=="McpNodeTests"` (the JUnit path
+  derives the bare node name — no `Class `/`Node ` prefix); `data.uniqueId` starts with
+  `JUnit Tests.`. This exercises the `ITestCase` dispatch branch and `configureAsTestCase`. Do
+  **not** execute this configuration.
 
 Proceed to `12_console.md`.

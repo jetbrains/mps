@@ -77,7 +77,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         @McpDescription("Include models within modules.") includeModels: Boolean = false,
         @McpDescription("Include module/model dependencies and used languages.") includeDependencies: Boolean = false,
         @McpDescription("Include root nodes of models.") includeRootNodes: Boolean = false,
-        @McpDescription("Include all nodes (full AST). Warning: can be extremely large.") includeNodes: Boolean = false,
+        @McpDescription("Include all nodes (full AST), inlined under each root's containment roles. Implies includeRootNodes (and includeModels for module/project dumps). The full tree is always written to the result temp file regardless of size — there is no truncation — so prefer scoping with `startingPoint`, or use `mps_mcp_print_node` (deep=true) for a single root. Warning: can be extremely large.") includeNodes: Boolean = false,
         @McpDescription(
             "Optional starting point: a persistent reference (module/model/root-node/node id) or a plain name. " +
             "A plain NAME is resolved in the order node -> model -> module, so a name shared by a model and a " +
@@ -90,6 +90,12 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         if (!startingPoint.isNullOrBlank() && !moduleKind.isNullOrBlank()) {
             return errJson("Parameters 'startingPoint' and 'moduleKind' cannot be used together.")
         }
+        // includeNodes (full AST) is only meaningful if we actually descend into models and
+        // their root nodes. Treat it as implying includeRootNodes (and includeModels for
+        // module/project dumps) so a caller that asks for nodes always gets the inlined trees
+        // instead of a silent `rootNodesCount` summary.
+        val effectiveIncludeRootNodes = includeRootNodes || includeNodes
+        val effectiveIncludeModels = includeModels || includeRootNodes || includeNodes
         return withMpsProject("Getting MPS project structure") { mpsProject ->
             executeShortReadOnEdt(mpsProject) {
                 if (!startingPoint.isNullOrBlank()) {
@@ -104,7 +110,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     // 2. Try Model
                     val model = resolveModel(mpsProject.repository, startingPoint)
                     if (model != null) {
-                        return@executeShortReadOnEdt saveToTempFileResult(modelToJson(model, includeRootNodes, includeNodes, includeDependencies))
+                        return@executeShortReadOnEdt saveToTempFileResult(modelToJson(model, effectiveIncludeRootNodes, includeNodes, includeDependencies))
                     }
 
                     // 3. Try Module
@@ -114,7 +120,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                         val isProjectModule = mpsProject.projectModulesWithGenerators.contains(module)
                         if (includeStubModules || isProjectModule) {
                             return@executeShortReadOnEdt saveToTempFileResult(
-                                moduleToJson(mpsProject, module, includeModels, includeRootNodes, includeNodes, includeDependencies)
+                                moduleToJson(mpsProject, module, effectiveIncludeModels, effectiveIncludeRootNodes, includeNodes, includeDependencies)
                             )
                         }
                         return@executeShortReadOnEdt errJson(
@@ -135,7 +141,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     val json = JsonObject()
                     val moduleArray = JsonArray()
                     for (projectModule in filteredModules) {
-                        moduleArray.add(moduleJsonObject(mpsProject, projectModule, includeModels, includeRootNodes, includeNodes, includeDependencies))
+                        moduleArray.add(moduleJsonObject(mpsProject, projectModule, effectiveIncludeModels, effectiveIncludeRootNodes, includeNodes, includeDependencies))
                     }
                     json.add("modules", moduleArray)
                     saveToTempFileResult(json.toString())

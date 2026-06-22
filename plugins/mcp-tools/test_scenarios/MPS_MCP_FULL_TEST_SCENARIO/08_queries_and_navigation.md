@@ -9,9 +9,9 @@ Tools: `mps_mcp_query_nodes` (all 8 ops; `scope` values `editable`/`all`/`models
 instance-dependent `query_structure` ops (`GET_ENUMERATION_LITERALS` by-property,
 `GET_ASSIGNABLE_REFERENCES`).
 
-Uses captured refs from part 07: `{{GEARBOX_REF}}`, `{{OTHER_ROOT_REF}}`,
-`{{GBX_DRIVING_REF}}`, `{{GBX_PARKED_REF}}`, `{{GBX_TRANS_REF}}`, `{{OTHER_IDLE_REF}}`, and the
-module/model refs `{{SANDBOX_MODULE_REF}}`, `{{SANDBOX_MODEL_REF}}`.
+Uses captured refs from part 07: `{{GEARBOX_REF}}`, `{{GBX_DRIVING_REF}}`,
+`{{GBX_PARKED_REF}}`, `{{GBX_TRANS_REF}}`, and the module/model refs
+`{{SANDBOX_MODULE_REF}}`, `{{SANDBOX_MODEL_REF}}`.
 
 > `query_nodes`/`query_structure` `parameters` is again a JSON-encoded **string**.
 
@@ -171,7 +171,9 @@ Covers `mode` value `completion`; `sortBy` values `relevance`/`name`/`module`/`d
 `scopeMode` values `local`/`model`/`module`/`project`/`imports`/`jdk`.
 
 > The `kindFilter` enum values (`constructors`/`instanceMethods`/`staticMethods`/`classes`)
-> are BaseLanguage-completion-oriented; they are exercised in part 10 against the
-> `McpRunnable` Java class, where such candidates exist.
+> are BaseLanguage-completion-oriented and only bite on a call/type reference role
+> (`baseMethodDeclaration` on an `IMethodCall`, or `classifier` on a `ClassifierType`) — not on
+> the DSL `target` role used here. They are exercised in **Step 10.12** against the `McpRunnable`
+> Java class, where such candidates exist.
 
 Proceed to `09_editor_scaffolding.md`.

@@ -35,7 +35,7 @@ check (follow-up query / structure dump / file read), **F** = file read of a tem
 | 24 | `check_root_node_problems` | Validate node/model | ✅ | — | clean + problem; `onlyNodesWithProblems`=true/false | 07.21, 07.29–07.31, 10.11 | R+F |
 | 25 | `search_root_node_by_name` | Find roots by name | ✅ | — | `scope`=editable/all/models/modules | 06.22, 08.16–08.19 | R |
 | 26 | `insert_console_command_from_json` | Put command in console | ✅ | ✅ | `dryRun` + real; invalid=bare expression | 12.01–12.02, 12.09 | R |
-| 27 | `get_console_history` | List console history | ✅ | — | `includeResponses`=true | 12.06 | R |
+| 27 | `get_console_history` | List console history | ✅ | — | `includeResponses`=true (`limit` not exercised) | 12.06 | R |
 | 28 | `recall_console_command` | Recall history command | ✅ | — | `dryRun` + real | 12.07–12.08 | R |
 | 29 | `run_console_command` | Execute console command | ✅ | — | `dryRun` + real | 12.04–12.05 | R |
 | 30 | `get_concept_details` | Concept metadata | ✅ | — | `conceptRefs`, `languageRefs` | 06.05, 06.15 | F+S |
@@ -43,7 +43,7 @@ check (follow-up query / structure dump / file read), **F** = file read of a tem
 | 32 | `alter_structure` | Language structure writes | ✅ | ✅ | ops CREATE_CONCEPTS/CREATE_ENUM/UPDATE_*×3/RENAME_*×3; `make`=true; invalid op | 06.02, 06.04, 06.06–06.12 | R+S |
 | 33 | `query_structure` | Structure reads | ✅ | (▲) | ops GET_ENUMERATION_LITERALS(both forms)/IS_SUBCONCEPT_OF/GET_SUB_CONCEPTS/GET_ASSIGNABLE_CONCEPTS/GET_ALL_SUPERCONCEPTS/LIST_CONCEPT_ASPECTS/IS_SMART_REFERENCE/GET_ASSIGNABLE_REFERENCES; `mode`,`sortBy`,`scopeMode`,`kindFilter` (see §C) | 06.16–06.22, 08.22–08.24, 09.05, 10.12 | R+F |
 | 34 | `scaffold_editor` | Generate editor | ✅ | ✅ | `type`=editor/component; `detectComponents`; include-lists; invalid=bad concept | 09.01–09.04 | R+S |
-| 35 | `create_run_configuration` | Make run config | ✅ | ✅ | default + `configurationName`; invalid=non-runnable | 11.01–11.03 | R+S |
+| 35 | `create_run_configuration` | Make run config | ✅ | ✅ | default + `configurationName`; ClassConcept-with-`main` + `ITestCase` dispatch; invalid=non-runnable | 11.01–11.03, 11.06–11.07 | R+S |
 | 36 | `parse_java_and_insert` | Parse+insert Java | ✅ | ✅ | `featureKind`=CLASS/METHOD/FIELD/NESTED_CLASS/CLASS_CONTENT/STATEMENTS/EXPRESSION; `insert.mode`=root/child/console/replace; invalid=CLASS_STUB, unknown key | 10.01–10.10 | R+S |
 
 (–) under "Invalid?" = no invalid case included for that tool because none is meaningful/safe
@@ -81,7 +81,7 @@ failure mode is representatively covered by `alter_structure` (06.12) and `query
 - **`GET_ASSIGNABLE_REFERENCES.mode`**: exhaustive ✔(08.23), completion ✔(08.24)
 - **`GET_ASSIGNABLE_REFERENCES.sortBy`**: relevance ✔(08.24a), name ✔(08.24b), module ✔(08.24c), distance ✔(08.24d)
 - **`GET_ASSIGNABLE_REFERENCES.scopeMode`**: local ✔(08.24a), model ✔(08.24b), module ✔(08.24c), project ✔(08.24d), imports ✔(08.24e), jdk ✔(08.24f)
-- **`GET_ASSIGNABLE_REFERENCES.kindFilter`**: constructors / instanceMethods / staticMethods / classes — **best-effort (10.12)**. *Partial:* meaningful only in a BaseLanguage method/constructor-call completion context, which this DSL-focused scenario does not construct; the step records whether each value is accepted.
+- **`GET_ASSIGNABLE_REFERENCES.kindFilter`**: instanceMethods ✔(10.12.s3a), staticMethods ✔(10.12.s3b), constructors ✔(10.12.s3c), classes ✔(10.12.s3d). Exercised against the BaseLanguage call/type roles seeded in `McpRunnable` (`baseMethodDeclaration` on an `IMethodCall`; `classifier` on a `ClassifierType`); each call asserts a non-empty candidate set whose every `kind` equals the requested value.
 - **`query_nodes.operation`**: FIND_INSTANCES ✔(08.01), FIND_USAGES ✔(08.08), GET_PARENT ✔(08.09), GET_ROOT ✔(08.10), GET_MODEL_FOR_NODE ✔(08.11), NODE_INDEX ✔(08.12), SIBLINGS ✔(08.13), GET_CHILD_ROLE ✔(08.14)
 - **`query_nodes.scope` (FIND_INSTANCES)**: editable ✔(08.01), all ✔(08.02), models ✔(08.03), modules ✔(08.04), roots ✔(08.05)
 - **`alter_nodes.operation`**: MOVE_CHILD ✔(07.32), MOVE_NODE_TO_PARENT ✔(07.33), MAKE ✔(06.13/06.24/06.25), FIX_REFERENCES ✔(07.34)
@@ -96,7 +96,7 @@ failure mode is representatively covered by `alter_structure` (06.12) and `query
 - **`get_concept_details`**: conceptRefs ✔(06.05), languageRefs ✔(06.15)
 - **`parse_java_and_insert.featureKind`**: CLASS ✔(10.01), METHOD ✔(10.02), FIELD ✔(10.03), NESTED_CLASS ✔(10.04), CLASS_CONTENT ✔(10.05), STATEMENTS ✔(10.06), EXPRESSION ✔(10.07)
 - **`parse_java_and_insert.insert.mode`**: root ✔(10.01), child ✔(10.02–10.05), console ✔(10.06–10.07), replace ✔(10.08)
-- **`create_run_configuration` dispatch**: ClassConcept→Java Application ✔(11.01). *Documented, not exercised:* `IMainClass`→Java Application, `ITestCase`→JUnit Tests (would require building an IMainClass/ITestCase node).
+- **`create_run_configuration` dispatch**: ClassConcept-with-`main`→Java Application ✔(11.01; this is the "Java class with a `public static void main` run via a run configuration" case, executed in optional 11.05); `ITestCase`→JUnit Tests ✔(11.06–11.07, via the stock `jetbrains.mps.lang.test.structure.NodesTestCase`). *Not exercised:* `IMainClass`→Java Application — `IMainClass` (`jetbrains.mps.execution.util`) has no stock BaseLanguage implementer, so reaching it needs a DSL/demo concept (`jetbrains.mps.execution.demo`) a generic MPS project may not have loaded; this branch is covered by the toolset's unit tests instead.
 
 ## D. Tools intentionally NOT covered (out of scope)
 

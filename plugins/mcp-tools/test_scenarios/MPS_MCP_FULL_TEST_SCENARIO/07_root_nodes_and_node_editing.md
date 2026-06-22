@@ -295,15 +295,19 @@ Validate-only add of a State to Gearbox; nothing is persisted.
   }
 }
 ```
-- Validation: `ok==true`. (Target given by name `Driving`; it resolves in scope — both states
-  share the `GearboxStateChart` root.)
+- Validation: `ok==true`. (Target given by **plain name** `Driving`, a non-root sibling State;
+  SET REFERENCE resolves it in the role's search scope — both states share the `GearboxStateChart`
+  root. A name that does not resolve in scope would now return `ok==false` with `NOT_FOUND`.)
+- Note: keep the plain name — do **not** substitute the captured persistent `r:` ref
+  (`{{GBX_DRIVING_REF}}`). This step guards SET REFERENCE's in-scope by-name resolution.
 
 ---
 
 ### Step 07.20 — `update_node SET REFERENCE` — set transition `event → go` `[SUCCESS]`
 
 Same shape, `references: [["{{GBX_TRANS_REF}}", "event", "go"]]`.
-- Validation: `ok==true`.
+- Validation: `ok==true`. (Plain name `go`, a non-root Event, resolves in scope; keep the plain
+  name rather than `{{GBX_GO_REF}}` — same rationale as 07.19.)
 
 ---
 

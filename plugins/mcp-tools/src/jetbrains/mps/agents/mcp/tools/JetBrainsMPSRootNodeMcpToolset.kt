@@ -403,7 +403,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Updates or deletes an MPS root node from a JSON blueprint. The root node itself (and its persistent ID) is preserved; its properties, references, and children are re-set to match the blueprint. This is a **full-root rewrite** — for partial updates prefer surgical tools if `mps_mcp_update_node`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`).
+        Updates or deletes an MPS root node from a JSON blueprint. The root node's persistent ID is preserved; its properties, references, and children are re-set to match the blueprint. The `name` property is included in the rewrite, so a different `name` in the blueprint renames the root (the ID is unchanged); omit `name` to keep the current one. This is a **full-root rewrite** — for partial updates prefer surgical tools if `mps_mcp_update_node`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`).
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeReference: String,

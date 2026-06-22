@@ -311,16 +311,17 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     // ── update_root_node_from_json ───────────────────────────────────────────────────────
 
     @Test
-    fun `update_root_node_from_json updates non-name properties and preserves name`() {
-        // The implementation of updateNodeFromBlueprint intentionally preserves the root's
-        // `name` (it's the root's identity). Verify both: (1) non-name properties ARE updated
-        // and (2) `name` survives even when the blueprint tries to overwrite it.
+    fun `update_root_node_from_json applies a rename and re-sets non-name properties`() {
+        // updateNodeFromBlueprint is a full-root rewrite: the `name` property is applied like any
+        // other (IMPL-3). Verify both: (1) a different `name` in the blueprint renames the root —
+        // the envelope reflects the new name and a fresh re-resolve of the (unchanged) reference
+        // confirms it — and (2) non-name properties are re-set too.
         val rootRef = createConceptRoot("Original")
 
         val json = """
             { "concept": "$conceptDeclarationFqn",
               "properties": [
-                { "name": "name", "value": "AttemptedRename" },
+                { "name": "name", "value": "RenamedRoot" },
                 { "name": "virtualPackage", "value": "test.pkg" }
               ] }
         """.trimIndent()
@@ -328,13 +329,13 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             it.mps_mcp_update_root_node_from_json(rootRef, json, dryRun = false)
         }
         val data = expectOk(response)
-        assertEquals("Original", data.get("name").asString)
+        assertEquals("RenamedRoot", data.get("name").asString)
         assertEquals("test.pkg", data.get("virtualFolder").asString)
 
         readOnRepo {
             val node = PersistenceFacade.getInstance().createNodeReference(rootRef).resolve(structureModel.repository)
             assertNotNull(node)
-            assertEquals("Original", node!!.name)
+            assertEquals("RenamedRoot", node!!.name)
             assertEquals("test.pkg", node.getPropertyByName("virtualPackage"))
         }
     }
@@ -350,6 +351,7 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             it.mps_mcp_update_root_node_from_json(rootRef, json, dryRun = false)
         }
         val data = expectOk(response)
+        assertEquals("name omitted from blueprint must be preserved", "UpdateMe", data.get("name").asString)
         val fix = data.get("fixReferences")
         assertNotNull("update response must carry data.fixReferences: $response", fix)
         val fixObj = fix.asJsonObject

@@ -8,6 +8,7 @@ import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import com.intellij.openapi.application.EDT
+import com.intellij.openapi.application.WriteAction
 import jetbrains.mps.persistence.MementoImpl
 import jetbrains.mps.module.PersistenceContextImpl
 import jetbrains.mps.project.AbstractModule
@@ -48,7 +49,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Adds or deletes a dependency of an MPS module based on the operation parameter. Supported operations: ADD or DELETE. 
-        For ADD: Supported scopes: Default, Design, Compile, Runtime, Provided, Generation Target, Extends. `Extends` is routed per source kind (Language→extendedLanguages, Generator→depGenerators, DevKit→extendedDevkits; Solution and cross-kind combinations are rejected). Returns `{ "added":true }` on change, or `{ "added":false, "reason":"providedByDevKit" }` when the dependency is already supplied by a used DevKit. See `mps-aspect-accessories/references/module-level-deps.md` for the scope-dispatch table and the "Extends typically needs a Default companion" note.
+        For ADD: Supported scopes: Default, Design, Compile, Runtime, Provided, Generation Target, Extends. `Extends` is routed per source kind (Language→extendedLanguages, Generator→depGenerators, DevKit→extendedDevkits; Solution and cross-kind combinations are rejected). Returns `{ "added":true }` on change, or `{ "added":false, "reason":"providedByDevKit" }` when the dependency is already supplied by a used DevKit. ADD is an upsert on a single edge: a module holds at most one dependency per source→target pair, so re-adding an existing edge updates its `scope`/`reexport` in place (no duplicate is created) — `added:true` is returned for both a fresh insert and an in-place update. See `mps-aspect-accessories/references/module-level-deps.md` for the scope-dispatch table and the "Extends typically needs a Default companion" note.
         For DELETE: Both the regular `<dependencies>` list and the per-kind `Extends` collection are probed; any removal counts as success. See `mps-aspect-accessories/references/module-level-deps.md` for the dispatch details.
     """)
     suspend fun mps_mcp_module_dependency(
@@ -801,8 +802,28 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             return@withMpsProject errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
         }
         var fsWarning: String? = null
-        if (deleteFiles) {
-            fsWarning = warningMessageOrRethrow { moduleDir?.delete() }
+        val dir = moduleDir
+        if (deleteFiles && dir != null) {
+            // IFile.delete() routes to VirtualFile.delete(), which asserts an active write
+            // action. The executeCommand block above (which would have satisfied that, just
+            // like the rollback path's in-command descriptorFile.delete()) has already closed,
+            // so the on-disk removal must re-enter a write action on the EDT. Running it bare
+            // here — as before — only threw the write-access assertion into fsWarning and left
+            // the directory on disk. We keep the I/O out of the model-access command (the o1
+            // note's intent) by re-entering only a write action, not the model command; the
+            // save() above already flushed descriptor I/O so the VFS view is current.
+            var deleted = false
+            fsWarning = warningMessageOrRethrow {
+                withContext(Dispatchers.EDT) {
+                    WriteAction.runAndWait<Throwable> { deleted = dir.delete() }
+                }
+            }
+            // delete() reports an unthrown failure (missing VFS entry / IOException it swallowed
+            // internally) as a false return; surface it so the response doesn't claim a clean
+            // removal while files remain.
+            if (fsWarning == null && !deleted) {
+                fsWarning = "Could not delete module directory: ${dir.path}"
+            }
         }
         val payload = jsonObject {
             addProperty("name", removedName ?: moduleName)

@@ -61,6 +61,15 @@ abstract class AbstractNodeOps : AbstractOps() {
         val xmlReferenceIndex: Int
     )
 
+    private fun restoreReference(node: SNode, link: SReferenceLink, target: ResolveInfo?) {
+        if (target == null) {
+            node.dropReference(link)
+        }
+        else {
+            node.setReference(link, target)
+        }
+    }
+
     protected fun readNodeJsonOrFile(jsonOrPath: String?, dryRun: Boolean = false): String? {
         return readJsonOrFile(jsonOrPath, dryRun)?.let { unwrapNodeJsonEnvelope(it) }
     }
@@ -370,9 +379,10 @@ abstract class AbstractNodeOps : AbstractOps() {
         // BEFORE deleting the existing children/references. If any step throws, the original
         // node is left intact instead of being emptied with no rollback.
 
-        // Stage properties: name is intentionally skipped (kept stable; renames go through a
-        // dedicated tool). Warn loudly so a caller that supplied a different name is not
-        // misled into thinking their rename request was applied.
+        // Stage properties (including `name`): this tool is a full-root rewrite, so every
+        // property in the blueprint — name included — is applied to match it. The apply phase
+        // below skips nulling `name` only to avoid a transient nameless state, not to ignore a
+        // rename; the staged value (if the blueprint supplied one) overwrites it afterward.
         val stagedProperties = mutableListOf<Pair<SProperty, String?>>()
         val properties = jsonObject.requireArray("properties", jsonPath)
         if (properties != null) {
@@ -385,18 +395,6 @@ abstract class AbstractNodeOps : AbstractOps() {
                         "Unknown property '$propName' at $jsonPath.properties[$propIndex]: " +
                                 "concept '${sConcept.name}' has no such property"
                     )
-                if (sProperty == SNodeUtil.property_INamedConcept_name) {
-                    val currentName = node.getProperty(sProperty)
-                    if (propValue != currentName) {
-                        nodeOpsLogger.warn(
-                            "updateNodeFromBlueprint at $jsonPath: blueprint requested rename from " +
-                                    "'$currentName' to '$propValue', but the 'name' property is " +
-                                    "intentionally skipped here. Use the dedicated rename tool " +
-                                    "(e.g. mps_mcp_update_node or a rename refactoring)."
-                        )
-                    }
-                    return@forEachIndexed
-                }
                 stagedProperties += sProperty to propValue
             }
         }
@@ -485,7 +483,9 @@ abstract class AbstractNodeOps : AbstractOps() {
         // Callers that need stronger guarantees should wrap this in an outer
         // transactional unit (e.g. a command + manual snapshot/restore).
 
-        // 1. Properties: clear (except name) and re-apply staged values.
+        // 1. Properties: clear existing values, then re-apply the staged ones (which now include
+        // `name`). `name` is not nulled in the clear step to avoid a transient nameless state;
+        // the staged value (if the blueprint supplied one) overwrites it in the next line.
         sConcept.properties.forEach {
             if (it != SNodeUtil.property_INamedConcept_name) {
                 node.setProperty(it, null)
@@ -730,7 +730,9 @@ abstract class AbstractNodeOps : AbstractOps() {
 
             val sReferenceLink = node.concept.referenceLinks.find { it.name == referenceRole } ?: return@executeShortCommandOnEdt errJson("Reference link '$referenceRole' not found in concept '${node.concept.name}'", McpErrorCode.NOT_FOUND)
 
+            var fixResult: FixReferencesResult? = null
             if (targetNodeRefStr != null) {
+                val previousReference = node.getReference(sReferenceLink)?.describeTarget()
                 applyReferenceUpdate(
                     ownerNode = node,
                     link = sReferenceLink,
@@ -745,16 +747,78 @@ abstract class AbstractNodeOps : AbstractOps() {
                     dryRun = false,
                     allowDynamicReference = true,
                     validateXmlReference = false,
-                    persistentReferencesOnly = false
+                    // Keep this true so a bare plain name is NOT routed through the global
+                    // first-match root lookup (resolveNodeReference), which ignores the reference
+                    // role's search scope and could bind an out-of-scope or ambiguous root.
+                    // Persistent r:/i: refs and the explicit Model.Root form still resolve directly
+                    // via resolveReferenceTarget; a bare name returns null there and is stored as a
+                    // dynamic reference, then resolved within scope by the pass below (parity with
+                    // the blueprint-insert path, which also uses the default true).
+                    persistentReferencesOnly = true
                 )
+                // A bare plain name is stored by applyReferenceUpdate as a dynamic reference.
+                // Resolve just this role through its scope so an in-scope name is materialized,
+                // while unrelated references on this node/subtree are left untouched. If resolution
+                // still fails, restore the previous value and fail loudly.
+                val currentReference = node.getReference(sReferenceLink)
+                val needsScopeResolution = (currentReference as? SRefImpl)?.resolveInfo == targetNodeRefStr ||
+                        currentReference?.targetNode == null
+                if (needsScopeResolution) {
+                    fixResult = performFixReference(mpsProject, node, sReferenceLink)
+                    if (node.getReference(sReferenceLink)?.targetNode == null) {
+                        restoreReference(node, sReferenceLink, previousReference)
+                        persistOrRefreshConsole(model, console)
+                        return@executeShortCommandOnEdt errJson(
+                            "Reference target '$targetNodeRefStr' for role '$referenceRole' did not resolve to a node in scope. " +
+                                    "Pass a persistent node reference (r:...) or a name that is unique within the role's search scope.",
+                            McpErrorCode.NOT_FOUND
+                        )
+                    }
+                }
             } else {
                 // Deletion
                 node.dropReference(sReferenceLink)
             }
 
             val warn = persistOrRefreshConsole(model, console)
-            okJson(nodeInfoJsonObject(node), warnings = listOfNotNull(warn))
+            val info = if (fixResult != null) withFixReferencesInfo(nodeInfoJsonObject(node), fixResult) else nodeInfoJsonObject(node)
+            okJson(info, warnings = listOfNotNull(warn))
         }
+    }
+
+    private fun performFixReference(mpsProject: MPSProject, node: SNode, link: SReferenceLink): FixReferencesResult {
+        val reference = node.getReference(link)
+            ?: return FixReferencesResult(fixed = 0, repointed = 0, stillBroken = 0, message = "No reference found")
+        val targetBefore = reference.targetNode
+
+        val smodelRef = reference as? SRefImpl
+        val info = smodelRef?.resolveInfo
+        if (info.isNullOrEmpty()) {
+            val name = targetBefore?.name
+            if (name != null) {
+                smodelRef?.resolveInfo = name
+            }
+        }
+
+        val resolver = mpsProject.getComponent(ResolverComponent::class.java)
+        resolver?.resolveScopesOnly(reference, mpsProject.repository)
+
+        val targetAfter = node.getReference(link)?.targetNode
+        val sourceModel = node.model
+        if (sourceModel is SModelInternal && targetAfter != null) {
+            ensureReferenceDependencies(sourceModel, targetAfter.reference, targetAfter)
+        }
+
+        val fixed = if (targetBefore == null && targetAfter != null) 1 else 0
+        val repointed = if (targetBefore != null && targetAfter != null && targetAfter != targetBefore) 1 else 0
+        val stillBroken = if (targetBefore == null && targetAfter == null) 1 else 0
+        val message = when {
+            fixed == 0 && repointed == 0 && stillBroken == 0 -> "Reference is already correctly resolved"
+            fixed == 0 && repointed == 0 -> "1 broken reference could not be resolved"
+            repointed > 0 -> "1 reference repointed to correct target"
+            else -> "1 broken reference resolved"
+        }
+        return FixReferencesResult(fixed = fixed, repointed = repointed, stillBroken = stillBroken, message = message)
     }
 
     /**

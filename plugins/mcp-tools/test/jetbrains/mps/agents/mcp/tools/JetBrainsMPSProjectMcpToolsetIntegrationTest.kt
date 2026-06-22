@@ -361,6 +361,37 @@ class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
      * embeds the object directly) or a stringified JSON payload (fallback). Unwrap both layers
      * and hand back the object.
      */
+    @Test
+    fun `get-project-structure includeNodes implies includeRootNodes and inlines the AST`() {
+        // IMPL-4: includeNodes=true must descend into root nodes even when includeRootNodes is
+        // left at its default (false). Before the fix the model reported only `rootNodesCount`
+        // and the requested AST was silently dropped.
+        val rootName = "ImplFourRoot${System.nanoTime()}"
+        createConceptRoot(rootName)
+
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(
+                startingPoint = structureModelRef,
+                includeNodes = true,
+                // includeRootNodes intentionally left at its default (false) to exercise the implication
+            )
+        }
+
+        val payload = readJsonObjectFromOkPath(response)
+        assertFalse(
+            "includeNodes must inline root nodes, not fall back to the rootNodesCount summary: $payload",
+            payload.has("rootNodesCount")
+        )
+        val rootNodes = payload.getAsJsonArray("rootNodes")
+        assertNotNull("model payload must carry an inlined rootNodes array: $payload", rootNodes)
+        val root = rootNodes.map { it.asJsonObject }.singleOrNull { it.get("name").asString == rootName }
+            ?: error("created root '$rootName' must appear in the inlined rootNodes: $payload")
+        // The inlined root carries the full deep node shape (concept + children container) that
+        // nodeHierarchyJsonObject produces with deep=true.
+        assertEquals("ConceptDeclaration", root.get("concept").asString)
+        assertTrue("inlined root must carry a children container: $root", root.has("children"))
+    }
+
     private fun readJsonObjectFromOkPath(response: String): JsonObject {
         val outer = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok=true envelope, got: $response", outer.get("ok").asBoolean)

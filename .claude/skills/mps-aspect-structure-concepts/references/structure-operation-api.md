@@ -290,6 +290,8 @@ Parameters:
 
 The response is a structured object: `{ ok, data: [...candidates], meta: { totalMatches, returnedMatches, suppressedMatches, truncated, inferenceSummary }, error? }`.
 
+> **`kindFilter` is meaningful only on a BaseLanguage call/type reference role.** The candidate kind is derived from each candidate's concept (`ConstructorDeclaration → constructors`, `StaticMethodDeclaration → staticMethods`, `InstanceMethodDeclaration → instanceMethods`, `Classifier → classes`), so the filter only bites where the role's scope yields those member/type declarations: `baseMethodDeclaration` on an `IMethodCall` (`InstanceMethodCallOperation`, `StaticMethodCall`, `ClassCreator`), or `classifier` on a `ClassifierType`. On a DSL reference role (or any role whose scope is plain nodes) every candidate's kind is `unknown`, so a `kindFilter` filters the whole set out. (A real `ClassCreator` — needed for `constructors` — comes from `new <type>(args)` against a resolvable constructor; a no-arg `new Foo()` is a `DefaultClassCreator`, which references `classifier` rather than `baseMethodDeclaration`.)
+
 #### `LIST_CONCEPT_ASPECTS`
 Finds and groups all aspect root nodes (Editor, Constraints, etc.) for a concept and optionally its superconcepts across languages.
 

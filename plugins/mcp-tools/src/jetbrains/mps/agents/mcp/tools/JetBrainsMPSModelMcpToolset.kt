@@ -27,8 +27,8 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Adds or deletes one or more imports to an MPS model and ensures the containing module has a `Default` dependency on each target's module. Already-imported targets are skipped when adding. `targetModels` accepts a single name/reference or a JSON array. Returns `{ "added": N, "alreadyPresent": M }`.
-        Supported operations: ADD or DELETE. 
+        Adds or deletes one or more imports to an MPS model and ensures the containing module has a `Default` dependency on each target's module. Already-imported targets are skipped when adding. `targetModels` accepts a single name/reference or a JSON array. ADD returns `{ "added": N, "alreadyPresent": M }`; DELETE returns `{ "removed": true|false }` where `removed:false` means the import was not present — a successful idempotent no-op, not a failure. A model never imports itself, so when source and target resolve to the same model the ADD is dropped (no import is written) and DELETE returns `removed:false`.
+        Supported operations: ADD or DELETE.
     """
     )
     suspend fun mps_mcp_model_dependency(
@@ -199,7 +199,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     suspend fun mps_mcp_model_used_language(
         @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
         modelReference: String,
-        @McpDescription("Language or devkit name or reference")
+        @McpDescription("Language or devkit to add/remove. Accepts a persistent reference (`l:<uuid>:<qualifiedName>` for a language, `<uuid>(<name>)` for a devkit) or a plain qualified name. A plain name resolves against languages/devkits loaded in the project; a Language module that was created but never built is also resolved by name via the project repository.")
         usedLanguage: String,
         @McpDescription("Kind: 'language' or 'devkit'")
         kind: String,
@@ -235,6 +235,13 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                         PersistenceFacade.getInstance().createLanguage(usedLanguage)
                     } ?: jetbrains.mps.smodel.language.LanguageRegistry.getInstance(mpsProject.repository).allLanguages
                         .find { it.qualifiedName == usedLanguage }
+                    // A freshly-created Language module that has never been built has no
+                    // LanguageRuntime, so it is absent from LanguageRegistry.allLanguages above.
+                    // Fall back to resolving the Language *module* by name in the project
+                    // repository and adapting it to an SLanguage via its module id (no runtime
+                    // needed) — this lets an unbuilt language be imported by plain name.
+                    ?: (resolveModule(mpsProject, usedLanguage, projectOnly = false) as? jetbrains.mps.smodel.Language)
+                        ?.let { jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration.getLanguage(it) }
                     ?: return@executeShortCommandOnEdt errJson("Language not found: $usedLanguage")
 
                     // k: when the language is already supplied by an imported DevKit, addLanguage

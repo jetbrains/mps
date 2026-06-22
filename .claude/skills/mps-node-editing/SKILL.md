@@ -27,7 +27,7 @@ All child, property, and reference operations on existing nodes go through `mps_
 | `DELETE` × `CHILD`      | `childNodeRef`                                                | Removes the child from its parent. |
 | `SET` × `PROPERTY`      | `properties` = `[[nodeRef, propertyName, value], …]`          | Batch operation; returns per-row results. |
 | `DELETE` × `PROPERTY`   | `nodeReference`, `propertyName`                               | Clears a single property. |
-| `SET` × `REFERENCE`     | `references` = `[[nodeRef, role, targetRefOrName], …]`        | Batch operation; `targetRefOrName` accepts `r:...` refs or a plain name for auto-resolution. |
+| `SET` × `REFERENCE`     | `references` = `[[nodeRef, role, targetRefOrName], …]`        | Batch operation; `targetRefOrName` accepts an `r:...` ref or a plain name. A plain name is resolved within the reference role's search scope; if it cannot be resolved the call fails (`NOT_FOUND`), preserves the previous reference value, and stores no dangling reference. |
 | `DELETE` × `REFERENCE`  | `nodeReference`, `referenceRole`                              | Clears a single reference. |
 
 `ADD` × `PROPERTY` and `ADD` × `REFERENCE` are not valid combinations and return an error envelope.

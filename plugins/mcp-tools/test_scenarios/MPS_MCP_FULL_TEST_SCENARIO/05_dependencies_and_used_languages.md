@@ -247,6 +247,11 @@ Adds a model import from `mcp.test.sandbox.other` to `mcp.test.sandbox.model`. R
 }
 ```
 - Validation: `ok==true`; `data.added==true` (or `data.providedByDevKit` truthy, acceptable).
+- Note: `mcp.test.statechart` is created in Part 03 but is not built until Part 06, so this step
+  exercises **by-name resolution of a not-yet-built language**. Pass the plain qualified name as
+  shown — do **not** substitute the persistent `l:<uuid>:<name>` form. Resolving an unbuilt
+  language module by name is the behavior under test; reverting to a persistent ref would silently
+  drop that regression coverage.
 
 ---
 

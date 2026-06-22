@@ -41,9 +41,10 @@ Append a **Final Summary** section containing, at minimum:
 5. **Unexpected successes** (failure-expected calls that succeeded) — count + list of step ids.
 6. **Tools fully covered** — list. Should be every `mps_mcp_*` tool exercised across parts
    01–13 (cross-check against `COVERAGE_MATRIX.md`).
-7. **Tools partially covered** — list with reason (expected: `mps_mcp_query_structure`
-   `GET_ASSIGNABLE_REFERENCES` `kindFilter` if you marked it best-effort; any tool whose step
-   failed).
+7. **Tools partially covered** — list with reason (expected: none for the `mps_mcp_*` tools —
+   `GET_ASSIGNABLE_REFERENCES` `kindFilter` is now fully exercised by Step 10.12; list any tool
+   whose step failed, plus `create_run_configuration`'s `IMainClass` path, which is documented
+   as not-exercised in `COVERAGE_MATRIX.md` rather than run).
 8. **Tools not covered** — list with reason (expected: none of the `mps_mcp_*` tools; the
    generic IDE file tools and `execute_run_configuration` if you skipped the optional step).
 9. **Enumeration values covered** — copy the enum checklist from `COVERAGE_MATRIX.md` and mark
