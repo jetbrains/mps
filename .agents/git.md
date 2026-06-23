@@ -19,6 +19,10 @@ Branches named with a full release version, such as `2024.3`, represent release 
 
 Derive a new branch of the current `master` or the current release branch in order to make changes.
 
+Before deriving a branch, check the current branch and recent local and remote release branches. If the task is tied to a YouTrack fix version or a user-named release branch, use that release as the base. Otherwise use `master` unless the user says otherwise.
+
+If the current branch already follows `<MPS_VERSION>/<user_name>/<topic>` and the task is a continuation of that work, stay on it. Create a new branch only when the user asks or when the task clearly requires isolating a new change.
+
 ## Git worktrees
 
 Use Git worktrees for new branches only when asked explicitly.
@@ -38,6 +42,8 @@ Use Git worktrees for new branches only when asked explicitly.
 Every commit produced with AI assistance must include this trailer:
 
 `Co-Authored-By: <identity of the AI agent>`
+
+For Codex, use `Co-Authored-By: Codex <codex@openai.com>`.
 
 ## Pushing
 
