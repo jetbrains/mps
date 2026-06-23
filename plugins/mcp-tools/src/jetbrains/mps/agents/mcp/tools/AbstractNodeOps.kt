@@ -15,6 +15,7 @@ import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.resolve.ResolverComponent
+import jetbrains.mps.scope.ErrorScope
 import jetbrains.mps.scope.VisibleDepsSearchScope
 import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.smodel.SModelInternal
@@ -22,6 +23,7 @@ import jetbrains.mps.smodel.SReference as SRefImpl
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
+import jetbrains.mps.smodel.constraints.ModelConstraints
 import kotlinx.coroutines.currentCoroutineContext
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SConcept
@@ -42,6 +44,7 @@ import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.module.SearchScope
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.util.ProgressMonitor
 import java.util.Random
 import java.util.concurrent.atomic.AtomicBoolean
@@ -782,13 +785,13 @@ abstract class AbstractNodeOps : AbstractOps() {
                 if (needsScopeResolution) {
                     fixResult = performFixReference(mpsProject, node, sReferenceLink)
                     if (node.getReference(sReferenceLink)?.targetNode == null) {
+                        // Compute the diagnostic while the unresolved (dynamic) reference is still
+                        // attached — its search scope is needed to tell "no such name" from
+                        // "ambiguous name" — then restore the previous value and fail.
+                        val detail = describeByNameResolutionFailure(node, sReferenceLink, targetNodeRefStr, referenceRole)
                         restoreReference(node, sReferenceLink, previousReference)
                         persistOrRefreshConsole(model, console)
-                        return@executeShortCommandOnEdt errJson(
-                            "Reference target '$targetNodeRefStr' for role '$referenceRole' did not resolve to a node in scope. " +
-                                    "Pass a persistent node reference (r:...) or a name that is unique within the role's search scope.",
-                            McpErrorCode.NOT_FOUND
-                        )
+                        return@executeShortCommandOnEdt errJson(detail, McpErrorCode.NOT_FOUND)
                     }
                 }
             } else {
@@ -804,6 +807,53 @@ abstract class AbstractNodeOps : AbstractOps() {
             }
             okJson(info, warnings = listOfNotNull(warn))
         }
+    }
+
+    /**
+     * Builds the NOT_FOUND error detail for a SET-REFERENCE-by-name that failed scope resolution.
+     * The platform's [jetbrains.mps.scope.Scope.resolve] collapses two distinct failures into a
+     * single null return: a name that matches NO in-scope node, and a name that matches MORE THAN
+     * ONE (it refuses to guess between equally-named candidates). The ambiguous case is common with
+     * the model-wide default scope used by references that declare no custom search scope — e.g. two
+     * same-named nodes in different roots of the same model — and the old generic "did not resolve
+     * to a node in scope" wording hid it, so a caller read an ambiguous name as "not found" and never
+     * learned to disambiguate with a persistent reference.
+     *
+     * Re-enumerates the role's search scope (best-effort: any failure falls back to the generic
+     * wording) and counts candidates whose reference text equals [name]. Runs only on the
+     * already-failed path, so the extra scope walk never costs anything on the success path.
+     */
+    private fun describeByNameResolutionFailure(node: SNode, link: SReferenceLink, name: String, role: String): String {
+        val generic = "Reference target '$name' for role '$role' did not resolve to a node in scope. " +
+                "Pass a persistent node reference (r:...) or a name that is unique within the role's search scope."
+        val matches = try {
+            val reference = node.getReference(link) ?: return generic
+            val scope = ModelConstraints.getScope(reference)
+            if (scope is ErrorScope) return generic
+            // getAvailableElements does a prefix match; keep only exact-name candidates, capped — we
+            // only need to tell "none" from "two or more" and to surface a few references to act on.
+            val found = ArrayList<SNode>()
+            for (candidate in scope.getAvailableElements(name)) {
+                if (scope.getReferenceText(node, candidate) == name) {
+                    found.add(candidate)
+                    if (found.size >= 6) break
+                }
+            }
+            found
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            return generic
+        }
+        if (matches.size < 2) {
+            return "Reference target '$name' for role '$role' did not resolve: no node named '$name' was found in the " +
+                    "role's search scope. Pass a persistent node reference (r:...) or a name that exists and is unique " +
+                    "within the role's search scope."
+        }
+        val shown = matches.take(5).joinToString(", ") { PersistenceFacade.getInstance().asString(it.reference) }
+        val count = if (matches.size > 5) "at least ${matches.size}" else matches.size.toString()
+        return "Reference target '$name' for role '$role' is ambiguous: $count nodes named '$name' are in the role's " +
+                "search scope ($shown). By-name resolution requires a unique match — pass a persistent node reference " +
+                "(r:...) to disambiguate."
     }
 
     private fun performFixReference(mpsProject: MPSProject, node: SNode, link: SReferenceLink): FixReferencesResult {
