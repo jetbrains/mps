@@ -95,11 +95,16 @@ class JetBrainsMPSRunConfigurationMcpToolset : AbstractOps() {
         configurationName: String? = null,
     ): String = withMpsProject("Creating MPS run configuration") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
-            val node = resolveNodeReference(mpsProject.repository, nodeReference)
-                ?.resolve(mpsProject.repository)
-                ?: return@executeShortCommandOnEdt errJson(
+            val repo = mpsProject.repository
+            val node = resolveNodeReference(mpsProject, nodeReference)?.resolve(repo)
+            if (node == null) {
+                if (resolveNodeReference(repo, nodeReference)?.resolve(repo) != null) {
+                    return@executeShortCommandOnEdt crossProjectErr("Node '$nodeReference'")
+                }
+                return@executeShortCommandOnEdt errJson(
                     "Node '$nodeReference' not found", McpErrorCode.NOT_FOUND
                 )
+            }
 
             if (node.parent != null) {
                 return@executeShortCommandOnEdt errJson(

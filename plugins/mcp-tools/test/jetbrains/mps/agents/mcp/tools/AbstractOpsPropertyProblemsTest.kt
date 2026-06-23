@@ -318,6 +318,27 @@ class AbstractOpsPropertyProblemsTest {
     }
 
     @Test
+    fun parseJsonOnTruncatedInputAppendsBraceImbalanceHint() {
+        try {
+            // Truncated object (missing closing brace): Gson throws a JsonSyntaxException backed by an
+            // EOFException whose message is "End of input at line N column M ...".
+            ops.parseJson("""{"a":1""")
+            fail("Expected truncated JSON to fail")
+        } catch (e: AbstractOps.McpInvalidRequestException) {
+            // Assert against the REAL Gson message (we fed malformed JSON), so a future Gson reword of
+            // "End of input" fails this test rather than silently disabling the hint.
+            assertTrue(
+                "Expected the EOF Gson message, got: ${e.message}",
+                e.message.orEmpty().contains("End of input")
+            )
+            assertTrue(
+                "Expected the brace-imbalance hint, got: ${e.message}",
+                e.message.orEmpty().contains("unbalanced")
+            )
+        }
+    }
+
+    @Test
     fun dryRunKeepsToolCreatedTempFileAfterRead() {
         val file = ops.saveToTempFileForTest("""{"concept":"test.lang.structure.TestConcept"}""")
         try {

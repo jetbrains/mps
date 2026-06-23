@@ -8,9 +8,9 @@ import java.nio.file.Path
 import java.nio.file.Paths
 
 /**
- * Integration test for [JetBrainsMPSSkillsMcpToolset] that exercises the end-to-end
+ * Integration test for [JetBrainsMPSInitMcpToolset] that exercises the end-to-end
  * `targetDirectory` derivation through a real MCP call context. The plain-JUnit
- * [JetBrainsMPSSkillsMcpToolsetTest] covers the pure VCS-root walk-up and the no-MCP-context
+ * [JetBrainsMPSInitMcpToolsetTest] covers the pure VCS-root walk-up and the no-MCP-context
  * error; this one covers the glue the unit tests cannot reach: with `targetDirectory` omitted,
  * the tool resolves the open MPS project via `projectOrNull`, reads its `basePath`, and installs
  * at the derived root.
@@ -20,7 +20,7 @@ import java.nio.file.Paths
  * project directory (which the harness deletes on teardown) — the walk-up can never escape into the
  * surrounding repository checkout, whatever filesystem the empty test project happens to live on.
  */
-class JetBrainsMPSSkillsMcpToolsetIntegrationTest : McpIntegrationTestBase() {
+class JetBrainsMPSInitMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
     @Test
     fun `derives targetDirectory from the open project's enclosing VCS root`() {
@@ -34,7 +34,7 @@ class JetBrainsMPSSkillsMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val plantedGit = !Files.exists(gitMarker)
         if (plantedGit) Files.createDirectories(gitMarker)
         try {
-            val response = runTool(JetBrainsMPSSkillsMcpToolset()) {
+            val response = runTool(JetBrainsMPSInitMcpToolset()) {
                 it.mps_mcp_initialize_project_for_agents(null)
             }
             val data = expectOk(response)

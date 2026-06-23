@@ -8,6 +8,7 @@ import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import com.intellij.openapi.application.EDT
+import com.intellij.openapi.application.WriteAction
 import jetbrains.mps.persistence.MementoImpl
 import jetbrains.mps.module.PersistenceContextImpl
 import jetbrains.mps.project.AbstractModule
@@ -34,7 +35,6 @@ import org.jetbrains.annotations.Nullable
 import org.jetbrains.mps.openapi.module.FacetsFacade
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SModule
-import org.jetbrains.mps.openapi.module.SModuleId
 import org.jetbrains.mps.openapi.persistence.Memento
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.function.Consumer
@@ -48,7 +48,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription("""
         Adds or deletes a dependency of an MPS module based on the operation parameter. Supported operations: ADD or DELETE. 
-        For ADD: Supported scopes: Default, Design, Compile, Runtime, Provided, Generation Target, Extends. `Extends` is routed per source kind (Language→extendedLanguages, Generator→depGenerators, DevKit→extendedDevkits; Solution and cross-kind combinations are rejected). Returns `{ "added":true }` on change, or `{ "added":false, "reason":"providedByDevKit" }` when the dependency is already supplied by a used DevKit. See `mps-aspect-accessories/references/module-level-deps.md` for the scope-dispatch table and the "Extends typically needs a Default companion" note.
+        For ADD: Supported scopes: Default, Design, Compile, Runtime, Provided, Generation Target, Extends. `Extends` is routed per source kind (Language→extendedLanguages, Generator→depGenerators, DevKit→extendedDevkits; Solution and cross-kind combinations are rejected). Returns `{ "added":true }` on change, or `{ "added":false, "reason":"providedByDevKit" }` when the dependency is already supplied by a used DevKit. ADD is an upsert on a single edge: a module holds at most one dependency per source→target pair, so re-adding an existing edge updates its `scope`/`reexport` in place (no duplicate is created) — `added:true` is returned for both a fresh insert and an in-place update. See `mps-aspect-accessories/references/module-level-deps.md` for the scope-dispatch table and the "Extends typically needs a Default companion" note.
         For DELETE: Both the regular `<dependencies>` list and the per-kind `Extends` collection are probed; any removal counts as success. See `mps-aspect-accessories/references/module-level-deps.md` for the dispatch details.
     """)
     suspend fun mps_mcp_module_dependency(
@@ -86,7 +86,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             }
             val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
 
-            val target = resolveModule(mpsProject, targetModule, projectOnly = false)
+            val target = resolveModulePreferringProject(mpsProject, targetModule)
                 ?: return@executeShortCommandOnEdt errJson("Target module $targetModule not found", McpErrorCode.NOT_FOUND)
 
             val targetRef = target.moduleReference
@@ -192,7 +192,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             // (regular deps, extendedLanguages, depGenerators, extendedDevkits) so the user can still
             // remove an entry whose target module is no longer in the project.
             val persistence = PersistenceFacade.getInstance()
-            val resolvedTargetRef = resolveModule(mpsProject, targetModule, projectOnly = false)?.moduleReference
+            val resolvedTargetRef = resolveModulePreferringProject(mpsProject, targetModule)?.moduleReference
             val targetRef = resolvedTargetRef
                 ?: descriptor.dependencies.find {
                     it.moduleRef.moduleName == targetModule ||
@@ -400,7 +400,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                             // returns SLanguage which cannot be cast to jetbrains.mps.smodel.Language —
                             // they are unrelated types — so route the lookup through the module resolver
                             // and reject anything that isn't an actual Language module.
-                            val parentLang = resolveModule(mpsProject, parentLangName, projectOnly = false) as? Language
+                            val parentLang = resolveModule(mpsProject, parentLangName, projectOnly = true) as? Language
                             if (parentLang == null) {
                                 error = "Parent language not found or is not a Language module: $parentLangName"
                                 return@executeCommand
@@ -801,8 +801,28 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             return@withMpsProject errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
         }
         var fsWarning: String? = null
-        if (deleteFiles) {
-            fsWarning = warningMessageOrRethrow { moduleDir?.delete() }
+        val dir = moduleDir
+        if (deleteFiles && dir != null) {
+            // IFile.delete() routes to VirtualFile.delete(), which asserts an active write
+            // action. The executeCommand block above (which would have satisfied that, just
+            // like the rollback path's in-command descriptorFile.delete()) has already closed,
+            // so the on-disk removal must re-enter a write action on the EDT. Running it bare
+            // here — as before — only threw the write-access assertion into fsWarning and left
+            // the directory on disk. We keep the I/O out of the model-access command (the o1
+            // note's intent) by re-entering only a write action, not the model command; the
+            // save() above already flushed descriptor I/O so the VFS view is current.
+            var deleted = false
+            fsWarning = warningMessageOrRethrow {
+                withContext(Dispatchers.EDT) {
+                    WriteAction.runAndWait<Throwable> { deleted = dir.delete() }
+                }
+            }
+            // delete() reports an unthrown failure (missing VFS entry / IOException it swallowed
+            // internally) as a false return; surface it so the response doesn't claim a clean
+            // removal while files remain.
+            if (fsWarning == null && !deleted) {
+                fsWarning = "Could not delete module directory: ${dir.path}"
+            }
         }
         val payload = jsonObject {
             addProperty("name", removedName ?: moduleName)
@@ -818,7 +838,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpDescription("""
         Lists all available module facet types and their applicability to a specific module (if provided).
 
-        Returns a JSON object with 'ok':true and 'data':{ "facetTypes": [{type, presentation, applicableToModule, recommendedForModule}, ...] } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ "module": {...}, "facetTypes": [{type, presentation, applicableToModule, recommendedForModule}, ...] } on success, or 'ok':false and 'error':"..." on failure. The `module` context is present when `moduleName` is supplied.
     """)
     // FacetsFacade.getInstance() is deprecated in favour of obtaining the registry via the
     // owning ComponentPlugin (e.g. MPSCore), which requires plumbing a ComponentPlugin handle
@@ -830,7 +850,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         executeShortReadOnEdt(mpsProject) {
             val ff = FacetsFacade.getInstance()
                 ?: throw McpUserException(McpErrorCode.INTERNAL_ERROR, "FacetsFacade service is not available")
-            val module = moduleName?.let { resolveModule(mpsProject, it, projectOnly = false) }
+            val module = moduleName?.let { resolveModulePreferringProject(mpsProject, it) }
             val recommendedTypes = module?.let { ff.getApplicableFacetTypes(it.usedLanguages) } ?: emptySet()
 
             val jsonArray = JsonArray()
@@ -846,6 +866,9 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 jsonArray.add(obj)
             }
             val resObj = JsonObject()
+            module?.let {
+                resObj.add("module", moduleFacetContextJsonObject(it, mpsProject))
+            }
             resObj.add("facetTypes", jsonArray)
             okJson(resObj)
         }
@@ -855,7 +878,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpDescription("""
         Gets information about active and persisted facets of a module.
 
-        Returns a JSON object with 'ok':true and 'data':{ "activeFacets": [...], "persistedFacets": [...], "discrepancies": [...] } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ "module": {...}, "activeFacets": [...], "persistedFacets": [...], "discrepancies": [...] } on success, or 'ok':false and 'error':"..." on failure.
     """)
     // See note above mps_mcp_list_facet_types regarding deprecated FacetsFacade.getInstance().
     @Suppress("DEPRECATION")
@@ -863,7 +886,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Module name or reference") moduleName: String
     ): String = withMpsProject("Getting module facets") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val module = resolveModule(mpsProject, moduleName, projectOnly = false)
+            val module = resolveModulePreferringProject(mpsProject, moduleName)
             if (module == null) {
                 errJson("Module $moduleName not found", McpErrorCode.NOT_FOUND)
             } else {
@@ -903,12 +926,21 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 }
 
                 val resObj = JsonObject()
+                resObj.add("module", moduleFacetContextJsonObject(module, mpsProject))
                 resObj.add("activeFacets", activeFacets)
                 resObj.add("persistedFacets", persistedFacets)
                 resObj.add("discrepancies", discrepancies)
                 okJson(resObj)
             }
         }
+    }
+
+    private fun moduleFacetContextJsonObject(module: SModule, mpsProject: MPSProject): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", module.moduleName ?: "")
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(module.moduleReference))
+        addContainingProjectIfForeign(obj, mpsProject, module)
+        return obj
     }
 
     @McpTool

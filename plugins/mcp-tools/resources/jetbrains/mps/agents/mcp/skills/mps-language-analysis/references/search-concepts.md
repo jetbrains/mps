@@ -64,9 +64,10 @@ Returns either `data:[{...}]` inline or a path to a temp file when the payload i
 ```
 name, qualifiedName, conceptAlias, shortDescription, doc, deprecated,
 conceptReference, languageReference,
-superConcept, superInterfaces,
+superConcept, superConceptContainingProject?, superConceptEditableFromCurrentProject?,
+superInterfaces, superInterfaceDetails,
 sourceNode, isAbstract, isInterfaceConcept, isRootable, virtualFolder,
-present:true
+containingProject?, editableFromCurrentProject?, present:true
 ```
 
 Use the `qualifiedName` field (e.g. `"jetbrains.mps.baseLanguage.structure.ClassConcept"`) as the `concept` field in JSON node blueprints — it is unambiguous and does not require a `conceptReference`.

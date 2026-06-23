@@ -620,6 +620,22 @@ class McpToolInputSchemasTest {
     }
 
     @Test
+    fun javaInsertParsesConsoleMode() {
+        val request = parseJavaParseInsertRequest(
+            """
+            {
+              "code": "1 + 2",
+              "featureKind": "EXPRESSION",
+              "insert": {"mode": "console"}
+            }
+            """.trimIndent()
+        )
+
+        val insert = read(request, "getInsert") ?: error("insert must be present")
+        assertEquals("console", read(insert, "getMode"))
+    }
+
+    @Test
     fun javaInsertParsesMemberFeatureKindWithContextNodeRef() {
         val request = parseJavaParseInsertRequest(
             """
@@ -895,6 +911,28 @@ class McpToolInputSchemasTest {
         assertSchemaFailure("Unknown insert.mode 'weird'") {
             parseJavaParseInsertRequest(
                 """{"code":"class Foo {}","featureKind":"CLASS","insert":{"mode":"weird"}}"""
+            )
+        }
+    }
+
+    @Test
+    fun javaInsertRejectsScopeAsUnknownInsertKey() {
+        val message = catchSchemaFailure {
+            parseJavaParseInsertRequest(
+                """{"code":"int x = 1;","featureKind":"STATEMENTS","insert":{"mode":"child","scope":"project","parentRef":"r:m#p","role":"statement"}}"""
+            )
+        }
+        assertTrue(
+            "Expected message to mention 'scope' as unknown parameter, was: $message",
+            message.contains("scope") && message.contains("parameters.insert"),
+        )
+    }
+
+    @Test
+    fun javaInsertRejectsConsoleModeWithNestedTargetFields() {
+        assertSchemaFailure("insert.mode 'console' only accepts 'mode'; for nested console edits use 'child' or 'replace' with a parentRef/targetRef that resolves to a node inside the current console command") {
+            parseJavaParseInsertRequest(
+                """{"code":"1 + 2","featureKind":"EXPRESSION","insert":{"mode":"console","targetRef":"r:m#t"}}"""
             )
         }
     }

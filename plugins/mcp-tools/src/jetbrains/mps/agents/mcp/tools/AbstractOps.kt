@@ -7,6 +7,7 @@ import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.progress.ProcessCanceledException
+import com.intellij.openapi.project.ProjectManager
 import jetbrains.mps.checkers.ConstraintsChecker
 import jetbrains.mps.checkers.RefScopeChecker
 import jetbrains.mps.checkers.TargetConceptChecker2
@@ -60,6 +61,7 @@ import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.util.Consumer
 import java.io.File
+import java.nio.file.Paths
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
@@ -341,6 +343,13 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
+    protected fun reflectionFailureDetail(e: ReflectiveOperationException): String {
+        val cause = if (e is java.lang.reflect.InvocationTargetException) e.cause ?: e else e
+        rethrowIfCancellation(cause)
+        val message = cause.message?.takeIf { it.isNotBlank() } ?: cause.javaClass.simpleName
+        return "$message (${cause.javaClass.simpleName})"
+    }
+
     /**
      * Deletes the given nodes, swallowing non-cancellation throwables. Intended for the rollback
      * arm of a save-failure branch: a delete that throws would propagate past
@@ -481,6 +490,26 @@ abstract class AbstractOps : McpToolset {
         return EditableModelResolution.Ok(model)
     }
 
+    protected fun resolveEditableModel(mpsProject: MPSProject, modelReference: String): EditableModelResolution {
+        val projectModel = resolveModel(mpsProject, modelReference)
+        if (projectModel != null) {
+            if (projectModel !is EditableSModel) {
+                return EditableModelResolution.Err(errJson("Model '$modelReference' is not editable", McpErrorCode.NOT_EDITABLE))
+            }
+            return EditableModelResolution.Ok(projectModel)
+        }
+
+        val model = resolveModel(mpsProject.repository, modelReference)
+            ?: return EditableModelResolution.Err(errJson("Model '$modelReference' not found", McpErrorCode.NOT_FOUND))
+        if (model !is EditableSModel) {
+            return EditableModelResolution.Err(errJson("Model '$modelReference' is not editable", McpErrorCode.NOT_EDITABLE))
+        }
+        if (!isModelInSelectedProject(mpsProject, model)) {
+            return EditableModelResolution.Err(crossProjectErr("Model '$modelReference'"))
+        }
+        return EditableModelResolution.Ok(model)
+    }
+
     /**
      * Result of resolving a node reference plus checking its containing model is editable.
      */
@@ -518,6 +547,57 @@ abstract class AbstractOps : McpToolset {
         return EditableNodeResolution.Ok(node, model)
     }
 
+    protected fun resolveEditableNodeAndModel(
+        mpsProject: MPSProject,
+        nodeReference: String,
+        missingMessageBuilder: (String) -> String = { "Node '$it' not found" },
+        nonEditableMessage: String = "Model containing the node is not editable"
+    ): EditableNodeResolution {
+        val repository = mpsProject.repository
+        val projectNode = resolveNodeReference(mpsProject, nodeReference)?.resolve(repository)
+        if (projectNode != null) {
+            val model = projectNode.model
+            if (model !is EditableSModel) {
+                return EditableNodeResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
+            }
+            return EditableNodeResolution.Ok(projectNode, model)
+        }
+
+        val sNodeRef = resolveNodeReference(repository, nodeReference)
+        val node = sNodeRef?.resolve(repository)
+            ?: return EditableNodeResolution.Err(errJson(missingMessageBuilder(nodeReference), McpErrorCode.NOT_FOUND))
+        val model = node.model
+        if (model !is EditableSModel) {
+            return EditableNodeResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
+        }
+        if (!isModelInSelectedProject(mpsProject, model)) {
+            return EditableNodeResolution.Err(crossProjectErr("Node '$nodeReference'"))
+        }
+        return EditableNodeResolution.Ok(node, model)
+    }
+
+    protected fun resolveEditableConceptNode(mpsProject: MPSProject, conceptRef: String): EditableNodeResolution {
+        val projectNode = resolveConceptNode(mpsProject, conceptRef)
+        if (projectNode != null) {
+            val model = projectNode.model
+            if (model !is EditableSModel) {
+                return EditableNodeResolution.Err(errJson("Model containing concept '$conceptRef' is not editable", McpErrorCode.NOT_EDITABLE))
+            }
+            return EditableNodeResolution.Ok(projectNode, model)
+        }
+
+        val node = resolveConceptNode(mpsProject.repository, conceptRef)
+            ?: return EditableNodeResolution.Err(errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND))
+        val model = node.model
+        if (model !is EditableSModel) {
+            return EditableNodeResolution.Err(errJson("Model containing concept '$conceptRef' is not editable", McpErrorCode.NOT_EDITABLE))
+        }
+        if (!isModelInSelectedProject(mpsProject, model)) {
+            return EditableNodeResolution.Err(crossProjectErr("Concept '$conceptRef'"))
+        }
+        return EditableNodeResolution.Ok(node, model)
+    }
+
     /**
      * True if [model]'s owning module is part of the project that owns [repository]. A single MPS
      * instance shares one module repository across every open project, so the editable resolvers
@@ -530,12 +610,216 @@ abstract class AbstractOps : McpToolset {
     protected fun isModuleInProject(repository: SRepository, model: SModel): Boolean {
         val mpsProject = projectOf(repository) ?: return true
         val module = model.module ?: return false
-        return mpsProject.isProjectModule(module)
+        return isModuleInSelectedProject(mpsProject, module)
     }
 
     /** The [MPSProject] that owns [repository], or null when it is not a project repository. */
     private fun projectOf(repository: SRepository): MPSProject? =
         (repository as? ProjectRepository)?.project as? MPSProject
+
+    protected fun isModuleInSelectedProject(mpsProject: MPSProject, module: SModule): Boolean =
+        mpsProject.projectModulesWithGenerators.any { it.moduleReference == module.moduleReference }
+
+    protected fun isModelInSelectedProject(mpsProject: MPSProject, model: SModel): Boolean =
+        model.module?.let { isModuleInSelectedProject(mpsProject, it) } ?: false
+
+    protected fun isModuleInAnotherOpenProject(mpsProject: MPSProject, module: SModule): Boolean {
+        if (isModuleInSelectedProject(mpsProject, module)) return false
+        val moduleReference = module.moduleReference
+        return ProjectManager.getInstance().openProjects
+            .asSequence()
+            .mapNotNull { ProjectHelper.fromIdeaProject(it) }
+            .filter { it !== mpsProject }
+            .any { openProject ->
+                openProject.projectModulesWithGenerators.any { it.moduleReference == moduleReference }
+            }
+    }
+
+    protected fun isModelInAnotherOpenProject(mpsProject: MPSProject, model: SModel): Boolean =
+        model.module?.let { isModuleInAnotherOpenProject(mpsProject, it) } ?: false
+
+    protected fun isNodeInAnotherOpenProject(mpsProject: MPSProject, node: SNode): Boolean =
+        node.model?.let { isModelInAnotherOpenProject(mpsProject, it) } ?: false
+
+    protected fun isConceptFromAnotherOpenProject(mpsProject: MPSProject, concept: SAbstractConcept): Boolean =
+        concept.sourceNode?.resolve(mpsProject.repository)?.let { isNodeInAnotherOpenProject(mpsProject, it) } ?: false
+
+    /**
+     * Per-call cache of "which open MPS project owns this element", used to add the foreign-project
+     * markers (`containingProject` / `editableFromCurrentProject`) to returned JSON. Resolving
+     * ownership rebuilds [MPSProject.getProjectModulesWithGenerators] (a read action that allocates a
+     * fresh list and expands language-owned generators), so resolving it per node/concept/reference
+     * would be O(elements x project-modules). This cache resolves the current project's module set
+     * once and memoizes each module/concept lookup.
+     *
+     * LIFETIME — create one at the start of a single serialization and discard it when that
+     * serialization returns; NEVER store it in a field, companion, or anything that outlives the call.
+     * Every serialization runs inside a single model-access action held for the whole call:
+     * [executeShortReadOnEdt] / [executeBackgroundRead] take a read lock, [executeShortCommandOnEdt]
+     * takes a command/write lock. Registering or unregistering a module in the repository requires the
+     * model-access WRITE lock, so while our read/command action is held no project's module set can
+     * change, and a project cannot finish opening or closing (its modules cannot be (un)registered).
+     * The memoized snapshot is therefore consistent for the call's lifetime — on the EDT or on a
+     * background read thread alike; the guarantee comes from the lock, not from running on the EDT. A
+     * later project open/close is observed by the next tool call, which builds a fresh cache — there is
+     * nothing to invalidate because the cache never outlives the locked window.
+     */
+    protected class ProjectMembershipCache(val currentProject: MPSProject?) {
+        // Current project's own modules (+ owned generators), resolved once: membership is then a set
+        // lookup instead of rebuilding projectModulesWithGenerators for every element.
+        private val currentModuleRefs: Set<SModuleReference>? =
+            currentProject?.projectModulesWithGenerators?.mapTo(HashSet()) { it.moduleReference }
+
+        // Both maps store null values ("computed, owned by no open project"), so probe with containsKey
+        // to distinguish "not yet computed" from "computed as none" (getOrPut would recompute on null).
+        private val moduleOwner = HashMap<SModuleReference, MPSProject?>()
+        private val conceptOwner = HashMap<SAbstractConcept, MPSProject?>()
+
+        fun ownerOf(module: SModule): MPSProject? {
+            val ref = module.moduleReference
+            if (currentModuleRefs != null && ref in currentModuleRefs) return currentProject
+            if (moduleOwner.containsKey(ref)) return moduleOwner[ref]
+            val owner = ProjectManager.getInstance().openProjects
+                .asSequence()
+                .mapNotNull { ProjectHelper.fromIdeaProject(it) }
+                .firstOrNull { openProject -> openProject.projectModulesWithGenerators.any { it.moduleReference == ref } }
+            moduleOwner[ref] = owner
+            return owner
+        }
+
+        fun ownerOf(model: SModel): MPSProject? = model.module?.let { ownerOf(it) }
+
+        fun ownerOf(node: SNode): MPSProject? = node.model?.let { ownerOf(it) }
+
+        fun ownerOfLanguage(repository: SRepository, language: SLanguage): MPSProject? =
+            language.sourceModuleReference.resolve(repository)?.let { ownerOf(it) }
+
+        fun ownerOfConcept(repository: SRepository, concept: SAbstractConcept): MPSProject? {
+            if (conceptOwner.containsKey(concept)) return conceptOwner[concept]
+            val owner = concept.sourceNode?.resolve(repository)?.let { ownerOf(it) }
+                ?: ownerOfLanguage(repository, concept.language)
+            conceptOwner[concept] = owner
+            return owner
+        }
+    }
+
+    private fun projectReferenceJsonObject(project: MPSProject): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", project.name)
+        normalizedBasePath(project)?.let { obj.addProperty("mpsProjectBaseDirectory", it) }
+        return obj
+    }
+
+    /**
+     * Absolute, normalized project base directory as a string, or null when unavailable or malformed.
+     * Matches the derivation used by `mps_mcp_list_open_projects` so the value can be passed straight
+     * back as the host `projectPath` selector for the foreign project.
+     */
+    private fun normalizedBasePath(project: MPSProject): String? {
+        val base = project.project.basePath ?: return null
+        return try {
+            Paths.get(base).toAbsolutePath().normalize().toString()
+        } catch (e: Throwable) {
+            rethrowIfCancellation(e)
+            null
+        }
+    }
+
+    private fun foreignProjectField(prefix: String, name: String): String =
+        if (prefix.isEmpty()) name else prefix + name.replaceFirstChar { it.uppercaseChar() }
+
+    /**
+     * Adds the foreign-project markers to [obj] when [containingProject] is a *different* open project
+     * than [currentProject]: emits `<prefix>ContainingProject` plus `<prefix>EditableFromCurrentProject`
+     * (always `false`). No-op when there is no current project, no containing project, or both denote
+     * the same open project — so for a same-project or read-only-library element no marker is added and
+     * absence of `editableFromCurrentProject` does NOT imply editable (use the element's `readOnly`).
+     *
+     * The typed overloads below resolve [containingProject] from a module/model/node/language/concept
+     * and dispatch by that element parameter's static type, so always pass a typed value, never a bare
+     * `null` literal. Pass a [ProjectMembershipCache] to share ownership lookups across one serialization
+     * (see [ProjectMembershipCache] for the mandatory per-call lifetime); omit it and each call resolves
+     * against a fresh single-use cache.
+     */
+    protected fun addContainingProjectIfForeign(
+        obj: JsonObject,
+        currentProject: MPSProject?,
+        containingProject: MPSProject?,
+        prefix: String = ""
+    ) {
+        if (currentProject == null || containingProject == null || sameOpenProject(containingProject, currentProject)) return
+        obj.add(foreignProjectField(prefix, "containingProject"), projectReferenceJsonObject(containingProject))
+        obj.addProperty(foreignProjectField(prefix, "editableFromCurrentProject"), false)
+    }
+
+    private fun sameOpenProject(a: MPSProject, b: MPSProject): Boolean {
+        if (a === b || a.project === b.project) return true
+        val aBase = a.project.basePath?.let { Paths.get(it).toAbsolutePath().normalize() }
+        val bBase = b.project.basePath?.let { Paths.get(it).toAbsolutePath().normalize() }
+        return aBase != null && aBase == bBase
+    }
+
+    protected fun addContainingProjectIfForeign(
+        obj: JsonObject,
+        currentProject: MPSProject?,
+        module: SModule?,
+        prefix: String = "",
+        cache: ProjectMembershipCache? = null
+    ) {
+        if (currentProject == null || module == null) return
+        val c = cache ?: ProjectMembershipCache(currentProject)
+        addContainingProjectIfForeign(obj, c.currentProject, c.ownerOf(module), prefix)
+    }
+
+    protected fun addContainingProjectIfForeign(
+        obj: JsonObject,
+        currentProject: MPSProject?,
+        model: SModel?,
+        prefix: String = "",
+        cache: ProjectMembershipCache? = null
+    ) {
+        if (currentProject == null || model == null) return
+        val c = cache ?: ProjectMembershipCache(currentProject)
+        addContainingProjectIfForeign(obj, c.currentProject, c.ownerOf(model), prefix)
+    }
+
+    protected fun addContainingProjectIfForeign(
+        obj: JsonObject,
+        currentProject: MPSProject?,
+        node: SNode?,
+        prefix: String = "",
+        cache: ProjectMembershipCache? = null
+    ) {
+        if (currentProject == null || node == null) return
+        val c = cache ?: ProjectMembershipCache(currentProject)
+        addContainingProjectIfForeign(obj, c.currentProject, c.ownerOf(node), prefix)
+    }
+
+    protected fun addContainingProjectIfForeign(
+        obj: JsonObject,
+        currentProject: MPSProject?,
+        language: SLanguage?,
+        repository: SRepository,
+        prefix: String = "",
+        cache: ProjectMembershipCache? = null
+    ) {
+        if (currentProject == null || language == null) return
+        val c = cache ?: ProjectMembershipCache(currentProject)
+        addContainingProjectIfForeign(obj, c.currentProject, c.ownerOfLanguage(repository, language), prefix)
+    }
+
+    protected fun addContainingProjectIfForeign(
+        obj: JsonObject,
+        currentProject: MPSProject?,
+        concept: SAbstractConcept?,
+        repository: SRepository,
+        prefix: String = "",
+        cache: ProjectMembershipCache? = null
+    ) {
+        if (currentProject == null || concept == null) return
+        val c = cache ?: ProjectMembershipCache(currentProject)
+        addContainingProjectIfForeign(obj, c.currentProject, c.ownerOfConcept(repository, concept), prefix)
+    }
 
     /**
      * Error for a write target that resolved to a module outside the selected project. Bare-name
@@ -543,7 +827,7 @@ abstract class AbstractOps : McpToolset {
      * project's model can resolve there; the message steers the caller to the persistent reference,
      * which carries the module id and is unambiguous.
      */
-    private fun crossProjectErr(what: String): String =
+    protected fun crossProjectErr(what: String): String =
         errJson(
             "$what resolves to a module that is not part of the project selected by projectPath. " +
                 "The MCP write tools refuse to modify a different open project. If the target really is " +
@@ -588,6 +872,47 @@ abstract class AbstractOps : McpToolset {
             )
         }
         return RootableConceptResolution.Ok(sConcept)
+    }
+
+    protected fun resolveRootableConcept(
+        mpsProject: MPSProject,
+        conceptName: String?,
+        conceptReference: String?,
+        label: String = ""
+    ): RootableConceptResolution {
+        if (conceptName.isNullOrEmpty() && conceptReference.isNullOrEmpty()) {
+            return RootableConceptResolution.Err(
+                errJson("Either 'concept' (qualifiedName) or 'conceptReference' must be provided$label", McpErrorCode.INVALID_REQUEST)
+            )
+        }
+        val repository = mpsProject.repository
+        val sConcept = (if (!conceptReference.isNullOrEmpty()) resolveConceptPreferringProject(mpsProject, conceptReference) else null)
+            ?: (if (!conceptName.isNullOrEmpty()) resolveConceptPreferringProject(mpsProject, conceptName) else null)
+            ?: return RootableConceptResolution.Err(
+                rootableConceptNotFound(mpsProject, conceptName, conceptReference, label)
+            )
+        if (sConcept !is SConcept || !isRootable(sConcept, repository)) {
+            return RootableConceptResolution.Err(
+                errJson("Concept '${sConcept.name}' is not a rootable concept$label", McpErrorCode.INVALID_REQUEST)
+            )
+        }
+        return RootableConceptResolution.Ok(sConcept)
+    }
+
+    private fun rootableConceptNotFound(
+        mpsProject: MPSProject,
+        conceptName: String?,
+        conceptReference: String?,
+        label: String
+    ): String {
+        val foreignConcept = (if (!conceptReference.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptReference) else null)
+            ?: (if (!conceptName.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptName) else null)
+        return if (foreignConcept != null && isConceptFromAnotherOpenProject(mpsProject, foreignConcept)) {
+            crossProjectErr("Concept '${conceptReference ?: conceptName}'")
+        }
+        else {
+            errJson("Concept not found$label: concept='$conceptName', conceptReference='$conceptReference'", McpErrorCode.NOT_FOUND)
+        }
     }
 
     /**
@@ -686,15 +1011,28 @@ abstract class AbstractOps : McpToolset {
                 ?: throw McpInvalidRequestException("Failed to parse JSON")
         } catch (e: JsonSyntaxException) {
             val message = e.message ?: "Invalid JSON syntax"
+            // EOF / unterminated input is almost always an unbalanced brace/bracket, not truncation.
+            // NOTE: this keys on Gson's (English) JsonSyntaxException message text ("End of input" /
+            // "Unterminated ..."). Gson messages are not localized today, so this is safe; if a future
+            // Gson reword changes them the hint simply stops appearing (no behavior break). The unit test
+            // parses real malformed JSON so such a reword fails the test rather than silently
+            // disabling the hint.
+            val looksTruncated = message.contains("End of input", ignoreCase = true) ||
+                                 message.contains("Unterminated", ignoreCase = true)
+            val hint = if (looksTruncated) {
+                "\n\nThis usually means an unbalanced '{'/'[' — verify every brace/bracket is closed. " +
+                "For large blueprints, pass an absolute temp-file path instead of inline JSON " +
+                "(see the mps-node-editing skill)."
+            } else ""
             val regex = "at line (\\d+) column (\\d+)".toRegex()
             val matchResult = regex.find(message)
             if (matchResult != null) {
                 val line = matchResult.groupValues[1].toInt()
                 val column = matchResult.groupValues[2].toInt()
                 val excerpt = getJsonExcerpt(jsonString, line, column)
-                throw McpInvalidRequestException("$message\n\n$excerpt")
+                throw McpInvalidRequestException("$message\n\n$excerpt$hint")
             }
-            throw McpInvalidRequestException(message)
+            throw McpInvalidRequestException("$message$hint")
         }
     }
 
@@ -734,8 +1072,23 @@ abstract class AbstractOps : McpToolset {
     protected fun moduleReferenceJsonObject(ref: SModuleReference): JsonObject =
         namedReferenceJsonObject(ref.moduleName ?: "", PersistenceFacade.getInstance().asString(ref))
 
+    protected fun moduleReferenceJsonObject(ref: SModuleReference, currentProject: MPSProject?, cache: ProjectMembershipCache? = null): JsonObject =
+        moduleReferenceJsonObject(ref).also {
+            addContainingProjectIfForeign(it, currentProject, currentProject?.let { project -> ref.resolve(project.repository) }, cache = cache)
+        }
+
     protected fun modelReferenceJsonObject(ref: SModelReference): JsonObject =
         namedReferenceJsonObject(ref.modelName, PersistenceFacade.getInstance().asString(ref))
+
+    protected fun modelReferenceJsonObject(ref: SModelReference, currentProject: MPSProject?, cache: ProjectMembershipCache? = null): JsonObject =
+        modelReferenceJsonObject(ref).also {
+            addContainingProjectIfForeign(it, currentProject, currentProject?.let { project -> ref.resolve(project.repository) }, cache = cache)
+        }
+
+    protected fun languageReferenceJsonObject(language: SLanguage, currentProject: MPSProject?, cache: ProjectMembershipCache? = null): JsonObject =
+        namedReferenceJsonObject(language.qualifiedName, PersistenceFacade.getInstance().asString(language)).also {
+            currentProject?.let { project -> addContainingProjectIfForeign(it, project, language, project.repository, cache = cache) }
+        }
 
     protected fun <T> namedReferenceJsonArray(
         items: Iterable<T>,
@@ -752,31 +1105,37 @@ abstract class AbstractOps : McpToolset {
         return result
     }
 
-    private fun devkitExtendedDevkitsJsonArray(descriptor: DevkitDescriptor): JsonArray =
+    private fun devkitExtendedDevkitsJsonArray(descriptor: DevkitDescriptor, currentProject: MPSProject): JsonArray =
         namedReferenceJsonArray(
             items = descriptor.extendedDevkits,
             itemName = { it.moduleName ?: "" },
             itemReference = { PersistenceFacade.getInstance().asString(it) }
-        )
+        ) {
+            addContainingProjectIfForeign(this, currentProject, it.resolve(currentProject.repository))
+        }
 
-    private fun devkitExportedLanguagesJsonArray(descriptor: DevkitDescriptor): JsonArray =
+    private fun devkitExportedLanguagesJsonArray(descriptor: DevkitDescriptor, currentProject: MPSProject): JsonArray =
         namedReferenceJsonArray(
             items = descriptor.exportedLanguages,
             itemName = { it.moduleName ?: "" },
             itemReference = { PersistenceFacade.getInstance().asString(it) }
-        )
+        ) {
+            addContainingProjectIfForeign(this, currentProject, it.resolve(currentProject.repository) as? Language)
+        }
 
-    private fun devkitExportedSolutionsJsonArray(descriptor: DevkitDescriptor): JsonArray =
+    private fun devkitExportedSolutionsJsonArray(descriptor: DevkitDescriptor, currentProject: MPSProject): JsonArray =
         namedReferenceJsonArray(
             items = descriptor.exportedSolutions,
             itemName = { it.moduleName ?: "" },
             itemReference = { PersistenceFacade.getInstance().asString(it) }
-        )
+        ) {
+            addContainingProjectIfForeign(this, currentProject, it.resolve(currentProject.repository))
+        }
 
-    private fun associatedGenPlanJsonObject(plan: SModelReference): JsonObject =
-        namedReferenceJsonObject(plan.modelName, PersistenceFacade.getInstance().asString(plan))
+    private fun associatedGenPlanJsonObject(plan: SModelReference, currentProject: MPSProject): JsonObject =
+        modelReferenceJsonObject(plan, currentProject)
 
-    protected fun nodeInfoJsonObject(n: SNode): JsonObject {
+    protected fun nodeInfoJsonObject(n: SNode, currentProject: MPSProject? = null, cache: ProjectMembershipCache? = null): JsonObject {
         val name = n.name ?: n.presentation
         val concept = n.concept.name
         val conceptReference = PersistenceFacade.getInstance().asString(n.concept)
@@ -810,11 +1169,14 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("virtualFolder", virtualFolder)
         obj.addProperty("isRoot", isRoot)
         obj.addProperty("present", true)
+        val c = cache ?: ProjectMembershipCache(currentProject)
+        addContainingProjectIfForeign(obj, currentProject, n, cache = c)
+        n.model?.repository?.let { addContainingProjectIfForeign(obj, currentProject, n.concept, it, "concept", c) }
         return obj
     }
 
-    protected fun nodeInfoJson(n: SNode): String {
-        return nodeInfoJsonObject(n).toString()
+    protected fun nodeInfoJson(n: SNode, currentProject: MPSProject? = null, cache: ProjectMembershipCache? = null): String {
+        return nodeInfoJsonObject(n, currentProject, cache).toString()
     }
 
     /**
@@ -823,8 +1185,8 @@ abstract class AbstractOps : McpToolset {
      * in particular when an out-of-range `position` was clamped to an append. The `index` is
      * omitted for nodes with no parent/containment (e.g. roots).
      */
-    protected fun nodeInfoJsonObjectWithIndex(n: SNode): JsonObject =
-        nodeInfoJsonObject(n).also { info ->
+    protected fun nodeInfoJsonObjectWithIndex(n: SNode, currentProject: MPSProject? = null, cache: ProjectMembershipCache? = null): JsonObject =
+        nodeInfoJsonObject(n, currentProject, cache).also { info ->
             val containment = n.containmentLink
             val parentNode = n.parent
             if (containment != null && parentNode != null) {
@@ -832,12 +1194,13 @@ abstract class AbstractOps : McpToolset {
             }
         }
 
-    protected fun nodeHierarchyToJson(node: SNode, deep: Boolean): String {
-        return nodeHierarchyJsonObject(node, deep).toString()
+    protected fun nodeHierarchyToJson(node: SNode, deep: Boolean, currentProject: MPSProject? = null, cache: ProjectMembershipCache? = null): String {
+        return nodeHierarchyJsonObject(node, deep, currentProject, cache).toString()
     }
 
-    protected fun nodeHierarchyJsonObject(node: SNode, deep: Boolean): JsonObject {
+    protected fun nodeHierarchyJsonObject(node: SNode, deep: Boolean, currentProject: MPSProject? = null, cache: ProjectMembershipCache? = null): JsonObject {
         val repository = node.model?.repository
+        val c = cache ?: ProjectMembershipCache(currentProject)
         val obj = JsonObject()
         val declarationNode = node.concept.sourceNode?.resolve(repository)
         obj.addProperty("name", node.name ?: node.presentation)
@@ -845,6 +1208,8 @@ abstract class AbstractOps : McpToolset {
         addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
         obj.addProperty("conceptReference", PersistenceFacade.getInstance().asString(node.concept))
         obj.addProperty("reference", PersistenceFacade.getInstance().asString(node.reference))
+        addContainingProjectIfForeign(obj, currentProject, node, cache = c)
+        repository?.let { addContainingProjectIfForeign(obj, currentProject, node.concept, it, "concept", c) }
 
         val properties = JsonArray()
         for (prop in node.concept.properties) {
@@ -863,11 +1228,12 @@ abstract class AbstractOps : McpToolset {
         val references = JsonArray()
         for (ref in node.references) {
             val link = ref.link
-            val refObj = referenceLinkJsonObject(link, repository, includeDeprecated = true)
+            val refObj = referenceLinkJsonObject(link, repository, includeDeprecated = true, currentProject = currentProject, cache = c)
             val targetNode = ref.targetNode
             if (targetNode != null) {
                 refObj.addProperty("target", targetNode.name ?: targetNode.presentation)
                 refObj.addProperty("targetReference", PersistenceFacade.getInstance().asString(targetNode.reference))
+                addContainingProjectIfForeign(refObj, currentProject, targetNode, "target", c)
             }
             else {
                 refObj.add("target", JsonNull.INSTANCE)
@@ -883,11 +1249,11 @@ abstract class AbstractOps : McpToolset {
             val childrenInRole = childrenByRole[link] ?: emptyList()
             if (childrenInRole.isEmpty() && link.isOptional) continue
 
-            val childRole = containmentLinkInfoJsonObject(link, repository, includeDeprecated = true)
+            val childRole = containmentLinkInfoJsonObject(link, repository, includeDeprecated = true, currentProject = currentProject, cache = c)
             if (deep) {
                 val nodes = JsonArray()
                 for (child in childrenInRole) {
-                    nodes.add(nodeHierarchyJsonObject(child, deep))
+                    nodes.add(nodeHierarchyJsonObject(child, deep, currentProject, c))
                 }
                 childRole.add("nodes", nodes)
             }
@@ -897,6 +1263,7 @@ abstract class AbstractOps : McpToolset {
                     val childObj = JsonObject()
                     childObj.addProperty("name", child.name ?: child.presentation)
                     childObj.addProperty("reference", PersistenceFacade.getInstance().asString(child.reference))
+                    addContainingProjectIfForeign(childObj, currentProject, child, cache = c)
                     childSummaries.add(childObj)
                 }
                 childRole.add("children", childSummaries)
@@ -979,7 +1346,13 @@ abstract class AbstractOps : McpToolset {
         return result
     }
 
-    private fun referenceLinkJsonObject(link: SReferenceLink, repository: SRepository?, includeDeprecated: Boolean): JsonObject {
+    private fun referenceLinkJsonObject(
+        link: SReferenceLink,
+        repository: SRepository?,
+        includeDeprecated: Boolean,
+        currentProject: MPSProject? = null,
+        cache: ProjectMembershipCache? = null
+    ): JsonObject {
         val obj = JsonObject()
         obj.addProperty("role", link.name)
         obj.addProperty("type", link.targetConcept.name)
@@ -987,6 +1360,9 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("cardinality", getCardinality(link))
         val declarationNode = link.sourceNode?.resolve(repository)
         obj.addProperty("doc", getDoc(declarationNode))
+        if (repository != null) {
+            addContainingProjectIfForeign(obj, currentProject, link.targetConcept, repository, "type", cache)
+        }
         if (includeDeprecated) {
             obj.addProperty("deprecated", getDeprecationInfo(declarationNode))
         }
@@ -1001,14 +1377,27 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
-    protected fun nodeWithProblemsToJson(node: SNode, problems: Map<SNode, List<NodeReportItem>>, deep: Boolean = true): String {
-        return nodeWithProblemsJsonObject(node, problems, deep).toString()
+    protected fun nodeWithProblemsToJson(
+        node: SNode,
+        problems: Map<SNode, List<NodeReportItem>>,
+        deep: Boolean = true,
+        currentProject: MPSProject? = null,
+        cache: ProjectMembershipCache? = null
+    ): String {
+        return nodeWithProblemsJsonObject(node, problems, deep, currentProject, cache).toString()
     }
 
-    protected fun nodeWithProblemsJsonObject(node: SNode, problems: Map<SNode, List<NodeReportItem>>, deep: Boolean = true): JsonObject {
+    protected fun nodeWithProblemsJsonObject(
+        node: SNode,
+        problems: Map<SNode, List<NodeReportItem>>,
+        deep: Boolean = true,
+        currentProject: MPSProject? = null,
+        cache: ProjectMembershipCache? = null
+    ): JsonObject {
         val nodeProblems = problems[node] ?: emptyList()
         val problemsByTarget = nodeProblems.groupBy { it.messageTarget }
         val repository = node.model?.repository
+        val c = cache ?: ProjectMembershipCache(currentProject)
 
         val obj = JsonObject()
         obj.addProperty("name", node.name ?: node.presentation)
@@ -1016,8 +1405,13 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("concept", node.concept.name)
         obj.addProperty("doc", getDoc(node.concept.sourceNode?.resolve(repository)))
         obj.addProperty("conceptReference", PersistenceFacade.getInstance().asString(node.concept))
+        addContainingProjectIfForeign(obj, currentProject, node, cache = c)
+        repository?.let { addContainingProjectIfForeign(obj, currentProject, node.concept, it, "concept", c) }
 
-        val nodeLevelProblems = problemsByTarget.filter { it.key !is PropertyMessageTarget && it.key !is ReferenceMessageTarget }.values.flatten()
+        val nodeLevelProblems = problemsByTarget
+            .filter { it.key !is PropertyMessageTarget && it.key !is ReferenceMessageTarget }
+            .values
+            .flatten()
         obj.add("problems", nodeProblemsJsonArray(nodeLevelProblems))
 
         val properties = JsonArray()
@@ -1055,12 +1449,13 @@ abstract class AbstractOps : McpToolset {
             val refProblems = problemsByTarget.filter { it.key.sameAs(refTarget) }.values.flatten()
             if (ref == null && link.isOptional && refProblems.isEmpty()) continue
 
-            val refObj = referenceLinkJsonObject(link, repository, includeDeprecated = false)
+            val refObj = referenceLinkJsonObject(link, repository, includeDeprecated = false, currentProject = currentProject, cache = c)
             if (ref != null) {
                 val targetNode = ref.targetNode
                 if (targetNode != null) {
                     refObj.addProperty("target", targetNode.name ?: targetNode.presentation)
                     refObj.addProperty("targetReference", PersistenceFacade.getInstance().asString(targetNode.reference))
+                    addContainingProjectIfForeign(refObj, currentProject, targetNode, "target", c)
                 }
                 else {
                     refObj.add("target", JsonNull.INSTANCE)
@@ -1086,12 +1481,12 @@ abstract class AbstractOps : McpToolset {
             val roleProblems = problemsByTarget.filter { it.key.sameAs(roleTarget) }.values.flatten()
             if (childrenInRole.isEmpty() && link.isOptional && roleProblems.isEmpty()) continue
 
-            val roleObj = containmentLinkInfoJsonObject(link, repository, includeDeprecated = false)
+            val roleObj = containmentLinkInfoJsonObject(link, repository, includeDeprecated = false, currentProject = currentProject, cache = c)
             roleObj.add("problems", nodeProblemsJsonArray(roleProblems))
             if (deep) {
                 val nodes = JsonArray()
                 for (child in childrenInRole) {
-                    nodes.add(nodeWithProblemsJsonObject(child, problems, true))
+                    nodes.add(nodeWithProblemsJsonObject(child, problems, true, currentProject, c))
                 }
                 roleObj.add("nodes", nodes)
             }
@@ -1131,16 +1526,27 @@ abstract class AbstractOps : McpToolset {
         return false
     }
 
-    protected fun nodeWithProblemsListToJson(rootNode: SNode, problems: Map<SNode, List<NodeReportItem>>): String {
-        return nodeWithProblemsListJsonArray(rootNode, problems).toString()
+    protected fun nodeWithProblemsListToJson(
+        rootNode: SNode,
+        problems: Map<SNode, List<NodeReportItem>>,
+        currentProject: MPSProject? = null,
+        cache: ProjectMembershipCache? = null
+    ): String {
+        return nodeWithProblemsListJsonArray(rootNode, problems, currentProject, cache).toString()
     }
 
-    protected fun nodeWithProblemsListJsonArray(rootNode: SNode, problems: Map<SNode, List<NodeReportItem>>): JsonArray {
+    protected fun nodeWithProblemsListJsonArray(
+        rootNode: SNode,
+        problems: Map<SNode, List<NodeReportItem>>,
+        currentProject: MPSProject? = null,
+        cache: ProjectMembershipCache? = null
+    ): JsonArray {
         val resultList = JsonArray()
+        val c = cache ?: ProjectMembershipCache(currentProject)
 
         fun traverse(node: SNode) {
             if (hasLocalProblems(node, problems)) {
-                resultList.add(nodeWithProblemsJsonObject(node, problems, false))
+                resultList.add(nodeWithProblemsJsonObject(node, problems, false, currentProject, c))
             }
             for (child in node.children) {
                 traverse(child)
@@ -1314,15 +1720,20 @@ abstract class AbstractOps : McpToolset {
         return arr
     }
 
-    protected fun modelWithProblemsToJson(model: SModel, problems: List<ModelReportItem>): String {
-        return modelWithProblemsJsonObject(model, problems).toString()
+    protected fun modelWithProblemsToJson(model: SModel, problems: List<ModelReportItem>, currentProject: MPSProject? = null): String {
+        return modelWithProblemsJsonObject(model, problems, currentProject).toString()
     }
 
-    protected fun modelWithProblemsJsonObject(model: SModel, problems: List<ModelReportItem>): JsonObject {
+    protected fun modelWithProblemsJsonObject(
+        model: SModel,
+        problems: List<ModelReportItem>,
+        currentProject: MPSProject? = null
+    ): JsonObject {
         val obj = JsonObject()
         obj.addProperty("name", model.name.value)
         obj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
         obj.addProperty("module", model.module?.moduleName ?: "")
+        addContainingProjectIfForeign(obj, currentProject, model)
         val problemArray = JsonArray()
         for (problem in problems) {
             val problemObj = problemJsonObject(problem.severity, problem.message)
@@ -1389,17 +1800,18 @@ abstract class AbstractOps : McpToolset {
         return modelReferenceJsonObject(ref).toString()
     }
 
-    protected fun modelInfoJson(m: SModel): String {
-        return modelInfoJsonObject(m).toString()
+    protected fun modelInfoJson(m: SModel, currentProject: MPSProject? = null): String {
+        return modelInfoJsonObject(m, currentProject).toString()
     }
 
-    protected fun modelInfoJsonObject(m: SModel): JsonObject {
+    protected fun modelInfoJsonObject(m: SModel, currentProject: MPSProject? = null): JsonObject {
         val obj = JsonObject()
         obj.addProperty("name", m.name.value)
         obj.addProperty("module", m.module?.moduleName ?: "")
         obj.addProperty("reference", PersistenceFacade.getInstance().asString(m.reference))
         obj.addProperty("readOnly", m.isReadOnly)
         obj.addProperty("present", true)
+        addContainingProjectIfForeign(obj, currentProject, m)
         return obj
     }
 
@@ -1422,6 +1834,7 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("name", name)
         obj.addProperty("reference", reference)
         obj.addProperty("readOnly", m.isReadOnly)
+        addContainingProjectIfForeign(obj, project, m)
         if (vf != null) {
             obj.addProperty("virtualFolder", vf)
         }
@@ -1433,11 +1846,11 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("kind", moduleKindLabel(m, descriptor))
 
         if (descriptor is DevkitDescriptor) {
-            obj.add("extendedDevkits", devkitExtendedDevkitsJsonArray(descriptor))
-            obj.add("exportedLanguages", devkitExportedLanguagesJsonArray(descriptor))
-            obj.add("exportedSolutions", devkitExportedSolutionsJsonArray(descriptor))
+            obj.add("extendedDevkits", devkitExtendedDevkitsJsonArray(descriptor, project))
+            obj.add("exportedLanguages", devkitExportedLanguagesJsonArray(descriptor, project))
+            obj.add("exportedSolutions", devkitExportedSolutionsJsonArray(descriptor, project))
             descriptor.associatedGenPlan?.let {
-                obj.add("associatedGenPlan", associatedGenPlanJsonObject(it))
+                obj.add("associatedGenPlan", associatedGenPlanJsonObject(it, project))
             }
         }
 
@@ -1638,11 +2051,36 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
-    protected fun resolveConceptNode(repository: SRepository, conceptRef: String): SNode? {
+    protected fun resolveConceptPreferringProject(mpsProject: MPSProject, conceptRef: String): SAbstractConcept? {
+        refreshRegistries(mpsProject.repository)
+        resolveConceptNodePreferringProject(mpsProject, conceptRef)?.let {
+            return MetaAdapterByDeclaration.getConcept(it)
+        }
+        return resolveConcept(mpsProject.repository, conceptRef)
+    }
+
+    protected fun resolveConceptNode(repository: SRepository, conceptRef: String): SNode? =
+        resolveConceptNodeInModules(repository, conceptRef, repository.modules) { true }
+
+    protected fun resolveConceptNode(mpsProject: MPSProject, conceptRef: String): SNode? =
+        resolveConceptNodeInModules(mpsProject.repository, conceptRef, mpsProject.projectModulesWithGenerators) {
+            it.model?.let { model -> isModelInSelectedProject(mpsProject, model) } == true
+        }
+
+    protected fun resolveConceptNodePreferringProject(mpsProject: MPSProject, conceptRef: String): SNode? =
+        resolveConceptNode(mpsProject, conceptRef)
+            ?: resolveConceptNode(mpsProject.repository, conceptRef)
+
+    private fun resolveConceptNodeInModules(
+        repository: SRepository,
+        conceptRef: String,
+        modules: Iterable<SModule>,
+        acceptResolvedNode: (SNode) -> Boolean
+    ): SNode? {
         // 1. Try as a node reference
         try {
             val nodeReference = PersistenceFacade.getInstance().createNodeReference(conceptRef)
-            nodeReference.resolve(repository)?.let { return it }
+            nodeReference.resolve(repository)?.let { if (acceptResolvedNode(it)) return it }
         } catch (e: Exception) {
             rethrowIfCancellation(e)
         }
@@ -1658,7 +2096,7 @@ abstract class AbstractOps : McpToolset {
                 // Strip ':qualifiedName' suffix from the concept part.
                 val langId = langRef.removePrefix("c:").removePrefix("l:")
                 val conceptId = conceptRefOrName.substringBefore(":")
-                for (module in repository.modules) {
+                for (module in modules) {
                     if (module !is Language) continue
                     val moduleId = module.moduleReference.moduleId.toString().removePrefix("l:")
                     if (moduleId == langId || module.moduleName == langId) {
@@ -1684,7 +2122,7 @@ abstract class AbstractOps : McpToolset {
             val possibleModelName = conceptRef.substring(0, lastDot)
             val conceptName = conceptRef.substring(lastDot + 1)
 
-            for (module in repository.modules) {
+            for (module in modules) {
                 for (model in module.models) {
                     if (model.name.longName == possibleModelName ||
                         model.name.longName == "$possibleModelName.structure"
@@ -1702,7 +2140,7 @@ abstract class AbstractOps : McpToolset {
         // 4. Scan all structure models: match by numeric node ID (if input is a plain long) or by
         //    concept name. A single pass over structure models covers both cases.
         val isNumericId = conceptRef.toLongOrNull() != null
-        for (module in repository.modules) {
+        for (module in modules) {
             if (module !is Language) continue
             for (model in module.models) {
                 if (!model.name.longName.endsWith(".structure")) continue
@@ -1725,16 +2163,59 @@ abstract class AbstractOps : McpToolset {
             rethrowIfCancellation(e)
         }
 
-        // 2. Try searching by long name
+        // 2. Try searching by name. A bare name matches a model only by its full value (stereotype
+        // included) or when the model has no stereotype. The loose longName match is intentionally
+        // not applied to stereotyped models: a deployed language ships a generated `<lang>@descriptor`
+        // model whose longName equals the language name, which would otherwise shadow the same-named
+        // Language module whenever a name is resolved (e.g. get_project_structure startingPoint).
         for (module in repository.modules) {
             for (model in module.models) {
-                if (model.name.longName == modelReference || model.name.value == modelReference) {
+                if (modelNameMatches(model, modelReference)) {
                     return model
                 }
             }
         }
         return null
     }
+
+    /**
+     * Whether [modelReference] addresses [model] by name. Matches the model's full value (which
+     * includes any stereotype, e.g. `foo.bar@tests`) or its bare longName, but the bare longName
+     * only matches a model with no stereotype — a stereotyped model must be addressed by full value.
+     */
+    private fun modelNameMatches(model: SModel, modelReference: String): Boolean =
+        model.name.value == modelReference ||
+            (model.name.longName == modelReference && model.name.stereotype.isEmpty())
+
+    protected fun resolveModel(mpsProject: MPSProject, modelReference: String, projectOnly: Boolean = true): SModel? {
+        // 1. Try as a model reference
+        try {
+            val ref = PersistenceFacade.getInstance().createModelReference(modelReference)
+            val resolved = ref.resolve(mpsProject.repository)
+            if (resolved != null && (!projectOnly || isModelInSelectedProject(mpsProject, resolved))) {
+                return resolved
+            }
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+        }
+
+        // 2. Try searching by name, project first by default. See modelNameMatches: a stereotyped
+        // model (e.g. a deployed language's `<lang>@descriptor`) is only matched by its full value,
+        // so a bare language name falls through to the same-named Language module instead.
+        val modulesToSearch = if (projectOnly) mpsProject.projectModulesWithGenerators else mpsProject.repository.modules
+        for (module in modulesToSearch) {
+            for (model in module.models) {
+                if (modelNameMatches(model, modelReference)) {
+                    return model
+                }
+            }
+        }
+        return null
+    }
+
+    protected fun resolveModelPreferringProject(mpsProject: MPSProject, modelReference: String): SModel? =
+        resolveModel(mpsProject, modelReference, projectOnly = true)
+            ?: resolveModel(mpsProject.repository, modelReference)
 
     protected fun resolveModule(repository: SRepository, moduleRef: String): SModule? {
         // 1. Try as a module reference
@@ -1760,7 +2241,7 @@ abstract class AbstractOps : McpToolset {
             val ref = PersistenceFacade.getInstance().createModuleReference(moduleRef)
             val resolved = ref.resolve(mpsProject.repository)
             if (resolved != null) {
-                if (!projectOnly || mpsProject.isProjectModule(resolved)) {
+                if (!projectOnly || isModuleInSelectedProject(mpsProject, resolved)) {
                     return resolved
                 }
             }
@@ -1777,6 +2258,10 @@ abstract class AbstractOps : McpToolset {
         }
         return null
     }
+
+    protected fun resolveModulePreferringProject(mpsProject: MPSProject, moduleRef: String): SModule? =
+        resolveModule(mpsProject, moduleRef, projectOnly = true)
+            ?: resolveModule(mpsProject.repository, moduleRef)
 
     // Expands each Language module by also including its owned generators. DevKit and Solution
     // modules are passed through unchanged because they do not own generators.
@@ -1819,6 +2304,16 @@ abstract class AbstractOps : McpToolset {
         return allLanguages.find { it.qualifiedName == languageRef }
     }
 
+    protected fun resolveLanguagePreferringProject(mpsProject: MPSProject, languageRef: String): SLanguage? {
+        if (languageRef.startsWith("l:")) {
+            return resolveLanguage(mpsProject.repository, languageRef)
+        }
+        (resolveModule(mpsProject, languageRef, projectOnly = true) as? Language)?.let {
+            return MetaAdapterByDeclaration.getLanguage(it)
+        }
+        return resolveLanguage(mpsProject.repository, languageRef)
+    }
+
     protected fun resolveNodeReference(repository: SRepository, nodeRefStr: String): SNodeReference? {
         if (nodeRefStr.startsWith("c:")) {
             throw McpInvalidReferenceException("Expected a node reference (r:... or i:...), but a concept reference was provided: $nodeRefStr")
@@ -1858,11 +2353,65 @@ abstract class AbstractOps : McpToolset {
         return null
     }
 
+    protected fun resolveNodeReference(mpsProject: MPSProject, nodeRefStr: String): SNodeReference? {
+        if (nodeRefStr.startsWith("c:")) {
+            throw McpInvalidReferenceException("Expected a node reference (r:... or i:...), but a concept reference was provided: $nodeRefStr")
+        }
+        val repository = mpsProject.repository
+        val facade = PersistenceFacade.getInstance()
+        try {
+            val ref = facade.createNodeReference(nodeRefStr)
+            val node = ref.resolve(repository)
+            if (node != null && node.model?.let { isModelInSelectedProject(mpsProject, it) } == true) {
+                return node.reference
+            }
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            // Try searching by name (root nodes)
+            // Support "ModelName.RootName" format
+            if (nodeRefStr.contains(".")) {
+                val lastDot = nodeRefStr.lastIndexOf(".")
+                val modelName = nodeRefStr.substring(0, lastDot)
+                val rootName = nodeRefStr.substring(lastDot + 1)
+                for (module in mpsProject.projectModulesWithGenerators) {
+                    for (model in module.models) {
+                        if (model.name.longName == modelName || model.name.value == modelName) {
+                            for (root in model.rootNodes) {
+                                if (root.name == rootName) return root.reference
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (module in mpsProject.projectModulesWithGenerators) {
+                for (model in module.models) {
+                    for (root in model.rootNodes) {
+                        if (root.name == nodeRefStr) {
+                            return root.reference
+                        }
+                    }
+                }
+            }
+        }
+        return null
+    }
+
+    protected fun resolveNodeReferencePreferringProject(mpsProject: MPSProject, nodeRefStr: String): SNodeReference? =
+        resolveNodeReference(mpsProject, nodeRefStr)
+            ?: resolveNodeReference(mpsProject.repository, nodeRefStr)
+
     protected fun containmentLinkInfoJson(link: SContainmentLink, repository: SRepository?): String {
         return containmentLinkInfoJsonObject(link, repository, includeDeprecated = true).toString()
     }
 
-    protected fun containmentLinkInfoJsonObject(link: SContainmentLink, repository: SRepository?, includeDeprecated: Boolean = true): JsonObject {
+    protected fun containmentLinkInfoJsonObject(
+        link: SContainmentLink,
+        repository: SRepository?,
+        includeDeprecated: Boolean = true,
+        currentProject: MPSProject? = null,
+        cache: ProjectMembershipCache? = null
+    ): JsonObject {
         val declarationNode = if (repository != null) link.sourceNode?.resolve(repository) else null
         val obj = JsonObject()
         obj.addProperty("role", link.name)
@@ -1870,18 +2419,27 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("typeReference", PersistenceFacade.getInstance().asString(link.targetConcept))
         obj.addProperty("cardinality", getCardinality(link))
         obj.addProperty("doc", getDoc(declarationNode))
+        if (repository != null) {
+            addContainingProjectIfForeign(obj, currentProject, link.targetConcept, repository, "type", cache)
+        }
         if (includeDeprecated) {
             obj.addProperty("deprecated", getDeprecationInfo(declarationNode))
         }
         return obj
     }
 
-    protected fun conceptInfoJson(concept: SAbstractConcept, repository: SRepository): String {
-        return conceptInfoJsonObject(concept, repository).toString()
+    protected fun conceptInfoJson(concept: SAbstractConcept, repository: SRepository, currentProject: MPSProject? = null, cache: ProjectMembershipCache? = null): String {
+        return conceptInfoJsonObject(concept, repository, currentProject, cache).toString()
     }
 
-    protected fun conceptInfoJsonObject(concept: SAbstractConcept, repository: SRepository): JsonObject {
+    protected fun conceptInfoJsonObject(
+        concept: SAbstractConcept,
+        repository: SRepository,
+        currentProject: MPSProject? = null,
+        cache: ProjectMembershipCache? = null
+    ): JsonObject {
         val facade = PersistenceFacade.getInstance()
+        val c = cache ?: ProjectMembershipCache(currentProject)
         val name = concept.name
         val qualifiedName = structureQualifiedName(concept)
         val conceptAlias = concept.conceptAlias
@@ -1898,8 +2456,13 @@ abstract class AbstractOps : McpToolset {
         val doc = getDoc(declarationNode)
         val deprecated = getDeprecationInfo(declarationNode)
         val superInterfaces = JsonArray()
+        val superInterfaceDetails = JsonArray()
         for (superInterface in concept.superInterfaces) {
-            superInterfaces.add(facade.asString(superInterface))
+            val superInterfaceRef = facade.asString(superInterface)
+            superInterfaces.add(superInterfaceRef)
+            val superInterfaceObj = namedReferenceJsonObject(superInterface.name, superInterfaceRef)
+            addContainingProjectIfForeign(superInterfaceObj, currentProject, superInterface, repository, cache = c)
+            superInterfaceDetails.add(superInterfaceObj)
         }
 
         val obj = JsonObject()
@@ -1911,13 +2474,16 @@ abstract class AbstractOps : McpToolset {
         obj.addProperty("conceptReference", conceptReference)
         obj.addProperty("languageReference", languageReference)
         obj.addProperty("superConcept", superConcept)
+        concept.superConcept?.let { addContainingProjectIfForeign(obj, currentProject, it, repository, "superConcept", c) }
         obj.add("superInterfaces", superInterfaces)
+        obj.add("superInterfaceDetails", superInterfaceDetails)
         obj.addProperty("sourceNode", sourceNode)
         obj.addProperty("isAbstract", isAbstract)
         obj.addProperty("isInterfaceConcept", isInterfaceConcept)
         obj.addProperty("isRootable", isRootable)
         obj.addProperty("virtualFolder", virtualFolder)
         obj.addProperty("present", true)
+        addContainingProjectIfForeign(obj, currentProject, concept, repository, cache = c)
         // Surface staleness so downstream callers (get_concept_details, search_concepts, …) do
         // not silently treat a hollow runtime descriptor as a real one. The check matches the
         // up-front gate in scaffold_editor: a runtime concept with no sourceNode and empty

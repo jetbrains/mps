@@ -214,6 +214,40 @@ class JetBrainsMPSJavaMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     }
 
     @Test
+    fun `console mode returns an error envelope when the console is unavailable`() {
+        val response = runTool(JetBrainsMPSJavaMcpToolset()) {
+            it.mps_mcp_parse_java_and_insert(
+                """
+                {
+                  "code": "1 + 2",
+                  "featureKind": "EXPRESSION",
+                  "insert": { "mode": "console" }
+                }
+                """.trimIndent()
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope when the console is unavailable: $response", obj.get("ok").asBoolean)
+    }
+
+    @Test
+    fun `child mode with console parent ref returns an error envelope when the console is unavailable`() {
+        val response = runTool(JetBrainsMPSJavaMcpToolset()) {
+            it.mps_mcp_parse_java_and_insert(
+                """
+                {
+                  "code": "int x = 1;",
+                  "featureKind": "STATEMENTS",
+                  "insert": { "mode": "child", "parentRef": "r:m#p", "role": "statement" }
+                }
+                """.trimIndent()
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope when parent ref is not found: $response", obj.get("ok").asBoolean)
+    }
+
+    @Test
     fun `importUsedLanguages false suppresses imports even when resolveReferences runs`() {
         // Regression: the reference-resolution loop calls updateModelDependencies(), which used to
         // add used languages unconditionally. That meant importUsedLanguages=false did NOT suppress

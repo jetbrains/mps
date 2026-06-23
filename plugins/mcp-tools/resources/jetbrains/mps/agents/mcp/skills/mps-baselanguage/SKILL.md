@@ -17,14 +17,14 @@ type: reference
 - **Expressions in statement lists**: any `Expression` must be wrapped in `ExpressionStatement` to be valid inside a `StatementList`.
 - **Variable declarations**: in method bodies wrap `LocalVariableDeclaration` in `LocalVariableDeclarationStatement`. In `ForStatement.variable` use `LocalVariableDeclaration` directly, no wrapper.
 - **Prefer primitives**: use `string` (`StringType`) over `String` (`ClassifierType`) where possible; same for `int`, `boolean`, etc.
-- **Compatibility**: BaseLanguage supports Java 7 (including generics). Avoid Java 8+ features like lambdas or records.
+- **Compatibility**: BaseLanguage core is Java 7 (including generics). When building AST directly (JSON blueprints), there is no lambda/record syntax — use the `jetbrains.mps.baseLanguage.closures` extension for closures. The Java **parser** (`mps_mcp_parse_java_and_insert`) additionally accepts the Java 8+ syntax MPS recognizes — most notably **lambdas**, which it maps to `closures` `ClosureLiteral`s (auto-imported when `postProcess.importUsedLanguages` is on); a lambda only type-checks against a matching functional-type target. Constructs the parser does not recognize (e.g. records) still fail to parse. See `references/parse-java-tips.md`.
 - **Surgical edits**: when a single child changes prefer `mps_mcp_update_node` over rewriting the whole root — full-root rewrites churn persistent IDs and break incoming refs.
 
 ## Choose Your Path
 
 Pick the right authoring tool before you start:
 
-- **`mps_mcp_parse_java_and_insert`** — use for plain Java skeletons or bodies (classes, methods, statements, expressions). Fastest path when no BaseLanguage extension is required.
+- **`mps_mcp_parse_java_and_insert`** — use for plain Java skeletons or bodies (classes, methods, statements, expressions), including the current MPS Console input (`insert.mode: "console"` to replace the console command, or `mode: "child"/"replace"` with a `parentRef`/`targetRef` inside the current console command for nested edits). Fastest path when no BaseLanguage extension is required.
 - **JSON AST blueprints** — use when the parser is unavailable, when the code uses BaseLanguage extensions (smodel, closures, collections), or when stable persistent references to members are required for downstream consumers.
 - **Mixed** — use the parser for the skeleton with placeholders (e.g. `IntegerConstant`, `StringLiteral`, `IntegerType`, `StringType`), then JSON-edit the placeholders to swap in extension-specific subtrees.
 

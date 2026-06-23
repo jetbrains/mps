@@ -21,7 +21,7 @@ import java.util.jar.JarEntry
 import java.util.jar.JarOutputStream
 
 /**
- * Plain JUnit tests for [JetBrainsMPSSkillsMcpToolset]. The skill catalog is built from
+ * Plain JUnit tests for [JetBrainsMPSInitMcpToolset]. The skill catalog is built from
  * classpath resources and does not need an MPS project, so these tests skip the
  * heavyweight [McpIntegrationTestBase] setup.
  *
@@ -30,9 +30,9 @@ import java.util.jar.JarOutputStream
  * resolves to "no project" — exercised by [omitting targetDirectory outside an MCP call returns a
  * helpful error]. The pure VCS-root walk-up is covered directly via [deriveAgentConfigRootForTest].
  */
-class JetBrainsMPSSkillsMcpToolsetTest {
+class JetBrainsMPSInitMcpToolsetTest {
 
-    private val toolset = JetBrainsMPSSkillsMcpToolset()
+    private val toolset = JetBrainsMPSInitMcpToolset()
 
 
     // ---- mps_mcp_initialize_project_for_agents ----
@@ -74,6 +74,15 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         // skill rather than weakening it to "any skill exists".
         for (skillsDir in targetSkillsDirs()) {
             assertTrue("skills dir must exist after init: $skillsDir", Files.isDirectory(skillsDir))
+            assertFalse("$EXCLUDED_SKILL_NAME must not be installed into $skillsDir", Files.exists(skillsDir.resolve(EXCLUDED_SKILL_NAME)))
+            val copiedSkillCount = Files.list(skillsDir).use { stream ->
+                stream.filter { Files.isDirectory(it) }.count()
+            }
+            assertEquals(
+                "reported installed skill count must match copied skill folders in $skillsDir",
+                data.get("installedSkillCount").asLong,
+                copiedSkillCount
+            )
             val sampleSkill = skillsDir.resolve(REAL_SKILL_NAME).resolve("SKILL.md")
             assertTrue("$REAL_SKILL_NAME/SKILL.md must be copied into $skillsDir", Files.isRegularFile(sampleSkill))
             val skillText = Files.readString(sampleSkill)
@@ -195,6 +204,29 @@ class JetBrainsMPSSkillsMcpToolsetTest {
             "no first target directory should be created after preflight collision failure",
             Files.exists(tmpProjectRoot.resolve(".agents"))
         )
+    }
+
+    @Test
+    fun `mps_mcp_initialize_project_for_agents ignores existing excluded skill folders`() {
+        for (skillsDir in targetSkillsDirs()) {
+            Files.createDirectories(skillsDir.resolve(EXCLUDED_SKILL_NAME))
+            Files.writeString(skillsDir.resolve(EXCLUDED_SKILL_NAME).resolve("SKILL.md"), "stay")
+        }
+
+        val response = runBlocking { toolset.mps_mcp_initialize_project_for_agents(tmpProjectRoot.toString()) }
+        okData(response)
+
+        for (skillsDir in targetSkillsDirs()) {
+            assertEquals(
+                "pre-existing excluded skill folder must be left untouched in $skillsDir",
+                "stay",
+                Files.readString(skillsDir.resolve(EXCLUDED_SKILL_NAME).resolve("SKILL.md"))
+            )
+            assertTrue(
+                "other bundled skills must still be installed into $skillsDir",
+                Files.isRegularFile(skillsDir.resolve(REAL_SKILL_NAME).resolve("SKILL.md"))
+            )
+        }
     }
 
     @Test
@@ -374,6 +406,7 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         // the simple per-skill copy and the collision-error path. Keep this in sync with
         // `plugins/mcp-tools/resources/jetbrains/mps/agents/mcp/skills/`.
         private const val REAL_SKILL_NAME = "mps-aspect-accessories"
+        private const val EXCLUDED_SKILL_NAME = "mps-bugfix"
 
         // A real bundled skill that ships an auxiliary subdirectory. Used to verify that
         // copyDirectoryRecursively walks into nested folders rather than just copying the
@@ -396,14 +429,14 @@ class JetBrainsMPSSkillsMcpToolsetTest {
         data.getAsJsonArray(name).map { it.asString }
 
     private fun deriveAgentConfigRootForTest(path: Path): Path {
-        val method = JetBrainsMPSSkillsMcpToolset::class.java.getDeclaredMethod("deriveAgentConfigRoot", Path::class.java)
+        val method = JetBrainsMPSInitMcpToolset::class.java.getDeclaredMethod("deriveAgentConfigRoot", Path::class.java)
         method.isAccessible = true
         return method.invoke(toolset, path) as Path
     }
 
     @Suppress("UNCHECKED_CAST")
     private fun <T> withSkillsResourceFsForTest(resourceUrl: URL, block: (Path) -> T): T {
-        val method = JetBrainsMPSSkillsMcpToolset::class.java.getDeclaredMethod(
+        val method = JetBrainsMPSInitMcpToolset::class.java.getDeclaredMethod(
             "withSkillsResourceFs",
             URL::class.java,
             Function1::class.java,

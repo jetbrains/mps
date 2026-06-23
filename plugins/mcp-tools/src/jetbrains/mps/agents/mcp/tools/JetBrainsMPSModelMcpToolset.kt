@@ -27,12 +27,12 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     @McpTool
     @McpDescription(
         """
-        Adds or deletes one or more imports to an MPS model and ensures the containing module has a `Default` dependency on each target's module. Already-imported targets are skipped when adding. `targetModels` accepts a single name/reference or a JSON array. Returns `{ "added": N, "alreadyPresent": M }`.
-        Supported operations: ADD or DELETE. 
+        Adds or deletes one or more imports to an MPS model and ensures the containing module has a `Default` dependency on each target's module. Already-imported targets are skipped when adding. `targetModels` accepts a single name/reference or a JSON array. ADD returns `{ "added": N, "alreadyPresent": M }`; DELETE returns `{ "removed": true|false }` where `removed:false` means the import was not present — a successful idempotent no-op, not a failure. A model never imports itself, so when source and target resolve to the same model the ADD is dropped (no import is written) and DELETE returns `removed:false`.
+        Supported operations: ADD or DELETE.
     """
     )
     suspend fun mps_mcp_model_dependency(
-        @McpDescription("Source model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
+        @McpDescription("Source model: a persistent model reference (preferred), or the model's long/short name resolved in the project selected by projectPath.")
         modelReference: String,
         @McpDescription("Target model name(s) or reference(s). Single string or JSON array: [\"model1\", \"model2\"]")
         targetModels: String,
@@ -77,9 +77,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         }
 
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, modelReference)
-                ?: return@executeShortCommandOnEdt errJson("Source model not found: $modelReference")
-            if (model !is EditableSModel || model !is SModelInternal) {
+            val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
+            }
+            if (model !is SModelInternal) {
                 return@executeShortCommandOnEdt errJson("Model is not editable or doesn't support imports: ${model.name}")
             }
 
@@ -98,7 +100,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 // — it returns a name-only SModelReference with no UUID, which would then be
                 // serialized into the .mps file as a malformed <import ref="<name>"/> entry and
                 // would also fail to match existing UUID-bearing imports in the duplicate check.
-                val targetModelResolved = resolveModel(mpsProject.repository, targetModel)
+                val targetModelResolved = resolveModelPreferringProject(mpsProject, targetModel)
                     ?: return@executeShortCommandOnEdt errJson("Target model not found: $targetModel")
                 resolvedTargets += targetModelResolved
             }
@@ -165,9 +167,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     private suspend fun removeModelDependency(modelReference: String, targetModelRef: String
     ): String = withMpsProject("Removing MPS model dependency") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, modelReference)
-                ?: return@executeShortCommandOnEdt errJson("Source model not found: $modelReference")
-            if (model !is EditableSModel || model !is SModelInternal) {
+            val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
+            }
+            if (model !is SModelInternal) {
                 return@executeShortCommandOnEdt errJson("Model is not editable or doesn't support imports: ${model.name}")
             }
 
@@ -197,9 +201,9 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_model_used_language(
-        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
+        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name resolved in the project selected by projectPath.")
         modelReference: String,
-        @McpDescription("Language or devkit name or reference")
+        @McpDescription("Language or devkit to add/remove. Accepts a persistent reference (`l:<uuid>:<qualifiedName>` for a language, `<uuid>(<name>)` for a devkit) or a plain qualified name. A plain name resolves against languages/devkits loaded in the project; a Language module that was created but never built is also resolved by name via the project repository.")
         usedLanguage: String,
         @McpDescription("Kind: 'language' or 'devkit'")
         kind: String,
@@ -223,18 +227,24 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         }
 
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, modelReference)
-                ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference")
-            if (model !is EditableSModel || model !is SModelInternal) {
+            val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
+            }
+            if (model !is SModelInternal) {
                 return@executeShortCommandOnEdt errJson("Model is not editable or doesn't support used languages: ${model.name}")
             }
 
             when (kind) {
                 "language" -> {
-                    val lang = tryCreateReference {
-                        PersistenceFacade.getInstance().createLanguage(usedLanguage)
-                    } ?: jetbrains.mps.smodel.language.LanguageRegistry.getInstance(mpsProject.repository).allLanguages
-                        .find { it.qualifiedName == usedLanguage }
+                    val lang = resolveLanguagePreferringProject(mpsProject, usedLanguage)
+                    // A freshly-created Language module that has never been built has no
+                    // LanguageRuntime, so it is absent from LanguageRegistry.allLanguages above.
+                    // Fall back to resolving the Language *module* by name in the project
+                    // repository and adapting it to an SLanguage via its module id (no runtime
+                    // needed) — this lets an unbuilt language be imported by plain name.
+                    ?: (resolveModule(mpsProject, usedLanguage, projectOnly = true) as? jetbrains.mps.smodel.Language)
+                        ?.let { jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration.getLanguage(it) }
                     ?: return@executeShortCommandOnEdt errJson("Language not found: $usedLanguage")
 
                     // k: when the language is already supplied by an imported DevKit, addLanguage
@@ -263,10 +273,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 }
 
                 "devkit" -> {
-                    val devkitRef = tryCreateReference {
-                        PersistenceFacade.getInstance().createModuleReference(usedLanguage)
-                    } ?: mpsProject.repository.modules.filterIsInstance<DevKit>()
-                        .find { it.moduleName == usedLanguage }?.moduleReference
+                    val devkitRef = (resolveModulePreferringProject(mpsProject, usedLanguage) as? DevKit)?.moduleReference
                     ?: return@executeShortCommandOnEdt errJson("Devkit not found: $usedLanguage")
 
                     if (model.importedDevkits().contains(devkitRef)) {
@@ -294,9 +301,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     private suspend fun removeModelUsedLanguage(modelReference: String, usedLanguageRef: String, kind: String
     ): String = withMpsProject("Removing MPS model used language") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, modelReference)
-                ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference")
-            if (model !is EditableSModel || model !is SModelInternal) {
+            val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
+            }
+            if (model !is SModelInternal) {
                 return@executeShortCommandOnEdt errJson("Model is not editable or doesn't support used languages: ${model.name}")
             }
 
@@ -361,11 +370,11 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_create_model(
-        @McpDescription("Module name") moduleName: String,
+        @McpDescription("Module name or reference") moduleName: String,
         @McpDescription("Model name. For a language aspect model use the case-sensitive aspect id, e.g. `myLang.textGen`. For generator/genplan/tests/descriptor models append `@stereotype`, e.g. `myTests@tests`.") modelName: String
     ): String = withMpsProject("Create MPS model") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
-            val module = mpsProject.projectModules.find { it.moduleName == moduleName }
+            val module = resolveModule(mpsProject, moduleName, projectOnly = true)
                 ?: return@executeShortCommandOnEdt errJson("Module '$moduleName' not found", McpErrorCode.NOT_FOUND)
             validateModelName(modelName)?.let {
                 return@executeShortCommandOnEdt errJson(it, McpErrorCode.INVALID_REQUEST)
@@ -392,7 +401,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                     }
                 }
             }
-            okJson(modelInfoJson(model))
+            okJson(modelInfoJson(model, mpsProject))
         }
     }
 
@@ -405,7 +414,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_update_model(
-        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.")
+        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name resolved in the project selected by projectPath.")
         modelReference: String,
         @McpDescription("New model name")
         newModelName: String = "",
@@ -425,17 +434,16 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
     ): String = when (operation) {
         ModelOperation.RENAME -> withMpsProject("Update MPS model") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {
-                val model = resolveModel(mpsProject.repository, modelReference)
-                    ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference", McpErrorCode.NOT_FOUND)
-                if (model !is EditableSModel) {
-                    return@executeShortCommandOnEdt errJson("Model '${model.name}' is not editable", McpErrorCode.NOT_EDITABLE)
+                val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
+                    is EditableModelResolution.Ok -> r.model
+                    is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
                 validateModelName(newModelName)?.let {
                     return@executeShortCommandOnEdt errJson(it, McpErrorCode.INVALID_REQUEST)
                 }
                 model.rename(newModelName, true)
                 model.save()
-                okJson(modelInfoJson(model))
+                okJson(modelInfoJson(model, mpsProject))
             }
         }
         ModelOperation.DELETE -> deleteModel(modelReference)
@@ -445,8 +453,10 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
         modelReference: String
     ): String = withMpsProject("Delete MPS model") { mpsProject ->
         executeShortCommandOnEdt(mpsProject) {
-            val model = resolveModel(mpsProject.repository, modelReference)
-                ?: return@executeShortCommandOnEdt errJson("Model not found: $modelReference", McpErrorCode.NOT_FOUND)
+            val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
+                is EditableModelResolution.Ok -> r.model
+                is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
+            }
             val modelName = model.name.value
             val module = model.module
             if (module is AbstractModule) {

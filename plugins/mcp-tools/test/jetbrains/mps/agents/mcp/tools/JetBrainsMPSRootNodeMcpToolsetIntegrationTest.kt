@@ -19,8 +19,9 @@ import org.junit.Test
  *
  * Covers lifecycle (`create_root_node`, `insert_root_node_from_json` single/array/dry-run,
  * `update_root_node_from_json` happy + dry-run, `delete_root_node`),
- * navigation/queries (`search_root_node_by_name`, `get_current_editor_root_node` when no
- * editor is open), and the basic error envelopes for each.
+ * navigation/queries (`search_root_node_by_name`, `get_current_editor_root_node` with no
+ * editor open, an unknown `source`, and the `console` source when the console is unavailable),
+ * and the basic error envelopes for each.
  *
  * Concepts used are picked from `jetbrains.mps.lang.structure` so they are
  * always loaded in the test bench.
@@ -310,16 +311,17 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     // ── update_root_node_from_json ───────────────────────────────────────────────────────
 
     @Test
-    fun `update_root_node_from_json updates non-name properties and preserves name`() {
-        // The implementation of updateNodeFromBlueprint intentionally preserves the root's
-        // `name` (it's the root's identity). Verify both: (1) non-name properties ARE updated
-        // and (2) `name` survives even when the blueprint tries to overwrite it.
+    fun `update_root_node_from_json applies a rename and re-sets non-name properties`() {
+        // updateNodeFromBlueprint is a full-root rewrite: the `name` property is applied like any
+        // other (IMPL-3). Verify both: (1) a different `name` in the blueprint renames the root —
+        // the envelope reflects the new name and a fresh re-resolve of the (unchanged) reference
+        // confirms it — and (2) non-name properties are re-set too.
         val rootRef = createConceptRoot("Original")
 
         val json = """
             { "concept": "$conceptDeclarationFqn",
               "properties": [
-                { "name": "name", "value": "AttemptedRename" },
+                { "name": "name", "value": "RenamedRoot" },
                 { "name": "virtualPackage", "value": "test.pkg" }
               ] }
         """.trimIndent()
@@ -327,13 +329,13 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             it.mps_mcp_update_root_node_from_json(rootRef, json, dryRun = false)
         }
         val data = expectOk(response)
-        assertEquals("Original", data.get("name").asString)
+        assertEquals("RenamedRoot", data.get("name").asString)
         assertEquals("test.pkg", data.get("virtualFolder").asString)
 
         readOnRepo {
             val node = PersistenceFacade.getInstance().createNodeReference(rootRef).resolve(structureModel.repository)
             assertNotNull(node)
-            assertEquals("Original", node!!.name)
+            assertEquals("RenamedRoot", node!!.name)
             assertEquals("test.pkg", node.getPropertyByName("virtualPackage"))
         }
     }
@@ -349,6 +351,7 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
             it.mps_mcp_update_root_node_from_json(rootRef, json, dryRun = false)
         }
         val data = expectOk(response)
+        assertEquals("name omitted from blueprint must be preserved", "UpdateMe", data.get("name").asString)
         val fix = data.get("fixReferences")
         assertNotNull("update response must carry data.fixReferences: $response", fix)
         val fixObj = fix.asJsonObject
@@ -554,6 +557,27 @@ class JetBrainsMPSRootNodeMcpToolsetIntegrationTest : McpIntegrationTestBase() {
         val response = runTool(toolset) { it.mps_mcp_get_current_editor_root_node() }
         val obj = JsonParser.parseString(response).asJsonObject
         assertFalse("expected error envelope when no editor is open: $response", obj.get("ok").asBoolean)
+    }
+
+    @Test
+    fun `get_current_editor_root_node rejects an unknown source with INVALID_REQUEST`() {
+        // Source validation happens before any editor/console access, so this branch is
+        // deterministic in the headless fixture.
+        val response = runTool(toolset) { it.mps_mcp_get_current_editor_root_node(source = "bogus") }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope for unknown source: $response", obj.get("ok").asBoolean)
+        assertEquals("INVALID_REQUEST", obj.get("code").asString)
+    }
+
+    @Test
+    fun `get_current_editor_root_node with console source returns an error envelope when the console is unavailable`() {
+        // The headless fixture never initializes the Console tool window, so source='console'
+        // exercises the console-resolution branch and must return a structured error (plugin
+        // unavailable / no editable tab / empty input) rather than crashing. The happy path
+        // requires a live Console and is verified manually.
+        val response = runTool(toolset) { it.mps_mcp_get_current_editor_root_node(source = "console") }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertFalse("expected error envelope when the console is unavailable: $response", obj.get("ok").asBoolean)
     }
 
 }

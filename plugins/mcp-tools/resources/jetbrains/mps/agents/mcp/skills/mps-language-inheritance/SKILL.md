@@ -29,6 +29,7 @@ One language can inherit the structure and functionality of another via an "exte
 * **Direct ancestors**: use `mps_mcp_get_concept_details`. The response includes:
     * `superConcept`: immediate parent concept.
     * `superInterfaces`: immediate implemented interface concepts.
+    * `superConceptContainingProject` and `superInterfaceDetails[*].containingProject` when an ancestor comes from another open MPS project and is read-only from the selected project.
 * **Full closure**: use `mps_mcp_query_structure` with `GET_ALL_SUPERCONCEPTS` to get the complete chain of ancestors and interfaces in one call.
 
 ### Downward Hierarchy (Descendants)
@@ -39,7 +40,7 @@ One language can inherit the structure and functionality of another via an "exte
 ## Strategic Analysis
 
 * **Verification**: use `mps_mcp_query_structure` with `IS_SUBCONCEPT_OF` to check if concept A inherits from concept B.
-* **Cross-language extension**: compare the `languageReference` of a concept with that of its `superConcept`. Different references indicate a language boundary specialization.
+* **Cross-language extension**: compare the `languageReference` of a concept with that of its `superConcept`. Different references indicate a language boundary specialization; foreign-project ancestors are marked explicitly with the containing-project fields.
 * **Discovery**: use `mps_mcp_search_concepts` to find base concepts (e.g. "Statement") for extension.
 * **Implicit dependencies**: if a model uses a language without an explicit import, check if its used languages extend the missing language via `mps_mcp_get_project_structure`.
 

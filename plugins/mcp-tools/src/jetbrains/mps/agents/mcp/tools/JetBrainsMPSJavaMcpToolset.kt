@@ -7,10 +7,12 @@ import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
 import jetbrains.mps.errors.item.NodeReportItem
 import jetbrains.mps.java.core.newparser.*
+import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
 import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.smodel.SNodeUtil
+import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import org.jetbrains.mps.openapi.language.SContainmentLink
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SNode
@@ -28,6 +30,31 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
 
     companion object {
         data class EffectiveJavaParseSource(val code: String, val featureKind: FeatureKind)
+
+        private val CONSOLE_BL_COMMAND_CONCEPT = MetaAdapterFactory.getConcept(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x4bd43869e610f3e9L, "jetbrains.mps.console.base.structure.BLCommand"
+        )
+        private val CONSOLE_BL_COMMAND_BODY_LINK = MetaAdapterFactory.getContainmentLink(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x4bd43869e610f3e9L, 0x188f8efcef6cea65L, "body"
+        )
+        private val CONSOLE_BL_EXPRESSION_CONCEPT = MetaAdapterFactory.getConcept(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x6a40a3596560a9d9L, "jetbrains.mps.console.base.structure.BLExpression"
+        )
+        private val CONSOLE_BL_EXPRESSION_EXPRESSION_LINK = MetaAdapterFactory.getContainmentLink(
+            0xde1ad86d6e504a02uL.toLong(), 0xb306d4d17f64c375uL.toLong(),
+            0x6a40a3596560a9d9L, 0x6a40a3596560aa42L, "expression"
+        )
+        private val STATEMENT_LIST_CONCEPT = MetaAdapterFactory.getConcept(
+            0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
+            0xf8cc56b200L, "jetbrains.mps.baseLanguage.structure.StatementList"
+        )
+        private val STATEMENT_LIST_STATEMENT_LINK = MetaAdapterFactory.getContainmentLink(
+            0xf3061a5392264cc5uL.toLong(), 0xa443f952ceaf5816uL.toLong(),
+            0xf8cc56b200L, 0xf8cc6bf961L, "statement"
+        )
 
         fun effectiveJavaParseSource(code: String, featureKind: FeatureKind, isExpression: Boolean): EffectiveJavaParseSource {
             val effectiveFeatureKind = when (featureKind) {
@@ -64,7 +91,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         return executeBackgroundRead(mpsProject) {
             val repo = mpsProject.repository
             val contextNode: SNode? = if (!contextNodeRefStr.isNullOrEmpty()) {
-                val nr = resolveNodeReference(repo, contextNodeRefStr)
+                val nr = resolveNodeReferencePreferringProject(mpsProject, contextNodeRefStr)
                 nr?.resolve(repo) ?: return@executeBackgroundRead JavaParsePreparation.Err("Context node '$contextNodeRefStr' not found")
             } else null
 
@@ -148,22 +175,25 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         doImportLang: Boolean,
         doResolveRefs: Boolean,
         parseResult: JavaParser.JavaParseResult,
+        persist: Boolean = true,
         rollbackInsertedNodes: () -> Unit
     ) {
         try {
             javaParseResolver.resolveIteratively(model, repo, inserted, featureKind, doImportLang, doResolveRefs, parseResult)
-            // d1: stage the JDK dependency addition here (after resolveIteratively succeeds).
-            // ensureJDKDependency now only returns the Dependency (or null) without mutating.
-            // Both add and setChanged() happen exclusively on the success path, immediately
-            // before the saves. On any failure the descriptor remains untouched.
-            val jdkDep = javaParseResolver.ensureJDKDependency(model)
-            if (jdkDep != null) {
-                val module = model.module as? AbstractModule
-                module?.moduleDescriptor?.dependencies?.add(jdkDep)
-                module?.setChanged()
+            if (persist) {
+                // d1: stage the JDK dependency addition here (after resolveIteratively succeeds).
+                // ensureJDKDependency now only returns the Dependency (or null) without mutating.
+                // Both add and setChanged() happen exclusively on the success path, immediately
+                // before the saves. On any failure the descriptor remains untouched.
+                val jdkDep = javaParseResolver.ensureJDKDependency(model)
+                if (jdkDep != null) {
+                    val module = model.module as? AbstractModule
+                    module?.moduleDescriptor?.dependencies?.add(jdkDep)
+                    module?.setChanged()
+                }
+                model.save()
+                (model.module as? AbstractModule)?.save()
             }
-            model.save()
-            (model.module as? AbstractModule)?.save()
         } catch (e: Exception) {
             // The rollback is best-effort: its delete arm already swallows per-node failures via
             // safelyRollbackNodes, but the mode-specific restore arm (re-attaching a displaced or
@@ -184,19 +214,60 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     // target, …) is returned as a pre-formatted [Err]; unexpected failures during mutation or
     // post-processing are thrown and handled by the caller's withMpsProject/toolFailure boundary.
     private sealed class InsertOutcome {
-        data class Ok(val inserted: List<SNode>) : InsertOutcome()
+        data class Ok(val inserted: List<SNode>, val warnings: List<String> = emptyList()) : InsertOutcome()
         data class Err(val json: String) : InsertOutcome()
     }
 
+    private fun wrapAsConsoleCommand(parsedNodes: List<SNode>, request: JavaParseInsertRequest): InsertOutcome {
+        if (request.isExpression) {
+            if (parsedNodes.size != 1) {
+                return InsertOutcome.Err(errJson(
+                    "Console expression insertion requires exactly one parsed expression, but the input parsed into ${parsedNodes.size} nodes.",
+                    McpErrorCode.INVALID_REQUEST
+                ))
+            }
+            val command = SConceptOperations.createNewNode(CONSOLE_BL_EXPRESSION_CONCEPT)
+            val expression = parsedNodes.first()
+            roleAssignabilityError(expression, CONSOLE_BL_EXPRESSION_EXPRESSION_LINK, command)?.let {
+                return InsertOutcome.Err(errJson(it, McpErrorCode.INVALID_REQUEST))
+            }
+            command.addChild(CONSOLE_BL_EXPRESSION_EXPRESSION_LINK, expression)
+            return InsertOutcome.Ok(listOf(command))
+        }
+
+        if (request.featureKind != FeatureKind.STATEMENTS) {
+            return InsertOutcome.Err(errJson(
+                "insert.mode 'console' supports featureKind EXPRESSION or STATEMENTS. " +
+                    "Use child/replace with a parentRef/targetRef inside the current console command to insert '${request.featureKindText}' into an existing console node.",
+                McpErrorCode.INVALID_REQUEST
+            ))
+        }
+
+        val statementList = SConceptOperations.createNewNode(STATEMENT_LIST_CONCEPT)
+        for (node in parsedNodes) {
+            roleAssignabilityError(node, STATEMENT_LIST_STATEMENT_LINK, statementList)?.let {
+                return InsertOutcome.Err(errJson(it, McpErrorCode.INVALID_REQUEST))
+            }
+        }
+        for (node in parsedNodes) {
+            statementList.addChild(STATEMENT_LIST_STATEMENT_LINK, node)
+        }
+
+        val command = SConceptOperations.createNewNode(CONSOLE_BL_COMMAND_CONCEPT)
+        command.addChild(CONSOLE_BL_COMMAND_BODY_LINK, statementList)
+        return InsertOutcome.Ok(listOf(command))
+    }
+
     private fun insertAsRoot(
-        repo: SRepository,
+        mpsProject: MPSProject,
         parsedNodes: List<SNode>,
         parseResult: JavaParser.JavaParseResult,
         request: JavaParseInsertRequest
     ): InsertOutcome {
+        val repo = mpsProject.repository
         val insertTarget = request.insert
         val modelRefStr = checkNotNull(insertTarget.modelRef)
-        val model = when (val r = resolveEditableModel(repo, modelRefStr)) {
+        val model = when (val r = resolveEditableModel(mpsProject, modelRefStr)) {
             is EditableModelResolution.Ok -> r.model
             is EditableModelResolution.Err -> return InsertOutcome.Err(r.errJson)
         }
@@ -227,19 +298,20 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     }
 
     private fun insertAsChild(
-        repo: SRepository,
+        mpsProject: MPSProject,
         parsedNodes: List<SNode>,
         parseResult: JavaParser.JavaParseResult,
         request: JavaParseInsertRequest
     ): InsertOutcome {
+        val repo = mpsProject.repository
         val insertTarget = request.insert
         val parentRefStr = checkNotNull(insertTarget.parentRef)
         val roleName = checkNotNull(insertTarget.role)
-        val (parent, model) = when (
-            val r = resolveEditableNodeAndModel(repo, parentRefStr, { "Parent node '$it' not found" })
+        val (parent, model, console) = when (
+            val r = resolveEditableNodeAllowingConsole(mpsProject, parentRefStr, { "Parent node '$it' not found" })
         ) {
-            is EditableNodeResolution.Ok -> r.node to r.model
-            is EditableNodeResolution.Err -> return InsertOutcome.Err(r.errJson)
+            is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+            is ConsoleAwareResolution.Err -> return InsertOutcome.Err(r.errJson)
         }
         val link = parent.concept.containmentLinks.find { it.name == roleName }
             ?: return InsertOutcome.Err(errJson(
@@ -328,7 +400,8 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             request.featureKind,
             request.importUsedLanguages,
             request.resolveReferences,
-            parseResult
+            parseResult,
+            persist = (console == null)
         ) {
             safelyRollbackNodes(inserted.asReversed())
             // Restore the single-cardinality occupant we overwrote, if finalize
@@ -337,21 +410,28 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                 if (it.parent == null) parent.addChild(link, it)
             }
         }
-        return InsertOutcome.Ok(inserted)
+        // For a console target the import refresh is gated on importUsedLanguages, exactly like the
+        // model-side imports in finalizeInsertedNodes — otherwise it would re-add the used languages
+        // resolveIteratively just suppressed (see persistOrRefreshConsole).
+        val importWarning = if (console != null) {
+            persistOrRefreshConsole(model, console, refreshImports = request.importUsedLanguages)
+        } else null
+        return InsertOutcome.Ok(inserted, warnings = listOfNotNull(importWarning))
     }
 
     private fun insertAsReplace(
-        repo: SRepository,
+        mpsProject: MPSProject,
         parsedNodes: List<SNode>,
         parseResult: JavaParser.JavaParseResult,
         request: JavaParseInsertRequest
     ): InsertOutcome {
+        val repo = mpsProject.repository
         val targetRefStr = checkNotNull(request.insert.targetRef)
-        val (targetNode, model) = when (
-            val r = resolveEditableNodeAndModel(repo, targetRefStr, { "Target node '$it' not found" })
+        val (targetNode, model, console) = when (
+            val r = resolveEditableNodeAllowingConsole(mpsProject, targetRefStr, { "Target node '$it' not found" })
         ) {
-            is EditableNodeResolution.Ok -> r.node to r.model
-            is EditableNodeResolution.Err -> return InsertOutcome.Err(r.errJson)
+            is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
+            is ConsoleAwareResolution.Err -> return InsertOutcome.Err(r.errJson)
         }
 
         // Replace expects exactly one top-level node; multiple parsed nodes
@@ -403,7 +483,8 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             request.featureKind,
             request.importUsedLanguages,
             request.resolveReferences,
-            parseResult
+            parseResult,
+            persist = (console == null)
         ) {
             safelyRollbackNodes(inserted)
             if (targetNode.parent == null) {
@@ -415,7 +496,68 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
                 }
             }
         }
-        return InsertOutcome.Ok(inserted)
+        // Gate the console import refresh on importUsedLanguages (see insertAsChild / persistOrRefreshConsole).
+        val importWarning = if (console != null) {
+            persistOrRefreshConsole(model, console, refreshImports = request.importUsedLanguages)
+        } else null
+        return InsertOutcome.Ok(inserted, warnings = listOfNotNull(importWarning))
+    }
+
+    private fun insertAsConsoleCommand(
+        mpsProject: MPSProject,
+        parsedNodes: List<SNode>,
+        parseResult: JavaParser.JavaParseResult,
+        request: JavaParseInsertRequest
+    ): InsertOutcome {
+        val console = when (val r = resolveConsoleEditableTab(mpsProject.project)) {
+            is ConsoleResolution.Ok -> r
+            is ConsoleResolution.Err -> return InsertOutcome.Err(r.errJson)
+        }
+        val model = console.consoleModel as? EditableSModel
+            ?: return InsertOutcome.Err(errJson("The MPS Console model is not editable", McpErrorCode.NOT_EDITABLE))
+
+        val command = when (val wrapped = wrapAsConsoleCommand(parsedNodes, request)) {
+            is InsertOutcome.Ok -> wrapped.inserted.single()
+            is InsertOutcome.Err -> return wrapped
+        }
+        val previousCommand = currentConsoleCommand(console.consoleModel)
+        insertConsoleCommand(console.tab, command)?.let { detail ->
+            return InsertOutcome.Err(errJson(
+                "Failed to insert the command into the MPS Console: $detail",
+                McpErrorCode.INTERNAL_ERROR
+            ))
+        }
+
+        finalizeInsertedNodes(
+            model,
+            mpsProject.repository,
+            listOf(command),
+            request.featureKind,
+            request.importUsedLanguages,
+            request.resolveReferences,
+            parseResult,
+            persist = false
+        ) {
+            safelyRollbackNodes(listOf(command))
+            previousCommand?.let { insertConsoleCommand(console.tab, it) }
+        }
+
+        // Honour postProcess.importUsedLanguages: when the caller opted out, skip the post-resolution
+        // import refresh so we don't re-add the used languages resolveIteratively suppressed — symmetric
+        // with the child/replace console paths and the project modes. (insertCommand above performs its
+        // own pre-resolution addNodeImports; that is the console's structural-import step and is left as
+        // is, mirroring the sibling mps_mcp_insert_console_command_from_json, which always imports.)
+        val importWarning = if (request.importUsedLanguages) {
+            addConsoleNodeImports(console.tab, command)
+                ?.let { "Failed to update MPS Console imports after insertion: $it" }
+        } else null
+        val activateWarning = warningMessageOrRethrow {
+            console.tab.javaClass.getMethod("activate").invoke(console.tab)
+        }
+        val selectWarning = warningMessageOrRethrow {
+            console.tab.javaClass.getMethod("selectNode", SNode::class.java).invoke(console.tab, command)
+        }
+        return InsertOutcome.Ok(listOf(command), warnings = listOfNotNull(importWarning, activateWarning, selectWarning))
     }
 
     // After a successful insert, re-run the standard node checkers on the affected root(s) and collect
@@ -454,12 +596,14 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     // roots (no containment role). The `problems` array carries any type/structure errors or warnings
     // the checkers found within the inserted nodes' subtrees (empty when the insert type-checks).
     private fun parseInsertSuccessJson(
+        mpsProject: MPSProject,
         inserted: List<SNode>,
         parseResult: JavaParser.JavaParseResult,
-        problems: JsonArray
+        problems: JsonArray,
+        warnings: List<String> = emptyList()
     ): String {
         val langs = parseResult.languages?.map { it.qualifiedName } ?: emptyList()
-        val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it) }
+        val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it, mpsProject) }
         val gson = Gson()
         val data = JsonObject().apply {
             add("inserted", gson.toJsonTree(insertedInfos))
@@ -468,13 +612,13 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             add("problems", problems)
             addProperty("errorMsg", parseResult.errorMsg)
         }
-        return okJson(data.toString())
+        return okJson(data, warnings = warnings)
     }
 
     @McpTool
     @McpDescription(
         """
-        Parses Java code with the MPS `JavaParser` and inserts the result as MPS nodes — either as root(s), as a child in a given role, or as a replacement of an existing node. `CLASS_STUB` is rejected; root insertion always appends and rejects a `position` other than `-1`/absent; replace mode requires exactly one top-level parsed node; child insertion into a single-cardinality role overwrites the existing occupant (consistent with `mps_mcp_update_node`); into a multi-cardinality role a `position` past the child count is clamped to an append (not rejected) and each inserted node reports its actual `index`. `featureKind` `FIELD`/`METHOD`/`NESTED_CLASS` are all parsed as class members (the kind is advisory; what a node may be placed where is validated against the target role, not the kind). Unrecognized keys in `parameters` (including `dryRun`, which is not supported) are rejected. Java 8+ constructs the MPS parser recognizes are accepted and mapped to the corresponding BaseLanguage extension — most notably lambda expressions, which become `jetbrains.mps.baseLanguage.closures` closures (the closures language is auto-imported when `postProcess.importUsedLanguages` is on); like any closure, a lambda only type-checks against a matching functional-type target. Every success envelope carries a `problems` array (each entry has `severity`, `message`, node `reference`, `concept`) listing the type-system errors/warnings found within the inserted nodes — empty when the insert type-checks — so a successful insert never silently leaves the model in an ERROR state. See `mps-baselanguage/references/parse-java-tips.md` for the `parameters` JSON schema (`code`, `featureKind`, `insert.mode`, `postProcess`), the `problems` response field, and the per-mode required fields.
+        Parses Java code with the MPS `JavaParser` and inserts the result as MPS nodes — as project model root(s), as a child in a given role, as a replacement of an existing node, or into the current MPS Console input. `insert.mode:"console"` replaces the current console input command without executing it: `EXPRESSION` is wrapped as a `BLExpression`, and `STATEMENTS` as a `BLCommand` block. For `mode:"child"` or `mode:"replace"`, if the `parentRef`/`targetRef` resolves to a node inside the current MPS Console input command it is edited in place without saving; console history and stale console references are rejected; nodes outside the selected project are rejected. `CLASS_STUB` is rejected; root insertion always appends and rejects a `position` other than `-1`/absent; replace mode requires exactly one top-level parsed node; child insertion into a single-cardinality role overwrites the existing occupant (consistent with `mps_mcp_update_node`); into a multi-cardinality role a `position` past the child count is clamped to an append (not rejected) and each inserted node reports its actual `index`. `featureKind` `FIELD`/`METHOD`/`NESTED_CLASS` are all parsed as class members (the kind is advisory; what a node may be placed where is validated against the target role, not the kind). Unrecognized keys in `parameters` (including `dryRun`, which is not supported) are rejected. Java 8+ constructs the MPS parser recognizes are accepted and mapped to the corresponding BaseLanguage extension — most notably lambda expressions, which become `jetbrains.mps.baseLanguage.closures` closures (the closures language is auto-imported when `postProcess.importUsedLanguages` is on); like any closure, a lambda only type-checks against a matching functional-type target. Every success envelope carries a `problems` array (each entry has `severity`, `message`, node `reference`, `concept`) listing the type-system errors/warnings found within the inserted nodes — empty when the insert type-checks — so a successful insert never silently leaves the model in an ERROR state. See `mps-baselanguage/references/parse-java-tips.md` for the `parameters` JSON schema (`code`, `featureKind`, `insert.mode`, `postProcess`), the `problems` response field, and the per-mode required fields.
         """
     )
     suspend fun mps_mcp_parse_java_and_insert(
@@ -513,9 +657,10 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             val parsedNodes = parsedJava.parsedNodes
 
             val outcome = when (request.insert.mode) {
-                "root" -> insertAsRoot(repo, parsedNodes, parseResult, request)
-                "child" -> insertAsChild(repo, parsedNodes, parseResult, request)
-                "replace" -> insertAsReplace(repo, parsedNodes, parseResult, request)
+                "root" -> insertAsRoot(mpsProject, parsedNodes, parseResult, request)
+                "child" -> insertAsChild(mpsProject, parsedNodes, parseResult, request)
+                "replace" -> insertAsReplace(mpsProject, parsedNodes, parseResult, request)
+                "console" -> insertAsConsoleCommand(mpsProject, parsedNodes, parseResult, request)
                 // Unreachable in practice: parseJavaParseInsertRequest already rejects unknown
                 // modes. Kept as a defensive fallback.
                 else -> InsertOutcome.Err(
@@ -526,7 +671,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             when (outcome) {
                 is InsertOutcome.Ok -> {
                     val problems = collectInsertedProblems(mpsProject, repo, outcome.inserted)
-                    parseInsertSuccessJson(outcome.inserted, parseResult, problems)
+                    parseInsertSuccessJson(mpsProject, outcome.inserted, parseResult, problems, outcome.warnings)
                 }
                 is InsertOutcome.Err -> outcome.json
             }

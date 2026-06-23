@@ -172,7 +172,10 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     @Test
     fun `add_model_dependency rejects unknown source model`() {
         val response = runTool(toolset) { it.mps_mcp_model_dependency("no.such.source", "doesnt.matter") }
-        assertTrue(expectErr(response).contains("Source model not found"))
+        // Source resolution now goes through the shared resolveEditableModel helper (for cross-project
+        // safety), which emits the unified "Model '<ref>' not found" wording.
+        val err = expectErr(response)
+        assertTrue(err, err.contains("no.such.source") && err.contains("not found"))
     }
 
     @Test
@@ -353,6 +356,30 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
                 .map { it.qualifiedName }
             assertTrue("used languages must contain '$knownLang': $used",
                 used.contains(knownLang))
+        }
+    }
+
+    @Test
+    fun `add_model_used_language resolves a freshly-created unbuilt language by plain name`() {
+        // The `language` fixture is created via LanguageProducer but never built, so it has no
+        // LanguageRuntime and is absent from LanguageRegistry.allLanguages. Importing it by its
+        // plain qualified name must still succeed (IMPL-1): the tool falls back to resolving the
+        // Language module by name in the project repository.
+        val unbuiltLangName = language.moduleName!!
+        val solution = createSolution()
+        val targetModel = createModel(solution, "test.usedlang.unbuilt${System.nanoTime()}")
+        val modelReference = modelRefOf(targetModel)
+
+        val response = runTool(toolset) {
+            it.mps_mcp_model_used_language(modelReference, unbuiltLangName, "language")
+        }
+        val data = expectOk(response)
+        assertTrue("expected added:true for the unbuilt language: $response", data.get("added").asBoolean)
+
+        readOnRepo {
+            val used = (targetModel as SModelInternal).importedLanguageIds().map { it.qualifiedName }
+            assertTrue("used languages must contain the unbuilt language '$unbuiltLangName': $used",
+                used.contains(unbuiltLangName))
         }
     }
 

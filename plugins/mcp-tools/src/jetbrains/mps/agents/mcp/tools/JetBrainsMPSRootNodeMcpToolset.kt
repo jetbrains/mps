@@ -9,6 +9,7 @@ import com.intellij.mcpserver.project
 import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.fileEditor.FileEditorManager
+import com.intellij.openapi.project.Project
 import jetbrains.mps.ide.editor.MPSEditorUtil
 import jetbrains.mps.ide.editor.MPSFileNodeEditor
 import jetbrains.mps.ide.project.ProjectHelper
@@ -36,10 +37,14 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_open_node(
         @McpDescription("Persistent form of SNodeReference; may point to any node — non-root references open the containing root and focus the target.") nodeReference: String
     ): String = withMpsProject("Opening MPS node in editor") { mpsProject ->
-        // resolveNodeReference handles invalid persistent refs gracefully (null instead of
-        // IllegalArgumentException) and additionally accepts "ModelName.RootName" form.
-        val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
-            ?: return@withMpsProject invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
+        // resolveNodeReferencePreferringProject resolves the reference against the model
+        // (SNodeReference.resolve), so it must run inside a read action — otherwise MPS throws
+        // IllegalModelAccessError ("You can read model only inside read actions"). It handles
+        // invalid persistent refs gracefully (null instead of IllegalArgumentException) and
+        // additionally accepts the "ModelName.RootName" form.
+        val sNodeRef = executeShortReadOnEdt(mpsProject) {
+            resolveNodeReferencePreferringProject(mpsProject, nodeReference)
+        } ?: return@withMpsProject invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
         // EditorNavigator.open() dispatches to the EDT internally via runReadInEDT, so calling
         // it from a worker thread is safe; the builder setters are pure.
         EditorNavigator(mpsProject).shallFocus(true).shallSelect(true).open(sNodeRef)
@@ -50,81 +55,133 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Returns the root node currently open in the MPS editor as a node info envelope (see `mps-mcp-workflow/references/reference-formats.md`); when an editor selection is active, the envelope also carries `selectedNodeReference`. Use this to anchor on the user's focus before editing.
+        Returns a node currently focused in the MPS UI as a node info envelope (see `mps-mcp-workflow/references/reference-formats.md`). `source` selects the editor: `editor` (default) returns the root node open in the active MPS file editor and, when an editor selection is active, adds `selectedNodeReference`; `console` returns the current (unexecuted) command node in the MPS Console input editor (requires the Console plugin; errors if the input is empty). Use this to anchor on the user's focus before editing. The returned `reference` can be passed to `mps_mcp_print_node` to obtain the node's JSON blueprint or its notational (PLAIN TEXT / HTML) printout — but a console command's reference is only valid until the next console interaction (execute / clear / history navigation), so print it promptly and do not cache it.
     """)
-    suspend fun mps_mcp_get_current_editor_root_node(): String {
-        currentCoroutineContext().reportToolActivity("Getting current editor root node")
+    suspend fun mps_mcp_get_current_editor_root_node(
+        @McpDescription("Which editor to read: 'editor' (default) for the active MPS file editor's root node, or 'console' for the current command in the MPS Console input editor.") source: String = "editor"
+    ): String {
+        val normalizedSource = source.trim().lowercase()
+        val activity = if (normalizedSource == "console") "Getting current MPS console command" else "Getting current editor root node"
+        currentCoroutineContext().reportToolActivity(activity)
         val project = currentCoroutineContext().project
 
         return try {
-            // Default sentinel: if the EDT block exits abnormally without assigning `reply`,
-            // the caller still gets a structured error instead of a NullPointerException.
-            var reply: String = errJson(
-                "Getting current editor root node did not complete",
-                McpErrorCode.INTERNAL_ERROR
-            )
-            withContext(Dispatchers.EDT) {
-                val editorManager = FileEditorManager.getInstance(project)
-                val selectedEditors = editorManager.selectedEditors
-                val mpsEditor = selectedEditors.filterIsInstance<MPSFileNodeEditor>().firstOrNull()
-                if (mpsEditor == null) {
-                    reply = errJson("No MPS editor is currently open")
-                    return@withContext
+            when (normalizedSource) {
+                "editor" -> currentFileEditorRootNode(project)
+                "console" -> currentConsoleCommandNode(project)
+                else -> errJson(
+                    "Invalid source '$source'. Allowed values: 'editor' (default), 'console'.",
+                    McpErrorCode.INVALID_REQUEST
+                )
+            }
+        } catch (e: Exception) {
+            toolFailure(activity, e)
+        }
+    }
+
+    /** The root node open in the active MPS file editor; carries `selectedNodeReference` when an editor selection is active. */
+    private suspend fun currentFileEditorRootNode(project: Project): String {
+        // Default sentinel: if the EDT block exits abnormally without assigning `reply`,
+        // the caller still gets a structured error instead of a NullPointerException.
+        var reply: String = errJson(
+            "Getting current editor root node did not complete",
+            McpErrorCode.INTERNAL_ERROR
+        )
+        withContext(Dispatchers.EDT) {
+            val editorManager = FileEditorManager.getInstance(project)
+            val selectedEditors = editorManager.selectedEditors
+            val mpsEditor = selectedEditors.filterIsInstance<MPSFileNodeEditor>().firstOrNull()
+            if (mpsEditor == null) {
+                reply = errJson("No MPS editor is currently open")
+                return@withContext
+            }
+
+            val nvf = mpsEditor.file as? MPSNodeVirtualFile
+            if (nvf == null) {
+                reply = errJson("Could not detect the current root node")
+                return@withContext
+            }
+
+            val mpsProject = ProjectHelper.fromIdeaProject(project) ?: run {
+                reply = errJson("No MPS project available")
+                return@withContext
+            }
+
+            mpsProject.repository.modelAccess.runReadAction {
+                var node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nvf)
+                if (node == null) {
+                    node = nvf.node
                 }
 
-                val nvf = mpsEditor.file as? MPSNodeVirtualFile
-                if (nvf == null) {
+                if (node == null) {
                     reply = errJson("Could not detect the current root node")
-                    return@withContext
-                }
-
-                val mpsProject = ProjectHelper.fromIdeaProject(project) ?: run {
-                    reply = errJson("No MPS project available")
-                    return@withContext
-                }
-
-                mpsProject.repository.modelAccess.runReadAction {
-                    var node = MPSEditorUtil.getCurrentEditedNodeFromTabbedEditor(project, nvf)
-                    if (node == null) {
-                        node = nvf.node
-                    }
-
-                    if (node == null) {
-                        reply = errJson("Could not detect the current root node")
-                    } else {
-                        var selectedNodeReference: String? = null
-                        val nodeEditor = mpsEditor.nodeEditor
-                        if (nodeEditor != null) {
-                            val editorComponent = nodeEditor.currentEditorComponent
-                            if (editorComponent != null) {
-                                val selectedNode = editorComponent.selectedNode
-                                if (selectedNode != null) {
-                                    selectedNodeReference = PersistenceFacade.getInstance().asString(selectedNode.reference)
-                                }
+                } else {
+                    var selectedNodeReference: String? = null
+                    val nodeEditor = mpsEditor.nodeEditor
+                    if (nodeEditor != null) {
+                        val editorComponent = nodeEditor.currentEditorComponent
+                        if (editorComponent != null) {
+                            val selectedNode = editorComponent.selectedNode
+                            if (selectedNode != null) {
+                                selectedNodeReference = PersistenceFacade.getInstance().asString(selectedNode.reference)
                             }
                         }
-
-                        val info = nodeInfoJsonObject(node)
-                        if (selectedNodeReference != null) {
-                            info.addProperty("selectedNodeReference", selectedNodeReference)
-                        }
-                        reply = okJson(info.toString())
                     }
+
+                    val info = nodeInfoJsonObject(node, mpsProject)
+                    if (selectedNodeReference != null) {
+                        info.addProperty("selectedNodeReference", selectedNodeReference)
+                    }
+                    reply = okJson(info.toString())
                 }
             }
-            reply
-        } catch (e: Exception) {
-            toolFailure("Getting current editor root node", e)
         }
+        return reply
+    }
+
+    /**
+     * The current (unexecuted) command node in the MPS Console input editor — `ConsoleRoot.commandHolder.command`
+     * — as a node info envelope. Its `reference` resolves through the project repository (the console's temporary
+     * model is registered there), so callers can feed it to `mps_mcp_print_node`; the reference is only valid until
+     * the next console interaction, though. Errors when the Console plugin is unavailable, no editable tab exists,
+     * or the input is empty. Reads Swing tab state, so it runs on the EDT under a model read action.
+     */
+    private suspend fun currentConsoleCommandNode(project: Project): String {
+        var reply: String = errJson(
+            "Getting current MPS console command did not complete",
+            McpErrorCode.INTERNAL_ERROR
+        )
+        withContext(Dispatchers.EDT) {
+            val consoleModel = when (val r = resolveConsoleEditableTab(project)) {
+                is ConsoleResolution.Ok -> r.consoleModel
+                is ConsoleResolution.Err -> {
+                    reply = r.errJson
+                    return@withContext
+                }
+            }
+            val mpsProject = ProjectHelper.fromIdeaProject(project) ?: run {
+                reply = errJson("No MPS project available", McpErrorCode.NOT_FOUND)
+                return@withContext
+            }
+            mpsProject.repository.modelAccess.runReadAction {
+                val command = currentConsoleCommand(consoleModel)
+                reply = if (command == null) {
+                    errJson("The MPS Console input editor is empty (no current command).", McpErrorCode.NOT_FOUND)
+                } else {
+                    okJson(nodeInfoJsonObject(command, mpsProject))
+                }
+            }
+        }
+        return reply
     }
 
     @McpTool
     @McpDescription("""
-        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. Every scope is confined to the project selected by `projectPath` and never spans other open projects sharing the MPS instance. `scope` (default `editable`): `editable` searches this project's own editable modules; `all` additionally includes the read-only modules the project depends on (its visible dependency closure — the part of the Modules Pool it actually uses); `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
+        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` searches this project's own editable modules; `all` additionally includes the read-only/library and imported modules in the project's visible dependency closure, including imported modules from other open MPS projects; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. Explicit `models`/`modules` references may point to another open MPS project and are queried read-only. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String,
-        @McpDescription("Search scope (always confined to the project selected by projectPath; never spans other open projects): 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules'). 'roots' is not supported here.") scope: String = "editable",
+        @McpDescription("Search scope: 'editable' (default) for this project's editable modules, 'all' for this project's visible dependencies, 'models' (requires 'models'), or 'modules' (requires 'modules'). Explicit model/module references may point to another open MPS project and are queried read-only. 'roots' is not supported here.") scope: String = "editable",
         @McpDescription("Optional model references; required when scope is 'models'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") models: String? = null,
         @McpDescription("Optional module references; required when scope is 'modules'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") modules: String? = null
     ): String {
@@ -159,10 +216,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     is SearchScopeResolution.Err -> return@executeBackgroundRead r.errJson
                 }
                 val results = mutableListOf<String>()
+                val cache = ProjectMembershipCache(mpsProject)
                 for (model in searchScope.models) {
                     for (root in model.rootNodes) {
                         if (root.name in nameSet) {
-                            results.add(nodeInfoJson(root))
+                            results.add(nodeInfoJson(root, mpsProject, cache))
                         }
                     }
                 }
@@ -203,7 +261,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         Bulk-creates one or more MPS root nodes from a JSON blueprint (a single object or a top-level array; arrays insert atomically with batch rollback on failure). Returns the new node's info envelope, or an array of envelopes when the input was an array. Two blueprint values fail silently rather than erroring: a reference role given a `c:` concept ref (instead of an `r:` node ref or a plain name) yields an unresolved reference, and an encoded id inside a property value (e.g. a `PropertyMacro.propertyId`) is not validated — both surface only via `mps_mcp_check_root_node_problems`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`) and `mps-mcp-workflow/references/bulk-creation.md` for the array contract and large-input strategies.
     """)
     suspend fun mps_mcp_insert_root_node_from_json(
-        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,
+        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name resolved in the project selected by projectPath.") modelReference: String,
         @McpDescription("JSON blueprint, single object or top-level array (max 4KB) OR an absolute path to a TEMPORARY file (inside the system temp directory) containing it. See `mps-node-editing` for the format and file-input semantics.") json: String,
         @McpDescription("Optional: if true, only validate JSON and concept-role assignability without mutating the model. Standard validation warnings (such as dynamic-reference creation details) are returned in the envelope's 'warnings' slot. Default: false.") dryRun: Boolean = false
     ): String {
@@ -226,7 +284,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             }
 
             executeShortCommandOnEdt(mpsProject) {
-                val model = when (val r = resolveEditableModel(mpsProject.repository, modelReference)) {
+                val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
                     is EditableModelResolution.Ok -> r.model
                     is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
@@ -237,7 +295,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 for ((index, jsonObject) in jsonObjects.withIndex()) {
                     val indexLabel = if (jsonObjects.size > 1) " [$index]" else ""
                     when (val r = resolveRootableConcept(
-                        mpsProject.repository,
+                        mpsProject,
                         conceptName = jsonObject.get("concept")?.asString,
                         conceptReference = jsonObject.get("conceptReference")?.asString,
                         label = indexLabel
@@ -247,7 +305,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     }
 
                     val newNode = try {
-                        instantiateNode(jsonObject, model, dryRun, warnings = batchWarnings)
+                        instantiateNode(jsonObject, model, dryRun, warnings = batchWarnings, mpsProject = mpsProject)
                     } catch (e: Exception) {
                         return@executeShortCommandOnEdt errJson("Failed to instantiate node$indexLabel from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
                     }
@@ -271,7 +329,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     }
                     for (newNode in preparedNodes) {
                         val fixResult = performFixReferences(mpsProject, newNode)
-                        nodeInfos.add(withFixReferencesInfo(nodeInfoJsonObject(newNode), fixResult))
+                        nodeInfos.add(withFixReferencesInfo(nodeInfoJsonObject(newNode, mpsProject), fixResult))
                     }
                 }
 
@@ -298,19 +356,19 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
         Returns a JSON object with 'ok':true and 'data':{ name, concept, conceptReference, reference, parentReference, rootReference, modelReference, moduleReference, virtualFolder, isRoot, present:true } on success, or 'ok':false and 'error':"..." on failure.
     """)
     suspend fun mps_mcp_create_root_node(
-        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,
+        @McpDescription("Target model: a persistent model reference (preferred), or the model's long/short name resolved in the project selected by projectPath.") modelReference: String,
         @McpDescription("Fully qualified concept name or name") concept: String,
         @McpDescription("Optional: Persistent form of SConcept (c:...) or fully qualified concept name") conceptReference: String? = null,
         @McpDescription("Name for the new root node") name: String
     ): String {
         return withMpsProject("Creating MPS root node") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {
-                val model = when (val r = resolveEditableModel(mpsProject.repository, modelReference)) {
+                val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
                     is EditableModelResolution.Ok -> r.model
                     is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
                 val sConcept = when (val r = resolveRootableConcept(
-                    mpsProject.repository,
+                    mpsProject,
                     conceptName = concept,
                     conceptReference = conceptReference
                 )) {
@@ -343,14 +401,14 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 }
 
                 saveModelAndModule(model)
-                okJson(nodeInfoJson(newNode))
+                okJson(nodeInfoJson(newNode, mpsProject))
             }
         }
     }
 
     @McpTool
     @McpDescription("""
-        Updates or deletes an MPS root node from a JSON blueprint. The root node itself (and its persistent ID) is preserved; its properties, references, and children are re-set to match the blueprint. This is a **full-root rewrite** — for partial updates prefer surgical tools if `mps_mcp_update_node`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`).
+        Updates or deletes an MPS root node from a JSON blueprint. The root node's persistent ID is preserved; its properties, references, and children are re-set to match the blueprint. The `name` property is included in the rewrite, so a different `name` in the blueprint renames the root (the ID is unchanged); omit `name` to keep the current one. This is a **full-root rewrite** — for partial updates prefer surgical tools if `mps_mcp_update_node`. See `mps-node-editing` SKILL (File-Path Semantics, `references/json-format.md`).
     """)
     suspend fun mps_mcp_update_root_node_from_json(
         @McpDescription("Persistent form of SNodeReference") nodeReference: String,
@@ -374,7 +432,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
             val actualJson = readNodeJsonOrFile(json, dryRun)
                 ?: return@withMpsProject invalidJson("JSON input is null or empty")
             executeShortCommandOnEdt(mpsProject) {
-                val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject.repository, nodeReference)) {
+                val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject, nodeReference)) {
                     is EditableNodeResolution.Ok -> r.node to r.model
                     is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
@@ -406,12 +464,12 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 }
 
                 val updateWarnings = if (dryRun) mutableListOf<String>() else null
-                updateNodeFromBlueprint(node, jsonObject, dryRun, warnings = updateWarnings)
+                updateNodeFromBlueprint(node, jsonObject, dryRun, warnings = updateWarnings, mpsProject = mpsProject)
 
                 if (!dryRun) {
                     val fixResult = performFixReferences(mpsProject, node)
                     saveModelAndModule(model)
-                    okJson(withFixReferencesInfo(nodeInfoJsonObject(node), fixResult))
+                    okJson(withFixReferencesInfo(nodeInfoJsonObject(node, mpsProject), fixResult))
                 } else {
                     okJson(jsonObject {
                         addProperty("dryRun", true)
@@ -428,7 +486,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     ): String {
         return withMpsProject("Deleting MPS root node") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {
-                val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject.repository, nodeReference)) {
+                val (node, model) = when (val r = resolveEditableNodeAndModel(mpsProject, nodeReference)) {
                     is EditableNodeResolution.Ok -> r.node to r.model
                     is EditableNodeResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }

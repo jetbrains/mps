@@ -19,10 +19,18 @@ import java.io.File
  *  - `mps_mcp_list_open_projects` — discovering the open MPS project and the path agents should
  *    pass as the host `projectPath` selector in multi-project checkouts;
  *  - `mps_mcp_get_project_structure` — listing project modules (default), descending into a
- *    model when [startingPoint] is set, the mutually-exclusive flag enforcement, and the
+ *    model when `startingPoint` is set, the mutually-exclusive flag enforcement, and the
  *    NOT_FOUND envelope for an unknown starting point;
  *  - `mps_mcp_reload_all` — happy-path smoke test against the test project's
- *    `ClassLoaderManager`.
+ *    `ClassLoaderManager`;
+ *  - `mps_mcp_insert_console_command_from_json` — the pre-console input-validation guard
+ *    (malformed JSON is rejected before the Console tool window is touched). The happy paths
+ *    (inserting a Command, and wrapping one or more statements into a `{ … }` block command) need
+ *    a live Console tool window and are exercised manually.
+ *  - `mps_mcp_get_console_history` / `mps_mcp_recall_console_command` / `mps_mcp_run_console_command` —
+ *    the console-unavailable branch (structured error, no crash, in the headless fixture). The happy
+ *    paths (listing real history entries; recalling one into the input slot; executing the current
+ *    command) need a live Console and are verified manually.
  */
 class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
 
@@ -353,6 +361,37 @@ class JetBrainsMPSProjectMcpToolsetIntegrationTest : McpIntegrationTestBase() {
      * embeds the object directly) or a stringified JSON payload (fallback). Unwrap both layers
      * and hand back the object.
      */
+    @Test
+    fun `get-project-structure includeNodes implies includeRootNodes and inlines the AST`() {
+        // IMPL-4: includeNodes=true must descend into root nodes even when includeRootNodes is
+        // left at its default (false). Before the fix the model reported only `rootNodesCount`
+        // and the requested AST was silently dropped.
+        val rootName = "ImplFourRoot${System.nanoTime()}"
+        createConceptRoot(rootName)
+
+        val response = runTool(JetBrainsMPSProjectMcpToolset()) {
+            it.mps_mcp_get_project_structure(
+                startingPoint = structureModelRef,
+                includeNodes = true,
+                // includeRootNodes intentionally left at its default (false) to exercise the implication
+            )
+        }
+
+        val payload = readJsonObjectFromOkPath(response)
+        assertFalse(
+            "includeNodes must inline root nodes, not fall back to the rootNodesCount summary: $payload",
+            payload.has("rootNodesCount")
+        )
+        val rootNodes = payload.getAsJsonArray("rootNodes")
+        assertNotNull("model payload must carry an inlined rootNodes array: $payload", rootNodes)
+        val root = rootNodes.map { it.asJsonObject }.singleOrNull { it.get("name").asString == rootName }
+            ?: error("created root '$rootName' must appear in the inlined rootNodes: $payload")
+        // The inlined root carries the full deep node shape (concept + children container) that
+        // nodeHierarchyJsonObject produces with deep=true.
+        assertEquals("ConceptDeclaration", root.get("concept").asString)
+        assertTrue("inlined root must carry a children container: $root", root.has("children"))
+    }
+
     private fun readJsonObjectFromOkPath(response: String): JsonObject {
         val outer = JsonParser.parseString(response).asJsonObject
         assertTrue("expected ok=true envelope, got: $response", outer.get("ok").asBoolean)

@@ -72,7 +72,7 @@ Populate with a `concept/C/` literal (`SConceptTypeLiteral`, id `547244460968453
 
 ### `search scope` and `enummember<E>`
 
-```json
+```text
 { "concept": "jetbrains.mps.lang.smodel.structure.SearchScopeType" }
 
 {

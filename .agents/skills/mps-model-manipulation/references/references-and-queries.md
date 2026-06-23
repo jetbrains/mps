@@ -37,7 +37,7 @@ References on a node are distinct from the nodes they point to. These four are t
 
 ### `ref.target` / `ref.link` / `ref.resolveInfo` / `ref.isDynamic` — leaf ops on `SReference`
 
-```json
+```text
 { "concept": "jetbrains.mps.lang.smodel.structure.Reference_GetTargetOperation" }
 { "concept": "jetbrains.mps.lang.smodel.structure.Reference_ContainingLinkOperation" }
 { "concept": "jetbrains.mps.lang.smodel.structure.Reference_GetResolveInfo" }
@@ -52,7 +52,7 @@ References on a node are distinct from the nodes they point to. These four are t
 
 All are leaf operations — no parameter or child. Drop the concept into the `operation` role of a `DotExpression`:
 
-```json
+```text
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_GetAllSiblingsOperation" }
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_GetNextSiblingOperation" }
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_GetPrevSiblingOperation" }
@@ -68,7 +68,7 @@ The plural `next-siblings` / `prev-siblings` return `sequence<node<BaseConcept>>
 
 All leaf operations:
 
-```json
+```text
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_GetContainingRootOperation" }
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_ContainingLinkOperation" }
 { "concept": "jetbrains.mps.lang.smodel.structure.Node_GetModelOperation" }
@@ -127,7 +127,7 @@ Search the concept for its parameter role before use.
 
 `enumValue.is/Member/`, `.name`, `.presentation` are leaf operations (on a property of enumerated type or an `enummember<E>`):
 
-```json
+```text
 {
   "concept": "jetbrains.mps.lang.smodel.structure.EnumMember_IsOperation",
   "references": [{ "role": "member", "target": "<EnumerationMember-noderef>" }]

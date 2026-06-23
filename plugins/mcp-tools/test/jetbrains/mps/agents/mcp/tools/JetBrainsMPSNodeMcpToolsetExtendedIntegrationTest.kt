@@ -3,6 +3,7 @@ package jetbrains.mps.agents.mcp.tools
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
 import com.google.gson.JsonParser
+import jetbrains.mps.project.modules.LanguageProducer
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.junit.Assert.assertEquals
@@ -160,6 +161,244 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         val rowObj = parseRowObject(arr.get(0))
         assertFalse("the short-triplet row must be an error envelope: $rowObj", rowObj.get("ok").asBoolean)
         assertTrue(rowObj.get("error").asString.contains("at least 3"))
+    }
+
+    @Test
+    fun `set_node_references with an unresolvable name fails with NOT_FOUND and stores no dangling reference`() {
+        // IMPL-2: a plain name that resolves to nothing must fail loudly instead of silently
+        // persisting an unresolved dynamic reference. The 'extends' role must be left without a
+        // dangling (null-target) reference.
+        val derivedRef = createConceptRoot("RefDanglingHost")
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", "ZZZNoSuchConceptInScope")),
+            )
+        }
+        val rowError = expectBatchRowError(response, 0)
+        assertTrue(
+            "row error must explain the target did not resolve in scope: $rowError",
+            rowError.contains("did not resolve") && rowError.contains("scope"),
+        )
+
+        readOnRepo {
+            val extendsRefs = resolveNode(derivedRef).references.filter { it.link.name == "extends" }
+            assertTrue(
+                "no dangling (null-target) 'extends' reference may remain after a failed set: $extendsRefs",
+                extendsRefs.all { it.targetNode != null },
+            )
+        }
+    }
+
+    @Test
+    fun `set_node_references with an unresolvable name preserves an existing reference`() {
+        val baseRef = createConceptRoot("RefPreservedBase")
+        val derivedRef = createConceptRoot("RefPreservedHost")
+
+        val seedResponse = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", baseRef)),
+            )
+        }
+        assertTrue(
+            "expected ok envelope from seed reference set: $seedResponse",
+            JsonParser.parseString(seedResponse).asJsonObject.get("ok").asBoolean,
+        )
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", "ZZZStillNoSuchConceptInScope")),
+            )
+        }
+        val rowError = expectBatchRowError(response, 0)
+        assertTrue(
+            "row error must explain the target did not resolve in scope: $rowError",
+            rowError.contains("did not resolve") && rowError.contains("scope"),
+        )
+
+        readOnRepo {
+            val target = resolveNode(derivedRef).references.firstOrNull { it.link.name == "extends" }?.targetNode
+            assertNotNull("failed reference replacement must preserve the previous 'extends' target", target)
+            assertEquals(resolveNode(baseRef).reference, target!!.reference)
+        }
+    }
+
+    @Test
+    fun `set_node_references resolves a target given by plain name`() {
+        // A plain name that denotes an in-scope node resolves to a proper reference (parity with
+        // the blueprint-insert path), rather than being stored as an unresolved dynamic reference.
+        val baseRef = createConceptRoot("RefByNameBase")
+        val derivedRef = createConceptRoot("RefByNameDerived")
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", "RefByNameBase")),
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+
+        readOnRepo {
+            val target = resolveNode(derivedRef).references.firstOrNull { it.link.name == "extends" }?.targetNode
+            assertNotNull("'extends' set by plain name must resolve to a node", target)
+            assertEquals(resolveNode(baseRef).reference, target!!.reference)
+        }
+    }
+
+    @Test
+    fun `set_node_references with a bare name matching only an out-of-scope root fails with NOT_FOUND`() {
+        // IMPL-2 (scope correctness): a bare plain name must resolve within the reference role's
+        // search scope, NOT via a global first-match root lookup. A concept that exists only in a
+        // separate, un-imported language is out of scope for 'extends', so setting it by bare name
+        // must fail with NOT_FOUND instead of silently binding the out-of-scope root globally.
+        val derivedRef = createConceptRoot("RefScopeDerived")
+
+        // A second, independent language whose structure model is NOT imported by the test
+        // language's structure model — its concept is therefore out of scope here.
+        val otherLangName = "test.otherlang${System.nanoTime()}"
+        val otherDir = createDirInProject(otherLangName)
+        var otherStructureModelRef = ""
+        executeCommand {
+            val otherLang = LanguageProducer(myProject).withGenerator(false).create(otherLangName, otherDir)
+            val otherStructureModel = otherLang.models.single { it.name.longName.endsWith(".structure") }
+            otherStructureModelRef = PersistenceFacade.getInstance().asString(otherStructureModel.reference)
+        }
+        val createOther = runTool {
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.CREATE_CONCEPTS,
+                """{ "structureModelRef": "$otherStructureModelRef", "conceptsJson": [ { "name": "OutOfScopeBase" } ] }""",
+            )
+        }
+        assertTrue(
+            "setup: creating the out-of-scope concept must succeed: $createOther",
+            JsonParser.parseString(createOther).asJsonObject.get("ok").asBoolean,
+        )
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", "OutOfScopeBase")),
+            )
+        }
+        val rowError = expectBatchRowError(response, 0)
+        assertTrue(
+            "an out-of-scope bare name must fail to resolve in scope (not bind globally): $rowError",
+            rowError.contains("did not resolve") && rowError.contains("scope"),
+        )
+
+        readOnRepo {
+            val extendsRefs = resolveNode(derivedRef).references.filter { it.link.name == "extends" }
+            assertTrue(
+                "no dangling (null-target) 'extends' reference may remain after the failed set: $extendsRefs",
+                extendsRefs.all { it.targetNode != null },
+            )
+        }
+    }
+
+    @Test
+    fun `set_node_references by bare name binds the in-scope concept when an out-of-scope namesake exists`() {
+        // IMPL-2 (scope correctness, ambiguity half): when a bare name matches BOTH an in-scope
+        // concept and a same-named concept in a separate, un-imported language, scope resolution
+        // must bind the IN-SCOPE one — not an arbitrary global first-match. Post-fix this is
+        // deterministic because the out-of-scope namesake is not in the 'extends' search scope.
+        val inScopeBaseRef = createConceptRoot("AmbBase")   // same structure model → in scope for extends
+        val derivedRef = createConceptRoot("AmbDerived")
+
+        // A same-named concept in a separate, un-imported language: a global first-match lookup
+        // could pick this one, but scope resolution must not.
+        val otherLangName = "test.otherlang${System.nanoTime()}"
+        val otherDir = createDirInProject(otherLangName)
+        var otherStructureModelRef = ""
+        executeCommand {
+            val otherLang = LanguageProducer(myProject).withGenerator(false).create(otherLangName, otherDir)
+            val otherStructureModel = otherLang.models.single { it.name.longName.endsWith(".structure") }
+            otherStructureModelRef = PersistenceFacade.getInstance().asString(otherStructureModel.reference)
+        }
+        val createDecoy = runTool {
+            it.mps_mcp_alter_structure(
+                MPSStructureAlterOperation.CREATE_CONCEPTS,
+                """{ "structureModelRef": "$otherStructureModelRef", "conceptsJson": [ { "name": "AmbBase" } ] }""",
+            )
+        }
+        assertTrue(
+            "setup: creating the out-of-scope namesake must succeed: $createDecoy",
+            JsonParser.parseString(createDecoy).asJsonObject.get("ok").asBoolean,
+        )
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", "AmbBase")),
+            )
+        }
+        val obj = JsonParser.parseString(response).asJsonObject
+        assertTrue("expected ok envelope: $response", obj.get("ok").asBoolean)
+
+        readOnRepo {
+            val target = resolveNode(derivedRef).references.firstOrNull { it.link.name == "extends" }?.targetNode
+            assertNotNull("'extends' must resolve to the in-scope concept", target)
+            assertEquals(
+                "bare name must bind the in-scope AmbBase, not the out-of-scope namesake",
+                resolveNode(inScopeBaseRef).reference,
+                target!!.reference,
+            )
+        }
+    }
+
+    @Test
+    fun `set_node_references by a name shared by two in-scope nodes fails with an ambiguous NOT_FOUND`() {
+        // MPS-39848: when a bare name matches MORE THAN ONE node in the reference role's search
+        // scope, by-name resolution must refuse to guess — it fails with NOT_FOUND and an
+        // *ambiguity* diagnostic that reports how many candidates were found and to disambiguate
+        // with a persistent reference, distinct from the "no node named X" wording used when the
+        // name matches nothing. The platform Scope contract returns null on an ambiguous name, so
+        // the failure is deterministic. This reduces the scenario's two same-named `go` events to
+        // two concepts named "DupBase" in one structure model, both in scope for 'extends'.
+        //
+        // createConceptRoot looks the new root up by name (single), so it cannot mint two roots
+        // sharing a name directly; create a distinct seed and rename it to form the duplicate.
+        createConceptRoot("DupBase")                    // first in-scope concept named DupBase
+        val seedRef = createConceptRoot("DupBaseSeed")  // renamed below to a second DupBase
+        val derivedRef = createConceptRoot("DupDerived")
+
+        val renameResp = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY,
+                properties = listOf(listOf(seedRef, "name", "DupBase")),
+            )
+        }
+        assertTrue(
+            "setup: renaming the seed to a duplicate name must succeed: $renameResp",
+            JsonParser.parseString(renameResp).asJsonObject.get("ok").asBoolean,
+        )
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", "DupBase")),
+            )
+        }
+        val rowError = expectBatchRowError(response, 0)
+        assertTrue(
+            "an ambiguous bare name must fail with an 'ambiguous' diagnostic naming the role: $rowError",
+            rowError.contains("ambiguous") && rowError.contains("extends"),
+        )
+        assertTrue(
+            "the ambiguity diagnostic should report the candidate count (2 here): $rowError",
+            rowError.contains("2 nodes named"),
+        )
+
+        readOnRepo {
+            val extendsRefs = resolveNode(derivedRef).references.filter { it.link.name == "extends" }
+            assertTrue(
+                "no dangling (null-target) 'extends' reference may remain after an ambiguous set: $extendsRefs",
+                extendsRefs.all { it.targetNode != null },
+            )
+        }
     }
 
     // ── child replace / delete ───────────────────────────────────────────────────────────
