@@ -87,7 +87,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
 
                 // Add explicitly provided concepts
                 for (conceptRef in conceptRefs) {
-                    val concept = resolveConcept(repo, conceptRef)
+                    val concept = resolveConceptPreferringProject(mpsProject, conceptRef)
                     if (concept != null) {
                         conceptSet.add(concept)
                     } else {
@@ -97,7 +97,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
 
                 // Add concepts from provided languages
                 for (languageRef in languageRefs) {
-                    val lang = resolveLanguage(repo, languageRef)
+                    val lang = resolveLanguagePreferringProject(mpsProject, languageRef)
                     val runtime = lang?.let { registry.getLanguage(it) }
                     if (runtime == null) {
                         // Treat both "language reference does not resolve" and "language is not
@@ -186,7 +186,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             val repo = mpsProject.repository
             val registry = LanguageRegistry.getInstance(repo)
             val languages: Iterable<SLanguage> = if (modelReference != null) {
-                val model = resolveModel(repo, modelReference)
+                val model = resolveModelPreferringProject(mpsProject, modelReference)
                     ?: return@executeShortReadOnEdt errJson("Model not found: $modelReference")
                 val mdr = ModelDependencyResolver(registry, repo)
                 mdr.usedLanguages(model)

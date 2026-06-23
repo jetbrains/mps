@@ -7,6 +7,7 @@ import com.intellij.mcpserver.reportToolActivity
 import com.intellij.openapi.application.EDT
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.progress.ProcessCanceledException
+import com.intellij.openapi.project.ProjectManager
 import jetbrains.mps.checkers.ConstraintsChecker
 import jetbrains.mps.checkers.RefScopeChecker
 import jetbrains.mps.checkers.TargetConceptChecker2
@@ -488,6 +489,26 @@ abstract class AbstractOps : McpToolset {
         return EditableModelResolution.Ok(model)
     }
 
+    protected fun resolveEditableModel(mpsProject: MPSProject, modelReference: String): EditableModelResolution {
+        val projectModel = resolveModel(mpsProject, modelReference)
+        if (projectModel != null) {
+            if (projectModel !is EditableSModel) {
+                return EditableModelResolution.Err(errJson("Model '$modelReference' is not editable", McpErrorCode.NOT_EDITABLE))
+            }
+            return EditableModelResolution.Ok(projectModel)
+        }
+
+        val model = resolveModel(mpsProject.repository, modelReference)
+            ?: return EditableModelResolution.Err(errJson("Model '$modelReference' not found", McpErrorCode.NOT_FOUND))
+        if (model !is EditableSModel) {
+            return EditableModelResolution.Err(errJson("Model '$modelReference' is not editable", McpErrorCode.NOT_EDITABLE))
+        }
+        if (!isModelInSelectedProject(mpsProject, model)) {
+            return EditableModelResolution.Err(crossProjectErr("Model '$modelReference'"))
+        }
+        return EditableModelResolution.Ok(model)
+    }
+
     /**
      * Result of resolving a node reference plus checking its containing model is editable.
      */
@@ -525,6 +546,57 @@ abstract class AbstractOps : McpToolset {
         return EditableNodeResolution.Ok(node, model)
     }
 
+    protected fun resolveEditableNodeAndModel(
+        mpsProject: MPSProject,
+        nodeReference: String,
+        missingMessageBuilder: (String) -> String = { "Node '$it' not found" },
+        nonEditableMessage: String = "Model containing the node is not editable"
+    ): EditableNodeResolution {
+        val repository = mpsProject.repository
+        val projectNode = resolveNodeReference(mpsProject, nodeReference)?.resolve(repository)
+        if (projectNode != null) {
+            val model = projectNode.model
+            if (model !is EditableSModel) {
+                return EditableNodeResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
+            }
+            return EditableNodeResolution.Ok(projectNode, model)
+        }
+
+        val sNodeRef = resolveNodeReference(repository, nodeReference)
+        val node = sNodeRef?.resolve(repository)
+            ?: return EditableNodeResolution.Err(errJson(missingMessageBuilder(nodeReference), McpErrorCode.NOT_FOUND))
+        val model = node.model
+        if (model !is EditableSModel) {
+            return EditableNodeResolution.Err(errJson(nonEditableMessage, McpErrorCode.NOT_EDITABLE))
+        }
+        if (!isModelInSelectedProject(mpsProject, model)) {
+            return EditableNodeResolution.Err(crossProjectErr("Node '$nodeReference'"))
+        }
+        return EditableNodeResolution.Ok(node, model)
+    }
+
+    protected fun resolveEditableConceptNode(mpsProject: MPSProject, conceptRef: String): EditableNodeResolution {
+        val projectNode = resolveConceptNode(mpsProject, conceptRef)
+        if (projectNode != null) {
+            val model = projectNode.model
+            if (model !is EditableSModel) {
+                return EditableNodeResolution.Err(errJson("Model containing concept '$conceptRef' is not editable", McpErrorCode.NOT_EDITABLE))
+            }
+            return EditableNodeResolution.Ok(projectNode, model)
+        }
+
+        val node = resolveConceptNode(mpsProject.repository, conceptRef)
+            ?: return EditableNodeResolution.Err(errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND))
+        val model = node.model
+        if (model !is EditableSModel) {
+            return EditableNodeResolution.Err(errJson("Model containing concept '$conceptRef' is not editable", McpErrorCode.NOT_EDITABLE))
+        }
+        if (!isModelInSelectedProject(mpsProject, model)) {
+            return EditableNodeResolution.Err(crossProjectErr("Concept '$conceptRef'"))
+        }
+        return EditableNodeResolution.Ok(node, model)
+    }
+
     /**
      * True if [model]'s owning module is part of the project that owns [repository]. A single MPS
      * instance shares one module repository across every open project, so the editable resolvers
@@ -537,12 +609,42 @@ abstract class AbstractOps : McpToolset {
     protected fun isModuleInProject(repository: SRepository, model: SModel): Boolean {
         val mpsProject = projectOf(repository) ?: return true
         val module = model.module ?: return false
-        return mpsProject.isProjectModule(module)
+        return isModuleInSelectedProject(mpsProject, module)
     }
 
     /** The [MPSProject] that owns [repository], or null when it is not a project repository. */
     private fun projectOf(repository: SRepository): MPSProject? =
         (repository as? ProjectRepository)?.project as? MPSProject
+
+    protected fun isModuleInSelectedProject(mpsProject: MPSProject, module: SModule): Boolean =
+        mpsProject.projectModulesWithGenerators.any { it.moduleReference == module.moduleReference }
+
+    protected fun isModelInSelectedProject(mpsProject: MPSProject, model: SModel): Boolean =
+        model.module?.let { isModuleInSelectedProject(mpsProject, it) } ?: false
+
+    protected fun isModuleInAnotherOpenProject(mpsProject: MPSProject, module: SModule): Boolean {
+        if (isModuleInSelectedProject(mpsProject, module)) return false
+        val moduleReference = module.moduleReference
+        return ProjectManager.getInstance().openProjects
+            .asSequence()
+            .mapNotNull { ProjectHelper.fromIdeaProject(it) }
+            .filter { it !== mpsProject }
+            .any { openProject ->
+                openProject.projectModulesWithGenerators.any { it.moduleReference == moduleReference }
+            }
+    }
+
+    protected fun isModelInAnotherOpenProject(mpsProject: MPSProject, model: SModel): Boolean =
+        model.module?.let { isModuleInAnotherOpenProject(mpsProject, it) } ?: false
+
+    protected fun isNodeInAnotherOpenProject(mpsProject: MPSProject, node: SNode): Boolean =
+        node.model?.let { isModelInAnotherOpenProject(mpsProject, it) } ?: false
+
+    protected fun isConceptFromAnotherOpenProject(mpsProject: MPSProject, concept: SAbstractConcept): Boolean =
+        concept.sourceNode?.resolve(mpsProject.repository)?.let { isNodeInAnotherOpenProject(mpsProject, it) } ?: false
+
+    protected fun isLanguageFromAnotherOpenProject(mpsProject: MPSProject, language: SLanguage): Boolean =
+        language.sourceModuleReference.resolve(mpsProject.repository)?.let { isModuleInAnotherOpenProject(mpsProject, it) } ?: false
 
     /**
      * Error for a write target that resolved to a module outside the selected project. Bare-name
@@ -595,6 +697,47 @@ abstract class AbstractOps : McpToolset {
             )
         }
         return RootableConceptResolution.Ok(sConcept)
+    }
+
+    protected fun resolveRootableConcept(
+        mpsProject: MPSProject,
+        conceptName: String?,
+        conceptReference: String?,
+        label: String = ""
+    ): RootableConceptResolution {
+        if (conceptName.isNullOrEmpty() && conceptReference.isNullOrEmpty()) {
+            return RootableConceptResolution.Err(
+                errJson("Either 'concept' (qualifiedName) or 'conceptReference' must be provided$label", McpErrorCode.INVALID_REQUEST)
+            )
+        }
+        val repository = mpsProject.repository
+        val sConcept = (if (!conceptReference.isNullOrEmpty()) resolveConceptPreferringProject(mpsProject, conceptReference) else null)
+            ?: (if (!conceptName.isNullOrEmpty()) resolveConceptPreferringProject(mpsProject, conceptName) else null)
+            ?: return RootableConceptResolution.Err(
+                rootableConceptNotFound(mpsProject, conceptName, conceptReference, label)
+            )
+        if (sConcept !is SConcept || !isRootable(sConcept, repository)) {
+            return RootableConceptResolution.Err(
+                errJson("Concept '${sConcept.name}' is not a rootable concept$label", McpErrorCode.INVALID_REQUEST)
+            )
+        }
+        return RootableConceptResolution.Ok(sConcept)
+    }
+
+    private fun rootableConceptNotFound(
+        mpsProject: MPSProject,
+        conceptName: String?,
+        conceptReference: String?,
+        label: String
+    ): String {
+        val foreignConcept = (if (!conceptReference.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptReference) else null)
+            ?: (if (!conceptName.isNullOrEmpty()) resolveConcept(mpsProject.repository, conceptName) else null)
+        return if (foreignConcept != null && isConceptFromAnotherOpenProject(mpsProject, foreignConcept)) {
+            crossProjectErr("Concept '${conceptReference ?: conceptName}'")
+        }
+        else {
+            errJson("Concept not found$label: concept='$conceptName', conceptReference='$conceptReference'", McpErrorCode.NOT_FOUND)
+        }
     }
 
     /**
@@ -1658,11 +1801,38 @@ abstract class AbstractOps : McpToolset {
         }
     }
 
-    protected fun resolveConceptNode(repository: SRepository, conceptRef: String): SNode? {
+    protected fun resolveConceptPreferringProject(mpsProject: MPSProject, conceptRef: String): SAbstractConcept? {
+        refreshRegistries(mpsProject.repository)
+        resolveConceptNodePreferringProject(mpsProject, conceptRef)?.let {
+            return MetaAdapterByDeclaration.getConcept(it)
+        }
+        val concept = resolveConcept(mpsProject.repository, conceptRef) ?: return null
+        return concept.takeUnless { isConceptFromAnotherOpenProject(mpsProject, it) }
+    }
+
+    protected fun resolveConceptNode(repository: SRepository, conceptRef: String): SNode? =
+        resolveConceptNodeInModules(repository, conceptRef, repository.modules) { true }
+
+    protected fun resolveConceptNode(mpsProject: MPSProject, conceptRef: String): SNode? =
+        resolveConceptNodeInModules(mpsProject.repository, conceptRef, mpsProject.projectModulesWithGenerators) {
+            it.model?.let { model -> isModelInSelectedProject(mpsProject, model) } == true
+        }
+
+    protected fun resolveConceptNodePreferringProject(mpsProject: MPSProject, conceptRef: String): SNode? =
+        resolveConceptNode(mpsProject, conceptRef)
+            ?: resolveConceptNode(mpsProject.repository, conceptRef)
+                ?.takeUnless { isNodeInAnotherOpenProject(mpsProject, it) }
+
+    private fun resolveConceptNodeInModules(
+        repository: SRepository,
+        conceptRef: String,
+        modules: Iterable<SModule>,
+        acceptResolvedNode: (SNode) -> Boolean
+    ): SNode? {
         // 1. Try as a node reference
         try {
             val nodeReference = PersistenceFacade.getInstance().createNodeReference(conceptRef)
-            nodeReference.resolve(repository)?.let { return it }
+            nodeReference.resolve(repository)?.let { if (acceptResolvedNode(it)) return it }
         } catch (e: Exception) {
             rethrowIfCancellation(e)
         }
@@ -1678,7 +1848,7 @@ abstract class AbstractOps : McpToolset {
                 // Strip ':qualifiedName' suffix from the concept part.
                 val langId = langRef.removePrefix("c:").removePrefix("l:")
                 val conceptId = conceptRefOrName.substringBefore(":")
-                for (module in repository.modules) {
+                for (module in modules) {
                     if (module !is Language) continue
                     val moduleId = module.moduleReference.moduleId.toString().removePrefix("l:")
                     if (moduleId == langId || module.moduleName == langId) {
@@ -1704,7 +1874,7 @@ abstract class AbstractOps : McpToolset {
             val possibleModelName = conceptRef.substring(0, lastDot)
             val conceptName = conceptRef.substring(lastDot + 1)
 
-            for (module in repository.modules) {
+            for (module in modules) {
                 for (model in module.models) {
                     if (model.name.longName == possibleModelName ||
                         model.name.longName == "$possibleModelName.structure"
@@ -1722,7 +1892,7 @@ abstract class AbstractOps : McpToolset {
         // 4. Scan all structure models: match by numeric node ID (if input is a plain long) or by
         //    concept name. A single pass over structure models covers both cases.
         val isNumericId = conceptRef.toLongOrNull() != null
-        for (module in repository.modules) {
+        for (module in modules) {
             if (module !is Language) continue
             for (model in module.models) {
                 if (!model.name.longName.endsWith(".structure")) continue
@@ -1745,16 +1915,60 @@ abstract class AbstractOps : McpToolset {
             rethrowIfCancellation(e)
         }
 
-        // 2. Try searching by long name
+        // 2. Try searching by name. A bare name matches a model only by its full value (stereotype
+        // included) or when the model has no stereotype. The loose longName match is intentionally
+        // not applied to stereotyped models: a deployed language ships a generated `<lang>@descriptor`
+        // model whose longName equals the language name, which would otherwise shadow the same-named
+        // Language module whenever a name is resolved (e.g. get_project_structure startingPoint).
         for (module in repository.modules) {
             for (model in module.models) {
-                if (model.name.longName == modelReference || model.name.value == modelReference) {
+                if (modelNameMatches(model, modelReference)) {
                     return model
                 }
             }
         }
         return null
     }
+
+    /**
+     * Whether [modelReference] addresses [model] by name. Matches the model's full value (which
+     * includes any stereotype, e.g. `foo.bar@tests`) or its bare longName, but the bare longName
+     * only matches a model with no stereotype — a stereotyped model must be addressed by full value.
+     */
+    private fun modelNameMatches(model: SModel, modelReference: String): Boolean =
+        model.name.value == modelReference ||
+            (model.name.longName == modelReference && model.name.stereotype.isEmpty())
+
+    protected fun resolveModel(mpsProject: MPSProject, modelReference: String, projectOnly: Boolean = true): SModel? {
+        // 1. Try as a model reference
+        try {
+            val ref = PersistenceFacade.getInstance().createModelReference(modelReference)
+            val resolved = ref.resolve(mpsProject.repository)
+            if (resolved != null && (!projectOnly || isModelInSelectedProject(mpsProject, resolved))) {
+                return resolved
+            }
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+        }
+
+        // 2. Try searching by name, project first by default. See modelNameMatches: a stereotyped
+        // model (e.g. a deployed language's `<lang>@descriptor`) is only matched by its full value,
+        // so a bare language name falls through to the same-named Language module instead.
+        val modulesToSearch = if (projectOnly) mpsProject.projectModulesWithGenerators else mpsProject.repository.modules
+        for (module in modulesToSearch) {
+            for (model in module.models) {
+                if (modelNameMatches(model, modelReference)) {
+                    return model
+                }
+            }
+        }
+        return null
+    }
+
+    protected fun resolveModelPreferringProject(mpsProject: MPSProject, modelReference: String): SModel? =
+        resolveModel(mpsProject, modelReference, projectOnly = true)
+            ?: resolveModel(mpsProject.repository, modelReference)
+                ?.takeUnless { isModelInAnotherOpenProject(mpsProject, it) }
 
     protected fun resolveModule(repository: SRepository, moduleRef: String): SModule? {
         // 1. Try as a module reference
@@ -1780,7 +1994,7 @@ abstract class AbstractOps : McpToolset {
             val ref = PersistenceFacade.getInstance().createModuleReference(moduleRef)
             val resolved = ref.resolve(mpsProject.repository)
             if (resolved != null) {
-                if (!projectOnly || mpsProject.isProjectModule(resolved)) {
+                if (!projectOnly || isModuleInSelectedProject(mpsProject, resolved)) {
                     return resolved
                 }
             }
@@ -1797,6 +2011,11 @@ abstract class AbstractOps : McpToolset {
         }
         return null
     }
+
+    protected fun resolveModulePreferringProject(mpsProject: MPSProject, moduleRef: String): SModule? =
+        resolveModule(mpsProject, moduleRef, projectOnly = true)
+            ?: resolveModule(mpsProject.repository, moduleRef)
+                ?.takeUnless { isModuleInAnotherOpenProject(mpsProject, it) }
 
     // Expands each Language module by also including its owned generators. DevKit and Solution
     // modules are passed through unchanged because they do not own generators.
@@ -1839,6 +2058,18 @@ abstract class AbstractOps : McpToolset {
         return allLanguages.find { it.qualifiedName == languageRef }
     }
 
+    protected fun resolveLanguagePreferringProject(mpsProject: MPSProject, languageRef: String): SLanguage? {
+        if (languageRef.startsWith("l:")) {
+            val language = resolveLanguage(mpsProject.repository, languageRef) ?: return null
+            return language.takeUnless { isLanguageFromAnotherOpenProject(mpsProject, it) }
+        }
+        (resolveModule(mpsProject, languageRef, projectOnly = true) as? Language)?.let {
+            return MetaAdapterByDeclaration.getLanguage(it)
+        }
+        val language = resolveLanguage(mpsProject.repository, languageRef) ?: return null
+        return language.takeUnless { isLanguageFromAnotherOpenProject(mpsProject, it) }
+    }
+
     protected fun resolveNodeReference(repository: SRepository, nodeRefStr: String): SNodeReference? {
         if (nodeRefStr.startsWith("c:")) {
             throw McpInvalidReferenceException("Expected a node reference (r:... or i:...), but a concept reference was provided: $nodeRefStr")
@@ -1877,6 +2108,57 @@ abstract class AbstractOps : McpToolset {
         }
         return null
     }
+
+    protected fun resolveNodeReference(mpsProject: MPSProject, nodeRefStr: String): SNodeReference? {
+        if (nodeRefStr.startsWith("c:")) {
+            throw McpInvalidReferenceException("Expected a node reference (r:... or i:...), but a concept reference was provided: $nodeRefStr")
+        }
+        val repository = mpsProject.repository
+        val facade = PersistenceFacade.getInstance()
+        try {
+            val ref = facade.createNodeReference(nodeRefStr)
+            val node = ref.resolve(repository)
+            if (node != null && node.model?.let { isModelInSelectedProject(mpsProject, it) } == true) {
+                return node.reference
+            }
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            // Try searching by name (root nodes)
+            // Support "ModelName.RootName" format
+            if (nodeRefStr.contains(".")) {
+                val lastDot = nodeRefStr.lastIndexOf(".")
+                val modelName = nodeRefStr.substring(0, lastDot)
+                val rootName = nodeRefStr.substring(lastDot + 1)
+                for (module in mpsProject.projectModulesWithGenerators) {
+                    for (model in module.models) {
+                        if (model.name.longName == modelName || model.name.value == modelName) {
+                            for (root in model.rootNodes) {
+                                if (root.name == rootName) return root.reference
+                            }
+                        }
+                    }
+                }
+            }
+
+            for (module in mpsProject.projectModulesWithGenerators) {
+                for (model in module.models) {
+                    for (root in model.rootNodes) {
+                        if (root.name == nodeRefStr) {
+                            return root.reference
+                        }
+                    }
+                }
+            }
+        }
+        return null
+    }
+
+    protected fun resolveNodeReferencePreferringProject(mpsProject: MPSProject, nodeRefStr: String): SNodeReference? =
+        resolveNodeReference(mpsProject, nodeRefStr)
+            ?: resolveNodeReference(mpsProject.repository, nodeRefStr)
+                ?.takeUnless { ref ->
+                    ref.resolve(mpsProject.repository)?.let { isNodeInAnotherOpenProject(mpsProject, it) } == true
+                }
 
     protected fun containmentLinkInfoJson(link: SContainmentLink, repository: SRepository?): String {
         return containmentLinkInfoJsonObject(link, repository, includeDeprecated = true).toString()

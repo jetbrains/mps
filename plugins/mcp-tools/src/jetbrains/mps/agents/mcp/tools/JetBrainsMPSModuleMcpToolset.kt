@@ -35,7 +35,6 @@ import org.jetbrains.annotations.Nullable
 import org.jetbrains.mps.openapi.module.FacetsFacade
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SModule
-import org.jetbrains.mps.openapi.module.SModuleId
 import org.jetbrains.mps.openapi.persistence.Memento
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.function.Consumer
@@ -87,7 +86,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             }
             val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
 
-            val target = resolveModule(mpsProject, targetModule, projectOnly = false)
+            val target = resolveModulePreferringProject(mpsProject, targetModule)
                 ?: return@executeShortCommandOnEdt errJson("Target module $targetModule not found", McpErrorCode.NOT_FOUND)
 
             val targetRef = target.moduleReference
@@ -193,7 +192,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             // (regular deps, extendedLanguages, depGenerators, extendedDevkits) so the user can still
             // remove an entry whose target module is no longer in the project.
             val persistence = PersistenceFacade.getInstance()
-            val resolvedTargetRef = resolveModule(mpsProject, targetModule, projectOnly = false)?.moduleReference
+            val resolvedTargetRef = resolveModulePreferringProject(mpsProject, targetModule)?.moduleReference
             val targetRef = resolvedTargetRef
                 ?: descriptor.dependencies.find {
                     it.moduleRef.moduleName == targetModule ||
@@ -401,7 +400,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                             // returns SLanguage which cannot be cast to jetbrains.mps.smodel.Language —
                             // they are unrelated types — so route the lookup through the module resolver
                             // and reject anything that isn't an actual Language module.
-                            val parentLang = resolveModule(mpsProject, parentLangName, projectOnly = false) as? Language
+                            val parentLang = resolveModule(mpsProject, parentLangName, projectOnly = true) as? Language
                             if (parentLang == null) {
                                 error = "Parent language not found or is not a Language module: $parentLangName"
                                 return@executeCommand
@@ -851,7 +850,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         executeShortReadOnEdt(mpsProject) {
             val ff = FacetsFacade.getInstance()
                 ?: throw McpUserException(McpErrorCode.INTERNAL_ERROR, "FacetsFacade service is not available")
-            val module = moduleName?.let { resolveModule(mpsProject, it, projectOnly = false) }
+            val module = moduleName?.let { resolveModulePreferringProject(mpsProject, it) }
             val recommendedTypes = module?.let { ff.getApplicableFacetTypes(it.usedLanguages) } ?: emptySet()
 
             val jsonArray = JsonArray()
@@ -884,7 +883,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Module name or reference") moduleName: String
     ): String = withMpsProject("Getting module facets") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val module = resolveModule(mpsProject, moduleName, projectOnly = false)
+            val module = resolveModulePreferringProject(mpsProject, moduleName)
             if (module == null) {
                 errJson("Module $moduleName not found", McpErrorCode.NOT_FOUND)
             } else {

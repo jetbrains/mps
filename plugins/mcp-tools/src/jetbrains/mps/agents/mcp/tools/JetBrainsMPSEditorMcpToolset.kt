@@ -2,9 +2,9 @@ package jetbrains.mps.agents.mcp.tools
 
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
-import com.intellij.openapi.diagnostic.Logger
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SConceptOperations
 import jetbrains.mps.lang.smodel.generator.smodelAdapter.SNodeOperations
+import jetbrains.mps.project.MPSProject
 import jetbrains.mps.smodel.Language
 import jetbrains.mps.smodel.LanguageAspect
 import jetbrains.mps.smodel.SNodeUtil
@@ -17,7 +17,6 @@ import org.jetbrains.mps.openapi.language.SReferenceLink
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SNode
 import org.jetbrains.mps.openapi.model.SNodeReference
-import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
 // MCP tool methods use snake_case names because they are part of the public MCP protocol
@@ -70,7 +69,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
         wiring: RefCellWiring,
         readOnly: Boolean,
         referenceStyle: String?,
-        repo: SRepository
+        mpsProject: MPSProject
     ): SNode {
         val refCell = SNodeFactoryOperations.addNewChild(parent, parentLink, wiring.refCellConcept)
         relationSource?.let { refCell.setReference(wiring.relationDeclLink, it) }
@@ -87,7 +86,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
         }
 
         if (referenceStyle != null) {
-            applyStyle(refCell, referenceStyle, repo)
+            applyStyle(refCell, referenceStyle, mpsProject)
         }
         return refCell
     }
@@ -100,7 +99,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
     )
     suspend fun mps_mcp_scaffold_editor(
         @McpDescription("The persistent reference c:... or r:... of the declaration of the concept that needs an editor, or its fully qualified name.") conceptRef: String,
-        @McpDescription("Target editor model where the editor node should be created: a persistent model reference (preferred), or the model's long/short name as a fallback. Names that match more than one model resolve to the first match in repository iteration order.") modelReference: String,
+        @McpDescription("Target editor model where the editor node should be created: a persistent model reference (preferred), or the model's long/short name resolved in the project selected by projectPath.") modelReference: String,
         @McpDescription("Optional: A persistent reference to a StyleClass to automatically apply to constant cells like the concept alias.") keywordStyle: String? = null,
         @McpDescription("Optional: A persistent reference to a StyleClass to apply to reference cells.") referenceStyle: String? = null,
         @McpDescription("Whether to automatically detect and include existing suitable editor components.") detectComponents: Boolean = false,
@@ -147,14 +146,14 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
         // This avoids skipping make for concepts that were just created but not yet compiled/indexed.
         val structureModelForMake = mpsProject.modelAccess.computeReadAction {
             val c = try {
-                resolveConcept(mpsProject.repository, conceptRef)
+                resolveConceptPreferringProject(mpsProject, conceptRef)
             } catch (e: Exception) {
                 rethrowIfCancellation(e)
                 logger.warn("Failed to resolve concept '$conceptRef'", e)
                 null
             }
             val model = try {
-                resolveConceptNode(mpsProject.repository, conceptRef)?.model
+                resolveConceptNodePreferringProject(mpsProject, conceptRef)?.model
             } catch (e: Exception) {
                 rethrowIfCancellation(e)
                 logger.warn("Failed to resolve concept node '$conceptRef'", e)
@@ -244,7 +243,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             null
                         }
 
-                    val sConcept = resolveConcept(repo, conceptRef) ?: run {
+                    val sConcept = resolveConceptPreferringProject(mpsProject, conceptRef) ?: run {
                         error = "Concept '$conceptRef' not found"
                         return@executeShortCommandOnEdt
                     }
@@ -265,10 +264,10 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                         }
                     }
 
-                    val model = when (val r = resolveEditableModel(repo, modelReference)) {
+                    val model = when (val r = resolveEditableModel(mpsProject, modelReference)) {
                         is EditableModelResolution.Ok -> r.model
                         is EditableModelResolution.Err -> {
-                            error = "Model '$modelReference' not found or not editable"
+                            error = r.errJson
                             return@executeShortCommandOnEdt
                         }
                     }
@@ -292,7 +291,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     // successful build.  The resolveConceptNode fallback is kept as a safety net
                     // for the edge case where the 10-second registry-wait times out.
                     val sourceNode = sConcept.sourceNode
-                        ?: resolveConceptNode(repo, conceptRef)?.reference
+                        ?: resolveConceptNodePreferringProject(mpsProject, conceptRef)?.reference
                         ?: run {
                             error = "Concept '$conceptRef' has no source node"
                             return@executeShortCommandOnEdt
@@ -351,7 +350,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             wiring = refCellWiring,
                             readOnly = true,
                             referenceStyle = referenceStyle,
-                            repo = repo
+                            mpsProject = mpsProject
                         )
 
                         saveModelAndModule(model)
@@ -402,7 +401,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
 
                     // 1. Resolve explicitly included components
                     includeComponents?.forEach { ref ->
-                        val nodeReference = resolveNodeReference(repo, ref)
+                        val nodeReference = resolveNodeReferencePreferringProject(mpsProject, ref)
                         val node = nodeReference?.resolve(repo)
                         if (node != null && structureQualifiedName(node.concept) == "jetbrains.mps.lang.editor.structure.EditorComponentDeclaration") {
                             availableComponents.add(node)
@@ -498,7 +497,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             addStyleItem(cell, onNewLineConcept)
                         }
                         if (style != null) {
-                            applyStyle(cell, style, repo)
+                            applyStyle(cell, style, mpsProject)
                         }
                         return cell
                     }
@@ -557,7 +556,7 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                             wiring = refCellWiring,
                             readOnly = false,
                             referenceStyle = referenceStyle,
-                            repo = repo
+                            mpsProject = mpsProject
                         )
                         referenceCount++
                     }
@@ -857,8 +856,9 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
                     }
                 }
             }
-        return if (error != null) {
-            errJson(error)
+        val err = error
+        return if (err != null) {
+            err.takeIf { it.startsWith("{\"ok\":") } ?: errJson(err)
         } else if (result != null) {
             okJson(result)
         } else {
@@ -866,8 +866,9 @@ class JetBrainsMPSEditorMcpToolset : AbstractNodeOps() {
         }
     }
 
-    private fun applyStyle(node: SNode, styleRef: String, repo: SRepository) {
-        val sStyleRef = resolveNodeReference(repo, styleRef) ?: run {
+    private fun applyStyle(node: SNode, styleRef: String, mpsProject: MPSProject) {
+        val repo = mpsProject.repository
+        val sStyleRef = resolveNodeReferencePreferringProject(mpsProject, styleRef) ?: run {
             logger.debug("applyStyle: failed to resolve node reference for styleRef '$styleRef'")
             return
         }

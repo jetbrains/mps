@@ -14,11 +14,14 @@ import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
 import jetbrains.mps.smodel.language.LanguageRegistry
-import org.jetbrains.mps.openapi.language.*
-import org.jetbrains.mps.openapi.model.EditableSModel
+import org.jetbrains.mps.openapi.language.SAbstractConcept
+import org.jetbrains.mps.openapi.language.SConcept
+import org.jetbrains.mps.openapi.language.SContainmentLink
+import org.jetbrains.mps.openapi.language.SEnumeration
+import org.jetbrains.mps.openapi.language.SProperty
+import org.jetbrains.mps.openapi.language.SReferenceLink
 import org.jetbrains.mps.openapi.model.SModel
 import org.jetbrains.mps.openapi.model.SNode
-import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.*
 
@@ -110,9 +113,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 val superConceptRef = params.get("superConceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'superConceptRef' is missing")
                 executeShortReadOnEdt(mpsProject) {
-                    val concept = resolveConcept(mpsProject.repository, conceptRef)
+                    val concept = resolveConceptPreferringProject(mpsProject, conceptRef)
                         ?: return@executeShortReadOnEdt errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
-                    val superConcept = resolveConcept(mpsProject.repository, superConceptRef)
+                    val superConcept = resolveConceptPreferringProject(mpsProject, superConceptRef)
                         ?: return@executeShortReadOnEdt errJson("Super concept '$superConceptRef' not found", McpErrorCode.NOT_FOUND)
                     okJson(concept.isSubConceptOf(superConcept).toString())
                 }
@@ -123,7 +126,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 val languageRefsElement = params.get("languageRefs")
                 executeShortReadOnEdt(mpsProject) {
-                    val targetConcept = resolveConcept(mpsProject.repository, conceptRef)
+                    val targetConcept = resolveConceptPreferringProject(mpsProject, conceptRef)
                         ?: return@executeShortReadOnEdt errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
                     val allConcepts = mutableSetOf<SAbstractConcept>()
                     val languageRegistry = LanguageRegistry.getInstance(mpsProject.repository)
@@ -133,7 +136,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                         if (refs.isEmpty()) {
                             languageRegistry.allLanguages
                         } else {
-                            refs.mapNotNull { resolveLanguage(mpsProject.repository, it) }
+                            refs.mapNotNull { resolveLanguagePreferringProject(mpsProject, it) }
                         }
                     } else {
                         languageRegistry.allLanguages
@@ -179,7 +182,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
             MPSStructureQueryOperation.GET_ALL_SUPERCONCEPTS -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 executeShortReadOnEdt(mpsProject) {
-                    val concept = resolveConcept(mpsProject.repository, conceptRef)
+                    val concept = resolveConceptPreferringProject(mpsProject, conceptRef)
                         ?: return@executeShortReadOnEdt errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
                     val allSuperConcepts = mutableSetOf<SAbstractConcept>()
                     populateSuperConceptsAndInterfaces(concept, allSuperConcepts)
@@ -197,7 +200,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
             MPSStructureQueryOperation.IS_SMART_REFERENCE -> {
                 val conceptRef = params.get("conceptRef")?.asString ?: return@withMpsProject errJson("Parameter 'conceptRef' is missing")
                 executeShortReadOnEdt(mpsProject) {
-                    val concept = resolveConcept(mpsProject.repository, conceptRef)
+                    val concept = resolveConceptPreferringProject(mpsProject, conceptRef)
                         ?: return@executeShortReadOnEdt errJson("Concept not found: $conceptRef", McpErrorCode.NOT_FOUND)
                     val smartRefLink = getSmartReferenceLink(concept, mpsProject.repository)
                     val result = JsonObject()
@@ -358,7 +361,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
             // NOT_FOUND / NOT_EDITABLE error codes. A silent fall-through here would let creation
             // appear to succeed in memory while save() is skipped — exactly the hollow-descriptor
             // failure mode the rest of this flow is meant to prevent.
-            val model = when (val r = resolveEditableModel(mpsProject.repository, structureModelRef)) {
+            val model = when (val r = resolveEditableModel(mpsProject, structureModelRef)) {
                 is EditableModelResolution.Ok -> r.model
                 is EditableModelResolution.Err -> {
                     failure = r.errJson
@@ -594,7 +597,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
             // If make is requested, run make on the structure model
             if (make) {
                 val model = executeBackgroundRead(mpsProject) {
-                    resolveModel(mpsProject.repository, structureModelRef)
+                    resolveModel(mpsProject, structureModelRef, projectOnly = true)
                 }
 
                 if (model == null) {
@@ -905,7 +908,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
         conceptRegistry[targetRef]?.let { return it }
 
         // 2. Use shared resolver from AbstractOps
-        return resolveConceptNode(mpsProject.repository, targetRef)
+        return resolveConceptNodePreferringProject(mpsProject, targetRef)
     }
 
     private suspend fun createConcepts(
@@ -916,7 +919,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
         // createConceptsFull for the rationale of the single-var pattern.
         var failure: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val model = when (val r = resolveEditableModel(mpsProject.repository, structureModelRef)) {
+            val model = when (val r = resolveEditableModel(mpsProject, structureModelRef)) {
                 is EditableModelResolution.Ok -> r.model
                 is EditableModelResolution.Err -> {
                     failure = r.errJson
@@ -988,7 +991,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
         // createConceptsFull for the single-var pattern.
         var failure: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val model = when (val r = resolveEditableModel(mpsProject.repository, structureModelRef)) {
+            val model = when (val r = resolveEditableModel(mpsProject, structureModelRef)) {
                 is EditableModelResolution.Ok -> r.model
                 is EditableModelResolution.Err -> {
                     failure = r.errJson
@@ -1064,16 +1067,17 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
         propertyName: String
     ): String = withMpsProject("Getting MPS enumeration literals for '$propertyName'") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
+            val repo = mpsProject.repository
+            val sNodeRef = resolveNodeReferencePreferringProject(mpsProject, nodeReference)
                 ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
-            val node = sNodeRef.resolve(mpsProject.repository)
+            val node = sNodeRef.resolve(repo)
                 ?: return@executeShortReadOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
             val sProperty = node.concept.properties.find { it.name == propertyName }
                 ?: return@executeShortReadOnEdt errJson("Property '$propertyName' not found in concept '${node.concept.name}'", McpErrorCode.NOT_FOUND)
             val type = sProperty.type
             if (type is SEnumeration) {
                 val list = type.literals.map { literal ->
-                    val doc = getDoc(literal.sourceNode?.resolve(mpsProject.repository))
+                    val doc = getDoc(literal.sourceNode?.resolve(repo))
                     mapOf("value" to (literal.name ?: ""), "presentation" to literal.presentation, "doc" to doc)
                 }
                 okJson(Gson().toJson(list))
@@ -1087,9 +1091,10 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
         enumerationRef: String
     ): String = withMpsProject("Getting MPS enumeration literals from '$enumerationRef'") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val sNodeRef = resolveNodeReference(mpsProject.repository, enumerationRef)
+            val repo = mpsProject.repository
+            val sNodeRef = resolveNodeReferencePreferringProject(mpsProject, enumerationRef)
                 ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$enumerationRef'")
-            val node = sNodeRef.resolve(mpsProject.repository)
+            val node = sNodeRef.resolve(repo)
                 ?: return@executeShortReadOnEdt errJson("Node '$enumerationRef' not found", McpErrorCode.NOT_FOUND)
             if (!node.concept.isSubConceptOf(CONCEPT_EnumerationDeclaration)) {
                 return@executeShortReadOnEdt errJson(
@@ -1115,12 +1120,13 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
     ): String = withMpsProject("Updating concept property '$propertyName'") { mpsProject ->
         var error: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val conceptNode = resolveConceptNode(mpsProject.repository, conceptRef)
-            if (conceptNode == null) {
-                error = "Concept '$conceptRef' not found"
-                return@executeShortCommandOnEdt
+            val (conceptNode, model) = when (val r = resolveEditableConceptNode(mpsProject, conceptRef)) {
+                is EditableNodeResolution.Ok -> r.node to r.model
+                is EditableNodeResolution.Err -> {
+                    error = r.errJson
+                    return@executeShortCommandOnEdt
+                }
             }
-            val model = conceptNode.model as? EditableSModel
 
             val existingProp = conceptNode.getChildren(LINK_PropertyDeclaration).find { it.getProperty(PROP_Name) == propertyName }
 
@@ -1143,9 +1149,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                     return@executeShortCommandOnEdt
                 }
             }
-            model?.let { saveModelAndModule(it) }
+            saveModelAndModule(model)
         }
-        error?.let { errJson(it) } ?: okJson("true")
+        error?.let { if (it.startsWith("{\"ok\":")) it else errJson(it) } ?: okJson("true")
     }
 
     private suspend fun mps_mcp_update_concept_link(
@@ -1158,17 +1164,13 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
     ): String = withMpsProject("Updating concept ${if (isChild) "child" else "reference"} '$role'") { mpsProject ->
         var error: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val conceptNode = resolveConceptNode(mpsProject.repository, conceptRef)
-            if (conceptNode == null) {
-                error = "Concept '$conceptRef' not found"
-                return@executeShortCommandOnEdt
+            val (conceptNode, model) = when (val r = resolveEditableConceptNode(mpsProject, conceptRef)) {
+                is EditableNodeResolution.Ok -> r.node to r.model
+                is EditableNodeResolution.Err -> {
+                    error = r.errJson
+                    return@executeShortCommandOnEdt
+                }
             }
-            val model = conceptNode.model
-            if (model == null) {
-                error = "Concept '$conceptRef' has no model (detached or removed)"
-                return@executeShortCommandOnEdt
-            }
-            val editableModel = model as? EditableSModel
 
             val existingLink = conceptNode.getChildren(LINK_LinkDeclaration).find {
                 it.getProperty(PROP_LinkDeclaration_Role) == role
@@ -1212,9 +1214,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                     return@executeShortCommandOnEdt
                 }
             }
-            editableModel?.let { saveModelAndModule(it) }
+            saveModelAndModule(model)
         }
-        error?.let { errJson(it) } ?: okJson("true")
+        error?.let { if (it.startsWith("{\"ok\":")) it else errJson(it) } ?: okJson("true")
     }
 
     private suspend fun mps_mcp_rename_concept_property(
@@ -1224,12 +1226,13 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
     ): String = withMpsProject("Renaming concept property '$oldName' to '$newName'") { mpsProject ->
         var error: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val conceptNode = resolveConceptNode(mpsProject.repository, conceptRef)
-            if (conceptNode == null) {
-                error = "Concept '$conceptRef' not found"
-                return@executeShortCommandOnEdt
+            val (conceptNode, model) = when (val r = resolveEditableConceptNode(mpsProject, conceptRef)) {
+                is EditableNodeResolution.Ok -> r.node to r.model
+                is EditableNodeResolution.Err -> {
+                    error = r.errJson
+                    return@executeShortCommandOnEdt
+                }
             }
-            val model = conceptNode.model as? EditableSModel
 
             val existingProp = conceptNode.getChildren(LINK_PropertyDeclaration).find { it.getProperty(PROP_Name) == oldName }
             if (existingProp == null) {
@@ -1238,9 +1241,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
             }
 
             existingProp.setProperty(PROP_Name, newName)
-            model?.let { saveModelAndModule(it) }
+            saveModelAndModule(model)
         }
-        error?.let { errJson(it) } ?: okJson("true")
+        error?.let { if (it.startsWith("{\"ok\":")) it else errJson(it) } ?: okJson("true")
     }
 
     private suspend fun mps_mcp_rename_concept_link(
@@ -1251,12 +1254,13 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
     ): String = withMpsProject("Renaming concept ${if (isChild) "child" else "reference"} '$oldRole' to '$newRole'") { mpsProject ->
         var error: String? = null
         executeShortCommandOnEdt(mpsProject) {
-            val conceptNode = resolveConceptNode(mpsProject.repository, conceptRef)
-            if (conceptNode == null) {
-                error = "Concept '$conceptRef' not found"
-                return@executeShortCommandOnEdt
+            val (conceptNode, model) = when (val r = resolveEditableConceptNode(mpsProject, conceptRef)) {
+                is EditableNodeResolution.Ok -> r.node to r.model
+                is EditableNodeResolution.Err -> {
+                    error = r.errJson
+                    return@executeShortCommandOnEdt
+                }
             }
-            val model = conceptNode.model as? EditableSModel
 
             val existingLink = conceptNode.getChildren(LINK_LinkDeclaration).find {
                 it.getProperty(PROP_LinkDeclaration_Role) == oldRole
@@ -1268,9 +1272,9 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
             }
 
             existingLink.setProperty(PROP_LinkDeclaration_Role, newRole)
-            model?.let { saveModelAndModule(it) }
+            saveModelAndModule(model)
         }
-        error?.let { errJson(it) } ?: okJson("true")
+        error?.let { if (it.startsWith("{\"ok\":")) it else errJson(it) } ?: okJson("true")
     }
 
 
@@ -1287,7 +1291,7 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
         includeInherited: Boolean = false
     ): String = withMpsProject("Listing concept aspects for '$conceptRef'${if (includeInherited) " with inherited" else ""}") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val startConcept = resolveConcept(mpsProject.repository, conceptRef)
+            val startConcept = resolveConceptPreferringProject(mpsProject, conceptRef)
                 ?: return@executeShortReadOnEdt errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
 
             val hierarchy = mutableSetOf<SAbstractConcept>()

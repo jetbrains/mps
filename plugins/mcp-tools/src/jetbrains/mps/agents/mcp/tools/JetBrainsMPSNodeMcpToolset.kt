@@ -12,7 +12,6 @@ import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.validation.ModelValidator
 import org.jetbrains.mps.openapi.model.EditableSModel
 import org.jetbrains.mps.openapi.model.SNode
-import org.jetbrains.mps.openapi.module.*
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 
 
@@ -181,8 +180,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     ): String {
         val nodeReference = params.get("nodeReference")?.asString ?: return errJson("Parameter 'nodeReference' is missing")
         return executeShortReadOnEdt(mpsProject) {
-            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
-            val node = sNodeRef?.resolve(mpsProject.repository)
+            val repo = mpsProject.repository
+            val sNodeRef = resolveNodeReferencePreferringProject(mpsProject, nodeReference)
+            val node = sNodeRef?.resolve(repo)
                 ?: return@executeShortReadOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
             when (operation) {
@@ -230,8 +230,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         val scopeParam = params.get("scope")?.asString ?: "editable"
         val monitor = coroutineProgressMonitor()
         return executeBackgroundRead(mpsProject) {
-            val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
-            val node = sNodeRef?.resolve(mpsProject.repository)
+            val repo = mpsProject.repository
+            val sNodeRef = resolveNodeReferencePreferringProject(mpsProject, nodeReference)
+            val node = sNodeRef?.resolve(repo)
                 ?: return@executeBackgroundRead errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
             val (searchScope, rootFilter) = when (val r = buildSearchScope(mpsProject, scopeParam, params)) {
@@ -426,8 +427,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 wholeProject = wholeProject,
                 allProjectModels = { mpsProject.scope.models },
                 allProjectModules = { mpsProject.projectModulesWithGenerators },
-                resolveModel = { resolveModel(mpsProject.repository, it) },
-                resolveModule = { resolveModule(mpsProject.repository, it) },
+                resolveModel = { resolveModel(mpsProject, it, projectOnly = true) },
+                resolveModule = { resolveModule(mpsProject, it, projectOnly = true) },
                 moduleOfModel = { it.module },
                 modelsOfModule = { it.models },
             )
@@ -487,11 +488,12 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
     ): String {
         return withMpsProject("Getting MPS node ${if (asHtml) "HTML" else "text"} representation") { mpsProject ->
             executeShortReadOnEdt(mpsProject) {
-                val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
-                val node = sNodeRef?.resolve(mpsProject.repository)
+                val repo = mpsProject.repository
+                val sNodeRef = resolveNodeReferencePreferringProject(mpsProject, nodeReference)
+                val node = sNodeRef?.resolve(repo)
                     ?: return@executeShortReadOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
-                val component = HeadlessEditorComponent(mpsProject.repository)
+                val component = HeadlessEditorComponent(repo)
                 try {
                     component.editNode(node)
                     val text = if (asHtml) {
@@ -594,9 +596,10 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         if (normalizedFormat != "JSON") return errJson("Invalid format '$format'. Allowed values: JSON, HTML, PLAIN TEXT", McpErrorCode.INVALID_REQUEST)
         return withMpsProject(if (deep) "Deep printing MPS node" else "Shallow printing MPS node") { mpsProject ->
             executeShortReadOnEdt(mpsProject) {
-                val sNodeRef = resolveNodeReference(mpsProject.repository, nodeReference)
+                val repo = mpsProject.repository
+                val sNodeRef = resolveNodeReferencePreferringProject(mpsProject, nodeReference)
                     ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
-                val node = sNodeRef.resolve(mpsProject.repository)
+                val node = sNodeRef.resolve(repo)
                     ?: return@executeShortReadOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
                 saveToTempFileResult(nodeHierarchyToJson(node, deep))
             }
@@ -788,7 +791,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     is ConsoleAwareResolution.Ok -> Triple(r.node, r.model, r.console)
                     is ConsoleAwareResolution.Err -> return@executeShortCommandOnEdt r.errJson
                 }
-                val childNode = resolveNodeReference(repo, childNodeRef)?.resolve(repo)
+                val childNode = resolveNodeReferencePreferringProject(mpsProject, childNodeRef)?.resolve(repo)
                     ?: return@executeShortCommandOnEdt errJson("Child node '$childNodeRef' not found", McpErrorCode.NOT_FOUND)
                 if (childNode.model?.reference != parent.model?.reference) {
                     return@executeShortCommandOnEdt errJson("Child node '$childNodeRef' is not in the same model as parent '$nodeReference'", McpErrorCode.INVALID_REQUEST)
@@ -865,7 +868,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         return withMpsProject("Moving MPS node to parent") { mpsProject ->
             executeShortCommandOnEdt(mpsProject) {
                 val repo = mpsProject.repository
-                val sNodeRef = resolveNodeReference(repo, nodeReference)
+                val sNodeRef = resolveNodeReference(mpsProject, nodeReference) ?: resolveNodeReference(repo, nodeReference)
                 val node = sNodeRef?.resolve(repo)
                     ?: return@executeShortCommandOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
 
@@ -876,6 +879,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 val sourceModel = node.model
                 if (sourceModel != null && sourceModel !is EditableSModel) {
                     return@executeShortCommandOnEdt errJson("Source model is not editable", McpErrorCode.NOT_EDITABLE)
+                }
+                if (sourceModel != null && !isModelInSelectedProject(mpsProject, sourceModel)) {
+                    return@executeShortCommandOnEdt crossProjectErr("Node '$nodeReference'")
                 }
 
                 if (newParentRef != null) {
@@ -953,7 +959,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     okJson(nodeInfoJsonObjectWithIndex(node), warnings = listOfNotNull(warn))
 
                 } else if (modelReference != null) {
-                    val targetModel = when (val r = resolveEditableModel(repo, modelReference)) {
+                    val targetModel = when (val r = resolveEditableModel(mpsProject, modelReference)) {
                         is EditableModelResolution.Ok -> r.model
                         is EditableModelResolution.Err -> return@executeShortCommandOnEdt r.errJson
                     }

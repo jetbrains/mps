@@ -102,22 +102,36 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     // Try to resolve as node, then model, then module
 
                     // 1. Try Node
-                    val node = resolveNodeReference(mpsProject.repository, startingPoint)?.resolve(mpsProject.repository)
+                    val nodeRef = if (includeStubModules) {
+                        resolveNodeReferencePreferringProject(mpsProject, startingPoint)
+                    }
+                    else {
+                        resolveNodeReference(mpsProject, startingPoint)
+                    }
+                    val node = nodeRef?.resolve(mpsProject.repository)
                     if (node != null) {
                         return@executeShortReadOnEdt saveToTempFileResult(nodeHierarchyToJson(node, includeNodes))
                     }
 
                     // 2. Try Model
-                    val model = resolveModel(mpsProject.repository, startingPoint)
+                    val model = if (includeStubModules) {
+                        resolveModelPreferringProject(mpsProject, startingPoint)
+                    } else {
+                        resolveModel(mpsProject, startingPoint, projectOnly = true)
+                    }
                     if (model != null) {
                         return@executeShortReadOnEdt saveToTempFileResult(modelToJson(model, effectiveIncludeRootNodes, includeNodes, includeDependencies))
                     }
 
                     // 3. Try Module
-                    val module = resolveModule(mpsProject.repository, startingPoint)
+                    val module = if (includeStubModules) {
+                        resolveModulePreferringProject(mpsProject, startingPoint)
+                    } else {
+                        resolveModule(mpsProject, startingPoint, projectOnly = true)
+                    }
                     if (module != null) {
                         // Check if we should filter out stub modules if they are not included
-                        val isProjectModule = mpsProject.projectModulesWithGenerators.contains(module)
+                        val isProjectModule = isModuleInSelectedProject(mpsProject, module)
                         if (includeStubModules || isProjectModule) {
                             return@executeShortReadOnEdt saveToTempFileResult(
                                 moduleToJson(mpsProject, module, effectiveIncludeModels, effectiveIncludeRootNodes, includeNodes, includeDependencies)
@@ -131,7 +145,12 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
 
                     errJson("Starting point '$startingPoint' not found", McpErrorCode.NOT_FOUND)
                 } else {
-                    val modules = if (includeStubModules) mpsProject.repository.modules else mpsProject.projectModulesWithGenerators
+                    val modules = if (includeStubModules) {
+                        mpsProject.repository.modules.filterNot { isModuleInAnotherOpenProject(mpsProject, it) }
+                    }
+                    else {
+                        mpsProject.projectModulesWithGenerators
+                    }
                     val filteredModules = if (!moduleKind.isNullOrBlank()) {
                         modules.filter { getModuleKind(it).equals(moduleKind, ignoreCase = true) }
                     } else {

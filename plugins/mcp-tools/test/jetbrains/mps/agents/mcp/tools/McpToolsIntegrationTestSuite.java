@@ -43,6 +43,7 @@ import java.lang.reflect.Field;
     JetBrainsMPSRootNodeMcpToolsetIntegrationTest.class,
     SearchRootNodeCrossProjectTest.class,
     WriteToolCrossProjectTest.class,
+    ProjectResolutionCrossProjectTest.class,
     JetBrainsMPSProjectMcpToolsetIntegrationTest.class,
     JetBrainsMPSConsoleMcpToolsetIntegrationTest.class,
     JetBrainsMPSRunConfigurationMcpToolsetIntegrationTest.class,

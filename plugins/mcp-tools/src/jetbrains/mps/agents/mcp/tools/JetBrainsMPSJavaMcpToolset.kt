@@ -91,7 +91,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         return executeBackgroundRead(mpsProject) {
             val repo = mpsProject.repository
             val contextNode: SNode? = if (!contextNodeRefStr.isNullOrEmpty()) {
-                val nr = resolveNodeReference(repo, contextNodeRefStr)
+                val nr = resolveNodeReferencePreferringProject(mpsProject, contextNodeRefStr)
                 nr?.resolve(repo) ?: return@executeBackgroundRead JavaParsePreparation.Err("Context node '$contextNodeRefStr' not found")
             } else null
 
@@ -259,14 +259,15 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     }
 
     private fun insertAsRoot(
-        repo: SRepository,
+        mpsProject: MPSProject,
         parsedNodes: List<SNode>,
         parseResult: JavaParser.JavaParseResult,
         request: JavaParseInsertRequest
     ): InsertOutcome {
+        val repo = mpsProject.repository
         val insertTarget = request.insert
         val modelRefStr = checkNotNull(insertTarget.modelRef)
-        val model = when (val r = resolveEditableModel(repo, modelRefStr)) {
+        val model = when (val r = resolveEditableModel(mpsProject, modelRefStr)) {
             is EditableModelResolution.Ok -> r.model
             is EditableModelResolution.Err -> return InsertOutcome.Err(r.errJson)
         }
@@ -655,7 +656,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             val parsedNodes = parsedJava.parsedNodes
 
             val outcome = when (request.insert.mode) {
-                "root" -> insertAsRoot(repo, parsedNodes, parseResult, request)
+                "root" -> insertAsRoot(mpsProject, parsedNodes, parseResult, request)
                 "child" -> insertAsChild(mpsProject, parsedNodes, parseResult, request)
                 "replace" -> insertAsReplace(mpsProject, parsedNodes, parseResult, request)
                 "console" -> insertAsConsoleCommand(mpsProject, parsedNodes, parseResult, request)
