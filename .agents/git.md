@@ -7,15 +7,15 @@ Release branches (e.g. `2025.1`, `2025.3`, etc.) - branches named with full rele
 
 ## Branch naming
 
-* `<MPS_VERSION>/<user_name>/<Whatever identifies the branch>`
-* user_name stands for the Git user name in lower-case of the current user, alternatively an OS user name can be used if the former is not suitable.
-* MPS_VERSION is derived from the MPS version number, e.g., `2023.2` -> 232 or `2024.3` - 243. The last digit is only allowed to be 1, 2, or 3.
-* * When branching off a master branch, use MPS_VERSION following right after the greates available release branch (e.g. 2027.1 (thus 271) after 2026.3).
-* * When branching off a feature branch that already follows the naming pattern `<MPS_VERSION>/<user_name>/<Whatever identifies the branch>`, use the same MPS_VERSION.
+* `<MPS_VERSION>/<user_name>/<topic>`, for example `261/vaclav/MPS-39848-short-topic`.
+* `user_name` is the current Git user name in lower case. Use the OS user name if the Git user name is not suitable.
+* `MPS_VERSION` is derived from the MPS version number: `2026.1` -> `261`, `2026.2` -> `262`, `2026.3` -> `263`. The last digit is only allowed to be `1`, `2`, or `3`.
+* When branching off `master`, use the MPS version that follows the greatest available release branch. For example, use `271` for work after release branch `2026.3`.
+* When branching off a feature branch that already follows `<MPS_VERSION>/<user_name>/<topic>`, use the same `MPS_VERSION`.
 
 ## Branching
 
-Branches named `2024.3` represent release branches of past or up-coming releses.
+Branches named with a full release version, such as `2024.3`, represent release branches of past or upcoming releases.
 
 Derive a new branch of the current `master` or the current release branch in order to make changes.
 
@@ -24,8 +24,6 @@ Derive a new branch of the current `master` or the current release branch in ord
 Use Git worktrees for new branches only when asked explicitly.
 
 ## Commit format
-
-Conventions observed in this repo's history (`git log`):
 
 * **Subject line:** `<Area> - <summary>`, where `<Area>` is a short component/topic tag and `<summary>`
   briefly describes the change. Examples: `MPSCLI - create build script`, `MPSCLI - Switch to Gson`,
@@ -37,7 +35,9 @@ Conventions observed in this repo's history (`git log`):
 
 ## AI co-authorship
 
-Every commit produced with AI assistance must include a `Co-Authored-By` trailer identifying the AI tool used.
+Every commit produced with AI assistance must include this trailer:
+
+`Co-Authored-By: <identity of the AI agent>`
 
 ## Pushing
 
