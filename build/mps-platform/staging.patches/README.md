@@ -5,5 +5,3 @@ This directory contains patches that are applied to the "MPS Platform" during th
 Patches are generated from commits made on top of the stable branch in the ultimate repository.
 
 After a new stable branch is created, these commits are to be rebased on top of it.
-
-Currently, the stable branch is `261.23567`, the branch with these commits is `261.23567.mps`. 
