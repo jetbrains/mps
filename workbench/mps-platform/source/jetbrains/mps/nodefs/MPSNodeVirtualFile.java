@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -26,10 +26,14 @@ import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.model.SModel;
+import org.jetbrains.mps.openapi.model.SModelReference;
 import org.jetbrains.mps.openapi.model.SNode;
 import org.jetbrains.mps.openapi.model.SNodeReference;
 
@@ -44,15 +48,16 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   public static final String NODE_PREFIX = "node://";
 
   @NotNull
-  private final SNodeReference myNode;
+  private SNodeReference myNode;
   @NotNull
-  private final RepositoryVirtualFiles myRepoFiles;
+  private RepositoryVirtualFiles myRepoFiles;
   private String myPath;
   private String myName;
   private String myPresentationName;
   private long myModificationStamp = LocalTimeCounter.currentTime();
   private long myTimeStamp = -1;
   private boolean myValid = true;
+  private Runnable myWhenReady;
 
   MPSNodeVirtualFile(@NotNull SNodeReference nodePointer, @NotNull RepositoryVirtualFiles vfs) {
     myNode = nodePointer;
@@ -60,10 +65,21 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     updateFields();
   }
 
+  MPSNodeVirtualFile(@NotNull String path, @NotNull RepositoryVirtualFiles vfs) {
+    myNode = new SNodePointer(null);
+    myRepoFiles = vfs;
+    myPath = path;
+    myName = myPresentationName = myRepoFiles.getPathFacility().tail(path);
+    // despite the fact this isn't a real file, we can't answer isValid() == false as IDEA doesn't re-open editors for such files.
+    myValid = true;
+  }
+
   // FIXME: check, perhaps is invoked with proper model access already.
   // for exposed files, this shall happen in exclusive read (so that different threads from readAction do not get different
   // result e.g. for getName().
   /*package*/ void updateFields() {
+    // FWIW, updateFields is never invoked for unknown files (created using path:String, as we don't invoke updateFields() on construction
+    //       nor these files ever get reported as changed (see NVFS.VFSNotifier)
     myRepoFiles.getRepository().getModelAccess().runReadAction(() -> {
       SNode node = myNode.resolve(myRepoFiles.getRepository());
       if (node == null) {
@@ -84,6 +100,34 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
         myTimeStamp = node.getModel().getSource().getTimestamp();
       }
     });
+  }
+
+  /*
+   * mechanism gor MPSFileNodeEditor to get notified once the file is ready to be used in UI,
+   * independent of regular node change or VF change notifications (which get tricky for files that change state internally)
+   */
+  @Hack
+  @Internal
+  public void whenReady(@NotNull Runnable runnable) {
+    if (myRepoFiles.forUnknownFiles()) {
+      myWhenReady = runnable;
+    } else {
+      runnable.run();
+    }
+  }
+
+  /*package*/ void adopted(@NotNull SNode node, @NotNull RepositoryVirtualFiles properOwner) {
+    assert myRepoFiles != properOwner;
+    myRepoFiles.forgetMe(this);
+    myRepoFiles = properOwner;
+    myNode = node.getReference();
+    // here I assume we never adopt a node from transient module, and don't care to update presentation name
+    myName = myPresentationName = String.valueOf(node.getPresentation());
+    myTimeStamp = node.getModel().getSource().getTimestamp();
+    myValid = true;
+    if (myWhenReady != null) {
+      myWhenReady.run();
+    }
   }
 
   @Nullable
@@ -151,8 +195,7 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   }
 
   @Override
-  @NotNull
-  public byte[] contentsToByteArray() {
+  public byte @NotNull [] contentsToByteArray() {
     return CONTENTS;
   }
 
@@ -258,10 +301,11 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   @Override
   public boolean isInProject(@NotNull Project project) {
     final MPSProject mpsProject = ProjectHelper.fromIdeaProject(project);
-    if (mpsProject!=null && mpsProject.getRepository()!=null) {
+    SModelReference modelReference = myNode.getModelReference(); // could be null for a provisional file we didn't resolve yet
+    if (modelReference != null && mpsProject != null && mpsProject.getRepository() != null) {
       final boolean[] result = new boolean[]{false};
       mpsProject.getRepository().getModelAccess().runReadAction(() -> {
-        final SModel model = myNode.getModelReference().resolve(mpsProject.getRepository());
+        final SModel model = modelReference.resolve(mpsProject.getRepository());
         result[0] = model != null && !model.isReadOnly();
       });
       return result[0];

@@ -60,7 +60,11 @@ public class RunConfigurationsStateManager implements PluginReloadingListener {
       return;
     }
 
-    myState.restoreState();
+    if (myProject.isOpen() && myProject.isInitialized()) {
+      myState.restoreState();
+    } else {
+      // would be nice to postpone init, yet didn't find proper mechanism
+    }
   }
 
   @Override
@@ -133,14 +137,18 @@ public class RunConfigurationsStateManager implements PluginReloadingListener {
     }
 
     public void restoreState() {
-      RunManagerImpl runManager = getRunManager();
+      RunManager rm = RunManagerEx.getInstanceIfCreated(myProject);
+      if (!(rm instanceof RunManagerImpl)) {
+        return;
+      }
+      RunManagerImpl runManager = (RunManagerImpl) rm;
       String selectedConfigurationId = getSelectedConfigurationId(runManager);
       clearAllRunConfigurations();
       runManager.initializeConfigurationTypes(ConfigurationType.CONFIGURATION_TYPE_EP.getExtensionList());
       runManager.reloadSchemes();
       if (selectedConfigurationId != null) {
         RunnerAndConfigurationSettings toSelect = runManager.getConfigurationById(selectedConfigurationId);
-        runManager.setSelectedConfiguration(toSelect);
+        rm.setSelectedConfiguration(toSelect);
       }
     }
 

@@ -102,6 +102,14 @@ import org.jetbrains.mps.openapi.module.SRepository;
     return null;
   }
 
+  @NotNull
+  /*package*/ String tail(@NotNull String path) {
+    if (!path.contains(SEP)) {
+      return "";
+    }
+    return path.substring(path.lastIndexOf(SEP) + 1);
+  }
+
   // serialization targets
   private static final SerializerTarget<SNode> NODE_TARGET = e -> String.valueOf(e.getPresentation());
   private static final SerializerTarget<SModel> MODEL_TARGET = e -> String.valueOf(e.getModelName());

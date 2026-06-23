@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2022 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ import jetbrains.mps.extapi.persistence.FileDataSource;
 import jetbrains.mps.extapi.persistence.FolderDataSource;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.smodel.ModelAccessHelper;
+import jetbrains.mps.smodel.SModelId;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.mps.openapi.model.SModel;
@@ -40,8 +41,8 @@ public final class MPSModelVirtualFile extends VirtualFile implements VirtualFil
   private static final byte[] ZERO_BYTES = new byte[0];
   public static final String MODEL_PREFIX = "model://";
 
-  private final SModelReference myModelReference;
-  private final RepositoryVirtualFiles myRepoFiles;
+  private SModelReference myModelReference;
+  private RepositoryVirtualFiles myRepoFiles;
 
   private String myName;
   private String myPath;
@@ -50,6 +51,13 @@ public final class MPSModelVirtualFile extends VirtualFile implements VirtualFil
     myModelReference = modelReference;
     myRepoFiles = vfs;
     updateFields();
+  }
+
+  MPSModelVirtualFile(@NotNull String path, @NotNull RepositoryVirtualFiles vfs) {
+    myRepoFiles = vfs;
+    myPath = path;
+    myName = vfs.getPathFacility().tail(path);
+    myModelReference = new jetbrains.mps.smodel.SModelReference(null, new SModelId.ModelNameSModelId(myName), myName);
   }
 
   private void updateFields() {
@@ -64,6 +72,14 @@ public final class MPSModelVirtualFile extends VirtualFile implements VirtualFil
         myPath = MODEL_PREFIX + myRepoFiles.getPathFacility().serializeModel(model);
       }
     });
+  }
+
+  /*package*/ void adopted(@NotNull SModel model, RepositoryVirtualFiles properOwner) {
+    assert myRepoFiles != properOwner;
+    myRepoFiles.forgetMe(this);
+    myModelReference = model.getReference();
+    myRepoFiles = properOwner;
+    myName = model.getName().getSimpleName();
   }
 
   public SModelReference getModelReference() {
@@ -133,9 +149,8 @@ public final class MPSModelVirtualFile extends VirtualFile implements VirtualFil
     throw new UnsupportedOperationException();
   }
 
-  @NotNull
   @Override
-  public byte[] contentsToByteArray() {
+  public byte @NotNull[] contentsToByteArray() {
     return ZERO_BYTES;
   }
 
