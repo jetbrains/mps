@@ -349,6 +349,58 @@ class JetBrainsMPSNodeMcpToolsetExtendedIntegrationTest : McpIntegrationTestBase
         }
     }
 
+    @Test
+    fun `set_node_references by a name shared by two in-scope nodes fails with an ambiguous NOT_FOUND`() {
+        // MPS-39848: when a bare name matches MORE THAN ONE node in the reference role's search
+        // scope, by-name resolution must refuse to guess — it fails with NOT_FOUND and an
+        // *ambiguity* diagnostic that reports how many candidates were found and to disambiguate
+        // with a persistent reference, distinct from the "no node named X" wording used when the
+        // name matches nothing. The platform Scope contract returns null on an ambiguous name, so
+        // the failure is deterministic. This reduces the scenario's two same-named `go` events to
+        // two concepts named "DupBase" in one structure model, both in scope for 'extends'.
+        //
+        // createConceptRoot looks the new root up by name (single), so it cannot mint two roots
+        // sharing a name directly; create a distinct seed and rename it to form the duplicate.
+        createConceptRoot("DupBase")                    // first in-scope concept named DupBase
+        val seedRef = createConceptRoot("DupBaseSeed")  // renamed below to a second DupBase
+        val derivedRef = createConceptRoot("DupDerived")
+
+        val renameResp = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.PROPERTY,
+                properties = listOf(listOf(seedRef, "name", "DupBase")),
+            )
+        }
+        assertTrue(
+            "setup: renaming the seed to a duplicate name must succeed: $renameResp",
+            JsonParser.parseString(renameResp).asJsonObject.get("ok").asBoolean,
+        )
+
+        val response = runTool(toolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET, NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", "DupBase")),
+            )
+        }
+        val rowError = expectBatchRowError(response, 0)
+        assertTrue(
+            "an ambiguous bare name must fail with an 'ambiguous' diagnostic naming the role: $rowError",
+            rowError.contains("ambiguous") && rowError.contains("extends"),
+        )
+        assertTrue(
+            "the ambiguity diagnostic should report the candidate count (2 here): $rowError",
+            rowError.contains("2 nodes named"),
+        )
+
+        readOnRepo {
+            val extendsRefs = resolveNode(derivedRef).references.filter { it.link.name == "extends" }
+            assertTrue(
+                "no dangling (null-target) 'extends' reference may remain after an ambiguous set: $extendsRefs",
+                extendsRefs.all { it.targetNode != null },
+            )
+        }
+    }
+
     // ── child replace / delete ───────────────────────────────────────────────────────────
 
     @Test

@@ -8,6 +8,8 @@
 - `reference` (or `moduleRef`, depending on the tool) — persistent module reference.
 - `virtualFolder?` — Project View virtual folder, when set.
 - `readOnly` — `true` for stub/library modules and other read-only modules; `false` for project modules the agent can mutate.
+- `containingProject?` — present when the module comes from another open MPS project. Contains `{ "name", "mpsProjectBaseDirectory" }`, the latter being the path to pass as that project's `projectPath`.
+- `editableFromCurrentProject?` — present with value `false` when `containingProject` is present. Treat the module like a read-only library from the current project; do not attempt write tools against it unless you intentionally switch `projectPath` to its containing project.
 - `present` — always `true` when the response is a success envelope. Sentinel value to make presence checks idiomatic.
 
 ## `kind`
@@ -36,3 +38,5 @@ When the module is a DevKit, the response also includes:
 - `exportedLanguages` — languages re-exported by the devkit.
 - `exportedSolutions` — solutions re-exported by the devkit.
 - `associatedGenPlan?` — generation plan, when associated.
+
+Dependency and export entries can also carry prefixed foreign-project markers such as `containingProject` / `editableFromCurrentProject` on module references and `targetContainingProject` / `targetEditableFromCurrentProject` on nested targets.

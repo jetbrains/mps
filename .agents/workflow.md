@@ -5,3 +5,16 @@
 - Match the conventions of the surrounding file (naming, formatting, structure).
 - When changing public behavior, update the nearest relevant documentation.
 
+## Merge conflicts
+
+- Before resolving conflicts, inspect both versions and identify which side owns the behavior.
+- Preserve user or upstream changes that are unrelated to the task.
+- After resolving a conflict in MPS-generated or generated-adjacent code, check whether the real fix belongs in the MPS model or generator.
+- Re-run the smallest validation that covers the conflicted area.
+
+## Reviews
+
+- For review requests, lead with concrete findings ordered by severity.
+- Cite file and line references for each finding.
+- Focus on bugs, regressions, missing tests, API compatibility, generated-source drift, and validation gaps.
+- If no issues are found, say so and list any residual validation risk.

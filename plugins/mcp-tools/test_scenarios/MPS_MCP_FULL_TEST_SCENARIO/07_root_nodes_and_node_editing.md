@@ -57,7 +57,9 @@ FIX_REFERENCES), `mps_mcp_get_project_structure` (`includeRootNodes`/`includeNod
 
 Pass this object as the `json` argument (string). It exercises an enum property value
 (`kind:"initial"`, a non-default) and **intra-blueprint reference resolution by name**
-(the transition's `target` names `Running`, a state declared *after* it; `event` names `go`).
+(the transition's `target` names `Running`, a state declared *after* it; `event` names `tick`
+— deliberately **not** `go`, so it stays distinct from the `go` Event added to `GearboxStateChart`
+in 07.10 and 07.20's by-name `event → go` resolution stays unambiguous within the model).
 
 `json` (decoded):
 ```json
@@ -66,14 +68,14 @@ Pass this object as the `json` argument (string). It exercises an enum property 
   "properties": [{ "name": "name", "value": "OtherStateChart" }],
   "children": [
     { "role": "events", "nodes": [
-      { "concept": "mcp.test.statechart.structure.Event", "properties": [{ "name": "name", "value": "go" }] }
+      { "concept": "mcp.test.statechart.structure.Event", "properties": [{ "name": "name", "value": "tick" }] }
     ]},
     { "role": "states", "nodes": [
       { "concept": "mcp.test.statechart.structure.State",
         "properties": [{ "name": "name", "value": "Idle" }, { "name": "kind", "value": "initial" }],
         "children": [{ "role": "transitions", "nodes": [
           { "concept": "mcp.test.statechart.structure.Transition",
-            "references": [{ "role": "target", "target": "Running" }, { "role": "event", "target": "go" }] }
+            "references": [{ "role": "target", "target": "Running" }, { "role": "event", "target": "tick" }] }
         ]}]
       },
       { "concept": "mcp.test.statechart.structure.State", "properties": [{ "name": "name", "value": "Running" }] }
@@ -143,7 +145,7 @@ Send the array (as a string) as `json`, same other args as 07.03.
 ```
 - Validation: `ok==true`; `data` is a temp-file path; **READ** it. Confirm the tree: a
   `states` role with `Idle` and `Running`; `Idle` has a `transitions` child whose `target`
-  resolves to `Running` and `event` to `go`. Confirm `Idle.kind` prints as
+  resolves to `Running` and `event` to `tick`. Confirm `Idle.kind` prints as
   `"<memberId>/initial"` (non-default enum values carry the member-id prefix).
 - **Capture** from the file: the `Idle` State node `reference` as `{{OTHER_IDLE_REF}}`, the
   `Running` State node `reference` as `{{OTHER_RUNNING_REF}}`.
@@ -306,8 +308,10 @@ Validate-only add of a State to Gearbox; nothing is persisted.
 ### Step 07.20 — `update_node SET REFERENCE` — set transition `event → go` `[SUCCESS]`
 
 Same shape, `references: [["{{GBX_TRANS_REF}}", "event", "go"]]`.
-- Validation: `ok==true`. (Plain name `go`, a non-root Event, resolves in scope; keep the plain
-  name rather than `{{GBX_GO_REF}}` — same rationale as 07.19.)
+- Validation: `ok==true`. (Plain name `go`, a non-root Event, resolves in scope **and is unique in
+  the model** — the OtherStateChart event from 07.03 is named `tick`, not `go`, so by-name resolution
+  is unambiguous. A name shared by two in-scope nodes would fail `ok==false`/`NOT_FOUND` with an
+  *ambiguous* error. Keep the plain name rather than `{{GBX_GO_REF}}` — same rationale as 07.19.)
 
 ---
 

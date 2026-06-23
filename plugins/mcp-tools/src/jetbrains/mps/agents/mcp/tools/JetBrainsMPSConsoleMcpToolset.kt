@@ -163,7 +163,7 @@ class JetBrainsMPSConsoleMcpToolset : AbstractNodeOps() {
                         .invoke(console.tab, command)
                 }
 
-                okJson(nodeInfoJsonObject(command), warnings = listOfNotNull(activateWarning, selectWarning))
+                okJson(nodeInfoJsonObject(command, mpsProject), warnings = listOfNotNull(activateWarning, selectWarning))
             }
         }
     }
@@ -191,7 +191,7 @@ class JetBrainsMPSConsoleMcpToolset : AbstractNodeOps() {
                 val selected = if (limit != null && limit >= 0) filtered.takeLast(limit) else filtered
                 val array = JsonArray()
                 for ((index, item) in selected) {
-                    val obj = nodeInfoJsonObject(item)
+                    val obj = nodeInfoJsonObject(item, mpsProject)
                     obj.addProperty("index", index)
                     if (isConsoleCommandHolder(item)) {
                         obj.addProperty("kind", "command")
@@ -281,7 +281,7 @@ class JetBrainsMPSConsoleMcpToolset : AbstractNodeOps() {
                         .invoke(console.tab, copy)
                 }
 
-                okJson(nodeInfoJsonObject(copy), warnings = listOfNotNull(activateWarning, selectWarning))
+                okJson(nodeInfoJsonObject(copy, mpsProject), warnings = listOfNotNull(activateWarning, selectWarning))
             }
         }
     }

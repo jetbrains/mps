@@ -91,7 +91,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
         return executeBackgroundRead(mpsProject) {
             val repo = mpsProject.repository
             val contextNode: SNode? = if (!contextNodeRefStr.isNullOrEmpty()) {
-                val nr = resolveNodeReference(repo, contextNodeRefStr)
+                val nr = resolveNodeReferencePreferringProject(mpsProject, contextNodeRefStr)
                 nr?.resolve(repo) ?: return@executeBackgroundRead JavaParsePreparation.Err("Context node '$contextNodeRefStr' not found")
             } else null
 
@@ -259,14 +259,15 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     }
 
     private fun insertAsRoot(
-        repo: SRepository,
+        mpsProject: MPSProject,
         parsedNodes: List<SNode>,
         parseResult: JavaParser.JavaParseResult,
         request: JavaParseInsertRequest
     ): InsertOutcome {
+        val repo = mpsProject.repository
         val insertTarget = request.insert
         val modelRefStr = checkNotNull(insertTarget.modelRef)
-        val model = when (val r = resolveEditableModel(repo, modelRefStr)) {
+        val model = when (val r = resolveEditableModel(mpsProject, modelRefStr)) {
             is EditableModelResolution.Ok -> r.model
             is EditableModelResolution.Err -> return InsertOutcome.Err(r.errJson)
         }
@@ -595,13 +596,14 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
     // roots (no containment role). The `problems` array carries any type/structure errors or warnings
     // the checkers found within the inserted nodes' subtrees (empty when the insert type-checks).
     private fun parseInsertSuccessJson(
+        mpsProject: MPSProject,
         inserted: List<SNode>,
         parseResult: JavaParser.JavaParseResult,
         problems: JsonArray,
         warnings: List<String> = emptyList()
     ): String {
         val langs = parseResult.languages?.map { it.qualifiedName } ?: emptyList()
-        val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it) }
+        val insertedInfos = inserted.map { nodeInfoJsonObjectWithIndex(it, mpsProject) }
         val gson = Gson()
         val data = JsonObject().apply {
             add("inserted", gson.toJsonTree(insertedInfos))
@@ -655,7 +657,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             val parsedNodes = parsedJava.parsedNodes
 
             val outcome = when (request.insert.mode) {
-                "root" -> insertAsRoot(repo, parsedNodes, parseResult, request)
+                "root" -> insertAsRoot(mpsProject, parsedNodes, parseResult, request)
                 "child" -> insertAsChild(mpsProject, parsedNodes, parseResult, request)
                 "replace" -> insertAsReplace(mpsProject, parsedNodes, parseResult, request)
                 "console" -> insertAsConsoleCommand(mpsProject, parsedNodes, parseResult, request)
@@ -669,7 +671,7 @@ class JetBrainsMPSJavaMcpToolset : AbstractNodeOps() {
             when (outcome) {
                 is InsertOutcome.Ok -> {
                     val problems = collectInsertedProblems(mpsProject, repo, outcome.inserted)
-                    parseInsertSuccessJson(outcome.inserted, parseResult, problems, outcome.warnings)
+                    parseInsertSuccessJson(mpsProject, outcome.inserted, parseResult, problems, outcome.warnings)
                 }
                 is InsertOutcome.Err -> outcome.json
             }

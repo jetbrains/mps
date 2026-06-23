@@ -35,7 +35,6 @@ import org.jetbrains.annotations.Nullable
 import org.jetbrains.mps.openapi.module.FacetsFacade
 import org.jetbrains.mps.openapi.module.SDependencyScope
 import org.jetbrains.mps.openapi.module.SModule
-import org.jetbrains.mps.openapi.module.SModuleId
 import org.jetbrains.mps.openapi.persistence.Memento
 import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import java.util.function.Consumer
@@ -87,7 +86,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             }
             val (abstractModule, descriptor) = (resolved as AbstractModuleResolution.Ok)
 
-            val target = resolveModule(mpsProject, targetModule, projectOnly = false)
+            val target = resolveModulePreferringProject(mpsProject, targetModule)
                 ?: return@executeShortCommandOnEdt errJson("Target module $targetModule not found", McpErrorCode.NOT_FOUND)
 
             val targetRef = target.moduleReference
@@ -193,7 +192,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
             // (regular deps, extendedLanguages, depGenerators, extendedDevkits) so the user can still
             // remove an entry whose target module is no longer in the project.
             val persistence = PersistenceFacade.getInstance()
-            val resolvedTargetRef = resolveModule(mpsProject, targetModule, projectOnly = false)?.moduleReference
+            val resolvedTargetRef = resolveModulePreferringProject(mpsProject, targetModule)?.moduleReference
             val targetRef = resolvedTargetRef
                 ?: descriptor.dependencies.find {
                     it.moduleRef.moduleName == targetModule ||
@@ -401,7 +400,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                             // returns SLanguage which cannot be cast to jetbrains.mps.smodel.Language —
                             // they are unrelated types — so route the lookup through the module resolver
                             // and reject anything that isn't an actual Language module.
-                            val parentLang = resolveModule(mpsProject, parentLangName, projectOnly = false) as? Language
+                            val parentLang = resolveModule(mpsProject, parentLangName, projectOnly = true) as? Language
                             if (parentLang == null) {
                                 error = "Parent language not found or is not a Language module: $parentLangName"
                                 return@executeCommand
@@ -839,7 +838,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpDescription("""
         Lists all available module facet types and their applicability to a specific module (if provided).
 
-        Returns a JSON object with 'ok':true and 'data':{ "facetTypes": [{type, presentation, applicableToModule, recommendedForModule}, ...] } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ "module": {...}, "facetTypes": [{type, presentation, applicableToModule, recommendedForModule}, ...] } on success, or 'ok':false and 'error':"..." on failure. The `module` context is present when `moduleName` is supplied.
     """)
     // FacetsFacade.getInstance() is deprecated in favour of obtaining the registry via the
     // owning ComponentPlugin (e.g. MPSCore), which requires plumbing a ComponentPlugin handle
@@ -851,7 +850,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         executeShortReadOnEdt(mpsProject) {
             val ff = FacetsFacade.getInstance()
                 ?: throw McpUserException(McpErrorCode.INTERNAL_ERROR, "FacetsFacade service is not available")
-            val module = moduleName?.let { resolveModule(mpsProject, it, projectOnly = false) }
+            val module = moduleName?.let { resolveModulePreferringProject(mpsProject, it) }
             val recommendedTypes = module?.let { ff.getApplicableFacetTypes(it.usedLanguages) } ?: emptySet()
 
             val jsonArray = JsonArray()
@@ -867,6 +866,9 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 jsonArray.add(obj)
             }
             val resObj = JsonObject()
+            module?.let {
+                resObj.add("module", moduleFacetContextJsonObject(it, mpsProject))
+            }
             resObj.add("facetTypes", jsonArray)
             okJson(resObj)
         }
@@ -876,7 +878,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpDescription("""
         Gets information about active and persisted facets of a module.
 
-        Returns a JSON object with 'ok':true and 'data':{ "activeFacets": [...], "persistedFacets": [...], "discrepancies": [...] } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ "module": {...}, "activeFacets": [...], "persistedFacets": [...], "discrepancies": [...] } on success, or 'ok':false and 'error':"..." on failure.
     """)
     // See note above mps_mcp_list_facet_types regarding deprecated FacetsFacade.getInstance().
     @Suppress("DEPRECATION")
@@ -884,7 +886,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
         @McpDescription("Module name or reference") moduleName: String
     ): String = withMpsProject("Getting module facets") { mpsProject ->
         executeShortReadOnEdt(mpsProject) {
-            val module = resolveModule(mpsProject, moduleName, projectOnly = false)
+            val module = resolveModulePreferringProject(mpsProject, moduleName)
             if (module == null) {
                 errJson("Module $moduleName not found", McpErrorCode.NOT_FOUND)
             } else {
@@ -924,12 +926,21 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 }
 
                 val resObj = JsonObject()
+                resObj.add("module", moduleFacetContextJsonObject(module, mpsProject))
                 resObj.add("activeFacets", activeFacets)
                 resObj.add("persistedFacets", persistedFacets)
                 resObj.add("discrepancies", discrepancies)
                 okJson(resObj)
             }
         }
+    }
+
+    private fun moduleFacetContextJsonObject(module: SModule, mpsProject: MPSProject): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", module.moduleName ?: "")
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(module.moduleReference))
+        addContainingProjectIfForeign(obj, mpsProject, module)
+        return obj
     }
 
     @McpTool

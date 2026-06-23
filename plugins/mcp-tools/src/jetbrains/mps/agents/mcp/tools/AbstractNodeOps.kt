@@ -15,6 +15,7 @@ import jetbrains.mps.project.AbstractModule
 import jetbrains.mps.project.EditableFilteringScope
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.resolve.ResolverComponent
+import jetbrains.mps.scope.ErrorScope
 import jetbrains.mps.scope.VisibleDepsSearchScope
 import jetbrains.mps.smodel.BaseScope
 import jetbrains.mps.smodel.SModelInternal
@@ -22,6 +23,7 @@ import jetbrains.mps.smodel.SReference as SRefImpl
 import jetbrains.mps.smodel.SNodeUtil
 import jetbrains.mps.smodel.action.SNodeFactoryOperations
 import jetbrains.mps.smodel.adapter.structure.MetaAdapterFactory
+import jetbrains.mps.smodel.constraints.ModelConstraints
 import kotlinx.coroutines.currentCoroutineContext
 import org.jetbrains.mps.openapi.language.SAbstractConcept
 import org.jetbrains.mps.openapi.language.SConcept
@@ -42,6 +44,7 @@ import org.jetbrains.mps.openapi.module.SModule
 import org.jetbrains.mps.openapi.module.SModuleReference
 import org.jetbrains.mps.openapi.module.SRepository
 import org.jetbrains.mps.openapi.module.SearchScope
+import org.jetbrains.mps.openapi.persistence.PersistenceFacade
 import org.jetbrains.mps.openapi.util.ProgressMonitor
 import java.util.Random
 import java.util.concurrent.atomic.AtomicBoolean
@@ -119,7 +122,8 @@ abstract class AbstractNodeOps : AbstractOps() {
         model: SModel,
         dryRun: Boolean = false,
         jsonPath: String = "$",
-        warnings: MutableList<String>? = null
+        warnings: MutableList<String>? = null,
+        mpsProject: MPSProject? = null
     ): SNode? {
         val conceptName = jsonObject.get("concept")?.asString
         val conceptRef = jsonObject.get("conceptReference")?.asString
@@ -132,8 +136,14 @@ abstract class AbstractNodeOps : AbstractOps() {
             // Try conceptReference first (c:... form), fall back to concept name if it fails or is absent.
             // Name-based resolution is more reliable because agents tend to get names right
             // but occasionally produce slightly incorrect concept reference IDs.
-            val byRef = if (!conceptRef.isNullOrEmpty()) resolveConcept(model.repository, conceptRef) as? SConcept else null
-            val byName = if (!conceptName.isNullOrEmpty()) resolveConcept(model.repository, conceptName) as? SConcept else null
+            val byRef = if (!conceptRef.isNullOrEmpty()) {
+                (if (mpsProject != null) resolveConceptPreferringProject(mpsProject, conceptRef) else resolveConcept(model.repository, conceptRef)) as? SConcept
+            }
+            else null
+            val byName = if (!conceptName.isNullOrEmpty()) {
+                (if (mpsProject != null) resolveConceptPreferringProject(mpsProject, conceptName) else resolveConcept(model.repository, conceptName)) as? SConcept
+            }
+            else null
             byRef ?: byName
         } ?: throw McpNotFoundException("Concept '$conceptName' with reference '$conceptRef' not found")
 
@@ -187,7 +197,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                     )
                 childNodes.forEachIndexed { nodeIndex, nodeElement ->
                     val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
-                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath, warnings)
+                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath, warnings, mpsProject)
                     if (childNode != null) {
                         if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
                             throw AssignabilityException(
@@ -230,7 +240,8 @@ abstract class AbstractNodeOps : AbstractOps() {
                         xmlReferenceIndex = index,
                         dryRun = dryRun,
                         allowDynamicReference = !dryRun,
-                        assignResolvedReferenceOnDryRun = true
+                        assignResolvedReferenceOnDryRun = true,
+                        mpsProject = mpsProject
                     )?.let { warnings?.add(it) }
                 }
             }
@@ -290,15 +301,16 @@ abstract class AbstractNodeOps : AbstractOps() {
         allowDynamicReference: Boolean,
         assignResolvedReferenceOnDryRun: Boolean = false,
         validateXmlReference: Boolean = true,
-        persistentReferencesOnly: Boolean = true
+        persistentReferencesOnly: Boolean = true,
+        mpsProject: MPSProject? = null
     ): String? {
         if (validateXmlReference) {
             failIfXMLReferenceIsUsed(targetRefStr, xmlReferencePath, xmlReferenceIndex)
         }
         val targetRef = if (persistentReferencesOnly) {
-            resolveReferenceTarget(repository, targetRefStr)
+            resolveReferenceTarget(mpsProject, repository, targetRefStr)
         } else {
-            resolveNodeReference(repository, targetRefStr)
+            if (mpsProject != null) resolveNodeReferencePreferringProject(mpsProject, targetRefStr) else resolveNodeReference(repository, targetRefStr)
         }
         val targetNode = targetRef?.resolve(repository)
         if (targetNode != null) {
@@ -329,9 +341,13 @@ abstract class AbstractNodeOps : AbstractOps() {
         return null
     }
 
-    private fun resolveReferenceTarget(repository: SRepository, targetRefStr: String): SNodeReference? {
+    private fun resolveReferenceTarget(mpsProject: MPSProject?, repository: SRepository, targetRefStr: String): SNodeReference? {
         val isPersistentRef = targetRefStr.startsWith("r:") || targetRefStr.startsWith("i:") || targetRefStr.contains(".")
-        return if (isPersistentRef) resolveNodeReference(repository, targetRefStr) else null
+        if (!isPersistentRef) return null
+        if (mpsProject == null) return resolveNodeReference(repository, targetRefStr)
+
+        resolveNodeReference(mpsProject, targetRefStr)?.let { return it }
+        return resolveNodeReference(repository, targetRefStr)
     }
 
     private fun validateReferenceTarget(
@@ -370,7 +386,8 @@ abstract class AbstractNodeOps : AbstractOps() {
         jsonObject: JsonObject,
         dryRun: Boolean = false,
         jsonPath: String = "$",
-        warnings: MutableList<String>? = null
+        warnings: MutableList<String>? = null,
+        mpsProject: MPSProject? = null
     ) {
         val model = node.model ?: throw IllegalArgumentException("Node must be in a model")
         val sConcept = node.concept
@@ -416,7 +433,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                     )
                 childNodes.forEachIndexed { nodeIndex, nodeElement ->
                     val childPath = "$jsonPath.children[$roleIndex].nodes[$nodeIndex]"
-                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath, warnings)
+                    val childNode = instantiateNode(nodeElement.asJsonObject, model, dryRun, childPath, warnings, mpsProject)
                         ?: return@forEachIndexed
                     if (!childNode.concept.isSubConceptOf(link.targetConcept)) {
                         throw AssignabilityException(
@@ -449,7 +466,7 @@ abstract class AbstractNodeOps : AbstractOps() {
                 if (targetRefStr.isNullOrEmpty()) return@forEachIndexed
 
                 failIfXMLReferenceIsUsed(targetRefStr, jsonPath, index)
-                val targetRef = resolveReferenceTarget(model.repository, targetRefStr)
+                val targetRef = resolveReferenceTarget(mpsProject, model.repository, targetRefStr)
                 val targetNode = targetRef?.resolve(model.repository)
                 if (targetNode != null) {
                     validateReferenceTarget(targetNode, link, sConcept.name, roleName, "$jsonPath.references[$index]")
@@ -521,7 +538,8 @@ abstract class AbstractNodeOps : AbstractOps() {
                 xmlReferenceIndex = staged.xmlReferenceIndex,
                 dryRun = false,
                 allowDynamicReference = true,
-                validateXmlReference = false
+                validateXmlReference = false,
+                mpsProject = mpsProject
             )
         }
     }
@@ -557,7 +575,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
         val nodeWarnings = if (dryRun) mutableListOf<String>() else null
         val newChild = try {
-            instantiateNode(jsonObject, model, dryRun, warnings = nodeWarnings)
+            instantiateNode(jsonObject, model, dryRun, warnings = nodeWarnings, mpsProject = mpsProject)
         } catch (e: Exception) {
             return errJson("Failed to instantiate new child node from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
         }
@@ -584,7 +602,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         childNode.delete()
         val fixResult = performFixReferences(mpsProject, newChild)
         val warn = persistOrRefreshConsole(model, console)
-        return okJson(withFixReferencesInfo(nodeInfoJsonObject(parent), fixResult), warnings = listOfNotNull(warn))
+        return okJson(withFixReferencesInfo(nodeInfoJsonObject(parent, mpsProject), fixResult), warnings = listOfNotNull(warn))
     }
 
     // Deletion: no fix-references step — removing a child doesn't relocate
@@ -606,7 +624,7 @@ abstract class AbstractNodeOps : AbstractOps() {
 
         childNode.delete()
         val warn = persistOrRefreshConsole(model, console)
-        return okJson(nodeInfoJsonObject(parent), warnings = listOfNotNull(warn))
+        return okJson(nodeInfoJsonObject(parent, mpsProject), warnings = listOfNotNull(warn))
     }
 
     /** Result of [resolveInsertIndex]: where a new child should be placed in a containment role. */
@@ -677,7 +695,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
         val nodeWarnings = if (dryRun) mutableListOf<String>() else null
         val newChild = try {
-            instantiateNode(jsonObject, model, dryRun, warnings = nodeWarnings)
+            instantiateNode(jsonObject, model, dryRun, warnings = nodeWarnings, mpsProject = mpsProject)
         } catch (e: Exception) {
             return errJson("Failed to instantiate child node from JSON: ${e.message}", McpErrorCode.INVALID_REQUEST)
         }
@@ -717,7 +735,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         val warn = persistOrRefreshConsole(model, console)
         // Report the new child's actual index so a caller that overshot `position` (now clamped
         // to an append) can see where it landed.
-        return okJson(withFixReferencesInfo(nodeInfoJsonObjectWithIndex(newChild), fixResult), warnings = listOfNotNull(warn))
+        return okJson(withFixReferencesInfo(nodeInfoJsonObjectWithIndex(newChild, mpsProject), fixResult), warnings = listOfNotNull(warn))
     }
 
     protected suspend fun update_node_reference(mpsProject: MPSProject, nodeReference: String, referenceRole: String, targetNodeRefStr: String?): String {
@@ -754,7 +772,8 @@ abstract class AbstractNodeOps : AbstractOps() {
                     // via resolveReferenceTarget; a bare name returns null there and is stored as a
                     // dynamic reference, then resolved within scope by the pass below (parity with
                     // the blueprint-insert path, which also uses the default true).
-                    persistentReferencesOnly = true
+                    persistentReferencesOnly = true,
+                    mpsProject = mpsProject
                 )
                 // A bare plain name is stored by applyReferenceUpdate as a dynamic reference.
                 // Resolve just this role through its scope so an in-scope name is materialized,
@@ -766,13 +785,13 @@ abstract class AbstractNodeOps : AbstractOps() {
                 if (needsScopeResolution) {
                     fixResult = performFixReference(mpsProject, node, sReferenceLink)
                     if (node.getReference(sReferenceLink)?.targetNode == null) {
+                        // Compute the diagnostic while the unresolved (dynamic) reference is still
+                        // attached — its search scope is needed to tell "no such name" from
+                        // "ambiguous name" — then restore the previous value and fail.
+                        val detail = describeByNameResolutionFailure(node, sReferenceLink, targetNodeRefStr, referenceRole)
                         restoreReference(node, sReferenceLink, previousReference)
                         persistOrRefreshConsole(model, console)
-                        return@executeShortCommandOnEdt errJson(
-                            "Reference target '$targetNodeRefStr' for role '$referenceRole' did not resolve to a node in scope. " +
-                                    "Pass a persistent node reference (r:...) or a name that is unique within the role's search scope.",
-                            McpErrorCode.NOT_FOUND
-                        )
+                        return@executeShortCommandOnEdt errJson(detail, McpErrorCode.NOT_FOUND)
                     }
                 }
             } else {
@@ -781,9 +800,60 @@ abstract class AbstractNodeOps : AbstractOps() {
             }
 
             val warn = persistOrRefreshConsole(model, console)
-            val info = if (fixResult != null) withFixReferencesInfo(nodeInfoJsonObject(node), fixResult) else nodeInfoJsonObject(node)
+            val info = if (fixResult != null) {
+                withFixReferencesInfo(nodeInfoJsonObject(node, mpsProject), fixResult)
+            } else {
+                nodeInfoJsonObject(node, mpsProject)
+            }
             okJson(info, warnings = listOfNotNull(warn))
         }
+    }
+
+    /**
+     * Builds the NOT_FOUND error detail for a SET-REFERENCE-by-name that failed scope resolution.
+     * The platform's [jetbrains.mps.scope.Scope.resolve] collapses two distinct failures into a
+     * single null return: a name that matches NO in-scope node, and a name that matches MORE THAN
+     * ONE (it refuses to guess between equally-named candidates). The ambiguous case is common with
+     * the model-wide default scope used by references that declare no custom search scope — e.g. two
+     * same-named nodes in different roots of the same model — and the old generic "did not resolve
+     * to a node in scope" wording hid it, so a caller read an ambiguous name as "not found" and never
+     * learned to disambiguate with a persistent reference.
+     *
+     * Re-enumerates the role's search scope (best-effort: any failure falls back to the generic
+     * wording) and counts candidates whose reference text equals [name]. Runs only on the
+     * already-failed path, so the extra scope walk never costs anything on the success path.
+     */
+    private fun describeByNameResolutionFailure(node: SNode, link: SReferenceLink, name: String, role: String): String {
+        val generic = "Reference target '$name' for role '$role' did not resolve to a node in scope. " +
+                "Pass a persistent node reference (r:...) or a name that is unique within the role's search scope."
+        val matches = try {
+            val reference = node.getReference(link) ?: return generic
+            val scope = ModelConstraints.getScope(reference)
+            if (scope is ErrorScope) return generic
+            // getAvailableElements does a prefix match; keep only exact-name candidates, capped — we
+            // only need to tell "none" from "two or more" and to surface a few references to act on.
+            val found = ArrayList<SNode>()
+            for (candidate in scope.getAvailableElements(name)) {
+                if (scope.getReferenceText(node, candidate) == name) {
+                    found.add(candidate)
+                    if (found.size >= 6) break
+                }
+            }
+            found
+        } catch (e: Exception) {
+            rethrowIfCancellation(e)
+            return generic
+        }
+        if (matches.size < 2) {
+            return "Reference target '$name' for role '$role' did not resolve: no node named '$name' was found in the " +
+                    "role's search scope. Pass a persistent node reference (r:...) or a name that exists and is unique " +
+                    "within the role's search scope."
+        }
+        val shown = matches.take(5).joinToString(", ") { PersistenceFacade.getInstance().asString(it.reference) }
+        val count = if (matches.size > 5) "at least ${matches.size}" else matches.size.toString()
+        return "Reference target '$name' for role '$role' is ambiguous: $count nodes named '$name' are in the role's " +
+                "search scope ($shown). By-name resolution requires a unique match — pass a persistent node reference " +
+                "(r:...) to disambiguate."
     }
 
     private fun performFixReference(mpsProject: MPSProject, node: SNode, link: SReferenceLink): FixReferencesResult {
@@ -971,11 +1041,10 @@ abstract class AbstractNodeOps : AbstractOps() {
      * reference string (see [scopeRefStrings]). Returns the scope (plus the root filter for scope
      * "roots") or an error result.
      *
-     * Every scope is confined to [mpsProject]. A single MPS instance shares one module repository
-     * across all open projects (`ProjectRepository.getModules()` delegates to the global
-     * MPSModuleRepository), so a `GlobalScope(repo)` would leak modules belonging to sibling
-     * projects. Hence "all"/"editable" are rooted at the project's own modules ([MPSProject.getScope])
-     * rather than the repository, and "all" widens only to the project's visible dependency closure.
+     * The default "all"/"editable" scopes are rooted at [mpsProject], not at the shared global
+     * module repository. Explicit "models"/"modules"/"roots" scopes may name elements from other
+     * open MPS projects; those elements are queried read-only, matching normal MPS cross-project
+     * dependency/reference semantics.
      */
     protected fun buildSearchScope(
         mpsProject: MPSProject,
@@ -988,9 +1057,8 @@ abstract class AbstractNodeOps : AbstractOps() {
             // project the projectPath selected, never the shared global module repository.
             "all" -> {
                 // Project's own modules (+ owned generators) plus their VISIBLE dependency closure:
-                // used languages, the read-only library/Modules-Pool entries the project actually
-                // depends on, devkit-exported solutions and accessory models — still excludes the
-                // editable modules of other open projects.
+                // used languages, read-only library/Modules-Pool entries, devkit-exported solutions,
+                // accessory models, and imported modules from other open projects.
                 // Hoisted into a local: each property read runs its own read action and rebuilds
                 // the list, so reuse the single result for both constructor arguments.
                 val projectModules = mpsProject.projectModulesWithGenerators
@@ -1007,7 +1075,13 @@ abstract class AbstractNodeOps : AbstractOps() {
             "models" -> {
                 val modelRefStrings = scopeRefStrings(params, "models")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'models' is missing for scope 'models'"))
-                val modelRefs = modelRefStrings.mapNotNull { resolveModel(repo, it)?.reference }.toSet()
+                val modelRefs = mutableSetOf<SModelReference>()
+                for (refStr in modelRefStrings) {
+                    val model = resolveModelPreferringProject(mpsProject, refStr)
+                    if (model != null) {
+                        modelRefs.add(model.reference)
+                    }
+                }
                 if (modelRefStrings.isNotEmpty() && modelRefs.isEmpty())
                     return SearchScopeResolution.Err(errJson("None of the ${modelRefStrings.size} model reference(s) could be resolved"))
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = modelRefs, allowedModules = null))
@@ -1015,7 +1089,13 @@ abstract class AbstractNodeOps : AbstractOps() {
             "modules" -> {
                 val moduleRefStrings = scopeRefStrings(params, "modules")
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'modules' is missing for scope 'modules'"))
-                val moduleRefs = moduleRefStrings.mapNotNull { resolveModule(repo, it)?.moduleReference }.toSet()
+                val moduleRefs = mutableSetOf<SModuleReference>()
+                for (refStr in moduleRefStrings) {
+                    val module = resolveModulePreferringProject(mpsProject, refStr)
+                    if (module != null) {
+                        moduleRefs.add(module.moduleReference)
+                    }
+                }
                 if (moduleRefStrings.isNotEmpty() && moduleRefs.isEmpty())
                     return SearchScopeResolution.Err(errJson("None of the ${moduleRefStrings.size} module reference(s) could be resolved"))
                 SearchScopeResolution.Ok(filteredScope(repo, allowedModels = null, allowedModules = moduleRefs))
@@ -1026,8 +1106,10 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val rootRefs = mutableSetOf<SNodeReference>()
                 val modelRefs = mutableSetOf<SModelReference>()
                 for (refStr in rootRefStrings) {
-                    val node = resolveNodeReference(repo, refStr)?.resolve(repo)
-                        ?: return SearchScopeResolution.Err(errJson("Failed to resolve root reference: '$refStr'"))
+                    val node = resolveNodeReferencePreferringProject(mpsProject, refStr)?.resolve(repo)
+                    if (node == null) {
+                        return SearchScopeResolution.Err(errJson("Failed to resolve root reference: '$refStr'"))
+                    }
                     rootRefs.add(node.containingRoot.reference)
                     node.model?.reference?.let { modelRefs.add(it) }
                 }
@@ -1178,7 +1260,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         }
         val monitor = coroutineProgressMonitor()
         return executeBackgroundRead(mpsProject) {
-            val concept = resolveConcept(mpsProject.repository, conceptRef)
+            val concept = resolveConceptPreferringProject(mpsProject, conceptRef)
                 ?: return@executeBackgroundRead errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
             val (searchScope, rootFilter) = when (val r = buildSearchScope(mpsProject, scopeParam, params)) {
                 is SearchScopeResolution.Ok -> r.scope to r.rootFilter
@@ -1217,7 +1299,8 @@ abstract class AbstractNodeOps : AbstractOps() {
             if (sampleOnly) {
                 sample?.let { results.add(it) }
             }
-            finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it) } + "]")
+            val cache = ProjectMembershipCache(mpsProject)
+            finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it, mpsProject, cache) } + "]")
         }
     }
 
@@ -1382,7 +1465,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         nonEditableMessage: String = "Model containing the node is not editable",
     ): ConsoleAwareResolution {
         val repository = mpsProject.repository
-        val node = resolveNodeReference(repository, nodeReference)?.resolve(repository)
+        val node = (resolveNodeReference(mpsProject, nodeReference) ?: resolveNodeReference(repository, nodeReference))?.resolve(repository)
             ?: return ConsoleAwareResolution.Err(errJson(missingMessageBuilder(nodeReference), McpErrorCode.NOT_FOUND))
         val model = node.model
         if (model !is EditableSModel) {

@@ -73,7 +73,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
     """
     )
     suspend fun mps_mcp_get_project_structure(
-        @McpDescription("Include read-only modules (libraries). Set to true only if you need to find something in external libraries.") includeStubModules: Boolean = false,
+        @McpDescription("Include non-project modules visible in the shared repository: read-only libraries/stubs and modules from other open MPS projects.") includeStubModules: Boolean = false,
         @McpDescription("Include models within modules.") includeModels: Boolean = false,
         @McpDescription("Include module/model dependencies and used languages.") includeDependencies: Boolean = false,
         @McpDescription("Include root nodes of models.") includeRootNodes: Boolean = false,
@@ -102,36 +102,55 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     // Try to resolve as node, then model, then module
 
                     // 1. Try Node
-                    val node = resolveNodeReference(mpsProject.repository, startingPoint)?.resolve(mpsProject.repository)
+                    val nodeRef = if (includeStubModules) {
+                        resolveNodeReferencePreferringProject(mpsProject, startingPoint)
+                    }
+                    else {
+                        resolveNodeReference(mpsProject, startingPoint)
+                    }
+                    val node = nodeRef?.resolve(mpsProject.repository)
                     if (node != null) {
-                        return@executeShortReadOnEdt saveToTempFileResult(nodeHierarchyToJson(node, includeNodes))
+                        return@executeShortReadOnEdt saveToTempFileResult(nodeHierarchyToJson(node, includeNodes, mpsProject))
                     }
 
                     // 2. Try Model
-                    val model = resolveModel(mpsProject.repository, startingPoint)
+                    val model = if (includeStubModules) {
+                        resolveModelPreferringProject(mpsProject, startingPoint)
+                    } else {
+                        resolveModel(mpsProject, startingPoint, projectOnly = true)
+                    }
                     if (model != null) {
-                        return@executeShortReadOnEdt saveToTempFileResult(modelToJson(model, effectiveIncludeRootNodes, includeNodes, includeDependencies))
+                        return@executeShortReadOnEdt saveToTempFileResult(modelToJson(mpsProject, model, effectiveIncludeRootNodes, includeNodes, includeDependencies))
                     }
 
                     // 3. Try Module
-                    val module = resolveModule(mpsProject.repository, startingPoint)
+                    val module = if (includeStubModules) {
+                        resolveModulePreferringProject(mpsProject, startingPoint)
+                    } else {
+                        resolveModule(mpsProject, startingPoint, projectOnly = true)
+                    }
                     if (module != null) {
-                        // Check if we should filter out stub modules if they are not included
-                        val isProjectModule = mpsProject.projectModulesWithGenerators.contains(module)
+                        // Check if we should filter out non-project modules if they are not included.
+                        val isProjectModule = isModuleInSelectedProject(mpsProject, module)
                         if (includeStubModules || isProjectModule) {
                             return@executeShortReadOnEdt saveToTempFileResult(
                                 moduleToJson(mpsProject, module, effectiveIncludeModels, effectiveIncludeRootNodes, includeNodes, includeDependencies)
                             )
                         }
                         return@executeShortReadOnEdt errJson(
-                            "Starting point '$startingPoint' resolved to a stub/library module and was filtered out. Set 'includeStubModules' to true to include it.",
+                            "Starting point '$startingPoint' resolved to a non-project module and was filtered out. Set 'includeStubModules' to true to include read-only libraries/stubs and modules from other open MPS projects.",
                             McpErrorCode.NOT_FOUND
                         )
                     }
 
                     errJson("Starting point '$startingPoint' not found", McpErrorCode.NOT_FOUND)
                 } else {
-                    val modules = if (includeStubModules) mpsProject.repository.modules else mpsProject.projectModulesWithGenerators
+                    val modules = if (includeStubModules) {
+                        mpsProject.repository.modules
+                    }
+                    else {
+                        mpsProject.projectModulesWithGenerators
+                    }
                     val filteredModules = if (!moduleKind.isNullOrBlank()) {
                         modules.filter { getModuleKind(it).equals(moduleKind, ignoreCase = true) }
                     } else {
@@ -140,8 +159,9 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
 
                     val json = JsonObject()
                     val moduleArray = JsonArray()
+                    val cache = ProjectMembershipCache(mpsProject)
                     for (projectModule in filteredModules) {
-                        moduleArray.add(moduleJsonObject(mpsProject, projectModule, effectiveIncludeModels, effectiveIncludeRootNodes, includeNodes, includeDependencies))
+                        moduleArray.add(moduleJsonObject(mpsProject, projectModule, effectiveIncludeModels, effectiveIncludeRootNodes, includeNodes, includeDependencies, cache))
                     }
                     json.add("modules", moduleArray)
                     saveToTempFileResult(json.toString())
@@ -156,9 +176,10 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         includeModels: Boolean,
         includeRootNodes: Boolean,
         includeNodes: Boolean,
-        includeDependencies: Boolean
+        includeDependencies: Boolean,
+        cache: ProjectMembershipCache? = null
     ): String {
-        return moduleJsonObject(project, m, includeModels, includeRootNodes, includeNodes, includeDependencies).toString()
+        return moduleJsonObject(project, m, includeModels, includeRootNodes, includeNodes, includeDependencies, cache).toString()
     }
 
     private fun moduleJsonObject(
@@ -167,8 +188,10 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         includeModels: Boolean,
         includeRootNodes: Boolean,
         includeNodes: Boolean,
-        includeDependencies: Boolean
+        includeDependencies: Boolean,
+        cache: ProjectMembershipCache? = null
     ): JsonObject {
+        val c = cache ?: ProjectMembershipCache(project)
         val vf = try {
             project.getVirtualFolder(m)
         } catch (e: Exception) {
@@ -184,6 +207,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         }
         obj.addProperty("readOnly", m.isReadOnly)
         obj.addProperty("kind", getModuleKind(m))
+        addContainingProjectIfForeign(obj, project, m, cache = c)
 
         if (includeDependencies) {
             val descriptor = (m as? AbstractModule)?.moduleDescriptor
@@ -197,6 +221,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                 ) {
                     addProperty("scope", it.scope.toString())
                     addProperty("reexport", it.isReexport)
+                    addContainingProjectIfForeign(this, project, it.moduleRef.resolve(project.repository), cache = c)
                 }
             )
 
@@ -208,6 +233,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     itemReference = { PersistenceFacade.getInstance().asString(it.key) }
                 ) {
                     addProperty("version", it.value)
+                    addContainingProjectIfForeign(this, project, it.key, project.repository, cache = c)
                 }
             )
 
@@ -217,7 +243,9 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     items = descriptor?.usedDevkits ?: emptyList(),
                     itemName = { it.moduleName ?: "" },
                     itemReference = { PersistenceFacade.getInstance().asString(it) }
-                )
+                ) {
+                    addContainingProjectIfForeign(this, project, it.resolve(project.repository), cache = c)
+                }
             )
 
             if (descriptor is LanguageDescriptor) {
@@ -227,7 +255,9 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                         items = descriptor.extendedLanguages,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
-                    )
+                    ) {
+                        addContainingProjectIfForeign(this, project, it.resolve(project.repository), cache = c)
+                    }
                 )
 
                 obj.add(
@@ -236,12 +266,14 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                         items = descriptor.runtimeModules,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
-                    )
+                    ) {
+                        addContainingProjectIfForeign(this, project, it.resolve(project.repository), cache = c)
+                    }
                 )
 
                 val accessoryModels = JsonArray()
                 for (accessoryModel in descriptor.accessoryModels) {
-                    accessoryModels.add(modelReferenceJsonObject(accessoryModel))
+                    accessoryModels.add(modelReferenceJsonObject(accessoryModel, project, c))
                 }
                 obj.add("accessoryModels", accessoryModels)
             }
@@ -253,9 +285,11 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                         items = descriptor.depGenerators,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
-                    )
+                    ) {
+                        addContainingProjectIfForeign(this, project, it.resolve(project.repository), cache = c)
+                    }
                 )
-                obj.add("sourceLanguage", moduleReferenceJsonObject(descriptor.sourceLanguage))
+                obj.add("sourceLanguage", moduleReferenceJsonObject(descriptor.sourceLanguage, project, c))
             }
 
             if (descriptor is DevkitDescriptor) {
@@ -265,7 +299,9 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                         items = descriptor.exportedLanguages,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
-                    )
+                    ) {
+                        addContainingProjectIfForeign(this, project, it.resolve(project.repository), cache = c)
+                    }
                 )
                 obj.add(
                     "exportedSolutions",
@@ -273,7 +309,9 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                         items = descriptor.exportedSolutions,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
-                    )
+                    ) {
+                        addContainingProjectIfForeign(this, project, it.resolve(project.repository), cache = c)
+                    }
                 )
                 obj.add(
                     "extendedDevkits",
@@ -281,10 +319,12 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                         items = descriptor.extendedDevkits,
                         itemName = { it.moduleName ?: "" },
                         itemReference = { PersistenceFacade.getInstance().asString(it) }
-                    )
+                    ) {
+                        addContainingProjectIfForeign(this, project, it.resolve(project.repository), cache = c)
+                    }
                 )
                 descriptor.associatedGenPlan?.let {
-                    obj.add("associatedGenPlan", modelReferenceJsonObject(it))
+                    obj.add("associatedGenPlan", modelReferenceJsonObject(it, project, c))
                 }
             }
         }
@@ -305,6 +345,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     val genObj = JsonObject()
                     genObj.addProperty("name", gen.moduleName ?: "")
                     genObj.addProperty("reference", PersistenceFacade.getInstance().asString(gen.moduleReference))
+                    addContainingProjectIfForeign(genObj, project, gen, cache = c)
                     generators.add(genObj)
                 }
                 obj.add("generators", generators)
@@ -314,7 +355,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         if (includeModels) {
             val models = JsonArray()
             for (model in m.models) {
-                models.add(modelJsonObject(model, includeRootNodes, includeNodes, includeDependencies))
+                models.add(modelJsonObject(project, model, includeRootNodes, includeNodes, includeDependencies, c))
             }
             obj.add("models", models)
         }
@@ -401,11 +442,26 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         }
     }
 
-    private fun modelToJson(model: SModel, includeRootNodes: Boolean, includeNodes: Boolean, includeDependencies: Boolean): String {
-        return modelJsonObject(model, includeRootNodes, includeNodes, includeDependencies).toString()
+    private fun modelToJson(
+        project: MPSProject,
+        model: SModel,
+        includeRootNodes: Boolean,
+        includeNodes: Boolean,
+        includeDependencies: Boolean,
+        cache: ProjectMembershipCache? = null
+    ): String {
+        return modelJsonObject(project, model, includeRootNodes, includeNodes, includeDependencies, cache).toString()
     }
 
-    private fun modelJsonObject(model: SModel, includeRootNodes: Boolean, includeNodes: Boolean, includeDependencies: Boolean): JsonObject {
+    private fun modelJsonObject(
+        project: MPSProject,
+        model: SModel,
+        includeRootNodes: Boolean,
+        includeNodes: Boolean,
+        includeDependencies: Boolean,
+        cache: ProjectMembershipCache? = null
+    ): JsonObject {
+        val c = cache ?: ProjectMembershipCache(project)
         val obj = JsonObject()
         // Use the full model name (SModelName.value), which keeps the stereotype (e.g.
         // `foo@tests`, `bar@generator`). longName drops it, so a @tests/@generator model would
@@ -414,12 +470,13 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
         obj.addProperty("name", model.name.value)
         obj.addProperty("reference", PersistenceFacade.getInstance().asString(model.reference))
         obj.addProperty("readOnly", model.isReadOnly)
+        addContainingProjectIfForeign(obj, project, model, cache = c)
 
         if (includeDependencies) {
             val dependencies = JsonArray()
             if (model is SModelInternal) {
                 for (modelImport in model.modelImports) {
-                    dependencies.add(modelReferenceJsonObject(modelImport))
+                    dependencies.add(modelReferenceJsonObject(modelImport, project, c))
                 }
             }
             obj.add("dependencies", dependencies)
@@ -427,11 +484,11 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
             val usedLanguages = JsonArray()
             if (model is SModelInternal) {
                 for (language in model.importedLanguageIds()) {
-                    usedLanguages.add(namedReferenceJsonObject(language.qualifiedName, PersistenceFacade.getInstance().asString(language)))
+                    usedLanguages.add(languageReferenceJsonObject(language, project, c))
                 }
                 val repository = model.repository
                 for (devkit in model.importedDevkits()) {
-                    val devkitObj = namedReferenceJsonObject(devkit.moduleName ?: "", PersistenceFacade.getInstance().asString(devkit))
+                    val devkitObj = moduleReferenceJsonObject(devkit, project, c)
                     devkitObj.addProperty("kind", "devkit")
                     // Expand the devkit into the languages it actually brings into the model's scope
                     // (transitively, including languages exported by extended devkits). A reader that
@@ -443,7 +500,7 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     if (dk != null) {
                         val provided = JsonArray()
                         for (lang in dk.allExportedLanguageIds.sortedBy { it.qualifiedName }) {
-                            provided.add(namedReferenceJsonObject(lang.qualifiedName, PersistenceFacade.getInstance().asString(lang)))
+                            provided.add(languageReferenceJsonObject(lang, project, c))
                         }
                         devkitObj.add("providedLanguages", provided)
                     }
@@ -458,14 +515,16 @@ class JetBrainsMPSProjectMcpToolset : AbstractOps() {
                     items = if (model is SModelInternal) model.languagesEngagedOnGeneration else emptyList(),
                     itemName = { it.qualifiedName },
                     itemReference = { PersistenceFacade.getInstance().asString(it) }
-                )
+                ) {
+                    addContainingProjectIfForeign(this, project, it, project.repository, cache = c)
+                }
             )
         }
 
         if (includeRootNodes) {
             val rootNodes = JsonArray()
             for (root in model.rootNodes) {
-                rootNodes.add(nodeHierarchyJsonObject(root, includeNodes))
+                rootNodes.add(nodeHierarchyJsonObject(root, includeNodes, project, c))
             }
             obj.add("rootNodes", rootNodes)
         }

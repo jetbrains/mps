@@ -48,7 +48,8 @@ visible read-only dependency closure).
 
 ### Step 08.07 — `FIND_INSTANCES` Event with `propertyFilter` + `exact:true` `[SUCCESS]`
 `parameters`: `{"conceptRef":"mcp.test.statechart.structure.Event","propertyFilter":{"name":"name","value":"go"},"exact":true}`
-- Validation: `ok==true`; returns only Event(s) named `go`. Exercises `propertyFilter` + `exact`.
+- Validation: `ok==true`; returns the single Event named `go` (in `GearboxStateChart`; the
+  OtherStateChart event is `tick`). Exercises `propertyFilter` + `exact`.
 
 ---
 

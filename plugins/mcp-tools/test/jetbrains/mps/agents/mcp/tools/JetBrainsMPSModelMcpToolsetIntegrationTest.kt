@@ -172,7 +172,10 @@ class JetBrainsMPSModelMcpToolsetIntegrationTest : McpIntegrationTestBase() {
     @Test
     fun `add_model_dependency rejects unknown source model`() {
         val response = runTool(toolset) { it.mps_mcp_model_dependency("no.such.source", "doesnt.matter") }
-        assertTrue(expectErr(response).contains("Source model not found"))
+        // Source resolution now goes through the shared resolveEditableModel helper (for cross-project
+        // safety), which emits the unified "Model '<ref>' not found" wording.
+        val err = expectErr(response)
+        assertTrue(err, err.contains("no.such.source") && err.contains("not found"))
     }
 
     @Test
