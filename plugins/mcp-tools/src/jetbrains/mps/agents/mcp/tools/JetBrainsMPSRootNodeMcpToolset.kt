@@ -37,10 +37,14 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
     suspend fun mps_mcp_open_node(
         @McpDescription("Persistent form of SNodeReference; may point to any node — non-root references open the containing root and focus the target.") nodeReference: String
     ): String = withMpsProject("Opening MPS node in editor") { mpsProject ->
-        // resolveNodeReference handles invalid persistent refs gracefully (null instead of
-        // IllegalArgumentException) and additionally accepts "ModelName.RootName" form.
-        val sNodeRef = resolveNodeReferencePreferringProject(mpsProject, nodeReference)
-            ?: return@withMpsProject invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
+        // resolveNodeReferencePreferringProject resolves the reference against the model
+        // (SNodeReference.resolve), so it must run inside a read action — otherwise MPS throws
+        // IllegalModelAccessError ("You can read model only inside read actions"). It handles
+        // invalid persistent refs gracefully (null instead of IllegalArgumentException) and
+        // additionally accepts the "ModelName.RootName" form.
+        val sNodeRef = executeShortReadOnEdt(mpsProject) {
+            resolveNodeReferencePreferringProject(mpsProject, nodeReference)
+        } ?: return@withMpsProject invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
         // EditorNavigator.open() dispatches to the EDT internally via runReadInEDT, so calling
         // it from a worker thread is safe; the builder setters are pure.
         EditorNavigator(mpsProject).shallFocus(true).shallSelect(true).open(sNodeRef)
