@@ -98,7 +98,14 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Read-only node queries. FIND_INSTANCES: find nodes that are instances of a concept (`conceptRef`; optional `scope` all|editable|models|modules|roots (always confined to the project selected by `projectPath`; never spans other open projects) with matching `models`/`modules`/`roots` (each a single reference or a JSON array), `propertyFilter` {"name","value"}, `exact`, `sampleOnly`:true for one example node). FIND_USAGES: find nodes whose references point at the given node — incoming references, not instances (`nodeReference`; optional `scope` as above). GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE take `nodeReference`. Returns `{"ok":true,"data":{...}}` on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
+        Read-only node queries. FIND_INSTANCES: find nodes that are instances of a concept (`conceptRef`; optional `scope`
+        all|editable|models|modules|roots with matching `models`/`modules`/`roots` (each a single reference or a JSON array),
+        `propertyFilter` {"name","value"}, `exact`, `sampleOnly`:true for one example node). `all` and `editable` are rooted
+        at the project selected by `projectPath`; explicit `models`/`modules`/`roots` may point to models, modules, or roots
+        from another open MPS project and are queried read-only. FIND_USAGES: find nodes whose references point at the given
+        node — incoming references, not instances (`nodeReference`; optional `scope` as above). GET_PARENT, GET_ROOT,
+        GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE take `nodeReference`. Returns `{"ok":true,"data":{...}}`
+        on success or `{"ok":false,"error":"..."}` on failure. See `mps-node-editing` and `mps-mcp-workflow` skills.
     """)
     suspend fun mps_mcp_query_nodes(
         @McpDescription("The operation to perform (FIND_INSTANCES, FIND_USAGES, GET_PARENT, GET_ROOT, GET_MODEL_FOR_NODE, NODE_INDEX, SIBLINGS, GET_CHILD_ROLE)") operation: String,
@@ -188,16 +195,16 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             when (operation) {
                 MPSQueryOperation.GET_PARENT -> {
                     val parent = node.parent
-                    if (parent != null) okJson(nodeInfoJson(parent)) else okJson("null")
+                    if (parent != null) okJson(nodeInfoJson(parent, mpsProject)) else okJson("null")
                 }
-                MPSQueryOperation.GET_ROOT -> okJson(nodeInfoJson(node.containingRoot))
+                MPSQueryOperation.GET_ROOT -> okJson(nodeInfoJson(node.containingRoot, mpsProject))
                 MPSQueryOperation.GET_MODEL_FOR_NODE -> {
                     val model = node.model
-                    if (model != null) okJson(modelReferenceJson(model.reference))
+                    if (model != null) okJson(modelReferenceJsonObject(model.reference, mpsProject))
                     else errJson("Node '$nodeReference' is not in a model")
                 }
                 MPSQueryOperation.NODE_INDEX -> opNodeIndex(node)
-                MPSQueryOperation.SIBLINGS -> opSiblings(node)
+                MPSQueryOperation.SIBLINGS -> opSiblings(node, mpsProject)
                 MPSQueryOperation.GET_CHILD_ROLE -> opGetChildRole(node, mpsProject)
                 MPSQueryOperation.FIND_USAGES,
                 MPSQueryOperation.FIND_INSTANCES -> errJson("Unsupported operation: $operation")
@@ -212,17 +219,18 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
         return okJson(parent.getChildren(link).indexOf(node).toString())
     }
 
-    private fun opSiblings(node: SNode): String {
+    private fun opSiblings(node: SNode, mpsProject: MPSProject): String {
         val parent = node.parent ?: return errJson("Node is a root node")
         val link = node.containmentLink ?: return errJson("Node does not have a containment role")
         if (!link.isMultiple) return errJson("Node is not in a multiple role")
         val siblings = parent.getChildren(link)
-        return finalizeResult("[" + siblings.joinToString(",") { nodeInfoJson(it) } + "]")
+        val cache = ProjectMembershipCache(mpsProject)
+        return finalizeResult("[" + siblings.joinToString(",") { nodeInfoJson(it, mpsProject, cache) } + "]")
     }
 
     private fun opGetChildRole(node: SNode, mpsProject: MPSProject): String {
         val link = node.containmentLink ?: return errJson("Node is a root node or not in a containment role")
-        return okJson(containmentLinkInfoJson(link, mpsProject.repository))
+        return okJson(containmentLinkInfoJsonObject(link, mpsProject.repository, currentProject = mpsProject))
     }
 
     private suspend fun opFindUsages(mpsProject: MPSProject, params: JsonObject): String {
@@ -253,7 +261,8 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
             if (monitor.isCanceled) {
                 errJson("Operation canceled")
             } else {
-                finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it) } + "]")
+                val cache = ProjectMembershipCache(mpsProject)
+                finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it, mpsProject, cache) } + "]")
             }
         }
     }
@@ -546,9 +555,9 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                             okJson("\"no problems found\"")
                         } else {
                             val json = if (onlyNodesWithProblems) {
-                                nodeWithProblemsListToJson(node, problems)
+                                nodeWithProblemsListToJson(node, problems, mpsProject)
                             } else {
-                                nodeWithProblemsToJson(node, problems)
+                                nodeWithProblemsToJson(node, problems, currentProject = mpsProject)
                             }
                             saveToTempFileResult(json)
                         }
@@ -568,7 +577,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                             if (problems.isEmpty()) {
                                 okJson("\"no problems found\"")
                             } else {
-                                saveToTempFileResult(modelWithProblemsToJson(model, problems))
+                                saveToTempFileResult(modelWithProblemsToJson(model, problems, mpsProject))
                             }
                         } else {
                             errJson("Reference '$nodeReference' resolved to neither node nor model", McpErrorCode.NOT_FOUND)
@@ -601,7 +610,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     ?: return@executeShortReadOnEdt invalidReference("Invalid or unresolvable node reference: '$nodeReference'")
                 val node = sNodeRef.resolve(repo)
                     ?: return@executeShortReadOnEdt errJson("Node '$nodeReference' not found", McpErrorCode.NOT_FOUND)
-                saveToTempFileResult(nodeHierarchyToJson(node, deep))
+                saveToTempFileResult(nodeHierarchyToJson(node, deep, mpsProject))
             }
         }
     }
@@ -771,7 +780,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
                 setProperty(node, sProperty, propertyValue)
                 val warn = persistOrRefreshConsole(model, console)
-                okJson(nodeInfoJsonObject(node), warnings = listOfNotNull(warn))
+                okJson(nodeInfoJsonObject(node, mpsProject), warnings = listOfNotNull(warn))
             }
         }
     }
@@ -833,7 +842,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
 
                 if (targetIndex == currentIndex) {
                     // Already at the correct position
-                    return@executeShortCommandOnEdt okJson(nodeInfoJsonObjectWithIndex(childNode))
+                    return@executeShortCommandOnEdt okJson(nodeInfoJsonObjectWithIndex(childNode, mpsProject))
                 }
 
                 // Repositioning
@@ -853,7 +862,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                 val warn = persistOrRefreshConsole(model, console)
                 // Return the moved node with its actual resulting index (consistent with
                 // MOVE_NODE_TO_PARENT), so a caller that overshot `position` sees where it landed.
-                okJson(nodeInfoJsonObjectWithIndex(childNode), warnings = listOfNotNull(warn))
+                okJson(nodeInfoJsonObjectWithIndex(childNode, mpsProject), warnings = listOfNotNull(warn))
             }
         }
     }
@@ -956,7 +965,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     }
                     // Report the moved node's actual index so a caller that overshot `position`
                     // (now clamped to an append) can see where it landed.
-                    okJson(nodeInfoJsonObjectWithIndex(node), warnings = listOfNotNull(warn))
+                    okJson(nodeInfoJsonObjectWithIndex(node, mpsProject), warnings = listOfNotNull(warn))
 
                 } else if (modelReference != null) {
                     val targetModel = when (val r = resolveEditableModel(mpsProject, modelReference)) {
@@ -979,7 +988,7 @@ class JetBrainsMPSNodeMcpToolset : AbstractNodeOps() {
                     if (sourceModel != null && sourceModel != targetModel) {
                         saveModelAndModule(sourceModel)
                     }
-                    okJson(nodeInfoJson(node))
+                    okJson(nodeInfoJson(node, mpsProject))
                 } else {
                     errJson("Either 'newParentRef' or 'modelReference' must be provided for MOVE_NODE_TO_PARENT", McpErrorCode.INVALID_REQUEST)
                 }

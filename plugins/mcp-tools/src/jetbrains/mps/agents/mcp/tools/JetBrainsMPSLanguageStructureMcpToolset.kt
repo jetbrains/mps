@@ -157,7 +157,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                             }
                         }
                     }
-                    val jsonResults = allConcepts.map { conceptInfoJson(it, mpsProject.repository) }
+                    val cache = ProjectMembershipCache(mpsProject)
+                    val jsonResults = allConcepts.map { conceptInfoJson(it, mpsProject.repository, mpsProject, cache) }
                     finalizeResult("[" + jsonResults.joinToString(",") + "]")
                 }
             }
@@ -186,7 +187,8 @@ class JetBrainsMPSLanguageStructureMcpToolset : AbstractNodeOps() {
                         ?: return@executeShortReadOnEdt errJson("Concept '$conceptRef' not found", McpErrorCode.NOT_FOUND)
                     val allSuperConcepts = mutableSetOf<SAbstractConcept>()
                     populateSuperConceptsAndInterfaces(concept, allSuperConcepts)
-                    val jsonResults = allSuperConcepts.map { conceptInfoJson(it, mpsProject.repository) }
+                    val cache = ProjectMembershipCache(mpsProject)
+                    val jsonResults = allSuperConcepts.map { conceptInfoJson(it, mpsProject.repository, mpsProject, cache) }
                     finalizeResult("[" + jsonResults.joinToString(",") + "]")
                 }
             }

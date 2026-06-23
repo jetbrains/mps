@@ -1,7 +1,7 @@
 package jetbrains.mps.agents.mcp.tools
 
-import com.google.gson.JsonParser
 import com.google.gson.JsonObject
+import com.google.gson.JsonParser
 import jetbrains.mps.project.MPSProject
 import jetbrains.mps.project.Solution
 import jetbrains.mps.project.modules.LanguageProducer
@@ -92,6 +92,73 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
             assertFalse(
                 "dependency must not point to the sibling project's same-named target",
                 bTarget.moduleReference in dependencies,
+            )
+        }
+    }
+
+    @Test
+    fun `module dependency accepts explicit sibling project module reference`() {
+        val projectB = openProjectB()
+        val bTarget = createLanguageIn(projectB, "mcp.test.explicitModuleTarget${System.nanoTime()}")
+        val bTargetRef = readIn(projectB) { PersistenceFacade.getInstance().asString(bTarget.moduleReference) }
+        val source = createSolutionIn(myProject, "mcp.test.explicitModuleSource${System.nanoTime()}")
+
+        val response = runTool(moduleToolset) {
+            it.mps_mcp_module_dependency(source.moduleName!!, bTargetRef, DependencyOperation.ADD, null, false)
+        }
+        expectOk(response)
+
+        readIn(myProject) {
+            val dependencies = source.moduleDescriptor.dependencies.map { it.moduleRef }.toSet()
+            assertTrue(
+                "explicit sibling project module reference must be accepted as a read-only dependency target",
+                bTarget.moduleReference in dependencies,
+            )
+        }
+    }
+
+    @Test
+    fun `facet read tools mark explicit sibling project module reference`() {
+        val projectB = openProjectB()
+        val bSolution = createSolutionIn(projectB, "mcp.test.facetTarget${System.nanoTime()}")
+        val bSolutionRef = readIn(projectB) { PersistenceFacade.getInstance().asString(bSolution.moduleReference) }
+
+        val facets = expectOk(runTool(moduleToolset) {
+            it.mps_mcp_get_module_facets(bSolutionRef)
+        })
+        assertForeignProjectMarker(facets.getAsJsonObject("module"), projectB)
+
+        val facetTypes = expectOk(runTool(moduleToolset) {
+            it.mps_mcp_list_facet_types(bSolutionRef)
+        })
+        assertForeignProjectMarker(facetTypes.getAsJsonObject("module"), projectB)
+    }
+
+    @Test
+    fun `model dependency accepts explicit sibling project model reference`() {
+        val projectB = openProjectB()
+        val bSolution = createSolutionIn(projectB, "mcp.test.explicitModelTarget${System.nanoTime()}")
+        val bModel = createModelIn(projectB, bSolution, "mcp.test.explicitModelTarget.model${System.nanoTime()}")
+        val bModelRef = readIn(projectB) { PersistenceFacade.getInstance().asString(bModel.reference) }
+        val aSolution = createSolutionIn(myProject, "mcp.test.explicitModelSource${System.nanoTime()}")
+        val aModel = createModel(aSolution, "mcp.test.explicitModelSource.model${System.nanoTime()}")
+        val aModelRef = readIn(myProject) { PersistenceFacade.getInstance().asString(aModel.reference) }
+
+        val response = runTool(modelToolset) {
+            it.mps_mcp_model_dependency(aModelRef, bModelRef, DependencyOperation.ADD)
+        }
+        expectOk(response)
+
+        readIn(myProject) {
+            val modelImports = (aModel as SModelInternal).modelImports
+            assertTrue(
+                "explicit sibling project model reference must be accepted as a read-only model import",
+                bModel.reference in modelImports,
+            )
+            val dependencies = aSolution.moduleDescriptor.dependencies.map { it.moduleRef }.toSet()
+            assertTrue(
+                "importing a sibling project model must add the sibling module dependency",
+                bSolution.moduleReference in dependencies,
             )
         }
     }
@@ -213,7 +280,7 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
     }
 
     @Test
-    fun `project structure includeStubModules prefers selected project and filters sibling project`() {
+    fun `project structure includeStubModules prefers selected project and marks sibling project`() {
         val projectB = openProjectB()
         val languageName = "mcp.test.structure${System.nanoTime()}"
         val bLanguage = createLanguageIn(projectB, languageName)
@@ -233,6 +300,10 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
         }
         val sharedPayload = readJsonObjectFromOkPath(sharedResponse)
         assertEquals(aSharedRef, sharedPayload.get("reference").asString)
+        assertFalse(
+            "same-named starting point must still prefer the selected project",
+            sharedPayload.has("containingProject"),
+        )
 
         val siblingOnlyResponse = runTool(projectToolset) {
             it.mps_mcp_get_project_structure(
@@ -240,8 +311,9 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
                 startingPoint = "$languageName.structure.SiblingOnlyRoot",
             )
         }
-        val error = expectErr(siblingOnlyResponse)
-        assertTrue("sibling-only starting point must not be exposed as a stub/library: $error", error.contains("not found"))
+        val siblingPayload = readJsonObjectFromOkPath(siblingOnlyResponse)
+        assertEquals("SiblingOnlyRoot", siblingPayload.get("name").asString)
+        assertForeignProjectMarker(siblingPayload, projectB)
     }
 
     @Test
@@ -261,7 +333,7 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
     }
 
     @Test
-    fun `model used language rejects explicit sibling project language reference`() {
+    fun `model used language accepts explicit sibling project language reference`() {
         val projectB = openProjectB()
         val bLanguage = createLanguageIn(projectB, "mcp.test.explicitLang${System.nanoTime()}")
         val solution = createSolutionIn(myProject, "mcp.test.explicitLang.target${System.nanoTime()}")
@@ -272,17 +344,17 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
         val response = runTool(modelToolset) {
             it.mps_mcp_model_used_language(modelRef, bLanguageRef, "language")
         }
-        val error = expectErr(response)
-        assertTrue("explicit sibling language ref must be rejected: $error", error.contains("Language not found"))
+        val payload = expectOk(response)
+        assertTrue("explicit sibling language ref must be imported: $payload", payload.get("added").asBoolean)
 
-        assertFalse(
-            "sibling language must not be imported into the selected project model",
+        assertTrue(
+            "sibling language must be imported into the selected project model",
             readIn(myProject) { (model as SModelInternal).importedLanguageIds().any { PersistenceFacade.getInstance().asString(it) == bLanguageRef } },
         )
     }
 
     @Test
-    fun `model used devkit rejects explicit sibling project module reference`() {
+    fun `model used devkit accepts explicit sibling project module reference`() {
         val projectB = openProjectB()
         val bDevkitRef = createDevKitIn(projectB, "mcp.test.explicitDevkit${System.nanoTime()}")
         val solution = createSolutionIn(myProject, "mcp.test.explicitDevkit.target${System.nanoTime()}")
@@ -292,17 +364,86 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
         val response = runTool(modelToolset) {
             it.mps_mcp_model_used_language(modelRef, bDevkitRef, "devkit")
         }
-        val error = expectErr(response)
-        assertTrue("explicit sibling devkit ref must be rejected: $error", error.contains("Devkit not found"))
+        val payload = expectOk(response)
+        assertTrue("explicit sibling devkit ref must be imported: $payload", payload.get("added").asBoolean)
 
-        assertFalse(
-            "sibling devkit must not be imported into the selected project model",
+        assertTrue(
+            "sibling devkit must be imported into the selected project model",
             readIn(myProject) { (model as SModelInternal).importedDevkits().any { PersistenceFacade.getInstance().asString(it) == bDevkitRef } },
         )
     }
 
     @Test
-    fun `search concepts rejects sibling-only model reference`() {
+    fun `insert root from JSON accepts explicit sibling project concept reference`() {
+        val projectB = openProjectB()
+        val bLanguage = createLanguageIn(projectB, "mcp.test.foreignConcept${System.nanoTime()}")
+        val bStructure = structureModelOf(projectB, bLanguage)
+        val bConceptDeclarationRef = createConceptRootIn(projectB, bStructure, "ForeignRoot", rootable = true)
+        val bConceptRef = conceptReferenceForDeclaration(projectB, bConceptDeclarationRef)
+        val bLanguageRef = readIn(projectB) { PersistenceFacade.getInstance().asString(MetaAdapterByDeclaration.getLanguage(bLanguage)) }
+
+        val solution = createSolutionIn(myProject, "mcp.test.foreignConcept.target${System.nanoTime()}")
+        val model = createModel(solution, "mcp.test.foreignConcept.model${System.nanoTime()}")
+        val modelRef = readIn(myProject) { PersistenceFacade.getInstance().asString(model.reference) }
+
+        val response = runTool(rootNodeToolset) {
+            it.mps_mcp_insert_root_node_from_json(modelRef, """{ "conceptReference": "$bConceptRef" }""", dryRun = false)
+        }
+        val created = expectOk(response)
+        assertForeignProjectMarker(created, projectB, "concept")
+        val createdRef = created.get("reference").asString
+
+        readIn(myProject) {
+            assertEquals(bLanguageRef, PersistenceFacade.getInstance().asString(resolveNode(createdRef).concept.language))
+            assertTrue(
+                "inserting a foreign-concept root must import the foreign language into the target model",
+                (model as SModelInternal).importedLanguageIds().any { PersistenceFacade.getInstance().asString(it) == bLanguageRef },
+            )
+        }
+    }
+
+    @Test
+    fun `update node reference accepts explicit sibling project target node`() {
+        val projectB = openProjectB()
+        val languageName = "mcp.test.foreignReference${System.nanoTime()}"
+        val bLanguage = createLanguageIn(projectB, languageName)
+        val aLanguage = createLanguageIn(myProject, "mcp.test.foreignReference.source${System.nanoTime()}")
+        val bStructure = structureModelOf(projectB, bLanguage)
+        val aStructure = structureModelOf(myProject, aLanguage)
+
+        val bBaseRef = createConceptRootIn(projectB, bStructure, "ForeignBase")
+        val derivedRef = createConceptRootIn(myProject, aStructure, "Derived")
+
+        val response = runTool(nodeToolset) {
+            it.mps_mcp_update_node(
+                NodeUpdateOperation.SET,
+                NodeUpdateKind.REFERENCE,
+                references = listOf(listOf(derivedRef, "extends", bBaseRef)),
+            )
+        }
+        val batch = JsonParser.parseString(response).asJsonObject
+        assertTrue("batch reference update to sibling project target must succeed: $response", batch.get("ok").asBoolean)
+
+        assertEquals(bBaseRef, readIn(myProject) { referenceTarget(derivedRef, "extends") })
+        readIn(myProject) {
+            assertTrue(
+                "setting a reference to a sibling project node must import the target model",
+                (aStructure as SModelInternal).modelImports.contains(bStructure.reference),
+            )
+        }
+
+        val printed = readJsonObjectFromOkPath(runTool(nodeToolset) {
+            it.mps_mcp_print_node(derivedRef, deep = false)
+        })
+        val extendsReference = printed.getAsJsonArray("references")
+            .map { it.asJsonObject }
+            .single { it.get("role").asString == "extends" }
+        assertForeignProjectMarker(extendsReference, projectB, "target")
+
+    }
+
+    @Test
+    fun `search concepts accepts sibling-only model reference`() {
         val projectB = openProjectB()
         val bLanguage = createLanguageIn(projectB, "mcp.test.searchmodel${System.nanoTime()}")
         val bStructureRef = readIn(projectB) {
@@ -313,8 +454,8 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
             it.mps_mcp_search_concepts(listOf("ConceptDeclaration"), modelReference = bStructureRef)
         }
 
-        val error = expectErr(response)
-        assertTrue("sibling-only modelReference must not be used as a search scope: $error", error.contains("Model not found"))
+        val resultNames = parseDataArray(response).map { it.asJsonObject.get("name").asString }.toSet()
+        assertTrue("sibling-only modelReference must be accepted as a read-only concept-search scope: $response", "ConceptDeclaration" in resultNames)
     }
 
     private fun openProjectB(): MPSProject =
@@ -334,6 +475,16 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
             result = SolutionProducer(project).create(name, createDirIn(project, uniqueDirName(name)))
         }
         return checkNotNull(result) { "SolutionProducer returned null for $name" }
+    }
+
+    private fun createModelIn(project: MPSProject, module: Solution, modelName: String): SModel {
+        var result: SModel? = null
+        executeCommandIn(project) {
+            val name = org.jetbrains.mps.openapi.model.SModelName(modelName)
+            val root = module.modelRoots.first { it.canCreateModel(name) }
+            result = root.createModel(name) ?: error("Failed to create model '$modelName'")
+        }
+        return checkNotNull(result) { "Failed to create model '$modelName'" }
     }
 
     private fun createDevKitIn(project: MPSProject, name: String): String {
@@ -377,8 +528,31 @@ class ProjectResolutionCrossProjectTest : McpIntegrationTestBase() {
     }
 
     private fun resolveNode(nodeRef: String) =
-        PersistenceFacade.getInstance().createNodeReference(nodeRef).resolve(myProject.repository)
+        resolveNode(myProject, nodeRef)
             ?: error("Node '$nodeRef' did not resolve")
+
+    private fun resolveNode(project: MPSProject, nodeRef: String) =
+        PersistenceFacade.getInstance().createNodeReference(nodeRef).resolve(project.repository)
+
+    private fun conceptReferenceForDeclaration(project: MPSProject, conceptDeclarationRef: String): String =
+        readIn(project) {
+            val conceptDeclaration = resolveNode(project, conceptDeclarationRef)
+                ?: error("Concept declaration '$conceptDeclarationRef' did not resolve")
+            PersistenceFacade.getInstance().asString(MetaAdapterByDeclaration.getConcept(conceptDeclaration))
+        }
+
+    private fun assertForeignProjectMarker(obj: JsonObject, project: MPSProject, prefix: String = "") {
+        val containingProjectField = if (prefix.isEmpty()) "containingProject" else "${prefix}ContainingProject"
+        val editableField = if (prefix.isEmpty()) "editableFromCurrentProject" else "${prefix}EditableFromCurrentProject"
+        assertTrue("$containingProjectField must be present in $obj", obj.has(containingProjectField))
+        assertEquals(project.name, obj.getAsJsonObject(containingProjectField).get("name").asString)
+        assertTrue(
+            "$containingProjectField must include the project base directory",
+            obj.getAsJsonObject(containingProjectField).get("mpsProjectBaseDirectory").asString.isNotBlank(),
+        )
+        assertTrue("$editableField must be present in $obj", obj.has(editableField))
+        assertFalse("$editableField must be false for foreign project elements", obj.get(editableField).asBoolean)
+    }
 
     private fun readJsonObjectFromOkPath(response: String): JsonObject {
         val outer = JsonParser.parseString(response).asJsonObject

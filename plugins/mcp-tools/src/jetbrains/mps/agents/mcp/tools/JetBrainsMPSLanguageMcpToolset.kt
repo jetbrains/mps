@@ -5,6 +5,7 @@ import com.google.gson.JsonObject
 import com.google.gson.JsonPrimitive
 import com.intellij.mcpserver.annotations.McpDescription
 import com.intellij.mcpserver.annotations.McpTool
+import jetbrains.mps.project.MPSProject
 import jetbrains.mps.smodel.language.LanguageRegistry
 import jetbrains.mps.smodel.adapter.MetaAdapterByDeclaration
 import org.jetbrains.mps.openapi.language.SAbstractConcept
@@ -121,11 +122,12 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                     }
                 }
 
+                val cache = ProjectMembershipCache(mpsProject)
                 for (concept in conceptSet) {
-                    val detailedInfo = conceptInfoJsonObject(concept, repo)
+                    val detailedInfo = conceptInfoJsonObject(concept, repo, mpsProject, cache)
                     detailedInfo.add("properties", conceptPropertiesJsonArray(concept, repo))
-                    detailedInfo.add("references", conceptReferencesJsonArray(concept, repo))
-                    detailedInfo.add("children", conceptChildrenJsonArray(concept, repo))
+                    detailedInfo.add("references", conceptReferencesJsonArray(concept, repo, mpsProject, cache))
+                    detailedInfo.add("children", conceptChildrenJsonArray(concept, repo, mpsProject, cache))
                     detailedInfo.add("sampleNode", conceptSampleJsonObject(concept))
                     results.add(detailedInfo)
                 }
@@ -231,6 +233,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             // Tracked once instead of repeatedly probing strictMatches.size(): once any concept
             // matches strictly, the fallback path is irrelevant for the rest of the scan.
             var strictFound = false
+            val cache = ProjectMembershipCache(mpsProject)
 
             for (lang in languages) {
                 val runtime = registry.getLanguage(lang) ?: continue
@@ -281,7 +284,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
                                 rankedHeap.clear()
                             }
                         }
-                        strictMatches.add(conceptInfoJsonObject(concept, repo))
+                        strictMatches.add(conceptInfoJsonObject(concept, repo, mpsProject, cache))
                     } else if (!strictFound && bestGroupScore > 0) {
                         // Maintain the heap as a running top-K by score. While under capacity,
                         // accept every positive-score candidate; once full, only candidates with
@@ -301,7 +304,7 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             } else {
                 val arr = JsonArray()
                 for ((concept, _) in rankedHeap.sortedByDescending { it.second }) {
-                    arr.add(conceptInfoJsonObject(concept, repo))
+                    arr.add(conceptInfoJsonObject(concept, repo, mpsProject, cache))
                 }
                 arr
             }
@@ -356,7 +359,9 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
 
     private fun conceptLinkJsonArray(
         repository: SRepository,
-        links: Collection<SAbstractLink>
+        links: Collection<SAbstractLink>,
+        mpsProject: MPSProject,
+        cache: ProjectMembershipCache? = null
     ): JsonArray {
         val result = JsonArray()
         for (ref in links) {
@@ -376,17 +381,18 @@ class JetBrainsMPSLanguageMcpToolset : AbstractOps() {
             featureId?.let { obj.addProperty("featureId", it) }
             val declarationNode = addSourceNodeAndResolve(obj, ref.sourceNode, repository)
             addDocAndDeprecated(obj, getDoc(declarationNode), getDeprecationInfo(declarationNode))
+            addContainingProjectIfForeign(obj, mpsProject, ref.targetConcept, repository, "targetConcept", cache)
             result.add(obj)
         }
         return result
     }
 
-    private fun conceptReferencesJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
-        return conceptLinkJsonArray(repository, concept.referenceLinks)
+    private fun conceptReferencesJsonArray(concept: SAbstractConcept, repository: SRepository, mpsProject: MPSProject, cache: ProjectMembershipCache? = null): JsonArray {
+        return conceptLinkJsonArray(repository, concept.referenceLinks, mpsProject, cache)
     }
 
-    private fun conceptChildrenJsonArray(concept: SAbstractConcept, repository: SRepository): JsonArray {
-        return conceptLinkJsonArray(repository, concept.containmentLinks)
+    private fun conceptChildrenJsonArray(concept: SAbstractConcept, repository: SRepository, mpsProject: MPSProject, cache: ProjectMembershipCache? = null): JsonArray {
+        return conceptLinkJsonArray(repository, concept.containmentLinks, mpsProject, cache)
     }
 
     private fun conceptSampleJsonObject(concept: SAbstractConcept): JsonObject {

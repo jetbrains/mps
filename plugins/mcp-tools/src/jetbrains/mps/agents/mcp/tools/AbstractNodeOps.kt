@@ -344,14 +344,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         if (mpsProject == null) return resolveNodeReference(repository, targetRefStr)
 
         resolveNodeReference(mpsProject, targetRefStr)?.let { return it }
-        val targetRef = resolveNodeReference(repository, targetRefStr) ?: return null
-        val targetNode = targetRef.resolve(repository)
-        if (targetNode != null && isNodeInAnotherOpenProject(mpsProject, targetNode)) {
-            throw McpInvalidReferenceException(
-                "Reference target '$targetRefStr' resolves to a node that is not part of the project selected by projectPath"
-            )
-        }
-        return targetRef
+        return resolveNodeReference(repository, targetRefStr)
     }
 
     private fun validateReferenceTarget(
@@ -606,7 +599,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         childNode.delete()
         val fixResult = performFixReferences(mpsProject, newChild)
         val warn = persistOrRefreshConsole(model, console)
-        return okJson(withFixReferencesInfo(nodeInfoJsonObject(parent), fixResult), warnings = listOfNotNull(warn))
+        return okJson(withFixReferencesInfo(nodeInfoJsonObject(parent, mpsProject), fixResult), warnings = listOfNotNull(warn))
     }
 
     // Deletion: no fix-references step — removing a child doesn't relocate
@@ -628,7 +621,7 @@ abstract class AbstractNodeOps : AbstractOps() {
 
         childNode.delete()
         val warn = persistOrRefreshConsole(model, console)
-        return okJson(nodeInfoJsonObject(parent), warnings = listOfNotNull(warn))
+        return okJson(nodeInfoJsonObject(parent, mpsProject), warnings = listOfNotNull(warn))
     }
 
     /** Result of [resolveInsertIndex]: where a new child should be placed in a containment role. */
@@ -739,7 +732,7 @@ abstract class AbstractNodeOps : AbstractOps() {
         val warn = persistOrRefreshConsole(model, console)
         // Report the new child's actual index so a caller that overshot `position` (now clamped
         // to an append) can see where it landed.
-        return okJson(withFixReferencesInfo(nodeInfoJsonObjectWithIndex(newChild), fixResult), warnings = listOfNotNull(warn))
+        return okJson(withFixReferencesInfo(nodeInfoJsonObjectWithIndex(newChild, mpsProject), fixResult), warnings = listOfNotNull(warn))
     }
 
     protected suspend fun update_node_reference(mpsProject: MPSProject, nodeReference: String, referenceRole: String, targetNodeRefStr: String?): String {
@@ -804,7 +797,11 @@ abstract class AbstractNodeOps : AbstractOps() {
             }
 
             val warn = persistOrRefreshConsole(model, console)
-            val info = if (fixResult != null) withFixReferencesInfo(nodeInfoJsonObject(node), fixResult) else nodeInfoJsonObject(node)
+            val info = if (fixResult != null) {
+                withFixReferencesInfo(nodeInfoJsonObject(node, mpsProject), fixResult)
+            } else {
+                nodeInfoJsonObject(node, mpsProject)
+            }
             okJson(info, warnings = listOfNotNull(warn))
         }
     }
@@ -994,11 +991,10 @@ abstract class AbstractNodeOps : AbstractOps() {
      * reference string (see [scopeRefStrings]). Returns the scope (plus the root filter for scope
      * "roots") or an error result.
      *
-     * Every scope is confined to [mpsProject]. A single MPS instance shares one module repository
-     * across all open projects (`ProjectRepository.getModules()` delegates to the global
-     * MPSModuleRepository), so a `GlobalScope(repo)` would leak modules belonging to sibling
-     * projects. Hence "all"/"editable" are rooted at the project's own modules ([MPSProject.getScope])
-     * rather than the repository, and "all" widens only to the project's visible dependency closure.
+     * The default "all"/"editable" scopes are rooted at [mpsProject], not at the shared global
+     * module repository. Explicit "models"/"modules"/"roots" scopes may name elements from other
+     * open MPS projects; those elements are queried read-only, matching normal MPS cross-project
+     * dependency/reference semantics.
      */
     protected fun buildSearchScope(
         mpsProject: MPSProject,
@@ -1011,9 +1007,8 @@ abstract class AbstractNodeOps : AbstractOps() {
             // project the projectPath selected, never the shared global module repository.
             "all" -> {
                 // Project's own modules (+ owned generators) plus their VISIBLE dependency closure:
-                // used languages, the read-only library/Modules-Pool entries the project actually
-                // depends on, devkit-exported solutions and accessory models — still excludes the
-                // editable modules of other open projects.
+                // used languages, read-only library/Modules-Pool entries, devkit-exported solutions,
+                // accessory models, and imported modules from other open projects.
                 // Hoisted into a local: each property read runs its own read action and rebuilds
                 // the list, so reuse the single result for both constructor arguments.
                 val projectModules = mpsProject.projectModulesWithGenerators
@@ -1032,11 +1027,9 @@ abstract class AbstractNodeOps : AbstractOps() {
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'models' is missing for scope 'models'"))
                 val modelRefs = mutableSetOf<SModelReference>()
                 for (refStr in modelRefStrings) {
-                    val model = resolveModel(mpsProject, refStr, projectOnly = true)
+                    val model = resolveModelPreferringProject(mpsProject, refStr)
                     if (model != null) {
                         modelRefs.add(model.reference)
-                    } else if (resolveModel(repo, refStr) != null) {
-                        return SearchScopeResolution.Err(crossProjectErr("Model '$refStr'"))
                     }
                 }
                 if (modelRefStrings.isNotEmpty() && modelRefs.isEmpty())
@@ -1048,11 +1041,9 @@ abstract class AbstractNodeOps : AbstractOps() {
                     ?: return SearchScopeResolution.Err(errJson("Parameter 'modules' is missing for scope 'modules'"))
                 val moduleRefs = mutableSetOf<SModuleReference>()
                 for (refStr in moduleRefStrings) {
-                    val module = resolveModule(mpsProject, refStr, projectOnly = true)
+                    val module = resolveModulePreferringProject(mpsProject, refStr)
                     if (module != null) {
                         moduleRefs.add(module.moduleReference)
-                    } else if (resolveModule(repo, refStr) != null) {
-                        return SearchScopeResolution.Err(crossProjectErr("Module '$refStr'"))
                     }
                 }
                 if (moduleRefStrings.isNotEmpty() && moduleRefs.isEmpty())
@@ -1065,11 +1056,8 @@ abstract class AbstractNodeOps : AbstractOps() {
                 val rootRefs = mutableSetOf<SNodeReference>()
                 val modelRefs = mutableSetOf<SModelReference>()
                 for (refStr in rootRefStrings) {
-                    val node = resolveNodeReference(mpsProject, refStr)?.resolve(repo)
+                    val node = resolveNodeReferencePreferringProject(mpsProject, refStr)?.resolve(repo)
                     if (node == null) {
-                        if (resolveNodeReference(repo, refStr)?.resolve(repo) != null) {
-                            return SearchScopeResolution.Err(crossProjectErr("Root '$refStr'"))
-                        }
                         return SearchScopeResolution.Err(errJson("Failed to resolve root reference: '$refStr'"))
                     }
                     rootRefs.add(node.containingRoot.reference)
@@ -1261,7 +1249,8 @@ abstract class AbstractNodeOps : AbstractOps() {
             if (sampleOnly) {
                 sample?.let { results.add(it) }
             }
-            finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it) } + "]")
+            val cache = ProjectMembershipCache(mpsProject)
+            finalizeResult("[" + results.joinToString(",") { nodeInfoJson(it, mpsProject, cache) } + "]")
         }
     }
 

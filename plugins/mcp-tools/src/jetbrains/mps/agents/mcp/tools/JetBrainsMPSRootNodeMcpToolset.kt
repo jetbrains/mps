@@ -124,7 +124,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                         }
                     }
 
-                    val info = nodeInfoJsonObject(node)
+                    val info = nodeInfoJsonObject(node, mpsProject)
                     if (selectedNodeReference != null) {
                         info.addProperty("selectedNodeReference", selectedNodeReference)
                     }
@@ -164,7 +164,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 reply = if (command == null) {
                     errJson("The MPS Console input editor is empty (no current command).", McpErrorCode.NOT_FOUND)
                 } else {
-                    okJson(nodeInfoJsonObject(command))
+                    okJson(nodeInfoJsonObject(command, mpsProject))
                 }
             }
         }
@@ -173,11 +173,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
 
     @McpTool
     @McpDescription("""
-        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. Every scope is confined to the project selected by `projectPath` and never spans other open projects sharing the MPS instance. `scope` (default `editable`): `editable` searches this project's own editable modules; `all` additionally includes the read-only modules the project depends on (its visible dependency closure — the part of the Modules Pool it actually uses); `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
+        Searches project models for root nodes whose name matches any of the given names. Finds roots by name only — to find nodes by concept use `mps_mcp_query_nodes` FIND_INSTANCES. `names` accepts a single name or a JSON array of names. `scope` (default `editable`): `editable` searches this project's own editable modules; `all` additionally includes the read-only/library and imported modules in the project's visible dependency closure, including imported modules from other open MPS projects; `models` restricts the search to the references in `models`; `modules` restricts it to the references in `modules`. Explicit `models`/`modules` references may point to another open MPS project and are queried read-only. The `roots` scope of FIND_USAGES/FIND_INSTANCES is not supported here. Returns a JSON array of node info inline, or a path to a temp file when the payload is large.
     """)
     suspend fun mps_mcp_search_root_node_by_name(
         @McpDescription("The name(s) of the root node(s) to search for. Either a single name string or a JSON array: [\"Name1\", \"Name2\"]") names: String,
-        @McpDescription("Search scope (always confined to the project selected by projectPath; never spans other open projects): 'all', 'editable' (default), 'models' (requires 'models'), or 'modules' (requires 'modules'). 'roots' is not supported here.") scope: String = "editable",
+        @McpDescription("Search scope: 'editable' (default) for this project's editable modules, 'all' for this project's visible dependencies, 'models' (requires 'models'), or 'modules' (requires 'modules'). Explicit model/module references may point to another open MPS project and are queried read-only. 'roots' is not supported here.") scope: String = "editable",
         @McpDescription("Optional model references; required when scope is 'models'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") models: String? = null,
         @McpDescription("Optional module references; required when scope is 'modules'. Either a single reference string or a JSON array: [\"ref1\", \"ref2\"].") modules: String? = null
     ): String {
@@ -212,10 +212,11 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     is SearchScopeResolution.Err -> return@executeBackgroundRead r.errJson
                 }
                 val results = mutableListOf<String>()
+                val cache = ProjectMembershipCache(mpsProject)
                 for (model in searchScope.models) {
                     for (root in model.rootNodes) {
                         if (root.name in nameSet) {
-                            results.add(nodeInfoJson(root))
+                            results.add(nodeInfoJson(root, mpsProject, cache))
                         }
                     }
                 }
@@ -324,7 +325,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                     }
                     for (newNode in preparedNodes) {
                         val fixResult = performFixReferences(mpsProject, newNode)
-                        nodeInfos.add(withFixReferencesInfo(nodeInfoJsonObject(newNode), fixResult))
+                        nodeInfos.add(withFixReferencesInfo(nodeInfoJsonObject(newNode, mpsProject), fixResult))
                     }
                 }
 
@@ -396,7 +397,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 }
 
                 saveModelAndModule(model)
-                okJson(nodeInfoJson(newNode))
+                okJson(nodeInfoJson(newNode, mpsProject))
             }
         }
     }
@@ -464,7 +465,7 @@ class JetBrainsMPSRootNodeMcpToolset : AbstractNodeOps() {
                 if (!dryRun) {
                     val fixResult = performFixReferences(mpsProject, node)
                     saveModelAndModule(model)
-                    okJson(withFixReferencesInfo(nodeInfoJsonObject(node), fixResult))
+                    okJson(withFixReferencesInfo(nodeInfoJsonObject(node, mpsProject), fixResult))
                 } else {
                     okJson(jsonObject {
                         addProperty("dryRun", true)

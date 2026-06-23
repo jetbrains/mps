@@ -34,7 +34,12 @@ Each entry in the result file has the shape:
   conceptReference,         // c:... — informational; not required in blueprints
   languageReference,
   superConcept,
+  superConceptContainingProject,      // only when the direct superconcept is from another open project
+  superConceptEditableFromCurrentProject: false,
   superInterfaces: ["ref1", "ref2", ...],
+  superInterfaceDetails: [
+    { name, reference, containingProject?, editableFromCurrentProject? }
+  ],
   sourceNode,
   isAbstract,
   isInterfaceConcept,
@@ -56,6 +61,8 @@ Each entry in the result file has the shape:
 ```
 
 Use the `qualifiedName` field (e.g. `"jetbrains.mps.baseLanguage.structure.ClassConcept"`) as the `concept` field in JSON node blueprints. It is unambiguous and does not require a `conceptReference`.
+
+With multiple MPS projects open, `containingProject` / `editableFromCurrentProject:false` marks concepts from another open project. The direct concept entry gets these fields when the concept itself is foreign; nested references use prefixes such as `superConceptContainingProject` and per-entry `superInterfaceDetails[*].containingProject`.
 
 ### Feature entries (`properties`, `references`, `children`)
 

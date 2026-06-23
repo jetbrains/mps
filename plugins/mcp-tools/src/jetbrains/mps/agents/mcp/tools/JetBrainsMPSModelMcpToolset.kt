@@ -401,7 +401,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                     }
                 }
             }
-            okJson(modelInfoJson(model))
+            okJson(modelInfoJson(model, mpsProject))
         }
     }
 
@@ -443,7 +443,7 @@ class JetBrainsMPSModelMcpToolset : AbstractOps() {
                 }
                 model.rename(newModelName, true)
                 model.save()
-                okJson(modelInfoJson(model))
+                okJson(modelInfoJson(model, mpsProject))
             }
         }
         ModelOperation.DELETE -> deleteModel(modelReference)

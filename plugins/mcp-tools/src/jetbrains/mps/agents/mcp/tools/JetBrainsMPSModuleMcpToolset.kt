@@ -838,7 +838,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpDescription("""
         Lists all available module facet types and their applicability to a specific module (if provided).
 
-        Returns a JSON object with 'ok':true and 'data':{ "facetTypes": [{type, presentation, applicableToModule, recommendedForModule}, ...] } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ "module": {...}, "facetTypes": [{type, presentation, applicableToModule, recommendedForModule}, ...] } on success, or 'ok':false and 'error':"..." on failure. The `module` context is present when `moduleName` is supplied.
     """)
     // FacetsFacade.getInstance() is deprecated in favour of obtaining the registry via the
     // owning ComponentPlugin (e.g. MPSCore), which requires plumbing a ComponentPlugin handle
@@ -866,6 +866,9 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 jsonArray.add(obj)
             }
             val resObj = JsonObject()
+            module?.let {
+                resObj.add("module", moduleFacetContextJsonObject(it, mpsProject))
+            }
             resObj.add("facetTypes", jsonArray)
             okJson(resObj)
         }
@@ -875,7 +878,7 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
     @McpDescription("""
         Gets information about active and persisted facets of a module.
 
-        Returns a JSON object with 'ok':true and 'data':{ "activeFacets": [...], "persistedFacets": [...], "discrepancies": [...] } on success, or 'ok':false and 'error':"..." on failure.
+        Returns a JSON object with 'ok':true and 'data':{ "module": {...}, "activeFacets": [...], "persistedFacets": [...], "discrepancies": [...] } on success, or 'ok':false and 'error':"..." on failure.
     """)
     // See note above mps_mcp_list_facet_types regarding deprecated FacetsFacade.getInstance().
     @Suppress("DEPRECATION")
@@ -923,12 +926,21 @@ class JetBrainsMPSModuleMcpToolset : AbstractOps() {
                 }
 
                 val resObj = JsonObject()
+                resObj.add("module", moduleFacetContextJsonObject(module, mpsProject))
                 resObj.add("activeFacets", activeFacets)
                 resObj.add("persistedFacets", persistedFacets)
                 resObj.add("discrepancies", discrepancies)
                 okJson(resObj)
             }
         }
+    }
+
+    private fun moduleFacetContextJsonObject(module: SModule, mpsProject: MPSProject): JsonObject {
+        val obj = JsonObject()
+        obj.addProperty("name", module.moduleName ?: "")
+        obj.addProperty("reference", PersistenceFacade.getInstance().asString(module.moduleReference))
+        addContainingProjectIfForeign(obj, mpsProject, module)
+        return obj
     }
 
     @McpTool
