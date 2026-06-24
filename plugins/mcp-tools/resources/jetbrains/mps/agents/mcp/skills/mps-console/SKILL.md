@@ -1,7 +1,7 @@
 ---
 name: mps-console
 description: >-
-  Use when running or generating MPS Console code, or when writing `jetbrains.mps.lang.smodel.query` queries anywhere in MPS (intentions, behavior, actions, generator queries, plain BaseLanguage). Covers the console command languages (`jetbrains.mps.console.base` / `ideCommands` / `internalCommands` / `scripts`): `BLCommand` / `BLExpression`, the `#print*` / `#show` result printers, IDE commands (`#make` / `#clean` / `#removeGenSources` / `#reloadClasses` / `#stat` / `#showGenPlan` / `#showBrokenRefs`), `#exec` / `refactor` scripts. Covers the smodel query language: `#nodes` / `#references` / `#models` / `#modules` / `#instances` / `#usages`, the `with`-statement scope wrapper, scopes (`project` / `editable` / `global` / `visible` / `modules` / `models` / `custom`) and query parameters (`scope` / `exact` / `r/o+`). Also how to insert, read, recall, and run console commands with `mps_mcp_insert_console_command_from_json`, `mps_mcp_get_current_editor_root_node(source="console")`, `mps_mcp_get_console_history`, `mps_mcp_recall_console_command`, and `mps_mcp_run_console_command`.
+  Use when running or generating MPS Console code, or when writing `jetbrains.mps.lang.smodel.query` queries anywhere in MPS (intentions, behavior, actions, generator queries, plain BaseLanguage). Covers the console command languages (`jetbrains.mps.console.base` / `ideCommands` / `internalCommands` / `scripts`): `BLCommand` / `BLExpression`, the `#print*` / `#show` result printers, IDE commands (`#make` / `#clean` / `#removeGenSources` / `#reloadClasses` / `#stat` / `#showGenPlan` / `#showBrokenRefs`), `#exec` / `forEach` / `refactor` scripts. Covers the smodel query language: `#nodes` / `#references` / `#models` / `#modules` / `#instances` / `#usages`, the `with`-statement scope wrapper, scopes (`project` / `editable` / `global` / `visible` / `modules` / `models` / `custom`) and query parameters (`scope` / `exact` / `r/o+`). Also how to insert, read, recall, and run console commands with `mps_mcp_insert_console_command_from_json`, `mps_mcp_get_current_editor_root_node(source="console")`, `mps_mcp_get_console_history`, `mps_mcp_recall_console_command`, and `mps_mcp_run_console_command`.
 type: reference
 ---
 
@@ -43,6 +43,7 @@ The console input holds exactly **one** command (`jetbrains.mps.console.base.str
 - **`exact` parameter** on `#instances` excludes instances of sub-concepts (`#instances<exact>(C)`).
 - **Never hand-edit the console's `.mps` model.** Use the editor or the MCP tool. The console lives in a temporary `ConsoleModel_*` model.
 - **Insertion and recall do not execute.** `mps_mcp_insert_console_command_from_json` and `mps_mcp_recall_console_command` only place a command in the input; by default leave it for the user to run and tell them it is waiting. To execute it yourself, call `mps_mcp_run_console_command` (way #7) — it runs code with side effects, so do it deliberately and report what it did.
+- **Bulk node mutation: pick `refactor` vs `forEach` by whether *you* will run it.** `.refactor({~it => … })` (`RefactorOperation`) pops a **modal confirmation dialog** and applies nothing until a human approves it; `.forEach({~it => … })` (collections `VisitAllOperation`) applies its closure immediately, in the console's own write command, with no dialog. So: when the user asks only to **create / insert** a command for them to run themselves (`mps_mcp_insert_console_command_from_json` and stop), prefer **`refactor`** — the dialog gives them a review-and-confirm step at the keyboard. When the user asks you to **create *and run*** it yourself (you will call `mps_mcp_run_console_command`), prefer **`forEach`** — `refactor` would return `executed:true` but stall on the dialog with no human present, leaving the model unchanged and the run a silent no-op.
 
 ## Examples (surface syntax)
 
@@ -59,7 +60,8 @@ The console input holds exactly **one** command (`jetbrains.mps.console.base.str
 #reloadClasses                                   // reload generated classes
 
 // migrate every TryStatement with a catch + long body to TryCatchStatement (from the MPS docs)
-#instances(TryStatement).where({~it => it.catchClause.isNotEmpty; }).refactor({~node => if (node.body.statement.size > 5) { node.replace with new(TryCatchStatement); } })
+// `.forEach` applies immediately and headlessly; `.refactor` instead pops a confirmation dialog
+#instances(TryStatement).where({~it => it.catchClause.isNotEmpty; }).forEach({~node => if (node.body.statement.size > 5) { node.replace with new(TryCatchStatement); } })
 ```
 
 ## Related Skills
