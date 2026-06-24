@@ -84,7 +84,8 @@ All of the following pass `dryRun` and insert cleanly against a live MPS.
 | `#make` / `#clean` / `#removeGenSources` / `#show` | `…console.ideCommands.structure.Make` / `Clean` / `RemoveGenSources` / `ShowExpression` |
 | `#stat` / `#showGenPlan` / `#showBrokenRefs` | `…console.ideCommands.structure.StatCommand` / `ShowGenPlan` / `ShowBrokenReferences` |
 | `#reloadClasses` | `…console.internalCommands.structure.ReloadClassesCommand` |
-| `refactor` | `…console.scripts.structure.RefactorOperation` (child `closure: Expression`) |
+| `forEach` (apply closure to each node) | `jetbrains.mps.baseLanguage.collections.structure.VisitAllOperation` (child `closure: Expression`) — use this for headless mutation |
+| `refactor` | `…console.scripts.structure.RefactorOperation` (child `closure: Expression`) — ⚠️ pops a modal confirm dialog; stalls `mps_mcp_run_console_command`, see `console-languages.md`. Prefer `forEach` for unattended edits |
 
 ## Workflow
 
@@ -93,4 +94,4 @@ All of the following pass `dryRun` and insert cleanly against a live MPS.
 3. **Tell the user it is not executed** — they run it with Ctrl+Enter. Offer to insert a different command if they want to iterate.
 4. **Pass `projectPath`** whenever you know it, to avoid ambiguous-project errors. If the console plugin is disabled, ask the user to enable it.
 
-Building the smodel/collections expressions that go *inside* these blueprints (e.g. the `.where(…).refactor(…)` chain, closure literals) is the job of `mps-model-manipulation` and `mps-node-editing`.
+Building the smodel/collections expressions that go *inside* these blueprints (e.g. the `.where(…).forEach(…)` / `.refactor(…)` chain, closure literals) is the job of `mps-model-manipulation` and `mps-node-editing`.

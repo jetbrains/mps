@@ -75,10 +75,13 @@ For reusable, multi-command scripts and bulk refactoring:
 
 - **`ConsoleScript`** (root, child `command: Command[0..n]`) — a saved script: create a model, import `jetbrains.mps.console.scripts`, add a `ConsoleScript` root and write console commands in it.
 - **`#exec`** (`Execute`) — run a script: import the script's model into the console, then `#exec <scriptName>`.
-- **`refactor`** (`RefactorOperation`, child `closure: Expression[1]`) — like `forEach` over a node sequence, but it first opens the found nodes in the **usages view** for manual review/selection; you then apply or cancel. Safer than `forEach` for destructive bulk edits.
+- **`forEach`** (`VisitAllOperation`, alias `forEach`, child `closure: Expression[1]`) — apply a closure to every node in a sequence **immediately**, inside the console's own write command, with no dialog. This is the operation for unattended / MCP-driven bulk mutation.
+- **`refactor`** (`RefactorOperation`, child `closure: Expression[1]`) — like `forEach`, but it first pops a **modal confirmation dialog** for the whole batch and applies nothing until the user confirms. Good for interactive, review-first destructive edits, but a **trap when driven through `mps_mcp_run_console_command`**: the run returns `executed:true` while the command silently blocks on the dialog, so the model stays unchanged until a human clicks through. Use `forEach` for headless runs.
 
 ```
-// open #instances(Foo) in usages view, then apply the closure to the kept nodes
+// create-and-run yourself (you call mps_mcp_run_console_command): forEach applies immediately, no dialog
+#instances(Foo).forEach({~node => node.setName("" + node.name + "_migrated"); })
+// create only, for the user to run at the keyboard: refactor adds a review-and-confirm dialog
 #instances(Foo).refactor({~node => node.setName("" + node.name + "_migrated"); })
 ```
 
