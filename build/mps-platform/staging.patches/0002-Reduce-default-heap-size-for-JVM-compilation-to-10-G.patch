@@ -1,0 +1,26 @@
+From 9828e29ead9de7b052e87eea117cad4a344d3985 Mon Sep 17 00:00:00 2001
+From: Fedor Isakov <fedor.isakov@jetbrains.com>
+Date: Wed, 24 Jun 2026 16:26:48 +0200
+Subject: [PATCH 2/2] Reduce default heap size for JVM compilation to 10 GB
+
+The previously used unrealistic 20 GB value was causing MPS platform builds to fail.
+---
+ community/build/jvm-rules/jvm-args.bzl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/community/build/jvm-rules/jvm-args.bzl b/community/build/jvm-rules/jvm-args.bzl
+index 4bb4269ba6311..7eb822b03f35e 100644
+--- a/community/build/jvm-rules/jvm-args.bzl
++++ b/community/build/jvm-rules/jvm-args.bzl
+@@ -12,7 +12,7 @@ def get_jvm_flags(flags):
+         #"-XX:+ZGenerational",
+         #"-XX:ZUncommitDelay=10",   # reclaim unused memory in 10 secs
+         #"-XX:SoftMaxHeapSize=2g",  # try to keep heap compact under 2 Gbytes
+-        "-Xmx20g",
++        "-Xmx10g",
+         "-Xms256m",
+ 
+         # IJ PSI cache
+-- 
+2.53.0
+

@@ -1,29 +1,31 @@
-From cfb6c54a7719e22d513d79e0016fd27a5d7845c6 Mon Sep 17 00:00:00 2001
+From cc9cfa2257fa2be9bc9b6f05b44594d96db8346c Mon Sep 17 00:00:00 2001
 From: Fedor Isakov <fedor.isakov@jetbrains.com>
 Date: Mon, 22 Jun 2026 15:22:50 +0200
-Subject: [PATCH 1/2] Fix bazel build: multiplexed workers are broken
+Subject: [PATCH 1/2] Ensure 'build.number' system property is passed to Bazel
 
-Bazel build of IJPL uses --experimental_worker_multiplex option, which can break the build.
-The usual symptomps are: Bazel reports an error: "Worker process returned an unparseable WorkResponse!".
-This patch fixes this issue by disabling multiplex worker feature temprorarily.
+System properties are not inherited by processes spawned neither by Ant, nor Bazel by default.
+Property 'build.number' must be passed to Bazel to keep reproducibility.
+
+Also enable verbose failure reports.
 ---
  community/mps/build/build/build.xml | 3 +++
  1 file changed, 3 insertions(+)
 
 diff --git a/community/mps/build/build/build.xml b/community/mps/build/build/build.xml
-index 3e68825866528..1259b44e3269b 100644
+index 3e68825866528..81237c8e1ed10 100644
 --- a/community/mps/build/build/build.xml
 +++ b/community/mps/build/build/build.xml
-@@ -46,6 +46,9 @@
+@@ -46,7 +46,10 @@
      <exec failonerror="true" executable="${platform.root}/bazel.cmd" dir="${platform.root}">
        <arg value="run"/>
        <arg value="//mps/build:mps_builder"/>
 +      <arg value="--verbose_failures"/>
-+      <arg value="--strategy=JvmCompile=worker"/>
-+      <arg value="--noexperimental_worker_multiplex"/>
++      <arg value="--worker_verbose"/>
        <arg value="--"/>
++      <arg value="--jvm_flag=-Dbuild.number=${build.number}"/>
        <arg value="${platform.root}"/>
      </exec>
+   </target>
 -- 
 2.53.0
 
