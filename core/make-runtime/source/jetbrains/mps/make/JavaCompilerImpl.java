@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2025 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -311,10 +311,9 @@ final class JavaCompilerImpl implements AutoCloseable {
         continue;
       }
       final Path pathSrc = myFileManager.asPath(d.getSource());
-      final File javaFile = pathSrc.toFile();
       final long lineNumber = d.getLineNumber();
       final long columnNumber = d.getColumnNumber();
-      Object hintObject = new FileWithPosition(javaFile, d.getPosition(), lineNumber > 0 ? lineNumber-1 : -1, columnNumber > 0 ? columnNumber-1 : -1);
+      Object hintObject = new FileWithPosition(pathSrc, d.getPosition(), lineNumber > 0 ? lineNumber-1 : -1, columnNumber > 0 ? columnNumber-1 : -1);
       String errMsg = String.format("%s (%s:%d)", d.getMessage(null), d.getSource().getName(), lineNumber);
       sender.error(errMsg, hintObject);
     }
