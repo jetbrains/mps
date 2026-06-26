@@ -82,7 +82,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
   @Nullable
   private final AbstractModule myModule;
   private final MPSProject myProject;
-  private final Collection<ModelRootDescriptor> myInitialModelRoots;
+  private Collection<ModelRootDescriptor> myInitialModelRoots;
   private final ModelRootEntryPersistence myRootEntryPersistence;
   private final List<ModelRootEntryContainer> myModelRootEntries = new ArrayList<>();
   private ModelRootEntryContainer myFocusedModelRootEntryContainer;
@@ -292,11 +292,61 @@ public class ModelRootContentEntriesEditor implements Disposable {
 
   public boolean isModified() {
     List<ModelRootDescriptor> newSet = getDescriptors();
-    return !(myInitialModelRoots.containsAll(newSet) && newSet.containsAll(myInitialModelRoots));
+    if (newSet.size() != myInitialModelRoots.size()) {
+      return true;
+    }
+    // multiset comparison: containsAll() ignores duplicates, so removing one of two
+    // value-equal model roots would otherwise read as "not modified"
+    List<ModelRootDescriptor> remaining = new ArrayList<>(myInitialModelRoots);
+    for (ModelRootDescriptor d : newSet) {
+      if (!remaining.remove(d)) {
+        return true;
+      }
+    }
+    return !remaining.isEmpty();
   }
 
   public void apply(Collection<ModelRootDescriptor> result) {
     result.addAll(getDescriptors());
+  }
+
+  /**
+   * Re-reads the module's current model roots and rebuilds the entries in place, reusing the existing
+   * component (so the surrounding tabbed pane is left untouched) and resetting the modified-state baseline.
+   * Used to refresh the view after the properties dialog applies changes that add or remove model roots
+   * (see MPS-30815). Mirrors the entry construction done in the constructor and {@link #initUI()}.
+   */
+  public void reload() {
+    if (myModule == null) {
+      return;
+    }
+    // dispose the previous entry editors (registered as children of this editor) before rebuilding,
+    // otherwise they would accumulate, along with their listeners, until the whole editor is disposed
+    for (ModelRootEntryContainer container : myModelRootEntries) {
+      Disposer.dispose(container.getModelRootEntry());
+    }
+    myModelRootEntries.clear();
+    myEditorsListPanel.removeAll();
+    myFocusedModelRootEntryContainer = null;
+
+    for (ModelRoot modelRoot : modelRootDetachedInstances(myModule)) {
+      ModelRootEntry<?> entry = myRootEntryPersistence.getModelRootEntry(modelRoot);
+      if (entry == null) {
+        LOG.warning(
+            String.format("Can't create editor for '%s' model root type in module %s. Check that plugin, where this model root type is registered, is enabled.",
+                          modelRoot.getPresentation(), myModule.getModuleName()));
+        continue;
+      }
+      Disposer.register(this, entry);
+      ModelRootEntryContainer container = new ModelRootEntryContainer(entry);
+      container.addContentEntryEditorListener(myEditorListener);
+      myModelRootEntries.add(container);
+      myEditorsListPanel.add(container.getComponent());
+    }
+    myInitialModelRoots = getDescriptors();
+    selectEntry(myModelRootEntries.isEmpty() ? null : myModelRootEntries.get(0));
+    myEditorsListPanel.revalidate();
+    myEditorsListPanel.repaint();
   }
 
   private List<ModelRootDescriptor> getDescriptors() {

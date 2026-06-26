@@ -263,7 +263,7 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     removeTab(myControlTab);
     myModuleRepository.getModelAccess().runReadAction(() -> {
       if (!(myModule instanceof DevKit)) {
-        reinitializeTab(myCommonTab);
+        myCommonTab.reloadModelRoots();
       }
       // unlike similar code in the cons, above, we init() and add tabs right away
       for (SModuleFacet moduleFacet : myModule.getFacets()) {
@@ -372,13 +372,12 @@ public class ModulePropertiesConfigurable extends MPSPropertiesConfigurable {
     private DevkitVisibleScope myPlanPickScope;
     private GenPlanPickPanel myPlanPanel;
 
-    @Override
-    public void init() {
+    /*package*/ void reloadModelRoots() {
+      // refresh the model-root list in place after an apply, so newly created roots (e.g. java_classes
+      // from an added Java library) appear; null for a DevKit, whose common tab has no roots editor
       if (myEntriesEditor != null) {
-        Disposer.dispose(myEntriesEditor);
-        myEntriesEditor = null;
+        myEntriesEditor.reload();
       }
-      super.init();
     }
 
     @Override

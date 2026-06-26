@@ -217,19 +217,6 @@ public abstract class MPSPropertiesConfigurable implements Configurable {
     }
   }
 
-  protected final void reinitializeTab(Tab tab) {
-    int index = indexOfTab(tab);
-    if (index < 0) {
-      return;
-    }
-
-    tab.init();
-    myTabbedPaneWrapper.setComponentAt(index, tab.getTabComponent());
-    myTabbedPaneWrapper.setTitleAt(index, tab.getTitle());
-    myTabbedPaneWrapper.setIconAt(index, tab.getIcon());
-    myTabbedPaneWrapper.setToolTipTextAt(index, tab.getToolTip());
-  }
-
   private void removeTab(int index) {
     if (index < 0) {
       return;
