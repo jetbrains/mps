@@ -24,9 +24,11 @@ import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.project.ProjectCloseListener;
 import com.intellij.openapi.startup.InitProjectActivityJavaShim;
+import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.util.InvalidDataException;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
 import jetbrains.mps.project.structure.project.ProjectDescriptor.Builder;
@@ -35,6 +37,7 @@ import jetbrains.mps.util.MacrosFactory;
 import jetbrains.mps.vfs.IFile;
 import jetbrains.mps.vfs.VFSManager;
 import jetbrains.mps.vfs.tracking.ModelStorageProblemsListener;
+import kotlinx.coroutines.future.FutureKt;
 import org.jdom.Element;
 import org.jdom.JDOMException;
 import org.jetbrains.annotations.NotNull;
@@ -148,6 +151,10 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
     if (myProjectOpened.compareAndSet(false, true)) {
       super.projectOpened();
       new RepoListenerRegistrar(getRepository(), myProblemsListener).attach();
+      //noinspection UnstableApiUsage
+      FutureKt.asCompletableFuture(StartupManager.getInstance(getProject()).getAllActivitiesPassedFuture()).thenRunAsync(() -> {
+        NodeVirtualFileSystem.getInstance().internalHandleUnresolvedFiles();
+      });
     }
   }
 

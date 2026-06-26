@@ -33,9 +33,11 @@ import jetbrains.mps.smodel.RepoListenerRegistrar;
 import jetbrains.mps.smodel.RepositoryFacade;
 import jetbrains.mps.smodel.SNodePointer;
 import jetbrains.mps.smodel.event.NodeChangeCollector;
+import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import org.jetbrains.mps.annotations.Internal;
 import org.jetbrains.mps.openapi.event.AbstractModelChangeEvent;
 import org.jetbrains.mps.openapi.event.SNodeAddEvent;
 import org.jetbrains.mps.openapi.event.SNodeRemoveEvent;
@@ -154,7 +156,6 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
 
   void register(@NotNull RepositoryVirtualFiles repoFiles) {
     MyRepositoryListener listener;
-    Collection<VirtualFile> adopted;
     synchronized (myRepoVFLock) {
       // assert not more than 1 file container per repository
       RepositoryVirtualFiles existing = findForRepository(repoFiles.getRepository());
@@ -165,17 +166,7 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
       myPerRepositoryFiles.add(0, repoFiles);
       listener = new MyRepositoryListener(repoFiles);
       myFiles2ListenerMap.put(repoFiles, listener);
-      adopted = myUnresolvedFiles.adoptFilesIfResolve(repoFiles);
     }
-    // we send notification about MPSNodeVirtualFiles only
-    List<MPSNodeVirtualFile> adoptedNodes = adopted.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
-    if (!adoptedNodes.isEmpty()) {
-      VFSNotifier notifier = repoFiles.getNotifier(new VFSNotifier(repoFiles));
-      notifier.changed(adoptedNodes);
-      notifier.execute();
-    }
-    // FIXME what shall we do with the files left unresolved (not adopted) in myUnresolvedFiles? Report them as 'deleted' or wait for another RVF to come
-    //       (e.g. another project to get open).
     new RepoListenerRegistrar(repoFiles.getRepository(), listener).attach();
   }
 
@@ -188,6 +179,31 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
     if (listener != null) {
       new RepoListenerRegistrar(repoFiles.getRepository(), listener).detach();
     }
+  }
+
+  @Hack
+  @Internal
+  public void internalHandleUnresolvedFiles() {
+    ArrayList<VFSNotifier> notifiers = new ArrayList<>();
+    synchronized (myRepoVFLock) {
+      for (RepositoryVirtualFiles repoFiles : myPerRepositoryFiles) {
+        ArrayList<VirtualFile> adopted = new ArrayList<>();
+        ArrayList<VirtualFile> unresolved = new ArrayList<>();
+        myUnresolvedFiles.adoptFilesIfResolve(repoFiles, adopted, unresolved);
+        // we send notification about MPSNodeVirtualFiles only
+        List<MPSNodeVirtualFile> adoptedNodes = adopted.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
+        List<MPSNodeVirtualFile> unresolvedNodes = unresolved.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
+        if (!adoptedNodes.isEmpty() || !unresolvedNodes.isEmpty()) {
+          VFSNotifier notifier = repoFiles.getNotifier(new VFSNotifier(repoFiles));
+          notifier.changed(adoptedNodes);
+          // For files left unresolved (not adopted), report them as 'deleted' (e.g., temp/transient files on re-open)
+//          System.out.printf("Reporting %d unresolved files as deleted: %s\n", unresolvedNodes.size(), unresolvedNodes.stream().map(MPSNodeVirtualFile::getName).toList());
+          notifier.deleted(unresolvedNodes);
+          notifiers.add(notifier);
+        }
+      }
+    }
+    notifiers.forEach(VFSNotifier::execute);
   }
 
   public MPSNodeVirtualFile getFileFor(@NotNull SRepository repository, @NotNull final SNode node) {
