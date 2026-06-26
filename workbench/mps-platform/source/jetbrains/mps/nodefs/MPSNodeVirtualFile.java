@@ -15,18 +15,21 @@
  */
 package jetbrains.mps.nodefs;
 
+import com.intellij.openapi.fileEditor.impl.EditorHistoryManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.openapi.vfs.VirtualFileSystem;
 import com.intellij.openapi.vfs.VirtualFileWithoutContent;
 import com.intellij.psi.search.ProjectAwareVirtualFile;
 import com.intellij.util.LocalTimeCounter;
+import jetbrains.mps.extapi.model.TransientSModel;
 import jetbrains.mps.extapi.module.TransientSModule;
 import jetbrains.mps.ide.project.ProjectHelper;
 import jetbrains.mps.logging.Logger;
 import jetbrains.mps.project.MPSProject;
 import jetbrains.mps.smodel.ModelAccessHelper;
 import jetbrains.mps.smodel.SNodePointer;
+import jetbrains.mps.smodel.tempmodel.TemporaryModels;
 import jetbrains.mps.util.annotation.Hack;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
@@ -42,7 +45,11 @@ import java.io.OutputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 
-public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwareVirtualFile, VirtualFileWithoutContent {
+
+// FWIW, seems there's no reason to implement IdeDocumentHistoryImpl.OptionallyIncluded, as it seems to affect editor navigation b/w commands
+@SuppressWarnings("UnstableApiUsage")
+public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwareVirtualFile, VirtualFileWithoutContent,
+                                                                     EditorHistoryManager.OptionallyIncluded {
   private static final byte[] CONTENTS = new byte[0];
   private static final Logger LOG = Logger.getLogger(MPSNodeVirtualFile.class);
   public static final String NODE_PREFIX = "node://";
@@ -57,6 +64,8 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
   private long myModificationStamp = LocalTimeCounter.currentTime();
   private long myTimeStamp = -1;
   private boolean myValid = true;
+  // true if this file is for a node from a transient model or module
+  private boolean myForTransientNode = true;
   private Runnable myWhenReady;
 
   MPSNodeVirtualFile(@NotNull SNodeReference nodePointer, @NotNull RepositoryVirtualFiles vfs) {
@@ -72,6 +81,7 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     myName = myPresentationName = myRepoFiles.getPathFacility().tail(path);
     // despite the fact this isn't a real file, we can't answer isValid() == false as IDEA doesn't re-open editors for such files.
     myValid = true;
+    myForTransientNode = true;
   }
 
   // FIXME: check, perhaps is invoked with proper model access already.
@@ -86,18 +96,21 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
         LOG.warning("Cannot find node for passed SNodeReference: " + myNode);
         myName = myPresentationName = "";
         myPath = "";
+        myForTransientNode = true;
       } else {
         myName = myPresentationName = String.valueOf(node.getPresentation());
-        if (node.getModel() != null && node.getModel().getModule() instanceof TransientSModule) {
+        final SModel model = node.getModel();
+        if (model != null && model.getModule() instanceof TransientSModule) {
           // it's common to open same node from different generation steps (transient models)
           // and to tell nodes from different steps we append model's identification
-          final String s = node.getModel().getName().getStereotype();
+          final String s = model.getName().getStereotype();
           if (!s.isEmpty()) {
             myPresentationName = myName + '@' + s;
           }
         }
         myPath = NODE_PREFIX + myRepoFiles.getPathFacility().serializeNode(node);
-        myTimeStamp = node.getModel().getSource().getTimestamp();
+        myTimeStamp = model.getSource().getTimestamp();
+        myForTransientNode = model == null || TemporaryModels.isTemporary(model) || model instanceof TransientSModel || model.getModule() instanceof TransientSModule;
       }
     });
   }
@@ -128,6 +141,16 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     if (myWhenReady != null) {
       myWhenReady.run();
     }
+  }
+
+  @Override
+  public boolean isIncludedInEditorHistory(@NotNull Project project) {
+    return true;
+  }
+
+  @Override
+  public boolean isPersistedInEditorHistory() {
+    return !myForTransientNode;
   }
 
   @Nullable
