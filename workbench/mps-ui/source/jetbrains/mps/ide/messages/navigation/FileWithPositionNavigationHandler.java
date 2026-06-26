@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -40,7 +40,7 @@ class FileWithPositionNavigationHandler implements NavigatableFactory {
   @Override
   public Navigatable create(@NotNull Object o) {
     final FileWithPosition pos = (FileWithPosition) o;
-    VirtualFile vf = LocalFileSystem.getInstance().findFileByIoFile(pos.getFile());
+    VirtualFile vf = pos.getPath() == null ? null : LocalFileSystem.getInstance().findFileByNioFile(pos.getPath());
     if (vf == null) {
       return NonNavigatable.INSTANCE;
     }

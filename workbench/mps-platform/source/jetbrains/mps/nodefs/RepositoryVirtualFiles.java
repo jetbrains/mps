@@ -230,20 +230,20 @@ final class RepositoryVirtualFiles {
     return null;
   }
 
-  /*package*/ Collection<VirtualFile> adoptFilesIfResolve(@NotNull final RepositoryVirtualFiles repoFiles) {
+  /*package*/ void adoptFilesIfResolve(@NotNull final RepositoryVirtualFiles repoFiles, @NotNull Collection<VirtualFile> adopted, @NotNull Collection<VirtualFile> unresolved) {
     assert forUnknownFiles();
     // need a copy as findFileByPath() -> adopted() may change myUnresolvedFiles
     final ArrayList<VirtualFile> toCheck = new ArrayList<>(myUnresolvedFiles.values());
-    final ArrayList<VirtualFile> rv = new ArrayList<>(toCheck.size());
     repoFiles.getRepository().getModelAccess().runReadAction(() -> {
       for (VirtualFile vf : toCheck) {
         // != null return value indicates vf has been 'adopted' by the new RVF
         if (repoFiles.findFileByPath(vf.getPath(), vf) != null) {
-          rv.add(vf);
+          adopted.add(vf);
+        } else {
+          unresolved.add(vf);
         }
       }
     });
-    return rv;
   }
 
   /*

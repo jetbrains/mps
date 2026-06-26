@@ -1,5 +1,5 @@
 /*
- * Copyright 2003-2021 JetBrains s.r.o.
+ * Copyright 2003-2026 JetBrains s.r.o.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,30 +18,43 @@ package jetbrains.mps.make;
 import org.jetbrains.mps.annotations.Immutable;
 
 import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 
 @Immutable
 public final class FileWithPosition {
-  private final File myFile;
+  private final Path myFile;
   private final long myLine;
   private final long myColumn;
   private final long myOffset;
 
   public FileWithPosition(File file, long offset) {
-    myFile = file;
-    myOffset = offset;
-    myLine = myColumn = -1;
+    this(file == null ? null : file.toPath(), offset, -1, -1);
   }
 
   // use {@code -1} for any unknown value
   // offset, line and column are 0-based
   public FileWithPosition(File file, long offset, long line, long column) {
+    this(file == null ? null : file.toPath(), offset, line, column);
+  }
+
+  public FileWithPosition(Path file, long offset, long line, long column) {
     myFile = file;
     myOffset = offset;
     myLine = line;
     myColumn = column;
   }
 
+
+  /**
+   * @deprecated use {@link #getPath()}
+   */
+  @Deprecated(since = "2026.1", forRemoval = true)
   public File getFile() {
+    return myFile == null || !myFile.getFileSystem().equals(FileSystems.getDefault()) ? null : myFile.toFile();
+  }
+
+  public Path getPath() {
     return myFile;
   }
 

@@ -59,6 +59,7 @@ public class NodeIconUpdater implements NodeFileEventListener {
       // was not initialized the moment NodeVirtualFileSystem(P1) dispatched "deleted" events (not all (any?) ProjectComponents got initialized by that time)
       return;
     }
+    // FWIW, here comes an unexpected role of "node icon updater" class, which is also responsible to close editors for deleted node files
     final FileEditorManager fm = FileEditorManager.getInstance(myProject);
     vf.forEach(fm::closeFile);
   }
