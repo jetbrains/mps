@@ -80,7 +80,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
   private final static Logger LOG = Logger.getLogger(ModelRootContentEntriesEditor.class);
 
   @Nullable
-  private AbstractModule myModule;
+  private final AbstractModule myModule;
   private final MPSProject myProject;
   private final Collection<ModelRootDescriptor> myInitialModelRoots;
   private final ModelRootEntryPersistence myRootEntryPersistence;
@@ -95,8 +95,7 @@ public class ModelRootContentEntriesEditor implements Disposable {
 
   public ModelRootContentEntriesEditor(@NotNull AbstractModule module, @NotNull MPSProject p) {
     // FIXME grab model read?
-    this(modelRootDetachedInstances(module), module.getModuleName(), p);
-    myModule = module;
+    this(modelRootDetachedInstances(module), module.getModuleName(), p, module);
   }
 
   private static Iterable<ModelRoot> modelRootDetachedInstances(@NotNull AbstractModule module) {
@@ -119,7 +118,17 @@ public class ModelRootContentEntriesEditor implements Disposable {
   }
 
   public ModelRootContentEntriesEditor(@NotNull Iterable<ModelRoot> modelRoots, String moduleName, @NotNull MPSProject p) {
+    this(modelRoots, moduleName, p, null);
+  }
+
+  // myModule has to be assigned before the initial getDescriptors() snapshot below: getDescriptors() saves the model roots
+  // through PersistenceContextImpl.forModule(myModule) when a module is known, and PersistenceContextImpl.empty() otherwise.
+  // The empty (no-macro) context records absolute paths, while later isModified()/apply() calls (with myModule already set)
+  // record ${module}-shrunk paths, so the snapshot would never match and the editor would report itself permanently modified
+  // (MPS-30815: Apply button stays enabled). Setting myModule here keeps the snapshot consistent with subsequent calls.
+  private ModelRootContentEntriesEditor(@NotNull Iterable<ModelRoot> modelRoots, String moduleName, @NotNull MPSProject p, @Nullable AbstractModule module) {
     myProject = p;
+    myModule = module;
     // XXX I'm puzzled with mix of ModelRoot and ModelRootDescriptor in ModelRootEntryPersistence, shall stick to one
     //     i.e. basically have to decide whether we edit SModule or ModuleDescriptor.
     //     Provided ModuleDescriptor holds ModelRootDescriptor, which is basically a persistence element (IMemento + type), I feel
