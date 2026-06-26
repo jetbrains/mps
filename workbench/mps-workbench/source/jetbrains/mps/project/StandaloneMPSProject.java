@@ -19,6 +19,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
+import com.intellij.openapi.fileEditor.FileEditorManager;
 import com.intellij.openapi.progress.ProgressIndicator;
 import com.intellij.openapi.progress.ProgressManager;
 import com.intellij.openapi.project.Project;
@@ -26,8 +27,10 @@ import com.intellij.openapi.project.ProjectCloseListener;
 import com.intellij.openapi.startup.InitProjectActivityJavaShim;
 import com.intellij.openapi.startup.StartupManager;
 import com.intellij.openapi.util.InvalidDataException;
+import com.intellij.openapi.vfs.VirtualFile;
 import jetbrains.mps.ide.MPSCoreComponents;
 import jetbrains.mps.logging.Logger;
+import jetbrains.mps.nodefs.MPSNodeVirtualFile;
 import jetbrains.mps.nodefs.NodeVirtualFileSystem;
 import jetbrains.mps.project.persistence.ProjectDescriptorPersistence;
 import jetbrains.mps.project.structure.project.ProjectDescriptor;
@@ -83,6 +86,18 @@ public class StandaloneMPSProject extends MPSProject implements PersistentStateC
   }
 
   public static class Listener implements ProjectCloseListener {
+
+    @Override
+    public void projectClosingBeforeSave(@NotNull Project project) {
+      FileEditorManager editorManager = FileEditorManager.getInstance(project);
+      for (VirtualFile vf : editorManager.getOpenFiles()) {
+        // isPersistedInEditorHistory is just a handy way to see if the file is for transient node
+        if (vf instanceof MPSNodeVirtualFile nvf && !nvf.isPersistedInEditorHistory()) {
+          editorManager.closeFile(vf);
+        }
+      }
+    }
+
     @Override
     public void projectClosing(@NotNull Project p) {
       // XXX there's no explicit contract for this notification, and I wonder what if it comes in EDT -
