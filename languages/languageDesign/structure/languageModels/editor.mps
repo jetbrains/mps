@@ -2884,6 +2884,22 @@
         <node concept="3XFhqQ" id="1KZwMoK7KDh" role="3EZMnx" />
         <node concept="3EZMnI" id="h0PlMxo" role="3EZMnx">
           <node concept="l2Vlx" id="4G1g3fHfeKW" role="2iSdaV" />
+          <node concept="3F0ifn" id="5coNnRAJWXO" role="3EZMnx">
+            <property role="3F0ifm" value="short description:" />
+            <ref role="1k5W1q" node="24YP6ZDyde4" resolve="Keyword" />
+          </node>
+          <node concept="3F0A7n" id="5coNnRAJWXP" role="3EZMnx">
+            <property role="1O74Pk" value="true" />
+            <property role="1$x2rV" value="&lt;no short description&gt;" />
+            <ref role="1NtTu8" to="tpce:40UcGlRaVSw" resolve="conceptShortDescription" />
+            <ref role="1k5W1q" to="tpen:hgVSdfU" resolve="StringLiteral" />
+            <node concept="Vb9p2" id="5coNnRAJWXQ" role="3F10Kt">
+              <property role="Vbekb" value="g1_k_vY/BOLD" />
+            </node>
+            <node concept="ljvvj" id="5coNnRAJWXR" role="3F10Kt">
+              <property role="VOm3f" value="true" />
+            </node>
+          </node>
           <node concept="3F0ifn" id="h0Psb2U" role="3EZMnx">
             <node concept="VPM3Z" id="hEU$P7S" role="3F10Kt">
               <property role="VOm3f" value="false" />
