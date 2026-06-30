@@ -185,23 +185,30 @@ public final class NodeVirtualFileSystem extends VirtualFileSystem implements Di
   @Internal
   public void internalHandleUnresolvedFiles() {
     ArrayList<VFSNotifier> notifiers = new ArrayList<>();
+    List<RepositoryVirtualFiles> repositories;
     synchronized (myRepoVFLock) {
-      for (RepositoryVirtualFiles repoFiles : myPerRepositoryFiles) {
+      repositories = new ArrayList<>(myPerRepositoryFiles);
+    }
+    for (RepositoryVirtualFiles repoFiles : repositories) {
+      // Keep lock ordering: always ReadAccess => myRepoVFLock to avoid deadlocks
+      repoFiles.getRepository().getModelAccess().runReadAction(() -> {
         ArrayList<VirtualFile> adopted = new ArrayList<>();
         ArrayList<VirtualFile> unresolved = new ArrayList<>();
-        myUnresolvedFiles.adoptFilesIfResolve(repoFiles, adopted, unresolved);
-        // we send notification about MPSNodeVirtualFiles only
-        List<MPSNodeVirtualFile> adoptedNodes = adopted.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
-        List<MPSNodeVirtualFile> unresolvedNodes = unresolved.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
-        if (!adoptedNodes.isEmpty() || !unresolvedNodes.isEmpty()) {
-          VFSNotifier notifier = repoFiles.getNotifier(new VFSNotifier(repoFiles));
-          notifier.changed(adoptedNodes);
-          // For files left unresolved (not adopted), report them as 'deleted' (e.g., temp/transient files on re-open)
-//          System.out.printf("Reporting %d unresolved files as deleted: %s\n", unresolvedNodes.size(), unresolvedNodes.stream().map(MPSNodeVirtualFile::getName).toList());
-          notifier.deleted(unresolvedNodes);
-          notifiers.add(notifier);
+        synchronized (myRepoVFLock) {
+          myUnresolvedFiles.adoptFilesIfResolve(repoFiles, adopted, unresolved);
+          // we send notification about MPSNodeVirtualFiles only
+          List<MPSNodeVirtualFile> adoptedNodes = adopted.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
+          List<MPSNodeVirtualFile> unresolvedNodes = unresolved.stream().filter(MPSNodeVirtualFile.class::isInstance).map(MPSNodeVirtualFile.class::cast).toList();
+          if (!adoptedNodes.isEmpty() || !unresolvedNodes.isEmpty()) {
+            VFSNotifier notifier = repoFiles.getNotifier(new VFSNotifier(repoFiles));
+            notifier.changed(adoptedNodes);
+            // For files left unresolved (not adopted), report them as 'deleted' (e.g., temp/transient files on re-open)
+            //          System.out.printf("Reporting %d unresolved files as deleted: %s\n", unresolvedNodes.size(), unresolvedNodes.stream().map(MPSNodeVirtualFile::getName).toList());
+            notifier.deleted(unresolvedNodes);
+            notifiers.add(notifier);
+          }
         }
-      }
+      });
     }
     notifiers.forEach(VFSNotifier::execute);
   }

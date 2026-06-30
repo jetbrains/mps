@@ -285,7 +285,9 @@ public final class MPSNodeVirtualFile extends VirtualFile implements ProjectAwar
     if (!myValid) {
       // With proper fix of https://youtrack.jetbrains.com/issue/MPS-24244 (shared VFS notifier instance), shall not happen,
       // nevertheless, doesn't hurt to be alert.
-      LOG.error("Attempt to invalidate already disposed file", new Throwable());
+      if (LOG.isTraceLevel()) {
+        LOG.trace("Attempt to invalidate already disposed file", new Throwable());
+      }
       return;
     }
     myRepoFiles.forgetVirtualFile(myNode);
